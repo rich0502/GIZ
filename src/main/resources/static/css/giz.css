@@ -373,7 +373,7 @@ ul.nav-tabs {
 }
 
 .gbtn {
-    background-color: #C30F08;
+    background-color: #e9676d;
     border-width: 0;
     border-radius: 4px;
     color: #FFF;
@@ -499,7 +499,7 @@ ul.nav-tabs {
 }
 
 .home-content .welcome {
-    background: url(../images/clouds-cloudy-farm-236047.png) no-repeat 0 0;
+    background: url(../css/images/vanilla.png) no-repeat 0 0;
     color: #C30F08;
     font-size: 48px;
     height: 240px;
@@ -529,7 +529,7 @@ ul.nav-tabs {
 }
 
 .page-title {
-    color: #C30F08;
+    color: #e9676d;
     font-size: 18px;
     font-weight: 700;
     height: 37px;
@@ -1750,6 +1750,17 @@ header.header {
     width: 100%;
 }
 
+.upload-file-illu {
+    display: block;
+    margin: auto;
+    margin-top: -20px;
+    width: 120px;
+}
+.card .btn-import-file {
+    display: block;
+    width: 100px;
+    margin: 18px auto;
+}
 .registerFile form {
     align-items: center;
     border: 1px #6c757d dashed;
@@ -1770,7 +1781,8 @@ header.header {
 
 .composantesTable-header.justify-between{
     padding-left: 16px;
-    padding-right: 16px;
+    padding-right: 2100px;
+    padding-top: 26px;
 }
 .card .top-btn .gbtn{
     margin: 0;
@@ -1791,7 +1803,7 @@ header.header {
 }
 
 .stories th {
-    background-color: #C30F08;
+    background-color: #e9676d;
 }
 
 /* add success */
@@ -2166,7 +2178,7 @@ tr.relative .table-title.title-child {
     background: white;
     cursor: inherit;
     display: block;
-    font-size: 100px;
+    /* font-size: 100px; */
     filter: alpha(opacity=0);
     min-height: 100%;
     min-width: 100%;
@@ -2180,7 +2192,7 @@ tr.relative .table-title.title-child {
 }
 
 .gbtn.btn-file {
-    background: #C30F08 !important;
+    background: #e9676d !important;
     margin: 0 auto;
     padding: 0 20px;
     width: 180px;
@@ -2481,3 +2493,24 @@ section.main.formLogin {
     background-size: 100%;
     top: 11px;
 }
+
+.btAdd {
+  background-color: #e9676d;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 15px -23px;
+  cursor: pointer;
+  margin-top: -4px;
+  margin-bottom: 36px;
+}
+
+.dynamic-table-tracker {
+    width: 100%;
+}
+
+

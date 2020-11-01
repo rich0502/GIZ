@@ -21,7 +21,7 @@
 	 <!-- Nuestro css-->
     <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
-
+	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
 </head>
 <body>
 <div th:include="/pds_header.html"></div>
@@ -45,6 +45,7 @@ function submitFunction(i) {
 <span class="span-user" th:text="${nomUser}" id="lastUser">  
 <span th:text="${nomUser.username}"></span>
 </span>
+<br>
 <form method="POST" name="theForm">
 <table>
 	<tr>
@@ -72,4 +73,12 @@ function submitFunction(i) {
 	</tr>
 </table>
 </form>
+<body>
+<br>
+<table>
+	<tr>
+	<td><img style='width: 1900px;height: 500px;' th:src=@{/css/images/dashboard.jpg}></td>
+	</tr>
+</table>
+</body>
 </html>
