@@ -25,6 +25,9 @@ public interface BeneficiaireRepository extends JpaRepository<Beneficiaire, Long
 	@Query("SELECT f FROM Beneficiaire f WHERE f.id_bf = ?1")
 	Beneficiaire findByIdBeneficiaire(Long id_bf);
 	
+	@Query("SELECT f FROM Beneficiaire f WHERE f.success ='true'")
+	List<Beneficiaire> listSuccessStories();
+	
 	
 }
 

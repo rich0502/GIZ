@@ -32,12 +32,13 @@ public class BeneficiaireServiceImpl implements BeneficiaireService {
 
 
 	@Override
-	public void addBeneficiaire(String nom_bf, String prenom_bf, String adresse_bf,
+	public void addBeneficiaire(String nom_bf, String prenom_bf, String adresse_bf, Boolean success ,
 			String contact_bf, String date_naiss_bf) {
 		Beneficiaire beneficiaire = new Beneficiaire();
 		beneficiaire.setNom_bf(nom_bf);
 		beneficiaire.setPrenom_bf(prenom_bf);
 		beneficiaire.setAdresse_bf(adresse_bf);
+		beneficiaire.setSuccess(success);
 		beneficiaire.setContact_bf(contact_bf);
 		beneficiaire.setDate_naiss_bf(date_naiss_bf);
 		beneficiaireRepository.save(beneficiaire);
@@ -45,15 +46,21 @@ public class BeneficiaireServiceImpl implements BeneficiaireService {
 	}
 
 	@Override
-	public void modifyBeneficiaire(Beneficiaire beneficiaire, String nom_bf, String prenom_bf, String adresse_bf,
+	public void modifyBeneficiaire(Beneficiaire beneficiaire, String nom_bf, String prenom_bf, String adresse_bf, Boolean success,
 			String contact_bf, String date_naiss_bf, Long id_bf) {	
 		beneficiaire.setNom_bf(nom_bf);
 		beneficiaire.setPrenom_bf(prenom_bf);
 		beneficiaire.setAdresse_bf(adresse_bf);
+		beneficiaire.setSuccess(success);
 		beneficiaire.setContact_bf(contact_bf);
 		beneficiaire.setDate_naiss_bf(date_naiss_bf);
 		beneficiaireRepository.save(beneficiaire);
 		
+	}
+
+	@Override
+	public List<Beneficiaire> ListSuccessStories() {
+		return beneficiaireRepository.listSuccessStories();
 	}
 
 
