@@ -14,7 +14,9 @@ E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\data\domain\Former.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\data\domain\District.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\repository\CommuneRepository.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\service\metier\GalerieServiceImpl.java
+E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\service\TrackerServiceImpl.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\controller\BeneficiaireController.java
+E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\data\domain\Tracker.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\Exception\CustomeFieldValidationException.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\service\metier\FormerServiceImpl.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\dto\ChangePasswordForm.java
@@ -54,11 +56,13 @@ E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\controller\FormerController.ja
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\controller\AnalysesController.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\repository\FormationRepository.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\GizApplication.java
+E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\repository\TrackerRepository.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\controller\ProfilController.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\service\UserDetailsServiceImpl.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\controller\WSController.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\repository\RoleRepository.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\data\domain\Galerie.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\repository\GalerieRepository.java
+E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\service\TrackerService.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\data\domain\MiseForme.java
 E:\plan interieur\GIZ\trunk\src\main\java\com\Giz\data\domain\Beneficiaire.java

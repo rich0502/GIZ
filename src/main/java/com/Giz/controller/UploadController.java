@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.Giz.data.constants.theme.ListeWp;
 import com.Giz.data.domain.MiseForme;
 import com.Giz.service.metier.BeneficiaireService;
+
 
 
 
@@ -35,12 +37,15 @@ public class UploadController {
 	
 	@RequestMapping("/uploadFile")
 	public String uploadFile(Model model) {
-
+		String[][] scList = ListeWp.wp();
+		System.out.println(scList);
+		model.addAttribute("scList", scList);
 		return "uploadFile";
 	}
 
 	@PostMapping("/import")
-	public String mapReapExcelDatatoDB(@RequestParam("file") MultipartFile reapExcelDataFile, @RequestParam("benef") String benef, Model model ) throws IOException, ParseException {
+	public String mapReapExcelDatatoDB(@RequestParam("file") MultipartFile reapExcelDataFile, Model model ) throws IOException, ParseException {
+				
 	    workbook = new XSSFWorkbook(reapExcelDataFile.getInputStream());
 	    XSSFSheet worksheet = workbook.getSheetAt(0);
 	    XSSFRow row1 = worksheet.getRow(0);
@@ -61,7 +66,6 @@ public class UploadController {
 	        String contact_bf = row.getCell(4).getStringCellValue();
 	       // beneficiaireService.addBeneficiaire(nom_bf, prenom_bf, adresse_bf, null, contact_bf, date_naiss_bf);
 	    }*/
-
 	   model.addAttribute("headerLists", msForm);
         return "mise_form";
 	}
