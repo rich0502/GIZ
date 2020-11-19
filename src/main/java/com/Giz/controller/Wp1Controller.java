@@ -13,9 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.Giz.data.constants.theme.ListeWp;
 import com.Giz.data.domain.MiseForme;
 import com.Giz.service.metier.BeneficiaireService;
 
@@ -70,5 +72,18 @@ public class Wp1Controller {
 
 	    return "redirect:/beneficiaire";
 	}
+	
+	
+	/* CANEVAS ADOPTION INNOVATION */
+	
+	@RequestMapping("/uploadAI")
+	public String uploadFile(Model model) {
+		String[][] scList = ListeWp.wp();
+		model.addAttribute("scList", scList);
+		return "wp1/uploadAI";
+	}
+	
+	
+	
 	
 }
