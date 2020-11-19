@@ -2,10 +2,11 @@
     <header>
         <nav class="pds-header">
             <div class="logo-section">
-                <img th:src="@{/img/giz_logo.png}" class="img-logo" style="width: 144px;" alt="logo">
-				<a th:href="@{/plan}"><span class="text-logo">VANILLA PERIODIC MONITORING TOOLS</span></a>
+                <img th:src="@{/img/giz_logo_notext.png}" class="img-logo" alt="logo">				
             </div>
+            
         	 <div class=" menu-list">
+        	 	<a class="text-logo" th:href="@{/plan}">VANILLA PERIODIC MONITORING TOOLS</a>
              	<a class="pds-btn" th:href="@{/accueil}"><span class="menu-item-label">ACCUEIL</span></a> 
              	<a class="pds-btn" th:href="@{/uploadFile}"><span class="menu-item-label">IMPORT</span></a>    
              	<a class="pds-btn" th:href="@{/beneficiaire}"><span class="menu-item-label">EDITION</span></a>   

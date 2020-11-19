@@ -79,10 +79,11 @@ body{
 
 .menu-list {
     display: flex;
-    justify-content: flex-start;
-    align-items:flex-start;
+    justify-content: center;
+    align-items:center	;
     flex-wrap: wrap;
     margin: auto;
+    padding: 2px 20px;
 }
 
 .menu-item {
@@ -129,11 +130,16 @@ body{
 
 .menu-list a.pds-btn {
     padding: 8px 10px;
-    margin: auto 12px;
+    margin: auto 2px;
+    background: #fff;
 }
 .menu-list .pds-btn:after {
     top: unset;
-    bottom: -2px;
+    bottom: -4px;
+    background: #c80f08;
+}
+.menu-list a.pds-btn:hover {
+	color: #c80f08;
 }
 .menu-list .icon-menu-container {
     display: block;
@@ -269,18 +275,19 @@ LOGIN
   position:relative; 
   margin-bottom:20px; 
 }
-.floating-input , .floating-select {
+.floating-input, .floating-select {
   font-size:14px;
   padding:4px 4px;
+  margin-top: 8px;
   display:block;
   width:100%;
-  height:40px;
+  height:48px;
   background-color: transparent;
   border:none;
-  border-bottom:1px solid #757575;
+  border:1px solid #757575;
 }
 
-.floating-input:focus , .floating-select:focus {
+.floating-input:focus, .floating-select:focus {
      outline:none;
      border-bottom:2px solid #5264AE; 
 }
@@ -409,6 +416,9 @@ label{
 	font-weight:700;
 	font-size: 12px;
 	line-height: 12px;
+	padding: 2px 12px;
+	margin-top:5px;
+	margin-bottom: 16px;
 	color: #000000;
 }
 .form-wrap:not(.add-form) .floating-label{
@@ -540,18 +550,18 @@ PSD HEADER
 	
 }
 .name-user-top .user-info-top{
-	padding-left: 16px;
+	padding-left: 6px;
 	text-align: left;
     font-size: 11px;
     font-weight: 700;
 
 }
 .logo-section {
-display:flex;
-justify-content:center;
-align-items:center;
-height:40px;
-margin-left:10px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height:100%;
+	margin-left:10px;
 }
 
 .logo-section a {
@@ -562,12 +572,17 @@ margin-left:10px;
     border-left: 1px solid #000;
     padding-top:0;
 }
+.logo-section img {
+	width: auto;
+	height: 100%;
+	padding: 6px;
+}
 .pds-header {
     display: flex;
     align-items: center;
     width: 100%;
     height: 72px;
-    position: relative;
+    position: absolute;
     z-index: 1050;
 /*     background: #031451; */
     background: #ffffff;
@@ -579,17 +594,22 @@ margin-left:10px;
 	display: block;
     font-weight: 900;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 20px;
     text-transform: uppercase;
-    color: #cd3231;
+    color: #cd3231 !important;
     margin: auto 11px;
     font-family: 'Barlow', Arial, Helvetica, sans-serif !important;
-    letter-spacing: 0.2em;
-    height:40px;
-    padding: 3px 0;
-
+    letter-spacing: 0.25em;
+    
+    width: 100%;
+    text-align: center;
+    height: auto;
+    padding: 10px 0 5px;
+    opacity: 0.5;
 }
-
+.text-logo:hover {
+	opacity: 1;
+}
 
 .nav-menu {
     margin: auto 20px;
@@ -664,7 +684,7 @@ margin-left:10px;
 .pds-btn.x-btn-pressed::after,
 .pds-btn.x-btn-focus::after {
     width: 100%;
-    transition: width 0.5s;
+    transition: width 0.4s;
 }
 
 .user-menu {
@@ -843,19 +863,24 @@ PSD CONTENT
 	font-weight: bold;
 	font-size: 12px;
 	line-height: 14px;
+	margin:0;
 }
 
 .pds-table .thead-light,
  .pds-table .thead-light th,
 .pds-table .thead-light tr{
 	color:#fff;
-/* 	background-color: #031451;*/
-background:#000000;
+	background:#777777;
 }
 .pds-table td,
 .pds-table tr,
 .pds-table th{
 	border:0 !important;
+	padding: 10px 20px;
+}
+.pds-table.table td, .pds-table.table  th {
+	border-right:1px solid rgba(180,180,180,0.3) !important;
+	margin:0;
 }
 .pds-table.table-striped tbody tr:nth-of-type(odd),
 .pds-table.table-hover tbody tr:hover{
@@ -1247,7 +1272,7 @@ border:3px solid #3e474f;
     background: #FCFCFC;
 }
 
-.home-container {
+.home-container  {
     display: flex;
     width: 100%;
     font-size: 13px;
@@ -1594,8 +1619,10 @@ a.btn:hover .name-user-top {
 .pds-icon-btn {
     display: flex;
     justify-content: space-around;
-    padding-left: 16px;
+    align-items center;
+    padding-left: 16px;    
     padding-right: 16px;
+    
 }
 
 .icon-btn {
@@ -1884,6 +1911,7 @@ a.btn:hover .name-user-top {
 .pds-icon-btn {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     padding-left: 16px;
     padding-right: 16px;
 }

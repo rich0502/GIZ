@@ -484,11 +484,14 @@ ul.nav-tabs {
     padding: 18px 10px 18px 18px
 }
 
-.home-content {
+.home-content, .base-content {
     /* margin: 48px auto 0; */
     margin: 0 auto;
-    width: 616px;
+    width: 100%;
+    max-width: 920px;
     padding-top: 48px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .home-content h2 {
@@ -570,7 +573,15 @@ ul.nav-tabs {
     position: relative;
     width: 100%
 }
-
+.date-picker-custom {
+	display: inline-block;
+	height: 48px;
+	padding: 2px 10px;
+	margin: 10px 0;
+}
+.add-doc #upload {	
+	padding: 24px 0;
+}
 .customSelect-val {
     background: url(../images/chevron-down.svg) no-repeat 95% center;
     line-height: 40px
@@ -1394,6 +1405,10 @@ table.dataTable.composantes-table {
     justify-content: center;
     display: flex;
     align-items: center;
+}
+.table-responsive {
+	border: 1px solid #f1f1f1;
+	min-height: 70px;
 }
 .composantes-table td.td-action {
     justify-content: center;

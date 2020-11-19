@@ -19,20 +19,21 @@
     <!-- Nuestro css-->
     <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
-
+	<link rel="stylesheet"  type="text/css" th:href="@{/css/giz.css}" />
 
 
 </head>
 
 <body>
 <div th:include="/pds_header.html"></div>
-    <div class="container-fluid content-wrapper">
+ 	<section class="main">
+   	<div class="container-fluid content-wrapper">
         <div class="top-page">
             <h1 class="content-title"> GESTION TRACKER</h1>
         </div>
         <!-- document -->
 
-        <div class="-container">
+        <div class="">
             <a class="btn pds-primary-btn pds-add-user-btn pds-icon-btn" href="trackerAdd"><img class="icon-btn" src="img/pds_add_document.svg"><span class="label-btn"> Ajouter Tracker </span></a>
             <div class="table-responsive">
                 <table id="docList" class="pds-table table table-hover table-striped">
@@ -41,7 +42,7 @@
                             <th scope="col">Description</th>
                             <th scope="col">Nom du fichier </th>
                             <th scope="col">Date </th>
-                            <th scope="col" class="td-action">Download</th>
+                            <th scope="col" >Download</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,7 +50,7 @@
                             <td th:text="${listFile.desc_file}"></td>
                             <td th:text="${listFile.file_name}"></td>
                             <td th:text="${listFile.date_tracker}"></td>
-                            <td class="td-action">
+                            <td >
                             <div class="doclist-flex-action">
                        
                                 <span class="action-btn">
@@ -64,7 +65,8 @@
 
             <!-- document -->
         </div>
-
+	</div>
+	<section class="main">
 </body>
 
 </html>

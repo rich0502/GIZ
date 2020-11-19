@@ -83,6 +83,7 @@ body{
     align-items:flex-start;
     flex-wrap: wrap;
     margin: auto;
+    padding: 2px 20px;
 }
 
 .menu-item {

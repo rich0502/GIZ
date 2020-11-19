@@ -20,12 +20,13 @@
     <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
 
-
+ <link rel="stylesheet"  type="text/css" th:href="@{/css/giz.css}" />
 
 </head>
 
 <body>
 <div th:include="/pds_header.html"></div>
+	<section class="main">
     <div class="container-fluid content-wrapper">
         <div class="top-page">
             <h1 class="content-title"> GESTION DES DOCUMENTS</h1>
@@ -42,7 +43,7 @@
                             <th scope="col">Données arrêtée </th>
                             <th scope="col">Auteur</th>
                             <th scope="col">Date de création</th>
-                            <th scope="col" class="td-action">Download</th>
+                            <th scope="col" class="">Download</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,7 +52,7 @@
                             <td th:text="${listFile.arret}"></td>
                             <td th:text="${listFile.auteur}"></td>
                             <td th:text="${listFile.date_crea}"></td>
-                            <td class="td-action">
+                            <td class="">
                             <div class="doclist-flex-action">
                        
                                 <span class="action-btn">
@@ -66,7 +67,9 @@
 
             <!-- document -->
         </div>
-
+	
+	</div>
+	</section>
 </body>
 
 </html>

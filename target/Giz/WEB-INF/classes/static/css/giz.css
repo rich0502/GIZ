@@ -487,7 +487,8 @@ ul.nav-tabs {
 .home-content {
     /* margin: 48px auto 0; */
     margin: 0 auto;
-    width: 616px;
+    width: 100%;
+    max-width: 824px;
     padding-top: 48px;
 }
 

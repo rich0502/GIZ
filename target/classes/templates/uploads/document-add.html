@@ -1,122 +1,129 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Area Management</title>
-    <link rel="icon" type="image/png" href="css/images/icons/favicon.png" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Area Management</title>
+<link rel="icon" type="image/png" href="css/images/icons/favicon.png" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <!--JQUERY-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--JQUERY-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <!-- Los iconos tipo Solid de Fontawesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <script src="js/upload-file.js"></script>
+<!-- Los iconos tipo Solid de Fontawesome-->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+<script src="js/upload-file.js"></script>
 
-    <!-- Nuestro css-->
-    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/home.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/document.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/drag-drop-upload.css}">
+<!-- Nuestro css-->
+<link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/home.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/document.css}">
+<link rel="stylesheet"  type="text/css" th:href="@{/css/giz.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{css/drag-drop-upload.css}">
 
- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css">
-    <script type="text/javascript">
-        $(function() {
-            $('.date-picker').datepicker( {
-            changeMonth: true,
-            changeYear: true,
-            showButtonPanel: true,
-            dateFormat: 'MM yy',
-            onClose: function(dateText, inst) { 
-                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
-            }
-            });
-        });
-    </script>
-    <style>
-    .ui-datepicker-calendar {
-        display: none;
-    }
-    </style>
+
 </head>
 
 <body>
 	<div th:include="/pds_header.html"></div>
+	<section class="main add-doc">
+		<div class="base-content content-wrapper ">
+			<div class="top-page ">
+				<h1 class="content-title ">Ajouter des documents</h1>
+			</div>
+			<!-- document -->
 
-    <div class="container-fluid content-wrapper ">
-        <div class="top-page ">
-            <h1 class="content-title ">Ajouter des documents</h1>
-        </div>
-        <!-- document -->
+			<div class="">				
+					<form class="floating-form add-form file form-wrap " method="POST"
+						enctype="multipart/form-data" action="/Giz/saveUploads">
+						
+							<div class="">								
+								<div style="margin-bottom:8px">Chronologie pour rappel</div>										
+								<input class="floating-input " type="text" placeholder=" "
+									id="chr_rappel" name="chr_rappel">							
+									
+								<br>
+								
+								<div>Données arrêtée</div>
+								<div class="">
+									<input class="date-picker date-picker-custom" type="text" placeholder="Date"
+										id="arret" name="arret"> <span class="highlight "></span>
+									
+								</div>
+							</div>
+						
+						<div class=" ">
+							<div class="">
+								<div id="upload">
+									<div id="drop">
+										<span class="manual-upload">Glisser le document à
+											télécharger ou</span> <a class="btn pds-primary-btn pds-upload-btn">CHOISIR
+											UN FICHIER</a> <input type="file" name="file" multiple />
+									</div>
 
-        <div class="-container ">
-
-            <div class=" ">
-                <form class="floating-form add-form file form-wrap " method="POST" enctype="multipart/form-data"  action="/Giz/saveUploads">
-                    <div class="form-row ">
-                        <div class="col-6 ">
-                            <div class="floating-form ">
-                                <div class="floating-label ">
-                                    <input class="floating-input " type="text" placeholder=" " id="chr_rappel" name="chr_rappel">
-                                    <span class="highlight "></span>
-                                    <label>Chronologie pour rappel</label>
-                                </div>
-                            </div>
-                              <div class="floating-form ">
-                                <div class="floating-label ">
-                                    <input  class="date-picker" type="text" placeholder=" " id="arret" name="arret">
-                                    <span class="highlight "></span>
-                                    <label>Données arrêtée</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 ">
-
-                        </div>
-                    </div>
-                    <div class="form-row ">
-                        <div class="col-md-12 ">
-                            <div id="upload">
-                                <div id="drop">
-                                    <span class="manual-upload">Glisser le document à télécharger  ou</span>
-
-                                    <a class="btn pds-primary-btn pds-upload-btn">CHOISIR UN FICHIER</a>
-                                    <input type="file" name="file" multiple />
-                                </div>
-
-                                <ul>
-                                    <!-- The file uploads will be shown here -->
-                                </ul>
-								   <input
-										type="submit" class="btn pds-primary-btn pds-save-btn"
+									<ul>
+										<!-- The file uploads will be shown here -->
+									</ul>
+									<input type="submit" class="btn pds-primary-btn pds-save-btn"
 										value="Enregistrer">
-                </form>
-                </div>
-                </div>
+					</form>
+				
+			</div>
 
-                </div>
-                </form>
-            </div>
-        </div>
-        <!-- document -->
+		</div>
+		</form>
+		</div>
+		</div>
+		<!-- document -->
 
-        <script src="js/drag-drop/jquery.knob.js"></script>
 
-        <!-- jQuery File Upload Dependencies -->
-        <script th:src="@{js/drag-drop/jquery.ui.widget.js}"></script>
-        <script th:src="@{js/drag-drop/jquery.iframe-transport.js}"></script>
-        <script th:src="@{js/drag-drop/jquery.fileupload.js}"></script>
+		<script
+			src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
+		<script type="text/javascript"
+			src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+		<link rel="stylesheet" type="text/css" media="screen"
+			href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css">
+		<script type="text/javascript">
+			$(function() {
+				$('.date-picker').datepicker(
+						{
+							changeMonth : true,
+							changeYear : true,
+							showButtonPanel : true,
+							dateFormat : 'MM yy',
+							onClose : function(dateText, inst) {
+								$(this).datepicker(
+										'setDate',
+										new Date(inst.selectedYear,
+												inst.selectedMonth, 1));
+							}
+						});
+			});
+		</script>
+		<style>
+.ui-datepicker-calendar {
+	display: none;
+}
+</style>
 
-        <!-- Our main JS file -->
-        <script th:src="@{js/drag-drop/script.js}"></script>
+		<script src="js/drag-drop/jquery.knob.js"></script>
 
+		<!-- jQuery File Upload Dependencies -->
+		<script th:src="@{js/drag-drop/jquery.ui.widget.js}"></script>
+		<script th:src="@{js/drag-drop/jquery.iframe-transport.js}"></script>
+		<script th:src="@{js/drag-drop/jquery.fileupload.js}"></script>
+
+		<!-- Our main JS file -->
+		<script th:src="@{js/drag-drop/script.js}"></script>
 </body>
 
 </html>
