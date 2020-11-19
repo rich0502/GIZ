@@ -1,91 +1,93 @@
-<!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html>
 
 <head>
 	<title>GIZ</title>
-	<link rel="icon" type="image/png" href="img/giz_logo.png"/>
+	<link rel="icon" type="image/png" href="img/giz_logo.png" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	  
-	  <!--JQUERY-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    
-	  <!-- Los iconos tipo Solid de Fontawesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-	 <!-- Nuestro css-->
-    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">   
+	<!--JQUERY-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+		</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+	<!-- Los iconos tipo Solid de Fontawesome-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	<!-- Nuestro css-->
+	<link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
-	<script type="text/javascript">
-		$(document).ready(function () {
-			$('#myTable').DataTable();
-		});
-		function confirmDelete(id) {
-			$('#deleteModal').modal('show');
-			$("#sensibileIdHiddenInput").val(id);
-		}
-		function confirmDeleteSensibilise() {
-			var id = $("#sensibileIdHiddenInput").val();
-			window.location = "deleteBeneficiaire/" + id;
-		}
-	</script>
 </head>
 
-<body class="stories">
-<div th:include="/pds_header.html"></div>
-<br>
-<br>
-<div th:include="indicateurMenu.html" th:remove="tag"></div><br>
+<body>
+	<div th:include="/pds_header.html"></div>
+	<section class="main">
+		<span class="span-user" th:object="${nomUser}"></span>
+		<span class="span-user" th:text="${nomUser}" id="lastUser">
+			<span th:text="${nomUser.username}"></span>
+		</span>
+		<br>
+		<form method="POST" name="theForm">
+			<table>
+				<tr>
+					<td style="width: 260px;">Date debut</td>
+					<td style="width: 260px;">Date fin</td>
+					<td style="width: 260px;">subdivision</td>
+					<td style="width: 900px;"></td>
+					<td style="width: 260px;"></td>
+					<td style="width: 260px;"></td>
+				</tr>
+				<tr>
+					<td style="width: 260px;"><input class="form-control select2" type="date" id="date_frm"
+							th:name="date_debut" min="2015-01-01"></td>
+					<td style="width: 260px;"> <input class="form-control select2" type="date" id="date_frm"
+							th:name="date_fin" min="2015-01-01"></td>
+					<td style="width: 260px;">
+						<select th:name="subdivision" class="form-control select2">
+							<option value="districts">Districts</option>
+							<option value="communes">Communes</option>
+							<option value="fokontany">Fokontany</option>
+							<option value="village">Villages</option>
+						</select>
+					</td>
+					<td style="width: 900px;"></td>
+					<td style="width: 260px;"><input class="form-control" type="submit" value="Carte"
+							onClick="submitFunction(1)"></td>
+					<td style="width: 260px;"><input class="form-control" type="submit" value="Graphe"
+							onClick="submitFunction(2)"></td>
+				</tr>
+			</table>
+		</form>
 
+		<br>
 
-<form method="POST" th:action="@{/addBeneficiaire}">
-<div class="card">
-	<header class="composantesTable-header justify-between">
-		<h2 class="page-title">Indicateur</h2>
-		<button type="submit" class="btAdd" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >Ajout non cum</button>
-	</header>
-	<table class="composantes-table" id="myTable">
-		<thead>
+		<table>
 			<tr>
-				<th scope="col"><span>Nom</span></th>
-				<th scope="col"><span>Prénom</span></th>
-				<th scope="col"><span>Adresse</span></th>
-				<th scope="col"><span>Contact</span></th>
-				<th scope="col"><span>Date de naissance</span></th>
-				<th class="center td-action"><span>Action</span></th>
+				<td><img style='width: 100%;height: auto;' th:src=@{/css/images/dashboard.jpg}> </td>
 			</tr>
-		</thead>
-	</table>
-</div>
-</form>
-
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content card-body">
-      <div class="modal-header">
-        <h2 class="page-title modal-title" id="exampleModalLongTitle">Message de confirmation</h2>
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">X</span>
-		</button> -->
-		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-      </div>
-      <div class="modal-body p-modal"><span>Voulez-vous vraiment supprimer</span>
-		<input type="hidden" id="sensibileIdHiddenInput" />
-      </div>
-      <div class="modal-footer btn-row">
-        <button type="button" class="gbtn cancel" data-dismiss="modal" >Fermer</button>
-        <button type="button" class="gbtn" th:onclick="confirmDeleteSensibilise()" >Supprimer</button>
-      </div>
-    </div>
-  </div>
-</div>
+		</table>
+	</section>
+	<script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
+	<script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
+	<script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
+	<SCRIPT>
+		function submitFunction(i) {
+			if (i == 1) document.theForm.action =
+				"/Giz/carte";
+			if (i == 2) document.theForm.action =
+				"/Giz/graphe";
+			if (i == 3) document.theForm.action =
+				"http://www.company.com/cgi-bin/cgi3.cgi";
+			document.theForm.submit()
+		}
+	</SCRIPT>
 </body>
 
 </html>

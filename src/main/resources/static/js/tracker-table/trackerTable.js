@@ -26,20 +26,15 @@ $(document).ready(function () {
             imgageData.src =  canvas.toDataURL("image/png");
             
             // Now browser starts downloading it instead of just showing it
-            var newData = imgageData.src.replace(/^data:image\/png/, "");
+            var newData = imgageData.src.replace(/^data:image\/png/, "data:application/octet-stream");
             // $("#btn-Convert-Html2Image").attr("download", "your_pic_name.png").attr("href", newData);
             // $("#btn-Convert-Html2Image").click()
-            var desc_file = document.getElementById("desc").value;
+            console.log(element_to_export)
             var a = document.createElement('a');
             // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
             a.href = newData;
-            document.body.innerHTML += '<form id="dynForm" action="http://localhost:8080/Giz/saveTracker" method="post">'
-            	+'<input type="hidden" name="imageValue" value="'+newData+'">'
-            	+'<input type="hidden" name="desc_file" value="'+desc_file+'">'
-            	+'</form>';
-            document.getElementById("dynForm").submit();
-           // a.download = 'somefilename.jpg';
-            //a.click();
+            a.download = 'somefilename.jpg';
+            a.click();
         });
     });
 });

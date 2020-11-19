@@ -3,8 +3,11 @@
 .table-tracker-container {
     display: block;
     width: 100%;
+    max-width: 1200px;
+    margin: auto;
     background-color: #f5f5f5;
     padding: 20px;
+    overflow: auto;
 }
 .d-table-tracker {
     width: auto;
@@ -16,21 +19,23 @@
     padding: 0;
 }
 .d-table-tracker td {
-    height: 1px;
+    height: 1px;    
+    min-width: 120px;
 }
 .d-table-tracker tr {
     border-bottom: 1px solid #aaa;
 }
 .col-title, .d-table-tracker .col-title {
     padding: 10px 15px;
-    width: 90px;
+    width: 110px;
+    min-width: 90px;
     height: 60px;
     text-transform: uppercase;
     background-color: rgba(0, 0, 0, 0.05) ;
     border-right: 1px solid #aaa;
 }
 .row-dnd td {
-    height: 60px;
+    height: 60px; 
     box-sizing: border-box;
     border: none;
     border-right: 1px solid #ccc;

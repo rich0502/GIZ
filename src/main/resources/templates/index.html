@@ -82,7 +82,9 @@
 						</div>
 	    			</div>
     			<div id="login" class="form-wrap floating-form ">
-    				<h1 class="log-title"><img alt="padlock" src="static/img/padlock.svg" th:src="@{/img/padlock.svg}"> connexion</h1>
+    				<h1 class="log-title"><img alt="padlock" src="static/img/padlock.svg" th:src="@{/img/padlock.svg}">
+    					<div>AUTHENTIFICATION</div>
+   					</h1>
     				<form class="form-login " th:action="@{/login}" method="post">
 	    				<div class="floating-label">      
 					      <input class="floating-input" type="text" placeholder="Identifiant" name="username">
@@ -102,7 +104,7 @@
 							<a id="pwd_forgot" class="forgot" href="#">Mot de passe oubli&eacute;</a>
 					    </div>	
 					    
-					    <button type="submit" class="btn pds-primary-btn d-block mx-auto">
+					    <button type="submit" class="btn pds-primary-btn d-block mx-auto btn-connect">
 					    	<img alt="padunlock" src="static/img/unlock.svg" th:src="@{/img/unlock.svg}">
 					    	<span>se connecter</span>
 					    </button>	

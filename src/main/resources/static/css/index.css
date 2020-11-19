@@ -234,10 +234,10 @@ LOGIN
 */
 
 
-.login-container{
+.login-container {
 	max-width:100%;
 	height:100vh;
-	background: url(../img/bg-login.jpg) center no-repeat;
+	background: linear-gradient(90deg, rgba(100,100,100,0.5), rgba(100,100,100,0.5)) ,url(../img/bg-login.jpg) center no-repeat;
 	background-size:100% 100%;
 }
 
@@ -277,7 +277,7 @@ LOGIN
 }
 .floating-input, .floating-select {
   font-size:14px;
-  padding:4px 4px;
+  padding:4px 16px;
   margin-top: 8px;
   display:block;
   width:100%;
@@ -289,7 +289,7 @@ LOGIN
 
 .floating-input:focus, .floating-select:focus {
      outline:none;
-     border-bottom:2px solid #5264AE; 
+     border-bottom:2px solid #666666; 
 }
 
 label:not(.custom-control-label) {
@@ -336,6 +336,28 @@ label:not(.custom-control-label) {
   overflow-x: hidden; 
 }
 
+.form-wrap.floating-form {
+	padding: 24px ;
+}
+.btn-connect {
+	margin-bottom: 24px; 
+}
+.btn-connect:hover {
+	background-color: 
+}
+.btn-connect img {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 4px;
+}
+.btn-connect span {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+	padding-top: 2px;
+
+}
+
 /* highlighter */
 .highlight {
   position:absolute;
@@ -371,29 +393,36 @@ label:not(.custom-control-label) {
 /****  floating-Lable style end ****/
 
 .form-wrap{
-	width: 342px;
-	height: 389px;
+	width: 360px;
+	height: auto;
 	background: #FFFFFF;
 	margin:auto;
+	border-radius: 10px;
 }
 .log-title{
 	font-style: normal;
 	font-weight: normal;
+	text-align:center;
 	font-size: 18px;
 	line-height: 22px;
 	text-transform: uppercase;
 /* 	color: #031451; */
 	  color:#000000; 
-	margin:40px auto;
-	width: 147.57px;
-	height: 24.79px;
+	margin:40px auto 32px;
+	/*width: 147.57px;
+	height: 24.79px;*/
+	opacity: 0.75;
 }
 .log-title img{
 	display:inline-block;
-	width:20px;
-	height:20px;
-	vertical-align:baseline;
+	width:40px;
+	height:40px;
+	vertical-align:baseline;	
 }
+.log-title div {
+	
+}
+
 
 /*override*/
 
@@ -426,13 +455,18 @@ label{
 	width:100%;
 	height:48px;
 	margin:32px auto 16px;
+	overflow: hidden;
+	box-shadow: 1px 1px 4px rgba(0,0,0,0.4) inset;
+	background-color: #f2f2f2;
 }
 
 .remember-forgot{
 	display:flex;
-	max-width:250px;
 	width:100%;
-	margin:auto auto 48px;
+	max-width: 250px;
+	align-items: center;
+	
+	margin:auto auto 32px;
 	justify-content:space-between;
 	/*letter-spacing: -0.5px; */
 	
@@ -453,9 +487,15 @@ label{
 /* 	color:#031451; */
 	color:#000000;
 	font-weight: 700;
-	font-size: 9px;
-	line-height: 11px;
-	padding:9px 0 0;
+	font-size: 10px;
+	line-height: normal;
+	padding:3px 0 0;
+	opacity: 0.75;
+	text-decoration: none;
+}
+.forgot:hover {
+	opactiy: 1;
+	text-decoration: underline;
 }
 
 .pds-primary-btn,
@@ -588,8 +628,13 @@ PSD HEADER
     z-index: 1050;
 /*     background: #031451; */
     background: #ffffff;
-    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.16);
+    
 /*     padding: 0 15px; */
+}
+.header-container {	
+	width: 100%;
+	position: absolute;	
+	box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.16);
 }
 
 .text-logo {
