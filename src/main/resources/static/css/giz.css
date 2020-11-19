@@ -373,7 +373,7 @@ ul.nav-tabs {
 }
 
 .gbtn {
-    background-color: #e9676d;
+    background-color: #c80f08;
     border-width: 0;
     border-radius: 4px;
     color: #FFF;
@@ -532,7 +532,7 @@ ul.nav-tabs {
 }
 
 .page-title {
-    color: #e9676d;
+    color: #c80f08;
     font-size: 18px;
     font-weight: 700;
     height: 37px;
@@ -1818,7 +1818,7 @@ header.header {
 }
 
 .stories th {
-    background-color: #e9676d;
+    background-color: #c80f08;
 }
 
 /* add success */
@@ -2207,7 +2207,7 @@ tr.relative .table-title.title-child {
 }
 
 .gbtn.btn-file {
-    background: #e9676d !important;
+    background: #c80f08 !important;
     margin: 0 auto;
     padding: 0 20px;
     width: 180px;
@@ -2510,7 +2510,7 @@ section.main.formLogin {
 }
 
 .btAdd {
-  background-color: #e9676d;
+  background-color: #c80f08;
   border: none;
   color: white;
   padding: 15px 32px;
