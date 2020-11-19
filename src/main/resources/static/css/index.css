@@ -135,7 +135,7 @@ body{
 }
 .menu-list .pds-btn:after {
     top: unset;
-    bottom: -4px;
+    bottom: 0;
     background: #c80f08;
 }
 .menu-list a.pds-btn:hover {
@@ -623,8 +623,10 @@ PSD HEADER
     display: flex;
     align-items: center;
     width: 100%;
+    max-width: 1180px;
+    margin:auto;
     height: 72px;
-    position: absolute;
+    position: static;
     z-index: 1050;
 /*     background: #031451; */
     background: #ffffff;
@@ -634,6 +636,7 @@ PSD HEADER
 .header-container {	
 	width: 100%;
 	position: absolute;	
+	z-index: 10;
 	box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.16);
 }
 
@@ -849,7 +852,7 @@ PSD CONTENT
 	line-height: 22px;
 	text-transform:uppercase;
 /* 	color:#031451; */
-	color:#000000;
+	color:#c80f08;
 	margin-bottom:80px;
 	 font-family: 'Barlow', Arial, Helvetica, sans-serif !important;
 }
@@ -917,7 +920,7 @@ PSD CONTENT
  .pds-table .thead-light th,
 .pds-table .thead-light tr{
 	color:#fff;
-	background:#777777;
+	background:#c80f08;
 }
 .pds-table td,
 .pds-table tr,

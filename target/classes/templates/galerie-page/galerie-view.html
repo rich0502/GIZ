@@ -25,9 +25,9 @@
 <body class="galerie-manage">
 <div th:include="/pds_header.html"></div>
   <section class="main">
-    <div class="container">
+    <div class="base-content">
       <header class="flex header-galerie">
-        <h2 class="page-title">Ajout galeries</h2>
+        <h2 class="content-title">Galeries</h2>
         <button type="button" class="gbtn add" data-toggle="modal" data-target="#exampleModalCenter" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">Ajout album</button>
       </header>
 
