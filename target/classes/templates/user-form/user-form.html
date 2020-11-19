@@ -1,0 +1,277 @@
+<div class="addedit"
+	th:with="disableFields=!${editMode} and ${#authorization.expression('hasRole(''ROLE_USER'')')}">
+
+	<form class="form add-form floating-form form-wrap" role="form"
+		autocomplete="off" th:object="${userForm}"
+		th:action="${signup}?@{/signup}:(${editMode} ?@{/editUser} :@{/userForm})"
+		method="post">
+
+		<input class="form-control" type=hidden th:field="${userForm.id}"
+			th:if="${editMode}"> <input class="form-control" type=hidden
+			name="password" value="xxxx" th:if="${editMode}">
+
+
+		<div class="form-row">
+			<div class="col-6">
+				<div class="floating-form">
+					<div class="floating-label">
+						<input class="floating-input" type="text" placeholder=" "
+							th:field="${userForm.username}" th:disabled="${disableFields}">
+						<span class="highlight"></span> <label>Identifiant</label>
+					</div>
+				</div>
+				<div class="alert-danger" th:if="${#fields.hasErrors('username')}"
+					th:errors="*{username}">Name Error</div>
+			</div>
+			<div class="col-6">
+				<div class="floating-label">
+					<select class="floating-select"
+						onclick="this.setAttribute('value', this.value);"
+						th:field="${userForm.roles}" th:disabled="${disableFields}">
+						<option th:each="role :${roles}" th:value="${role.id}"
+							th:text="${role.name}"></option>
+					</select> <span class="highlight"></span> <label>Role</label>
+				</div>
+				<div class="alert-danger" th:if="${#fields.hasErrors('roles')}"
+					th:errors="*{roles}">Name Error</div>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="col-6">
+				<div class="floating-form">
+					<div class="floating-label">
+						<input class="floating-input" type="text" placeholder=" "
+							th:field="${userForm.lastName}" th:disabled="${disableFields}">
+						<span class="highlight"></span> <label>Nom</label>
+					</div>
+				</div>
+				<div class="alert-danger" th:if="${#fields.hasErrors('lastName')}"
+					th:errors="*{lastName}">Name Error</div>
+			</div>
+			<div class="col-6">
+				<div class="floating-form">
+					<div class="floating-label">
+						<input class="floating-input" type="text" placeholder=" "
+							th:field="${userForm.firstName}" th:disabled="${disableFields}">
+						<span class="highlight"></span> <label>Pr&eacutenom</label>
+					</div>
+				</div>
+				<div class="alert-danger" th:if="${#fields.hasErrors('firstName')}"
+					th:errors="*{firstName}">Name Error</div>
+			</div>
+		</div>
+
+		<div class="form-row  justify-content-start">
+			<div class="col-6">
+				<div class="floating-form">
+					<div class="floating-label">
+						<input class="floating-input" type="email" placeholder=" "
+							th:field="${userForm.email}" th:disabled="${disableFields}">
+						<span class="highlight"></span> <label>E-mail</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="floating-form">
+					<div class="floating-label">
+						<input class="floating-input" type="text" placeholder=" "
+							th:field="${userForm.tel}" th:disabled="${disableFields}">
+						<span class="highlight"></span> <label>T&eacute;l&eacute;phone</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-row  justify-content-start">
+			<div class="col-6">
+				<div class="floating-form">
+					<div class="floating-label">
+						<input class="floating-input" type="text" placeholder=" "
+							th:field="${userForm.societe}" th:disabled="${disableFields}">
+						<span class="highlight"></span> <label>Soci&eacute;t&eacute;</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="floating-form">
+					<div class="floating-label">
+						<input class="floating-input" type="text" placeholder=" "
+							th:field="${userForm.fonction}" th:disabled="${disableFields}">
+						<span class="highlight"></span> <label>Fonction</label>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="col-6">
+				<div class="floating-form">
+					<div class="floating-label"
+						th:if="${editMode==null or editMode==false}">
+						<input class="floating-input" type="password" placeholder=" "
+							th:field="${userForm.password}" th:disabled="${disableFields}">
+						<span class="highlight"></span> <label>Mot de passe</label>
+					</div>
+				</div>
+				<div class="alert-danger" th:if="${#fields.hasErrors('password')}"
+					th:errors="*{password}">Name Error</div>
+			</div>
+			<div class="col-6">
+				<div class="floating-form">
+					<div class="floating-label"
+						th:if="${editMode==null or editMode==false}">
+						<input class="floating-input" type="password" placeholder=" "
+							th:field="${userForm.confirmPassword}"
+							th:disabled="${disableFields}"> <span class="highlight"></span>
+						<label>Confirmer mot de passe</label>
+					</div>
+				</div>
+				<div class="alert-danger"
+					th:if="${#fields.hasErrors('confirmPassword')}"
+					th:errors="*{confirmPassword}">Name Error</div>
+			</div>
+		</div>
+
+		<div class="form-group row justify-content-end">
+			<div class="col-lg-12 text-right action-flex">
+				<a class="btn pds-secondary-btn btn-secondary pds-cancel-btn"
+					th:href="@{'/userForm/cancel'}">Annuler</a> <input type="submit"
+					class="btn pds-primary-btn pds-save-btn" value="Save Changes"
+					th:value="${editMode}?'Enregistrer':'enregistrer'">
+			</div>
+		</div>
+
+		<div class="alert alert-danger text-center"
+			th:if="${formErrorMessage}" th:text="${formErrorMessage}">Error
+			MEssage</div>
+
+	</form>
+
+
+</div>
+
+<!--  START COLLAPSE CHANGE PASSWORD -->
+<div class="form-group bloc-change-pwd row" th:if="${editMode}">
+
+	
+		<p>
+			<a class="btn pds-primary-btn pds-edit-btn btn1"
+				data-toggle="collapse" href="#collapseExample" role="button"
+				aria-expanded="false" aria-controls="collapseExample"> Changer
+				le mot de passe </a>
+		</p>
+
+		<div class="collapse" id="collapseExample">
+
+			<form id="changePasswordForm" th:object="${passwordForm}"
+				method="post" class="floating-form form pwd-form" role="form">
+				<input class="form-control" type="hidden"
+					th:field="${passwordForm.id}"> <input
+					th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+					type="hidden" id="currentPassword" th:value="blank" />
+				<div
+					th:unless="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+					class="form-group row">
+					<!-- <label class="col-lg-3 col-form-label 	form-control-label">Current Password</label> -->
+					<div class="col-lg-12">
+						<input class="form-control" placeholder="Mot de passe actuel"
+							type="password" th:field="${passwordForm.currentPassword}">
+						<div class="alert-danger"
+							th:if="${#fields.hasErrors('currentPassword')}"
+							th:errors="*{currentPassword}">Password</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col-6">
+						<div class="floating-form">
+							<div class="floating-label">
+								<input class="floating-input" placeholder=" "type="password" th:field="${passwordForm.newPassword}">
+								<div class="alert-danger"th:if="${#fields.hasErrors('newPassword')}"th:errors="*{newPassword}">Password</div>
+								<label>Nouveau mot de passe</label>
+							</div>
+						</div>
+					
+					</div>
+						<div class="col-6">
+						<div class="floating-form">
+							<div class="floating-label">
+								<input class="floating-input"	placeholder=" " type="password"	th:field="${passwordForm.confirmPassword}">
+							<div class="alert-danger"th:if="${#fields.hasErrors('confirmPassword')}"th:errors="*{confirmPassword}">Confirm Password</div>
+								<label>Nouveau mot de passe</label>
+							</div>
+						</div>
+					
+					</div>
+					</div>
+				
+					<div class="col-lg-9">
+						<div class="alert alert-danger d-none text-center"
+							id="changePasswordError">Change Password Error</div>
+					</div>
+
+					<div class="alert alert-success text-center d-none"
+						id="formSuccess" th:if="${editMode}">Success MEssage</div>
+			</form>
+
+			<div class="text-right action-flex">
+				<a class="btn pds-secondary-btn btn-secondary pds-cancel-btn"
+					th:href="@{'/userForm/cancel'}">Fermer</a>
+				<button type="button" onClick="submitChangePassword()"
+					class="btn pds-primary-btn pds-save-btn">Enregistrer</button>
+			</div>
+
+		</div>
+	
+</div>
+<!-- END COLLAPSE CHANGE PASSWORD -->
+
+<!-- START HIDE FORM -->
+<script>
+	$(document).ready(function() {
+		$(".btn1").click(function() {
+			$(".addedit").hide(1000, function() {
+				// alert("Hide() method has finished its working!"); 
+			});
+		});
+	});
+</script>
+<!-- END HIDE FORM -->
+
+<script type="text/javascript">
+	function submitChangePassword() {
+		var params = {};
+		params["id"] = $("#id").val();
+		params["currentPassword"] = $("#currentPassword").val();
+		params["newPassword"] = $("#newPassword").val();
+		params["confirmPassword"] = $("#confirmPassword").val();
+
+		$.ajax({
+			type : "POST",
+			contentType : "application/json",
+			url : "/plan-de-surface/editUser/changePassword",
+			data : JSON.stringify(params),
+			dataType : 'text',
+			cache : false,
+			timeout : 600000,
+			success : function(data) {
+				$("#changePasswordForm")[0].reset();
+
+				$("#changePasswordError").addClass("d-none");
+				$("#formSuccess").removeClass("d-none");
+				$("#formSuccess").html("Votre mot de passe a été modifié");
+
+				$('#changePasswordModal').modal('toggle');
+				setTimeout(function() {
+					$("#formSuccess").hide('slow');
+				}, 2000);
+			},
+			error : function(e) {
+				$("#changePasswordError").removeClass("d-none");
+				$("#formSuccess").addClass("d-none");
+				$("#changePasswordError").html(e.responseText);
+			}
+		});
+
+	}
+</script>
+

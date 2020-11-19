@@ -62,6 +62,11 @@ public class WebSecurityConfig  extends  WebSecurityConfigurerAdapter{
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/formGraphe");
+        web.ignoring().antMatchers("/loginUser");
+        web.ignoring().antMatchers("/wsBeneficiaire");
+        web.ignoring().antMatchers("/deleteBenef/**");
+        web.ignoring().antMatchers("/saveEditBenef/**");
+        web.ignoring().antMatchers("/saveBenef/**");
     }
     
 }

@@ -1,0 +1,40 @@
+
+
+<div class="my-profil-form">
+<div class="my-profil-list" th:if="(${#authorization.expression('hasRole(''ROLE_ADMIN'')')} and ${#httpServletRequest.remoteUser==user.username}) or (${#authorization.expression('hasRole(''ROLE_USER'')')} and ${#httpServletRequest.remoteUser==user.username})" th:each="user: ${profilList}">
+ <div class="my-profil-item">
+   <label class="my-profil-label">Identifiant</label>
+   <div class="my-profil-value"><span th:text="${user.username}"></span> </div>
+ </div>
+  <div class="my-profil-item">
+   <label class="my-profil-label">Nom</label>
+   <div class="my-profil-value"><span th:text="${user.firstName}"></span> </div>
+ </div>
+   <div class="my-profil-item">
+   <label class="my-profil-label">Pr&eacute;nom</label>
+   <div class="my-profil-value"><span th:text="${user.lastName}"></span> </div>
+    </div>
+     <div class="my-profil-item">
+   <label class="my-profil-label">Email</label>
+   <div class="my-profil-value"><span th:text="${user.email}"></span> </div>
+    </div>
+       <div class="my-profil-item">
+   <label class="my-profil-label">T&eacute;l&eacute;phone</label>
+   <div class="my-profil-value"><span th:text="${user.tel}"></span> </div>
+    </div>
+         <div class="my-profil-item">
+   <label class="my-profil-label">Fonction</label>
+   <div class="my-profil-value"><span th:text="${user.fonction}"></span> </div>
+    </div>
+          <div class="my-profil-item">
+   <label class="my-profil-label">Soci&eacute;t&eacute;</label>
+   <div class="my-profil-value"><span th:text="${user.societe}"></span> </div>
+    </div>
+    
+           <div class="my-profil-action">
+  <a href="#" class="btn pds-primary-btn pds-edit-btn" th:href="@{'/editProfil/'+ ${user.id}}">Modifier </a>
+    </div>
+</div>
+
+	<div class="alert alert-danger text-center" th:if="${listErrorMessage}" th:text="${listErrorMessage}">Error MEssage</div>
+</div>

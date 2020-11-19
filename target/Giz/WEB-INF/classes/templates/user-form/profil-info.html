@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Salon 2D</title>
+<link rel="icon" type="image/png"
+	th:href="@{/css/images/icons/favicon.ico}" />
+
+<!--JQUERY-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+<!-- Los iconos tipo Solid de Fontawesome-->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+<!-- Nuestro css-->
+<link rel="stylesheet" type="text/css" href="static/css/user-form.css"
+	th:href="@{/css/user-form.css}">
+	<link rel="stylesheet" type="text/css" href="static/css/fonts.css"
+	th:href="@{/css/fonts.css}">
+
+<link rel="stylesheet" type="text/css" href="static/css/index.css"
+	th:href="@{/css/index.css}">
+
+
+</head>
+<body>
+
+	<div th:include="/pds_header.html"></div>
+	<div class="container form-profil-info">
+	
+<br>
+	<h1 class="content-title" >MON PROFIL</h1>
+	
+	<span class="span-profil" th:object="${profilUser}">
+		Identifiant : <span th:text="${profilUser.username}"></span>
+	</span> 
+	<br>
+	
+	<span class="span-profil" th:object="${profilUser1}">
+		Nom : <span th:text="${profilUser1.firstName}"></span>
+	</span>
+	<br>
+	
+	<span class="span-profil" th:object="${profilUser2}">
+		Prénom : <span th:text="${profilUser2.lastName}"></span>
+	</span>
+	<br>
+	
+	<span class="span-profil" th:object="${profilUser3}">
+		E-mail : <span th:text="${profilUser3.email}"></span>
+	</span>
+	<br>
+	
+	<span class="span-profil" th:object="${profilUser4}">
+		Fonction : <span th:text="${profilUser4.fonction}"></span>
+	</span>
+	<br>
+	
+	<a th:href="@{/profilForm}"><span> Modifier profil </span></a>
+	
+	<br><br><br>
+	
+	<a class="btn pds-secondary-btn pds-cancel-btn text-white pds-back" th:href="@{/plan}">retour</a>
+	<form class="form add-form" role="form" autocomplete="off" method="post">
+	<div class="form-row">
+		<div class="col-6">
+			<div class="floating-form">
+			    <div class="floating-label">      
+			      <input class="floating-input" type="text" placeholder=" " th:field="${profilUser.username}" th:disabled="${disableFields}">
+			      <span class="highlight"></span>
+			      <label>Identifiant</label>
+		    	</div>
+	    	</div>
+	    	
+		</div>
+			<div class="col-6">
+			<div class="floating-label">  
+			   	<select class="floating-select "
+					onclick="this.setAttribute('value', this.value);"
+					th:field="${profilUser.lastName}" th:disabled="${disableFields}">
+					<option value=""></option>
+					<option th:each="role :${roles}" th:value="${role.id}"
+						th:text="${role.name}"></option>
+				</select>
+		      <span class="highlight"></span>
+		      <label>Role</label>
+		    </div>
+		   
+		</div>
+		
+		
+	</div>
+		<div class="form-row">
+		<div class="col-6">
+			<div class="floating-form">
+			    <div class="floating-label">      
+			      <input class="floating-input" type="text" placeholder=" " th:field="${profilUser1.firstName}" th:disabled="${disableFields}">
+			      <span class="highlight"></span>
+			      <label>Nom</label>
+		    	</div>
+	    	</div>
+	    	
+		</div>
+		<div class="col-6">
+			<div class="floating-form">
+			    <div class="floating-label">      
+			      <input class="floating-input" type="text" placeholder=" " th:field="${profilUser2.lastName}" th:disabled="${disableFields}">
+			      <span class="highlight"></span>
+			      <label>Pr&eacutenom</label>
+		    	</div>
+	    	</div>
+	 
+		</div>
+	</div>
+	<div class="form-row  justify-content-start">
+		<div class="col-6">
+			<div class="floating-form">
+			    <div class="floating-label">      
+			      <input class="floating-input" type="email" placeholder=" "  th:field="${profilUser3.email}" th:disabled="${disableFields}">
+			      <span class="highlight"></span>
+			      <label>E-mail</label>
+		    	</div>
+	    	</div>
+		</div>
+	</div>
+		<div class="form-row  justify-content-end">
+		<div class="col-6">
+			<div class="col-lg-12 text-center">
+	<a class="btn pds-primary-btn pds-edit-btn" th:href="@{/profilForm}"><span> Modifier </span></a>
+<!-- 			<button type="button" class="btn d-none">Modifier</button> -->
+<!-- 			<input type="submit" class="btn pds-primary-btn pds-edit-btn" value="MODIFIER" > -->
+		</div>
+		</div>
+		
+	</div>
+	
+	</form>
+</div>
+</body>
+</html>

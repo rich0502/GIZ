@@ -1,0 +1,36 @@
+
+    <header>
+        <nav class="pds-header">
+            <div class="logo-section">
+                <img th:src="@{/img/giz_logo.png}" class="img-logo" style="width: 144px;" alt="logo">
+				<a th:href="@{/plan}"><span class="text-logo">VANILLA PERIODIC MONITORING TOOLS</span></a>
+            </div>
+        	 <div class=" menu-list">
+             	<a class="pds-btn" th:href="@{/accueil}"><span class="menu-item-label">ACCUEIL</span></a> 
+             	<a class="pds-btn" th:href="@{/uploadFile}"><span class="menu-item-label">IMPORT</span></a>    
+             	<a class="pds-btn" th:href="@{/beneficiaire}"><span class="menu-item-label">EDITION</span></a>   
+             	<a class="pds-btn" th:href="@{/trackerList}"><span class="menu-item-label">TRACKER</span></a>       
+             	<a class="pds-btn" th:href="@{/indicateur}" ><span class="menu-item-label">INDICATEUR</span></a>  
+             	<a class="pds-btn" th:href="@{/analyses}"><span class="menu-item-label">ANALYSES</span></a> 
+             	<a class="pds-btn" th:href="@{/galerie}"><span class="menu-item-label">GALERIES</span></a> 
+             	<a class="pds-btn" th:href="@{/uploadList}"><span class="menu-item-label">ARCHIVAGES</span></a>   
+            </div>
+            <div class="user-menu">
+                <div class="dropdown">
+                    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <div class="name-user-top">
+                         <img src="./img/pds_user_avatar.svg" th:src="@{/img/pds_user_avatar.svg}" class="img-logo" alt="logo">
+                        <div class="user-info-top"><span th:text="${#authentication.getPrincipal().getUsername()}"></span><small class="role-user">Administrator</small></div>
+                         </div>
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item pds-profil" th:href="@{/profilForm}">Mon profil</a>
+                        <a class="dropdown-item pds-logout" th:href="@{/logout}">Se deconnecter</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    

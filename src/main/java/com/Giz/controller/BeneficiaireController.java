@@ -38,6 +38,13 @@ public class BeneficiaireController {
 		model.addAttribute("Beneficiaire", beneficiaire);
 		return "crud-form/Form_list_Beneficiaire";
 	}
+	
+	@RequestMapping("/success")
+	public String success(Model model) {
+		List<Beneficiaire> success = beneficiaireService.ListSuccessStories();
+		model.addAttribute("Success", success);
+		return "crud-form/Form_list_success";
+	}
 
 	@RequestMapping("/deleteBeneficiaire/{id_bf}")
 	public String deleteBeneficiaire(@PathVariable(name = "id_bf") Long id_bf) {
@@ -55,9 +62,9 @@ public class BeneficiaireController {
 	public String saveBeneficiaire(@RequestParam("nom_bf") String nom_bf,
 			@RequestParam("prenom_bf") String prenom_bf, @RequestParam("adresse_bf") String adresse_bf,
 			@RequestParam("contact_bf") String contact_bf,
-			@RequestParam("date_naiss_bf") String date_naiss_bf, RedirectAttributes redirectAttributes)
+			@RequestParam("date_naiss_bf") String date_naiss_bf,@RequestParam(value="success", required=false, defaultValue="false") Boolean success, RedirectAttributes redirectAttributes)
 			throws ParseException {	
-		beneficiaireService.addBeneficiaire(nom_bf, prenom_bf, adresse_bf, contact_bf, date_naiss_bf);
+		beneficiaireService.addBeneficiaire(nom_bf, prenom_bf, adresse_bf, success, contact_bf, date_naiss_bf);
 		return "redirect:/beneficiaire";
 	}
 
@@ -74,10 +81,10 @@ public class BeneficiaireController {
 			@RequestParam("prenom_bf") String prenom_bf,
 			@RequestParam("adresse_bf") String adresse_bf,
 			@RequestParam("contact_bf") String contact_bf,
-			@RequestParam("date_naiss_bf") String date_naiss_bf,
+			@RequestParam("date_naiss_bf") String date_naiss_bf, @RequestParam(value="success", required=false, defaultValue="false") Boolean success,
 			RedirectAttributes redirectAttributes) throws ParseException {
 		Beneficiaire beneficiaire = beneficiaireRepository.findByIdBeneficiaire(id_bf);
-		beneficiaireService.modifyBeneficiaire(beneficiaire, nom_bf, prenom_bf, adresse_bf, contact_bf, date_naiss_bf, id_bf);
+		beneficiaireService.modifyBeneficiaire(beneficiaire, nom_bf, prenom_bf, adresse_bf, success, contact_bf, date_naiss_bf, id_bf);
 		return "redirect:/beneficiaire";
 	}
 }
