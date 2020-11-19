@@ -64,9 +64,9 @@
 	    				<h1 class="log-title"><img alt="padlock" src="static/img/padlock.svg" th:src="@{/img/padlock.svg}"> REINITIALISATION DE MOT DE PASSE</h1>
 	    				<form id="reset_form" class="form-login position-relative">
 		    				<div class="floating-label">      
-						      <input class="floating-input" type="text" placeholder=" "name="username">
+						      <input class="floating-input" type="text" placeholder="Identifiant"name="username">
 						      <span class="highlight"></span>
-						      <label>Identifiant</label>
+						      <label></label>
 						    </div>
 						     <button id="reset_btn" type="submit" class="btn pds-primary-btn d-block mx-auto">
 						    	<img alt="padunlock" src="static/img/pds_refresh.svg" th:src="@{/img/pds_refresh.svg}">
@@ -85,14 +85,14 @@
     				<h1 class="log-title"><img alt="padlock" src="static/img/padlock.svg" th:src="@{/img/padlock.svg}"> connexion</h1>
     				<form class="form-login " th:action="@{/login}" method="post">
 	    				<div class="floating-label">      
-					      <input class="floating-input" type="text" placeholder=" "name="username">
+					      <input class="floating-input" type="text" placeholder="Identifiant" name="username">
 					      <span class="highlight"></span>
-					      <label>Identifiant</label>
+					      <label></label>
 					    </div>
  				        <div class="floating-label">      
-					      <input class="floating-input" type="password" placeholder=" " name="password">
+					      <input class="floating-input" type="password" placeholder="Mot de passe" name="password">
 					      <span class="highlight"></span>
-					      <label>Mot de passe</label>
+					      <label></label>
 					    </div>
 					    <div class="remember-forgot">
 					    	<div class="custom-control custom-checkbox">
