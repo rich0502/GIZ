@@ -126,7 +126,9 @@ body{
 .menu-container.modal-content{
 	opacity:1;
 }
-
+.canvasjs-chart-credit {
+	display: none !important;
+}
 
 .menu-list a.pds-btn {
     padding: 8px 10px;
@@ -286,7 +288,10 @@ LOGIN
   border:none;
   border:1px solid #757575;
 }
-
+.form-login .floating-input, .form-login .floating-select {
+	border: none;
+	margin-top: 0;
+}
 .floating-input:focus, .floating-select:focus {
      outline:none;
      border-bottom:2px solid #666666; 
