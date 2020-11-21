@@ -22,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.Giz.data.constants.theme.ListeWp;
 import com.Giz.data.domain.Adoption_innovation;
-import com.Giz.data.domain.Beneficiaire;
 import com.Giz.data.domain.MiseForme;
 import com.Giz.data.domain.Recherche;
 import com.Giz.service.metier.AdopteInnovationService;
