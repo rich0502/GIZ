@@ -5,8 +5,8 @@ import com.Giz.data.constants.UrlCanevas;
 public class Wp1 {
 	public static String[][] wp1() {
 		String[][] wp1 = { 
-				{ "1", " 1 - Listes des producteurs adoptant", UrlCanevas.urlCanevas + "#" },
-				{ "2", " 2 - Listes des réstitutions de  recherches", UrlCanevas.urlCanevas + "#" },
+				{ "1", " 1 - Listes des producteurs adoptant", UrlCanevas.urlCanevas + "uploadAI" },
+				{ "2", " 2 - Listes des réstitutions de  recherches", UrlCanevas.urlCanevas + "uploadRecherche" },
 				{ "3", " 3 - Listes des formations bonne pratique agricole", UrlCanevas.urlCanevas + "#" },
 				{ "4", " 4 - Listes des parcelles test", UrlCanevas.urlCanevas + "#" },
 				{ "6", " 6 - Listes des pépinières mise en place", UrlCanevas.urlCanevas + "#" },
