@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GIZ</title>
+	<link rel="icon" type="image/png" href="img/giz_logo.png"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	  
+	  <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+  <!-- <link rel="stylesheet" href="export/css/app.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+	 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+	  <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	 <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
+
+</head>
+<body>
+<div th:include="/pds_header.html"></div>
+<script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
+<script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<link rel="stylesheet"  type="text/css" th:href="@{/css/giz.css}" />
+	<section class="main">
+		<div class="container">
+			<div class="main-section" id="myTab" role="tablist">
+				<div class="card">
+					<div class="card-body">
+						<fieldset>
+						<h2 class="page-title">Mise en forme</h2>
+						<form th:action="@{/saveLeaders}" method="post" class="uploadForm" enctype="multipart/form-data">
+							<table>
+							   <tr>
+								  <td  width=200px >Cible </td>
+								  <td height=45px width=575px;>
+									Source
+								  </td>
+								</tr>
+								<tr>
+								  <td  width=200px >Code village : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="code_village"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>
+								<tr>
+								  <td  width=200px >Noms et prénoms : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="nomPrenom"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>
+								<tr>
+								  <td  width=200px >Genre : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="genre_pt"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>
+								<tr>
+								  <td  width=200px >Année de naissance : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="annee_naiss"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>	
+								<tr>
+								  <td  width=200px >Opérationnalité : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="operationnalite"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>
+								<tr>
+								  <td  width=200px >Date de mise en place : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="date_mise"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>
+								<tr>
+								  <td  width=200px >Date de suivi : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="date_suivi"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>
+								<tr>
+								  <td  width=200px ></td>
+								  <td height=45px width=575px;>
+									<input  th:type="submit" value="Import"  class="gbtn" />
+								  </td>
+								</tr>
+							</table>
+							<input type="text" th:name="pratique_realise" th:value="100">
+							</form>
+						</fieldset>
+						</div>
+						
+				</div>
+			</div>
+		</div>
+	</section>
+	
+</body>
+
+<span class="span-user" th:object="${nomUser}"> 
+<span class="span-user" th:text="${nomUser}" id="lastUser">  
+<span th:text="${nomUser.username}"></span>
+</span>
+
+</html>

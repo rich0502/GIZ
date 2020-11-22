@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>GIZ</title>
+	<link rel="icon" type="image/png" href="img/giz_logo.png"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	  
+	  <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+	  <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	 <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">   
+	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#myTable').DataTable();
+		});
+		function confirmDelete(id) {
+			$('#deleteModal').modal('show');
+			$("#sensibileIdHiddenInput").val(id);
+		}
+		function confirmDeleteSensibilise() {
+			var id = $("#sensibileIdHiddenInput").val();
+			window.location = "deleteBeneficiaire/" + id;
+		}
+	</script>
+</head>
+
+<body class="stories">
+<div th:include="/pds_header.html"></div>
+<br>
+<br>
+<div th:include="crud-form/crudMenu.html" th:remove="tag"></div><br>
+
+
+<form method="POST" th:action="@{/addBeneficiaire}">
+<div class="card">
+	<header class="composantesTable-header justify-between">
+		<h2 class="page-title">Bénéficiaire</h2>
+		<button type="submit" class="btAdd" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >Ajout</button>
+		<a 	th:href="@{'/success'}" style="margin-left: 54px;
+    margin-top: 32px;
+    background-color: #e9676d;
+    border: none;
+    color: white;
+    padding: 2px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11px;
+    margin: 15px 38px;
+    cursor: pointer;
+    margin-top: -4px;
+    margin-bottom: 36px;" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">Liste Success stories</a>
+	</header>
+<table class="composantes-table" id="myTable">
+		<thead>
+			<tr>
+				<th scope="col"><span>Code village</span></th>
+				<th scope="col"><span>coordonnées X</span></th>
+				<th scope="col"><span>Cordonnées Y</span></th>
+				<th scope="col"><span>Nom du responsable</span></th>
+				<th scope="col"><span>Genre</span></th>
+				<th scope="col"><span>Année de naissance</span></th>
+				<th scope="col"><span>Nombre de participants</span></th>
+				<th scope="col"><span>Homme</span></th>
+				<th scope="col"><span>Femme</span></th>
+				<th class="center td-action"><span>Action</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="b : ${pt}">
+				<td th:text="${b.code_village}"></td>
+				<td th:text="${b.x}"></td>
+				<td th:text="${b.y}"></td>
+				<td th:text="${b.nomResponsable}"></td>
+				<td th:text="${b.genre_pt}"></td>
+				<td th:text="${b.annee_naiss}"></td>
+				<td th:text="${b.nbr_participant}"></td>
+				<td th:text="${b.nbr_homme}"></td>
+				<td th:text="${b.nbr_femme}"></td>
+				<td class="center td-action">
+				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id_pt}+'\');'}"></a>
+			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editBeneficiaire/' + ${b.id_pt}}"></a>
+			</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+</form>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content card-body">
+      <div class="modal-header">
+        <h2 class="page-title modal-title" id="exampleModalLongTitle">Message de confirmation</h2>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">X</span>
+		</button> -->
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+      </div>
+      <div class="modal-body p-modal"><span>Voulez-vous vraiment supprimer</span>
+		<input type="hidden" id="sensibileIdHiddenInput" />
+      </div>
+      <div class="modal-footer btn-row">
+        <button type="button" class="gbtn cancel" data-dismiss="modal" >Fermer</button>
+        <button type="button" class="gbtn" th:onclick="confirmDeleteSensibilise()" >Supprimer</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
