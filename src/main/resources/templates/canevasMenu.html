@@ -1,25 +1,21 @@
 <div class="registerFile">
 	<form method="POST" th:action="@{/registerFile}"
-		name="uploadForm" class="requete-form gform"
-		style="margin-top: -310px !important; margin-left: -150px !important; width: 1410px !important; min-height: 0 !important;">
-		<label class="cust-input" style="margin-left: 0px !important;">
-			<p>Work Package</p> <select th:name="sc"
-			class="ginput form-control" id="sc"
-			style="margin-top: 10px !important; width: 530px !important;">
+		name="uploadForm" class="requete-form gform">
+		<div class="cust-input" style="margin-left: 0px !important;">
+			<p>Work Package</p>
+			<select th:name="sc" class="ginput form-control" id="sc">
 				<option value="null">-- <span>Sélectionner Work Package</span> --</option>
-				<option th:each="sc : ${scList}" th:value="${sc[0]}"
-					th:text="${sc[1]}"></option>
-		</select>
-		</label> <label class="cust-input"
-			style="margin-right: -390px !important; margin-top: -73px !important;">
+				<option th:each="sc : ${scList}" th:value="${sc[0]}" th:text="${sc[1]}"></option>
+			</select>
+		</div>
+		<div class="cust-input">
 			<p>Canevas</p>
-			<div class="input-group date"
-				style="margin-top: 10px !important;">
+			<div class="input-group date">
 				<select
 					onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
 					class="ginput form-control" th:name="theme" id="theme">
 				</select>
 			</div>
-		</label>
+		</div>
 	</form>
 </div>

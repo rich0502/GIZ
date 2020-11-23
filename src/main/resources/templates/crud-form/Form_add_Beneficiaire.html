@@ -1,27 +1,23 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-
-<head>
-	<title>GIZ</title>
-	<link rel="icon" type="image/png" href="img/giz_logo.png"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	  
-	  <!--JQUERY-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <head>
+        <title>GIZ</title>
+        <link rel="icon" type="image/png" href="css/images/icons/favicon.png">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--JQUERY-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    
-	  <!-- Los iconos tipo Solid de Fontawesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-	 <!-- Nuestro css-->
-    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">   
-	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />	
-<style type="text/css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- Los iconos tipo Solid de Fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <!-- Nuestro css-->
+        <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}">
+        <style type="text/css">
 .select2-container .select2-selection--single {
 	height: 34px !important;
 }
@@ -29,8 +25,8 @@
 .select2-container--default .select2-selection--single {
 	border: 1px solid #ccc !important;
 }
-</style>
-	<script type="text/javascript">
+        </style>
+        <script type="text/javascript">
 		$(document).ready(function () {
 			$('#datepicker').datepicker({
 				format: 'dd-mm-yyyy',
@@ -44,30 +40,50 @@
 				$('#msg').text(valeur);
 			}
 		});
-
-	</script>
-</head>
-
-<body class="add-success">
-<div th:include="/pds_header.html"></div>
-<div th:include="crud-form/crudMenu.html" th:remove="tag"></div><br>
-
-<form method="POST" th:action="@{/saveBeneficiaire}">
-   Nom<br>
-  <input type="text" id="nom_bf" th:name="nom_bf" ><br>
-  Prénom:<br>
-  <input type="text"  th:name="prenom_bf"><br>
-  Date de naissance:<br>
-  <input type="date" th:name="date_naiss_bf"
-       value="2018-07-22"
-       min="2015-01-01"><br>
-  Contact:<br>
-  <input type="text"  th:name="contact_bf"><br>
-    Success Stories:<input type="checkbox" th:name="success" value="true" /><br>
-   Adresse:<br>
-  <input type="text"  th:name="adresse_bf"><br><br>
-  <input type="submit" value="Submit">
-</form>
-					
-</body>
-<html>
+        </script>
+    </head>
+    <body class="add-success">
+		<div th:include="/pds_header.html"></div>
+		<section class="main">
+            <div class="base-content">
+				<div th:include="crud-form/crudMenu.html" th:remove="tag"></div>
+				<br>
+				<form method="POST" th:action="@{/saveBeneficiaire}" class="form-edition-cust">
+					Nom
+					<br>
+					<input type="text" id="nom_bf" th:name="nom_bf">
+					<br>
+					Prénom:
+					<br>
+					<input type="text" th:name="prenom_bf">
+					<br>
+					Date de naissance:
+					<br>
+					<input
+						class="form-control select2"
+						type="date"
+						th:name="date_naiss_bf"
+						value="2018-07-22"
+						min="2015-01-01"
+					>
+					<br>
+					Contact:
+					<br>
+					<input type="text" th:name="contact_bf">
+					<br>
+					<label class="checkbox-input">
+						Success Stories:
+						<input type="checkbox" th:name="success" value="true">
+					</label>
+					<br>
+					Adresse:
+					<br>
+					<input type="text" th:name="adresse_bf">
+					<br>
+					<br>
+					<input type="submit" value="Submit" class="gbtn">
+				</form>
+			</div>
+		</section>
+    </body>
+    <html>

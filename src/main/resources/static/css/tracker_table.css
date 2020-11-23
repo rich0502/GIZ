@@ -119,6 +119,36 @@
     
     
 }
+
+/* indicateur */
+.d-table-tracker.indicator-table {
+
+}
+.d-table-tracker.indicator-table th {
+    background-color: #c80f08;
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid #960f0a;
+}
+.d-table-tracker.indicator-table th div {
+    margin: auto;
+}
+.d-table-tracker.indicator-table td {
+    border: 1px solid #ccc;
+}
+.d-table-tracker.indicator-table .col-title {
+    min-width: 60px;
+}
+.d-table-tracker.indicator-table .col-title div {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    text-align: center;
+    font-weight: bold;
+}
+.sexe-col, .d-table-tracker.indicator-table .sexe-col {
+    min-width: 40px;
+}
+/**/
 .btn-export-screenshot {
     display: block;
     width: 100px;
@@ -145,4 +175,8 @@
 }
 .bg-orange-cc {
     background-color: #cccc3388;
+}
+
+.bg-orange-ffcc {
+    background-color: #ffcc66;
 }

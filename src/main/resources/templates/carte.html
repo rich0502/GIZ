@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>GIZ</title>
-	<link rel="icon" type="image/png" href="img/giz_logo.png"/>
+	<link rel="icon" type="image/png" href="img/favicon.png"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	
 	<script th:src="@{/extjs-3.3.1-src/adapter/ext/ext-base.js}" type="text/javascript"></script>
@@ -22,8 +22,23 @@
 	<script src="https://unpkg.com/vanilla-picker@2.5"></script>
 	<script type="module" th:src="@{/js/carte.js}"></script>
 
+
+	<link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
 </head>
 <body>
+
+<div th:include="/pds_header.html"></div>
+<section class="main">
+<span class="span-user" th:object="${nomUser}"> </span>
+<span class="span-user" th:text="${nomUser}" id="lastUser">  
+	<span th:text="${nomUser.username}"></span>
+</span>
+
+
+
+</section>
 <script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
 <script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
 <script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
@@ -35,10 +50,4 @@
     var subdivision = [[${subdivision}]];
 </script>
 </body>
-
-<span class="span-user" th:object="${nomUser}"> 
-<span class="span-user" th:text="${nomUser}" id="lastUser">  
-<span th:text="${nomUser.username}"></span>
-</span>
-
 </html>

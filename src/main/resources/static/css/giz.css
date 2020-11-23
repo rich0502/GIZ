@@ -187,6 +187,9 @@ textarea {
     font-size: inherit
 }
 
+select {
+    cursor: pointer;
+}
 a,
 input,
 textarea,
@@ -378,12 +381,15 @@ ul.nav-tabs {
     border-radius: 4px;
     color: #FFF;
     font: 400 16px/40px 'DIN Alternate', 'Open Sans', Helvetica, sans-serif;
-    height: 40px;
+    height: 50px;
     text-align: center;
     width: 140px;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
-
+.gbtn:hover {
+    background-color: #ed3832;
+}
 .error-msg {
     color: #C30F08;
     display: none;
@@ -488,12 +494,14 @@ ul.nav-tabs {
     /* margin: 48px auto 0; */
     margin: 0 auto;
     width: 100%;
-    max-width: 920px;
+    max-width: 1180px;
     padding-top: 48px;
     padding-left: 20px;
     padding-right: 20px;
 }
-
+.home-content {
+    max-width: 990px;
+}
 .home-content h2 {
     font-size: 48px;
     display: block;
@@ -547,7 +555,32 @@ ul.nav-tabs {
     margin-top: 14px;
     width: 40px
 }
-
+.form-edition-cust {
+    display: block;
+    max-width: 400px;
+    margin: 40px 0;
+}
+.form-edition-cust input[type='text'], .form-edition-cust select, .form-edition-cust .checkbox-input, .form-edition-cust .form-control.select2 {
+    height: 40px;
+    display: block;
+    margin: 8px 0 12px;
+    padding: 0 12px;
+    width: 100%;
+    vertical-align: middle;
+}
+.form-edition-cust .checkbox-input {
+    position: static;
+    font-size: inherit;
+    pointer-events: all;
+    height: auto;
+    user-select: none;
+    cursor: pointer;
+}
+.form-edition-cust .checkbox-input input {
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+}
 .form-row {
     display: inline-block;
     margin-bottom: 32px
@@ -612,11 +645,12 @@ ul.nav-tabs {
 }
 
 .composantesTable-content {
-    padding: 40px 16px 0 16px
+    padding: 10px 16px 0 16px
 }
 
 .composantesTable-header {
-    display: flex
+    /* display: flex */
+    display: block;
 }
 
 .featuresList-item {
@@ -628,7 +662,8 @@ ul.nav-tabs {
 .composantesTable-header .page-title {
     border-right: solid 1px #ECEDED;
     margin-right: 40px;
-    padding-right: 40px
+    padding-right: 40px;
+     float: left;
 }
 
 .features-list {
@@ -666,7 +701,7 @@ ul.nav-tabs {
     content: '\002b';
     display: inline-block;
     font-size: 22px;
-    margin-bottom: 4px;
+    margin-bottom: 0;
     margin-right: 12px;
     vertical-align: middle
 }
@@ -690,9 +725,13 @@ ul.nav-tabs {
     padding-left: 8px;
     padding-right: 8px;
     text-align: left;
-    vertical-align: middle
+    vertical-align: middle;
+    border-right: 1px solid #960f0a;
+    text-align: center;
 }
-
+.composantes-table .td-action {
+    display: table-cell ;
+}
 .composantes-table .center {
     text-align: center
 }
@@ -1148,7 +1187,7 @@ ul.nav-tabs {
 .card .gbtn {
     width: auto;
     padding: 0 20px;
-    margin: 25px;
+    margin: 10px auto 30px;
 }
 .modal-footer.btn-row .gbtn.cancel {
     background-color: transparent;
@@ -1794,10 +1833,19 @@ header.header {
 
 /* page stories */
 
-.composantesTable-header.justify-between{
+.composantesTable-header.justify-between {
     padding-left: 16px;
-    padding-right: 2100px;
+    /* padding-right: 2100px; */
     padding-top: 26px;
+}
+.composantesTable-header.justify-between .gbtn.add, .composantesTable-header.justify-between .gbtn.btAdd {
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-top: 0;
+    line-height: 50px;
+    text-decoration: none;
+    color: #fff;
+    float: right;
 }
 .card .top-btn .gbtn{
     margin: 0;
@@ -1857,7 +1905,8 @@ header.header {
 /* Upload File */
 
 .registerFile .form-control.ginput{
-    height: 40px !important;
+    margin: 10px 0 30px;
+    height: 50px !important;
 }
 .registerFile fieldset{
     margin: 0 auto 10px auto;
@@ -2207,9 +2256,9 @@ tr.relative .table-title.title-child {
 }
 
 .gbtn.btn-file {
-    background: #c80f08 !important;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 10px 20px;
+    height: auto;
     width: 180px;
 }
 .file-import .gbtn.btn-file {
@@ -2420,8 +2469,8 @@ section.main.formLogin {
 }
 .crud-wrap .card-body {
     max-width: 1400px;
-    width: 1330px;
-    margin: 20px auto 0 auto;
+    width: auto;
+    margin: 0;
 }
 .crud-wrap .cust-input{
     padding-left:0;
@@ -2431,10 +2480,24 @@ section.main.formLogin {
     padding-left:0;
     padding-right: 0
 }
+.uploadForm {
+    text-align: center;
+}
+.uploadForm figure img {
+    height: 100px;
+    width: auto;
+}
 .crud-wrap .registerFile{
     max-width: 1400px;
-    width: 1260px;
-    margin: 20px auto 0 auto;
+    width: auto;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.crud-wrap .registerFile .cust-input{
+    position: static;
+    max-width: 400px;
+    margin-right: 40px;
 }
 .crud-wrap .page-title{
     max-width: 1140px;
@@ -2518,12 +2581,18 @@ section.main.formLogin {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 15px -23px;
+  margin: 8px;
   cursor: pointer;
-  margin-top: -4px;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
+  text-decoration: none;
 }
-
+.btn-base {
+    margin: 0;
+    text-decoration: none;
+}
+.btAdd:hover {
+    text-decoration: none;
+}
 .dynamic-table-tracker {
     width: 100%;
 }

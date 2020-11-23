@@ -3,7 +3,7 @@
 
 <head>
 	<title>GIZ</title>
-	<link rel="icon" type="image/png" href="img/giz_logo.png"/>
+	<link rel="icon" type="image/png" href="css/images/icons/favicon.png"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	  
 	  <!--JQUERY-->
@@ -47,21 +47,8 @@
 <div class="card">
 	<header class="composantesTable-header justify-between">
 		<h2 class="page-title">Bénéficiaire</h2>
-		<button type="submit" class="btAdd" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >Ajout</button>
-		<a 	th:href="@{'/success'}" style="margin-left: 54px;
-    margin-top: 32px;
-    background-color: #e9676d;
-    border: none;
-    color: white;
-    padding: 2px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 11px;
-    margin: 15px 38px;
-    cursor: pointer;
-    margin-top: -4px;
-    margin-bottom: 36px;" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">Liste Success stories</a>
+		<button type="submit" class="gbtn add" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >Ajout</button>
+		<a 	th:href="@{'/success'}" class="gbtn btAdd btn-base" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">Liste Success stories</a>
 	</header>
 <table class="composantes-table" id="myTable">
 		<thead>

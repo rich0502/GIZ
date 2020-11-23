@@ -1,4 +1,13 @@
 $(document).ready(function () {
+    
+    /* focus editable div on td click */
+    $('.d-table-tracker td').each(function(elem) {        
+        $(this).on('click', function(subeleme){
+            $(this).find('div').focus()
+            console.log(this)
+        })
+    })
+    
     var dndHeightSum = 0;
     $('#dynamicTableTracker .row-dnd').each(function(element) {
         dndHeightSum += parseInt($(this).height())
@@ -37,4 +46,6 @@ $(document).ready(function () {
             a.click();
         });
     });
+
+
 });
