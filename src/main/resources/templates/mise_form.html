@@ -37,65 +37,63 @@
 		<div class="container">
 			<div class="main-section" id="myTab" role="tablist">
 				<div class="card">
-					<div class="card-body">
+					<div class="card-body format-import">
 						<fieldset>
 						<h2 class="page-title">Mise en forme</h2>
-						<form th:action="@{/importM}" method="post" class="uploadForm" enctype="multipart/form-data">
+						<form th:action="@{/importM}" method="post" class="uploadForm" enctype="multipart/form-data" >
 							<table>
-							   <tr>
-								  <td  width=200px >Cible </td>
-								  <td height=45px width=575px;>
-									Source
-								  </td>
+							   <tr class="line-heads">
+								  <td>Cible</td>
+								  <td>Source</td>
 								</tr>
 								<tr>
-								  <td  width=200px >Nom : </td>
-								  <td height=45px width=575px;>
+								  <td >Nom : </td>
+								  <td>
 									<select class="form-control select2" th:name="nom_bf"
-										style="height: 40px !important;width: 27%;" required>
+										 required>
 										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
 									</select>
 								  </td>
 								</tr>
 								<tr>
-								  <td  width=200px >Prénom : </td>
-								  <td height=45px width=575px;>
+								  <td >Prénom : </td>
+								  <td>
 									<select class="form-control select2" th:name="prenom_bf"
-										style="height: 40px !important;width: 27%;" required>
+										 required>
 										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
 									</select>
 								  </td>
 								</tr>
 								<tr>
-								  <td  width=200px >Adresse : </td>
-								  <td height=45px width=575px;>
+								  <td >Adresse : </td>
+								  <td>
 									<select class="form-control select2" th:name="adresse_bf"
-										style="height: 40px !important;width: 27%;" required>
+										 required>
 										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
 									</select>
 								  </td>
 								</tr>
 								<tr>
-								  <td  width=200px >Date de naissance : </td>
-								  <td height=45px width=575px;>
+								  <td >Date de naissance : </td>
+								  <td>
 									<select class="form-control select2" th:name="date_naiss_bf"
-										style="height: 40px !important;width: 27%;" required>
+										 required>
 										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
 									</select>
 								  </td>
 								</tr>
 								<tr>
-								  <td  width=200px >Contact : </td>
-								  <td height=45px width=575px;>
+								  <td >Contact : </td>
+								  <td>
 									<select class="form-control select2" th:name="contact_bf"
-										style="height: 40px !important;width: 27%;" required>
+										 required>
 										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
 									</select>
 								  </td>
 								</tr>
 								<tr>
-								  <td  width=200px ></td>
-								  <td height=45px width=575px;>
+								  <td ></td>
+								  <td>
 									<input  th:type="submit" value="Import"  class="gbtn" />
 								  </td>
 								</tr>

@@ -1392,9 +1392,35 @@ table.dataTable.composantes-table {
     margin:0 auto;
     max-width:1280px;
 } */
+
+
+
 .tab-content .card {
     border: none;
 }
+
+
+
+
+.format-import .uploadForm {
+    text-align: left;
+    padding: 10px 20px ;
+}
+.format-import table {
+    margin: auto;
+}
+.format-import .uploadForm select, .format-import .uploadForm input {
+    margin-bottom: 15px;
+}
+.line-heads td {
+    color: #999999;
+    font-size: 18px;
+    padding-bottom: 15px;
+}
+.format-import td {
+    padding-right: 15px;
+}
+
 
 .container-table {
     width: 100%;
