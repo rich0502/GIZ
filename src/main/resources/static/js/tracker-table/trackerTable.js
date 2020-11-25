@@ -1,11 +1,12 @@
 $(document).ready(function () {
     
     /* focus editable div on td click */
-    $('.d-table-tracker td').each(function(elem) {        
-        $(this).on('click', function(subeleme){
-            $(this).find('div').focus()
-            console.log(this)
-        })
+    $('.d-table-tracker td').each(function(elem) {
+        if ($(this).find('div.editable-field')[0])      
+            $(this).on('click', function(subeleme) {
+                $(this).find('div.editable-field').focus()
+                console.log(this)
+            })
     })
     
     var dndHeightSum = 0;
@@ -17,7 +18,7 @@ $(document).ready(function () {
     })
 
 
-    $(".draggable-circ").draggable({containment: "parent",  grid: [ 100, 30 ] });            
+    $(".draggable-circ").draggable({containment: "parent",  grid: [ 0, 30 ] });            
 
 
 
@@ -44,6 +45,20 @@ $(document).ready(function () {
             a.href = newData;
             a.download = 'tracker.jpg';
             a.click();
+
+            /* pdf */
+            
+            var imgData = canvas.toDataURL("image/jpeg", 1.0);
+            var pdf = new jsPDF({
+                orientation: "landscape",
+                unit: "mm"
+            });
+
+            // var pdfWidth = pdf.internal.pageSize.getWidth();
+            // var pdfHeight = pdf.internal.pageSize.getHeight();
+            
+            pdf.addImage(imgData, 'JPEG', 2, 2);
+            pdf.save("download.pdf");
         });
     });
 

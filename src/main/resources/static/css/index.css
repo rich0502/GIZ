@@ -696,8 +696,10 @@ PSD HEADER
     height: auto;
     padding: 10px 0 5px;
     opacity: 0.5;
+
+    transition: all 0.2s ease;
 }
-.text-logo:hover {
+.text-logo:hover, .menu-list:hover .text-logo {
 	opacity: 1;
 }
 
