@@ -18,6 +18,9 @@ public class DocCap {
 	private Long id_dc;
 	
 	@Column(length = 200)
+	private String titre_doc;
+	
+	@Column(length = 200)
 	private String thematique;
 	
 	@Column(length = 100)
@@ -38,10 +41,11 @@ public class DocCap {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DocCap(Long id_dc, String thematique, String type_doc, String auteur_doc, Date date_partage,
-			String reception) {
+	public DocCap(Long id_dc, String titre_doc, String thematique, String type_doc, String auteur_doc,
+			Date date_partage, String reception) {
 		super();
 		this.id_dc = id_dc;
+		this.titre_doc = titre_doc;
 		this.thematique = thematique;
 		this.type_doc = type_doc;
 		this.auteur_doc = auteur_doc;
@@ -55,6 +59,14 @@ public class DocCap {
 
 	public void setId_dc(Long id_dc) {
 		this.id_dc = id_dc;
+	}
+
+	public String getTitre_doc() {
+		return titre_doc;
+	}
+
+	public void setTitre_doc(String titre_doc) {
+		this.titre_doc = titre_doc;
 	}
 
 	public String getThematique() {
@@ -97,5 +109,6 @@ public class DocCap {
 		this.reception = reception;
 	}
 
+	
 	
 }

@@ -13,11 +13,11 @@ public interface DocCapService {
 
 	public void deleteDocCap(Long id_dc);
 	
-	public void addDocCap(String thematique, String type_doc, String auteur_doc, Date date_partage,
+	public void addDocCap(String titre_doc, String thematique, String type_doc, String auteur_doc, Date date_partage,
 			String reception);
 	
 	
-	public void modifyDocCap(DocCap docCap,String thematique, String type_doc, String auteur_doc, Date date_partage,
+	public void modifyDocCap(DocCap docCap,String titre_doc, String thematique, String type_doc, String auteur_doc, Date date_partage,
 			String reception, Long id_dc);
 	
 }

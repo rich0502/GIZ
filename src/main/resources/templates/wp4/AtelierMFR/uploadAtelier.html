@@ -62,8 +62,8 @@
 							
 							<div th:include="canevasMenu.html" th:remove="tag"></div>
 											<div class="card-body">
-							<h2 class="page-title">CANEVAS PARTAGE DE DOCUMENT DE CAPITALISATION AUX ACTEURS</h2>
-							<form th:action="@{/importDocCap}" method="post" class="uploadForm" enctype="multipart/form-data">
+							<h2 class="page-title" th:text="${nameCanevas}"></h2>
+							<form th:action="@{/importAtelier}" method="post" class="uploadForm" enctype="multipart/form-data">
 							<figure>
 								<img th:src=@{/css/images/upload.svg}>
 							</figure> 
@@ -71,6 +71,7 @@
 							<fieldset >
 								<span class="gbtn btn-file">
 								<b>Ajout Fichier</b>
+								   <input type="hidden" th:name="canevas" th:value="${canevas}"/>
 									<input type="file" th:name="file" />
 								</span>
 									<input  th:type="submit" value="Mise en forme" class="gbtn" />

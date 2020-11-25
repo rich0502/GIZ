@@ -30,8 +30,9 @@ public class DocCapServiceImpl implements DocCapService {
 	}
 
 	@Override
-	public void addDocCap(String thematique, String type_doc, String auteur_doc, Date date_partage, String reception) {
+	public void addDocCap(String titre_doc, String thematique, String type_doc, String auteur_doc, Date date_partage, String reception) {
 		DocCap docCap = new DocCap();
+		docCap.setTitre_doc(titre_doc);
 		docCap.setThematique(thematique);
 		docCap.setType_doc(type_doc);
 		docCap.setAuteur_doc(auteur_doc);
@@ -42,8 +43,9 @@ public class DocCapServiceImpl implements DocCapService {
 	}
 
 	@Override
-	public void modifyDocCap(DocCap docCap, String thematique, String type_doc, String auteur_doc, Date date_partage,
+	public void modifyDocCap(DocCap docCap,String titre_doc,  String thematique, String type_doc, String auteur_doc, Date date_partage,
 			String reception, Long id_dc) {
+		docCap.setTitre_doc(titre_doc);
 		docCap.setThematique(thematique);
 		docCap.setType_doc(type_doc);
 		docCap.setAuteur_doc(auteur_doc);
