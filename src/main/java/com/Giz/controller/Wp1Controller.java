@@ -125,7 +125,7 @@ public class Wp1Controller {
 	
 	
 	/* CANEVAS ADOPTION INNOVATION  */
-	
+
 	@RequestMapping("/uploadAI")
 	public String uploadFile(Model model) {
 		String[][] scList = ListeWp.wp();

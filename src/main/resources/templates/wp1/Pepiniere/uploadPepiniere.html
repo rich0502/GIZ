@@ -28,14 +28,15 @@
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
 	<!-- Nuestro css-->
-	<link rel="stylesheet" type="text/css" th:href="@{css/gz.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/user-form.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
-
-<script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
-<script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
-<script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
+	<!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
+    <link rel="stylesheet"  type="text/css" th:href="@{/css/giz.css}" />
+	
+	<script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
+	<script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
+	<script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
 
 	<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
 	<style>
@@ -50,45 +51,45 @@
 <body class="stories">
 <div th:include="/pds_header.html"></div>
 	<section class="main">
-		<div class="crud-wrap">
-			<!-- <div class="main-section" id="myTab" role="tablist"> -->
-			<!-- <header></header> -->
-			<!-- <section class="main"> -->
-			<div class="composantesTable-content">
-				<form method="POST" th:action="@{/add115}">
-					<div class="card">
-						
-						<div th:include="canevasMenu.html" th:remove="tag"></div>
-										<div class="card-body">
-						<h2 class="page-title">Import fichier</h2>
-						<form th:action="@{/importPepiniere}" method="post" class="uploadForm" enctype="multipart/form-data">
-						<figure>
-						    <img style='margin-left: 471px;margin-top: -39px;width: 121px;' th:src=@{/css/images/arrow-upload-icon.png}> </figure> 
-						    <br>
-						<fieldset style='padding-right: 200px;'>
-						<span class="gbtn btn-file">
-						<b>Ajout Fichier</b>
-							<input type="file" th:name="file" />
-						</span>
-						    <input  th:type="submit" value="Mise en forme" style='margin-left: 470px;' class="gbtn" />
-			
-						</form>
-						</fieldset>
+		<div class="base-content">
+			<div class="crud-wrap">
+				<!-- <div class="main-section" id="myTab" role="tablist"> -->
+				<!-- <header></header> -->
+				<!-- <section class="main"> -->
+				<div class="composantesTable-content">
+					<form method="POST" th:action="@{/add115}">
+						<div class="card">
+							
+							<div th:include="canevasMenu.html" th:remove="tag"></div>
+											<div class="card-body">
+							<h2 class="page-title">CANEVAS PEPINIERE MISE EN PLACE </h2>
+							<form th:action="@{/importPepiniere}" method="post" class="uploadForm" enctype="multipart/form-data">
+							<figure>
+								<img th:src=@{/css/images/upload.svg}>
+							</figure> 
+								<br>
+							<fieldset >
+								<span class="gbtn btn-file">
+								<b>Ajout Fichier</b>
+									<input type="file" th:name="file" />
+								</span>
+									<input  th:type="submit" value="Mise en forme" class="gbtn" />
+					
+								</form>
+							</fieldset>
+							</div>
 						</div>
-</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
+		
 	</section>
-
-
-
-
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" th:src="@{js/ajaxCrud.js}"></script>
 
