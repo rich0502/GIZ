@@ -1,3 +1,4 @@
+@import url('index.css');
 /* === RESET === */
 html,
 body,
@@ -200,7 +201,33 @@ button {
 .input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control {
     font-size: 14px !important;
 }
+.type-number-percent {
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+}
 
+.type-number-percent input {
+    position: relative;
+    text-align: right;
+    border: none;
+    padding: 0;
+    margin: 10px 2px;
+    width: 50px;
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+}
+.type-number-percent::after {
+    content: '%';
+    position: absolute;
+    right: 11px;
+    top: 11px;
+}
+.progress {
+    background-color: #dadada;
+}
 body.glogin-body {
     background-image: url(../images/bg-login-left.png), url(../images/bg-login-right.png);
     background-repeat: no-repeat;

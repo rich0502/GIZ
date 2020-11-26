@@ -57,16 +57,18 @@
     <div class="wrapper">
         <div class="login-container container">
             <div class="row">
+                
+				<div class="list-logos">
+					<img th:src="@{/img/spons/develoPPP.jpg}">
+					<img th:src="@{/img/spons/giz_square.jpg}">
+					<img th:src="@{/img/spons/symrise.png}">
+                    <img th:src="@{/img/spons/Unilever.png}">
+                    <img th:src="@{/img/spons/SCI.png}">
+                </div>
                 <div class="logo-container">
                     <div class="logo">
 						<h1>Vanilla Periodic Monitoring Tools</h1>
                     </div>
-				</div>
-				<div class="list-logos">
-					<img th:src="@{/img/giz_logo_notext.png}">
-					<img th:src="@{/img/giz_logo_notext.png}">
-					<img th:src="@{/img/giz_logo_notext.png}">
-					<img th:src="@{/img/giz_logo_notext.png}">
 				</div>
                 <div class="position-relative login-zone">
                     <div id="reset" class="form-wrap floating-form position-absolute d-none">
@@ -98,10 +100,10 @@
                         </div>
                     </div>
                     <div id="login" class="form-wrap floating-form ">
-                        <h1 class="log-title">
+                        <!-- <h1 class="log-title">
                             <img alt="padlock" src="static/img/padlock.svg" th:src="@{/img/padlock.svg}">
                             <div>AUTHENTIFICATION</div>
-                        </h1>
+                        </h1> -->
                         <form class="form-login " th:action="@{/login}" method="post">
                             <div class="floating-label">
                                 <input

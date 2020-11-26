@@ -239,7 +239,7 @@ LOGIN
 .login-container {
 	max-width:100%;
 	height:100vh;
-	background: linear-gradient(90deg, rgba(15,10,10,0.9), rgb(28,20,18,0.9)) ,url(../img/bg-login.jpg) center no-repeat;
+	/* background: linear-gradient(180deg, rgba(255,255,255,0.9), rgb(255,255,255,0.9)) ,url(../img/bg-login.jpg) center no-repeat; */
     background-size:100% 100%;
     
     
@@ -252,7 +252,9 @@ LOGIN
     align-items: center;
     flex-wrap: nowrap;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
+    height: auto;
+    padding: 10px 0 40px;
 }
 .login-container .logo-container {
     color: #fff;
@@ -273,20 +275,23 @@ LOGIN
 /* 	line-height: 43px; */
 	text-transform: uppercase;
 /* 	color: #031451; */
-		color: #ffffff;
+		color: #000000;
 	padding: 0 ;
     transform:translateY(5px);
-    margin: 24px 0;
+    margin: 40px 0;
 	/*letter-spacing:-0.9px; */
 }
 .logo-container .list-logos, .list-logos {
     padding: 10px;
     background-color: #fff;
     min-width: 360px;
+    max-width: 90vw;
+    text-align: center;
+    /* width: 100%; */
     display: inline-block;
     overflow: hidden;
     border-radius: 10px;
-    margin: 0 auto;
+    margin: 20px auto 0;
 }
 .list-logos {
     border-bottom: 1px dotted #D1D1D1;
@@ -298,7 +303,7 @@ LOGIN
     width: auto;
     height: 70px;
     display: inline-block;
-    margin: 5px 10px ;
+    margin: 16px 24px ;
     overflow: hidden;
     border-radius: 5px;
 }
@@ -378,7 +383,7 @@ label:not(.custom-control-label) {
 }
 
 .form-wrap.floating-form {
-	padding: 24px ;
+	padding: 0 ;
 }
 .btn-connect {
 	margin-bottom: 24px; 
@@ -439,6 +444,10 @@ label:not(.custom-control-label) {
 	background: #FFFFFF;
 	margin:auto;
 	border-radius: 10px;
+}
+#login.form-wrap{
+    /* background: #fafafa; */
+    /* border:1px dotted #D1D1D1; */
 }
 .log-title{
 	font-style: normal;

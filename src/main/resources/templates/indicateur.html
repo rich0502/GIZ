@@ -35,9 +35,13 @@
 			<span th:text="${nomUser.username}"></span>
 		</span>
 		<br>
-		<div th:include="indiMenu.html" th:remove="tag"></div>
-		<br>
+		
 		<div style="text-align: center;">
+			<br>
+			<div th:include="indiMenu.html" th:remove="tag"></div>
+			<br>
+			<br>	
+			<br>
 			<div class="table-tracker-container indicator" id="html-content-holder" crossorigin="anonymous">
 				<table class="d-table-tracker indicator-table" id="dynamicTableTracker">
 					<tr class="">
@@ -70,9 +74,9 @@
 						<td class="row-field"><div class="editable-field" contenteditable></div></td>
 						<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable>Repoussée</div></td>
 						<td class="row-field"><div class="editable-field">
-							<div>60%</div>
-							<div class="progress-bar">
-								<div style="width: 60%;"></div>
+							<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" value="1"></div>
+							<div class="progress custom-progress">
+								<div id="progbar01" class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 							</div>
 						</div></td>
 						<td class="row-field"><div class="editable-field" contenteditable>Nombre de producteurs adoptant au moins une mesure d'agriculture intelligente</div></td>
@@ -95,9 +99,9 @@
 						<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable>Repoussée</div></td>
 						
 						<td class="row-field"><div class="editable-field">
-							<div>0%</div>
-							<div class="progress-bar">
-								<div style="width: 0%;"></div>
+							<div class="type-number-percent"><input type="number" min="0" max="100" value="1"></div>
+							<div class="progress custom-progress">
+								<div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 							</div>
 						</div></td>
 						<td class="row-field"><div class="editable-field" contenteditable>Nombre de producteurs de vanille qui ont vu une augmentation de 20 % des revenus issus de la diversification</div></td>
@@ -147,6 +151,15 @@
 		}
 
 	</SCRIPT>
+
+	<script>
+		$('.type-number-percent input').each(function(elem) {
+			$(this).change(function(){
+				var valeur = $(this).val();
+				$(this).closest('.type-number-percent').parent().find('.progress-bar').css('width', valeur+'%').attr('aria-valuenow', valeur); 
+			})
+		})		
+	</script>
 </body>
 
 </html>

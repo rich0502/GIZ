@@ -164,12 +164,13 @@
 }
 /**/
 .btn-export-screenshot {
-    display: block;
+    display: inline-block;
     width: 100px;
     padding: 16px 5px;
     text-align: center;
 	border: 1px solid #fff;
-    margin:8px auto 20px;
+    margin:10px 20px;
+    vertical-align: top;
     background-color: #e9676d;
     color: #fff;
 }
