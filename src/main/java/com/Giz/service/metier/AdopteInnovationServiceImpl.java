@@ -59,4 +59,9 @@ public class AdopteInnovationServiceImpl implements AdopteInnovationService {
 		return adopte_InnovationRepository.count();
 	}
 
+	@Override
+	public long CountGenre(String genre) {
+		return adopte_InnovationRepository.countAdoption_innov(genre);
+	}
+
 }

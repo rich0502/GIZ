@@ -12,6 +12,8 @@ public interface AdopteInnovationService {
 	public List<Adoption_innovation> ListAdoption_innovation();
 	
 	public long CountAdoption();
+	
+	public long CountGenre(String genre);
 
 	public void deleteAdoption_innovation(Long id_ai);
 	

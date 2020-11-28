@@ -62,6 +62,9 @@ public class IndicateurController {
 		float target_adop = 2100;
 		float adopte = (float) ((adopteInnovationService.CountAdoption()/target_adop)*100.0);
 		
+		long hom_adop = adopteInnovationService.CountGenre("homme");
+		long fem_adop = adopteInnovationService.CountGenre("femme");
+		
 		/* CANEVAS DE RESTITUTION DE  RECHERCHES */
 		float target_rech = 3500;
 		float recheche = (float) ((rechercheService.countRecherche()/target_rech)*100.0);
@@ -75,10 +78,13 @@ public class IndicateurController {
 		float test = (float) ((formationBpaService.countbpa()/target_testva)*100.0);
 		
 		model.addAttribute("adopte", adopte);
+		model.addAttribute("fem_adop", fem_adop);
+		model.addAttribute("hom_adop", hom_adop);
+		model.addAttribute("adopte", adopte);
 		model.addAttribute("recheche", recheche);
 		model.addAttribute("bpa", bpa);
 		model.addAttribute("test", test);
-		return "indicateurWp1";
+		return "indicateurWp1/indicateurWp1";
 	}
 
 }
