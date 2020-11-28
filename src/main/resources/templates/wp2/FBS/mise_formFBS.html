@@ -51,7 +51,7 @@
 								<tr>
 								  <td  width=200px >Code village : </td>
 								  <td height=45px width=575px;>
-									<select class="form-control select2" th:name="code_de_village"
+									<select class="form-control select2" th:name="code_village"
 										style="height: 40px !important;width: 27%;" required>
 										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
 									</select>

@@ -33,7 +33,7 @@ public class Wp2Controller {
 	public String uploadL3(Model model) {
 		String[][] scList = ListeWp.wp();
 		model.addAttribute("scList", scList);
-		return "wp2/valider/uploadL3";
+		return "wp2/lakileTelo/uploadLakileTelo";
 	}
 
 	@PostMapping("/importL3")
@@ -51,7 +51,7 @@ public class Wp2Controller {
 			msForm.add(mForm);
 		}
 		model.addAttribute("headerLists", msForm);
-		return "wp2/valider/mise_formL3";
+		return "wp2/lakileTelo/mise_formLakileTelo";
 	}
 
 	@PostMapping("/saveL3")
@@ -84,14 +84,14 @@ public class Wp2Controller {
 
 		}
 
-		return "redirect:/listL3";
+		return "redirect:/listLakileTelo";
 	}
 
-	@RequestMapping("/listL3")
+	@RequestMapping("/listLakileTelo")
 	public String listLakileTelo(Model model) {
 		List<Valider> validerL3 = validerservice.ListValiderL3();
 		model.addAttribute("validerL3", validerL3);
-		return "wp2/valider/listL3";
+		return "wp2/LakileTelo/listLakileTelo";
 	}
 
 	// Canevas VSLA Municipal
@@ -99,7 +99,7 @@ public class Wp2Controller {
 	public String uploadVSLA(Model model) {
 		String[][] scList = ListeWp.wp();
 		model.addAttribute("scList", scList);
-		return "wp2/valider/uploadVSLA";
+		return "wp2/VSLA/uploadVSLA";
 	}
 
 	@PostMapping("/importVSLA")
@@ -117,7 +117,7 @@ public class Wp2Controller {
 			msForm.add(mForm);
 		}
 		model.addAttribute("headerLists", msForm);
-		return "wp2/valider/mise_formVSLA";
+		return "wp2/VSLA/mise_formVSLA";
 	}
 
 	@PostMapping("/saveVSLA")
@@ -135,13 +135,13 @@ public class Wp2Controller {
 			XSSFRow row = worksheet.getRow(i);
 			String code_villag = row.getCell(code_de_village).getStringCellValue();
 			String nom_vsla = row.getCell(noms_vsla).getStringCellValue();
-			int annee_creation = Integer.parseInt(row.getCell(annee_de_creation).getStringCellValue());
+			int annee_creation = (int) row.getCell(annee_de_creation).getNumericCellValue();
 			boolean vsla_lier_regionale = row.getCell(vsla_lie).getStringCellValue().equalsIgnoreCase("Oui");
-			boolean appuis_reçus = row.getCell(appui_recus).getStringCellValue().equalsIgnoreCase("Oui");
+			boolean appuis_recus = row.getCell(appui_recus).getStringCellValue().equalsIgnoreCase("Oui");
 			String type_appui = row.getCell(type_appuis).getStringCellValue();
 			boolean operationnels = row.getCell(operationnel).getStringCellValue().equalsIgnoreCase("Oui");
 			java.util.Date date_suivis = row.getCell(date_suivi).getDateCellValue();
-			validerservice.addValiderVSLA(code_villag, nom_vsla, annee_creation, vsla_lier_regionale, appuis_reçus,
+			validerservice.addValiderVSLA(code_villag, nom_vsla, annee_creation, vsla_lier_regionale, appuis_recus,
 					type_appui, operationnels, date_suivis);
 
 		}
@@ -153,7 +153,7 @@ public class Wp2Controller {
 	public String listVSLA(Model model) {
 		List<Valider> validerVSLA = validerservice.ListValiderVSLA();
 		model.addAttribute("validerVSLA", validerVSLA);
-		return "wp2/valider/listVSLA";
+		return "wp2/VSLA/listVSLA";
 	}
 
 	// Canevas integration de l'education
@@ -161,7 +161,7 @@ public class Wp2Controller {
 	public String uploadFBS(Model model) {
 		String[][] scList = ListeWp.wp();
 		model.addAttribute("scList", scList);
-		return "wp2/valider/uploadFBS";
+		return "wp2/FBS/uploadFBS";
 	}
 
 	@PostMapping("/importFBS")
@@ -179,7 +179,7 @@ public class Wp2Controller {
 			msForm.add(mForm);
 		}
 		model.addAttribute("headerLists", msForm);
-		return "wp2/valider/mise_formFBS";
+		return "wp2/FBS/mise_formFBS";
 	}
 
 	@PostMapping("/saveFBS")
@@ -191,10 +191,10 @@ public class Wp2Controller {
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
 			String code_villag = row.getCell(code_de_village).getStringCellValue();
-			boolean fbs_post_fbs_reçus = row.getCell(formation_fbs).getStringCellValue().equalsIgnoreCase("Oui");
+			boolean fbs_post_fbs_recus = row.getCell(formation_fbs).getStringCellValue().equalsIgnoreCase("Oui");
 			boolean education_fbs_post_fbs = row.getCell(integration_fbs).getStringCellValue().equalsIgnoreCase("Oui");
 			java.util.Date date_suivis = row.getCell(date_suivi).getDateCellValue();
-			validerservice.addValiderFBS(code_villag, fbs_post_fbs_reçus, education_fbs_post_fbs, date_suivis);
+			validerservice.addValiderFBS(code_villag, fbs_post_fbs_recus, education_fbs_post_fbs, date_suivis);
 
 		}
 
@@ -205,7 +205,7 @@ public class Wp2Controller {
 	public String listFBS(Model model) {
 		List<Valider> validerFBS = validerservice.ListValiderFBS();
 		model.addAttribute("validerFBS", validerFBS);
-		return "wp2/valider/listFBS";
+		return "wp2/FBS/listFBS";
 	}
 
 	// Canevas mobile money
@@ -213,7 +213,7 @@ public class Wp2Controller {
 	public String uploadMoney(Model model) {
 		String[][] scList = ListeWp.wp();
 		model.addAttribute("scList", scList);
-		return "wp2/valider/uploadMoney";
+		return "wp2/money/uploadMoney";
 	}
 
 	@PostMapping("/importMoney")
@@ -231,7 +231,7 @@ public class Wp2Controller {
 			msForm.add(mForm);
 		}
 		model.addAttribute("headerLists", msForm);
-		return "wp2/valider/mise_formMoney";
+		return "wp2/money/mise_formMoney";
 	}
 
 	@PostMapping("/saveMoney")
@@ -253,7 +253,7 @@ public class Wp2Controller {
 			String code_prod = row.getCell(code_produi).getStringCellValue();
 			String nom_prenom = row.getCell(nom).getStringCellValue();
 			String sexe = row.getCell(sex).getStringCellValue();
-			int annee_naissance = Integer.parseInt(row.getCell(annee_nais).getStringCellValue());
+			int annee_naissance = (int) row.getCell(annee_nais).getNumericCellValue();
 			boolean service_mobile_money = row.getCell(service_money).getStringCellValue().equalsIgnoreCase("Oui");
 			boolean orange_money = row.getCell(orange).getStringCellValue().equalsIgnoreCase("Oui");
 			boolean mvola = row.getCell(mvol).getStringCellValue().equalsIgnoreCase("Oui");
@@ -271,7 +271,7 @@ public class Wp2Controller {
 	public String listMoney(Model model) {
 		List<Valider> validerMoney = validerservice.ListValiderMobileMoney();
 		model.addAttribute("validerMoney", validerMoney);
-		return "wp2/valider/listMoney";
+		return "wp2/money/listMoney";
 	}
 
 	// Canevas Finance
@@ -279,7 +279,7 @@ public class Wp2Controller {
 	public String uploadFinance(Model model) {
 		String[][] scList = ListeWp.wp();
 		model.addAttribute("scList", scList);
-		return "wp2/valider/uploadFinance";
+		return "wp2/finance/uploadFinance";
 	}
 
 	@PostMapping("/importFinance")
@@ -297,7 +297,7 @@ public class Wp2Controller {
 			msForm.add(mForm);
 		}
 		model.addAttribute("headerLists", msForm);
-		return "wp2/valider/mise_formFinance";
+		return "wp2/finance/mise_formFinance";
 	}
 
 	@PostMapping("/saveFinance")
@@ -317,7 +317,7 @@ public class Wp2Controller {
 			String code_prod = row.getCell(code_produi).getStringCellValue();
 			String nom_prenom = row.getCell(nom).getStringCellValue();
 			String sexe = row.getCell(sex).getStringCellValue();
-			int annee_naissance = Integer.parseInt(row.getCell(annee_nais).getStringCellValue());
+			int annee_naissance = (int) row.getCell(annee_nais).getNumericCellValue();
 			boolean service_IMF = row.getCell(imf).getStringCellValue().equalsIgnoreCase("Oui");
 			String institution = row.getCell(list_instut).getStringCellValue();
 			String lieu_agence = row.getCell(lieu_ag).getStringCellValue();
@@ -334,7 +334,7 @@ public class Wp2Controller {
 	public String listFinance(Model model) {
 		List<Valider> validerFinance = validerservice.ListValiderFinance();
 		model.addAttribute("validerFinance", validerFinance);
-		return "wp2/valider/listFinance";
+		return "wp2/finance/listFinance";
 	}
 
 	// Canevas Production
@@ -342,7 +342,7 @@ public class Wp2Controller {
 	public String uploadProduction(Model model) {
 		String[][] scList = ListeWp.wp();
 		model.addAttribute("scList", scList);
-		return "wp2/valider/uploadProducteur";
+		return "wp2/producteur/uploadProducteur";
 	}
 
 	@PostMapping("/importProducteur")
@@ -360,7 +360,7 @@ public class Wp2Controller {
 			msForm.add(mForm);
 		}
 		model.addAttribute("headerLists", msForm);
-		return "wp2/valider/mise_formProducteur";
+		return "wp2/producteur/mise_formProducteur";
 	}
 
 	@PostMapping("/saveProducteur")
@@ -381,7 +381,7 @@ public class Wp2Controller {
 			String nom_beneficiaire = row.getCell(nom_benef).getStringCellValue();
 			String nom_usuel_adherent = row.getCell(nom).getStringCellValue();
 			String contact = row.getCell(contacte).getStringCellValue();
-			int age = Integer.parseInt(row.getCell(ages).getStringCellValue());
+			int age = (int) row.getCell(ages).getNumericCellValue();
 			String cin = row.getCell(cine).getStringCellValue();
 			String sexe = row.getCell(sex).getStringCellValue();
 			String code_village = row.getCell(code_villag).getStringCellValue();
@@ -390,7 +390,7 @@ public class Wp2Controller {
 			String adresse_fkt= row.getCell(adresse_fktny).getStringCellValue();
 			String affiliation= row.getCell(affiliations).getStringCellValue();
 			String ma_1ere_adhesion= row.getCell(ma_adhesion).getStringCellValue();
-			int nbr_pers_charge= Integer.parseInt(row.getCell(nbr_pers_charges).getStringCellValue());
+			int nbr_pers_charge= (int) row.getCell(nbr_pers_charges).getNumericCellValue();
 			java.util.Date date_naiss = row.getCell(date_naissance).getDateCellValue();
 			validerservice.addValiderProducteur(num_adhesion, nom_beneficiaire, nom_usuel_adherent, contact, age, date_naiss, cin, sexe, code_village, code_pro_symrise, commune, adresse_fkt, affiliation, ma_1ere_adhesion, nbr_pers_charge);
 
@@ -403,7 +403,7 @@ public class Wp2Controller {
 	public String listProducteur(Model model) {
 		List<Valider> validerProducteur = validerservice.ListValiderProducteur();
 		model.addAttribute("validerProducteur", validerProducteur);
-		return "wp2/valider/listProducteur";
+		return "wp2/producteur/listProducteur";
 	}
 	
 	
@@ -412,7 +412,7 @@ public class Wp2Controller {
 		public String uploadAdhesion(Model model) {
 			String[][] scList = ListeWp.wp();
 			model.addAttribute("scList", scList);
-			return "wp2/valider/uploadAdhesion";
+			return "wp2/adhesion/uploadAdhesion";
 		}
 
 		@PostMapping("/importAdhesion")
@@ -430,7 +430,7 @@ public class Wp2Controller {
 				msForm.add(mForm);
 			}
 			model.addAttribute("headerLists", msForm);
-			return "wp2/valider/mise_formAdhesion";
+			return "wp2/adhesion/mise_formAdhesion";
 		}
 
 		@PostMapping("/saveAdhesion")
@@ -456,7 +456,7 @@ public class Wp2Controller {
 				String nom_beneficiaire = row.getCell(nom_benef).getStringCellValue();
 				String nom_usuel_adherent = row.getCell(nom).getStringCellValue();
 				String contact = row.getCell(contacte).getStringCellValue();
-				int age = Integer.parseInt(row.getCell(ages).getStringCellValue());
+				int age = (int) row.getCell(ages).getNumericCellValue();
 				String cin = row.getCell(cine).getStringCellValue();
 				String sexe = row.getCell(sex).getStringCellValue();
 				String code_village = row.getCell(code_villag).getStringCellValue();
@@ -465,7 +465,7 @@ public class Wp2Controller {
 				String adresse_fkt= row.getCell(adresse_fktny).getStringCellValue();
 				String affiliation= row.getCell(affiliations).getStringCellValue();
 				String ma_1ere_adhesion= row.getCell(ma_adhesion).getStringCellValue();
-				int nbr_pers_charge= Integer.parseInt(row.getCell(nbr_pers_charges).getStringCellValue());
+				int nbr_pers_charge= (int) row.getCell(nbr_pers_charges).getNumericCellValue();
 				java.util.Date date_naiss = row.getCell(date_naissance).getDateCellValue();
 				validerservice.addValiderAdhesion(num_adhesion, nom_beneficiaire, nom_usuel_adherent, contact, age, date_naiss, cin, sexe, code_village, code_pro_symrise, commune, adresse_fkt, affiliation, ma_1ere_adhesion, nbr_pers_charge);
 
@@ -476,9 +476,9 @@ public class Wp2Controller {
 
 		@RequestMapping("/listAdhesion")
 		public String listAdhesion(Model model) {
-			List<Valider> validerAdhesion = validerservice.ListValiderProducteur();
+			List<Valider> validerAdhesion = validerservice.ListValiderAdhesion();
 			model.addAttribute("validerAdhesion", validerAdhesion);
-			return "wp2/valider/listAdhesion";
+			return "wp2/adhesion/listAdhesion";
 		}
 		
 		
@@ -487,7 +487,7 @@ public class Wp2Controller {
 				public String uploadMenage(Model model) {
 					String[][] scList = ListeWp.wp();
 					model.addAttribute("scList", scList);
-					return "wp2/valider/uploadMenage";
+					return "wp2/menage/uploadMenage";
 				}
 
 				@PostMapping("/importMenage")
@@ -505,7 +505,7 @@ public class Wp2Controller {
 						msForm.add(mForm);
 					}
 					model.addAttribute("headerLists", msForm);
-					return "wp2/valider/mise_formMenage";
+					return "wp2/menage/mise_formMenage";
 				}
 
 				@PostMapping("/saveMenage")
@@ -526,7 +526,7 @@ public class Wp2Controller {
 						String nom_beneficiaire = row.getCell(nom_benef).getStringCellValue();
 						String nom_usuel_adherent = row.getCell(nom).getStringCellValue();
 						String contact = row.getCell(contacte).getStringCellValue();
-						int age = Integer.parseInt(row.getCell(ages).getStringCellValue());
+						int age = (int) row.getCell(ages).getNumericCellValue();
 						String cin = row.getCell(cine).getStringCellValue();
 						String sexe = row.getCell(sex).getStringCellValue();
 						String code_village = row.getCell(code_villag).getStringCellValue();
@@ -535,9 +535,9 @@ public class Wp2Controller {
 						String adresse_fkt= row.getCell(adresse_fktny).getStringCellValue();
 						String affiliation= row.getCell(affiliations).getStringCellValue();
 						String ma_1ere_adhesion= row.getCell(ma_adhesion).getStringCellValue();
-						int nbr_pers_charge= Integer.parseInt(row.getCell(nbr_pers_charges).getStringCellValue());
+						int nbr_pers_charge= (int) row.getCell(nbr_pers_charges).getNumericCellValue();
 						java.util.Date date_naiss = row.getCell(date_naissance).getDateCellValue();
-						validerservice.addValiderAdhesion(num_adhesion, nom_beneficiaire, nom_usuel_adherent, contact, age, date_naiss, cin, sexe, code_village, code_pro_symrise, commune, adresse_fkt, affiliation, ma_1ere_adhesion, nbr_pers_charge);
+						validerservice.addValiderMenage(num_adhesion, nom_beneficiaire, nom_usuel_adherent, contact, age, date_naiss, cin, sexe, code_village, code_pro_symrise, commune, adresse_fkt, affiliation, ma_1ere_adhesion, nbr_pers_charge);
 
 					}
 
@@ -548,7 +548,7 @@ public class Wp2Controller {
 				public String listMenage(Model model) {
 					List<Valider> validerMenage = validerservice.ListValiderMenage();
 					model.addAttribute("validerMenage", validerMenage);
-					return "wp2/valider/listMenage";
+					return "wp2/menage/listMenage";
 				}
 
 }

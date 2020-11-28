@@ -44,11 +44,6 @@ import com.Giz.service.metier.RechercheService;
 import com.Giz.service.metier.Sante_animalService;
 
 
-
-
-
-
-
 @Controller
 public class Wp1Controller {
 	
@@ -408,7 +403,7 @@ public class Wp1Controller {
 	        java.util.Date date_suivis = null;
 	        String technique_exergues = null;
 	        Long nbr_participants = (long) 0;
-	        String type = null;
+	        String type = "TESTS VANILLES";
 	        parcelleTestService.addParcelle_test(code_villag, coord_x, coord_y, nomResponsables, genre_pts, annee_nais, pratique_realises, date_mises, superficie, operationnels, date_suivis, technique_exergues, nbr_participants, type);
 	        
 	    }

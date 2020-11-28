@@ -93,6 +93,16 @@
 									</select>
 								  </td>
 								</tr>
+								
+								<tr>
+								  <td  width=200px >Effectif membre : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="effectif_membre"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>
 								<tr>
 								  <td  width=200px >H : </td>
 								  <td height=45px width=575px;>

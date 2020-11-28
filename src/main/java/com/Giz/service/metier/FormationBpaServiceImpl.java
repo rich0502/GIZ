@@ -66,6 +66,12 @@ public class FormationBpaServiceImpl implements FormationBpaService {
 		
 	}
 
+	@Override
+	public long countbpa() {
+		// TODO Auto-generated method stub
+		return formation_bpaRepository.count();
+	}
+
 
 
 }

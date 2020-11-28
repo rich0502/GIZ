@@ -10,6 +10,8 @@ public interface FormationBpaService {
 
 
 	public List<Formation_bpa> ListFormation_bpa();
+	
+	public long countbpa();
 
 	public void deleteFormation_bpa(Long id_bpa);
 	

@@ -63,7 +63,7 @@
 		<tbody>
 			<tr th:each="b : ${validerFBS}">
 				<td th:text="${b.code_village}"></td>
-				<td th:text="${b.fbs_post_fbs_reçu}"></td>
+				<td th:text="${b.fbs_post_fbs_recus}"></td>
 				<td th:text="${b.education_fbs_post_fbs}"></td>
 				<td th:text="${b.date_suivi}"></td>
 				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id}+'\');'}"></a>

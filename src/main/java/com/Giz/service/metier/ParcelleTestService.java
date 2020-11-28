@@ -11,6 +11,10 @@ public interface ParcelleTestService {
 
 
 	public List<Parcelle_test> ListParcelle_test();
+	
+	public List<Parcelle_test> ListParcellTestVanille(String type);
+	
+	public float countParcellTestVanille();
 
 	public void deleteParcelle_test(Long id_pt);
 	

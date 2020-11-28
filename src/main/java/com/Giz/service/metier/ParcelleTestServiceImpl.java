@@ -112,6 +112,16 @@ public class ParcelleTestServiceImpl implements ParcelleTestService {
 		parcelle_testRepository.save(parcelle_test);
 		
 	}
+
+	@Override
+	public List<Parcelle_test> ListParcellTestVanille(String type) {
+		return parcelle_testRepository.findByIdParcellTestVanille(type);
+	}
+
+	@Override
+	public float countParcellTestVanille() {
+		return parcelle_testRepository.countParcelVanille("TESTS VANILLES");
+	}
 	
 	
 }

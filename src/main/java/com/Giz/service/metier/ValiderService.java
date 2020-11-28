@@ -13,8 +13,7 @@ public interface ValiderService {
 	
 	public List<Valider> ListValiderL3();
 	
-	public void addValiderL3(String code_village, String district, String nom_group_l_telo, String categorie, Date date_creation,
-			String effectif_membre, String sexe, boolean operationnel, Date date_suivi);
+	public void addValiderL3(String code_village, String district, String nom_group_l_telo, String categorie, Date date_creation, String effectif_membre, String sexe, boolean operationnel, Date date_suivi);
 	
 	
 	public void modifyL3(Valider valider,String code_village, String district, String nom_group_l_telo, String categorie, Date date_creation,
@@ -24,19 +23,19 @@ public interface ValiderService {
 	
 	public List<Valider> ListValiderVSLA();
 	
-	public void addValiderVSLA(String code_village, String nom_vsla, int annee_creation, boolean vsla_lier_regionale, boolean appuis_reçus,
+	public void addValiderVSLA(String code_village, String nom_vsla, int annee_creation, boolean vsla_lier_regionale, boolean appuis_recus,
 			String type_appui, boolean operationnel, Date date_suivi);
 
-	public void modifyVSLA(Valider valider,String code_village, String nom_vsla, int annee_creation, boolean vsla_lier_regionale, boolean appuis_reçus,
+	public void modifyVSLA(Valider valider,String code_village, String nom_vsla, int annee_creation, boolean vsla_lier_regionale, boolean appuis_recus,
 			String type_appui, boolean operationnel, Date date_suivi, Long id);
 	
 	
 	
 	public List<Valider> ListValiderFBS();
 	
-	public void addValiderFBS(String code_village, boolean fbs_post_fbs_reçus, boolean education_fbs_post_fbs, Date date_suivi);
+	public void addValiderFBS(String code_village, boolean fbs_post_fbs_recus, boolean education_fbs_post_fbs, Date date_suivi);
 
-	public void modifyFBS(Valider valider,String code_village, boolean fbs_post_fbs_reçus, boolean education_fbs_post_fbs, Date date_suivi, Long id);
+	public void modifyFBS(Valider valider,String code_village, boolean fbs_post_fbs_recus, boolean education_fbs_post_fbs, Date date_suivi, Long id);
 
 	
 	

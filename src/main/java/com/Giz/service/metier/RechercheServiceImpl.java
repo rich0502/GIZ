@@ -62,6 +62,11 @@ public class RechercheServiceImpl implements RechercheService {
 		rechercheRepository.save(recherche);
 		
 	}
+
+	@Override
+	public float countRecherche() {
+		return rechercheRepository.count();
+	}
 	
 	
 }

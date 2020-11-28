@@ -10,6 +10,8 @@ public interface AdopteInnovationService {
 
 
 	public List<Adoption_innovation> ListAdoption_innovation();
+	
+	public long CountAdoption();
 
 	public void deleteAdoption_innovation(Long id_ai);
 	

@@ -54,4 +54,9 @@ public class AdopteInnovationServiceImpl implements AdopteInnovationService {
 		
 	}
 
+	@Override
+	public long CountAdoption() {
+		return adopte_InnovationRepository.count();
+	}
+
 }

@@ -10,6 +10,8 @@ public interface RechercheService {
 
 
 	public List<Recherche> ListRecherche();
+	
+	public float countRecherche();
 
 	public void deleteRecherche(Long id_re);
 	

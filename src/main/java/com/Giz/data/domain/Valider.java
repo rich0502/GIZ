@@ -54,14 +54,14 @@ public class Valider {
 	@Column(name = "vsla_lier_regionale")
 	private boolean vsla_lier_regionale;
 	
-	@Column(name = "appuis_reçus")
-	private boolean appuis_reçus;
+	@Column(name = "appuis_recus")
+	private boolean appuis_recus;
 	
 	@Column(name = "type_appui")
 	private String type_appui;
 	
-	@Column(name = "fbs_post_fbs_reçus")
-	private boolean fbs_post_fbs_reçus;
+	@Column(name = "fbs_post_fbs_recus")
+	private boolean fbs_post_fbs_recus;
 	
 	@Column(name = "education_fbs_post_fbs")
 	private boolean education_fbs_post_fbs;
@@ -138,10 +138,15 @@ public class Valider {
 	@Column(name = "canevas")
 	private String canevas;
 
+	public Valider() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Valider(Long id, String code_village, String district, String nom_group_l_telo, String categorie,
 			Date date_creation, String effectif_membre, String sexe, boolean operationnel, Date date_suivi,
-			String nom_vsla, int annee_creation, boolean vsla_lier_regionale, boolean appuis_reçus, String type_appui,
-			boolean fbs_post_fbs_reçus, boolean education_fbs_post_fbs, String code_prod, String nom_prenom,
+			String nom_vsla, int annee_creation, boolean vsla_lier_regionale, boolean appuis_recus, String type_appui,
+			boolean fbs_post_fbs_recus, boolean education_fbs_post_fbs, String code_prod, String nom_prenom,
 			int annee_naissance, boolean service_mobile_money, boolean orange_money, boolean mvola,
 			boolean airtel_money, boolean service_IMF, String institution, String lieu_agence, String num_adhesion,
 			String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin,
@@ -161,9 +166,9 @@ public class Valider {
 		this.nom_vsla = nom_vsla;
 		this.annee_creation = annee_creation;
 		this.vsla_lier_regionale = vsla_lier_regionale;
-		this.appuis_reçus = appuis_reçus;
+		this.appuis_recus = appuis_recus;
 		this.type_appui = type_appui;
-		this.fbs_post_fbs_reçus = fbs_post_fbs_reçus;
+		this.fbs_post_fbs_recus = fbs_post_fbs_recus;
 		this.education_fbs_post_fbs = education_fbs_post_fbs;
 		this.code_prod = code_prod;
 		this.nom_prenom = nom_prenom;
@@ -189,71 +194,6 @@ public class Valider {
 		this.ma_1ere_adhesion = ma_1ere_adhesion;
 		this.nbr_pers_charge = nbr_pers_charge;
 		this.canevas = canevas;
-	}
-
-	public String getCanevas() {
-		return canevas;
-	}
-
-	public void setCanevas(String canevas) {
-		this.canevas = canevas;
-	}
-
-	public Valider() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Valider(Long id, String code_village, String district, String nom_group_l_telo, String categorie,
-			Date date_creation, String effectif_membre, String sexe, boolean operationnel, Date date_suivi,
-			String nom_vsla, int annee_creation, boolean vsla_lier_regionale, boolean appuis_reçus, String type_appui,
-			boolean fbs_post_fbs_reçus, boolean education_fbs_post_fbs, String code_prod, String nom_prenom,
-			int annee_naissance, boolean service_mobile_money, boolean orange_money, boolean mvola,
-			boolean airtel_money, boolean service_IMF, String institution, String lieu_agence, String num_adhesion,
-			String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin,
-			String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,
-			int nbr_pers_charge) {
-		super();
-		this.id = id;
-		this.code_village = code_village;
-		this.district = district;
-		this.nom_group_l_telo = nom_group_l_telo;
-		this.categorie = categorie;
-		this.date_creation = date_creation;
-		this.effectif_membre = effectif_membre;
-		this.sexe = sexe;
-		this.operationnel = operationnel;
-		this.date_suivi = date_suivi;
-		this.nom_vsla = nom_vsla;
-		this.annee_creation = annee_creation;
-		this.vsla_lier_regionale = vsla_lier_regionale;
-		this.appuis_reçus = appuis_reçus;
-		this.type_appui = type_appui;
-		this.fbs_post_fbs_reçus = fbs_post_fbs_reçus;
-		this.education_fbs_post_fbs = education_fbs_post_fbs;
-		this.code_prod = code_prod;
-		this.nom_prenom = nom_prenom;
-		this.annee_naissance = annee_naissance;
-		this.service_mobile_money = service_mobile_money;
-		this.orange_money = orange_money;
-		this.mvola = mvola;
-		this.airtel_money = airtel_money;
-		this.service_IMF = service_IMF;
-		this.institution = institution;
-		this.lieu_agence = lieu_agence;
-		this.num_adhesion = num_adhesion;
-		this.nom_beneficiaire = nom_beneficiaire;
-		this.nom_usuel_adherent = nom_usuel_adherent;
-		this.contact = contact;
-		this.age = age;
-		this.date_naiss = date_naiss;
-		this.cin = cin;
-		this.code_pro_symrise = code_pro_symrise;
-		this.commune = commune;
-		this.adresse_fkt = adresse_fkt;
-		this.affiliation = affiliation;
-		this.ma_1ere_adhesion = ma_1ere_adhesion;
-		this.nbr_pers_charge = nbr_pers_charge;
 	}
 
 	public Long getId() {
@@ -360,12 +300,12 @@ public class Valider {
 		this.vsla_lier_regionale = vsla_lier_regionale;
 	}
 
-	public boolean isAppuis_reçus() {
-		return appuis_reçus;
+	public boolean isAppuis_recus() {
+		return appuis_recus;
 	}
 
-	public void setAppuis_reçus(boolean appuis_reçus) {
-		this.appuis_reçus = appuis_reçus;
+	public void setAppuis_recus(boolean appuis_recus) {
+		this.appuis_recus = appuis_recus;
 	}
 
 	public String getType_appui() {
@@ -376,12 +316,12 @@ public class Valider {
 		this.type_appui = type_appui;
 	}
 
-	public boolean isFbs_post_fbs_reçus() {
-		return fbs_post_fbs_reçus;
+	public boolean isFbs_post_fbs_recus() {
+		return fbs_post_fbs_recus;
 	}
 
-	public void setFbs_post_fbs_reçus(boolean fbs_post_fbs_reçus) {
-		this.fbs_post_fbs_reçus = fbs_post_fbs_reçus;
+	public void setFbs_post_fbs_recus(boolean fbs_post_fbs_recus) {
+		this.fbs_post_fbs_recus = fbs_post_fbs_recus;
 	}
 
 	public boolean isEducation_fbs_post_fbs() {
@@ -575,7 +515,13 @@ public class Valider {
 	public void setNbr_pers_charge(int nbr_pers_charge) {
 		this.nbr_pers_charge = nbr_pers_charge;
 	}
-	
-	
-	
+
+	public String getCanevas() {
+		return canevas;
+	}
+
+	public void setCanevas(String canevas) {
+		this.canevas = canevas;
+	}
+
 }

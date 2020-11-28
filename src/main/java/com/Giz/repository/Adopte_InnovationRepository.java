@@ -25,7 +25,8 @@ public interface Adopte_InnovationRepository extends JpaRepository<Adoption_inno
 	@Query("SELECT f FROM Adoption_innovation f WHERE f.id_ai = ?1")
 	Adoption_innovation findByIdAdoption_innovation(Long id_ai);
 	
-	
+	@Query("SELECT COUNT(u) FROM Adoption_innovation u WHERE u.genre_ai=?1")
+	 Long countAdoption_innov(String name);
 	
 }
 

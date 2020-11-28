@@ -71,13 +71,13 @@ public class ValiderServiceImpl implements ValiderService{
 
 	@Override
 	public void addValiderVSLA(String code_village, String nom_vsla, int annee_creation, boolean vsla_lier_regionale,
-			boolean appuis_reçus, String type_appui, boolean operationnel, Date date_suivi) {
+			boolean appuis_recus, String type_appui, boolean operationnel, Date date_suivi) {
 		Valider validerVSLA = new Valider();
 		validerVSLA.setCode_village(code_village);
 		validerVSLA.setNom_vsla(nom_vsla);
 		validerVSLA.setAnnee_creation(annee_creation);
 		validerVSLA.setVsla_lier_regionale(vsla_lier_regionale);
-		validerVSLA.setAppuis_reçus(appuis_reçus);
+		validerVSLA.setAppuis_recus(appuis_recus);;
 		validerVSLA.setType_appui(type_appui);
 		validerVSLA.setOperationnel(operationnel);
 		validerVSLA.setDate_suivi(date_suivi);
@@ -88,14 +88,14 @@ public class ValiderServiceImpl implements ValiderService{
 
 	@Override
 	public void modifyVSLA(Valider validerVSLA, String code_village, String nom_vsla, int annee_creation,
-			boolean vsla_lier_regionale, boolean appuis_reçus, String type_appui, boolean operationnel, Date date_suivi,
+			boolean vsla_lier_regionale, boolean appuis_recus, String type_appui, boolean operationnel, Date date_suivi,
 			Long id) {
 		validerVSLA.setId(id);
 		validerVSLA.setCode_village(code_village);
 		validerVSLA.setNom_vsla(nom_vsla);
 		validerVSLA.setAnnee_creation(annee_creation);
 		validerVSLA.setVsla_lier_regionale(vsla_lier_regionale);
-		validerVSLA.setAppuis_reçus(appuis_reçus);
+		validerVSLA.setAppuis_recus(appuis_recus);
 		validerVSLA.setType_appui(type_appui);
 		validerVSLA.setOperationnel(operationnel);
 		validerVSLA.setDate_suivi(date_suivi);
@@ -110,11 +110,11 @@ public class ValiderServiceImpl implements ValiderService{
 	}
 
 	@Override
-	public void addValiderFBS(String code_village, boolean fbs_post_fbs_reçus, boolean education_fbs_post_fbs,
+	public void addValiderFBS(String code_village, boolean fbs_post_fbs_recus, boolean education_fbs_post_fbs,
 			Date date_suivi) {
 		Valider validerFBS = new Valider();
 		validerFBS.setCode_village(code_village);
-		validerFBS.setFbs_post_fbs_reçus(fbs_post_fbs_reçus);
+		validerFBS.setFbs_post_fbs_recus(fbs_post_fbs_recus);
 		validerFBS.setEducation_fbs_post_fbs(education_fbs_post_fbs);
 		validerFBS.setDate_suivi(date_suivi);
 		validerFBS.setCanevas("FBS");
@@ -123,11 +123,11 @@ public class ValiderServiceImpl implements ValiderService{
 	}
 
 	@Override
-	public void modifyFBS(Valider valider, String code_village, boolean fbs_post_fbs_reçus,
+	public void modifyFBS(Valider valider, String code_village, boolean fbs_post_fbs_recus,
 			boolean education_fbs_post_fbs, Date date_suivi, Long id) {
 		valider.setId(id);
 		valider.setCode_village(code_village);
-		valider.setFbs_post_fbs_reçus(fbs_post_fbs_reçus);
+		valider.setFbs_post_fbs_recus(fbs_post_fbs_recus);
 		valider.setEducation_fbs_post_fbs(education_fbs_post_fbs);
 		valider.setDate_suivi(date_suivi);
 		validerrepository.save(valider);
