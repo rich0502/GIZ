@@ -30,7 +30,7 @@
 <body>
 
 <div th:include="/pds_header.html"></div>
-<section class="main">
+
 <span class="span-user" th:object="${nomUser}"> </span>
 <span class="span-user" th:text="${nomUser}" id="lastUser">  
 	<span th:text="${nomUser.username}"></span>
@@ -38,7 +38,7 @@
 
 
 
-</section>
+
 <script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
 <script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
 <script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>

@@ -900,7 +900,7 @@ PSD CONTENT
 		font-weight: 900;
 	    font-size: 24px;
     letter-spacing: 5px;
-	line-height: 22px;
+	line-height: normal;
 	text-transform:uppercase;
 /* 	color:#031451; */
 	color:#c80f08;
@@ -1388,7 +1388,7 @@ border:3px solid #3e474f;
     width: 100%;
     align-items: center;
 /*     margin-bottom: 40px; */
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .home-info {

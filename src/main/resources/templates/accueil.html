@@ -29,10 +29,16 @@
 
 	 <section class="main">
         <div class="home-content" >
-            <h2 class="content-title" style='font-family: 'Barlow', Arial, Helvetica, sans-serif !important;'>Bienvenue</h2>
+            <h2 class="content-title" style="margin-bottom: 12px;">Bienvenue</h2>
             
+            <div class="welcome-img">
+                <img alt="" th:src="@{/img/bg-login4.jpg}">
+            </div>
             <div>
-            <p> Lorem ipsum dolor sit amet, consectetur 
+            	<p> 
+                    
+                    
+                    Lorem ipsum dolor sit amet, consectetur 
                     adipiscing elit. Integer molestie nunc enim, 
                     aliquam libero, amet gravida nisi. Mattis nisl 
                     consequat lectus in urna tincidunt congue. Semper 
@@ -75,6 +81,24 @@
     
     <script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
 	<script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
-	<script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
+    <script>
+        var unirest = require("unirest");
+
+        var req = unirest("GET", "https://google-translate1.p.rapidapi.com/language/translate/v2/languages");
+
+        req.headers({
+            "accept-encoding": "application/gzip",
+            "x-rapidapi-key": "SIGN-UP-FOR-KEY",
+            "x-rapidapi-host": "google-translate1.p.rapidapi.com",
+            "useQueryString": true
+        });
+
+
+        req.end(function (res) {
+            if (res.error) throw new Error(res.error);
+
+            console.log(res.body);
+        });
     </body>
 </html>

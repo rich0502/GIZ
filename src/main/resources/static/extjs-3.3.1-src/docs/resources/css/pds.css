@@ -118,7 +118,12 @@ html * {
     flex-wrap: wrap;
     width:440px;
 }
-
+.pds-header .menu-list {
+	width: 100%;
+}
+.pds-header .text-logo {
+	border: none;
+}
 .menu-item {
 	width: 180px;
     height: 120px;
@@ -498,6 +503,10 @@ font-weight: 900;
 ------------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------------
   */
+  #pds_panel_left, #panel_right {
+	  /* z-index: 12; */
+	  top: 95px !important;
+  }
 #pds_panel_left, #panel_right, #panel_right .x-panel-body,
 	#pds_panel_left .x-panel-body, #pds_panel_left .x-tool:after {
 	background-color: #F5F5F5;
@@ -642,6 +651,7 @@ font-weight: 900;
 #pds_panel_left .x-tool {
 	background-image: none;
 	pointer-events: none;
+
 }
 
 #pds_panel_left .x-tool:after, #pds_panel_left-xcollapsed .x-tool:after
@@ -653,8 +663,8 @@ font-weight: 900;
 	height: 36.67px;
 	background: #F5F5F5 url(../images/pds_arrow_right.svg) center no-repeat;
 	z-index: 999;
-	right: -40px;
-	top: 0;
+	right: -28px;
+	top: -10;
 	pointer-events: visible;
 	border-bottom-right-radius: 10px;
 	-webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -666,10 +676,14 @@ font-weight: 900;
 	transform: scaleX(-1);
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 0;
-	right: -37px;
-	top: -1px;
+	left: -5px;
+	top: 0;
 }
-
+#pds_panel_left-xcollapsed .x-tool {
+	position: absolute;
+	top: 95px;
+	overflow: visible;
+}
 /**
 ------------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------------
@@ -682,7 +696,7 @@ PSD HEADER
 	padding: 30px 57px 15px 15px;
 	background: #fff;
 	width: 100% !important;
-	top:87px !important;
+	top:72px !important;
 }
 
 .pds-map .olMap {
@@ -699,6 +713,7 @@ PSD HEADER
 	background-color: transparent;
 	padding-bottom: 16px;
 	padding-left: 25px;
+	margin-bottom: 20px;
 }
 
 .pds-map .x-panel-header-text {
@@ -913,7 +928,19 @@ PSD HEADER
 	/* position: relative; */
 	
 }
-
+.x-window-tl .x-window-header {
+	columns: #cd3231 ;
+}
+.x-panel-header {
+	background: #bbb;
+	color: #fff;
+	font-weight: bold;
+	border-color: #999;
+}
+.x-window-mc {
+	background-color: #feefef;
+	border: #bbafaf;
+}
 .x-panel-footer.x-panel-btns {
 	position: absolute;
 	width: 80px !important;
@@ -1094,12 +1121,19 @@ PSD HEADER
 	color: #000000;
 	padding: 15px 5px 15px 5px;
 }
-
+#panel_right .x-panel-body, #pds_panel_left .x-panel-body {
+	padding: 20px 15px;
+}
+#panel_right .x-panel-body.x-panel-body-noheader, #pds_panel_left .x-panel-body.x-panel-body-noheader {
+	padding: 0;
+}
 #panel_right .x-panel-body, #pds_panel_left .x-panel-body,
 	.x-layout-collapsed {
 	border: 0;
 }
-
+.x-panel-body  .x-form-item-label {
+	font-size: 13px;
+}
 #legends .orange-title {
 	color: #fff;
 	/*     background: #E1800D; */
