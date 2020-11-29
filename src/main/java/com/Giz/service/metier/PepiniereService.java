@@ -10,6 +10,10 @@ public interface PepiniereService {
 
 
 	public List<Pepiniere> ListPepiniere();
+	
+	public long countPepiniere();
+	
+	public long countGenre(String genre);
 
 	public void deletePepiniere(Long id_pep);
 	

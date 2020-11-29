@@ -37,7 +37,7 @@ public class SVServiceImpl implements SVService {
 		supportVideo.setNom_support(nom_support);
 		supportVideo.setDate_dissemination(date_dissemination);
 		supportVideo.setReceptionnaire(receptionnaire);
-		supportVideo.setGenre_sv(genre_sv);
+		supportVideo.setGenre_sv(genre_sv.toLowerCase());
 		supportVideo.setReceptionnaire(receptionnaire);
 		supportVideo.setResponsable(responsable);
 		supportVideo.setDate_suivi(date_suivi);
@@ -54,7 +54,7 @@ public class SVServiceImpl implements SVService {
 		supportVideo.setNom_support(nom_support);
 		supportVideo.setDate_dissemination(date_dissemination);
 		supportVideo.setReceptionnaire(receptionnaire);
-		supportVideo.setGenre_sv(genre_sv);
+		supportVideo.setGenre_sv(genre_sv.toLowerCase());
 		supportVideo.setReceptionnaire(receptionnaire);
 		supportVideo.setResponsable(responsable);
 		supportVideo.setDate_suivi(date_suivi);

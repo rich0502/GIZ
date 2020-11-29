@@ -36,7 +36,7 @@ public class FocusGroupServiceImpl implements FocusGroupService {
 		focusGroup.setCode_village(code_village);
 		focusGroup.setRealisation(realisation);
 		focusGroup.setNomResp(nomResp);
-		focusGroup.setGenre_fg(genre_fg);
+		focusGroup.setGenre_fg(genre_fg.toLowerCase());
 		focusGroup.setRisque_env(risque_env);
 		focusGroup.setMesure_prise(mesure_prise);
 		focusGroup.setDate_fg(date_fg);
@@ -50,7 +50,7 @@ public class FocusGroupServiceImpl implements FocusGroupService {
 		focusGroup.setCode_village(code_village);
 		focusGroup.setRealisation(realisation);
 		focusGroup.setNomResp(nomResp);
-		focusGroup.setGenre_fg(genre_fg);
+		focusGroup.setGenre_fg(genre_fg.toLowerCase());
 		focusGroup.setRisque_env(risque_env);
 		focusGroup.setMesure_prise(mesure_prise);
 		focusGroup.setDate_fg(date_fg);

@@ -37,7 +37,7 @@ public class FormateurServiceImpl implements FormateurService {
 		formateur.setCode_village(code_village);
 		formateur.setNomPrenom(nomPrenom);
 		formateur.setZoneInterv(zoneInterv);
-		formateur.setGenre_ft(genre_ft);
+		formateur.setGenre_ft(genre_ft.toLowerCase());
 		formateur.setDate_naiss(date_naiss);
 		formateur.setOperationnel(operationnel);
 		formateur.setDate_mise_place(date_mise_place);
@@ -56,7 +56,7 @@ public class FormateurServiceImpl implements FormateurService {
 		formateur.setCode_village(code_village);
 		formateur.setNomPrenom(nomPrenom);
 		formateur.setZoneInterv(zoneInterv);
-		formateur.setGenre_ft(genre_ft);
+		formateur.setGenre_ft(genre_ft.toLowerCase());
 		formateur.setDate_naiss(date_naiss);
 		formateur.setOperationnel(operationnel);
 		formateur.setDate_mise_place(date_mise_place);
@@ -74,7 +74,7 @@ public class FormateurServiceImpl implements FormateurService {
 		Formateur formateur = new Formateur();
 		formateur.setCode_village(code_village);
 		formateur.setNomPrenom(nomPrenom);
-		formateur.setGenre_ft(genre_ft);
+		formateur.setGenre_ft(genre_ft.toLowerCase());
 		formateur.setDate_naiss(date_naiss);
 		formateur.setOperationnel(operationnel);
 		formateur.setDate_mise_place(date_mise_place);

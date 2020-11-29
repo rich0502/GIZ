@@ -23,7 +23,7 @@ public class PvgServiceImpl implements PvgService {
 
 	@Override
 	public void deleteParcelleVG(Long id_pvg) {
-		pvgRepository.deleteById(id_pvg);;
+		pvgRepository.deleteById(id_pvg);
 		
 	}
 

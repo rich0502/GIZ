@@ -43,7 +43,7 @@ public class ElevageServiceImpl implements ElevageService {
 		elevage.setX(x);
 		elevage.setY(y);
 		elevage.setNomResponsable(nomResponsable);
-		elevage.setGenre_elev(genre_elev);
+		elevage.setGenre_elev(genre_elev.toLowerCase());
 		elevage.setAnnee_naiss(annee_naiss);
 		elevage.setPratique_realise(pratique_realise);
 		elevage.setDate_mise(date_mise);
@@ -65,7 +65,7 @@ public class ElevageServiceImpl implements ElevageService {
 		elevage.setX(x);
 		elevage.setY(y);
 		elevage.setNomResponsable(nomResponsable);
-		elevage.setGenre_elev(genre_elev);
+		elevage.setGenre_elev(genre_elev.toLowerCase());
 		elevage.setAnnee_naiss(annee_naiss);
 		elevage.setPratique_realise(pratique_realise);
 		elevage.setDate_mise(date_mise);
@@ -84,7 +84,7 @@ public class ElevageServiceImpl implements ElevageService {
 		elevage.setX(cord_x);
 		elevage.setY(cord_y);
 		elevage.setNomResponsable(nomResponsabl);
-		elevage.setGenre_elev(genre);
+		elevage.setGenre_elev(genre.toLowerCase());
 		elevage.setAnnee_naiss(annee_nais);
 		elevage.setDate_suivi(date_suiv);
 		elevage.setOperationnel(operationnels);

@@ -39,7 +39,7 @@ public class FormationBpaServiceImpl implements FormationBpaService {
 		formation_bpa.setCode_pro(code_pro);
 		formation_bpa.setCode_village(code_village);
 		formation_bpa.setNomPrenom_bpa(nomPrenom_bpa);
-		formation_bpa.setGenre_ai(genre_ai);
+		formation_bpa.setGenre_ai(genre_ai.toLowerCase());
 		formation_bpa.setAnnee_naiss(annee_naiss);
 		formation_bpa.setFrm_recu(frm_recu);
 		formation_bpa.setDate_frm(date_frm);
@@ -56,7 +56,7 @@ public class FormationBpaServiceImpl implements FormationBpaService {
 		formation_bpa.setCode_pro(code_pro);
 		formation_bpa.setCode_village(code_village);
 		formation_bpa.setNomPrenom_bpa(nomPrenom_bpa);
-		formation_bpa.setGenre_ai(genre_ai);
+		formation_bpa.setGenre_ai(genre_ai.toLowerCase());
 		formation_bpa.setAnnee_naiss(annee_naiss);
 		formation_bpa.setFrm_recu(frm_recu);
 		formation_bpa.setDate_frm(date_frm);

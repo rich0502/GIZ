@@ -27,6 +27,7 @@ import com.Giz.data.domain.GraphDistrict;
 import com.Giz.service.metier.AdopteInnovationService;
 import com.Giz.service.metier.FormationBpaService;
 import com.Giz.service.metier.ParcelleTestService;
+import com.Giz.service.metier.PepiniereService;
 import com.Giz.service.metier.RechercheService;
 
 
@@ -47,6 +48,9 @@ public class IndicateurController {
 	
 	@Autowired
 	ParcelleTestService parcelleTestService;
+	
+	@Autowired
+	PepiniereService pepiniereService; 
 	
 	@RequestMapping("/indicateur")
 	public String indicateur(@RequestParam("nom_bf") String nom_bf,Model model) {
@@ -77,6 +81,13 @@ public class IndicateurController {
 		float target_testva = 10;
 		float test = (float) ((formationBpaService.countbpa()/target_testva)*100.0);
 		
+		/* CANEVAS PEPINIERE MISE EN PLACE */
+		float target = 231;
+		float pepiniere = (float) ((pepiniereService.countPepiniere()/target)*100.0);
+		System.out.println("zzz" + pepiniere);
+		long hom_pepi = adopteInnovationService.CountGenre("homme");
+		long fem_pepi = pepiniereService.countPepiniere() - hom_pepi;
+		
 		model.addAttribute("adopte", adopte);
 		model.addAttribute("fem_adop", fem_adop);
 		model.addAttribute("hom_adop", hom_adop);
@@ -84,6 +95,9 @@ public class IndicateurController {
 		model.addAttribute("recheche", recheche);
 		model.addAttribute("bpa", bpa);
 		model.addAttribute("test", test);
+		model.addAttribute("pepiniere", pepiniere);
+		model.addAttribute("hom_pepi", hom_pepi);
+		model.addAttribute("fem_pepi", fem_pepi);
 		return "indicateurWp1/indicateurWp1";
 	}
 

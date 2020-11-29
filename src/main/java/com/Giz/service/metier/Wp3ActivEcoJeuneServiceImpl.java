@@ -29,7 +29,7 @@ public class Wp3ActivEcoJeuneServiceImpl implements Wp3ActivEcoJeuneService {
 		
 		wp3ActivEcoJeune.setCode_village(code_village);
 		wp3ActivEcoJeune.setNom_prenom(nom_prenom);
-		wp3ActivEcoJeune.setSexe(sexe);
+		wp3ActivEcoJeune.setSexe(sexe.toLowerCase());
 		wp3ActivEcoJeune.setAnnee_naissance(annee_naissance);
 		wp3ActivEcoJeune.setOrganisme_formateur(organisme_formateur);
 		wp3ActivEcoJeune.setFrm_tech_suivi(frm_tech_suivi);

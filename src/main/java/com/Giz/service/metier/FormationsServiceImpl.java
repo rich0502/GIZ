@@ -36,7 +36,7 @@ public class FormationsServiceImpl implements FormationsService {
 			Formations formations = new Formations();
 			formations.setCode_village(code_village);
 			formations.setNom_eleveur(nom_eleveur);
-			formations.setGenre_form(genre_form);
+			formations.setGenre_form(genre_form.toLowerCase());
 			formations.setAnnee_naiss(annee_naiss);
 			formations.setFormation_recu(formation_recu);
 			formations.setTheme_formation(theme_formation);
@@ -52,7 +52,7 @@ public class FormationsServiceImpl implements FormationsService {
 			int annee_naiss, String formation_recu, String theme_formation, Date date_forma, String type_formation, Long id_forms) {
 		formations.setCode_village(code_village);
 		formations.setNom_eleveur(nom_eleveur);
-		formations.setGenre_form(genre_form);
+		formations.setGenre_form(genre_form.toLowerCase());
 		formations.setAnnee_naiss(annee_naiss);
 		formations.setFormation_recu(formation_recu);
 		formations.setTheme_formation(theme_formation);
@@ -75,7 +75,7 @@ public class FormationsServiceImpl implements FormationsService {
 		Formations formations = new Formations();
 		formations.setCode_village(code_village);
 		formations.setNom_eleveur(nom_eleveur);
-		formations.setGenre_form(genre_form);
+		formations.setGenre_form(genre_form.toLowerCase());
 		formations.setAnnee_naiss(annee_naiss);
 		formations.setFormation_recu(formation_recu);
 		formations.setTheme_formation(theme_formation);
@@ -92,7 +92,7 @@ public class FormationsServiceImpl implements FormationsService {
 			String pratique_adopte, String type_formation, Long id_forms) {
 		formations.setCode_village(code_village);
 		formations.setNom_eleveur(nom_eleveur);
-		formations.setGenre_form(genre_form);
+		formations.setGenre_form(genre_form.toLowerCase());
 		formations.setAnnee_naiss(annee_naiss);
 		formations.setFormation_recu(formation_recu);
 		formations.setTheme_formation(theme_formation);

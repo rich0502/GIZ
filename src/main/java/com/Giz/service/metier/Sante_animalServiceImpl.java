@@ -32,7 +32,7 @@ public class Sante_animalServiceImpl implements Sante_animalService {
 		Sante_animal sante_animal = new Sante_animal();
 		sante_animal.setCode_village(code_village);
 		sante_animal.setNomPrenom(nomPrenom);
-		sante_animal.setGenre_sa(genre_sa);
+		sante_animal.setGenre_sa(genre_sa.toLowerCase());
 		sante_animal.setAnnee_naiss(annee_naiss);
 		sante_animal.setOperationnel(operationnel);
 		sante_animal.setDate_mise_place(date_mise_place);
@@ -47,7 +47,7 @@ public class Sante_animalServiceImpl implements Sante_animalService {
 			int annee_naiss, boolean operationnel, java.util.Date date_mise_place, java.util.Date date_suivi, Long id) {
 		sante_animal.setCode_village(code_village);
 		sante_animal.setNomPrenom(nomPrenom);
-		sante_animal.setGenre_sa(genre_sa);
+		sante_animal.setGenre_sa(genre_sa.toLowerCase());
 		sante_animal.setAnnee_naiss(annee_naiss);
 		sante_animal.setOperationnel(operationnel);
 		sante_animal.setDate_mise_place(date_mise_place);

@@ -39,7 +39,7 @@ public class PepiniereServiceImpl implements PepiniereService {
 		pepiniere.setX(x);
 		pepiniere.setY(y);
 		pepiniere.setNomResp(nomResp);
-		pepiniere.setGenre_pep(genre_pep);
+		pepiniere.setGenre_pep(genre_pep.toLowerCase());
 		pepiniere.setAnnee_naiss(annee_naiss);
 		pepiniere.setAnnee_mise_place(annee_mise_place);
 		pepiniere.setOperationnel(operationnel);
@@ -56,12 +56,23 @@ public class PepiniereServiceImpl implements PepiniereService {
 		pepiniere.setX(x);
 		pepiniere.setY(y);
 		pepiniere.setNomResp(nomResp);
-		pepiniere.setGenre_pep(genre_pep);
+		pepiniere.setGenre_pep(genre_pep.toLowerCase());
 		pepiniere.setAnnee_naiss(annee_naiss);
 		pepiniere.setAnnee_mise_place(annee_mise_place);
 		pepiniere.setOperationnel(operationnel);
 		pepiniere.setDate_suivi(date_suivi);
 		pepiniereRepository.save(pepiniere);	
+	}
+
+	@Override
+	public long countPepiniere() {
+		return pepiniereRepository.count();
+	}
+
+	@Override
+	public long countGenre(String genre) {
+		// TODO Auto-generated method stub
+		return pepiniereRepository.countPepiniere(genre);
 	}
 
 	

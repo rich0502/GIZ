@@ -31,7 +31,7 @@ public class Person_resServiceImpl implements Person_resService {
 			boolean operationnalite, Date date_suivi, String types_services_dev) {
 		Person_res person_res = new Person_res();
 		person_res.setCode_village(code_village);
-		person_res.setGenre_pr(genre_pr);
+		person_res.setGenre_pr(genre_pr.toLowerCase());
 		person_res.setAnnee_naiss(annee_naiss);
 		person_res.setOperationnalite(operationnalite);
 		person_res.setDate_suivi(date_suivi);
@@ -45,7 +45,7 @@ public class Person_resServiceImpl implements Person_resService {
 	public void modifyPerson_res(Person_res person_res, String code_village, String nomPrenom, String genre_pr,
 			int annee_naiss, boolean operationnalite, Date date_suivi, String types_services_dev, Long id_pr) {
 		person_res.setCode_village(code_village);
-		person_res.setGenre_pr(genre_pr);
+		person_res.setGenre_pr(genre_pr.toLowerCase());
 		person_res.setAnnee_naiss(annee_naiss);
 		person_res.setOperationnalite(operationnalite);
 		person_res.setDate_suivi(date_suivi);

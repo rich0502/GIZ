@@ -35,7 +35,7 @@ public class CiFormeServiceImpl implements CiFormeService {
 		CiForme ciForme = new CiForme();
 		ciForme.setCode_village(code_village);
 		ciForme.setNomPrenom_ci(nomPrenom_ci);
-		ciForme.setGenre_ci(genre_ci);
+		ciForme.setGenre_ci(genre_ci.toLowerCase());
 		ciForme.setAnnee_naiss(annee_naiss);
 		ciForme.setDate_form(date_form);
 		ciForme.setEquipe(equipe);
@@ -50,7 +50,7 @@ public class CiFormeServiceImpl implements CiFormeService {
 			int annee_naiss, Date date_form, boolean equipe, String type_materiel, Date date_dotation, Long id_ci) {
 		ciForme.setCode_village(code_village);
 		ciForme.setNomPrenom_ci(nomPrenom_ci);
-		ciForme.setGenre_ci(genre_ci);
+		ciForme.setGenre_ci(genre_ci.toLowerCase());
 		ciForme.setAnnee_naiss(annee_naiss);
 		ciForme.setDate_form(date_form);
 		ciForme.setEquipe(equipe);

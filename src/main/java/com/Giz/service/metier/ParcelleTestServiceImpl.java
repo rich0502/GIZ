@@ -38,7 +38,7 @@ public class ParcelleTestServiceImpl implements ParcelleTestService {
 		parcelle_test.setX(x);
 		parcelle_test.setY(y);
 		parcelle_test.setNomResponsable(nomResponsable);
-		parcelle_test.setGenre_pt(genre_pt);
+		parcelle_test.setGenre_pt(genre_pt.toLowerCase());
 		parcelle_test.setAnnee_naiss(annee_naiss);
 		parcelle_test.setPratique_realise(pratique_realise);
 		parcelle_test.setDate_mise(date_mise);
@@ -62,7 +62,7 @@ public class ParcelleTestServiceImpl implements ParcelleTestService {
 		parcelle_test.setX(x);
 		parcelle_test.setY(y);
 		parcelle_test.setNomResponsable(nomResponsable);
-		parcelle_test.setGenre_pt(genre_pt);
+		parcelle_test.setGenre_pt(genre_pt.toLowerCase());
 		parcelle_test.setAnnee_naiss(annee_naiss);
 		parcelle_test.setPratique_realise(pratique_realise);
 		parcelle_test.setDate_mise(date_mise);
@@ -84,7 +84,7 @@ public class ParcelleTestServiceImpl implements ParcelleTestService {
 		parcelle_test.setX(x);
 		parcelle_test.setY(y);
 		parcelle_test.setNomResponsable(nomResponsable);
-		parcelle_test.setGenre_pt(genre_pt);
+		parcelle_test.setGenre_pt(genre_pt.toLowerCase());
 		parcelle_test.setAnnee_naiss(annee_naiss);
 		parcelle_test.setSuperficies(superficies);
 		parcelle_test.setOperationnel(operationnel);
@@ -103,7 +103,7 @@ public class ParcelleTestServiceImpl implements ParcelleTestService {
 		parcelle_test.setX(x);
 		parcelle_test.setY(y);
 		parcelle_test.setNomResponsable(nomResponsable);
-		parcelle_test.setGenre_pt(genre_pt);
+		parcelle_test.setGenre_pt(genre_pt.toLowerCase());
 		parcelle_test.setAnnee_naiss(annee_naiss);
 		parcelle_test.setNbr_participant(nbr_participant);;
 		parcelle_test.setDate_suivi(date_suivi);

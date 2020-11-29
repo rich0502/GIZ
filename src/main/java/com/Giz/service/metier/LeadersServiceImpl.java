@@ -35,7 +35,7 @@ public class LeadersServiceImpl implements LeadersService {
 		Leaders leaders = new Leaders();
 		leaders.setCode_village(code_village);
 		leaders.setNomPrenom(nomPrenom);
-		leaders.setGenre_pt(genre_pt);
+		leaders.setGenre_pt(genre_pt.toLowerCase());
 		leaders.setAnnee_naiss(annee_naiss);
 		leaders.setOperationnel(operationnel);
 		leaders.setDate_mise(date_mise);
@@ -49,7 +49,7 @@ public class LeadersServiceImpl implements LeadersService {
 			int annee_naiss, boolean operationnel, Date date_mise, Date date_suivi, Long id_lds) {
 		leaders.setCode_village(code_village);
 		leaders.setNomPrenom(nomPrenom);
-		leaders.setGenre_pt(genre_pt);
+		leaders.setGenre_pt(genre_pt.toLowerCase());
 		leaders.setAnnee_naiss(annee_naiss);
 		leaders.setOperationnel(operationnel);
 		leaders.setDate_mise(date_mise);

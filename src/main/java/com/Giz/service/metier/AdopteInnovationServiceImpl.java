@@ -33,7 +33,7 @@ public class AdopteInnovationServiceImpl implements AdopteInnovationService {
 		Adoption_innovation ai = new Adoption_innovation();
 		ai.setNomPrenom_ai(nomPrenom_ai);
 		ai.setCode_pro(code_pro);
-		ai.setGenre_ai(genre_ai);
+		ai.setGenre_ai(genre_ai.toLowerCase());
 		ai.setAnnee_naiss(annee_naiss);
 		ai.setDate_suivi(date_suivi);
 		ai.setType(type);
@@ -46,7 +46,7 @@ public class AdopteInnovationServiceImpl implements AdopteInnovationService {
 			String genre_ai, String annee_naiss, Date date_suivi, String type, Long id_ai) {
 		adoption_innovation.setNomPrenom_ai(nomPrenom_ai);
 		adoption_innovation.setCode_pro(code_pro);
-		adoption_innovation.setGenre_ai(genre_ai);
+		adoption_innovation.setGenre_ai(genre_ai.toLowerCase());
 		adoption_innovation.setAnnee_naiss(annee_naiss);
 		adoption_innovation.setDate_suivi(date_suivi);
 		adoption_innovation.setType(type);
