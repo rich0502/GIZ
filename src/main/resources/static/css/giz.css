@@ -225,9 +225,11 @@ button {
     right: 11px;
     top: 11px;
 }
+
 .progress {
     background-color: #dadada;
 }
+
 body.glogin-body {
     background-image: url(../images/bg-login-left.png), url(../images/bg-login-right.png);
     background-repeat: no-repeat;

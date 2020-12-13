@@ -20,7 +20,8 @@
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 	 <!-- Nuestro css-->
     <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
     <script th:src="@{/css/js/canvasjs.min.js}"></script>
 		<!-- scripts -->
 	<style>
@@ -40,19 +41,74 @@
     </style>
 </head>
 <body>
-<div th:include="/pds_header.html"></div>
+	<div th:include="/pds_header.html"></div>
+	<section class="main">
+		<div class="base-content">
+			<span class="span-user" th:object="${nomUser}"></span>
+			<span class="span-user" th:text="${nomUser}" id="lastUser">
+				<span th:text="${nomUser.username}"></span>
+			</span>
+			<form method="POST" name="theForm">
+				<table>
+					<tr>
+						<td style="width: 260px; padding-left: 8px;">Date debut</td>
+						<td style="width: 260px; padding-left: 8px;">Date fin</td>
+						<td style="width: 260px; padding-left: 8px;">subdivision</td>
+						<td style="width: 900px;"></td>
+						<td style="width: 260px; padding-left: 8px;"></td>
+						<td style="width: 260px; padding-left: 8px;"></td>
+					</tr>
+					<tr>
+						<td style="width: 260px; padding-left: 8px;"><input class="form-control select2" type="date"
+								id="date_frm" th:name="date_debut" min="2015-01-01"></td>
+						<td style="width: 260px; padding-left: 8px;"> <input class="form-control select2" type="date"
+								id="date_frm" th:name="date_fin" min="2015-01-01"></td>
+						<td style="width: 260px; padding-left: 8px;">
+							<select th:name="subdivision" class="form-control select2">
+								<option value="districts">Districts</option>
+								<option value="communes">Communes</option>
+								<option value="fokontany">Fokontany</option>
+								<option value="village">Villages</option>
+							</select>
+						</td>
+						<td style="width: 900px;"></td>
+						<td style="width: 260px; padding-left: 8px;"><input class="form-control" type="submit" value="Carte"
+								onClick="submitFunction(1)"></td>
+						<td style="width: 260px; padding-left: 8px;"><input class="form-control" type="submit" value="Graphe"
+								onClick="submitFunction(2)"></td>
+					</tr>
+				</table>
+			</form>
+			<br>
+			<br>
+			<br>
+			<br>
+			<table border="1">
+				<tr>
+					<td width="950px">
+						<div id="chart_crosshair" style="height: 370px; max-width: 820px; margin: 0px auto;"></div>
+					</td>
+					<td width="950px">
+						<div id="chart_animated" style="height: 370px; max-width: 820px; margin: 0px auto;"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</section>
+
+
 <script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
 <script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
 <script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
 <SCRIPT>
-function submitFunction(i) {
-   if (i==1) document.theForm.action=
-      "/Giz/carte";
-   if (i==2) document.theForm.action=
-      "/Giz/graphe";
-   if (i==3) document.theForm.action=
-      "http://www.company.com/cgi-bin/cgi3.cgi";
-   document.theForm.submit()
+	function submitFunction(i) {
+		if (i==1) document.theForm.action=
+			"/Giz/carte";
+		if (i==2) document.theForm.action=
+			"/Giz/graphe";
+		if (i==3) document.theForm.action=
+			"http://www.company.com/cgi-bin/cgi3.cgi";
+		document.theForm.submit()
    }
    
 </SCRIPT>
@@ -126,48 +182,5 @@ chart_animated.render();
 
 }
 </script>
-<span class="span-user" th:object="${nomUser}"> 
-<span class="span-user" th:text="${nomUser}" id="lastUser">  
-<span th:text="${nomUser.username}"></span>
-</span>
-<form method="POST" name="theForm">
-<table>
-	<tr>
-		<td style="width: 260px; padding-left: 8px;">Date debut</td>
-		<td style="width: 260px; padding-left: 8px;">Date fin</td>
-		<td style="width: 260px; padding-left: 8px;">subdivision</td>
-		<td style="width: 900px;"></td>
-		<td style="width: 260px; padding-left: 8px;"></td>
-		<td style="width: 260px; padding-left: 8px;"></td>
-	</tr>
-	<tr>
-		<td style="width: 260px; padding-left: 8px;"><input class="form-control select2" type="date" id="date_frm" th:name="date_debut" min="2015-01-01" ></td>
-		<td style="width: 260px; padding-left: 8px;"> <input class="form-control select2" type="date" id="date_frm" th:name="date_fin" min="2015-01-01" ></td>
-		<td style="width: 260px; padding-left: 8px;">
-			<select th:name="subdivision" class="form-control select2">
-			    <option value="districts">Districts</option>
-			    <option value="communes">Communes</option>
-			    <option value="fokontany">Fokontany</option>
-			    <option value="village">Villages</option>
-			</select>
-		</td>
-		<td style="width: 900px;"></td>
-		<td style="width: 260px; padding-left: 8px;"><input  class="form-control" type="submit" value="Carte" onClick="submitFunction(1)"></td>
-		<td style="width: 260px; padding-left: 8px;"><input class="form-control"  type="submit" value="Graphe" onClick="submitFunction(2)"></td>
-	</tr>
-</table>
-
-</form>
-<br>
-<br>
-<br>
-<br>
-<table border="1">
-<tr>
-<td width="950px"><div id="chart_crosshair" style="height: 370px; max-width: 820px; margin: 0px auto;"></div></td>
-<td width="950px"><div id="chart_animated" style="height: 370px; max-width: 820px; margin: 0px auto;"></div></td>
-</tr>
-</table>
-
 </body>
 </html>
