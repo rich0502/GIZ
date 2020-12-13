@@ -43,6 +43,8 @@
 			<form method="POST" name="theForm">
 				<table>
 					<tr>
+						<td style="width: 100px; padding-left: 8px;">Work Package</td>
+						<td style="width: 150px; padding-left: 8px;">Canevas</td>
 						<td style="width: 260px; padding-left: 8px;">Date debut</td>
 						<td style="width: 260px; padding-left: 8px;">Date fin</td>
 						<td style="width: 260px; padding-left: 8px;">subdivision</td>
@@ -51,6 +53,24 @@
 						<td style="width: 260px; padding-left: 8px;"></td>
 					</tr>
 					<tr>
+						<td style="width: 100px; padding-left: 8px;">
+							<select id="dynamic_select" class="ginput form-control" >
+								  <option value="" selected>Selectionner</option>
+								  <option value="indicateurWP1">WP1</option>
+								  <option value="#">WP2</option>
+								  <option value="#">WP3</option>
+								  <option value="#">WP4</option>
+							</select>
+						</td>
+						<td style="width: 150px; padding-left: 8px;">
+							<select id="dynamic_select" class="ginput form-control" >
+								  <option value="" selected>Selectionner</option>
+								  <option value="indicateurWP1">WP1</option>
+								  <option value="#">WP2</option>
+								  <option value="#">WP3</option>
+								  <option value="#">WP4</option>
+							</select>
+						</td>
 						<td style="width: 260px; padding-left: 8px;"><input class="form-control select2"
 							type="date" id="date_frm" th:name="date_debut" min="2015-01-01"></td>
 						<td style="width: 260px; padding-left: 8px;"><input class="form-control select2"
@@ -63,6 +83,8 @@
 								<option value="village">Villages</option>
 						</select></td>
 						<td style="width: 900px;"></td>
+						<td style="width: 260px; padding-left: 8px;"><input class="form-control"
+							type="submit" value="Tableau" onClick="submitFunction(3)"></td>
 						<td style="width: 260px; padding-left: 8px;"><input class="form-control"
 							type="submit" value="Carte" onClick="submitFunction(1)"></td>
 						<td style="width: 260px; padding-left: 8px;"><input class="form-control"
@@ -87,6 +109,8 @@
 				document.theForm.action = "/Giz/carte";
 			if (i == 2)
 				document.theForm.action = "/Giz/graphe";
+			if (i == 3)
+				document.theForm.action = "/Giz/tableau";
 		}
 	</SCRIPT>
 </body>
