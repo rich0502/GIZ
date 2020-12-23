@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 	 <!-- Nuestro css-->
-    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}">
     <link rel="stylesheet"  type="text/css" th:href="@{/css/giz.css}" />
 
 </head>
@@ -29,49 +29,15 @@
 
 	 <section class="main">
         <div class="home-content" >
-            <h2 class="content-title" style="margin-bottom: 12px;">Bienvenue</h2>
-            
+            <h2 class="content-title" style="margin-bottom: 12px;">[[#{accueil.titre}]] <a th:href="@{'/acc'}" class="btn pds-primary-btn pds-add-user-btn pds-icon-btn" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">[[#{btn.accueil}]]</a></h2>        
+
             <div class="welcome-img">
                 <img alt="" th:src="@{/img/bg-login4.jpg}">
             </div>
             <div>
-            	<p> 
-                    
-                    
-                    Lorem ipsum dolor sit amet, consectetur 
-                    adipiscing elit. Integer molestie nunc enim, 
-                    aliquam libero, amet gravida nisi. Mattis nisl 
-                    consequat lectus in urna tincidunt congue. Semper 
-                    volutpat sed dolor in aenean cras tellus pulvinar 
-                    vitae. Phasellus posuere facilisi nunc purus in arcu 
-                    tincidunt commodo. Sit felis amet in viverra hac velit.
-                    Congue mollis porta ullamcorper et fusce pellentesque 
-                    non.</p>
-                    <p> Lorem ipsum dolor sit amet, consectetur 
-                    adipiscing elit. Integer molestie nunc enim, 
-                    aliquam libero, amet gravida nisi. Mattis nisl 
-                    consequat lectus in urna tincidunt congue. Semper 
-                    volutpat sed dolor in aenean cras tellus pulvinar 
-                    vitae. Phasellus posuere facilisi nunc purus in arcu 
-                    tincidunt commodo. Sit felis amet in viverra hac velit.
-                    Congue mollis porta ullamcorper et fusce pellentesque 
-                    non.Lorem ipsum dolor sit amet, consectetur 
-                    adipiscing elit. Integer molestie nunc enim, 
-                    aliquam libero, amet gravida nisi. Mattis nisl 
-                    consequat lectus in urna tincidunt congue. Semper 
-                    volutpat sed dolor in aenean cras tellus pulvinar 
-                    vitae. Phasellus posuere facilisi nunc purus in arcu 
-                    tincidunt commodo. Sit felis amet in viverra hac velit.
-                    Congue mollis porta ullamcorper et fusce pellentesque 
-                    non.Lorem ipsum dolor sit amet, consectetur 
-                    adipiscing elit. Integer molestie nunc enim, 
-                    aliquam libero, amet gravida nisi. Mattis nisl 
-                    consequat lectus in urna tincidunt congue. Semper 
-                    volutpat sed dolor in aenean cras tellus pulvinar 
-                    vitae. Phasellus posuere facilisi nunc purus in arcu 
-                    tincidunt commodo. Sit felis amet in viverra hac velit.
-                    Congue mollis porta ullamcorper et fusce pellentesque 
-                    non.</p>
+            	<div th:each="b : ${Accueil}">
+					<p th:text="${b.contenu_acc}"></p>		
+				</div>
             </div>
             
             <div class="welcome"></div>
@@ -79,11 +45,11 @@
     </section>
     
     
-    <script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
-	<script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
-    <script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
-    <script>
-        var unirest = require("unirest");
+    <script th:src="@{/webjars/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
+	<script th:src="@{/webjars/css/vendor/bootstrap/js/popper.js}"></script>
+    <script th:src="@{/webjars/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/css/vendor/bootstrap/js/bootstrap.min.js}">
+    var unirest = require("unirest");
 
         var req = unirest("GET", "https://google-translate1.p.rapidapi.com/language/translate/v2/languages");
 
@@ -100,5 +66,6 @@
 
             console.log(res.body);
         });
+    </script>
     </body>
 </html>

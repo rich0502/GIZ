@@ -11,10 +11,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +39,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.Giz.Exception.CustomeFieldValidationException;
 import com.Giz.Exception.UsernameOrIdNotFound;
+import com.Giz.data.domain.Accueil;
 import com.Giz.dto.ChangePasswordForm;
 import com.Giz.entity.Role;
 import com.Giz.entity.User;
+import com.Giz.repository.AccueilRepository;
 import com.Giz.repository.RoleRepository;
 import com.Giz.service.UserService;
+import com.Giz.service.metier.AccueilService;
 
 @Controller
 public class UserController {
@@ -59,10 +64,17 @@ public class UserController {
 	
 	int notif = 0;
 	
-
+	@Autowired
+	AccueilService accueilService;
+	
+	@Autowired
+	AccueilRepository accueilRepository;
 	
 	@RequestMapping(value = { "/accueil" })
-	public String accueil(Model model) throws Exception {
+	public String accueil(Model model, HttpServletRequest request) throws Exception {
+		List<Accueil> accueil = accueilService.ListAccueil();
+		model.addAttribute("Accueil", accueil);
+		
 		/**
 		 * persone.getFirstName(Authentication.getPrincipal().getUsername());
 		 * model.(nom, personn);0
