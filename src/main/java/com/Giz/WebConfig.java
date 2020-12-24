@@ -68,12 +68,6 @@ public class WebConfig implements WebMvcConfigurer{
 		// TODO Auto-generated method stub
 		registry.addInterceptor(localeChangeInterceptor());
 	}
-
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		// TODO Auto-generated method stub
-		registry.addResourceHandler("/webjars/**").addResourceLocations("/webjars/");
-	}
 	
 	
         

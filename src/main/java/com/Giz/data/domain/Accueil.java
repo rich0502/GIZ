@@ -13,7 +13,7 @@ public class Accueil {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_acc;
 	
-	@Column(length = 255)
+	@Column(columnDefinition="TEXT")
 	private String contenu_acc;
 
 	public Accueil() {
@@ -42,7 +42,6 @@ public class Accueil {
 	public void setContenu_acc(String contenu_acc) {
 		this.contenu_acc = contenu_acc;
 	}
-	
-	
+
 	
 }

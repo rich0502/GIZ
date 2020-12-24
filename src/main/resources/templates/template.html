@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 
 <head>
     <title>Template</title>
@@ -11,42 +10,42 @@
 
     <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-        </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
     <!-- Los iconos tipo Solid de Fontawesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
     <!-- Nuestro css-->
     <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
+
     <link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{/css/tracker_table.css}" />
 </head>
 
 <body>
     <div th:include="/pds_header.html"></div>
     <section class="main">
-        <span class="span-user" th:object="${nomUser}"></span>
-        <span class="span-user" th:text="${nomUser}" id="lastUser">
-            <span th:text="${nomUser.username}"></span>
-        </span>
-        <br>
+        <div class="base-content">
 
-        <div style="text-align: center;">
-            <br>
-            <div th:include="indiMenu.html" th:remove="tag"></div>
-            <br>
-            <br>
-            <br>
-            <div class="table-tracker-container indicator" id="html-content-holder" crossorigin="anonymous">
+            <div class="-container">
+                <div class="text-center">
+                    Work package :
+                    <select id="filterText" class="ginput form-control" onchange='filterText()'>
+                        <option disabled selected>Selectionner</option>
+                        <option value="all">Tout</option>
+                        <option value="WP1">WP1</option>
+                        <option value="WP2">WP2</option>
+                        <option value="WP3">WP3</option>
+                        <option value="WP4">WP4</option>
+                    </select>
+                </div>
+                <br>
                 <div class="table-responsive">
                     <table id="docList" class="pds-table table table-hover table-striped">
                         <thead class="thead-light">
                             <tr>
+                                <th class="hidden">WP</th>
                                 <th scope="col">Numéro du canevas</th>
                                 <th scope="col">Nom du canevas</th>
                                 <th scope="col" class="">Download</th>
@@ -55,39 +54,36 @@
                         <tbody th:include="/partial_template_list.html"></tbody>
                     </table>
                 </div>
+                <br>
+                <button class="btn" onclick="firstPage()">|<< /button>
+                        <button class="btn" onclick="previous()">
+                            <</button>
+                                <span id="pageInfo"></span>
+                                <button class="btn" onclick="nextPage()">></button>
+                                <button class="btn" onclick="lastPage()">>|</button>
+
             </div>
+
         </div>
     </section>
-    <script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
-    <script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
-    <script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
-    
-    <script th:src="@{/js/tracker-table/jquery-1.12.4.js}"></script>
-    <script th:src="@{/js/tracker-table/jquery-ui.js}"></script>
-    <script th:src="@{/js/tracker-table/html2canvas.min.js}"></script>
-
-    <script th:src="@{/js/tracker-table/trackerTable.js}"></script>
-
-    <SCRIPT>
-        function submitFunction(i) {
-            if (i == 1) document.theForm.action =
-                "/Giz/carte";
-            if (i == 2) document.theForm.action =
-                "/Giz/graphe";
-            if (i == 3) document.theForm.action =
-                "http://www.company.com/cgi-bin/cgi3.cgi";
-            document.theForm.submit()
-        }
-
-    </SCRIPT>
-
     <script>
-        $('.type-number-percent input').each(function (elem) {
-            $(this).change(function () {
-                var valeur = $(this).val();
-                $(this).closest('.type-number-percent').parent().find('.progress-bar').css('width', valeur + '%').attr('aria-valuenow', valeur);
-            })
-        })		
+        function filterText() {
+            var val = $('#filterText').val();
+            if (val === "")
+                return;
+            if (val === "all")
+                clearFilter();
+            else
+
+                $('.wp').each(function () {
+                    $(this).parent().toggle($(this).text() === val);
+                });
+
+        }
+        function clearFilter() {
+            $('.filterText').val('');
+            $('.afficher').show();
+        }
     </script>
 </body>
 
