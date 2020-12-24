@@ -29,3 +29,23 @@
     font-style: normal;
     font-display: block;
 }
+@font-face
+{
+    font-family: 'Barlow';
+    src: local('?'),
+        url('./fonts/Barlow-Regular.woff') format('woff'),
+        url('./fonts/Barlow-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+}
+@font-face
+{
+    font-family: 'Barlow';
+    src: local('?'),
+        url('./fonts/Barlow-ExtraBold.woff') format('woff'),
+        url('./fonts/Barlow-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: block;
+}

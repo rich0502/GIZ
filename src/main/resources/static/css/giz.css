@@ -1009,7 +1009,10 @@ ul.nav-tabs {
     top: 40px;
     width: 10px
 }
-
+.form-input-label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
 .export-label {
     padding-top: 8px;
     text-align: center

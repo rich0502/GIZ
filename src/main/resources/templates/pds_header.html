@@ -4,9 +4,9 @@
    
     <header class="header-container">
         <nav class="pds-header">        
-            <div class="logo-section">
+            <!-- <div class="logo-section">
                 <img th:src="@{/img/giz_logo_notext.png}" class="img-logo" alt="logo">				
-            </div>
+            </div> -->
             
         	 <div class=" menu-list">
         	 	<div class="text-logo" >[[#{app.logo}]]</div>        	 	
@@ -36,8 +36,8 @@
                         <a class="dropdown-item pds-logout" th:href="@{/logout}">[[#{logout}]]</a>
                     </div>
                 </div>
-                <a class="col-md-3" th:href="@{?lang=us}"><i class="flag-icon flag-icon-us" title="us" id="us"></i> [[#{us}]]</a>
-                <a class="col-md-3" th:href="@{?lang=fr}"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> [[#{fr}]]</a>
+                <a class="col" th:href="@{?lang=us}"><i class="flag-icon flag-icon-us" title="us" id="us"></i> [[#{us}]]</a>
+                <a class="col" th:href="@{?lang=fr}"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> [[#{fr}]]</a>
             </div>        
         </nav>
         

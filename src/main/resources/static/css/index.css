@@ -79,13 +79,22 @@ body{
 
 .menu-list {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items:center	;
     flex-wrap: wrap;
     margin: auto;
     padding: 2px 20px;
+    position: relative;
 }
-
+.menu-list::before {
+    content: '';
+    position: absolute;
+    height: 30px;
+    width: 4px;
+    top: 20px;
+    background-color: #f6f6f6;
+    left: -5px;
+}
 .menu-item {
     width: 180px;
     height: 120px;
@@ -241,6 +250,7 @@ LOGIN
 	height:100vh;
 	/* background: linear-gradient(180deg, rgba(255,255,255,0.9), rgb(255,255,255,0.9)) ,url(../img/bg-login.jpg) center no-repeat; */
     background-size:100% 100%;
+    /* background: linear-gradient(180deg, rgba(255,255,255,0.9), rgb(255,255,255,0.9)), url(../img/bg-vanilla-mini.png) center no-repeat;  */
     
     
 }
@@ -270,7 +280,7 @@ LOGIN
 .logo-container span, .logo-container h1{
 	display:inline-block;
 	font-style: normal;
-	font-weight: 900;
+	font-weight: 600;
 	font-size: 36px;
 /* 	line-height: 43px; */
 	text-transform: uppercase;
@@ -364,6 +374,49 @@ label:not(.custom-control-label) {
   color:#5264AE;
 }
 
+.login-zone {
+    overflow: visible;  
+    position: relative;  
+    background-color: rgba(255, 255, 255, 0.9);
+    border-left: 2px dotted #D1D1D1;
+    border-right: 2px dotted #D1D1D1;
+}
+.login-zone::after {
+    content: '';
+    width: 520px;
+    height: 346px;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: -275px;
+    background: url(../img/bg-loginwhite.jpg) center no-repeat;
+    background-size: cover;
+}
+.login-container .form-wrap {
+    background-color: transparent;
+}
+.login-container .logo-container h1 {
+    font-weight: 500;
+    letter-spacing: 5px;
+}
+.login-container .logo-container h1 b {
+    font-weight: 600;
+}
+.login-container {
+    position: relative;
+}
+.login-container::after {
+    content:'';
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    width: 1250%;
+    height: 908;
+    z-index: -2;
+	background-size:100% 100%;
+    background: url(../img/bg-vanilla-mini.png) center no-repeat;     
+    
+}
 /* active state */
 .floating-input:focus ~ .bar:before, .floating-input:focus ~ .bar:after, .floating-select:focus ~ .bar:before, .floating-select:focus ~ .bar:after {
   width:50%;
@@ -704,7 +757,8 @@ PSD HEADER
     text-align: center;
     height: auto;
     padding: 10px 0 5px;
-    opacity: 0.5;
+    /* opacity: 0.5; */
+    text-align: left;
 
     transition: all 0.2s ease;
 }
@@ -907,7 +961,10 @@ PSD CONTENT
 	margin-bottom:80px;
 	 font-family: 'Barlow', Arial, Helvetica, sans-serif !important;
 }
-
+.content-title .sub-tontent-title {
+    color:#000;
+    font-weight: bold;
+}
 .content-title:after{
     content: '';
     display: block;
@@ -922,7 +979,9 @@ PSD CONTENT
 .content-title.home{
 	margin-bottom:0;
 }
-
+.content-title .btn {
+    margin-top: 10px;
+}
 
 /*override card*/
 
