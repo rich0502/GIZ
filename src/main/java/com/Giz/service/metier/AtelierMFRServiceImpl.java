@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.Giz.data.domain.Adoption_innovation;
 import com.Giz.data.domain.AtelierMFR;
+import com.Giz.data.domain.GraphDist;
+import com.Giz.data.domain.GraphDistrict;
+import com.Giz.data.domain.TpsFormes;
 import com.Giz.repository.Adopte_InnovationRepository;
 import com.Giz.repository.AtelierMFRRepository;
 
@@ -68,5 +71,28 @@ public class AtelierMFRServiceImpl implements AtelierMFRService {
 	@Override
 	public List<AtelierMFR> fetchAtelier(String type_atelier) {
 		return atelierMFRRepository.fetchAtelier(type_atelier);
+	}
+
+	@Override
+	public List<Object[]> ListAtelierFetch(String type_atelier) {
+		return atelierMFRRepository.fetchAtelierMFRData(type_atelier);
+	}
+
+	@Override
+	public long TotAtelierMFR(String type_atelier) {
+		// TODO Auto-generated method stub
+		return atelierMFRRepository.SomAtelierMFRData(type_atelier);
+	}
+
+	@Override
+	public List<Object[]> TpsAtelierMFR(String type_atelier, Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return atelierMFRRepository.TpsAtelierMFRData(type_atelier, debut_date, fin_date);
+	}
+
+	@Override
+	public long TotAtelierParticipant(String type_atelier,Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+			return atelierMFRRepository.SomAtelierMFR(type_atelier,debut_date, fin_date);
 	}
 }

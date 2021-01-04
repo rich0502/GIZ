@@ -30,6 +30,10 @@
     <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
 
  <link rel="stylesheet"  type="text/css" th:href="@{/css/giz.css}" />
+ 
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
 </head>
 <body>
 	<div th:include="/pds_header.html"></div>
@@ -48,21 +52,15 @@
 					</tr>
 					<tr>
 						<td style="width: 100px; padding-left: 8px;">
-							<select id="dynamic_select" class="ginput form-control" >
-								  <option value="" selected>Selectionner</option>
-								  <option value="indicateurWP1">WP1</option>
-								  <option value="#">WP2</option>
-								  <option value="#">WP3</option>
-								  <option value="#">WP4</option>
+							<select th:name="sc" class="ginput form-control" id="sc">
+								<option value="null">-- <span>Sélectionner Work Package</span> --</option>
+								<option th:each="sc : ${scList}" th:value="${sc[0]}" th:text="${sc[1]}"></option>
 							</select>
 						</td>
 						<td style="width: 150px; padding-left: 8px;">
-							<select id="dynamic_select" class="ginput form-control" >
-								  <option value="" selected>Selectionner</option>
-								  <option value="indicateurWP1">WP1</option>
-								  <option value="#">WP2</option>
-								  <option value="#">WP3</option>
-								  <option value="#">WP4</option>
+							<select
+								onchange="this.options[this.selectedIndex].value"
+								class="ginput form-control" th:name="theme" id="theme">
 							</select>
 						</td>
 					</tr>
@@ -70,26 +68,42 @@
 				<br>
 				<table style="width: '100%'">
 					<tr>
-						<td style="width: 200px; padding-left: 8px;">Date debut</td>
-						<td style="width: 200px; padding-left: 8px;">Date fin</td>
-						<td style="width: 200px; padding-left: 8px;">subdivision</td>
+						<td style="width: 200px; padding-left: 8px;">Donnée arrêtée</td>
+						<td style="width: 200px; padding-left: 8px;">Subdivision</td>
+						<td style="width: 200px; padding-left: 8px;"></td>
 						<td style="width: 8%;"></td>
 						<td style="width: 150px; padding-left: 8px;"></td>
 						<td style="width: 150px; padding-left: 8px;"></td>
 						<td style="width: 150px; padding-left: 8px;"></td>
 					</tr>
 					<tr>						
-						<td style="width: 200px; padding-left: 8px;"><input class="form-control select2"
-							type="date" id="date_frm" th:name="date_debut" min="2015-01-01"></td>
-						<td style="width: 200px; padding-left: 8px;"><input class="form-control select2"
-							type="date" id="date_frm" th:name="date_fin" min="2015-01-01"></td>
+						<td style="width: 200px; padding-left: 8px;">
+							<select th:name="date_fin" class="form-control select2">
+									<option value="2020-08-01">Août-20</option>
+									<option value="2020-11-01">Nov-20</option>
+									<option value="2021-02-01">Févr-21</option>
+									<option value="2021-05-01">Mai-21</option>
+									<option value="2021-08-01">Août-21</option>
+									<option value="2021-11-01">Nov-21</option>
+									<option value="2022-02-01">Févr-22</option>
+									<option value="2022-05-01">Mai-22</option>
+									<option value="2022-08-01">Août-22</option>
+									<option value="2022-11-01">Nov-22</option>
+									<option value="2022-02-01">Févr-23</option>
+									<option value="2023-05-01">Mai-23</option>
+									<option value="2023-08-01">Août-23</option>
+									<option value="2023-11-01">Nov-23</option>
+							</select>
+						</td>
 						<td style="width: 200px; padding-left: 8px;">
 							<select th:name="subdivision" class="form-control select2">
-								<option value="districts">Districts</option>
-								<option value="communes">Communes</option>
-								<option value="fokontany">Fokontany</option>
+								<option value="district">Districts</option>
+								<option value="commune">Communes</option>
 								<option value="village">Villages</option>
 							</select>
+						</td>
+						<td style="width: 200px; padding-left: 8px;">
+							
 						</td>
 						<td style="width: auto;"></td>
 						<td style="width: 150px; padding-left: 8px;"><input class="form-control"
@@ -122,5 +136,12 @@
 				document.theForm.action = "/Giz/tableau";
 		}
 	</SCRIPT>
+	 <!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{js/ajaxAnalyse.js}"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.Giz.data.domain;
 
+
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -21,41 +22,33 @@ public class TpsFormes {
 
 	 private Date x;
 	 private Long y;
+	 
+	public TpsFormes() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-	/**
-	 * @param x
-	 * @param y
-	 */
 	public TpsFormes(Date x, Long y) {
 		super();
 		this.x = x;
 		this.y = y;
 	}
-	/**
-	 * @return the x
-	 */
-	public Date getx() {
+
+	public Date getX() {
 		return x;
 	}
-	/**
-	 * @param x the x to set
-	 */
-	public void setx(Date x) {
+
+	public void setX(Date x) {
 		this.x = x;
 	}
-	/**
-	 * @return the y
-	 */
+
 	public Long getY() {
 		return y;
 	}
-	/**
-	 * @param y the y to set
-	 */
+
 	public void setY(Long y) {
 		this.y = y;
 	}
-	
-	 
+
 
 }

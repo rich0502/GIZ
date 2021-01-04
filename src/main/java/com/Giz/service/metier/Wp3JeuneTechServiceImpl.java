@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.Giz.data.domain.Wp3JeuneTech;
 import com.Giz.repository.Wp3JeuneTechRepository;
@@ -43,5 +44,23 @@ public class Wp3JeuneTechServiceImpl implements Wp3JeuneTechService {
 		
 		wp3JeuneTechRepository.save(wp3JeuneTech);
 		
+	}
+
+	@Override
+	public long countChronologique(String dateChronologique) {
+		if(StringUtils.isEmpty(dateChronologique)) {
+			return wp3JeuneTechRepository.count();
+		} else {
+			return wp3JeuneTechRepository.countChronologique(dateChronologique);
+		}
+	}
+
+	@Override
+	public long countChronologiqueGenre(String dateChronologique, String genre) {
+		if(StringUtils.isEmpty(dateChronologique)) {
+			return wp3JeuneTechRepository.countGenre(genre);
+		} else {
+			return wp3JeuneTechRepository.countChronologiqueGenre(dateChronologique, genre);
+		}
 	}
 }

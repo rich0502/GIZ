@@ -1,9 +1,11 @@
 package com.Giz.service.metier;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.Giz.data.domain.Wp3EquipeTechMfr;
 import com.Giz.repository.Wp3EquipeTechMfrRepository;
@@ -41,5 +43,72 @@ public class Wp3EquipeTechMfrServiceImpl implements Wp3EquipeTechMfrService {
 		
 		wp3EquipeTechMfrRepository.save(wp3EquipeTechMfr);
 		
+	}
+
+	@Override
+	public long countChronologique(String dateChronologique) {
+		if(StringUtils.isEmpty(dateChronologique)) {
+			return wp3EquipeTechMfrRepository.count();
+		} else {
+			return wp3EquipeTechMfrRepository.countChronologique(dateChronologique);
+		}
+	}
+
+	@Override
+	public long countChronologiqueGenre(String dateChronologique, String genre) {
+		if(StringUtils.isEmpty(dateChronologique)) {
+			return wp3EquipeTechMfrRepository.countGenre(genre);
+		} else {
+			return wp3EquipeTechMfrRepository.countChronologiqueGenre(dateChronologique, genre);
+		}
+	}
+
+	@Override
+	public Optional<Wp3EquipeTechMfr> findByIdEquipeTechMfr(long id) {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.findById(id);
+	}
+
+	@Override
+	public void modifyWp3EquipeTechMfr(String code_village, String nom_prenom, String sexe, int annee_naissance,
+			String frm_recue1, boolean competence_frm, Date date_eval, long id) {
+	Wp3EquipeTechMfr wp3EquipeTechMfr = new Wp3EquipeTechMfr();
+		
+		wp3EquipeTechMfr.setCode_village(code_village);
+		wp3EquipeTechMfr.setNom_prenom(nom_prenom);
+		wp3EquipeTechMfr.setSexe(sexe);
+		wp3EquipeTechMfr.setAnnee_naissance(annee_naissance);
+		wp3EquipeTechMfr.setFrm_recue1(frm_recue1);
+		wp3EquipeTechMfr.setCompetence_frm(competence_frm);
+		wp3EquipeTechMfr.setDate_eval(date_eval);
+		wp3EquipeTechMfr.setId(id);
+		wp3EquipeTechMfrRepository.save(wp3EquipeTechMfr);
+		
+	}
+	
+	//graphe
+
+	@Override
+	public long TotTotal(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.SomTotal(debut_date, fin_date);
+	}
+
+	@Override
+	public List<Object[]> ListFetch() {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.fetchData();
+	}
+
+	@Override
+	public long CamembertTot() {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.CamembertTot();
+	}
+
+	@Override
+	public List<Object[]> ListGraphe(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.TpsData(debut_date, fin_date);
 	}
 }

@@ -1,6 +1,5 @@
 package com.Giz.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -132,11 +131,6 @@ public class UserServiceImpl implements UserService {
 																															// null;
 		}
 		return loggedUser != null ? true : false;
-	}
-
-	@Override
-	public List<User> getUserByEmail(String email) throws Exception {
-		return repository.findByIdEmail(email);
 	}
 
 }

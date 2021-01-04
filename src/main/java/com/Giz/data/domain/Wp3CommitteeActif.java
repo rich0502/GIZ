@@ -27,6 +27,8 @@ public class Wp3CommitteeActif {
 
 	private int sexe_h;
 	private int sexe_f;
+	
+	private String sexe;
 
 	public Wp3CommitteeActif() {
 		super();
@@ -45,6 +47,16 @@ public class Wp3CommitteeActif {
 		this.effectif_membre = effectif_membre;
 		this.sexe_h = sexe_h;
 		this.sexe_f = sexe_f;
+	}
+	
+	
+
+	public String getSexe() {
+		return sexe;
+	}
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
 	}
 
 	public Long getId() {

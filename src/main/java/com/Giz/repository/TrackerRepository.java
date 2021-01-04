@@ -11,6 +11,7 @@ import com.Giz.data.domain.Tracker;;
 
 @Repository
 public interface TrackerRepository extends CrudRepository<Tracker, Long> {
-	@Query(value = "SELECT * FROM Tracker",  nativeQuery = true)
-	List<Tracker> ListTracker();
+	
+	@Query(value = "SELECT * FROM Tracker where type_tracker=:type_tracker",  nativeQuery = true)
+	List<Tracker> ListTracker(String type_tracker);
 }

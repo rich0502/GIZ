@@ -24,6 +24,7 @@ public class Wp3EppFram {
 	private boolean projet_valide;
 	private String type_projet;
 	private Date date_validation;
+	private String sexe;
 
 	public Wp3EppFram() {
 		super();
@@ -40,6 +41,15 @@ public class Wp3EppFram {
 		this.projet_valide = projet_valide;
 		this.type_projet = type_projet;
 		this.date_validation = date_validation;
+	}
+
+	
+	public String getSexe() {
+		return sexe;
+	}
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
 	}
 
 	public Long getId() {

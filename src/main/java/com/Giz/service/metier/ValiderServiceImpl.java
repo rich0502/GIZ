@@ -37,7 +37,7 @@ public class ValiderServiceImpl implements ValiderService{
 		validerL3.setCategorie(categorie);
 		validerL3.setDate_creation(date_creation);
 		validerL3.setEffectif_membre(effectif_membre);
-		validerL3.setSexe(sexe);
+		validerL3.setSexe(sexe.toLowerCase());
 		validerL3.setOperationnel(operationnel);
 		validerL3.setDate_suivi(date_suivi);
 		validerL3.setCanevas("L3");
@@ -56,7 +56,7 @@ public class ValiderServiceImpl implements ValiderService{
 		validerL3.setCategorie(categorie);
 		validerL3.setDate_creation(date_creation);
 		validerL3.setEffectif_membre(effectif_membre);
-		validerL3.setSexe(sexe);
+		validerL3.setSexe(sexe.toLowerCase());
 		validerL3.setOperationnel(operationnel);
 		validerL3.setDate_suivi(date_suivi);
 		validerrepository.save(validerL3);
@@ -148,7 +148,7 @@ public class ValiderServiceImpl implements ValiderService{
 		validerMoney.setCode_village(code_village);
 		validerMoney.setCode_prod(code_prod);
 		validerMoney.setNom_prenom(nom_prenom);
-		validerMoney.setSexe(sexe);
+		validerMoney.setSexe(sexe.toLowerCase());
 		validerMoney.setAnnee_naissance(annee_naissance);
 		validerMoney.setService_mobile_money(service_mobile_money);
 		validerMoney.setOrange_money(orange_money);
@@ -168,7 +168,7 @@ public class ValiderServiceImpl implements ValiderService{
 		valider.setCode_village(code_village);
 		valider.setCode_prod(code_prod);
 		valider.setNom_prenom(nom_prenom);
-		valider.setSexe(sexe);
+		valider.setSexe(sexe.toLowerCase());
 		valider.setAnnee_naissance(annee_naissance);
 		valider.setService_mobile_money(service_mobile_money);
 		valider.setOrange_money(orange_money);
@@ -192,7 +192,7 @@ public class ValiderServiceImpl implements ValiderService{
 		validerFinance.setCode_village(code_village);
 		validerFinance.setCode_prod(code_prod);
 		validerFinance.setNom_prenom(nom_prenom);
-		validerFinance.setSexe(sexe);
+		validerFinance.setSexe(sexe.toLowerCase());
 		validerFinance.setAnnee_naissance(annee_naissance);
 		validerFinance.setService_IMF(service_IMF);
 		validerFinance.setInstitution(institution);
@@ -211,7 +211,7 @@ public class ValiderServiceImpl implements ValiderService{
 		valider.setCode_village(code_village);
 		valider.setCode_prod(code_prod);
 		valider.setNom_prenom(nom_prenom);
-		valider.setSexe(sexe);
+		valider.setSexe(sexe.toLowerCase());
 		valider.setAnnee_naissance(annee_naissance);
 		valider.setService_IMF(service_IMF);
 		valider.setInstitution(institution);
@@ -231,7 +231,7 @@ public class ValiderServiceImpl implements ValiderService{
 	public void addValiderProducteur(String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent,
 			String contact, int age, Date date_naiss, String cin, String sexe, String code_village,
 			String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,
-			int nbr_pers_charge) {
+			int nbr_pers_charge, int annee_adhesion) {
 			Valider validerProducteur = new Valider();
 			validerProducteur.setCode_village(code_village);
 			validerProducteur.setNum_adhesion(num_adhesion);
@@ -241,7 +241,7 @@ public class ValiderServiceImpl implements ValiderService{
 			validerProducteur.setAge(age);
 			validerProducteur.setDate_naiss(date_naiss);
 			validerProducteur.setCin(cin);
-			validerProducteur.setSexe(sexe);
+			validerProducteur.setSexe(sexe.toLowerCase());
 			validerProducteur.setCode_pro_symrise(code_pro_symrise);
 			validerProducteur.setCommune(commune);
 			validerProducteur.setAdresse_fkt(adresse_fkt);
@@ -249,6 +249,7 @@ public class ValiderServiceImpl implements ValiderService{
 			validerProducteur.setMa_1ere_adhesion(ma_1ere_adhesion);
 			validerProducteur.setNbr_pers_charge(nbr_pers_charge);
 			validerProducteur.setCanevas("Producteur");
+			validerProducteur.setAnnee_adhesion(annee_adhesion);
 			validerrepository.save(validerProducteur);
 		
 	}
@@ -257,7 +258,7 @@ public class ValiderServiceImpl implements ValiderService{
 	public void modifyProducteur(Valider valider, String num_adhesion, String nom_beneficiaire,
 			String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe,
 			String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation,
-			String ma_1ere_adhesion, int nbr_pers_charge, Long id) {
+			String ma_1ere_adhesion, int nbr_pers_charge, int annee_adhesion, Long id) {
 		valider.setId(id);
 		valider.setCode_village(code_village);
 		valider.setNum_adhesion(num_adhesion);
@@ -267,13 +268,14 @@ public class ValiderServiceImpl implements ValiderService{
 		valider.setAge(age);
 		valider.setDate_naiss(date_naiss);
 		valider.setCin(cin);
-		valider.setSexe(sexe);
+		valider.setSexe(sexe.toLowerCase());
 		valider.setCode_pro_symrise(code_pro_symrise);
 		valider.setCommune(commune);
 		valider.setAdresse_fkt(adresse_fkt);
 		valider.setAffiliation(affiliation);
 		valider.setMa_1ere_adhesion(ma_1ere_adhesion);
 		valider.setNbr_pers_charge(nbr_pers_charge);
+		valider.setAnnee_adhesion(annee_adhesion);
 		validerrepository.save(valider);
 		
 	}
@@ -288,7 +290,7 @@ public class ValiderServiceImpl implements ValiderService{
 	public void addValiderAdhesion(String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent,
 			String contact, int age, Date date_naiss, String cin, String sexe, String code_village,
 			String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,
-			int nbr_pers_charge) {
+			int nbr_pers_charge, int annee_adhesion) {
 		Valider validerAdhesion = new Valider();
 		validerAdhesion.setCode_village(code_village);
 		validerAdhesion.setNum_adhesion(num_adhesion);
@@ -298,7 +300,7 @@ public class ValiderServiceImpl implements ValiderService{
 		validerAdhesion.setAge(age);
 		validerAdhesion.setDate_naiss(date_naiss);
 		validerAdhesion.setCin(cin);
-		validerAdhesion.setSexe(sexe);
+		validerAdhesion.setSexe(sexe.toLowerCase());
 		validerAdhesion.setCode_pro_symrise(code_pro_symrise);
 		validerAdhesion.setCommune(commune);
 		validerAdhesion.setAdresse_fkt(adresse_fkt);
@@ -306,6 +308,7 @@ public class ValiderServiceImpl implements ValiderService{
 		validerAdhesion.setMa_1ere_adhesion(ma_1ere_adhesion);
 		validerAdhesion.setNbr_pers_charge(nbr_pers_charge);
 		validerAdhesion.setCanevas("Adhesion");
+		validerAdhesion.setAnnee_adhesion(annee_adhesion);
 		validerrepository.save(validerAdhesion);
 		
 	}
@@ -314,7 +317,7 @@ public class ValiderServiceImpl implements ValiderService{
 	public void modifyAdhesion(Valider valider, String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent,
 			String contact, int age, Date date_naiss, String cin, String sexe, String code_village,
 			String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,
-			int nbr_pers_charge, Long id) {
+			int nbr_pers_charge, int annee_adhesion, Long id) {
 		valider.setId(id);
 		valider.setCode_village(code_village);
 		valider.setNum_adhesion(num_adhesion);
@@ -324,13 +327,14 @@ public class ValiderServiceImpl implements ValiderService{
 		valider.setAge(age);
 		valider.setDate_naiss(date_naiss);
 		valider.setCin(cin);
-		valider.setSexe(sexe);
+		valider.setSexe(sexe.toLowerCase());
 		valider.setCode_pro_symrise(code_pro_symrise);
 		valider.setCommune(commune);
 		valider.setAdresse_fkt(adresse_fkt);
 		valider.setAffiliation(affiliation);
 		valider.setMa_1ere_adhesion(ma_1ere_adhesion);
 		valider.setNbr_pers_charge(nbr_pers_charge);
+		valider.setAnnee_adhesion(annee_adhesion);
 		validerrepository.save(valider);
 		
 	}
@@ -345,7 +349,7 @@ public class ValiderServiceImpl implements ValiderService{
 	public void addValiderMenage(String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent,
 			String contact, int age, Date date_naiss, String cin, String sexe, String code_village,
 			String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,
-			int nbr_pers_charge) {
+			int nbr_pers_charge, int annee_adhesion) {
 		Valider validerAdhesion = new Valider();
 		validerAdhesion.setCode_village(code_village);
 		validerAdhesion.setNum_adhesion(num_adhesion);
@@ -355,7 +359,7 @@ public class ValiderServiceImpl implements ValiderService{
 		validerAdhesion.setAge(age);
 		validerAdhesion.setDate_naiss(date_naiss);
 		validerAdhesion.setCin(cin);
-		validerAdhesion.setSexe(sexe);
+		validerAdhesion.setSexe(sexe.toLowerCase());
 		validerAdhesion.setCode_pro_symrise(code_pro_symrise);
 		validerAdhesion.setCommune(commune);
 		validerAdhesion.setAdresse_fkt(adresse_fkt);
@@ -363,6 +367,7 @@ public class ValiderServiceImpl implements ValiderService{
 		validerAdhesion.setMa_1ere_adhesion(ma_1ere_adhesion);
 		validerAdhesion.setNbr_pers_charge(nbr_pers_charge);
 		validerAdhesion.setCanevas("Menage");
+		validerAdhesion.setAnnee_adhesion(annee_adhesion);
 		validerrepository.save(validerAdhesion);
 		
 	}
@@ -371,7 +376,7 @@ public class ValiderServiceImpl implements ValiderService{
 	public void modifyMenage(Valider valider, String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent,
 			String contact, int age, Date date_naiss, String cin, String sexe, String code_village,
 			String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,
-			int nbr_pers_charge, Long id) {
+			int nbr_pers_charge, int annee_adhesion, Long id) {
 		valider.setId(id);
 		valider.setCode_village(code_village);
 		valider.setNum_adhesion(num_adhesion);
@@ -381,16 +386,181 @@ public class ValiderServiceImpl implements ValiderService{
 		valider.setAge(age);
 		valider.setDate_naiss(date_naiss);
 		valider.setCin(cin);
-		valider.setSexe(sexe);
+		valider.setSexe(sexe.toLowerCase());
 		valider.setCode_pro_symrise(code_pro_symrise);
 		valider.setCommune(commune);
 		valider.setAdresse_fkt(adresse_fkt);
 		valider.setAffiliation(affiliation);
 		valider.setMa_1ere_adhesion(ma_1ere_adhesion);
 		valider.setNbr_pers_charge(nbr_pers_charge);
+		valider.setAnnee_adhesion(annee_adhesion);
 		validerrepository.save(valider);
 		
 	}
+
+	@Override
+	public int countLakileteloOperatoinnel() {
+		// TODO Auto-generated method stub
+		return validerrepository.countL3Operationnel();
+	}
+
+	@Override
+	public int countHLakileteloOperationnel() {
+		// TODO Auto-generated method stub
+		return validerrepository.countL3HOperationnel();
+	}
+
+	@Override
+	public int countFLakileteloOperationnel() {
+		// TODO Auto-generated method stub
+		return validerrepository.countL3FOperationnel();
+	}
+
+	@Override
+	public int countL3VSLAOperationnel() {
+		// TODO Auto-generated method stub
+		return validerrepository.countL3OperationnelVSLA();
+	}
+
+	@Override
+	public int countL3VSLAOperationnelH() {
+		// TODO Auto-generated method stub
+		return validerrepository.countL3HOperationnelVSLA();
+	}
+
+	@Override
+	public int countL3VSLAOperationnelF() {
+		// TODO Auto-generated method stub
+		return validerrepository.countL3FOperationnelVSLA();
+	}
+
+	@Override
+	public int countL3GEC() {
+		// TODO Auto-generated method stub
+		return validerrepository.countL3OperationnelGEC();
+	}
+
+	@Override
+	public int countL3GECH() {
+		// TODO Auto-generated method stub
+		return validerrepository.countL3HOperationnelGEC();
+	}
+
+	@Override
+	public int countL3GECF() {
+		// TODO Auto-generated method stub
+		return validerrepository.countL3FOperationnelGEC();
+	}
+
+	@Override
+	public int countVSLAOperationnel() {
+		// TODO Auto-generated method stub
+		return validerrepository.countVSLAOperationnel();
+	}
+
+	@Override
+	public int countHVSLAOperationnel() {
+		// TODO Auto-generated method stub
+		return validerrepository.countVSLAHOperationnel();
+	}
+
+	@Override
+	public int countFVSLAOperationnel() {
+		// TODO Auto-generated method stub
+		return validerrepository.countVSLAFOperationnel();
+	}
+
+	@Override
+	public int countMobileMoney() {
+		// TODO Auto-generated method stub
+		return validerrepository.countMobileMoney();
+	}
+
+	@Override
+	public int countHMobileMoney() {
+		// TODO Auto-generated method stub
+		return validerrepository.countMobileMoneyH();
+	}
+
+	@Override
+	public int countFMobileMoney() {
+		// TODO Auto-generated method stub
+		return validerrepository.countMobileMoneyF();
+	}
+
+	@Override
+	public int countFinance() {
+		// TODO Auto-generated method stub
+		return validerrepository.countFinance();
+	}
+
+	@Override
+	public int countHFinance() {
+		// TODO Auto-generated method stub
+		return validerrepository.countFinanceH();
+	}
+
+	@Override
+	public int countFFinance() {
+		// TODO Auto-generated method stub
+		return validerrepository.countFinanceF();
+	}
+
+	@Override
+	public int countProducteur() {
+		// TODO Auto-generated method stub
+		return validerrepository.countProducteur();
+	}
+
+	@Override
+	public int countHProducteur() {
+		// TODO Auto-generated method stub
+		return validerrepository.countProducteurH();
+	}
+
+	@Override
+	public int countFProducteur() {
+		// TODO Auto-generated method stub
+		return validerrepository.countProducteurF();
+	}
+
+	@Override
+	public int countAdhesion() {
+		// TODO Auto-generated method stub
+		return validerrepository.countAdhesion();
+	}
+
+	@Override
+	public int countHAdhesion() {
+		// TODO Auto-generated method stub
+		return validerrepository.countAdhesionH();
+	}
+
+	@Override
+	public int countFAdhesion() {
+		// TODO Auto-generated method stub
+		return validerrepository.countAdhesionF();
+	}
+
+	@Override
+	public int countMenage() {
+		// TODO Auto-generated method stub
+		return validerrepository.countMenage();
+	}
+
+	@Override
+	public int countHMenage() {
+		// TODO Auto-generated method stub
+		return validerrepository.countMenageH();
+	}
+
+	@Override
+	public int countFMenage() {
+		// TODO Auto-generated method stub
+		return validerrepository.countMenageF();
+	}
+
+	
 
 
 

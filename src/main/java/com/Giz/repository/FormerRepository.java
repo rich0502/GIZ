@@ -43,4 +43,6 @@ public interface FormerRepository extends JpaRepository<Former, Long> {
 	@Query("SELECT new com.Giz.data.domain.TpsFormes(e.date_frm as x, count(e.date_frm) as y) FROM Former e WHERE e.date_frm BETWEEN ?1 AND ?2 group by e.date_frm order by e.date_frm ASC")
 	List<TpsFormes> TpsFormerData(Date debut_date,Date fin_date);
 	
+
+	
 }

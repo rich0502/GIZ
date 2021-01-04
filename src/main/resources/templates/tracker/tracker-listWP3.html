@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<head>
+    <title>GIZ</title>
+    <link rel="icon" type="image/png" href="css/images/icons/favicon.png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
+	<link rel="stylesheet"  type="text/css" th:href="@{/css/giz.css}" />
+
+
+</head>
+
+<body>
+<div th:include="/pds_header.html"></div>
+ 	<section class="main">
+   	<div class="container-fluid content-wrapper">
+        <div class="top-page">
+            <h1 class="content-title"> GESTION TRACKER WP3</h1>
+        </div>
+        <!-- document -->
+
+        <div class="">
+			<div th:include="TrackerMenu.html" th:remove="tag"></div>
+            <a class="btn pds-primary-btn pds-add-user-btn pds-icon-btn" href="trackerAddWP3"><img class="icon-btn" src="img/pds_add_document.svg"><span class="label-btn"> Ajouter Tracker </span></a>
+            <div class="table-responsive">
+                <table id="docList" class="pds-table table table-hover table-striped">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Description</th>
+                            <th scope="col">Nom du fichier </th>
+                            <th scope="col">Date </th>
+                            <th scope="col" >Download</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="listFile: ${ListFiles}">
+                            <td th:text="${listFile.desc_file}"></td>
+                            <td th:text="${listFile.file_name}"></td>
+                            <td th:text="${listFile.date_tracker}"></td>
+                            <td >
+                            <div class="doclist-flex-action">
+                       
+                                <span class="action-btn">
+                                    <a th:href="${listFile.file_name}"/><img src="img/pds_download_black.svg"></a>
+                                </span>
+                                 </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- document -->
+        </div>
+	</div>
+	<section class="main">
+</body>
+
+</html>

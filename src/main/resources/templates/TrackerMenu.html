@@ -1,0 +1,20 @@
+Work package : 
+<select id="dynamic_select" class="ginput form-control" name="choix" >
+  <option value="" selected>Selectionner</option>
+  <option value="trackerListWP1">WP1</option>
+  <option value="trackerListWP2">WP2</option>
+  <option value="trackerListWP3">WP3</option>
+  <option value="trackerListWP4">WP4</option>
+</select> 
+<script>
+$(function(){
+    // bind change event to select
+    $('#dynamic_select').on('change', function () {
+        var url = $(this).val(); // get selected value
+        if (url) { // require a URL
+            window.location = url; // redirect
+        }
+        return false;
+    });
+  });
+</script>

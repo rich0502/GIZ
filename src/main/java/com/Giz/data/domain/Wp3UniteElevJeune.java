@@ -23,7 +23,7 @@ public class Wp3UniteElevJeune {
 	@Column(length = 10)
 	private String sexe;
 	private int annee_naissance;
-	private String demarrage_unite;
+	private boolean demarrage_unite;
 	private Date date_dem;
 	private String type_activite;
 
@@ -42,7 +42,7 @@ public class Wp3UniteElevJeune {
 	}
 
 	public Wp3UniteElevJeune(Long id, String code_village, String nom_prenom, String sexe, int annee_naissance,
-			String demarrage_unite, Date date_dem, String type_activite, String theme1_traite, Date date_suivi1) {
+			boolean demarrage_unite, Date date_dem, String type_activite, String theme1_traite, Date date_suivi1) {
 		super();
 		this.id = id;
 		this.code_village = code_village;
@@ -96,11 +96,11 @@ public class Wp3UniteElevJeune {
 		this.annee_naissance = annee_naissance;
 	}
 
-	public String getDemarrage_unite() {
+	public boolean isDemarrage_unite() {
 		return demarrage_unite;
 	}
 
-	public void setDemarrage_unite(String demarrage_unite) {
+	public void setDemarrage_unite(boolean demarrage_unite) {
 		this.demarrage_unite = demarrage_unite;
 	}
 
@@ -135,5 +135,7 @@ public class Wp3UniteElevJeune {
 	public void setDate_suivi1(Date date_suivi1) {
 		this.date_suivi1 = date_suivi1;
 	}
+
+	
 
 }

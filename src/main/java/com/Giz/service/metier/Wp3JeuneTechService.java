@@ -11,4 +11,8 @@ public interface Wp3JeuneTechService {
 
 	public void addWp3JeuneTech(String code_village, String organisme_formateur, boolean frm_recue, String theme_frm1,
 			Date date_fin_frm1, String etape_frm1);
+	
+	public long countChronologique(String dateChronologique);
+	
+	public long countChronologiqueGenre(String dateChronologique,String genre);
 }

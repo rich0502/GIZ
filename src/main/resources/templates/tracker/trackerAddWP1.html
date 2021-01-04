@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>GIZ</title>
+<link rel="icon" type="image/png" href="css/images/icons/favicon.png" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!--JQUERY-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+<!-- Los iconos tipo Solid de Fontawesome-->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+<!-- Nuestro css-->
+<link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/tracker_table.css}" />
+</head>
+<body>
+	<div th:include="/pds_header.html"></div>
+
+	<section class="main"> 
+        <header class="composantesTable-header justify-between">
+             <h2 class="page-title">WP1: Climate Smart Agriculture (CSA)</h2>
+             <br>
+             <br>
+             <br>
+             <br>
+         </header>
+		<div class="table-tracker-container" id="html-content-holder" crossorigin="anonymous">
+			<table class="d-table-tracker" id="dynamicTableTracker">
+				<tr class="row-dnd bg-green-aa">
+					<td class="col-title">Achieved</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+								
+							</div>
+						</div>
+					</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+				
+				</tr>
+				<tr class="row-dnd bg-blue-aa">
+					<td class="col-title">In Advance</td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+				</tr>
+				<tr class="row-dnd bg-blue-cc">
+					<td class="col-title">On Track</td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+				</tr>
+				<tr class="row-dnd bg-orange-cc">
+					<td class="col-title">Delayed</td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+				</tr>
+				<tr class="row-dnd bg-red-99">
+					<td class="col-title">Stopped</td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+				</tr>
+				<tr class="">
+					<td class="col-title">Outcome</td> 
+					<td class="row-field"><div class="editable-field" contenteditable>86 PR</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>10 Plots tested</div></td>
+					
+					<td class="row-field"><div class="editable-field" contenteditable>3000 farmers trained <br>on post FBS </div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>35 AGC plots</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>1 environemental focus group per village</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>14 ASA</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>15 trees nurseries set up </div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Outcome</div></td>
+				</tr>
+				<tr class="">
+					<td class="col-title">Medium Outcome</td>
+					<td class="row-field"><div class="editable-field" contenteditable>61 Agricultural Adviser + 13 PR GEC</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>10 Plots identified</div></td>
+					
+					<td class="row-field"><div class="editable-field" contenteditable>Post FBS tools available</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>AGC plots validate with spatial plan</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Tools available</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Contract signed RCD/GIZ</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Harmonised organisation between OSDRM GDV</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Medium Outcome</div></td>
+				</tr>
+				<tr class="">
+					<td class="col-title">Activity</td>
+					<td class="row-field"><div class="editable-field" contenteditable>Selection PR</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Follow up of vanilla plots and test of Ady gasy (biological practice against deseases and insects)</div></td>
+					
+					<td class="row-field"><div class="editable-field" contenteditable>Consultation between all partners</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Identification, validation and budgetisation of AGC plots</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Consultation between SYM, GIZ</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Follow up by GIZ</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Discussion between OSDRM/GDV</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Activity #</div></td>
+				</tr>
+			</table>
+			
+		</div>
+		<div class="base-content">
+			<button id="btn-Preview-Image" class="gbtn btn-export-screenshot">Suivant</button>
+			<div id="previewImage"></div>		
+			</div>
+
+
+		
+	  		
+   		<br><br>
+		
+	</section>
+
+
+
+	<script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
+	<script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
+	<script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
+
+	<script th:src="@{/js/tracker-table/jquery-1.12.4.js}"></script>
+	<script th:src="@{/js/tracker-table/jquery-ui.js}"></script>
+	<script th:src="@{/js/tracker-table/html2canvas.min.js}"></script>
+	<script th:src="@{/js/tracker-table/jspdf.min.js}"></script>
+
+	<script th:src="@{/js/tracker-table/trackerTableWP1.js}"></script>
+
+</body>
+
+</html>

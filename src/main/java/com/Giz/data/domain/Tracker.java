@@ -24,6 +24,9 @@ public class Tracker {
 	
 	@Column(name = "file_name")
 	private String file_name;
+	
+	@Column(name = "type_tracker")
+	private String type_tracker;
 
 	/**
 	 * 
@@ -32,77 +35,55 @@ public class Tracker {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param id
-	 * @param desc_file
-	 * @param date_tracker
-	 * @param file_name
-	 */
-	public Tracker(Long id, String desc_file, String date_tracker, String file_name) {
+	public Tracker(Long id, String desc_file, String date_tracker, String file_name, String type_tracker) {
 		super();
 		this.id = id;
 		this.desc_file = desc_file;
 		this.date_tracker = date_tracker;
 		this.file_name = file_name;
+		this.type_tracker = type_tracker;
 	}
 
-	/**
-	 * @return the id
-	 */
 	public Long getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the desc_file
-	 */
 	public String getDesc_file() {
 		return desc_file;
 	}
 
-	/**
-	 * @param desc_file the desc_file to set
-	 */
 	public void setDesc_file(String desc_file) {
 		this.desc_file = desc_file;
 	}
 
-	/**
-	 * @return the date_tracker
-	 */
 	public String getDate_tracker() {
 		return date_tracker;
 	}
 
-	/**
-	 * @param date_tracker the date_tracker to set
-	 */
 	public void setDate_tracker(String date_tracker) {
 		this.date_tracker = date_tracker;
 	}
 
-	/**
-	 * @return the file_name
-	 */
 	public String getFile_name() {
 		return file_name;
 	}
 
-	/**
-	 * @param file_name the file_name to set
-	 */
 	public void setFile_name(String file_name) {
 		this.file_name = file_name;
 	}
 
+	public String getType_tracker() {
+		return type_tracker;
+	}
 
+	public void setType_tracker(String type_tracker) {
+		this.type_tracker = type_tracker;
+	}
 
+	
 	
 }

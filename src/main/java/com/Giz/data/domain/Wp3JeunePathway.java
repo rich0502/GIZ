@@ -24,6 +24,7 @@ public class Wp3JeunePathway {
 	private String sexe;
 	private int annee_naissance;
 	private Date date_fin_frm;
+	private boolean existance_agr; 
 
 	public Wp3JeunePathway() {
 		super();
@@ -39,6 +40,16 @@ public class Wp3JeunePathway {
 		this.sexe = sexe;
 		this.annee_naissance = annee_naissance;
 		this.date_fin_frm = date_fin_frm;
+	}
+	
+	
+
+	public boolean isExistance_agr() {
+		return existance_agr;
+	}
+
+	public void setExistance_agr(boolean existance_agr) {
+		this.existance_agr = existance_agr;
 	}
 
 	public Long getId() {

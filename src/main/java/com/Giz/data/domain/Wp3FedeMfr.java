@@ -27,6 +27,7 @@ public class Wp3FedeMfr {
 	private Date date_recepisse;
 	private boolean plan_strategique;
 	private Date date_validation;
+	private String sexe;
 
 	public Wp3FedeMfr() {
 		super();
@@ -47,6 +48,16 @@ public class Wp3FedeMfr {
 		this.date_recepisse = date_recepisse;
 		this.plan_strategique = plan_strategique;
 		this.date_validation = date_validation;
+	}
+	
+	
+
+	public String getSexe() {
+		return sexe;
+	}
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
 	}
 
 	public Long getId() {

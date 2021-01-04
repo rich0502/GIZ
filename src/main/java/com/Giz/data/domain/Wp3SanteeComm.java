@@ -24,6 +24,7 @@ public class Wp3SanteeComm {
 	private float gps_y;
 	private String repro_sexuelle;
 	private Date date_suivi;
+	private String sexe;
 
 	public Wp3SanteeComm() {
 		super();
@@ -40,6 +41,16 @@ public class Wp3SanteeComm {
 		this.gps_y = gps_y;
 		this.repro_sexuelle = repro_sexuelle;
 		this.date_suivi = date_suivi;
+	}
+	
+	
+
+	public String getSexe() {
+		return sexe;
+	}
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
 	}
 
 	public Long getId() {

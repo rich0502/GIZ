@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.Giz.data.domain.DocCap;
+import com.Giz.data.domain.TpsFormes;
 
 
 public interface DocCapService {
@@ -19,5 +20,13 @@ public interface DocCapService {
 	
 	public void modifyDocCap(DocCap docCap,String titre_doc, String thematique, String type_doc, String auteur_doc, Date date_partage,
 			String reception, Long id_dc);
+	
+	public int TotDocCap();
+	
+	//graphe
+	
+	public long TotTotal(Date debut_date, Date fin_date);
+	
+	public List<Object[]> ListGraphe(Date debut_date, Date fin_date);
 	
 }

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>GIZ</title>
+        <link rel="icon" type="image/png" href="css/images/icons/favicon.png">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--JQUERY-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- Los iconos tipo Solid de Fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <!-- Nuestro css-->
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/index.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/fonts.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/giz.css}">
+        <style type="text/css">
+.select2-container .select2-selection--single {
+	height: 34px !important;
+}
+
+.select2-container--default .select2-selection--single {
+	border: 1px solid #ccc !important;
+}
+        </style>
+        <script type="text/javascript">
+		$(document).ready(function () {
+			$('#datepicker').datepicker({
+				format: 'dd-mm-yyyy',
+				"autoclose": true,
+				language: 'en'
+			})//.datepicker("setDate", 'now')
+				;
+			var valeur = $('#error_value').text();
+			if(valeur != '') {
+				$('#messageModal').modal('show');
+				$('#msg').text(valeur);
+			}
+		});
+        </script>
+    </head>
+    <body class="add-success">
+		<div th:include="/pds_header.html"></div>
+		<section class="main">
+            <div class="base-content">
+				<form method="POST" th:action="@{/saveEditWp3AgrDevMfr}"  class="form-edition-cust">
+					<input th:field="*{agrDevMfr.id}" type="hidden">
+					Code village
+					<br>
+					<input th:field="*{agrDevMfr.code_village}" type="text">
+					<br>
+					Noms de MFR:
+					<br>
+					<input th:field="*{agrDevMfr.nom_mfr}" type="text">
+					<br>
+					 Année de mise en place :
+					<br>
+					<input type="text" th:field="*{agrDevMfr.annee_miseplace}">
+					<br>
+					Existence d'AGR développé :
+					<br>
+					<select class="form-control select2" th:field="*{agrDevMfr.agr_developpe}"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="True">Oui</option>
+							<option th:value="False">Non</option>
+					</select>
+					<br>
+					Date d'évaluation :
+					<br>
+					<input th:field="*{agrDevMfr.date_eval}" type="date" min="2015-01-01" class="form-control select2">
+					<br>
+					Type d'AGR développé :
+					<br>
+					<input th:field="*{agrDevMfr.type_agr_dev1}" type="text">
+					<br>
+					 Date de suivi :
+					<br>
+					<input th:field="*{agrDevMfr.date_suivi1}" type="date" min="2015-01-01" class="form-control select2">
+					<br>
+					<br>
+					<input type="submit" value="Submit" class="gbtn">
+				</form>
+			</div>
+		</section>
+    </body>
+    <html>

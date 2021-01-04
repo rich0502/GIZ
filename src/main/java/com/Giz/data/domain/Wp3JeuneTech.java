@@ -25,7 +25,7 @@ public class Wp3JeuneTech {
 	private String theme_frm1;
 	private Date date_fin_frm1;
 	private String etape_frm1;
-
+	private String sexe;
 	/*
 	 * private String theme_frm2; private Date date_real2; private String
 	 * etape_frm2;
@@ -49,6 +49,16 @@ public class Wp3JeuneTech {
 		this.theme_frm1 = theme_frm1;
 		this.date_fin_frm1 = date_fin_frm1;
 		this.etape_frm1 = etape_frm1;
+	}
+	
+	
+
+	public String getSexe() {
+		return sexe;
+	}
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
 	}
 
 	public Long getId() {

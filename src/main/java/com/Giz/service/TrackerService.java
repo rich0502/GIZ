@@ -8,6 +8,6 @@ public interface TrackerService {
 	
 	public Tracker addTracker(Tracker uploads) throws Exception;
 	
-	public List<Tracker> getTracker() throws Exception;
+	public List<Tracker> getTracker(String type_tracker) throws Exception;
 	
 }

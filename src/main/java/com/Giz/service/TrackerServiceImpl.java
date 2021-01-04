@@ -23,9 +23,8 @@ public class TrackerServiceImpl implements TrackerService {
 	}
 
 	@Override
-	public List<Tracker> getTracker() throws Exception {
-
-		List<Tracker> list = trackerRepository.ListTracker();
+	public List<Tracker> getTracker(String type_tracker) throws Exception {
+		List<Tracker> list = trackerRepository.ListTracker(type_tracker);
 		return list;
 	}
 

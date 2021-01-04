@@ -1,9 +1,11 @@
 package com.Giz.service.metier;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.Giz.data.domain.Wp3AgrDevMfr;
 import com.Giz.repository.Wp3AgrDevMfrRepository;
@@ -21,7 +23,7 @@ public class Wp3AgrDevMfrServiceImpl implements Wp3AgrDevMfrService {
 	}
 
 	@Override
-	public void addWp3AgrDevMfr(String code_village, String nom_mfr, int annee_miseplace, String agr_developpe,
+	public void addWp3AgrDevMfr(String code_village, String nom_mfr, int annee_miseplace, Boolean agr_developpe,
 			Date date_eval, String type_agr_dev1, Date date_suivi1) {
 
 		Wp3AgrDevMfr wp3AgrDevMfr = new Wp3AgrDevMfr();
@@ -47,4 +49,74 @@ public class Wp3AgrDevMfrServiceImpl implements Wp3AgrDevMfrService {
 		wp3AgrDevMfrRepository.save(wp3AgrDevMfr);
 		
 	}
+
+	@Override
+	public long countChronologique(String dateChronologique) {
+		if(StringUtils.isEmpty(dateChronologique)) {
+			return wp3AgrDevMfrRepository.count();
+		} else {
+			return wp3AgrDevMfrRepository.countChronologie(dateChronologique);
+		}
+	}
+
+	@Override
+	public long countChronologiqueGenre(String dateChronologique, String genre) {
+		if(StringUtils.isEmpty(dateChronologique)) {
+			return wp3AgrDevMfrRepository.countGenre(genre);
+		} else {
+			return wp3AgrDevMfrRepository.countChronologieGenre(dateChronologique, genre);
+		}
+	}
+
+	@Override
+	public Optional<Wp3AgrDevMfr> finbByIdAgrDevMfr(long id) {
+		// TODO Auto-generated method stub
+		return wp3AgrDevMfrRepository.findById(id);
+	}
+
+	@Override
+	public void modifyWp3AgrDevMfr(String code_village, String nom_mfr, int annee_miseplace, Boolean agr_developpe,
+			Date date_eval, String type_agr_dev1, Date date_suivi1, long id) {
+Wp3AgrDevMfr wp3AgrDevMfr = new Wp3AgrDevMfr();
+		
+		wp3AgrDevMfr.setCode_village(code_village);
+		wp3AgrDevMfr.setNom_mfr(nom_mfr);
+		wp3AgrDevMfr.setAnnee_miseplace(annee_miseplace);
+		wp3AgrDevMfr.setAgr_developpe(agr_developpe);
+		wp3AgrDevMfr.setDate_eval(date_eval);
+		wp3AgrDevMfr.setType_agr_dev1(type_agr_dev1);
+		wp3AgrDevMfr.setDate_suivi1(date_suivi1);
+		wp3AgrDevMfr.setId(id);
+		wp3AgrDevMfrRepository.save(wp3AgrDevMfr);
+		
+		
+	}
+	
+	//graphe
+
+	@Override
+	public long TotTotal(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3AgrDevMfrRepository.SomTotal(debut_date, fin_date);
+	}
+
+	@Override
+	public List<Object[]> ListFetch() {
+		// TODO Auto-generated method stub
+		return wp3AgrDevMfrRepository.fetchData();
+	}
+
+	@Override
+	public long CamembertTot() {
+		// TODO Auto-generated method stub
+		return wp3AgrDevMfrRepository.CamembertTot();
+	}
+
+	@Override
+	public List<Object[]> ListGraphe(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3AgrDevMfrRepository.TpsData(debut_date, fin_date);
+	}
+	
+
 }

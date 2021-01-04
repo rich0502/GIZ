@@ -86,7 +86,5 @@ public class FormerServiceImpl implements FormerService {
 		return formerRepository.TpsFormerData(debut_date, fin_date);
 	}
 
-	
-	
 
 }

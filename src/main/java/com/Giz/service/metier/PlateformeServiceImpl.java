@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.Giz.data.domain.Adoption_innovation;
 import com.Giz.data.domain.AtelierMFR;
 import com.Giz.data.domain.Plateforme;
+import com.Giz.data.domain.TpsFormes;
 import com.Giz.repository.Adopte_InnovationRepository;
 import com.Giz.repository.AtelierMFRRepository;
 import com.Giz.repository.PlateformRepository;
@@ -61,5 +62,32 @@ public class PlateformeServiceImpl implements PlateformeService {
 		plateforme.setType_plateform(type_plateform);
 		plateformRepository.save(plateforme);
 	}
+
+	@Override
+	public List<Object[]> ListPlateformeFetch(String type_plateform) {
+		// TODO Auto-generated method stub
+		return plateformRepository.fetchplateformeData(type_plateform);
+	}
+
+	@Override
+	public long TotPlateforme(String type_plateform) {
+		// TODO Auto-generated method stub
+		return plateformRepository.SomplateformeData(type_plateform);
+	}
+
+	@Override
+	public long TotPlateformeParticipant(String type_plateform, Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+
+			return plateformRepository.Somplateforme(type_plateform, debut_date, fin_date);
+	}
+
+	@Override
+	public List<Object[]> TpsPlateforme(String type_plateform, Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return plateformRepository.TpsplateformeData(type_plateform, debut_date, fin_date);
+	}
+
+	
 
 }

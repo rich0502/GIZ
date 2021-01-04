@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.Giz.data.domain.Adoption_innovation;
 import com.Giz.data.domain.DocCap;
+import com.Giz.data.domain.TpsFormes;
 import com.Giz.repository.Adopte_InnovationRepository;
 import com.Giz.repository.DocCapRepository;
 
@@ -53,6 +54,26 @@ public class DocCapServiceImpl implements DocCapService {
 		docCap.setReception(reception);
 		docCapRepository.save(docCap);
 		
+	}
+
+	@Override
+	public int TotDocCap() {
+		// TODO Auto-generated method stub
+		return docCapRepository.SomDocCapData();
+	}
+
+	//graphe
+
+	@Override
+	public long TotTotal(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return docCapRepository.SomTotal(debut_date, fin_date);
+	}
+
+	@Override
+	public List<Object[]> ListGraphe(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return docCapRepository.TpsData(debut_date, fin_date);
 	}
 	
 	

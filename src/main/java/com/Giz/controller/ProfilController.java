@@ -34,8 +34,6 @@ public class ProfilController {
 
 	@Autowired
 	RoleRepository roleRepository;
-
-	int notif = 0;
 	
 	private void baseAttributerForProfilForm(Model model, User user, String activeTab) {
 		model.addAttribute("profilForm", user);
@@ -47,7 +45,6 @@ public class ProfilController {
 	@GetMapping("/profilForm")
 	public String profilForm(Model model) {
 		baseAttributerForProfilForm(model, new User(), TAB_LIST);
-		model.addAttribute("notif",notif);
 		return "profil-form/profil-view";
 	}
 
@@ -68,7 +65,6 @@ public class ProfilController {
 				baseAttributerForProfilForm(model, user, TAB_FORM);
 			}
 		}
-		model.addAttribute("notif",notif);
 		return "profil-form/profil-view";
 	}
 
@@ -79,7 +75,6 @@ public class ProfilController {
 		baseAttributerForProfilForm(model, profilToEdit, TAB_FORM);
 		model.addAttribute("editMode", "true");
 		model.addAttribute("passwordForm", new ChangePasswordForm(id));
-		model.addAttribute("notif",notif);
 		return "profil-form/profil-view";
 	}
 
@@ -101,7 +96,6 @@ public class ProfilController {
 				model.addAttribute("passwordForm", new ChangePasswordForm(user.getId()));
 			}
 		}
-		model.addAttribute("notif",notif);
 		return "profil-form/profil-view";
 
 	}
@@ -114,6 +108,9 @@ public class ProfilController {
 	
 	@PostMapping("/editProfil/changePassword")
 	public ResponseEntity postEditProfilChangePassword(@Valid @RequestBody ChangePasswordForm form, Errors errors) {
+		System.out.println("getCurrentPassword" + form.getCurrentPassword());
+		System.out.println("NewPassword" + form.getNewPassword());
+		System.out.println("ConfirmPassword" + form.getConfirmPassword());
 		try {
 			if (errors.hasErrors()) {
 				String result = errors.getAllErrors().stream().map(x -> x.getDefaultMessage())

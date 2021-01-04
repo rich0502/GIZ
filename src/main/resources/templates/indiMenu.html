@@ -1,21 +1,52 @@
 Work package : 
-<select id="dynamic_select" class="ginput form-control" >
+<select id="dynamic_select" class="ginput form-control" name="choix" >
   <option value="" selected>Selectionner</option>
   <option value="indicateurWP1">WP1</option>
-  <option value="#">WP2</option>
-  <option value="#">WP3</option>
-  <option value="#">WP4</option>
+  <option value="indicateurWP2">WP2</option>
+  <option value="indicateurWP3">WP3</option>
+  <option value="indicateurWP4">WP4</option>
 </select>
 
+<select class="ginput form-control" id="chronologie" name="chronologie"  >
+  <option value="" selected>Selectionner</option>
+  <option value="31/08/2020">Août 2020</option>
+  <option value="30/11/2020">Novembre 2020</option>
+  <option value="28/02/2021">Févier 2021</option>
+  <option value="31/05/2021">Mai 2021</option>
+  <option value="31/08/2021">Août 2021</option>
+  <option value="30/11/2021">Novembre 2021</option>
+  <option value="28/02/2022">Févier 2022</option>
+  <option value="31/05/2022">Mai 2022</option>
+  <option value="31/08/2022">Août 2022</option>
+  <option value="30/11/2022">Novembre 2022</option>
+  <option value="28/02/2023">Févier 2023</option>
+  <option value="31/05/2023">Mai 2023</option>
+  <option value="31/08/2023">Août 2023</option>
+  <option value="30/11/2023">Novembre 2023</option>
+  <option value="31/01/2024">Janvier 2024</option>
+</select>
+ <button type="button" name="btnExport" id="btnExport" class="gbtn">Export</button> 
 <script>
-    $(function(){
-      // bind change event to select
-      $('#dynamic_select').on('change', function () {
-          var url = $(this).val(); // get selected value
-          if (url) { // require a URL
-              window.location = url; // redirect
+    $(function(){   
+      $('#chronologie').on('change', function () {
+    	  var e = document.getElementById("dynamic_select");
+    	  var strWP = e.value;
+          var dateChronologie = $(this).val(); // get selected value
+          if (dateChronologie) { // require a URL
+              window.location = strWP + "?chronologie="+dateChronologie; // redirect
+              $('#chronologie').show();
           }
           return false;
       });
+      
     });
+    $("#btnExport").click(function(e) {
+        let file = new Blob([$('#html-content-holder').html()], {type:"application/vnd.ms-excel"});
+   let url = URL.createObjectURL(file);
+   let a = $("<a />", {
+        href: url,
+        download: "filename.xls"}).appendTo("body").get(0).click();
+        e.preventDefault();
+   });
+    
 </script>
