@@ -7,12 +7,16 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	  
 	  <!--JQUERY-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
     <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+    <script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
+	<script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
+	<script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/css/vendor/bootstrap/css/bootstrap.min.css}">
     
 	 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 	  <!-- Los iconos tipo Solid de Fontawesome-->
@@ -45,27 +49,27 @@
     </section>
     
     
-    <script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
+    <!-- <script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
 	<script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
-    <script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
-    <script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}">
-    var unirest = require("unirest");
+    <script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script> -->
+    <script>
+        var unirest = require("unirest");
 
-        var req = unirest("GET", "https://google-translate1.p.rapidapi.com/language/translate/v2/languages");
+            var req = unirest("GET", "https://google-translate1.p.rapidapi.com/language/translate/v2/languages");
 
-        req.headers({
-            "accept-encoding": "application/gzip",
-            "x-rapidapi-key": "SIGN-UP-FOR-KEY",
-            "x-rapidapi-host": "google-translate1.p.rapidapi.com",
-            "useQueryString": true
-        });
+            req.headers({
+                "accept-encoding": "application/gzip",
+                "x-rapidapi-key": "SIGN-UP-FOR-KEY",
+                "x-rapidapi-host": "google-translate1.p.rapidapi.com",
+                "useQueryString": true
+            });
 
 
-        req.end(function (res) {
-            if (res.error) throw new Error(res.error);
+            req.end(function (res) {
+                if (res.error) throw new Error(res.error);
 
-            console.log(res.body);
-        });
+                console.log(res.body);
+            });
     </script>
     </body>
 </html>

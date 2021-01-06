@@ -355,8 +355,8 @@ label:not(.custom-control-label) {
   font-weight:normal;
   /* position:absolute; */
   pointer-events:none;
-  left:5px;
-  top:3px;
+  left: 0;
+  top: -4px;
   transition:0.2s ease all; 
   -moz-transition:0.2s ease all; 
   -webkit-transition:0.2s ease all;

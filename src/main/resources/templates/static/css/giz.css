@@ -410,7 +410,9 @@ ul.nav-tabs {
     border-radius: 4px;
     color: #FFF;
     font: 400 16px/40px 'DIN Alternate', 'Open Sans', Helvetica, sans-serif;
-    height: 50px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
     text-align: center;
     width: 140px;
     cursor: pointer;
@@ -695,8 +697,13 @@ ul.nav-tabs {
 .composantesTable-header {
     /* display: flex */
     display: block;
-}
 
+}
+.composantesTable-header::after {
+    content: '';
+    display: block;
+    clear: both;
+}
 .featuresList-item {
     display: inline-block;
     line-height: 21px;
@@ -2562,10 +2569,10 @@ section.main.formLogin {
 }
 .crud-wrap .registerFile{
     max-width: 1400px;
-    width: auto;
+    /* width: auto;
     margin: 0;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
 }
 .crud-wrap .registerFile .cust-input{
     position: static;

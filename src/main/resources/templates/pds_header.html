@@ -1,6 +1,6 @@
 
      <link rel="stylesheet" type="text/css" th:href="@{/flag-icon-css/flag-icon.min.css}" />
-    <head><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script></head>
+    <!-- <head><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script></head> -->
    
     <header class="header-container">
         <nav class="pds-header">        
@@ -36,6 +36,7 @@
                         <a class="dropdown-item pds-logout" th:href="@{/logout}">[[#{logout}]]</a>
                     </div>
                 </div>
+                
                 <a class="col" th:href="@{?lang=us}"><i class="flag-icon flag-icon-us" title="us" id="us"></i> [[#{us}]]</a>
                 <a class="col" th:href="@{?lang=fr}"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> [[#{fr}]]</a>
             </div>        

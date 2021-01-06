@@ -1,20 +1,21 @@
-<div class="registerFile">
-	<form method="POST" th:action="@{/registerFile}"
-		name="uploadForm" class="requete-form gform">
-		<div class="cust-input" style="margin-left: 0px !important;">
-			<p>Work Package</p>
-			<select th:name="sc" class="ginput form-control" id="sc">
-				<option value="null">-- <span>Sélectionner Work Package</span> --</option>
-				<option th:each="sc : ${scList}" th:value="${sc[0]}" th:text="${sc[1]}"></option>
-			</select>
-		</div>
-		<div class="cust-input">
-			<p>Canevas</p>
-			<div class="input-group date">
-				<select
-					onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
-					class="ginput form-control" th:name="theme" id="theme">
+<div class="registerFile container">
+	<form method="POST" th:action="@{/registerFile}" name="uploadForm" class="requete-form gform">
+		<div class="row justify-content-center">
+			<div class="" >
+				<p>Work Package</p>
+				<select th:name="sc" class="ginput form-control" id="sc">
+					<option value="null">-- <span>SÃ©lectionner Work Package</span> --</option>
+					<option th:each="sc : ${scList}" th:value="${sc[0]}" th:text="${sc[1]}"></option>
 				</select>
+			</div>
+			<div class="col-4">
+				<p>Canevas</p>
+				<div class="input-group date">
+					<select
+						onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
+						class="ginput form-control" th:name="theme" id="theme">
+					</select>
+				</div>
 			</div>
 		</div>
 	</form>
