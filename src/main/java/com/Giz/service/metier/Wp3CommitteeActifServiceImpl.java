@@ -85,6 +85,10 @@ public class Wp3CommitteeActifServiceImpl implements Wp3CommitteeActifService {
 		
 	}
 	
+	@Override
+	public void deleteWp3CommitteeActif(Long id) {
+		wp3CommitteeActifRepository.deleteWp3CommitteeActif(id);		
+	}
 
 	//graphe
 

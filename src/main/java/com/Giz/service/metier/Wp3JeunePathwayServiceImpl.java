@@ -79,6 +79,11 @@ public class Wp3JeunePathwayServiceImpl implements Wp3JeunePathwayService {
 		
 	}
 	
+	@Override
+	public void deleteWp3JeunePathway(Long id) {
+		wp3JeunePathwayRepository.deleteWp3JeunePathway(id);		
+	}
+	
 	//graphe
 
 	@Override

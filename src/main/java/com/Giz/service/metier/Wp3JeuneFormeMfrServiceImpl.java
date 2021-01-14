@@ -84,6 +84,11 @@ public class Wp3JeuneFormeMfrServiceImpl implements Wp3JeuneFormeMfrService {
 		
 	}
 	
+	@Override
+	public void deleteWp3JeuneFormeMfr(Long id) {
+		wp3JeuneFormeMfrRepository.deleteWp3JeuneFormeMfr(id);		
+	}
+	
 	//graphe
 
 	@Override

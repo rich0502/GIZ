@@ -3,7 +3,10 @@ package com.Giz.repository;
 import java.util.Date;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.Giz.data.domain.TpsFormes;
@@ -19,6 +22,11 @@ public interface Wp3ActivEcoJeuneRepository extends JpaRepository<Wp3ActivEcoJeu
 	
 	@Query(value="Select count(*) from wp3_activ_eco_jeune where lower(sexe) =:sexe and date_fin_frm BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
 	long getCountChronologiqueGenre(String dateChronologique, String sexe);
+	
+	@Modifying
+    @Transactional
+    @Query("delete from Wp3ActivEcoJeune e where id = ?1")
+    void deleteWP3ActivEcoJeune(Long id);
 	
 	//graphe
 	

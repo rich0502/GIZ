@@ -86,6 +86,11 @@ public class Wp3EquipeTechMfrServiceImpl implements Wp3EquipeTechMfrService {
 		
 	}
 	
+	@Override
+	public void deleteWp3EquipeTechMfr(Long id) {
+		wp3EquipeTechMfrRepository.deleteWp3EquipeTechMfr(id);		
+	}
+	
 	//graphe
 
 	@Override

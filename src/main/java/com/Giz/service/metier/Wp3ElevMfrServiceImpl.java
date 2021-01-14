@@ -110,6 +110,11 @@ public class Wp3ElevMfrServiceImpl implements Wp3ElevMfrService {
 		
 	}
 	
+	@Override
+	public void deleteWp3ElevMfr(Long id) {
+		wp3ElevMfrRepository.deleteWp3ElevMfr(id);		
+	}
+	
 	//graphe
 
 	@Override

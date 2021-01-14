@@ -88,6 +88,11 @@ public class Wp3FedeMfrServiceImpl implements Wp3FedeMfrService {
 		
 	}
 	
+	@Override
+	public void deleteWp3FedeMfr(Long id) {
+		wp3FedeMfrRepository.deleteWp3FedeMfr(id);		
+	}
+	
 	//graphe
 
 	@Override

@@ -26,6 +26,8 @@ public interface Wp3ElevMfrService {
 			int annee_etude, Date date_sortie, String type_projet, String niveau_demarrage, Date date_validation,
 			boolean accompagne, Date date_suivi1,long id);
 	
+	public void deleteWp3ElevMfr(Long id);
+	
 	//graphe
 
 	public long TotTotal(Date debut_date, Date fin_date);

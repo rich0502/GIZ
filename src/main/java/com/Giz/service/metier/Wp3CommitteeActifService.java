@@ -22,6 +22,8 @@ public interface Wp3CommitteeActifService {
 	public void modifyWp3CommitteeActif(String code_village, String nom_comite, String mois_annee_creation,
 			boolean committee_actif, Date date_suivi, int effectif_membre, int sexe_h, int sexe_f, long id);
 	
+	public void deleteWp3CommitteeActif(Long id);
+	
 	//graphe
 	
 	public long TotTotal(Date debut_date, Date fin_date);

@@ -87,6 +87,11 @@ public class Wp3ActivEcoJeuneServiceImpl implements Wp3ActivEcoJeuneService {
 		wp3ActivEcoJeuneRepository.save(wp3ActivEcoJeune);
 		
 	}
+	
+	@Override
+	public void deleteWP3ActivEcoJeune(Long id) {
+		wp3ActivEcoJeuneRepository.deleteWP3ActivEcoJeune(id);		
+	}
 
 	//graphe
 

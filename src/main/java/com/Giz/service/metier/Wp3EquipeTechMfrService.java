@@ -22,6 +22,8 @@ public interface Wp3EquipeTechMfrService {
 	public void modifyWp3EquipeTechMfr(String code_village, String nom_prenom, String sexe, int annee_naissance,
 			String frm_recue1, boolean competence_frm, Date date_eval,long id);
 	
+	public void deleteWp3EquipeTechMfr(Long id);
+	
 	//graphe
 
 	public long TotTotal(Date debut_date, Date fin_date);

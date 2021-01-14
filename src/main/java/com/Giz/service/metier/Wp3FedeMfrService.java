@@ -24,6 +24,8 @@ public interface Wp3FedeMfrService {
 			boolean reglement_interieur, boolean recepisse_mfr, Date date_recepisse, boolean plan_strategique,
 			Date date_validation,long id);
 	
+	public void deleteWp3FedeMfr(Long id);
+	
 	//graphe
 
 	public long TotTotal(Date debut_date, Date fin_date);

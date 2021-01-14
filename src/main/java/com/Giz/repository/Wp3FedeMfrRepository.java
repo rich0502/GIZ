@@ -3,7 +3,10 @@ package com.Giz.repository;
 import java.util.Date;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.Giz.data.domain.Wp3FedeMfr;
@@ -21,6 +24,11 @@ public interface Wp3FedeMfrRepository extends JpaRepository<Wp3FedeMfr, Long> {
 	
 	@Query(value="select count(*) from wp3_fede_mfr where plan_strategique='true' and lower(sexe)=:sexe and date_validation BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
 	long countChronolgiqueGenre(String dateChronologique, String sexe);
+	
+	@Modifying
+    @Transactional
+    @Query("delete from Wp3FedeMfr e where id = ?1")
+    void deleteWp3FedeMfr(Long id);
 	
 	//graphe
 	

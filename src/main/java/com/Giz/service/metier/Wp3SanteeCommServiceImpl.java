@@ -81,6 +81,11 @@ public class Wp3SanteeCommServiceImpl implements Wp3SanteeCommService {
 		
 	}
 	
+	@Override
+	public void deleteWp3SanteeComm(Long id) {
+		wp3SanteeCommRepository.deleteWp3SanteeComm(id);		
+	}
+	
 	//graphe
 
 	@Override

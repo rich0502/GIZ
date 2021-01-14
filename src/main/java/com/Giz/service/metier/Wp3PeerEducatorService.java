@@ -22,6 +22,8 @@ public interface Wp3PeerEducatorService {
 	public void modifyWp3PeerEducator(String code_village, String nom_prenom, String sexe, int annee_naissance,
 			boolean operationnelle, Date date_suivi,long id);
 	
+	public void deleteWp3PeerEducator(Long id);
+	
 	//graphe
 
 	public long TotTotal(Date debut_date, Date fin_date);

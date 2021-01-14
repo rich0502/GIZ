@@ -25,6 +25,8 @@ public interface Wp3FormTechMetierJeuneService {
 			String organisme_formateur, Boolean formation_recue, String theme, Date date_fin, String etape_suivre,
 			Date date_realise,long id);
 	
+	public void deleteWp3FormTechMetierJeune(Long id);
+	
 	//graphe
 
 	public long TotTotal(Date debut_date, Date fin_date);

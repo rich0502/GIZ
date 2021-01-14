@@ -22,6 +22,8 @@ public interface Wp3EppFramService {
 	public void modifyWp3EppFram(String code_village, String nom_ecole, boolean projet_fram, boolean projet_valide,
 			String type_projet, Date date_validation,long id);
 	
+	public void deleteWp3EppFram(Long id);
+	
 	//graphe
 
 	public long TotTotal(Date debut_date, Date fin_date);

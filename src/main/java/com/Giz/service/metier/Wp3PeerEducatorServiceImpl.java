@@ -81,6 +81,11 @@ public class Wp3PeerEducatorServiceImpl implements Wp3PeerEducatorService {
 		
 	}
 	
+	@Override
+	public void deleteWp3PeerEducator(Long id) {
+		wp3PeerEducatorRepository.deleteWp3PeerEducator(id);		
+	}
+	
 	//graphe
 
 	@Override

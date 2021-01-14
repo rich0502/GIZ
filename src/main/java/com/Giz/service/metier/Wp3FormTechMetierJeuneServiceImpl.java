@@ -77,6 +77,11 @@ public class Wp3FormTechMetierJeuneServiceImpl implements Wp3FormTechMetierJeune
 		wp3FormTechMetierJeune.setId(id);
 		return wp3FormTechMetierJeuneRepository.save(wp3FormTechMetierJeune);
 	}
+	
+	@Override
+	public void deleteWp3FormTechMetierJeune(Long id) {
+		wp3FormTechMetierJeuneRepository.deleteWp3FormTechMetierJeune(id);		
+	}
 
 	//graphe
 

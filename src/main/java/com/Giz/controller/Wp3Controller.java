@@ -186,6 +186,12 @@ public class Wp3Controller {
 		wp3ActivEcoJeuneService.modifyActivEcoJeune(code_village, nom_prenom, sexe, annee_naissance, organisme_formateur, frm_tech_suivi, date_fin_frm, activite_eco, date_demarrage, id);
 		return "redirect:/listWp3ActivEcoJeune";
 	}
+	
+	@RequestMapping("/deleteWP3ActivEcoJeune/{id}")
+	public String deleteWP3ActivEcoJeune(@PathVariable(name = "id") Long id) {
+		wp3ActivEcoJeuneService.deleteWP3ActivEcoJeune(id);
+		return "redirect:/listWp3ActivEcoJeune";
+	}
 
 	/* END #37-CANEVAS ACTIVITE ECONOMIQUE JEUNE */
 
@@ -269,6 +275,12 @@ public class Wp3Controller {
 		wp3CommitteeActifService.modifyWp3CommitteeActif(code_village, nom_comite, mois_annee_creation, committee_actif, date_suivi, effectif_membre, sexe_h, sexe_f, id);
 		return "redirect:/listWp3ActivEcoJeune";
 	}
+	
+	@RequestMapping("/deleteWp3CommitteeActif/{id}")
+	public String deleteWp3CommitteeActif(@PathVariable(name = "id") Long id) {
+		wp3CommitteeActifService.deleteWp3CommitteeActif(id);
+		return "redirect:/listWp3CommitteeActif";
+	}
 
 	/* END #38-CANEVAS YOUTH COMMITTEE ACTIF   */
 
@@ -349,6 +361,12 @@ public class Wp3Controller {
 			@RequestParam("theme") String theme, @RequestParam("date_fin") java.sql.Date date_fin,
 			@RequestParam("etape_suivre") String etape_suivre,@RequestParam("date_realise") java.sql.Date date_realise, RedirectAttributes redirectAttributes) throws ParseException {
 		wp3FormTechMetierJeuneService.modifyWp3FormTechMetierJeune(code_village, sexe, annee_naissance, organisme_formateur, formation_recue, theme, date_fin, etape_suivre, date_realise, id);
+		return "redirect:/listWp3FormTechMetierJeune";
+	}
+	
+	@RequestMapping("/deleteWp3FormTechMetierJeune/{id}")
+	public String deleteWp3FormTechMetierJeune(@PathVariable(name = "id") Long id) {
+		wp3FormTechMetierJeuneService.deleteWp3FormTechMetierJeune(id);
 		return "redirect:/listWp3FormTechMetierJeune";
 	}
 	
@@ -436,6 +454,12 @@ public class Wp3Controller {
 			@RequestParam("date_dem") java.sql.Date date_dem, @RequestParam("type_activite") String type_activite,
 			@RequestParam("theme1_traite") String theme1_traite, @RequestParam("date_suivi1") java.sql.Date date_suivi1, RedirectAttributes redirectAttributes) throws ParseException {
 		wp3UniteElevJeuneService.modifyWp3UniteElevJeune(code_village, nom_prenom, sexe, annee_naissance, demarrage_unite, date_dem, type_activite, theme1_traite, date_suivi1, id);
+		return "redirect:/listWp3UniteElevJeune";
+	}
+	
+	@RequestMapping("/deleteWp3UniteElevJeune/{id}")
+	public String deleteWp3UniteElevJeune(@PathVariable(name = "id") Long id) {
+		wp3UniteElevJeuneService.deleteWp3UniteElevJeune(id);
 		return "redirect:/listWp3UniteElevJeune";
 	}
 	
@@ -537,6 +561,12 @@ public class Wp3Controller {
 		wp3ElevMfrService.modifyWp3ElevMfr(code_village, nom_prenom, village_origine, sexe, annee_naissance, inscrit, annee_inscription, date_suivi, type_frm, annee_etude, date_sortie, type_projet, niveau_demarrage, date_validation, accompagne, date_suivi1, id);
 		return "redirect:/listWp3ElevMfr";
 	}
+	
+	@RequestMapping("/deleteWp3ElevMfr/{id}")
+	public String deleteWp3ElevMfr(@PathVariable(name = "id") Long id) {
+		wp3ElevMfrService.deleteWp3ElevMfr(id);
+		return "redirect:/listWp3ElevMfr";
+	}
 
 	/* END #41-CANEVAS ELÈVE INSCRIT MFR DRAFT */
 	
@@ -618,6 +648,12 @@ public class Wp3Controller {
 			@RequestParam("accompagne_sortie") Boolean accompagne_sortie,
 			@RequestParam("type_accompagnement") String type_accompagnement, @RequestParam("date_suivi") java.sql.Date date_suivi,long id, RedirectAttributes redirectAttributes) throws ParseException {
 		wp3JeuneFormeMfrService.modifyWp3JeuneFormeMfr(code_village, nom_prenom, sexe, annee_naissance, forme, accompagne_sortie, type_accompagnement, date_suivi, id);
+		return "redirect:/listWp3JeuneFormeMfr";
+	}
+	
+	@RequestMapping("/deleteWp3JeuneFormeMfr/{id}")
+	public String deleteWp3JeuneFormeMfr(@PathVariable(name = "id") Long id) {
+		wp3JeuneFormeMfrService.deleteWp3JeuneFormeMfr(id);
 		return "redirect:/listWp3JeuneFormeMfr";
 	}
 
@@ -707,6 +743,12 @@ public class Wp3Controller {
 		return "redirect:/listWp3FedeMfr";
 	}
 	
+	@RequestMapping("/deleteWp3FedeMfr/{id}")
+	public String deleteWp3FedeMfr(@PathVariable(name = "id") Long id) {
+		wp3FedeMfrService.deleteWp3FedeMfr(id);
+		return "redirect:/listWp3FedeMfr";
+	}
+	
 	/* END #43-CANEVAS FEDERATION REGIONALE MFR */
 	
 	/* START #44-CANEVAS BDD ÉQUIPE TECHNIQUE MFR */
@@ -789,6 +831,12 @@ public class Wp3Controller {
 		return "redirect:/listWp3EquipeTechMfr";
 	}
 	
+	@RequestMapping("/deleteWp3EquipeTechMfr/{id}")
+	public String deleteWp3EquipeTechMfr(@PathVariable(name = "id") Long id) {
+		wp3EquipeTechMfrService.deleteWp3EquipeTechMfr(id);
+		return "redirect:/listWp3EquipeTechMfr";
+	}
+	
 	/* END #44-CANEVAS BDD ÉQUIPE TECHNIQUE MFR */
 	
 	/* START #45-CANEVAS AGR DÉVELOPPÉ MFR SAVA */
@@ -867,6 +915,13 @@ public class Wp3Controller {
 		wp3AgrDevMfrService.modifyWp3AgrDevMfr(code_village, nom_mfr, annee_miseplace, agr_developpe, date_eval, type_agr_dev1, date_suivi1, id);
 		return "redirect:/listWp3AgrDevMfr";
 	}
+	
+	@RequestMapping("/deleteWp3AgrDevMfr/{id}")
+	public String deleteWp3AgrDevMfr(@PathVariable(name = "id") Long id) {
+		wp3AgrDevMfrService.deleteWp3AgrDevMfr(id);
+		return "redirect:/listWp3AgrDevMfr";
+	}
+	
 	/* END #45-CANEVAS AGR DÉVELOPPÉ MFR SAVA */
 	
 	/* START #46-CANEVAS JEUNE AYANT TERMINÉ FORMATION PATHWAY */
@@ -941,6 +996,12 @@ public class Wp3Controller {
 			@RequestParam("nom_prenom") String nom_prenom, @RequestParam("sexe") String sexe,
 			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("date_fin_frm") java.sql.Date date_fin_frm,long id, RedirectAttributes redirectAttributes) throws ParseException {
 		wp3JeunePathwayService.modifyWp3JeunePathway(code_village, nom_prenom, sexe, annee_naissance, date_fin_frm, id);
+		return "redirect:/listWp3JeunePathway";
+	}
+	
+	@RequestMapping("/deleteWp3JeunePathway/{id}")
+	public String deleteWp3JeunePathway(@PathVariable(name = "id") Long id) {
+		wp3JeunePathwayService.deleteWp3JeunePathway(id);
 		return "redirect:/listWp3JeunePathway";
 	}
 
@@ -1022,6 +1083,12 @@ public class Wp3Controller {
 		return "redirect:/listWp3EppFram";
 	}
 	
+	@RequestMapping("/deleteWp3EppFram/{id}")
+	public String deleteWp3EppFram(@PathVariable(name = "id") Long id) {
+		wp3EppFramService.deleteWp3EppFram(id);
+		return "redirect:/listWp3EppFram";
+	}
+	
 	/* END #47-CANEVAS EPP FRAM DRAFT */
 
 	/* START #48-CANEVAS SERVICE SANTÉ PAR COMMUNAUTÉ */
@@ -1095,6 +1162,12 @@ public class Wp3Controller {
 			@RequestParam("gps_x") float gps_x, @RequestParam("gps_y") float gps_y,
 			@RequestParam("repro_sexuelle") String repro_sexuelle, @RequestParam("date_suivi") java.sql.Date date_suivi,long id, RedirectAttributes redirectAttributes) throws ParseException {
 		wp3SanteeCommService.modifyWp3SanteeComm(code_village, csb, gps_x, gps_y, repro_sexuelle, date_suivi, id);
+		return "redirect:/listWp3SanteeComm";
+	}
+	
+	@RequestMapping("/deleteWp3SanteeComm/{id}")
+	public String deleteWp3SanteeComm(@PathVariable(name = "id") Long id) {
+		wp3SanteeCommService.deleteWp3SanteeComm(id);
 		return "redirect:/listWp3SanteeComm";
 	}
 
@@ -1175,6 +1248,12 @@ public class Wp3Controller {
 			@RequestParam("date_suivi") java.sql.Date date_suivi,long id, RedirectAttributes redirectAttributes) throws ParseException {
 		
 		wp3PeerEducatorService.modifyWp3PeerEducator(code_village, nom_prenom, sexe, annee_naissance, operationnelle, date_suivi, id);
+		return "redirect:/listWp3PeerEducator";
+	}
+	
+	@RequestMapping("/deleteWp3PeerEducator/{id}")
+	public String deleteWp3PeerEducator(@PathVariable(name = "id") Long id) {
+		wp3PeerEducatorService.deleteWp3PeerEducator(id);
 		return "redirect:/listWp3PeerEducator";
 	}
 

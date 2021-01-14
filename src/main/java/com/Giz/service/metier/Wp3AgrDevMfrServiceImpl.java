@@ -92,6 +92,11 @@ Wp3AgrDevMfr wp3AgrDevMfr = new Wp3AgrDevMfr();
 		
 	}
 	
+	@Override
+	public void deleteWp3AgrDevMfr(Long id) {
+		wp3AgrDevMfrRepository.deleteWp3AgrDevMfr(id);		
+	}
+	
 	//graphe
 
 	@Override

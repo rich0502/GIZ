@@ -80,6 +80,11 @@ public class Wp3EppFramServiceImpl implements Wp3EppFramService {
 		
 	}
 	
+	@Override
+	public void deleteWp3EppFram(Long id) {
+		wp3EppFramRepository.deleteWp3EppFram(id);		
+	}
+	
 	//graphe
 
 	@Override

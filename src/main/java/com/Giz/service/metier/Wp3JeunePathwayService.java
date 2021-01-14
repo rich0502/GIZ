@@ -22,6 +22,8 @@ public interface Wp3JeunePathwayService {
 	public void modifyWp3JeunePathway(String code_village, String nom_prenom, String sexe, int annee_naissance,
 			Date date_fin_frm, long id);
 	
+	public void deleteWp3JeunePathway(Long id);
+	
 	//graphe
 
 	public long TotTotal(Date debut_date, Date fin_date);

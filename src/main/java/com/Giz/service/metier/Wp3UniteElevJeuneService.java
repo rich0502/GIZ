@@ -22,6 +22,8 @@ public interface Wp3UniteElevJeuneService {
 	public void modifyWp3UniteElevJeune(String code_village, String nom_prenom, String sexe, int annee_naissance,
 			Boolean demarrage_unite, Date date_dem, String type_activite, String theme1_traite, Date date_suivi1,long id);
 	
+	public void deleteWp3UniteElevJeune(Long id);
+	
 	//graphe
 
 	public long TotTotal(Date debut_date, Date fin_date);

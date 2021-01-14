@@ -22,6 +22,8 @@ public interface Wp3SanteeCommService {
 	public void modifyWp3SanteeComm(String code_village, String csb, float gps_x, float gps_y, String repro_sexuelle,
 			Date date_suivi,long id);
 	
+	public void deleteWp3SanteeComm(Long id);
+	
 	//graphe
 
 	public long TotTotal(Date debut_date, Date fin_date);

@@ -25,6 +25,8 @@ public interface Wp3ActivEcoJeuneService {
 			String organisme_formateur, String frm_tech_suivi, Date date_fin_frm, String activite_eco,
 			Date date_demarrage, Long id);
 	
+	public void deleteWP3ActivEcoJeune(Long id);
+	
 	//graphe
 	
 	public long TotTotal(Date debut_date, Date fin_date);

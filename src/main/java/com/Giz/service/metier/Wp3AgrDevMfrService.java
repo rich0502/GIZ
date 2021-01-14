@@ -22,6 +22,8 @@ public interface Wp3AgrDevMfrService {
 	public void modifyWp3AgrDevMfr(String code_village, String nom_mfr, int annee_miseplace, Boolean agr_developpe,
 			Date date_eval, String type_agr_dev1, Date date_suivi1,long id);
 	
+	public void deleteWp3AgrDevMfr(Long id);
+	
 	//graphe
 
 	public long TotTotal(Date debut_date, Date fin_date);

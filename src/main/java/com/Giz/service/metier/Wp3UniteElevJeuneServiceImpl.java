@@ -93,6 +93,11 @@ public class Wp3UniteElevJeuneServiceImpl implements Wp3UniteElevJeuneService {
 		
 	}
 	
+	@Override
+	public void deleteWp3UniteElevJeune(Long id) {
+		wp3UniteElevJeuneRepository.deleteWp3UniteElevJeune(id);		
+	}
+	
 	//graphe
 
 	@Override
