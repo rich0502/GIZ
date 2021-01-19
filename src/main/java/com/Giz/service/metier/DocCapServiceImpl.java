@@ -2,6 +2,7 @@ package com.Giz.service.metier;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,20 +43,26 @@ public class DocCapServiceImpl implements DocCapService {
 		docCapRepository.save(docCap);
 		
 	}
+	
+	@Override
+	public Optional<DocCap> findByIdDocCap(long id_dc) {
+		return docCapRepository.findById(id_dc);
+	}
 
 	@Override
-	public void modifyDocCap(DocCap docCap,String titre_doc,  String thematique, String type_doc, String auteur_doc, Date date_partage,
+	public void modifyDocCap(String titre_doc,  String thematique, String type_doc, String auteur_doc, Date date_partage,
 			String reception, Long id_dc) {
+		DocCap docCap = new DocCap();
 		docCap.setTitre_doc(titre_doc);
 		docCap.setThematique(thematique);
 		docCap.setType_doc(type_doc);
 		docCap.setAuteur_doc(auteur_doc);
 		docCap.setDate_partage(date_partage);
 		docCap.setReception(reception);
+		docCap.setId_dc(id_dc);
 		docCapRepository.save(docCap);
 		
 	}
-
 	@Override
 	public int TotDocCap() {
 		// TODO Auto-generated method stub

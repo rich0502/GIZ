@@ -2,6 +2,7 @@ package com.Giz.service.metier;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,14 +53,21 @@ public class PlateformeServiceImpl implements PlateformeService {
 	}
 
 	@Override
-	public void modifyPlateforme(Plateforme plateforme, String code_village, boolean exist_platform,
+	public Optional<Plateforme> findByIdPlateforme(long id_am) {
+		return plateformRepository.findById(id_am);
+	}
+
+	@Override
+	public void modifyPlateforme(String code_village, boolean exist_platform,
 			boolean operationnel, Date date_suivi, String commentaire, String type_plateform, Long id_am) {
+		Plateforme plateforme = new Plateforme();
 		plateforme.setCode_village(code_village);
 		plateforme.setExist_platform(exist_platform);
 		plateforme.setOperationnel(operationnel);
 		plateforme.setDate_suivi(date_suivi);
 		plateforme.setCommentaire(commentaire);
 		plateforme.setType_plateform(type_plateform);
+		plateforme.setId_am(id_am);
 		plateformRepository.save(plateforme);
 	}
 

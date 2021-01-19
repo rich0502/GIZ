@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>GIZ</title>
+	<link rel="icon" type="image/png" href="css/images/icons/favicon.png">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!--JQUERY-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<!-- Los iconos tipo Solid de Fontawesome-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	<!-- Nuestro css-->
+	<link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/index.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/fonts.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/giz.css}">
+	<style type="text/css">
+		.select2-container .select2-selection--single {
+			height: 34px !important;
+		}
+
+		.select2-container--default .select2-selection--single {
+			border: 1px solid #ccc !important;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#datepicker').datepicker({
+				format: 'dd-mm-yyyy',
+				"autoclose": true,
+				language: 'en'
+			})//.datepicker("setDate", 'now')
+				;
+			var valeur = $('#error_value').text();
+			if (valeur != '') {
+				$('#messageModal').modal('show');
+				$('#msg').text(valeur);
+			}
+		});
+	</script>
+</head>
+
+<body class="add-success">
+	<div th:include="/pds_header.html"></div>
+	<section class="main">
+		<div class="base-content">
+			<form method="POST" th:action="@{/saveEditAtelierMFR}" class="form-edition-cust">
+				<input th:field="*{atelierMFR.id_am}" type="hidden">
+				Code village
+				<br>
+				<input th:field="*{atelierMFR.code_village}" type="text" id="nom_bf">
+				<br>
+				Entité responsable de l'atelier/évènement promotionnel:
+				<br>
+				<input th:field="*{atelierMFR.atelier_resp}" type="text">
+				<br>
+				Date de réalisation de l'atelier/évènement:
+				<br>
+				<input type="date" th:field="*{atelierMFR.date_realise}" min="2015-01-01" class="form-control select2">
+				<br>
+				Lieu de réalisation :
+				<br>
+				<input th:field="*{atelierMFR.lieu_realise}" type="text">
+				<br>
+				Thématique choisie :
+				<br>
+				<input th:field="*{atelierMFR.theme_choise}" type="text">
+				<br>
+				Nombre de participant total:
+				<br>
+				<input type="text" th:field="*{atelierMFR.nbr_particip}">
+				<br>
+				Nombre homme :
+				<br>
+				<input type="text" th:field="*{atelierMFR.nbr_homme}">
+				<br>
+				Nombre femme :
+				<br>
+				<input th:field="*{atelierMFR.nbr_femme}" type="text">
+				Cible de l'atelier/évènement :
+				<br>
+				<input type="text" th:field="*{atelierMFR.cible_atelier}">
+				<br>
+				Type de l'atelier/évènement :
+				<br>
+				<input type="text" th:field="*{atelierMFR.type_atelier}">
+				<br>
+				<br>
+				<input type="submit" value="Submit" class="gbtn">
+			</form>
+		</div>
+	</section>
+</body>
+<html>

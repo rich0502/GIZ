@@ -2,6 +2,7 @@ package com.Giz.service.metier;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import com.Giz.data.domain.DocCap;
 import com.Giz.data.domain.TpsFormes;
@@ -17,8 +18,10 @@ public interface DocCapService {
 	public void addDocCap(String titre_doc, String thematique, String type_doc, String auteur_doc, Date date_partage,
 			String reception);
 	
+	public Optional<DocCap> findByIdDocCap(long id_dc);
 	
-	public void modifyDocCap(DocCap docCap,String titre_doc, String thematique, String type_doc, String auteur_doc, Date date_partage,
+	
+	public void modifyDocCap(String titre_doc, String thematique, String type_doc, String auteur_doc, Date date_partage,
 			String reception, Long id_dc);
 	
 	public int TotDocCap();
