@@ -83,6 +83,8 @@ public class StorieController {
 	            byte[] bytes = file.getBytes();
 	            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
 	            Files.write(path, bytes);
+	    		String content_type = file.getContentType();
+	    		storie.setType_str(content_type);
 	    		String links_file = DOWNLOAD_FOLDER + file.getOriginalFilename();
 	    		storie.setLinks_file(links_file);
 	    		storieService.addStorie(storie);

@@ -15,6 +15,9 @@ public class Storie {
 	@Column(name = "id_str")
 	private Long id_str;
 	
+	@Column(name = "type_str")
+	private String type_str;
+	
 	@Column(name = "nom_str")
 	private String nom_str;
 	
@@ -44,6 +47,14 @@ public class Storie {
 
 	public void setNom_str(String nom_str) {
 		this.nom_str = nom_str;
+	}
+
+	public String getType_str() {
+		return type_str;
+	}
+
+	public void setType_str(String type_str) {
+		this.type_str = type_str;
 	}
 
 	public String getAuteur() {
