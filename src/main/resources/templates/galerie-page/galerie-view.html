@@ -44,7 +44,7 @@
                 <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modifTarget" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" 
                   th:onclick="@{'javascript:ModifGalerie(\''+ ${galerie.id} +'\', \''+ ${galerie.nom_album} +'\');'}" >Modifier</button>
                 <a class="dropdown-item spr" href="#" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" 
-                  th:onclick="'javascript:confirmDelete(\''+ ${galerie.id} +'\');'">Supprimer</a>
+                  th:onclick="'javascript:confirmDelete(\''+ ${galerie.id} +'\');'">[[#{supprimer}]]</a>
               </div>
             </div>
           </div>

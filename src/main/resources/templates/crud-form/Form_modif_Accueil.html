@@ -52,12 +52,12 @@
             <div class="home-content">
 				<form method="POST" th:action="@{/saveEditAccueil}">
 					<input th:field="*{accueil.id_acc}" type="hidden">
-					Contenu
+					[[#{content}]]
 					<br>
 					<textarea th:field="*{accueil.contenu_acc}" id="summernote"></textarea>  				
 					<br>
 					<br>
-					<input type="submit" value="Enregistrer" class="gbtn">
+					<input type="submit" th:value="#{save}" class="gbtn">
 				</form>
 			</div>
 		</section>

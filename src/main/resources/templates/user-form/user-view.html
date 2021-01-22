@@ -45,7 +45,7 @@
 	        	 buttons: [
 	                 {
 	                	 className: 'pds-primary-btn',
-	                     text: 'AJOUTER UN UTILISATEUR',
+	                     text: '[[#{user.add}]]',
 	                     action: function ( ) {
 	                         $('#form-tab').trigger('click');
 	                     }
@@ -80,12 +80,12 @@
 					</ul>
 					<div class="tab-content tab-override" id="myTabContent">
 						<!-- btn retour -->
-								<a class="btn pds-secondary-btn pds-cancel-btn text-white pds-back" th:href="@{/plan}">retour</a>
+								<a class="btn pds-secondary-btn pds-cancel-btn text-white pds-back" th:href="@{/plan}">[[#{retour}]]</a>
 						<div class="tab-pane fade show" th:classappend=" ${listTab}" id="list" role="tabpanel" aria-labelledby="list-tab">
 							<div class="card ">
 								
 								<div class="card-body">
-								<h1 class="content-title" >GESTION DES UTILISATEURS</h1>
+								<h1 class="content-title" >[[#{user.titre}]]</h1>
 									<div th:include="user-form/user-list.html" th:remove="tag" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"></div>
 								</div>
 							</div>
@@ -93,7 +93,7 @@
 						<div class="tab-pane fade show" th:classappend=" ${formTab}" id="form" role="tabpanel" aria-labelledby="form-tab">
 							<div class="card">
 								<div class="card-body">
-								<h1 class="content-title" >FORMULAIRE UTILISATEURS</h1>
+								<h1 class="content-title" >[[#{user.form}]]</h1>
 									<div th:include="user-form/user-form.html" th:remove="tag" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"></div>
 								</div>
 							</div>

@@ -4,7 +4,7 @@
 			<div class="" >
 				<p>Work Package</p>
 				<select th:name="sc" class="ginput form-control" id="sc">
-					<option value="null">-- <span>Sélectionner Work Package</span> --</option>
+					<option value="null">-- <span>[[#{selectionner}]] Work Package</span> --</option>
 					<option th:each="sc : ${scList}" th:value="${sc[0]}" th:text="${sc[1]}"></option>
 				</select>
 			</div>

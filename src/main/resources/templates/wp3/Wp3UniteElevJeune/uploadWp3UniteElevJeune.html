@@ -17,7 +17,7 @@
 							
 							<div th:include="canevasMenu.html" th:remove="tag"></div>
 											<div class="card-body">
-							<h2 class="page-title">CANEVAS DEMARRAGE UNITÉ ELÉVAGE JEUNEE 18 À 24 ANS</h2>
+							<h2 class="page-title">CANEVAS DEMARRAGE UNITEÌ� ELEÌ�VAGE JEUNEE 18 AÌ€ 24 ANS</h2>
 							<form th:action="@{/importWp3UniteElevJeune}" method="post" class="uploadForm" enctype="multipart/form-data">
 							<figure>
 								<img th:src=@{/css/images/upload.svg}>
@@ -25,10 +25,10 @@
 								<br>
 							<fieldset >
 								<span class="gbtn btn-file">
-								<b>Ajout Fichier</b>
+								<b>[[#{import.add}]]</b>
 									<input type="file" th:name="file" />
 								</span>
-									<input  th:type="submit" value="Mise en forme" class="gbtn" />
+									<input  th:type="submit" th:value="#{import.msf}" class="gbtn" />
 					
 								</form>
 							</fieldset>
