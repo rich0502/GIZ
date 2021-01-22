@@ -38,7 +38,7 @@
 	<section class="main add-doc">
 		<div class="base-content content-wrapper ">
 			<div class="top-page ">
-				<h1 class="content-title ">Ajouter des documents</h1>
+				<h1 class="content-title ">[[#{ajouter}]] documents</h1>
 			</div>
 			<!-- document -->
 
@@ -65,16 +65,16 @@
 							<div class="">
 								<div id="upload">
 									<div id="drop">
-										<span class="manual-upload">Glisser le document à
-											télécharger ou</span> <a class="btn pds-primary-btn pds-upload-btn">CHOISIR
-											UN FICHIER</a> <input type="file" name="file" multiple />
+										<span class="manual-upload">
+											[[#{choisir.doc}]]</span> <a class="btn pds-primary-btn pds-upload-btn">
+											[[#{choisir.file}]]</a> <input type="file" name="file" multiple />
 									</div>
 
 									<ul>
 										<!-- The file uploads will be shown here -->
 									</ul>
 									<input type="submit" class="btn pds-primary-btn pds-save-btn"
-										value="Enregistrer">
+										th:value="#{save}">
 					</form>
 				
 			</div>

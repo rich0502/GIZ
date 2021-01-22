@@ -58,7 +58,7 @@
 					<tr>
 						<td style="width: 100px; padding-left: 8px;">
 							<select th:name="sc" class="ginput form-control" id="sc">
-								<option value="null">-- <span>Sélectionner Work Package</span> --</option>
+								<option value="null">-- <span>[[#{selectionner}]] Work Package</span> --</option>
 								<option th:each="sc : ${scList}" th:value="${sc[0]}" th:text="${sc[1]}"></option>
 							</select>
 						</td>
@@ -112,11 +112,11 @@
 						</td>
 						<td style="width: auto;"></td>
 						<td style="width: 150px; padding-left: 8px;"><input class="form-control"
-							type="submit" value="Tableau" onClick="submitFunction(3)"></td>
+							type="submit" th:value="#{tableau}" onClick="submitFunction(3)"></td>
 						<td style="width: 150px; padding-left: 8px;"><input class="form-control"
-							type="submit" value="Carte" onClick="submitFunction(1)"></td>
+							type="submit" th:value="#{carte}" onClick="submitFunction(1)"></td>
 						<td style="width: 150px; padding-left: 8px;"><input class="form-control"
-							type="submit" value="Graphe" onClick="submitFunction(2)"></td>
+							type="submit" th:value="#{graphe}" onClick="submitFunction(2)"></td>
 					</tr>
 				</table>
 			</form> <br>

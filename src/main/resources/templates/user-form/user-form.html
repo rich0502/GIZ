@@ -169,8 +169,8 @@ $(document).ready(function(){
 			<div class="col-lg-12 text-right action-flex">
 				<a class="btn pds-secondary-btn btn-secondary pds-cancel-btn"
 					th:href="@{'/userForm/cancel'}">[[#{annuler}]]</a> <input type="submit"
-					class="btn pds-primary-btn pds-save-btn" value="Save Changes"
-					th:value="${editMode}? #{save}:'enregistrer'">
+					class="btn pds-primary-btn pds-save-btn"
+					th:value="${editMode}? #{modifier}: #{save}">
 			</div>
 		</div>
 

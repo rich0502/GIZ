@@ -52,7 +52,7 @@
 				<div class="btn-row">
 					<button class="gbtn add" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
 						th:onclick="@{'javascript:confirmDeleteAlbum(\''+${album_image.id}+'\');'}" >[[#{supprimer}]]</button>
-					<button type="button" class="gbtn" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" data-toggle="modal" data-target="#exampleModalCenter">Ajout photo</button>
+					<button type="button" class="gbtn" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" data-toggle="modal" data-target="#exampleModalCenter">[[#{ajouter}]] photo</button>
 				</div>
 			</header>
 
@@ -73,7 +73,7 @@
 									<div class="dropdown-menu show-action" aria-labelledby="dropdownMenuLink">
 										<a class="dropdown-item dwn" href="#" th:href="@{'/downloadImage/' + ${album.id}}">Télécharger</a>
 										<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="dropdown-item spr" href="#"
-											th:onclick="'javascript:confirmDelete(\''+ ${album.id} +'\', \'' + ${album_image.id} +'\');'">Supprimer</a>
+											th:onclick="'javascript:confirmDelete(\''+ ${album.id} +'\', \'' + ${album_image.id} +'\');'">[[#{supprimer}]]</a>
 
 									</div>
 								</div>

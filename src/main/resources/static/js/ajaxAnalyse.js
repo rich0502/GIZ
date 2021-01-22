@@ -10,7 +10,7 @@ $("#sc").change(
 							var slctSubcat = $('#theme'), option = "";
 							slctSubcat.empty();
 							option = option
-							+ "<option value='null'>Sélectionner le canevas</option>";
+							+ "<option value='null'>Select canevas</option>";
 							for (var i = 0; i < data.length; i++) {
 								option = option
 										+ "<option value='"+data[i][0]+ "'>"

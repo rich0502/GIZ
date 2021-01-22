@@ -38,7 +38,7 @@
 	<section class="main add-doc">
 		<div class="base-content content-wrapper ">
 			<div class="top-page ">
-				<h1 class="content-title ">Ajouter des stories</h1>
+				<h1 class="content-title ">[[#{ajouter}]] success stories</h1>
 			</div>
 			<!-- document -->
 
@@ -47,7 +47,7 @@
 						enctype="multipart/form-data" action="/Giz/saveStorie">
 						
 							<div class="">								
-								<div style="margin-bottom:8px">Nom du storie</div>										
+								<div style="margin-bottom:8px">Nom du success stories</div>										
 								<input class="floating-input " type="text" placeholder=" "
 									id="nom_str" name="nom_str">																
 								<br>
@@ -57,16 +57,16 @@
 							<div class="">
 								<div id="upload">
 									<div id="drop">
-										<span class="manual-upload">Glisser le document à
-											télécharger ou</span> <a class="btn pds-primary-btn pds-upload-btn">CHOISIR
-											UN FICHIER</a> <input type="file" name="file" multiple />
+										<span class="manual-upload">
+											[[#{choisir.doc}]]</span> <a class="btn pds-primary-btn pds-upload-btn">
+											[[#{choisir.file}]]</a> <input type="file" name="file" multiple />
 									</div>
 
 									<ul>
 										<!-- The file uploads will be shown here -->
 									</ul>
 									<input type="submit" class="btn pds-primary-btn pds-save-btn"
-										value="Enregistrer">
+										th:value="#{save}">
 					</form>
 				
 			</div>
