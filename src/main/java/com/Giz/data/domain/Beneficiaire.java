@@ -55,6 +55,8 @@ public class Beneficiaire {
 		this.sexe = sexe;
 		this.annee_naissance = annee_naissance;
 		this.age = age;
+		this.code_village = code_village;
+		
 	}
 	
 	
