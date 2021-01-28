@@ -51,7 +51,7 @@ public class BeneficiaireServiceImpl implements BeneficiaireService {
 		List<Beneficiaire> benef = new ArrayList<>();
 		for(int i = 0; i < list.size(); i++) {
 			String[] temp = list.get(i).split(",");
-			Beneficiaire ben = new Beneficiaire(temp[0], temp[1], Integer.parseInt(temp[2]), Integer.parseInt(temp[3]), temp[4]);
+			Beneficiaire ben = new Beneficiaire(temp[0], temp[1], Integer.parseInt(temp[2]),0, temp[3]);
 			benef.add(ben);
 		}
 		return benef;

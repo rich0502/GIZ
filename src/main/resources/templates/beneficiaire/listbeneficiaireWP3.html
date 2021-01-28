@@ -43,9 +43,9 @@
 		<tbody>
 			<tr th:each="b : ${Beneficiaire}">
 				<td th:text="${b.nom_prenom}"></td>
-				<td th:text="${annee} - ${b.annee_naissance}"></td>
 				<td th:text="${b.sexe}"></td>
 				<td th:text="${b.annee_naissance}"></td>
+				<td th:text="${annee} - ${b.annee_naissance}"></td>
 				<td th:text="${b.code_village}"></td>
 			</tr>
 
