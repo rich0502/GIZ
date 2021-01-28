@@ -25,11 +25,10 @@
 								<br>
 							<fieldset >
 								<span class="gbtn btn-file">
-								<b>Ajout Fichier</b>
-								   <input type="hidden" th:name="canevas" th:value="${canevas}"/>
+								<b>[[#{import.add}]]</b>
 									<input type="file" th:name="file" />
 								</span>
-									<input  th:type="submit" value="Mise en forme" class="gbtn" />
+									<input  th:type="submit" th:value="#{import.msf}" class="gbtn" />
 					
 								</form>
 							</fieldset>

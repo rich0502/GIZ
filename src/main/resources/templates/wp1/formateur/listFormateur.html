@@ -47,8 +47,8 @@
 <div class="card">
 	<header class="composantesTable-header justify-between">
 		<h2 class="page-title">Bénéficiaire</h2>
-		<button type="submit" class="gbtn add" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >Ajout</button>
-		<a 	th:href="@{'/success'}" class="gbtn btAdd btn-base" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">Liste Success stories</a>
+		<button type="submit" class="gbtn add" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >[[#{ajouter}]]</button>
+		<a 	th:href="@{'/success'}" class="gbtn btAdd btn-base" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">[[#{liste}]] Success stories</a>
 	</header>
 	<table class="composantes-table" id="myTable">
 		<thead>
@@ -89,7 +89,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content card-body">
       <div class="modal-header">
-        <h2 class="page-title modal-title" id="exampleModalLongTitle">Message de confirmation</h2>
+        <h2 class="page-title modal-title" id="exampleModalLongTitle">[[#{confirm.titre}]]</h2>
         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">X</span>
 		</button> -->
@@ -97,12 +97,12 @@
 			<span aria-hidden="true">&times;</span>
 		</button>
       </div>
-      <div class="modal-body p-modal"><span>Voulez-vous vraiment supprimer</span>
+      <div class="modal-body p-modal"><span>[[#{confirm}]]</span>
 		<input type="hidden" id="sensibileIdHiddenInput" />
       </div>
       <div class="modal-footer btn-row">
-        <button type="button" class="gbtn cancel" data-dismiss="modal" >Fermer</button>
-        <button type="button" class="gbtn" th:onclick="confirmDeleteSensibilise()" >Supprimer</button>
+        <button type="button" class="gbtn cancel" data-dismiss="modal" >[[#{fermer}]]</button>
+        <button type="button" class="gbtn" th:onclick="confirmDeleteSensibilise()" >[[#{supprimer}]]</button>
       </div>
     </div>
   </div>

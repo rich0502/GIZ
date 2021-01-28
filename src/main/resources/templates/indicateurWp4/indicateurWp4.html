@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>GIZ</title>
+	<link rel="icon" type="image/png" href="css/images/icons/favicon.png" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<!--JQUERY-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+		</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+	<!-- Los iconos tipo Solid de Fontawesome-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	<!-- Nuestro css-->
+	<link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/tracker_table.css}" />
+</head>
+
+<body>
+	<div th:include="/pds_header.html"></div>
+	<section class="main">
+		<span class="span-user" th:object="${nomUser}"></span>
+		<span class="span-user" th:text="${nomUser}" id="lastUser">
+			<span th:text="${nomUser.username}"></span>
+		</span>
+		<br>
+		
+		<div style="text-align: center;">
+			<br>
+			<div th:include="indiMenu.html" th:remove="tag"></div>
+			<br>
+			<br>	
+			<br>
+			<form method="POST" name="theForm" th:action="@{/indicateur}">
+			<div class="table-tracker-container indicator" id="html-content-holder" crossorigin="anonymous">
+				<table class="d-table-tracker indicator-table" id="dynamicTableTracker">
+					<tr class="">
+						<th class="col-title" rowspan="2"></th> 
+						<th class="row-field" rowspan="2"><div class="editable-field">Logique d'intervention</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Indicateurs objectivement vérifiables</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Canevas collecte validé & N°</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Observations</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Niveau de réalisation des activités</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Niveau d'atteinte des objectifs</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Clarification de l'indicateur</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Sources et moyens de vérification</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Responsables</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Hypothèses / Risques</div></th>
+						<th class="row-field" colspan="4"><div class="editable-field">"Situation actuelle<br>
+							A la date du "</div></th>
+					</tr>
+					<tr class="">
+						<th class="row-field" ><div class="editable-field">Situation / chiffres clés</div></th>
+						<th class="row-field sexe-col" ><div class="editable-field">H</div></th>
+						<th class="row-field sexe-col" ><div class="editable-field">F</div></th>
+						<th class="row-field"><div class="editable-field">Commentaires</div></th>
+					</tr>
+					<div th:include="indicateurWp4/docCap.html" th:remove="tag"></div>	
+					<div th:include="indicateurWp4/atelier.html" th:remove="tag"></div>		
+					<div th:include="indicateurWp4/PlateForme.html" th:remove="tag"></div>				
+				</table>
+			</div>
+			<br>
+		</form>
+		</div>
+		
+
+		
+	</section>
+	<script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
+	<script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
+	<script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
+	
+
+	<script th:src="@{/js/tracker-table/jquery-1.12.4.js}"></script>
+	<script th:src="@{/js/tracker-table/jquery-ui.js}"></script>
+	<script th:src="@{/js/tracker-table/html2canvas.min.js}"></script>
+
+	<script th:src="@{/js/tracker-table/trackerTable.js}"></script>
+
+	<SCRIPT>
+		function submitFunction(i) {
+			if (i == 1) document.theForm.action =
+				"/Giz/carte";
+			if (i == 2) document.theForm.action =
+				"/Giz/graphe";
+			if (i == 3) document.theForm.action =
+				"http://www.company.com/cgi-bin/cgi3.cgi";
+			document.theForm.submit()
+		}
+
+	</SCRIPT>
+
+	<script>
+		$('.type-number-percent input').each(function(elem) {
+			$(this).change(function(){
+				var valeur = $(this).val();
+				$(this).closest('.type-number-percent').parent().find('.progress-bar').css('width', valeur+'%').attr('aria-valuenow', valeur); 
+			})
+		})		
+	</script>
+</body>
+
+</html>

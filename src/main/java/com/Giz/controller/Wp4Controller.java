@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -15,10 +16,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Giz.data.constants.theme.ListeWp;
 import com.Giz.data.domain.AtelierMFR;
@@ -131,6 +136,34 @@ public class Wp4Controller {
 		return "wp4/DocCap/listDocCap";
 	}
 	
+	@RequestMapping("/deleteDocCap/{id_dc}")
+	public String deleteDocCap(@PathVariable(name = "id_dc") Long id_dc) {
+		docCapService.deleteDocCap(id_dc);
+		return "redirect:/listDocCap";
+	}
+	
+	@RequestMapping("/editDocCap/{id_dc}")
+	public ModelAndView editDocCap(@PathVariable(name = "id_dc") Long id_dc, Model model) throws ParseException {
+		ModelAndView mav = new ModelAndView("wp4/DocCap/Form_modifDocCap");
+		Optional<DocCap> bf = docCapService.findByIdDocCap(id_dc);
+		mav.addObject("docCap", bf);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/saveEditDocCap", method = RequestMethod.POST)
+	public String saveEditDocCap(
+			@RequestParam("id_dc") long id_dc,
+			@RequestParam("titre_doc") String titre_doc,
+			@RequestParam("thematique") String thematique,
+			@RequestParam("type_doc") String type_doc,
+			@RequestParam("auteur_doc") String auteur_doc,
+			@RequestParam("date_partage") java.sql.Date date_partage,
+			@RequestParam("reception") String reception,
+			RedirectAttributes redirectAttributes) throws ParseException {
+		docCapService.modifyDocCap( titre_doc, thematique, type_doc, auteur_doc, date_partage, reception, id_dc);
+		return "redirect:/listDocCap";
+	}
+	
 	/* CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DU RESEAU DE MFR DANS LA REGION */
 	@RequestMapping("/uploadAtelier")
 	public String uploadAtelier(Model model) {
@@ -194,6 +227,38 @@ public class Wp4Controller {
 		model.addAttribute("atelier", atelier);
 		model.addAttribute("type_at", type_at);
 		return "wp4/AtelierMFR/listAtelier";
+	}
+	
+	@RequestMapping("/deleteAtelierMFR/{id_am}")
+	public String deleteAtelierMFR(@PathVariable(name = "id_am") Long id_am) {
+		atelierMFRService.deleteAtelierMFR(id_am);
+		return "redirect:/listAtelier";
+	}
+	
+	@RequestMapping("/editAtelierMFR/{id_am}")
+	public ModelAndView editAtelierMFR(@PathVariable(name = "id_am") Long id_am, Model model) throws ParseException {
+		ModelAndView mav = new ModelAndView("wp4/AtelierMFR/Form_modifAtelierMFR");
+		Optional<AtelierMFR> bf = atelierMFRService.findByIdAtelierMFR(id_am);
+		mav.addObject("atelierMFR", bf);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/saveEditAtelierMFR", method = RequestMethod.POST)
+	public String saveEditAtelierMFR(
+			@RequestParam("id_am") long id_am,
+			@RequestParam("code_village") String code_village,
+			@RequestParam("atelier_resp") String atelier_resp,
+			@RequestParam("date_realise") java.sql.Date date_realise,
+			@RequestParam("lieu_realise") String lieu_realise,
+			@RequestParam("theme_choise") String theme_choise,
+			@RequestParam("nbr_particip") long nbr_particip,
+			@RequestParam("nbr_homme") int nbr_homme,
+			@RequestParam("nbr_femme") int nbr_femme, 
+			@RequestParam("cible_atelier") String cible_atelier,
+			@RequestParam("type_atelier") String type_atelier,
+			RedirectAttributes redirectAttributes) throws ParseException {
+		atelierMFRService.modifyAtelierMFR( code_village, atelier_resp, date_realise, lieu_realise, theme_choise, nbr_particip, nbr_homme, nbr_femme, cible_atelier, type_atelier, id_am);
+		return "redirect:/listAtelier";
 	}
 	
 	/* CANEVAS DIALOGUE REGIONAL SUR L'ACCES AU FINANCEMENT */
@@ -302,6 +367,34 @@ public class Wp4Controller {
 		model.addAttribute("plate", plate);
 		model.addAttribute("type_at", type_at);
 		return "wp4/plateforme/listPlateforme";
+	}
+	
+	@RequestMapping("/deletePlateforme/{id_am}")
+	public String deletePlateforme(@PathVariable(name = "id_am") Long id_am) {
+		plateformeService.deletePlateforme(id_am);
+		return "redirect:/listPlateforme";
+	}
+	
+	@RequestMapping("/editPlateforme/{id_am}")
+	public ModelAndView editPlateforme(@PathVariable(name = "id_am") Long id_am, Model model) throws ParseException {
+		ModelAndView mav = new ModelAndView("wp4/plateforme/Form_modifPlateforme");
+		Optional<Plateforme> bf = plateformeService.findByIdPlateforme(id_am);
+		mav.addObject("plateforme", bf);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/saveEditPlateforme", method = RequestMethod.POST)
+	public String saveEditPlateforme(
+			@RequestParam("id_am") long id_am,
+			@RequestParam("code_village") String code_village,
+			@RequestParam("exist_platform") Boolean exist_platform,
+			@RequestParam("operationnel") Boolean operationnel,
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			@RequestParam("commentaire") String commentaire,
+			@RequestParam("type_plateform") String type_plateform,
+			RedirectAttributes redirectAttributes) throws ParseException {
+		plateformeService.modifyPlateforme(  code_village,  exist_platform,  operationnel,  date_suivi, commentaire,  type_plateform, id_am);
+		return "redirect:/listPlateforme";
 	}
 	
 	/* CANEVAS PLATE FORME DE REFLEXION ET DE PLANIFICATION DE L'AMELIORATION DE LA FORMATION PROFESSIONNELLE */

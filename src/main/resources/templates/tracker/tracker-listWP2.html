@@ -29,13 +29,13 @@
  	<section class="main">
    	<div class="container-fluid content-wrapper">
         <div class="top-page">
-            <h1 class="content-title"> GESTION TRACKER WP2</h1>
+            <h1 class="content-title"> [[#{tracker.titre}]] WP2</h1>
         </div>
         <!-- document -->
 
         <div class="">
 			<div th:include="TrackerMenu.html" th:remove="tag"></div>
-            <a class="btn pds-primary-btn pds-add-user-btn pds-icon-btn" href="trackerAddWP2"><img class="icon-btn" src="img/pds_add_document.svg"><span class="label-btn"> Ajouter Tracker </span></a>
+            <a class="btn pds-primary-btn pds-add-user-btn pds-icon-btn" href="trackerAddWP2"><img class="icon-btn" src="img/pds_add_document.svg"><span class="label-btn"> [[#{ajouter}]] Tracker </span></a>
             <div class="table-responsive">
                 <table id="docList" class="pds-table table table-hover table-striped">
                     <thead class="thead-light">

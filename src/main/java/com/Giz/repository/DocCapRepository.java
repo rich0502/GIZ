@@ -2,7 +2,10 @@ package com.Giz.repository;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.Giz.data.domain.DocCap;
@@ -19,6 +22,11 @@ public interface DocCapRepository extends JpaRepository<DocCap, Long> {
 	
 	@Query(value = "SELECT e.date_partage as x,count(e.date_partage) as y FROM DocCap e WHERE e.date_partage BETWEEN ?1 AND ?2 GROUP BY e.date_partage ORDER BY e.date_partage ASC", nativeQuery = true)
 	List<Object[]> TpsDoc_capData(java.util.Date debut_date,java.util.Date fin_date);
+	
+	@Modifying
+    @Transactional
+    @Query("delete from DocCap e where id_dc = ?1")
+    void deleteDocCap(Long id_dc);
 	
 	//graphe
 	

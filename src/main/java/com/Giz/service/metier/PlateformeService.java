@@ -2,6 +2,7 @@ package com.Giz.service.metier;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import com.Giz.data.domain.Plateforme;
 import com.Giz.data.domain.TpsFormes;
@@ -20,9 +21,11 @@ public interface PlateformeService {
 			String commentaire, String type_plateform);
 	
 	
-	public void modifyPlateforme(Plateforme plateforme,String code_village, boolean exist_platform, boolean operationnel, Date date_suivi,
-			String commentaire, String type_plateform, Long id_am);
+	public Optional<Plateforme> findByIdPlateforme(long id_am);
 	
+	
+	public void modifyPlateforme(String code_village, boolean exist_platform, boolean operationnel, Date date_suivi,
+			String commentaire, String type_plateform, Long id_am);
 	/* canevas 57 */
 	public List<Object[]> ListPlateformeFetch(String type_plateform);
 	

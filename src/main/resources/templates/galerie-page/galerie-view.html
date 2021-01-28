@@ -28,7 +28,7 @@
     <div class="base-content">
       <header class="flex header-galerie">
         <h2 class="content-title">Galeries</h2>
-        <button type="button" class="gbtn add" data-toggle="modal" data-target="#exampleModalCenter" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">Ajout album</button>
+        <button type="button" class="gbtn add" data-toggle="modal" data-target="#exampleModalCenter" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">[[#{ajouter}]] album</button>
       </header>
 
       <div class="card">
@@ -42,9 +42,9 @@
               </a>
               <div class="dropdown-menu show-action" aria-labelledby="dropdownMenuLink">
                 <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modifTarget" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" 
-                  th:onclick="@{'javascript:ModifGalerie(\''+ ${galerie.id} +'\', \''+ ${galerie.nom_album} +'\');'}" >Modifier</button>
+                  th:onclick="@{'javascript:ModifGalerie(\''+ ${galerie.id} +'\', \''+ ${galerie.nom_album} +'\');'}" >[[#{modifier}]]</button>
                 <a class="dropdown-item spr" href="#" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" 
-                  th:onclick="'javascript:confirmDelete(\''+ ${galerie.id} +'\');'">Supprimer</a>
+                  th:onclick="'javascript:confirmDelete(\''+ ${galerie.id} +'\');'">[[#{supprimer}]]</a>
               </div>
             </div>
           </div>
@@ -67,8 +67,8 @@
                 <input class="form-control" type="text" placeholder="Nom album" th:name="nom_album">
               </div>
               <div class="modal-footer btn-row">
-                <button type="button" class="gbtn cancel" data-dismiss="modal">Annuler</button>
-                <button type="submit" class="gbtn">Enregistrer</button>
+                <button type="button" class="gbtn cancel" data-dismiss="modal">[[#{annuler}]]</button>
+                <button type="submit" class="gbtn">[[#{save}]]</button>
               </div>
             </div>
           </div>
@@ -88,13 +88,13 @@
                 </button>
               </div>
               <div class="modal-body p-modal">
-                  <span class="glabel">Modifier galerie</span>
+                  <span class="glabel">[[#{modifier}]] galerie</span>
                 <input class="form-control" type="hidden" id="id" th:name="id">
                 <input class="form-control" type="text" id="nom" th:name="nom_album">
               </div>
               <div class="modal-footer btn-row">
-                <button type="button" class="gbtn cancel" data-dismiss="modal">Annuler</button>
-                <button type="submit" class="gbtn" >Enregistrer</button>
+                <button type="button" class="gbtn cancel" data-dismiss="modal">[[#{annuler}]]</button>
+                <button type="submit" class="gbtn" >[[#{save}]]</button>
               </div>
             </div>
           </div>
@@ -107,17 +107,17 @@
 	  <div class="modal-dialog modal-dialog-centered" role="document">
 	    <div class="modal-content card-body">
 	      <div class="modal-header">
-	        <h2 class="page-title modal-title" id="exampleModalLongTitle">Supprimer</h2>
+	        <h2 class="page-title modal-title" id="exampleModalLongTitle">[[#{supprimer}]]</h2>
 	        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">X</span>
 	        </button> -->
 	      </div>
-	      <div class="modal-body p-modal"><span>Supprimer</span>
+	      <div class="modal-body p-modal"><span>[[#{supprimer}]]</span>
 	        <input type="hidden" id="albumIdHiddenInput" />
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="gbtn cancel" data-dismiss="modal">Fermer</button>
-	        <button type="button" class="gbtn" th:onclick="confirmDeleteGalerie()">Supprimer</button>
+	        <button type="button" class="gbtn cancel" data-dismiss="modal">[[#{fermer}]]</button>
+	        <button type="button" class="gbtn" th:onclick="confirmDeleteGalerie()">[[#{supprimer}]]</button>
 	      </div>
 	    </div>
 	  </div>

@@ -2,6 +2,7 @@ package com.Giz.service.metier;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,8 +54,14 @@ public class AtelierMFRServiceImpl implements AtelierMFRService {
 	}
 
 	@Override
-	public void modifyAtelierMFR(AtelierMFR atelierMFR, String code_village,String atelier_resp, Date date_realise, String lieu_realise,
+	public Optional<AtelierMFR> findByIdAtelierMFR(long id_am) {
+		return atelierMFRRepository.findById(id_am);
+	}
+
+	@Override
+	public void modifyAtelierMFR(String code_village,String atelier_resp, Date date_realise, String lieu_realise,
 			String theme_choise, long nbr_particip, int nbr_homme, int nbr_femme, String cible_atelier,String type_atelier, Long id_am) {
+		AtelierMFR atelierMFR = new AtelierMFR();
 		atelierMFR.setCible_atelier(cible_atelier);
 		atelierMFR.setCode_village(code_village);
 		atelierMFR.setDate_realise(date_realise);
@@ -65,6 +72,7 @@ public class AtelierMFRServiceImpl implements AtelierMFRService {
 		atelierMFR.setTheme_choise(theme_choise);
 		atelierMFR.setAtelier_resp(atelier_resp);
 		atelierMFR.setType_atelier(type_atelier);
+		atelierMFR.setId_am(id_am);
 		atelierMFRRepository.save(atelierMFR);
 		
 	}

@@ -17,21 +17,6 @@
         <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
         <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}">
-        <script type="text/javascript">
-		$(document).ready(function () {
-			$('#myTable').DataTable();
-		});
-
-		function confirmDelete(id) {
-			$('#deleteModal').modal('show');
-			$("#sensibileIdHiddenInput").val(id);
-		}
-
-		function confirmDeleteSensibilise() {
-			var id = $("#sensibileIdHiddenInput").val();
-			window.location = "deleteBeneficiaire/" + id;
-		}
-        </script>
     </head>
     <body class="stories">
         <div th:include="/pds_header.html"></div>
@@ -41,13 +26,13 @@
                 <form method="POST" th:action="@{/addBeneficiaire}">
                     <div class="card">
                         <header class="composantesTable-header justify-between">
-                            <h2 class="page-title">Contenu du menu principale</h2>
+                            <h2 class="page-title">[[#{accueil.contenu}]]</h2>
                         </header>
                         <table class="composantes-table" id="myTable">
                             <thead>
                                 <tr>
                                     <th scope="col">
-                                        <span>Contenu</span>
+                                        <span>[[#{content}]]</span>
                                     </th>
                                     <th>Action</th>
                                 </tr>
