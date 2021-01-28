@@ -9,9 +9,9 @@
 			<td class="row-field"><div class="editable-field" contenteditable></div></td>
 			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable>Non démarrée</div></td>
 			<td class="row-field"><div class="editable-field">
-				<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${recheche}" disabled></div>
+				<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${#numbers.formatDecimal(recheche,0,2)}" disabled></div>
 				<div class="progress custom-progress">
-					<div id="progbar01" class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${recheche} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					<div id="progbar01" class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(recheche,0,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 				</div>
 			</div></td>
 			<td class="row-field"><div class="editable-field" contenteditable>Nombre de session de présentation des résultats de recherche</div></td>
@@ -34,9 +34,9 @@
 			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable>Repoussée</div></td>
 			
 			<td class="row-field"><div class="editable-field">
-				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${adopte}" disabled></div>
+				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(adopte,0,2)}" disabled></div>
 				<div class="progress custom-progress">
-					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${adopte} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(adopte,0,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 				</div>
 			</div></td>
 			<td class="row-field"><div class="editable-field" contenteditable>A catégoriser par techniques CSA : lutte maladies/parasites, gestion de la fertilité des sols, techniques culturales, etc.
@@ -87,9 +87,9 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable>En cours</div></td>
 			
 			<td class="row-field"><div class="editable-field">
-				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${test}" disabled></div>
+				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(test,0,2)}" disabled></div>
 				<div class="progress custom-progress">
-					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${test} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(test,0,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 				</div>
 			</div></td>
 			<td class="row-field"><div class="editable-field" contenteditable>Nbr de parcelles test de vanille établies avec thématitque: pratiques agricoles innovantes</div></td>
@@ -113,9 +113,9 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable>En cours</div></td>
 			
 			<td class="row-field"><div class="editable-field">
-				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${pepiniere}" disabled></div>
+				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(pepiniere,0,2)}" disabled></div>
 				<div class="progress custom-progress">
-					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${pepiniere} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(pepiniere,0,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 				</div>
 			</div></td>
 			<td class="row-field"><div class="editable-field" contenteditable>Nombre de fiche floraison collectés auprès des paysans (un producteur= un suivi)</div></td>
@@ -137,9 +137,9 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable>En cours</div></td>
 			
 			<td class="row-field"><div class="editable-field">
-				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${recheche}" disabled></div>
+				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(recheche,0,2)}" disabled></div>
 				<div class="progress custom-progress">
-					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${recheche} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(recheche,0,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 				</div>
 			</div></td>
 			<td class="row-field"><div class="editable-field" contenteditable>Nombre de pépinières mises en place</div></td>
@@ -162,9 +162,9 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable>En cours</div></td>
 			
 			<td class="row-field"><div class="editable-field">
-				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${recheche}" disabled></div>
+				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(recheche,0,2)}" disabled></div>
 				<div class="progress custom-progress">
-					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${recheche} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(recheche,0,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 				</div>
 			</div></td>
 			<td class="row-field"><div class="editable-field" contenteditable>Nombre d'agents de santé animale opérationnels</div></td>
@@ -187,9 +187,9 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable>En cours</div></td>
 			
 			<td class="row-field"><div class="editable-field">
-				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${recheche}" disabled></div>
+				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(recheche,0,2)}" disabled></div>
 				<div class="progress custom-progress">
-					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${recheche} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(recheche,0,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 				</div>
 			</div></td>
 			<td class="row-field"><div class="editable-field" contenteditable>Nombre de PR opérationnels qui délivrent des formations</div></td>
@@ -213,9 +213,9 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable>En cours</div></td>
 			
 			<td class="row-field"><div class="editable-field">
-				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${recheche}" disabled></div>
+				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(recheche,0,2)}" disabled></div>
 				<div class="progress custom-progress">
-					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${recheche} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(recheche,0,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 				</div>
 			</div></td>
 			<td class="row-field"><div class="editable-field" contenteditable>Rapport d'étude sur la fertilité des sols (baseline et endline)</div></td>
@@ -238,9 +238,9 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable>En cours</div></td>
 			
 			<td class="row-field"><div class="editable-field">
-				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${recheche}" disabled></div>
+				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(recheche,0,2)}" disabled></div>
 				<div class="progress custom-progress">
-					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${recheche} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(recheche,0,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 				</div>
 			</div></td>
 			<td class="row-field"><div class="editable-field" contenteditable>Nombre de producteurs "fermes de référenceé" suivi graâce à l'enregistrement de cahier de trésorerie</div></td>

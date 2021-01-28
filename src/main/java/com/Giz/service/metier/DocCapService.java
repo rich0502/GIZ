@@ -29,4 +29,8 @@ public interface DocCapService {
 	
 	public List<Object[]> ListGraphe(Date debut_date, Date fin_date);
 	
+	//indicateur
+	
+	public long countDocCap(String dateChronologique);
+	
 }

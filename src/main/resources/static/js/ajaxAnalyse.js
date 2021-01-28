@@ -1,3 +1,4 @@
+
 $("#sc").change(
 				function() {
 					var sc = $(this).val();
@@ -32,3 +33,14 @@ $(document).ready(function() {
 		}
 	});
 });
+$("#subdivision").change(
+		function() {
+			var subdivision = $(this).val();
+			if(subdivision==="village"){
+				$('#size').prop( 'disabled', false );
+				$('#villas').prop( 'disabled', false );
+			}else{
+				$('#size').prop( 'disabled', true );
+				$('#villas').prop( 'disabled', true );
+			}
+		});

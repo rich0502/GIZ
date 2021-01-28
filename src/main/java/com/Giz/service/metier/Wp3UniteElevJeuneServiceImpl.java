@@ -123,4 +123,22 @@ public class Wp3UniteElevJeuneServiceImpl implements Wp3UniteElevJeuneService {
 		// TODO Auto-generated method stub
 		return wp3UniteElevJeuneRepository.TpsData(debut_date, fin_date);
 	}
+
+	@Override
+	public List<Object[]> ListTableau(Date debut_date, Date fin_date, List<String> params, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3UniteElevJeuneRepository.TableData(debut_date, fin_date, params, sexe);
+	}
+
+	@Override
+	public List<Object[]> ListTableauCommune(Date debut_date, Date fin_date, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3UniteElevJeuneRepository.TableDataCommune(debut_date, fin_date, sexe);
+	}
+
+	@Override
+	public List<Object[]> ListTableauDist(Date debut_date, Date fin_date, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3UniteElevJeuneRepository.TableDataDist(debut_date, fin_date, sexe);
+	}
 }

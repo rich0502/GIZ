@@ -5,17 +5,17 @@
 	<td class="row-field"><div class="editable-field" contenteditable>Canevas N°48</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable>Remplissage obligatoire</div></td>
 	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable>En cours</div></td>
-	<td class="row-field"><div class="editable-field"><div class="type-number-percent"><input type="number" min="0" max="100" th:value="${can48}" disabled></div>
+	<td class="row-field"><div class="editable-field"><div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(can48,0,2)}" disabled></div>
 		<div class="progress custom-progress">
-			<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${can48} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+			<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(can48,0,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 		</div></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable>Les services de santé communautaire offrant des services liés à la santé sexuelle et reproductive adaptés aux jeunes</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable>SCI</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable></div></td>
-	<td class="row-field sexe-col"><div class="editable-field" contenteditable th:utext="${can48H}"></div></td>
-	<td class="row-field sexe-col"><div class="editable-field" contenteditable th:utext="${can48F}"></div></td>
+	<td class="row-field sexe-col"><div class="editable-field" contenteditable th:utext="${#numbers.formatDecimal(can48H,0,0)}"></div></td>
+	<td class="row-field sexe-col"><div class="editable-field" contenteditable th:utext="${#numbers.formatDecimal(can48F,0,0)}"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable></div></td>
 </tr>
 
@@ -26,15 +26,15 @@
 	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable>En cours</div></td>
 	<td class="row-field"><div class="editable-field"><div class="type-number-percent"><input type="number" min="0" max="100" th:value="${can49}" disabled></div>
 		<div class="progress custom-progress">
-			<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${can49} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+			<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(can49,0,0)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 		</div></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable>Nombre de peer educateur opérationnels par village</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable>SCI</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable></div></td>
-	<td class="row-field"><div class="editable-field" contenteditable th:utext="${can49H} + ${can49F}"></div></td>
-	<td class="row-field sexe-col"><div class="editable-field" contenteditable th:utext="${can49H}"></div></td>
-	<td class="row-field sexe-col"><div class="editable-field" contenteditable th:utext="${can49F}"></div></td>
+	<td class="row-field"><div class="editable-field" contenteditable th:utext="${#numbers.formatDecimal(can49H,0,0)} + ${#numbers.formatDecimal(can49F,0,0)}"></div></td>
+	<td class="row-field sexe-col"><div class="editable-field" contenteditable th:utext="${#numbers.formatDecimal(can49H,0,0)}"></div></td>
+	<td class="row-field sexe-col"><div class="editable-field" contenteditable th:utext="${#numbers.formatDecimal(can49F,0,0)}"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable></div></td>
 </tr>
 

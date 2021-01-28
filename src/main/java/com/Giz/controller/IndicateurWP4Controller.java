@@ -25,9 +25,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Giz.data.domain.GraphDistrict;
 import com.Giz.service.metier.AdopteInnovationService;
+import com.Giz.service.metier.AtelierMFRService;
+import com.Giz.service.metier.DocCapService;
 import com.Giz.service.metier.FormationBpaService;
 import com.Giz.service.metier.ParcelleTestService;
 import com.Giz.service.metier.PepiniereService;
+import com.Giz.service.metier.PlateformeService;
 import com.Giz.service.metier.RechercheService;
 import com.Giz.service.metier.Wp3ActivEcoJeuneService;
 import com.Giz.service.metier.Wp3AgrDevMfrService;
@@ -52,99 +55,91 @@ import com.Giz.service.metier.Wp3UniteElevJeuneService;
 public class IndicateurWP4Controller {
 	
 	@Autowired
-	AdopteInnovationService adopteInnovationService;
-	@Autowired
-	RechercheService rechercheService;
+	DocCapService docCapService;
 	
 	@Autowired
-	FormationBpaService formationBpaService;
+	AtelierMFRService atelierMFRService;
 	
 	@Autowired
-	ParcelleTestService parcelleTestService;
-	
-	@Autowired
-	PepiniereService pepiniereService; 
-	
-	@Autowired
-	Wp3ActivEcoJeuneService wp3ActivEcoJeuneService;
-	
-	@Autowired
-	Wp3AgrDevMfrService wp3AgrDevMfrService;
-	
-	@Autowired
-	Wp3CommitteeActifService wp3CommitteeActifService;
-	
-	@Autowired
-	Wp3ElevMfrService wp3ElevMfrService;
-	
-	@Autowired
-	Wp3EppFramService wp3EppFramService;
-	
-	@Autowired
-	Wp3EquipeTechMfrService wp3EquipeTechMfrService;
-	
-	@Autowired
-	Wp3FedeMfrService wp3FedeMfrService;
-	
-	@Autowired
-	Wp3JeuneFormeMfrService wp3JeuneFormeMfrService;
-	
-	@Autowired
-	Wp3JeunePathwayService wp3JeunePathwayService;
-	
-	@Autowired
-	Wp3JeuneTechService wp3JeuneTechService;
-	
-	@Autowired
-	Wp3PeerEducatorService wp3PeerEducatorService;
-	
-	@Autowired
-	Wp3SanteeCommService wp3SanteeCommService;
-	
-	@Autowired
-	Wp3UniteElevJeuneService wp3UniteElevJeuneService;
-	
+	PlateformeService plateformeService;
 	
 	@RequestMapping("/indicateurWP4")
-	public String indicateurWP1(Model model) {
+	public String indicateurWP1(@RequestParam("chronologie") String dateChronologique, Model model) {
 		
-		/* CANEVAS ADOPTION INNOVATION */
-		float target_adop = 2100;
-		float adopte = (float) ((adopteInnovationService.CountAdoption()/target_adop)*100.0);
 		
-		long hom_adop = adopteInnovationService.CountGenre("homme");
-		long fem_adop = adopteInnovationService.CountGenre("femme");
+		float can51 = docCapService.countDocCap(dateChronologique);
+		if(can51 >= 1) {
+			can51=100;
+		}else {
+			can51=0;
+		}
+		float target = 12;
+		float can52 = (float) ((atelierMFRService.countAtelier(dateChronologique, "CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DU RESEAU DE MFR DANS LA REGION")/target)*100.0);
+		float can52H = atelierMFRService.getCountHomme(dateChronologique, "CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DU RESEAU DE MFR DANS LA REGION");
+		float can52F = atelierMFRService.getCountFemme(dateChronologique, "CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DU RESEAU DE MFR DANS LA REGION");
 		
-		/* CANEVAS DE RESTITUTION DE  RECHERCHES */
-		float target_rech = 3500;
-		float recheche = (float) ((rechercheService.countRecherche()/target_rech)*100.0);
+		float target53 = 1;
+		float can53 = (float) ((atelierMFRService.countAtelier(dateChronologique, "CANEVAS DIALOGUE REGIONAL SUR L'ACCES AU FINANCEMENT")/target53)*100.0);
+		float can53H = atelierMFRService.getCountHomme(dateChronologique, "CANEVAS DIALOGUE REGIONAL SUR L'ACCES AU FINANCEMENT");
+		float can53F = atelierMFRService.getCountFemme(dateChronologique, "CANEVAS DIALOGUE REGIONAL SUR L'ACCES AU FINANCEMENT");
 		
-		/* CANEVAS FORMATION SUR LES BONNES PRATIQUES DES PRODUCTEURS */
-		float target_bpa = 5300;
-		float bpa = (float) ((formationBpaService.countbpa()/target_bpa)*100.0);
+		float target54 = 1;
+		float can54 = (float) ((atelierMFRService.countAtelier(dateChronologique, "CANEVAS ATELIERS DE CAPITALISATION ET PARTAGE DES ACQUIS")/target54)*100.0);
+		float can54H = atelierMFRService.getCountHomme(dateChronologique, "CANEVAS ATELIERS DE CAPITALISATION ET PARTAGE DES ACQUIS");
+		float can54F = atelierMFRService.getCountFemme(dateChronologique, "CANEVAS ATELIERS DE CAPITALISATION ET PARTAGE DES ACQUIS");
 		
-		/* CANEVAS PARCELLES TESTS VANILLES */
-		float target_testva = 10;
-		float test = (float) ((formationBpaService.countbpa()/target_testva)*100.0);
+		float target55 = 3;
+		float can55 = (float) ((atelierMFRService.countAtelier(dateChronologique, "CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DE MAHAVELONA DANS LA SAVA")/target55)*100.0);
+		float can55H = atelierMFRService.getCountHomme(dateChronologique, "CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DE MAHAVELONA DANS LA SAVA");
+		float can55F = atelierMFRService.getCountFemme(dateChronologique, "CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DE MAHAVELONA DANS LA SAVA");
 		
-		/* CANEVAS PEPINIERE MISE EN PLACE */
-		float target = 231;
-		float pepiniere = (float) ((pepiniereService.countPepiniere()/target)*100.0);
-		System.out.println("zzz" + pepiniere);
-		long hom_pepi = adopteInnovationService.CountGenre("homme");
-		long fem_pepi = pepiniereService.countPepiniere() - hom_pepi;
+		float target56 = 2;
+		float can56 = (float) ((atelierMFRService.countAtelier(dateChronologique, "CANEVAS ATELIERS DE PARTAGES DES BONNES PRATIQUES ET OUTILS AUX PRODUCTEURS DE VANILLE")/target56)*100.0);
+		float can56H = atelierMFRService.getCountHomme(dateChronologique, "CANEVAS ATELIERS DE PARTAGES DES BONNES PRATIQUES ET OUTILS AUX PRODUCTEURS DE VANILLE");
+		float can56F = atelierMFRService.getCountFemme(dateChronologique, "CANEVAS ATELIERS DE PARTAGES DES BONNES PRATIQUES ET OUTILS AUX PRODUCTEURS DE VANILLE");
 		
-		model.addAttribute("adopte", adopte);
-		model.addAttribute("fem_adop", fem_adop);
-		model.addAttribute("hom_adop", hom_adop);
-		model.addAttribute("adopte", adopte);
-		model.addAttribute("recheche", recheche);
-		model.addAttribute("bpa", bpa);
-		model.addAttribute("test", test);
-		model.addAttribute("pepiniere", pepiniere);
-		model.addAttribute("hom_pepi", hom_pepi);
-		model.addAttribute("fem_pepi", fem_pepi);
-		return "indicateurWp1/indicateurWp1";
+		float target57 = 1;
+		float can57 = (float) ((plateformeService.countPlateforme(dateChronologique, "CANEVAS EXISTENCE DE DISPOSITIF CONCERTE DE SUIVI ET PROTECTION DES ENFANTS")/target57)*100.0);
+		float can57T = plateformeService.getCount(dateChronologique, "CANEVAS EXISTENCE DE DISPOSITIF CONCERTE DE SUIVI ET PROTECTION DES ENFANTS");
+		
+		float target58 = 1;
+		float can58 = (float) ((plateformeService.countPlateforme(dateChronologique, "CANEVAS PLATE FORME DE REFLEXION ET DE PLANIFICATION")/target58)*100.0);
+		float can58T = plateformeService.getCount(dateChronologique, "CANEVAS PLATE FORME DE REFLEXION ET DE PLANIFICATION");
+		
+		float target59 = 1;
+		float can59 = (float) ((plateformeService.countPlateforme(dateChronologique, "CANEVAS PLATE FORME DE CONCERTATION ET DE PLANIFICAT")/target59)*100.0);
+		float can59T = plateformeService.getCount(dateChronologique, "CANEVAS PLATE FORME DE CONCERTATION ET DE PLANIFICAT");
+		
+		model.addAttribute("can51", can51);
+		model.addAttribute("can52H", can52H);
+		model.addAttribute("can52F", can52F);
+		model.addAttribute("can52", can52);
+		
+		model.addAttribute("can53H", can53H);
+		model.addAttribute("can53F", can53F);
+		model.addAttribute("can53", can53);
+		
+		model.addAttribute("can54H", can54H);
+		model.addAttribute("can54F", can54F);
+		model.addAttribute("can54", can54);
+		
+		model.addAttribute("can55H", can55H);
+		model.addAttribute("can55F", can55F);
+		model.addAttribute("can55", can55);
+		
+		model.addAttribute("can56H", can56H);
+		model.addAttribute("can56F", can56F);
+		model.addAttribute("can56", can56);
+		
+		model.addAttribute("can57T", can57T);
+		model.addAttribute("can57", can57);
+		
+		model.addAttribute("can58T", can58T);
+		model.addAttribute("can58", can58);
+		
+		model.addAttribute("can59T", can59T);
+		model.addAttribute("can59", can59);
+		return "indicateurWp4/indicateurWp4";
 	}
 	
 

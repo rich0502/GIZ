@@ -41,5 +41,24 @@ public interface Wp3CommitteeActifRepository extends JpaRepository<Wp3CommitteeA
 
 	@Query(value = "SELECT e.date_suivi as x,sum(e.effectif_membre) as y FROM wp3_committee_actif e WHERE e.date_suivi BETWEEN ?1 AND ?2 GROUP BY e.date_suivi ORDER BY e.date_suivi ASC", nativeQuery = true)
 	List<Object[]> TpsData(Date debut_date,Date fin_date);
+	
+	//tableau
+	
+	@Query(value = "SELECT village.code_village,village.district,sum(wp3_committee_actif.sexe_f) as F,sum(wp3_committee_actif.sexe_h) as H FROM village,wp3_committee_actif WHERE village.code_village=wp3_committee_actif.code_village AND wp3_committee_actif.code_village "
+			+ " IN (null, ?3) AND wp3_committee_actif.date_suivi BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.code_village,village.district", nativeQuery = true)
+	List<Object[]> TableData(Date debut_date,Date fin_date,List<String> params);
+	
+	@Query(value = "SELECT village.code_village,village.commune,sum(wp3_committee_actif.sexe_f) as F,sum(wp3_committee_actif.sexe_h) as H FROM"
+			+ " village,wp3_committee_actif WHERE village.code_village=wp3_committee_actif.code_village AND "
+			+ " wp3_committee_actif.date_suivi BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.code_village,village.commune", nativeQuery = true)
+	List<Object[]> TableDataCommune(Date debut_date,Date fin_date);
+	
+	@Query(value = "SELECT village.district,sum(wp3_committee_actif.sexe_f) as F,sum(wp3_committee_actif.sexe_h) as H FROM"
+			+ " village,wp3_committee_actif WHERE village.code_village=wp3_committee_actif.code_village "
+			+ " AND wp3_committee_actif.date_suivi BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.district", nativeQuery = true)
+	List<Object[]> TableDataDist(Date debut_date,Date fin_date);
 
 }

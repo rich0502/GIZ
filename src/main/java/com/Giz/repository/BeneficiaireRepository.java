@@ -10,23 +10,45 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.Giz.data.domain.Beneficiaire;
+import com.Giz.data.domain.Valider;
 
 
-public interface BeneficiaireRepository extends JpaRepository<Beneficiaire, Long> {
-	//liste des Beneficiaires
-	@Query("SELECT e FROM Beneficiaire e")
-	List<Beneficiaire> fetchBeneficiaireData();
+public interface BeneficiaireRepository extends JpaRepository<Valider, Long> {
 	
-	@Modifying
-    @Transactional
-    @Query("delete from Beneficiaire e where id_bf = ?1")
-    void deleteBeneficiaire(Long id_bf);
+	// WP2 Beneficiaire
+	@Query("select new com.Giz.data.domain.Beneficiaire(v.nom_prenom, v.sexe, v.annee_naissance, v.age) from Valider v where v.canevas in('Mobile','Finance','Adhesion','Menage') group by v.nom_prenom, v.sexe, v.annee_naissance, v.age")
+	List<Beneficiaire> listBeneficiaireWP2();
 	
-	@Query("SELECT f FROM Beneficiaire f WHERE f.id_bf = ?1")
-	Beneficiaire findByIdBeneficiaire(Long id_bf);
+	@Query(value="select count(*) as nbr from(select nom_prenom as nom, sexe, age, annee_naissance as annee from Valider where canevas in('Mobile','Finance','Adhesion','Menage') and sexe = 'H' and ((age > 0 and age < 18) OR (annee_naissance > 0 and ((annee_naissance - EXTRACT(YEAR from cast(now() as date))) < 18))) group by nom_prenom, sexe, age, annee_naissance) as valider", nativeQuery = true)
+	int getGarcon();
 	
-	@Query("SELECT f FROM Beneficiaire f WHERE f.success ='true'")
-	List<Beneficiaire> listSuccessStories();
+	@Query(value="select count(*) as nbr from(select nom_prenom as nom, sexe, age, annee_naissance as annee from Valider where canevas in('Mobile','Finance','Adhesion','Menage') and sexe = 'H' and (age >= 18 OR ((annee_naissance - EXTRACT(YEAR from cast(now() as date))) >= 18)) group by nom_prenom, sexe, age, annee_naissance) as valider", nativeQuery = true)
+	int getHomme();
+	
+	@Query(value="select count(*) as nbr from(select nom_prenom as nom, sexe, age, annee_naissance as annee from Valider where canevas in('Mobile','Finance','Adhesion','Menage') and sexe = 'F' and ((age > 0 and age < 18) OR (annee_naissance > 0 and ((annee_naissance - EXTRACT(YEAR from cast(now() as date))) < 18))) group by nom_prenom, sexe, age, annee_naissance) as valider", nativeQuery = true)
+	int getFille();
+	
+	@Query(value="select count(*) as nbr from(select nom_prenom as nom, sexe, age, annee_naissance as annee from Valider where canevas in('Mobile','Finance','Adhesion','Menage') and sexe = 'F' and (age >= 18 OR ((annee_naissance - EXTRACT(YEAR from cast(now() as date))) >= 18)) group by nom_prenom, sexe, age, annee_naissance) as valider", nativeQuery = true)
+	int getFemme();
+	
+	// WP3 Beneficiaire
+	@Query(value="select nom_prenom, sexe, annee_naissance from (select nom_prenom,sexe,annee_naissance from wp3_activ_eco_jeune union all select nom_prenom,sexe,annee_naissance from wp3_unite_elev_jeune union all select nom_prenom,sexe,annee_naissance from wp3_elev_mfr union all select nom_prenom,sexe,annee_naissance from wp3_jeune_forme_mfr union all select nom_prenom,sexe,annee_naissance from wp3_eequipe_tech_mfr union all select nom_prenom,sexe,annee_naissance from wp3_jeune_pathway union all select nom_prenom,sexe,annee_naissance from wp3_peer_educator ) sub group by nom_prenom,sexe,annee_naissance", nativeQuery = true)
+	List<String> listBeneficiaireWP3();
+	
+	@Query(value="select count(*) as nbr from(select nom_prenom, sexe, annee_naissance from (select nom_prenom,sexe,annee_naissance from wp3_activ_eco_jeune union all select nom_prenom,sexe,annee_naissance from wp3_unite_elev_jeune union all select nom_prenom,sexe,annee_naissance from wp3_elev_mfr union all select nom_prenom,sexe,annee_naissance from wp3_jeune_forme_mfr union all select nom_prenom,sexe,annee_naissance from wp3_eequipe_tech_mfr union all select nom_prenom,sexe,annee_naissance from wp3_jeune_pathway union all select nom_prenom,sexe,annee_naissance from wp3_peer_educator ) sub where sexe = 'H' and (annee_naissance > 0 and ((annee_naissance - EXTRACT(YEAR from cast(now() as date))) < 18)) group by nom_prenom,sexe,annee_naissance) as valider", nativeQuery = true)
+	int getGarconWP3();
+	
+	@Query(value="select count(*) as nbr from(select nom_prenom, sexe, annee_naissance from (select nom_prenom,sexe,annee_naissance from wp3_activ_eco_jeune union all select nom_prenom,sexe,annee_naissance from wp3_unite_elev_jeune union all select nom_prenom,sexe,annee_naissance from wp3_elev_mfr union all select nom_prenom,sexe,annee_naissance from wp3_jeune_forme_mfr union all select nom_prenom,sexe,annee_naissance from wp3_eequipe_tech_mfr union all select nom_prenom,sexe,annee_naissance from wp3_jeune_pathway union all select nom_prenom,sexe,annee_naissance from wp3_peer_educator ) sub where sexe = 'F' and (annee_naissance > 0 and ((annee_naissance - EXTRACT(YEAR from cast(now() as date))) < 18)) group by nom_prenom,sexe,annee_naissance) as valider", nativeQuery = true)
+	int getFilleWP3();
+	
+	@Query(value="select count(*) as nbr from(select nom_prenom, sexe, annee_naissance from (select nom_prenom,sexe,annee_naissance from wp3_activ_eco_jeune union all select nom_prenom,sexe,annee_naissance from wp3_unite_elev_jeune union all select nom_prenom,sexe,annee_naissance from wp3_elev_mfr union all select nom_prenom,sexe,annee_naissance from wp3_jeune_forme_mfr union all select nom_prenom,sexe,annee_naissance from wp3_eequipe_tech_mfr union all select nom_prenom,sexe,annee_naissance from wp3_jeune_pathway union all select nom_prenom,sexe,annee_naissance from wp3_peer_educator ) sub where sexe = 'H' and ((annee_naissance - EXTRACT(YEAR from cast(now() as date))) >= 18) group by nom_prenom,sexe,annee_naissance) as valider", nativeQuery = true)
+	int getHommeWP3();
+	
+	@Query(value="select count(*) as nbr from(select nom_prenom, sexe, annee_naissance from (select nom_prenom,sexe,annee_naissance from wp3_activ_eco_jeune union all select nom_prenom,sexe,annee_naissance from wp3_unite_elev_jeune union all select nom_prenom,sexe,annee_naissance from wp3_elev_mfr union all select nom_prenom,sexe,annee_naissance from wp3_jeune_forme_mfr union all select nom_prenom,sexe,annee_naissance from wp3_eequipe_tech_mfr union all select nom_prenom,sexe,annee_naissance from wp3_jeune_pathway union all select nom_prenom,sexe,annee_naissance from wp3_peer_educator ) sub where sexe = 'F' and ((annee_naissance - EXTRACT(YEAR from cast(now() as date))) >= 18) group by nom_prenom,sexe,annee_naissance) as valider", nativeQuery = true)
+	int getFemmeWP3();
+	
+	
+	
 	
 	
 }

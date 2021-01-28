@@ -88,6 +88,24 @@ public class PlateformeServiceImpl implements PlateformeService {
 		return plateformRepository.TpsplateformeData(type_plateform, debut_date, fin_date);
 	}
 
+	@Override
+	public long getCount(String dateChronologique, String type_plateform) {
+		boolean nbr = plateformRepository.getCountIsExist(dateChronologique, type_plateform);
+		if(nbr) {
+			return plateformRepository.getCount(dateChronologique, type_plateform);
+		}
+	return 0;
+	}
+
+	@Override
+	public long countPlateforme(String dateChronologique, String type_plateform) {
+		boolean nbr = plateformRepository.getCountChronologiqueIsExist(dateChronologique, type_plateform);
+		if(nbr) {
+			return plateformRepository.getCountChronologique(dateChronologique, type_plateform);
+		}
+	return 0;
+	}
+
 	
 
 }

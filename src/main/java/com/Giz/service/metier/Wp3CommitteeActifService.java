@@ -33,4 +33,10 @@ public interface Wp3CommitteeActifService {
 	public long CamembertTot();
 	
 	public List<Object[]> ListGraphe(Date debut_date, Date fin_date);
+	
+	public List<Object[]> ListTableau(Date debut_date, Date fin_date, List<String> params);
+	
+	public List<Object[]> ListTableauCommune(Date debut_date, Date fin_date);
+	
+	public List<Object[]> ListTableauDist(Date debut_date, Date fin_date);
 }

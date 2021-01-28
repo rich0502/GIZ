@@ -35,4 +35,11 @@ public interface AtelierMFRService {
 	
 	public List<Object[]> TpsAtelierMFR(String type_atelier,Date debut_date, Date fin_date);
 	
+	//indicateur
+	public long getCountHomme(String dateChronologique, String type_atelier);
+	
+	public long getCountFemme(String dateChronologique, String type_atelier);
+	
+	public long countAtelier(String dateChronologique, String type_atelier);
+	
 }

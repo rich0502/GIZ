@@ -38,7 +38,94 @@
  
   <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
+<style>
+.elementCombo
+	{
+		background-color: white;
+		width: 230px;
+        padding:0;
+        margin:0;
+		list-style-type:none;
 
+	}
+	
+.containerElCombo
+	{
+		overflow: auto;	
+		width: 230px;		
+		height:150px;
+		margin-top : 24px;
+		background-color: #cd3231;
+     
+	}
+</style>
+ <script>
+	 function butval() {
+			$(':button').each(function () {
+				flag = $(this).next('.containerElCombo').is(':visible')
+				$(this).val(flag ? 'Masquer' : 'Afficher');
+			});
+	}
+		
+	$(function(){
+			
+	//Bloque les input text à la lecture seul		
+	$(".resultat").attr('readonly','readonly');
+	
+	//Sur le focus du body
+	$("body").on('focus', function (e) {
+		if($(e.target).parents('.containerCombo').length==0){
+		 $(".containerElCombo").hide();
+			butval();
+		}
+	});
+	
+	//On cache les éléments dès le début
+	$(".containerElCombo").hide();
+	
+	// sur le click des boutons afficher ...
+	//$(':button').on('click', function () {
+	$('body').on('click', ':button', function () {
+	 //on masque les autres checkboxes
+	 $(".containerElCombo").not($(this).next('.containerElCombo')).hide();
+	 //on affiche ou masque les checkboxes liés au bouton 
+	 flag = $(this).next('.containerElCombo').is(':visible');
+	
+	 if (flag) {
+	     $(this).next('.containerElCombo').hide();
+	
+	 } else {
+	     $(this).next('.containerElCombo').show();
+	
+	 }
+	 butval();
+	});
+	
+	//sur le focus de la zone de texte 
+	$('.resultat').focus(function () {
+	 //sur le focus de la zone texte on affiche les chk liés
+	 $(".containerElCombo").not($(this).closest('ul')).hide();
+	 $(this).nextAll('ul').show();
+	 butval();
+	
+	});
+	
+	//Affiche les éléments coché dans l'input
+	$(":checkbox").on('click', function () {
+	 sel = [];
+	 $elt = $(this).closest('.containerElCombo');
+	
+	 $elt.find(':checkbox:checked').each(function () {
+	     sel.push($(this).next('label').text());
+	 });
+	 $elt.prevAll('.resultat').val(sel.join('; '));
+	});
+	
+	
+	
+	});
+	
+</script> 
 </head>
 <body>
 	<div th:include="/pds_header.html"></div>
@@ -75,8 +162,8 @@
 					<tr>
 						<td style="width: 200px; padding-left: 8px;">Donnée arrêtée</td>
 						<td style="width: 200px; padding-left: 8px;">Subdivision</td>
-						<td style="width: 200px; padding-left: 8px;"></td>
-						<td style="width: 8%;"></td>
+						<td style="width: 200px; padding-left: 8px;">Villages</td>
+						<td style="width: 150px; padding-left: 8px;">Genre</td>
 						<td style="width: 150px; padding-left: 8px;"></td>
 						<td style="width: 150px; padding-left: 8px;"></td>
 						<td style="width: 150px; padding-left: 8px;"></td>
@@ -101,16 +188,34 @@
 							</select>
 						</td>
 						<td style="width: 200px; padding-left: 8px;">
-							<select th:name="subdivision" class="form-control select2">
+							<select th:name="subdivision" class="form-control select2" id="subdivision">
 								<option value="district">Districts</option>
 								<option value="commune">Communes</option>
 								<option value="village">Villages</option>
 							</select>
 						</td>
 						<td style="width: 200px; padding-left: 8px;">
-							
+
+							<table>
+							<TD>
+							<div class="containerCombo">
+							<input type="text" class="resultat" th:name="villages" id="villas" disabled>
+							<input type="button" value="Afficher" id="size" disabled>
+							<ul class="containerElCombo">
+							   <li class="elementCombo" th:each="v : ${villages}" >
+							     <input type="checkbox" ><label for="checkbox" th:text="${v.code_village}"></label>
+							   </li>
+							</ul>
+							</div>
+							</TD>
+							</table>
 						</td>
-						<td style="width: auto;"></td>
+						<td style="width: 100px; padding-left: 8px;">
+							<select th:name="genre" class="form-control select2">
+									<option value="H">Homme</option>
+									<option value="F">Femme</option>
+								</select>
+						</td>
 						<td style="width: 150px; padding-left: 8px;"><input class="form-control"
 							type="submit" value="Tableau" onClick="submitFunction(3)"></td>
 						<td style="width: 150px; padding-left: 8px;"><input class="form-control"

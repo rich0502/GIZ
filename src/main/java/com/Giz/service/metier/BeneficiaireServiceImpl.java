@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Giz.data.domain.Beneficiaire;
+import com.Giz.data.domain.Valider;
 import com.Giz.repository.BeneficiaireRepository;
 
 
@@ -20,48 +21,65 @@ public class BeneficiaireServiceImpl implements BeneficiaireService {
 	private BeneficiaireRepository beneficiaireRepository;
 
 	@Override
-	public List<Beneficiaire> ListBeneficiaire() {
-		// TODO Auto-generated method stub
-		return beneficiaireRepository.fetchBeneficiaireData();
+	public List<Beneficiaire> getBeneficiereWP2() {
+		return beneficiaireRepository.listBeneficiaireWP2();
 	}
 
 	@Override
-	public void deleteBeneficiaire(Long id_bf) {
-		beneficiaireRepository.deleteBeneficiaire(id_bf);		
-	}
-
-
-	@Override
-	public void addBeneficiaire(String nom_bf, String prenom_bf, String adresse_bf, Boolean success ,
-			String contact_bf, String date_naiss_bf) {
-		Beneficiaire beneficiaire = new Beneficiaire();
-		beneficiaire.setNom_bf(nom_bf);
-		beneficiaire.setPrenom_bf(prenom_bf);
-		beneficiaire.setAdresse_bf(adresse_bf);
-		beneficiaire.setSuccess(success);
-		beneficiaire.setContact_bf(contact_bf);
-		beneficiaire.setDate_naiss_bf(date_naiss_bf);
-		beneficiaireRepository.save(beneficiaire);
-		
+	public int getGarconWP2() {
+		return beneficiaireRepository.getGarcon();
 	}
 
 	@Override
-	public void modifyBeneficiaire(Beneficiaire beneficiaire, String nom_bf, String prenom_bf, String adresse_bf, Boolean success,
-			String contact_bf, String date_naiss_bf, Long id_bf) {	
-		beneficiaire.setNom_bf(nom_bf);
-		beneficiaire.setPrenom_bf(prenom_bf);
-		beneficiaire.setAdresse_bf(adresse_bf);
-		beneficiaire.setSuccess(success);
-		beneficiaire.setContact_bf(contact_bf);
-		beneficiaire.setDate_naiss_bf(date_naiss_bf);
-		beneficiaireRepository.save(beneficiaire);
-		
+	public int getHommeWP2() {
+		return beneficiaireRepository.getHomme();
 	}
 
 	@Override
-	public List<Beneficiaire> ListSuccessStories() {
-		return beneficiaireRepository.listSuccessStories();
+	public int getFemmeWP2() {
+		return beneficiaireRepository.getFemme();
 	}
+
+	@Override
+	public int getFilleWP2() {
+		return beneficiaireRepository.getFille();
+	}
+
+	@Override
+	public List<Beneficiaire> getBeneficiereWP3() {
+		List<String> list = beneficiaireRepository.listBeneficiaireWP3();
+		List<Beneficiaire> benef = new ArrayList<>();
+		for(int i = 0; i < list.size(); i++) {
+			String[] temp = list.get(i).split(",");
+			Beneficiaire ben = new Beneficiaire(temp[0], temp[1], Integer.parseInt(temp[2]));
+			benef.add(ben);
+		}
+		return benef;
+	}
+
+	@Override
+	public int getGarconWP3() {
+		return beneficiaireRepository.getGarconWP3();
+	}
+
+	@Override
+	public int getHommeWP3() {
+		return beneficiaireRepository.getHommeWP3();
+	}
+
+	@Override
+	public int getFemmeWP3() {
+		return beneficiaireRepository.getFemmeWP3();
+	}
+
+	@Override
+	public int getFilleWP3() {
+		return beneficiaireRepository.getFilleWP3();
+	}
+	
+	
+
+
 
 
 	

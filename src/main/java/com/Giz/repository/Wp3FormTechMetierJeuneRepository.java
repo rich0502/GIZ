@@ -42,5 +42,23 @@ public interface Wp3FormTechMetierJeuneRepository extends JpaRepository<Wp3FormT
 
 	@Query(value = "SELECT e.date_realise as x,count(e.theme) as y FROM wp3form_tech_metier_jeune e WHERE e.date_realise BETWEEN ?1 AND ?2 GROUP BY e.date_realise ORDER BY e.date_realise ASC", nativeQuery = true)
 	List<Object[]> TpsData(Date debut_date,Date fin_date);
+	
+	@Query(value = "SELECT village.code_village,village.district,count(wp3form_tech_metier_jeune.sexe) as nbr, wp3form_tech_metier_jeune.sexe FROM"
+			+ " village,wp3form_tech_metier_jeune WHERE wp3form_tech_metier_jeune.sexe=?4 AND village.code_village=wp3form_tech_metier_jeune.code_village AND wp3form_tech_metier_jeune.code_village "
+			+ " IN (null, ?3) AND wp3form_tech_metier_jeune.date_realise BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.code_village,village.district, wp3form_tech_metier_jeune.sexe", nativeQuery = true)
+	List<Object[]> TableData(Date debut_date,Date fin_date,List<String> params,String sexe);
+	
+	@Query(value = "SELECT village.code_village,village.commune,count(wp3form_tech_metier_jeune.sexe) as nbr, wp3form_tech_metier_jeune.sexe FROM"
+			+ " village,wp3form_tech_metier_jeune WHERE wp3form_tech_metier_jeune.sexe=?3 AND village.code_village=wp3form_tech_metier_jeune.code_village AND "
+			+ " wp3form_tech_metier_jeune.date_realise BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.code_village,village.commune, wp3form_tech_metier_jeune.sexe", nativeQuery = true)
+	List<Object[]> TableDataCommune(Date debut_date,Date fin_date, String sexe);
+	
+	@Query(value = "SELECT village.district,count(wp3form_tech_metier_jeune.sexe) as nbr, wp3form_tech_metier_jeune.sexe FROM"
+			+ " village,wp3form_tech_metier_jeune WHERE wp3form_tech_metier_jeune.sexe=?3 AND village.code_village=wp3form_tech_metier_jeune.code_village "
+			+ " AND wp3form_tech_metier_jeune.date_realise BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.district, wp3form_tech_metier_jeune.sexe", nativeQuery = true)
+	List<Object[]> TableDataDist(Date debut_date,Date fin_date,String sexe);
 
 }

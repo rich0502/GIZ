@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.Giz.data.domain.Adoption_innovation;
 import com.Giz.data.domain.AtelierMFR;
@@ -94,5 +95,32 @@ public class AtelierMFRServiceImpl implements AtelierMFRService {
 	public long TotAtelierParticipant(String type_atelier,Date debut_date, Date fin_date) {
 		// TODO Auto-generated method stub
 			return atelierMFRRepository.SomAtelierMFR(type_atelier,debut_date, fin_date);
+	}
+
+	@Override
+	public long getCountHomme(String dateChronologique, String type_atelier) {
+		if(atelierMFRRepository.getCountHommeIsExist(dateChronologique, type_atelier)) {
+			return atelierMFRRepository.getCountHomme(dateChronologique, type_atelier);
+		} else {
+			return 0;
+		}
+	}
+
+	@Override
+	public long getCountFemme(String dateChronologique,String type_atelier) {
+		boolean nbr = atelierMFRRepository.getCountFemmeIsExist(dateChronologique, type_atelier);
+				if(nbr) {
+					return atelierMFRRepository.getCountFemme(dateChronologique, type_atelier);
+				}
+			return 0;
+	}
+
+	@Override
+	public long countAtelier(String dateChronologique, String type_atelier) {
+		boolean nbr = atelierMFRRepository.getCountChronologiqueIsExist(dateChronologique, type_atelier);
+		if(nbr) {
+			return atelierMFRRepository.getCountChronologique(dateChronologique, type_atelier);
+		}
+		return 0;
 	}
 }

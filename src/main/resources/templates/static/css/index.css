@@ -49,12 +49,13 @@ body{
     position:relative;
 }
 
-.user-menu {
+/*.user-menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-align: center;
-}
+    margin-right: -164px;
+}*/
 
 /*MODAL*/
 
@@ -725,7 +726,7 @@ PSD HEADER
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 1180px;
+    max-width: 1212px;
     margin:auto;
     height: 72px;
     position: static;
@@ -1610,6 +1611,7 @@ border:3px solid #3e474f;
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    margin-right: -164px;
 }
 
 /*POPUP MAP HOME */

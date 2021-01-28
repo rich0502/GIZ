@@ -32,4 +32,9 @@ public interface PlateformeService {
 	
 	public List<Object[]> TpsPlateforme(String type_plateform,Date debut_date, Date fin_date);
 	
+	//indicateur
+	public long getCount(String dateChronologique, String type_plateform);
+	
+	public long countPlateforme(String dateChronologique, String type_plateform);
+	
 }

@@ -41,5 +41,25 @@ public interface Wp3UniteElevJeuneRepository extends JpaRepository<Wp3UniteElevJ
 
 	@Query(value = "SELECT e.date_suivi1 as x,count(e.nom_prenom) as y FROM wp3_unite_elev_jeune e WHERE e.date_suivi1 BETWEEN ?1 AND ?2 GROUP BY e.date_suivi1 ORDER BY e.date_suivi1 ASC", nativeQuery = true)
 	List<Object[]> TpsData(Date debut_date,Date fin_date);
+	
+	//tableau
 
+	@Query(value = "SELECT village.code_village,village.district,count(wp3_unite_elev_jeune.sexe) as nbr, wp3_unite_elev_jeune.sexe FROM"
+			+ " village,wp3_unite_elev_jeune WHERE wp3_unite_elev_jeune.sexe=?4 AND village.code_village=wp3_unite_elev_jeune.code_village AND wp3_unite_elev_jeune.code_village "
+			+ " IN (null, ?3) AND wp3_unite_elev_jeune.date_suivi1 BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.code_village,village.district, wp3_unite_elev_jeune.sexe", nativeQuery = true)
+	List<Object[]> TableData(Date debut_date,Date fin_date,List<String> params,String sexe);
+	
+	@Query(value = "SELECT village.code_village,village.commune,count(wp3_unite_elev_jeune.sexe) as nbr, wp3_unite_elev_jeune.sexe FROM"
+			+ " village,wp3_unite_elev_jeune WHERE wp3_unite_elev_jeune.sexe=?3 AND village.code_village=wp3_unite_elev_jeune.code_village AND "
+			+ " wp3_unite_elev_jeune.date_suivi1 BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.code_village,village.commune, wp3_unite_elev_jeune.sexe", nativeQuery = true)
+	List<Object[]> TableDataCommune(Date debut_date,Date fin_date, String sexe);
+	
+	@Query(value = "SELECT village.district,count(wp3_unite_elev_jeune.sexe) as nbr, wp3_unite_elev_jeune.sexe FROM"
+			+ " village,wp3_unite_elev_jeune WHERE wp3_unite_elev_jeune.sexe=?3 AND village.code_village=wp3_unite_elev_jeune.code_village "
+			+ " AND wp3_unite_elev_jeune.date_suivi1 BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.district, wp3_unite_elev_jeune.sexe", nativeQuery = true)
+	List<Object[]> TableDataDist(Date debut_date,Date fin_date,String sexe);
+	
 }

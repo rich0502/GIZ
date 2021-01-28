@@ -143,7 +143,38 @@ var drawControl, app, vectorLayer, tab, mapUI, layer_bat,layerArea, lastName, mo
 	            expanded: false
 	        }),
 	        rootVisible: false,
-	        lines: false
+	        lines: false,
+	        items:[
+	        	{
+					xtype : 'button',
+					itemId : 'calcul',
+					text : 'tet',
+					handler: function () {
+					 var printDialog = new Ext.Window({
+							title: "Aperçu avant impression",
+							width: 700,
+							autoHeight: true,
+							items: [{
+								xtype: "gx_printmappanel",
+								map: {
+									controls: [new OpenLayers.Control.Navigation()]
+								},
+								sourceMap: app.mapPanel.map,
+								printProvider: printProvider
+							}],
+							bbar: ['->',
+								{
+									text: "Télécharger",
+									handler: function () {
+										printDialog.items.get(0).print();
+									}
+								}
+							]
+						});
+						printDialog.show();
+					}
+				}
+	        ]
 	    });
 	
 	    // wfs affichage de store et synchronisation avec la map
@@ -305,6 +336,7 @@ var drawControl, app, vectorLayer, tab, mapUI, layer_bat,layerArea, lastName, mo
 	    //appeler le popup, layers fixera les couches a afficher
 	   var info = new OpenLayers.Control.WMSGetFeatureInfo({
 	        autoActivate: true,
+	        hover:true,
 	            //choisir les couches a afficher
 	            layers: mapUI.map.layers,
 	        infoFormat: "application/vnd.ogc.gml",

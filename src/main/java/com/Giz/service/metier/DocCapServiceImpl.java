@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.Giz.data.domain.Adoption_innovation;
 import com.Giz.data.domain.DocCap;
@@ -75,6 +76,16 @@ public class DocCapServiceImpl implements DocCapService {
 		// TODO Auto-generated method stub
 		return docCapRepository.TpsData(debut_date, fin_date);
 	}
+
+	@Override
+	public long countDocCap(String dateChronologique) {
+		if(StringUtils.isEmpty(dateChronologique)) {
+			return docCapRepository.count();
+		} else {
+			return docCapRepository.getCountChronologique(dateChronologique);
+		}
+	}
+
 	
 	
 }

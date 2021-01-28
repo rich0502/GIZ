@@ -5,7 +5,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.StringJoiner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,18 +29,18 @@ import com.Giz.data.constants.theme.ListeWp;
 import com.Giz.data.domain.Beneficiaire;
 import com.Giz.data.domain.DocCap;
 import com.Giz.data.domain.Formation;
-import com.Giz.data.domain.Former;
 import com.Giz.data.domain.GraphDist;
 import com.Giz.data.domain.GraphDistrict;
 import com.Giz.data.domain.TpsFormes;
+import com.Giz.data.domain.Village;
 import com.Giz.entity.User;
 import com.Giz.repository.BeneficiaireRepository;
 import com.Giz.service.UserService;
 import com.Giz.service.metier.AtelierMFRService;
 import com.Giz.service.metier.BeneficiaireService;
 import com.Giz.service.metier.DocCapService;
-import com.Giz.service.metier.FormerService;
 import com.Giz.service.metier.PlateformeService;
+import com.Giz.service.metier.VillageService;
 import com.Giz.service.metier.Wp3ActivEcoJeuneService;
 import com.Giz.service.metier.Wp3AgrDevMfrService;
 import com.Giz.service.metier.Wp3CommitteeActifService;
@@ -61,11 +63,6 @@ public class AnalysesController {
 	@Autowired
 	UserService userService;
 	
-	@Autowired
-	BeneficiaireService beneficiaireService;
-	
-	@Autowired
-	FormerService formerService;
 	
 	@Autowired
 	DocCapService docCapService;
@@ -115,6 +112,9 @@ public class AnalysesController {
 	@Autowired
 	Wp3PeerEducatorService wp3PeerEducatorService;
 	
+	@Autowired
+	VillageService villageService;
+	
 	public String canevas(int nbr_canevas) {
 	    String result;
 	    switch (nbr_canevas) {
@@ -149,7 +149,9 @@ public class AnalysesController {
 	@RequestMapping("/analyses")
 	public String analyses(Model model) {
 		String[][] scList = ListeWp.wp();
+		List<Village> villages = villageService.ListVillage();
 		model.addAttribute("scList", scList);
+		model.addAttribute("villages", villages);
 		return "analyses";
 	}
 	
@@ -173,66 +175,123 @@ public class AnalysesController {
 	}	
 	
 	@RequestMapping("/tableau")
-	public String tableau(@RequestParam("theme") String theme,
+	public String tableau(@RequestParam("theme") String theme,@RequestParam(defaultValue = "not exist") String villages ,@RequestParam("genre") String genre,
 			@RequestParam("date_fin") String date_fin, @RequestParam("subdivision") String subdivision, Model model) throws Exception {
 		List<Object[]>  tps =null;
+		List<Object[]>  tpsGenre =null;
+		List<Object[]>  tpsCom =null;
+		List<Object[]>  tpsDist =null;
 		String type_atelier = null;
 		String nameCanevas = null;
+		List<String> params = null;
 		java.sql.Date debut_date=Date.valueOf("2020-01-01");
-		java.sql.Date fin=  Date.valueOf(date_fin);
+		java.sql.Date fin=  Date.valueOf(date_fin); 
+		System.out.println("subdivision" + subdivision);
+		String replaceString=villages.replaceAll("\\s+","");
+		params=new ArrayList<String>(Arrays.asList(replaceString.split(";")));		
 		switch (theme) {
-		 case "49":
-			  nameCanevas = "peer educator";
-			  tps = wp3PeerEducatorService.ListGraphe(debut_date, fin);
+		 case "37":
+			  nameCanevas = "activité economique réalisée";
+			  //ayant un champ nom_prenom count
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = wp3ActivEcoJeuneService.ListTableauDist(debut_date, fin, genre);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = wp3ActivEcoJeuneService.ListTableauCommune(debut_date, fin, genre);
+			  }else {
+				  tpsGenre = wp3ActivEcoJeuneService.ListTableau(debut_date, fin, params, genre);
+			  }
 		    break;
-		 case "48":
-			  nameCanevas = "service santé par communauté";
-			  tps = wp3SanteeCommService.ListGraphe(debut_date, fin);
+		  case "38":
+			  nameCanevas = "youth committée actif";
+			  //sum F et H  
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = wp3CommitteeActifService.ListTableauDist(debut_date, fin);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = wp3CommitteeActifService.ListTableauCommune(debut_date, fin);
+			  }else {
+				  tps = wp3CommitteeActifService.ListTableau(debut_date, fin, params);
+			  }
 		    break;
-		 case "47":
-			  nameCanevas = "EPP FRAM draft";
-			  tps = wp3EppFramService.ListGraphe(debut_date, fin);
+		 case "39":
+			  nameCanevas = "formation sur les techniques/metiers";			  
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = wp3FormTechMetierJeuneService.ListTableauDist(debut_date, fin, genre);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = wp3FormTechMetierJeuneService.ListTableauCommune(debut_date, fin, genre);
+			  }else {
+				  tpsGenre = wp3FormTechMetierJeuneService.ListTableau(debut_date, fin, params, genre);
+			  }
 		    break;
-		 case "46":
-			  nameCanevas = "jeune ayant terminé formation pathway";
-			  tps = wp3JeunePathwayService.ListGraphe(debut_date, fin);
+		 case "40":
+			  nameCanevas = "élévage en adoptant les bonnes pratiques";
+			  //ayant un champ nom_prenom count
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = wp3UniteElevJeuneService.ListTableauDist(debut_date, fin, genre);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = wp3UniteElevJeuneService.ListTableauCommune(debut_date, fin, genre);
+			  }else {
+				  tpsGenre = wp3UniteElevJeuneService.ListTableau(debut_date, fin, params, genre);
+			  }
+		    break;
+		 case "41":
+			  nameCanevas = "élèves inscrits dans les MFR";
+			  //ayant un champ nom_prenom count
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = wp3ElevMfrService.ListTableauDist(debut_date, fin, genre);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = wp3ElevMfrService.ListTableauCommune(debut_date, fin, genre);
+			  }else {
+				  tpsGenre = wp3ElevMfrService.ListTableau(debut_date, fin, params, genre);
+			  }
+		    break;
+		 case "42":
+			  nameCanevas = "jeunes formés des MFR ";
+			  //ayant un champ nom_prenom count
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = wp3JeuneFormeMfrService.ListTableauDist(debut_date, fin, genre);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = wp3JeuneFormeMfrService.ListTableauCommune(debut_date, fin, genre);
+			  }else {
+				  tpsGenre = wp3JeuneFormeMfrService.ListTableau(debut_date, fin, params, genre);
+			  }
+		    break;
+		 case "43":
+			  nameCanevas = "fédération régionale MFR";
+			  //ayant un champ nom_prenom count
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = wp3FedeMfrService.ListTableauDist(debut_date, fin, genre);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = wp3FedeMfrService.ListTableauCommune(debut_date, fin, genre);
+			  }else {
+				  tpsGenre = wp3FedeMfrService.ListTableau(debut_date, fin, params, genre);
+			  }
+		    break;
+		 case "44":
+			  nameCanevas = "équipe technique MFR";
+			  tps = wp3EquipeTechMfrService.ListGraphe(debut_date, fin);
+	
 		    break;
 		 case "45":
 			  nameCanevas = "AGR développé MFR";
 			  tps = wp3AgrDevMfrService.ListGraphe(debut_date, fin);
 		    break;
-		 case "44":
-			  nameCanevas = "équipe technique MFR";
-			  tps = wp3EquipeTechMfrService.ListGraphe(debut_date, fin);
+		 case "46":
+			  nameCanevas = "jeune ayant terminé formation pathway";
+			  tps = wp3JeunePathwayService.ListGraphe(debut_date, fin);
 		    break;
-		 case "43":
-			  nameCanevas = "fédération régionale MFR";
-			  tps = wp3FedeMfrService.ListGraphe(debut_date, fin);
+		 case "47":
+			  nameCanevas = "EPP FRAM draft";
+			  tps = wp3EppFramService.ListGraphe(debut_date, fin);
 		    break;
-		 case "42":
-			  nameCanevas = "jeunes formés des MFR ";
-			  tps = wp3JeuneFormeMfrService.ListGraphe(debut_date, fin);
+		 case "48":
+			  nameCanevas = "service santé par communauté";
+			  tps = wp3SanteeCommService.ListGraphe(debut_date, fin);
 		    break;
-		 case "41":
-			  nameCanevas = "élèves inscrits dans les MFR";
-			  tps = wp3ElevMfrService.ListGraphe(debut_date, fin);
+		 case "49":
+			  nameCanevas = "peer educator";
+			  tps = wp3PeerEducatorService.ListGraphe(debut_date, fin);
 		    break;
-		 case "40":
-			  nameCanevas = "élévage en adoptant les bonnes pratiques";
-			  tps = wp3UniteElevJeuneService.ListGraphe(debut_date, fin);
-		    break;
-		 case "39":
-			  nameCanevas = "formation sur les techniques/metiers";
-			  tps = wp3FormTechMetierJeuneService.ListGraphe(debut_date, fin);
-		    break;
-		  case "38":
-			  nameCanevas = "youth committée actif";
-			  tps = wp3CommitteeActifService.ListGraphe(debut_date, fin);
-		    break;
-		  case "37":
-			  nameCanevas = "activité economique réalisée";
-			  tps = wp3ActivEcoJeuneService.ListGraphe(debut_date, fin);
-		    break;
+
 		  case "51":
 			  nameCanevas = "document de capitalisation";
 			  tps = docCapService.ListGraphe(debut_date, fin);
@@ -282,7 +341,10 @@ public class AnalysesController {
 		    System.out.println("not exist");
 		}
 		model.addAttribute("nameCanevas", nameCanevas);
+		model.addAttribute("tpsGenre", tpsGenre);
 		model.addAttribute("tps", tps);
+		model.addAttribute("tpsCom", tpsCom);
+		model.addAttribute("tpsDist", tpsDist);
 		return "tableau/listTableau";
 	}	
 

@@ -68,7 +68,7 @@ public class Wp2Controller {
 			String nom_groupe_l_telo = row.getCell(nom_group_l_telo).getStringCellValue();
 			String categories = row.getCell(categorie).getStringCellValue();
 			java.util.Date date_creations = row.getCell(date_creation).getDateCellValue();
-			String effectif_membres = row.getCell(effectif_membre).getStringCellValue();
+			double effectif_membres =  row.getCell(effectif_membre).getNumericCellValue();
 			String sexe = "";
 			if (row.getCell(sexeH).getStringCellValue().equalsIgnoreCase("1")) {
 				sexe = "Homme";

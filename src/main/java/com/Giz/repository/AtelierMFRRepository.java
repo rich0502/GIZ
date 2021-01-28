@@ -39,6 +39,28 @@ public interface AtelierMFRRepository extends JpaRepository<AtelierMFR, Long> {
 	@Query(value = "SELECT e.date_realise as x,sum(e.nbr_particip) as y FROM atelierMFR e WHERE  e.type_atelier=:type_atelier AND  e.date_realise BETWEEN :debut_date AND :fin_date GROUP BY e.date_realise ORDER BY e.date_realise ASC", nativeQuery = true)
 	List<Object[]> TpsAtelierMFRData(String type_atelier,java.util.Date debut_date,java.util.Date fin_date);
 	
+	//indicateur
+	
+	@Query(value="Select sum(nbr_homme) as homme from ateliermfr where type_atelier=:type_atelier AND date_realise BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	long getCountHomme(String dateChronologique, String type_atelier);
+	
+	@Query(value="Select CASE WHEN sum(nbr_homme) >= 1 THEN true ELSE false END from ateliermfr where type_atelier=:type_atelier AND date_realise BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	boolean getCountHommeIsExist(String dateChronologique, String type_atelier);
+	
+	@Query(value="Select sum(nbr_femme) as femme from ateliermfr where type_atelier=:type_atelier AND date_realise BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	long getCountFemme(String dateChronologique, String type_atelier);
+	
+	
+	@Query(value="Select CASE WHEN sum(nbr_femme) >= 1 THEN true ELSE false END from ateliermfr where type_atelier=:type_atelier AND date_realise BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	boolean getCountFemmeIsExist(String dateChronologique, String type_atelier);
+	
+	@Query(value="Select count(*) from ateliermfr where  type_atelier=:type_atelier and date_realise BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	long getCountChronologique(String dateChronologique, String type_atelier);
+	
+	@Query(value="Select CASE WHEN  count(*) >= 1 THEN true ELSE false END from ateliermfr where  type_atelier=:type_atelier and date_realise BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	boolean getCountChronologiqueIsExist(String dateChronologique, String type_atelier);
+	
+	
 	
 }
 

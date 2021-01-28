@@ -47,8 +47,6 @@ import com.Giz.service.metier.Sante_animalService;
 @Controller
 public class Wp1Controller {
 	
-	@Autowired
-	BeneficiaireService beneficiaireService;
 	
 	@Autowired
 	AdopteInnovationService adopteInnovationService;
@@ -97,26 +95,7 @@ public class Wp1Controller {
         return "mise_form";
 	}
 	
-	@PostMapping("/importMWp1")
-	public String importM(@RequestParam("nom_bf") int nom_bf,
-			@RequestParam("prenom_bf") int prenom_bf, @RequestParam("adresse_bf") int adresse_bf,
-			@RequestParam("contact_bf") int contact_bf,
-			@RequestParam("date_naiss_bf") int date_naiss_bf, Model model ) throws IOException, ParseException {
-	    //List<Beneficiaire> beneficiaireList = new ArrayList<Beneficiaire>();
-	    XSSFSheet worksheet = workbook.getSheetAt(0);	    
-	    for(int i=1;i<worksheet.getPhysicalNumberOfRows() ;i++) {
-	        XSSFRow row = worksheet.getRow(i);
-	        String nom = row.getCell(nom_bf).getStringCellValue();
-	        String prenom = row.getCell(prenom_bf).getStringCellValue();
-	        String adresse = row.getCell(adresse_bf).getStringCellValue();
-	        SimpleDateFormat  formater = new SimpleDateFormat("yyyy-MM-dd");
-	        String date_naiss =formater.format(row.getCell(date_naiss_bf).getDateCellValue());
-	        String contact = row.getCell(contact_bf).getStringCellValue();
-	        beneficiaireService.addBeneficiaire(nom, prenom, adresse, null, contact, date_naiss);
-	    }
-
-	    return "redirect:/beneficiaire";
-	}
+	
 	
 	
 	/* CANEVAS ADOPTION INNOVATION  */

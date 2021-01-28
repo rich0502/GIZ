@@ -29,7 +29,7 @@ public class ValiderServiceImpl implements ValiderService{
 
 	@Override
 	public void addValiderL3(String code_village, String district, String nom_group_l_telo, String categorie,
-			Date date_creation, String effectif_membre, String sexe, boolean operationnel, Date date_suivi) {
+			Date date_creation, double effectif_membre, String sexe, boolean operationnel, Date date_suivi) {
 		Valider validerL3 = new Valider();
 		validerL3.setCode_village(code_village);
 		validerL3.setDistrict(district);
@@ -47,7 +47,7 @@ public class ValiderServiceImpl implements ValiderService{
 
 	@Override
 	public void modifyL3(Valider validerL3, String code_village, String district, String nom_group_l_telo,
-			String categorie, Date date_creation, String effectif_membre, String sexe, boolean operationnel,
+			String categorie, Date date_creation, double effectif_membre, String sexe, boolean operationnel,
 			Date date_suivi, Long id) {
 		validerL3.setId(id);
 		validerL3.setCode_village(code_village);
@@ -231,7 +231,7 @@ public class ValiderServiceImpl implements ValiderService{
 	public void addValiderProducteur(String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent,
 			String contact, int age, Date date_naiss, String cin, String sexe, String code_village,
 			String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,
-			int nbr_pers_charge, int annee_adhesion) {
+			int nbr_pers_charge) {
 			Valider validerProducteur = new Valider();
 			validerProducteur.setCode_village(code_village);
 			validerProducteur.setNum_adhesion(num_adhesion);
@@ -249,7 +249,6 @@ public class ValiderServiceImpl implements ValiderService{
 			validerProducteur.setMa_1ere_adhesion(ma_1ere_adhesion);
 			validerProducteur.setNbr_pers_charge(nbr_pers_charge);
 			validerProducteur.setCanevas("Producteur");
-			validerProducteur.setAnnee_adhesion(annee_adhesion);
 			validerrepository.save(validerProducteur);
 		
 	}
@@ -290,7 +289,7 @@ public class ValiderServiceImpl implements ValiderService{
 	public void addValiderAdhesion(String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent,
 			String contact, int age, Date date_naiss, String cin, String sexe, String code_village,
 			String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,
-			int nbr_pers_charge, int annee_adhesion) {
+			int nbr_pers_charge) {
 		Valider validerAdhesion = new Valider();
 		validerAdhesion.setCode_village(code_village);
 		validerAdhesion.setNum_adhesion(num_adhesion);
@@ -308,7 +307,6 @@ public class ValiderServiceImpl implements ValiderService{
 		validerAdhesion.setMa_1ere_adhesion(ma_1ere_adhesion);
 		validerAdhesion.setNbr_pers_charge(nbr_pers_charge);
 		validerAdhesion.setCanevas("Adhesion");
-		validerAdhesion.setAnnee_adhesion(annee_adhesion);
 		validerrepository.save(validerAdhesion);
 		
 	}
@@ -349,7 +347,7 @@ public class ValiderServiceImpl implements ValiderService{
 	public void addValiderMenage(String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent,
 			String contact, int age, Date date_naiss, String cin, String sexe, String code_village,
 			String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,
-			int nbr_pers_charge, int annee_adhesion) {
+			int nbr_pers_charge) {
 		Valider validerAdhesion = new Valider();
 		validerAdhesion.setCode_village(code_village);
 		validerAdhesion.setNum_adhesion(num_adhesion);
@@ -367,7 +365,6 @@ public class ValiderServiceImpl implements ValiderService{
 		validerAdhesion.setMa_1ere_adhesion(ma_1ere_adhesion);
 		validerAdhesion.setNbr_pers_charge(nbr_pers_charge);
 		validerAdhesion.setCanevas("Menage");
-		validerAdhesion.setAnnee_adhesion(annee_adhesion);
 		validerrepository.save(validerAdhesion);
 		
 	}

@@ -42,4 +42,22 @@ public interface Wp3ActivEcoJeuneRepository extends JpaRepository<Wp3ActivEcoJeu
 	
 	@Query(value = "SELECT e.date_fin_frm as x,count(e.nom_prenom) as y FROM Wp3_activ_eco_jeune e WHERE e.date_fin_frm BETWEEN ?1 AND ?2 GROUP BY e.date_fin_frm ORDER BY e.date_fin_frm ASC", nativeQuery = true)
 	List<Object[]> TpsData(Date debut_date,Date fin_date);
+	
+	@Query(value = "SELECT village.code_village,village.district,count(wp3_activ_eco_jeune.sexe) as nbr, wp3_activ_eco_jeune.sexe FROM"
+			+ " village,wp3_activ_eco_jeune WHERE wp3_activ_eco_jeune.sexe=?4 AND village.code_village=wp3_activ_eco_jeune.code_village AND wp3_activ_eco_jeune.code_village "
+			+ " IN (null, ?3) AND wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.code_village,village.district, wp3_activ_eco_jeune.sexe", nativeQuery = true)
+	List<Object[]> TableData(Date debut_date,Date fin_date,List<String> params,String sexe);
+	
+	@Query(value = "SELECT village.code_village,village.commune,count(wp3_activ_eco_jeune.sexe) as nbr, wp3_activ_eco_jeune.sexe FROM"
+			+ " village,wp3_activ_eco_jeune WHERE wp3_activ_eco_jeune.sexe=?3 AND village.code_village=wp3_activ_eco_jeune.code_village AND "
+			+ " wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.code_village,village.commune, wp3_activ_eco_jeune.sexe", nativeQuery = true)
+	List<Object[]> TableDataCommune(Date debut_date,Date fin_date, String sexe);
+	
+	@Query(value = "SELECT village.district,count(wp3_activ_eco_jeune.sexe) as nbr, wp3_activ_eco_jeune.sexe FROM"
+			+ " village,wp3_activ_eco_jeune WHERE wp3_activ_eco_jeune.sexe=?3 AND village.code_village=wp3_activ_eco_jeune.code_village "
+			+ " AND wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.district, wp3_activ_eco_jeune.sexe", nativeQuery = true)
+	List<Object[]> TableDataDist(Date debut_date,Date fin_date,String sexe);
 }

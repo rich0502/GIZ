@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Giz.data.domain.Beneficiaire;
+import com.Giz.data.domain.Valider;
 import com.Giz.repository.BeneficiaireRepository;
 import com.Giz.service.metier.BeneficiaireService;
 
@@ -32,59 +34,66 @@ public class BeneficiaireController {
 	@Autowired
 	BeneficiaireRepository beneficiaireRepository;
 
-	@RequestMapping("/beneficiaire")
-	public String listSuccess(Model model) {
-		List<Beneficiaire> beneficiaire = beneficiaireService.ListBeneficiaire();
-		model.addAttribute("Beneficiaire", beneficiaire);
-		return "crud-form/Form_list_Beneficiaire";
+	@RequestMapping("/listbeneficiaireWP2")
+	public String listbeneficiaireWP2(Model model) {
+		List<Beneficiaire> beneficiaireWP2 = beneficiaireService.getBeneficiereWP2();
+		int year = Calendar.getInstance().get(Calendar.YEAR);
+		model.addAttribute("Beneficiaire", beneficiaireWP2);
+		model.addAttribute("annee", year);
+		return "beneficiaire/listbeneficiaireWP2";
 	}
 	
-	@RequestMapping("/success")
-	public String success(Model model) {
-		List<Beneficiaire> success = beneficiaireService.ListSuccessStories();
-		model.addAttribute("Success", success);
-		return "crud-form/Form_list_success";
+	@RequestMapping("/listbeneficiaireWP3")
+	public String listbeneficiaireWP3(Model model) {
+		List<Beneficiaire> beneficiaireWP3 = beneficiaireService.getBeneficiereWP3();
+		int year = Calendar.getInstance().get(Calendar.YEAR);
+		model.addAttribute("Beneficiaire", beneficiaireWP3);
+		model.addAttribute("annee", year);
+		return "beneficiaire/listbeneficiaireWP3";
 	}
-
-	@RequestMapping("/deleteBeneficiaire/{id_bf}")
-	public String deleteBeneficiaire(@PathVariable(name = "id_bf") Long id_bf) {
-		beneficiaireService.deleteBeneficiaire(id_bf);
-		return "redirect:/beneficiaire";
+	
+	@RequestMapping("/listbeneficiaire")
+	public String listbeneficiaire(Model model) {
+		// wp2
+		int beneficiaireWP2Garcon = beneficiaireService.getGarconWP2();
+		int beneficiaireWP2Homme = beneficiaireService.getHommeWP2();
+		int beneficiaireWP2Fille = beneficiaireService.getFilleWP2();
+		int beneficiaireWP2Femme = beneficiaireService.getFemmeWP2();
+		
+		//wp3
+		int beneficiaireWP3Garcon = beneficiaireService.getGarconWP3();
+		int beneficiaireWP3Homme = beneficiaireService.getHommeWP3();
+		int beneficiaireWP3Fille = beneficiaireService.getFilleWP3();
+		int beneficiaireWP3Femme = beneficiaireService.getFemmeWP3();
+		
+				
+		int totalGarcon = beneficiaireWP2Garcon + beneficiaireWP3Garcon;
+		int totalHomme = beneficiaireWP2Homme + beneficiaireWP3Homme;
+		int totalFille = beneficiaireWP2Fille + beneficiaireWP3Fille;
+		int totalFemme = beneficiaireWP2Femme + beneficiaireWP3Femme;
+		int total = totalGarcon + totalHomme + totalFille + totalFemme;
+		float totalMenage =  total / 5;
+		
+		
+		model.addAttribute("beneficiaireWP2Garcon", beneficiaireWP2Garcon);
+		model.addAttribute("beneficiaireWP2Homme", beneficiaireWP2Homme);
+		model.addAttribute("beneficiaireWP2Fille", beneficiaireWP2Fille);
+		model.addAttribute("beneficiaireWP2Femme", beneficiaireWP2Femme);
+		
+		model.addAttribute("beneficiaireWP3Garcon", beneficiaireWP3Garcon);
+		model.addAttribute("beneficiaireWP3Homme", beneficiaireWP3Homme);
+		model.addAttribute("beneficiaireWP3Fille", beneficiaireWP3Fille);
+		model.addAttribute("beneficiaireWP3Femme", beneficiaireWP3Femme);
+		
+				
+		model.addAttribute("totalGarcon", totalGarcon);
+		model.addAttribute("totalHomme", totalHomme);
+		model.addAttribute("totalFille", totalFille);
+		model.addAttribute("totalFemme", totalFemme);
+		model.addAttribute("total", total);
+		model.addAttribute("totalMenage", totalMenage);
+		return "beneficiaire/listbeneficiaire";
 	}
-
-	@RequestMapping("/addBeneficiaire")
-	public String addHistoriqueAsaForme(Model model) {
-
-		return "crud-form/Form_add_Beneficiaire";
-	}
-
-	@RequestMapping("/saveBeneficiaire")
-	public String saveBeneficiaire(@RequestParam("nom_bf") String nom_bf,
-			@RequestParam("prenom_bf") String prenom_bf, @RequestParam("adresse_bf") String adresse_bf,
-			@RequestParam("contact_bf") String contact_bf,
-			@RequestParam("date_naiss_bf") String date_naiss_bf,@RequestParam(value="success", required=false, defaultValue="false") Boolean success, RedirectAttributes redirectAttributes)
-			throws ParseException {	
-		beneficiaireService.addBeneficiaire(nom_bf, prenom_bf, adresse_bf, success, contact_bf, date_naiss_bf);
-		return "redirect:/beneficiaire";
-	}
-
-	@RequestMapping("/editBeneficiaire/{id_bf}")
-	public ModelAndView editBeneficiaire(@PathVariable(name = "id_bf") Long id_bf, Model model) throws ParseException {
-		ModelAndView mav = new ModelAndView("crud-form/Form_modif_Beneficiaire");
-		Beneficiaire bf = beneficiaireRepository.findByIdBeneficiaire(id_bf);
-		mav.addObject("beneficiaire", bf);
-		return mav;
-	}
-
-	@RequestMapping(value = "/saveEditBeneficiaire", method = RequestMethod.POST)
-	public String saveEditBeneficiaire(@RequestParam("id_bf") Long id_bf,@RequestParam("nom_bf") String nom_bf,
-			@RequestParam("prenom_bf") String prenom_bf,
-			@RequestParam("adresse_bf") String adresse_bf,
-			@RequestParam("contact_bf") String contact_bf,
-			@RequestParam("date_naiss_bf") String date_naiss_bf, @RequestParam(value="success", required=false, defaultValue="false") Boolean success,
-			RedirectAttributes redirectAttributes) throws ParseException {
-		Beneficiaire beneficiaire = beneficiaireRepository.findByIdBeneficiaire(id_bf);
-		beneficiaireService.modifyBeneficiaire(beneficiaire, nom_bf, prenom_bf, adresse_bf, success, contact_bf, date_naiss_bf, id_bf);
-		return "redirect:/beneficiaire";
-	}
+	
+	
 }

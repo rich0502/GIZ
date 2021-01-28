@@ -83,7 +83,7 @@ body{
     align-items:center	;
     flex-wrap: wrap;
     margin: auto;
-    padding: 2px 20px;
+    padding: 2px 15px;
     position: relative;
 }
 .menu-list::before {

@@ -30,5 +30,19 @@ public interface PlateformRepository extends JpaRepository<Plateforme, Long> {
 	
 	@Query(value = "SELECT e.date_suivi as x,count(e.operationnel) as y FROM plateforme e WHERE  e.type_plateform=:type_plateform and e.date_suivi BETWEEN :debut_date AND :fin_date GROUP BY e.date_suivi ORDER BY e.date_suivi ASC", nativeQuery = true)
 	List<Object[]> TpsplateformeData(String type_plateform,java.util.Date debut_date,java.util.Date fin_date);
+	
+	//indicateur
+	
+	@Query(value="Select count(*)  from plateforme where type_plateform=:type_plateform AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	long getCount(String dateChronologique, String type_plateform);
+	
+	@Query(value="Select CASE WHEN count(*) >= 1 THEN true ELSE false END from plateforme where type_plateform=:type_plateform AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	boolean getCountIsExist(String dateChronologique, String type_plateform);
+	
+	@Query(value="Select count(*) from plateforme where  type_plateform=:type_plateform and date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	long getCountChronologique(String dateChronologique, String type_plateform);
+	
+	@Query(value="Select CASE WHEN  count(*) >= 1 THEN true ELSE false END from plateforme where  type_plateform=:type_plateform and date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	boolean getCountChronologiqueIsExist(String dateChronologique, String type_plateform);
 }
 

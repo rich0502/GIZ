@@ -1,13 +1,11 @@
 package com.Giz.repository;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.Giz.data.domain.DocCap;
-import com.Giz.data.domain.TpsFormes;
 
 
 public interface DocCapRepository extends JpaRepository<DocCap, Long> {
@@ -30,5 +28,12 @@ public interface DocCapRepository extends JpaRepository<DocCap, Long> {
 	
 	@Query(value = "SELECT e.date_partage as x,count(e.auteur_doc) as y FROM doc_cap e WHERE e.date_partage BETWEEN ?1 AND ?2 GROUP BY e.date_partage ORDER BY e.date_partage ASC", nativeQuery = true)
 	List<Object[]> TpsData(java.util.Date debut_date,java.util.Date fin_date);
+	
+
+	@Query(value="Select count(*) from doc_cap where lower(sexe) =:sexe", nativeQuery = true)
+	long getCountGenre(String sexe);
+	
+	@Query(value="Select count(*) from doc_cap where date_partage BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	long getCountChronologique(String dateChronologique);
 }
 
