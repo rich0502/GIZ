@@ -24,7 +24,7 @@ public class Wp3JeuneFormeMfrServiceImpl implements Wp3JeuneFormeMfrService {
 
 	@Override
 	public void addWp3JeuneFormeMfr(String code_village, String nom_prenom, String sexe, int annee_naissance,
-			boolean forme, boolean accompagne_sortie, String type_accompagnement, Date date_suivi) {
+			boolean forme, boolean accompagne_sortie, String type_accompagnement, Date date_suivi, String activite) {
 
 		Wp3JeuneFormeMfr wp3JeuneFormeMfr = new Wp3JeuneFormeMfr();
 		
@@ -36,6 +36,7 @@ public class Wp3JeuneFormeMfrServiceImpl implements Wp3JeuneFormeMfrService {
 		wp3JeuneFormeMfr.setAccompagne_sortie(accompagne_sortie);
 		wp3JeuneFormeMfr.setType_accompagnement(type_accompagnement);
 		wp3JeuneFormeMfr.setDate_suivi(date_suivi);
+		wp3JeuneFormeMfr.setActivite(activite);
 		
 		wp3JeuneFormeMfrRepository.save(wp3JeuneFormeMfr);
 		

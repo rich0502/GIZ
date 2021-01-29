@@ -27,10 +27,9 @@ public class Wp3ActivEcoJeuneServiceImpl implements Wp3ActivEcoJeuneService {
 	@Override
 	public void addWp3ActivEcoJeune(String code_village, String nom_prenom, String sexe, int annee_naissance,
 			String organisme_formateur, String frm_tech_suivi, Date date_fin_frm, String activite_eco,
-			Date date_demarrage) {
+			Date date_demarrage,String activite) {
 
 		Wp3ActivEcoJeune wp3ActivEcoJeune = new Wp3ActivEcoJeune();
-		
 		wp3ActivEcoJeune.setCode_village(code_village);
 		wp3ActivEcoJeune.setNom_prenom(nom_prenom);
 		wp3ActivEcoJeune.setSexe(sexe.toLowerCase());
@@ -40,6 +39,8 @@ public class Wp3ActivEcoJeuneServiceImpl implements Wp3ActivEcoJeuneService {
 		wp3ActivEcoJeune.setDate_fin_frm(date_fin_frm);
 		wp3ActivEcoJeune.setActivite_eco(activite_eco);
 		wp3ActivEcoJeune.setDate_demarrage(date_demarrage);
+		wp3ActivEcoJeune.setActivite(activite);
+		
 
 		wp3ActivEcoJeuneRepository.save(wp3ActivEcoJeune);
 		

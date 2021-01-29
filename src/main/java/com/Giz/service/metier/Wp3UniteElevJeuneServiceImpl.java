@@ -25,7 +25,7 @@ public class Wp3UniteElevJeuneServiceImpl implements Wp3UniteElevJeuneService {
 
 	@Override
 	public void addWp3UniteElevJeune(String code_village, String nom_prenom, String sexe, int annee_naissance,
-			Boolean demarrage_unite, Date date_dem, String type_activite, String theme1_traite, Date date_suivi1) {
+			Boolean demarrage_unite, Date date_dem, String type_activite, String theme1_traite, Date date_suivi1, String activite) {
 
 		Wp3UniteElevJeune wp3UniteElevJeune = new Wp3UniteElevJeune();
 
@@ -38,6 +38,7 @@ public class Wp3UniteElevJeuneServiceImpl implements Wp3UniteElevJeuneService {
 		wp3UniteElevJeune.setType_activite(type_activite);
 		wp3UniteElevJeune.setTheme1_traite(theme1_traite);
 		wp3UniteElevJeune.setDate_suivi1(date_suivi1);
+		wp3UniteElevJeune.setActivite(activite);
 		/*
 		 * wp3UniteElevJeune.setTheme2_traite(theme2_traite);
 		 * wp3UniteElevJeune.setDate_suivi2(date_suivi2);

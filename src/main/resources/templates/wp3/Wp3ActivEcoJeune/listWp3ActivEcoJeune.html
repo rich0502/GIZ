@@ -45,6 +45,7 @@
 											<th scope="col"><span>Date de fin  de la formation</span></th>
 											<th scope="col"><span>Activité économique réalisée</span></th>
 											<th scope="col"><span>Date de démarrage</span></th>
+											<th scope="col"><span>Activité</span></th>
 											<th class="center td-action"><span>Action</span></th>
 										</tr>
 									</thead>
@@ -59,6 +60,7 @@
 											<td th:text="${b.date_fin_frm}"></td>
 											<td th:text="${b.activite_eco}"></td>
 											<td th:text="${b.date_demarrage}"></td>
+											<td th:text="${b.activite}"></td>
 											<td class="center td-action">
 											<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id}+'\');'}"></a>
 										<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editWp3ActivEcoJeune/' + ${b.id}}"></a>

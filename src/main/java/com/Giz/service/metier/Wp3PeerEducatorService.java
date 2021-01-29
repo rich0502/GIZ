@@ -11,7 +11,7 @@ public interface Wp3PeerEducatorService {
 	public List<Wp3PeerEducator> ListWp3PeerEducator();
 
 	public void addWp3PeerEducator(String code_village, String nom_prenom, String sexe, int annee_naissance,
-			boolean operationnelle, Date date_suivi);
+			boolean operationnelle, Date date_suivi, String activite);
 	
 	public long countChronologique(String dateChronologique);
 	

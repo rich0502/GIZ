@@ -11,7 +11,7 @@ public interface Wp3UniteElevJeuneService {
 	public List<Wp3UniteElevJeune> ListWp3UniteElevJeune();
 
 	public void addWp3UniteElevJeune(String code_village, String nom_prenom, String sexe, int annee_naissance,
-			Boolean demarrage_unite, Date date_dem, String type_activite, String theme1_traite, Date date_suivi1);
+			Boolean demarrage_unite, Date date_dem, String type_activite, String theme1_traite, Date date_suivi1, String activite);
 	
 	public long countChronologique(String dateChronologique);
 	

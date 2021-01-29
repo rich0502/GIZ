@@ -24,7 +24,7 @@ public class Wp3EquipeTechMfrServiceImpl implements Wp3EquipeTechMfrService {
 
 	@Override
 	public void addWp3EquipeTechMfr(String code_village, String nom_prenom, String sexe, int annee_naissance,
-			String frm_recue1, boolean competence_frm, Date date_eval) {
+			String frm_recue1, boolean competence_frm, Date date_eval, String activite) {
 
 		Wp3EquipeTechMfr wp3EquipeTechMfr = new Wp3EquipeTechMfr();
 		
@@ -40,6 +40,7 @@ public class Wp3EquipeTechMfrServiceImpl implements Wp3EquipeTechMfrService {
 		 */
 		wp3EquipeTechMfr.setCompetence_frm(competence_frm);
 		wp3EquipeTechMfr.setDate_eval(date_eval);
+		wp3EquipeTechMfr.setActivite(activite);
 		
 		wp3EquipeTechMfrRepository.save(wp3EquipeTechMfr);
 		

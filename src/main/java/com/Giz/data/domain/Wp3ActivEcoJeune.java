@@ -28,15 +28,20 @@ public class Wp3ActivEcoJeune {
 	private Date date_fin_frm;
 	private String activite_eco;
 	private Date date_demarrage;
+	private String activite;
+
+	
 
 	public Wp3ActivEcoJeune() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
 	public Wp3ActivEcoJeune(Long id, String code_village, String nom_prenom, String sexe, int annee_naissance,
 			String organisme_formateur, String frm_tech_suivi, Date date_fin_frm, String activite_eco,
-			Date date_demarrage) {
+			Date date_demarrage, String activite) {
 		super();
 		this.id = id;
 		this.code_village = code_village;
@@ -48,7 +53,10 @@ public class Wp3ActivEcoJeune {
 		this.date_fin_frm = date_fin_frm;
 		this.activite_eco = activite_eco;
 		this.date_demarrage = date_demarrage;
+		this.activite = activite;
 	}
+
+
 
 	public Long getId() {
 		return id;
@@ -129,5 +137,19 @@ public class Wp3ActivEcoJeune {
 	public void setDate_demarrage(Date date_demarrage) {
 		this.date_demarrage = date_demarrage;
 	}
+
+
+
+	public String getActivite() {
+		return activite;
+	}
+
+
+
+	public void setActivite(String activite) {
+		this.activite = activite;
+	}
+	
+	
 
 }
