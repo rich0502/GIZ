@@ -24,7 +24,7 @@ public class Wp3JeunePathwayServiceImpl implements Wp3JeunePathwayService {
 
 	@Override
 	public void addWp3JeunePathway(String code_village, String nom_prenom, String sexe, int annee_naissance,
-			Date date_fin_frm) {
+			Date date_fin_frm, String activite) {
 
 		Wp3JeunePathway wp3JeunePathway = new Wp3JeunePathway();
 		
@@ -33,6 +33,7 @@ public class Wp3JeunePathwayServiceImpl implements Wp3JeunePathwayService {
 		wp3JeunePathway.setSexe(sexe);
 		wp3JeunePathway.setAnnee_naissance(annee_naissance);
 		wp3JeunePathway.setDate_fin_frm(date_fin_frm);
+		wp3JeunePathway.setActivite(activite);
 		
 		wp3JeunePathwayRepository.save(wp3JeunePathway);
 		

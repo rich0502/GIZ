@@ -13,7 +13,7 @@ public interface Wp3ElevMfrService {
 	public void addWp3ElevMfr(String code_village, String nom_prenom, String village_origine, String sexe,
 			int annee_naissance, boolean inscrit, int annee_inscription, Date date_suivi, String type_frm,
 			int annee_etude, Date date_sortie, String type_projet, String niveau_demarrage, Date date_validation,
-			boolean accompagne, Date date_suivi1);
+			boolean accompagne, Date date_suivi1, String activite);
 	
 	public long countChronologie(String dateChronologie);
 	

@@ -54,6 +54,7 @@
 										<th scope="col"><span>Type d'activité</span></th>
 										<th scope="col"><span>Thème_1 traité dans l'unité</span></th>
 										<th scope="col"><span>Date de suivi_1</span></th>
+										<th scope="col"><span>Activité</span></th>
 										<th class="center td-action"><span>Action</span></th>
 									</tr>
 								</thead>
@@ -68,6 +69,7 @@
 										<td th:text="${b.type_activite}"></td>
 										<td th:text="${b.theme1_traite}"></td>
 										<td th:text="${b.date_suivi1}"></td>
+										<td th:text="${b.activite}"></td>
 										<td class="center td-action">
 										<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id}+'\');'}"></a>
 									<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editWp3UniteElevJeune/' + ${b.id}}"></a>

@@ -159,9 +159,11 @@ public class Wp3Controller {
 			java.util.Date date_fin_frm37 = row.getCell(date_fin_frm).getDateCellValue();
 			String activite_eco37 = row.getCell(activite_eco).getStringCellValue();
 			java.util.Date date_demarrage37 = row.getCell(date_demarrage).getDateCellValue();
+			
+			String activite="CANEVAS ACTIVITE ECONOMIQUE JEUNE";
 
 			wp3ActivEcoJeuneService.addWp3ActivEcoJeune(code_village37, nom_prenom37, sexe37, annee_naissance37,
-					organisme_formateur37, frm_tech_suivi37, date_fin_frm37, activite_eco37, date_demarrage37);
+					organisme_formateur37, frm_tech_suivi37, date_fin_frm37, activite_eco37, date_demarrage37,activite);
 		}
 
 		return "redirect:/listWp3ActivEcoJeune";
@@ -431,9 +433,10 @@ public class Wp3Controller {
 			String theme1_traite40 = row.getCell(theme1_traite).getStringCellValue();
 			java.util.Date date_suivi140 = row.getCell(date_suivi1).getDateCellValue();
 
+			String activite="CANEVAS DEMARRAGE UNITE D'ELEVAGE EN ADOPTANT LES BONNES PRATIQUES POUR LES JEUNES DE 18 à 24 ans";
 
 			wp3UniteElevJeuneService.addWp3UniteElevJeune(code_village40, nom_prenom40, sexe40, annee_naissance40,
-					demarrage_unite40, date_dem40, type_activite40, theme1_traite40, date_suivi140);
+					demarrage_unite40, date_dem40, type_activite40, theme1_traite40, date_suivi140, activite);
 		}
 
 		return "redirect:/listWp3UniteElevJeune";
@@ -531,10 +534,12 @@ public class Wp3Controller {
 			java.util.Date date_validation41 = row.getCell(date_validation).getDateCellValue();
 			boolean accompagne41 = row.getCell(accompagne).getStringCellValue().equalsIgnoreCase("Oui");
 			java.util.Date date_suivi141 = row.getCell(date_suivi1).getDateCellValue();
-
+			
+			String activite="CANEVAS ELÈVE INSCRIT MFR DRAFT";
+			
 			wp3ElevMfrService.addWp3ElevMfr(code_village41, nom_prenom41, village_origine41, sexe41, annee_naissance41,
 					inscrit41, annee_inscription41, date_suivi41, type_frm41, annee_etude41, date_sortie41,
-					type_projet41, niveau_demarrage41, date_validation41, accompagne41, date_suivi141);
+					type_projet41, niveau_demarrage41, date_validation41, accompagne41, date_suivi141, activite);
 		}
 
 		return "redirect:/listWp3ElevMfr";
@@ -624,9 +629,11 @@ public class Wp3Controller {
 			boolean accompagne_sortie42 = row.getCell(accompagne_sortie).getStringCellValue().equalsIgnoreCase("Oui");
 			String type_accompagnement42 = row.getCell(type_accompagnement).getStringCellValue();
 			java.util.Date date_suivi42 = row.getCell(date_suivi).getDateCellValue();
+			
+			String activite="CANEVAS JEUNE FORME MFR ACCOMPAGNE";
 
 			wp3JeuneFormeMfrService.addWp3JeuneFormeMfr(code_village42, nom_prenom42, sexe42, annee_naissance42,
-					forme42, accompagne_sortie42, type_accompagnement42, date_suivi42);
+					forme42, accompagne_sortie42, type_accompagnement42, date_suivi42, activite);
 
 		}
 
@@ -804,9 +811,11 @@ public class Wp3Controller {
 			String Frm_recue144 = row.getCell(Frm_recue1).getStringCellValue();
 			boolean competence_frm44 = row.getCell(competence_frm).getStringCellValue().equalsIgnoreCase("Oui");
 			java.util.Date date_eval44 = row.getCell(date_eval).getDateCellValue();
+			
+			String activite="CANEVAS BDD ÉQUIPE TECHNIQUE MFR";
 
 			wp3EquipeTechMfrService.addWp3EquipeTechMfr(code_village44, nom_prenom44, sexe44, annee_naissance44,
-					Frm_recue144, competence_frm44, date_eval44);
+					Frm_recue144, competence_frm44, date_eval44, activite);
 			
 
 		}
@@ -973,9 +982,11 @@ public class Wp3Controller {
 			String sexe45 = row.getCell(sexe).getStringCellValue();
 			int annee_naissance45 = (int) row.getCell(annee_naissance).getNumericCellValue();
 			java.util.Date date_fin_frm45 = row.getCell(date_fin_frm).getDateCellValue();
+			
+			String activite="CANEVAS JEUNE AYANT TERMINÉ FORMATION PATHWAY";
 
 			wp3JeunePathwayService.addWp3JeunePathway(code_village45, nom_prenom45, sexe45, annee_naissance45,
-					date_fin_frm45);
+					date_fin_frm45, activite);
 
 		}
 
@@ -1224,9 +1235,11 @@ public class Wp3Controller {
 			int annee_naissance47 = (int) row.getCell(annee_naissance).getNumericCellValue();
 			boolean operationnelle47 = row.getCell(operationnelle).getStringCellValue().equalsIgnoreCase("Oui");
 			java.util.Date date_suivi47 = row.getCell(date_suivi).getDateCellValue();
+			
+			String activite="CANEVAS PEER EDUCATOR";
 
 			wp3PeerEducatorService.addWp3PeerEducator(code_village47, nom_prenom47, sexe47, annee_naissance47,
-					operationnelle47, date_suivi47);
+					operationnelle47, date_suivi47,activite);
 		}
 
 		return "redirect:/listWp3PeerEducator";

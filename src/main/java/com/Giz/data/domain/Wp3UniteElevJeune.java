@@ -29,20 +29,16 @@ public class Wp3UniteElevJeune {
 
 	private String theme1_traite;
 	private Date date_suivi1;
-
-	/*
-	 * private String theme2_traite; private Date date_suivi2;
-	 * 
-	 * private String theme3_traite; private Date date_suivi3;
-	 */
-
+	private String activite;
+	
 	public Wp3UniteElevJeune() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Wp3UniteElevJeune(Long id, String code_village, String nom_prenom, String sexe, int annee_naissance,
-			boolean demarrage_unite, Date date_dem, String type_activite, String theme1_traite, Date date_suivi1) {
+			boolean demarrage_unite, Date date_dem, String type_activite, String theme1_traite, Date date_suivi1,
+			String activite) {
 		super();
 		this.id = id;
 		this.code_village = code_village;
@@ -54,6 +50,7 @@ public class Wp3UniteElevJeune {
 		this.type_activite = type_activite;
 		this.theme1_traite = theme1_traite;
 		this.date_suivi1 = date_suivi1;
+		this.activite = activite;
 	}
 
 	public Long getId() {
@@ -136,6 +133,12 @@ public class Wp3UniteElevJeune {
 		this.date_suivi1 = date_suivi1;
 	}
 
-	
+	public String getActivite() {
+		return activite;
+	}
 
+	public void setActivite(String activite) {
+		this.activite = activite;
+	}
+	
 }

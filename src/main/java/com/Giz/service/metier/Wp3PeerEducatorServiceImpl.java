@@ -25,7 +25,7 @@ public class Wp3PeerEducatorServiceImpl implements Wp3PeerEducatorService {
 
 	@Override
 	public void addWp3PeerEducator(String code_village, String nom_prenom, String sexe, int annee_naissance,
-			boolean operationnelle, Date date_suivi) {
+			boolean operationnelle, Date date_suivi, String activite) {
 
 		Wp3PeerEducator wp3PeerEducator = new Wp3PeerEducator();
 		
@@ -35,6 +35,7 @@ public class Wp3PeerEducatorServiceImpl implements Wp3PeerEducatorService {
 		wp3PeerEducator.setAnnee_naissance(annee_naissance);
 		wp3PeerEducator.setOperationnelle(operationnelle);
 		wp3PeerEducator.setDate_suivi(date_suivi);
+		wp3PeerEducator.setActivite(activite);
 		
 		wp3PeerEducatorRepository.save(wp3PeerEducator);
 		

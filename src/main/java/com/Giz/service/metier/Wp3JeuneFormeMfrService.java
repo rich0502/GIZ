@@ -11,7 +11,7 @@ public interface Wp3JeuneFormeMfrService {
 	public List<Wp3JeuneFormeMfr> ListWp3JeuneFormeMfr();
 
 	public void addWp3JeuneFormeMfr(String code_village, String nom_prenom, String sexe, int annee_naissance,
-			boolean forme, boolean accompagne_sortie, String type_accompagnement, Date date_suivi);
+			boolean forme, boolean accompagne_sortie, String type_accompagnement, Date date_suivi, String activite);
 	
 	public long countChronologique(String dateChronologique);
 	

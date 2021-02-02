@@ -13,7 +13,7 @@ public interface Wp3ActivEcoJeuneService {
 
 	public void addWp3ActivEcoJeune(String code_village, String nom_prenom, String sexe, int annee_naissance,
 			String organisme_formateur, String frm_tech_suivi, Date date_fin_frm, String activite_eco,
-			Date date_demarrage);
+			Date date_demarrage,String activite);
 	
 	public long countActivEcoJeune(String dateChronologique);
 	

@@ -11,7 +11,7 @@ public interface Wp3JeunePathwayService {
 	public List<Wp3JeunePathway> ListWp3JeunePathway();
 
 	public void addWp3JeunePathway(String code_village, String nom_prenom, String sexe, int annee_naissance,
-			Date date_fin_frm);
+			Date date_fin_frm, String activite);
 	
 	public long countChronologique(String dateChronologique);
 	
