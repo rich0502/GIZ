@@ -64,6 +64,11 @@ public class ValiderServiceImpl implements ValiderService{
 		validerrepository.save(validerL3);
 		
 	}
+	
+	@Override
+	public void deleteL3(Long id) {
+		validerrepository.deleteById(id);		
+	}
 
 	@Override
 	public List<Valider> ListValiderVSLA() {

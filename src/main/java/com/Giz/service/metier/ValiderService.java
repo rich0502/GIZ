@@ -19,6 +19,8 @@ public interface ValiderService {
 	public void modifyL3(Valider valider,String code_village, String district, String nom_group_l_telo, String categorie, Date date_creation,
 			double effectif_membre, String sexe, boolean operationnel, Date date_suivi, Long id);
 	
+	public void deleteL3(Long id);
+	
 	public int countLakileteloOperatoinnel();
 	
 	public int countHLakileteloOperationnel();
