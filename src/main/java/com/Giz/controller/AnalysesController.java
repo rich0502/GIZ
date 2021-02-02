@@ -181,6 +181,10 @@ public class AnalysesController {
 		List<Object[]>  tpsGenre =null;
 		List<Object[]>  tpsCom =null;
 		List<Object[]>  tpsDist =null;
+		String nb = null ;
+		List<Object[]>  plate_village =null;
+		List<Object[]>  plate_com =null;
+		List<Object[]>  plate_dist =null;
 		String type_atelier = null;
 		String nameCanevas = null;
 		List<String> params = null;
@@ -398,25 +402,48 @@ public class AnalysesController {
 			  }
 		    break;
 		  case "57":
+			  nb = "ok";
 			  nameCanevas = "Suivi et protection des enfants";
 			  type_atelier =  "CANEVAS EXISTENCE DE DISPOSITIF CONCERTE DE SUIVI ET PROTECTION DES ENFANTS";
-			  tps = plateformeService.TpsPlateforme(type_atelier, debut_date, fin);
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = plateformeService.ListTableauDist(type_atelier, debut_date, fin);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = plateformeService.ListTableauCommune(type_atelier, debut_date, fin);
+			  }else {
+				  tps = plateformeService.ListTableau(type_atelier, params, debut_date, fin);
+			  }
 		    break;
 		  case "58":
+			  nb = "ok";
 			  nameCanevas = "plateforme de reflexion et planification";
 			  type_atelier = "CANEVAS PLATE FORME DE REFLEXION ET DE PLANIFICATION DE L'AMELIORATION DE LA FORMATION PROFESSIONNELLE";
-			  tps = plateformeService.TpsPlateforme(type_atelier, debut_date, fin);
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = plateformeService.ListTableauDist(type_atelier, debut_date, fin);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = plateformeService.ListTableauCommune(type_atelier, debut_date, fin);
+			  }else {
+				  tps = plateformeService.ListTableau(type_atelier, params, debut_date, fin);
+			  }
 		    break;
 		  case "59":
+			  nb = "ok";
 			  nameCanevas = "plateforme de concertation et de planification";
 			  type_atelier = "CANEVAS PLATE FORME DE CONCERTATION ET DE PLANIFICATION SUR L'ENVIRONNEMENT, BIODIVERSITE ET CHANGEMENT CLIMATIQUE DANS LA REGION SAVA";
-			  tps = plateformeService.TpsPlateforme(type_atelier, debut_date, fin);
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = plateformeService.ListTableauDist(type_atelier, debut_date, fin);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = plateformeService.ListTableauCommune(type_atelier, debut_date, fin);
+			  }else {
+				  tps = plateformeService.ListTableau(type_atelier, params, debut_date, fin);
+			  }
 		    break;
 		  default:
 		    System.out.println("not exist");
 		}
+
 		model.addAttribute("nameCanevas", nameCanevas);
 		model.addAttribute("tpsGenre", tpsGenre);
+		model.addAttribute("nb", nb);
 		model.addAttribute("tps", tps);
 		model.addAttribute("tpsCom", tpsCom);
 		model.addAttribute("tpsDist", tpsDist);
