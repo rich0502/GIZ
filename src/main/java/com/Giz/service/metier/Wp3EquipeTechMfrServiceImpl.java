@@ -116,4 +116,22 @@ public class Wp3EquipeTechMfrServiceImpl implements Wp3EquipeTechMfrService {
 		// TODO Auto-generated method stub
 		return wp3EquipeTechMfrRepository.TpsData(debut_date, fin_date);
 	}
+
+	@Override
+	public List<Object[]> ListTableau(Date debut_date, Date fin_date, List<String> params, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.TableData(debut_date, fin_date, params, sexe);
+	}
+
+	@Override
+	public List<Object[]> ListTableauCommune(Date debut_date, Date fin_date, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.TableDataCommune(debut_date, fin_date, sexe);
+	}
+
+	@Override
+	public List<Object[]> ListTableauDist(Date debut_date, Date fin_date, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.TableDataDist(debut_date, fin_date, sexe);
+	}
 }

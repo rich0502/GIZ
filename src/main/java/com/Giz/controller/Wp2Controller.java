@@ -68,19 +68,13 @@ public class Wp2Controller {
 			String nom_groupe_l_telo = row.getCell(nom_group_l_telo).getStringCellValue();
 			String categories = row.getCell(categorie).getStringCellValue();
 			java.util.Date date_creations = row.getCell(date_creation).getDateCellValue();
-			double effectif_membres =  row.getCell(effectif_membre).getNumericCellValue();
-			String sexe = "";
-			if (row.getCell(sexeH).getStringCellValue().equalsIgnoreCase("1")) {
-				sexe = "Homme";
-			} else if (row.getCell(sexeF).getStringCellValue().equalsIgnoreCase("1")) {
-				sexe = "Femme";
-			} else {
-				sexe = "";
-			}
+			int effectif_membres =  (int) row.getCell(effectif_membre).getNumericCellValue();
 			boolean operationnels = row.getCell(operationnel).getStringCellValue().equalsIgnoreCase("Oui");
 			java.util.Date date_suivis = row.getCell(date_suivi).getDateCellValue();
+			int nbr_h =  (int) row.getCell(sexeH).getNumericCellValue();
+			int nbr_f =  (int) row.getCell(sexeF).getNumericCellValue();
 			validerservice.addValiderL3(code_villag, districte, nom_groupe_l_telo, categories, date_creations,
-					effectif_membres, sexe, operationnels, date_suivis);
+					effectif_membres,nbr_h ,nbr_f, operationnels, date_suivis);
 
 		}
 

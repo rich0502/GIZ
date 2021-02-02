@@ -88,7 +88,6 @@
 									<table class="composantes-table" id="myTable" th:if="${not #lists.isEmpty(tpsCom)}">
 									<thead>
 										<tr>
-											<th scope="col"><span>Code village</span></th>
 											<th scope="col"><span>Communes</span></th>
 											<th scope="col"><span>Nombres</span></th>
 											<th scope="col"><span>Sexe</span></th>
@@ -99,7 +98,6 @@
 											<td th:text="${b[0]}"></td>
 											<td th:text="${b[1]}"></td>
 											<td th:text="${b[2]}"></td>
-											<td th:text="${b[3]}"></td>
 										</tr>
 										  <tr>
 									        <td colspan="2"><b>Total</b></td>
@@ -124,7 +122,7 @@
 											<td th:text="${b[2]}"></td>
 										</tr>
 										  <tr>
-									        <td colspan="1"><b>Total</b></td>
+									        <td colspan="2"><b>Total</b></td>
 									        <td th:text="*{#aggregates.sum(tpsDist.![[1]])}" /></td>
 									    </tr>
 							

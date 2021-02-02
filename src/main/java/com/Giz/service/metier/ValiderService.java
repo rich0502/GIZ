@@ -13,7 +13,7 @@ public interface ValiderService {
 	
 	public List<Valider> ListValiderL3();
 	
-	public void addValiderL3(String code_village, String district, String nom_group_l_telo, String categorie, Date date_creation, double effectif_membre, String sexe, boolean operationnel, Date date_suivi);
+	public void addValiderL3(String code_village, String district, String nom_group_l_telo, String categorie, Date date_creation, double effectif_membre,int nbr_h,int nbr_f, boolean operationnel, Date date_suivi);
 	
 	
 	public void modifyL3(Valider valider,String code_village, String district, String nom_group_l_telo, String categorie, Date date_creation,

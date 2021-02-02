@@ -138,6 +138,12 @@ public class Valider {
 	@Column(name = "annee_adhesion")
 	private int annee_adhesion;
 	
+	@Column(name = "nbr_h")
+	private int nbr_h;
+	
+	@Column(name = "nbr_f")
+	private int nbr_f;
+	
 	@Column(name = "canevas")
 	private String canevas;
 
@@ -154,7 +160,7 @@ public class Valider {
 			boolean airtel_money, boolean service_IMF, String institution, String lieu_agence, String num_adhesion,
 			String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin,
 			String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,
-			int nbr_pers_charge, int annee_adhesion, String canevas) {
+			int nbr_pers_charge, int annee_adhesion, int nbr_h, int nbr_f, String canevas) {
 		super();
 		this.id = id;
 		this.code_village = code_village;
@@ -197,6 +203,8 @@ public class Valider {
 		this.ma_1ere_adhesion = ma_1ere_adhesion;
 		this.nbr_pers_charge = nbr_pers_charge;
 		this.annee_adhesion = annee_adhesion;
+		this.nbr_h = nbr_h;
+		this.nbr_f = nbr_f;
 		this.canevas = canevas;
 	}
 
@@ -528,6 +536,22 @@ public class Valider {
 		this.annee_adhesion = annee_adhesion;
 	}
 
+	public int getNbr_h() {
+		return nbr_h;
+	}
+
+	public void setNbr_h(int nbr_h) {
+		this.nbr_h = nbr_h;
+	}
+
+	public int getNbr_f() {
+		return nbr_f;
+	}
+
+	public void setNbr_f(int nbr_f) {
+		this.nbr_f = nbr_f;
+	}
+
 	public String getCanevas() {
 		return canevas;
 	}
@@ -537,5 +561,5 @@ public class Valider {
 	}
 
 	
-
+	
 }

@@ -46,7 +46,7 @@ public interface Wp3FedeMfrRepository extends JpaRepository<Wp3FedeMfr, Long> {
 	List<Object[]> TpsData(Date debut_date,Date fin_date);
 	
 	@Query(value = "SELECT village.code_village,village.district,count(wp3_fede_mfr.sexe) as nbr, wp3_fede_mfr.sexe FROM"
-			+ " village,wp3_fede_mfr WHERE wp3_fede_mfr.sexe=?4 AND village.code_village=wp3_fede_mfr.code_region AND wp3_fede_mfr.code_village "
+			+ " village,wp3_fede_mfr WHERE wp3_fede_mfr.sexe=?4 AND village.code_village=wp3_fede_mfr.code_region AND wp3_fede_mfr.code_region "
 			+ " IN (null, ?3) AND wp3_fede_mfr.date_validation BETWEEN ?1 AND ?2 \r\n" + 
 			"GROUP BY village.code_village,village.district, wp3_fede_mfr.sexe", nativeQuery = true)
 	List<Object[]> TableData(Date debut_date,Date fin_date,List<String> params,String sexe);

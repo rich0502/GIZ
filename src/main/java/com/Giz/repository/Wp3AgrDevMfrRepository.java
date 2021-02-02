@@ -28,7 +28,7 @@ public interface Wp3AgrDevMfrRepository extends JpaRepository<Wp3AgrDevMfr, Long
 	
 	//graphe
 	
-	@Query(value = "SELECT count(*) as y FROM wp3_agr_deev_mfr WHERE date_suivi1 BETWEEN :debut_date AND :fin_date", nativeQuery = true)
+	@Query(value = "SELECT count(*) as y FROM wp3_agr_deev_mfr WHERE date_suivi11 BETWEEN :debut_date AND :fin_date", nativeQuery = true)
 	long SomTotal(java.util.Date debut_date,java.util.Date fin_date);
 
 	@Query(value = "SELECT village.district,count(village.district) as y from village,wp3_agr_deev_mfr where village.code_village=wp3_agr_deev_mfr.code_village group by village.district", nativeQuery = true)
@@ -38,7 +38,25 @@ public interface Wp3AgrDevMfrRepository extends JpaRepository<Wp3AgrDevMfr, Long
 	@Query(value = "SELECT count(village.district) as y from village,wp3_agr_deev_mfr WHERE village.code_village=wp3_agr_deev_mfr.code_village", nativeQuery = true)
 	long CamembertTot();
 
-	@Query(value = "SELECT e.date_suivi1 as x,count(e.nom_mfr) as y FROM wp3_agr_deev_mfr e WHERE e.date_suivi1 BETWEEN ?1 AND ?2 GROUP BY e.date_suivi1 ORDER BY e.date_suivi1 ASC", nativeQuery = true)
+	@Query(value = "SELECT e.date_suivi11 as x,count(e.nom_mfr) as y FROM wp3_agr_deev_mfr e WHERE e.date_suivi11 BETWEEN ?1 AND ?2 GROUP BY e.date_suivi11 ORDER BY e.date_suivi11 ASC", nativeQuery = true)
 	List<Object[]> TpsData(Date debut_date,Date fin_date);
+	
+	@Query(value = "SELECT village.code_village,village.district,count(wp3_agr_deev_mfr.sexe) as nbr, wp3_agr_deev_mfr.sexe FROM"
+			+ " village,wp3_agr_deev_mfr WHERE wp3_agr_deev_mfr.sexe=?4 AND village.code_village=wp3_agr_deev_mfr.code_village AND wp3_agr_deev_mfr.code_village "
+			+ " IN (null, ?3) AND wp3_agr_deev_mfr.date_suivi1 BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.code_village,village.district, wp3_agr_deev_mfr.sexe", nativeQuery = true)
+	List<Object[]> TableData(Date debut_date,Date fin_date,List<String> params,String sexe);
+	
+	@Query(value = "SELECT village.code_village,village.commune,count(wp3_agr_deev_mfr.sexe) as nbr, wp3_agr_deev_mfr.sexe FROM"
+			+ " village,wp3_agr_deev_mfr WHERE wp3_agr_deev_mfr.sexe=?3 AND village.code_village=wp3_agr_deev_mfr.code_village AND "
+			+ " wp3_agr_deev_mfr.date_suivi1 BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.code_village,village.commune, wp3_agr_deev_mfr.sexe", nativeQuery = true)
+	List<Object[]> TableDataCommune(Date debut_date,Date fin_date, String sexe);
+	
+	@Query(value = "SELECT village.district,count(wp3_agr_deev_mfr.sexe) as nbr, wp3_agr_deev_mfr.sexe FROM"
+			+ " village,wp3_agr_deev_mfr WHERE wp3_agr_deev_mfr.sexe=?3 AND village.code_village=wp3_agr_deev_mfr.code_village "
+			+ " AND wp3_agr_deev_mfr.date_suivi1 BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.district, wp3_agr_deev_mfr.sexe", nativeQuery = true)
+	List<Object[]> TableDataDist(Date debut_date,Date fin_date,String sexe);
 	
 }
