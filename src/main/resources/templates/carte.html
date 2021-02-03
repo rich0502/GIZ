@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
 	<script src="https://unpkg.com/vanilla-picker@2.5"></script>
 	<script type="module" th:src="@{/js/carte.js}"></script>
-	<script src="http://localhost:8083/geoserver/pdf/info.json?var=printCapabilities"></script>
+	<script src="http://168.119.185.165:8080/geoserver/pdf/info.json?var=printCapabilities"></script>
 
 	<link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
@@ -58,7 +58,7 @@
 
 	// Module print geoserver export pdf
 	var printProvider = new GeoExt.data.PrintProvider({
-		url: "http://localhost:8083/geoserver/pdf",
+		url: "http://168.119.185.165:8080/geoserver/pdf",
 		method: "GET",
 		capabilities: printCapabilities,
 		customParams: {

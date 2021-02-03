@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -11,10 +12,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Giz.data.constants.theme.ListeWp;
 import com.Giz.data.domain.MiseForme;
@@ -68,19 +73,13 @@ public class Wp2Controller {
 			String nom_groupe_l_telo = row.getCell(nom_group_l_telo).getStringCellValue();
 			String categories = row.getCell(categorie).getStringCellValue();
 			java.util.Date date_creations = row.getCell(date_creation).getDateCellValue();
-			double effectif_membres =  row.getCell(effectif_membre).getNumericCellValue();
-			String sexe = "";
-			if (row.getCell(sexeH).getStringCellValue().equalsIgnoreCase("1")) {
-				sexe = "Homme";
-			} else if (row.getCell(sexeF).getStringCellValue().equalsIgnoreCase("1")) {
-				sexe = "Femme";
-			} else {
-				sexe = "";
-			}
+			int effectif_membres =  (int) row.getCell(effectif_membre).getNumericCellValue();
 			boolean operationnels = row.getCell(operationnel).getStringCellValue().equalsIgnoreCase("Oui");
 			java.util.Date date_suivis = row.getCell(date_suivi).getDateCellValue();
+			int nbr_h =  (int) row.getCell(sexeH).getNumericCellValue();
+			int nbr_f =  (int) row.getCell(sexeF).getNumericCellValue();
 			validerservice.addValiderL3(code_villag, districte, nom_groupe_l_telo, categories, date_creations,
-					effectif_membres, sexe, operationnels, date_suivis);
+					effectif_membres,nbr_h ,nbr_f, operationnels, date_suivis);
 
 		}
 
@@ -92,6 +91,12 @@ public class Wp2Controller {
 		List<Valider> validerL3 = validerservice.ListValiderL3();
 		model.addAttribute("validerL3", validerL3);
 		return "wp2/LakileTelo/listLakileTelo";
+	}
+	
+	@RequestMapping("/deleteL3/{id}")
+	public String deleteL3(@PathVariable(name = "id") Long id) {
+		validerservice.deleteL3(id);
+		return "redirect:/listLakileTelo";
 	}
 
 	// Canevas VSLA Municipal

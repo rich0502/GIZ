@@ -40,4 +40,22 @@ public interface Wp3EppFramRepository extends JpaRepository<Wp3EppFram, Long> {
 
 	@Query(value = "SELECT e.date_validation as x,count(e.nom_ecole) as y FROM wp3_epp_fram e WHERE e.date_validation BETWEEN ?1 AND ?2 GROUP BY e.date_validation ORDER BY e.date_validation ASC", nativeQuery = true)
 	List<Object[]> TpsData(Date debut_date,Date fin_date);
+	
+	@Query(value = "SELECT village.code_village,village.district,count(wp3_epp_fram.sexe) as nbr, wp3_epp_fram.sexe FROM"
+			+ " village,wp3_epp_fram WHERE wp3_epp_fram.sexe=?4 AND village.code_village=wp3_epp_fram.code_village AND wp3_epp_fram.code_village "
+			+ " IN (null, ?3) AND wp3_epp_fram.date_validation BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.code_village,village.district, wp3_epp_fram.sexe", nativeQuery = true)
+	List<Object[]> TableData(Date debut_date,Date fin_date,List<String> params,String sexe);
+	
+	@Query(value = "SELECT village.code_village,village.commune,count(wp3_epp_fram.sexe) as nbr, wp3_epp_fram.sexe FROM"
+			+ " village,wp3_epp_fram WHERE wp3_epp_fram.sexe=?3 AND village.code_village=wp3_epp_fram.code_village AND "
+			+ " wp3_epp_fram.date_validation BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.code_village,village.commune, wp3_epp_fram.sexe", nativeQuery = true)
+	List<Object[]> TableDataCommune(Date debut_date,Date fin_date, String sexe);
+	
+	@Query(value = "SELECT village.district,count(wp3_epp_fram.sexe) as nbr, wp3_epp_fram.sexe FROM"
+			+ " village,wp3_epp_fram WHERE wp3_epp_fram.sexe=?3 AND village.code_village=wp3_epp_fram.code_village "
+			+ " AND wp3_epp_fram.date_validation BETWEEN ?1 AND ?2 \r\n" + 
+			"GROUP BY village.district, wp3_epp_fram.sexe", nativeQuery = true)
+	List<Object[]> TableDataDist(Date debut_date,Date fin_date,String sexe);
 }

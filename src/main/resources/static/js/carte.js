@@ -20,18 +20,28 @@ var drawControl, app, vectorLayer, tab, mapUI, layer_bat,layerArea, lastName, mo
 				        displayInLayerSwitcher: true,
 				        visibility: true
 				    });
-	/*	var district = new OpenLayers.Layer.WMS("district",
+		var district = new OpenLayers.Layer.WMS("district",
 			    constants.adresseIP + "/geoserver/mada/wms/", {
-			        layers: "mada:" + subdivision,
+			        layers: "mada:district",
 			        transparent: true,
 			        format: "image/gif"
 			    },
 			    {
 			        buffer: 0,
 			        displayInLayerSwitcher: true,
-			        visibility: true
+			        visibility: false
 			    });
-		*/
+		var commune = new OpenLayers.Layer.WMS("Commune",
+			    constants.adresseIP + "/geoserver/mada/wms/", {
+			        layers: "mada:commune",
+			        transparent: true,
+			        format: "image/gif"
+			    },
+			    {
+			        buffer: 0,
+			        displayInLayerSwitcher: true,
+			        visibility: false
+			    });
 		console.log(limit);
 		var osm_layer = new OpenLayers.Layer.OSM('osm');
 	    // [1] - layer
@@ -69,7 +79,7 @@ var drawControl, app, vectorLayer, tab, mapUI, layer_bat,layerArea, lastName, mo
 	        id: "mp",
 	        cls: 'pds-map',
 	        title: 'couche',
-	        layers: [limit]
+	        layers: [district, commune, limit]
 	    }
 	    );
 	    //ajout du vecteur a editer
@@ -148,7 +158,7 @@ var drawControl, app, vectorLayer, tab, mapUI, layer_bat,layerArea, lastName, mo
 	        	{
 					xtype : 'button',
 					itemId : 'calcul',
-					text : 'tet',
+					text : 'import',
 					handler: function () {
 					 var printDialog = new Ext.Window({
 							title: "Aperçu avant impression",

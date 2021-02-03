@@ -181,6 +181,10 @@ public class AnalysesController {
 		List<Object[]>  tpsGenre =null;
 		List<Object[]>  tpsCom =null;
 		List<Object[]>  tpsDist =null;
+		String nb = null ;
+		List<Object[]>  plate_village =null;
+		List<Object[]>  plate_com =null;
+		List<Object[]>  plate_dist =null;
 		String type_atelier = null;
 		String nameCanevas = null;
 		List<String> params = null;
@@ -268,28 +272,69 @@ public class AnalysesController {
 		    break;
 		 case "44":
 			  nameCanevas = "équipe technique MFR";
-			  tps = wp3EquipeTechMfrService.ListGraphe(debut_date, fin);
-	
+			  //ayant un champ nom_prenom count
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = wp3EquipeTechMfrService.ListTableauDist(debut_date, fin, genre);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = wp3EquipeTechMfrService.ListTableauCommune(debut_date, fin, genre);
+			  }else {
+				  tpsGenre = wp3EquipeTechMfrService.ListTableau(debut_date, fin, params, genre);
+			  }
 		    break;
 		 case "45":
 			  nameCanevas = "AGR développé MFR";
-			  tps = wp3AgrDevMfrService.ListGraphe(debut_date, fin);
+			  //ayant un champ nom_prenom count
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = wp3AgrDevMfrService.ListTableauDist(debut_date, fin, genre);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = wp3AgrDevMfrService.ListTableauCommune(debut_date, fin, genre);
+			  }else {
+				  tpsGenre = wp3AgrDevMfrService.ListTableau(debut_date, fin, params, genre);
+			  }
 		    break;
 		 case "46":
 			  nameCanevas = "jeune ayant terminé formation pathway";
-			  tps = wp3JeunePathwayService.ListGraphe(debut_date, fin);
+			//ayant un champ nom_prenom count
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = wp3JeunePathwayService.ListTableauDist(debut_date, fin, genre);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = wp3JeunePathwayService.ListTableauCommune(debut_date, fin, genre);
+			  }else {
+				  tpsGenre = wp3JeunePathwayService.ListTableau(debut_date, fin, params, genre);
+			  }
 		    break;
 		 case "47":
 			  nameCanevas = "EPP FRAM draft";
-			  tps = wp3EppFramService.ListGraphe(debut_date, fin);
+			  //ayant un champ nom_prenom count
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = wp3EppFramService.ListTableauDist(debut_date, fin, genre);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = wp3EppFramService.ListTableauCommune(debut_date, fin, genre);
+			  }else {
+				  tpsGenre = wp3EppFramService.ListTableau(debut_date, fin, params, genre);
+			  }
 		    break;
 		 case "48":
 			  nameCanevas = "service santé par communauté";
-			  tps = wp3SanteeCommService.ListGraphe(debut_date, fin);
+			  //ayant un champ nom_prenom count
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = wp3SanteeCommService.ListTableauDist(debut_date, fin, genre);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = wp3SanteeCommService.ListTableauCommune(debut_date, fin, genre);
+			  }else {
+				  tpsGenre = wp3SanteeCommService.ListTableau(debut_date, fin, params, genre);
+			  }
 		    break;
 		 case "49":
 			  nameCanevas = "peer educator";
-			  tps = wp3PeerEducatorService.ListGraphe(debut_date, fin);
+			  //ayant un champ nom_prenom count
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = wp3PeerEducatorService.ListTableauDist(debut_date, fin, genre);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = wp3PeerEducatorService.ListTableauCommune(debut_date, fin, genre);
+			  }else {
+				  tpsGenre = wp3PeerEducatorService.ListTableau(debut_date, fin, params, genre);
+			  }
 		    break;
 
 		  case "51":
@@ -298,50 +343,107 @@ public class AnalysesController {
 		    break;
 		  case "52":
 			  nameCanevas = "ateliers MFR ";
-			  type_atelier = "CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DU RESEAU DE MFR DANS LA REGION";
-			  tps = atelierMFRService.TpsAtelierMFR(type_atelier, debut_date, fin);
+			  type_atelier = "CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DU RESEAU DE MFR DANS LA REGION";		  
+			  //sum F et H  
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+			  }else {
+				  tps = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+			  }
 		    break;
 		  case "53":
 			  nameCanevas = "Dialogue région";
 			  type_atelier = "CANEVAS DIALOGUE REGIONAL SUR L'ACCES AU FINANCEMENT";
-			  tps = atelierMFRService.TpsAtelierMFR(type_atelier, debut_date, fin);
-			  System.out.println("tps" + tps);
+			  //sum F et H  
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+			  }else {
+				  tps = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+			  }
 		    break;
 		  case "54":
 			  nameCanevas = "Atelier de capitalisation";
 			  type_atelier = "CANEVAS ATELIERS DE CAPITALISATION ET PARTAGE DES ACQUIS";
-			  tps = atelierMFRService.TpsAtelierMFR(type_atelier, debut_date, fin);
+			  //sum F et H  
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+			  }else {
+				  tps = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+			  }
 		    break;
 		  case "55":
 			  nameCanevas = "Atelier promotion Mahavelona";
 			  type_atelier = "CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DE MAHAVELONA DANS LA SAVA";
-			  tps = atelierMFRService.TpsAtelierMFR(type_atelier, debut_date, fin);
+			  //sum F et H  
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+			  }else {
+				  tps = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+			  }
 		    break;
 		  case "56":
 			  nameCanevas = "Outils aux producteurs de vanille";
 			  type_atelier = "CANEVAS ATELIERS DE PARTAGES DES BONNES PRATIQUES ET OUTILS AUX PRODUCTEURS DE VANILLE";
-			  tps = atelierMFRService.TpsAtelierMFR(type_atelier, debut_date, fin);
+			  //sum F et H  
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+			  }else {
+				  tps = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+			  }
 		    break;
 		  case "57":
+			  nb = "ok";
 			  nameCanevas = "Suivi et protection des enfants";
 			  type_atelier =  "CANEVAS EXISTENCE DE DISPOSITIF CONCERTE DE SUIVI ET PROTECTION DES ENFANTS";
-			  tps = plateformeService.TpsPlateforme(type_atelier, debut_date, fin);
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = plateformeService.ListTableauDist(type_atelier, debut_date, fin);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = plateformeService.ListTableauCommune(type_atelier, debut_date, fin);
+			  }else {
+				  tps = plateformeService.ListTableau(type_atelier, params, debut_date, fin);
+			  }
 		    break;
 		  case "58":
+			  nb = "ok";
 			  nameCanevas = "plateforme de reflexion et planification";
 			  type_atelier = "CANEVAS PLATE FORME DE REFLEXION ET DE PLANIFICATION DE L'AMELIORATION DE LA FORMATION PROFESSIONNELLE";
-			  tps = plateformeService.TpsPlateforme(type_atelier, debut_date, fin);
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = plateformeService.ListTableauDist(type_atelier, debut_date, fin);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = plateformeService.ListTableauCommune(type_atelier, debut_date, fin);
+			  }else {
+				  tps = plateformeService.ListTableau(type_atelier, params, debut_date, fin);
+			  }
 		    break;
 		  case "59":
+			  nb = "ok";
 			  nameCanevas = "plateforme de concertation et de planification";
 			  type_atelier = "CANEVAS PLATE FORME DE CONCERTATION ET DE PLANIFICATION SUR L'ENVIRONNEMENT, BIODIVERSITE ET CHANGEMENT CLIMATIQUE DANS LA REGION SAVA";
-			  tps = plateformeService.TpsPlateforme(type_atelier, debut_date, fin);
+			  if(subdivision.equalsIgnoreCase("district")) {
+				  tpsDist = plateformeService.ListTableauDist(type_atelier, debut_date, fin);
+			  }else if (subdivision.equalsIgnoreCase("commune")) {
+				  tpsCom = plateformeService.ListTableauCommune(type_atelier, debut_date, fin);
+			  }else {
+				  tps = plateformeService.ListTableau(type_atelier, params, debut_date, fin);
+			  }
 		    break;
 		  default:
 		    System.out.println("not exist");
 		}
+
 		model.addAttribute("nameCanevas", nameCanevas);
 		model.addAttribute("tpsGenre", tpsGenre);
+		model.addAttribute("nb", nb);
 		model.addAttribute("tps", tps);
 		model.addAttribute("tpsCom", tpsCom);
 		model.addAttribute("tpsDist", tpsDist);

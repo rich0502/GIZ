@@ -114,6 +114,24 @@ public class PlateformeServiceImpl implements PlateformeService {
 	return 0;
 	}
 
+	@Override
+	public List<Object[]> ListTableau(String type_atelier, List<String> params, Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return plateformRepository.TableData(type_atelier, params, debut_date, fin_date);
+	}
+
+	@Override
+	public List<Object[]> ListTableauCommune(String type_atelier, Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return plateformRepository.TableDataCommune(type_atelier, debut_date, fin_date);
+	}
+
+	@Override
+	public List<Object[]> ListTableauDist(String type_atelier, Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return plateformRepository.TableDataDist(type_atelier, debut_date, fin_date);
+	}
+
 	
 
 }

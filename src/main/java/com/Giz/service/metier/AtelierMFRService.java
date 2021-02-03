@@ -46,4 +46,10 @@ public interface AtelierMFRService {
 	
 	public long countAtelier(String dateChronologique, String type_atelier);
 	
+	public List<Object[]> ListTableau(String type_atelier,List<String> params, Date debut_date, Date fin_date);
+	
+	public List<Object[]> ListTableauCommune(String type_atelier,Date debut_date, Date fin_date);
+	
+	public List<Object[]> ListTableauDist(String type_atelier,Date debut_date, Date fin_date);
+	
 }

@@ -27,9 +27,10 @@ public class ValiderServiceImpl implements ValiderService{
 		validerrepository.deleteById(id);
 	}
 
+	
 	@Override
 	public void addValiderL3(String code_village, String district, String nom_group_l_telo, String categorie,
-			Date date_creation, double effectif_membre, String sexe, boolean operationnel, Date date_suivi) {
+			Date date_creation, double effectif_membre, int nbr_h, int nbr_f, boolean operationnel, Date date_suivi) {
 		Valider validerL3 = new Valider();
 		validerL3.setCode_village(code_village);
 		validerL3.setDistrict(district);
@@ -37,14 +38,15 @@ public class ValiderServiceImpl implements ValiderService{
 		validerL3.setCategorie(categorie);
 		validerL3.setDate_creation(date_creation);
 		validerL3.setEffectif_membre(effectif_membre);
-		validerL3.setSexe(sexe.toLowerCase());
+		validerL3.setNbr_f(nbr_f);
+		validerL3.setNbr_h(nbr_h);
 		validerL3.setOperationnel(operationnel);
 		validerL3.setDate_suivi(date_suivi);
 		validerL3.setCanevas("L3");
 		validerrepository.save(validerL3);
 		
 	}
-
+	
 	@Override
 	public void modifyL3(Valider validerL3, String code_village, String district, String nom_group_l_telo,
 			String categorie, Date date_creation, double effectif_membre, String sexe, boolean operationnel,
@@ -61,6 +63,11 @@ public class ValiderServiceImpl implements ValiderService{
 		validerL3.setDate_suivi(date_suivi);
 		validerrepository.save(validerL3);
 		
+	}
+	
+	@Override
+	public void deleteL3(Long id) {
+		validerrepository.deleteById(id);		
 	}
 
 	@Override
@@ -556,6 +563,8 @@ public class ValiderServiceImpl implements ValiderService{
 		// TODO Auto-generated method stub
 		return validerrepository.countMenageF();
 	}
+
+
 
 	
 

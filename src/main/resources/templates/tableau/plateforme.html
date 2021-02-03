@@ -1,0 +1,62 @@
+<table class="composantes-table" id="myTable" th:if="${not #lists.isEmpty(tps)}">
+			<thead>
+				<tr>
+					<th scope="col"><span>Code village</span></th>
+					<th scope="col"><span>District</span></th>
+					<th scope="col"><span>Nombres</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="b : ${tps}">
+					<td th:text="${b[0]}"></td>
+					<td th:text="${b[1]}"></td>
+					<td th:text="${b[2]}"></td>
+				</tr>
+				  <tr>
+			        <td colspan="2"><b>Total</b></td>
+			        <td th:text="*{#aggregates.sum(tps.![[2]])}" /></td>
+			    </tr>
+	
+			</tbody>
+</table>
+								
+<table class="composantes-table" id="myTable" th:if="${not #lists.isEmpty(tpsCom)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>Communes</span></th>
+			<th scope="col"><span>Nombres</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsCom}">
+			<td th:text="${b[0]}"></td>
+			<td th:text="${b[1]}"></td>
+		</tr>
+		  <tr>
+	        <td colspan="2"><b>Total</b></td>
+	        <td th:text="*{#aggregates.sum(tpsCom.![[1]])}" /></td>
+	    </tr>
+
+	</tbody>
+</table>
+
+<table class="composantes-table" id="myTable" th:if="${not #lists.isEmpty(tpsDist)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>District</span></th>
+			<th scope="col"><span>Nombres</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsDist}">
+			<td th:text="${b[0]}"></td>
+			<td th:text="${b[1]}"></td>
+		</tr>
+		  <tr>
+	        <td colspan="2"><b>Total</b></td>
+	        <td th:text="*{#aggregates.sum(tpsDist.![[1]])}" /></td>
+	    </tr>
+
+	</tbody>
+</table>
+                   
