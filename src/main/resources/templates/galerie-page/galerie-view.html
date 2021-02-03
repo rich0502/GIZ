@@ -2,28 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <link rel="shortcut icon" type="image/png" th:href="@{/css/images/icons/favicon.png}" />
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Vanilla Periodic MonitoringTools</title>
-
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-  <!-- <link rel="stylesheet" href="export/css/app.css"> -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
-
-    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">   
-	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
+  <head th:include="/headLinks.html" th:remove="tag"></head>
 
 </head>
 
 <body class="galerie-manage">
-<div th:include="/pds_header.html"></div>
+<div th:include="/pds_header.html" th:remove="tag"></div>
   <section class="main">
     <div class="base-content">
       <header class="flex header-galerie">
@@ -32,77 +16,80 @@
       </header>
 
       <div class="card">
-          <div class="card-body list-galery">
-            <div class="dropdown show item-galery" th:each="galerie: ${galerieList}">
-               <a class="desc-album" href="#" th:onclick="'javascript:Album(\''+ ${galerie.id} +'\');'"
-                th:text="${galerie.nom_album}">
-              </a>
-              <a class="link-album dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-              </a>
-              <div class="dropdown-menu show-action" aria-labelledby="dropdownMenuLink">
-                <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modifTarget" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" 
-                  th:onclick="@{'javascript:ModifGalerie(\''+ ${galerie.id} +'\', \''+ ${galerie.nom_album} +'\');'}" >[[#{modifier}]]</button>
-                <a class="dropdown-item spr" href="#" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" 
-                  th:onclick="'javascript:confirmDelete(\''+ ${galerie.id} +'\');'">[[#{supprimer}]]</a>
-              </div>
+        <div class="card-body list-galery">
+          <div class="dropdown show item-galery" th:each="galerie: ${galerieList}">
+              <a class="desc-album" href="#" th:onclick="'javascript:Album(\''+ ${galerie.id} +'\');'"
+              th:text="${galerie.nom_album}">
+            </a>
+            <a class="link-album dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+            </a>
+            <div class="dropdown-menu show-action" aria-labelledby="dropdownMenuLink">
+              <button class="dropdown-item" type="button" data-toggle="modal" data-target="#modifTarget" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" 
+                th:onclick="@{'javascript:ModifGalerie(\''+ ${galerie.id} +'\', \''+ ${galerie.nom_album} +'\');'}" >[[#{modifier}]]</button>
+              <a class="dropdown-item spr" href="#" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" 
+                th:onclick="'javascript:confirmDelete(\''+ ${galerie.id} +'\');'">[[#{supprimer}]]</a>
             </div>
           </div>
         </div>
-
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <form class="addcol-form" method="POST" th:action="@{/saveGalerie}">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content card-body">
-              <div class="modal-header">
-                <h2 class="page-title modal-title" id="exampleModalLongTitle">Nouveau titre</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body p-modal">
-                  <span class="glabel">Nom galeries</span>
-                
-                <input class="form-control" type="text" placeholder="Nom album" th:name="nom_album">
-              </div>
-              <div class="modal-footer btn-row">
-                <button type="button" class="gbtn cancel" data-dismiss="modal">[[#{annuler}]]</button>
-                <button type="submit" class="gbtn">[[#{save}]]</button>
-              </div>
-            </div>
-          </div>
-        </form>
       </div>
 
-
-      <div class="modal fade" id="modifTarget" tabindex="-1" role="dialog" aria-labelledby="modifTarget"
-        aria-hidden="true">
-        <form class="addcol-form" method="POST" th:action="@{/editeGalerie}">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content card-body">
-              <div class="modal-header">
-                <h2 class="page-title modal-title" id="exampleModalLongTitle">Nouveau titre galerie</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body p-modal">
-                  <span class="glabel">[[#{modifier}]] galerie</span>
-                <input class="form-control" type="hidden" id="id" th:name="id">
-                <input class="form-control" type="text" id="nom" th:name="nom_album">
-              </div>
-              <div class="modal-footer btn-row">
-                <button type="button" class="gbtn cancel" data-dismiss="modal">[[#{annuler}]]</button>
-                <button type="submit" class="gbtn" >[[#{save}]]</button>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
+      
     </div>
   </section>
   <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <form class="addcol-form" method="POST" th:action="@{/saveGalerie}">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content card-body">
+          <div class="modal-header">
+            <h2 class="page-title modal-title" id="exampleModalLongTitle">Nouveau titre</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body p-modal">
+              <span class="glabel">Nom galeries</span>
+            
+            <input class="form-control" type="text" placeholder="Nom album" th:name="nom_album">
+          </div>
+          <div class="modal-footer btn-row">
+            <button type="button" class="gbtn cancel" data-dismiss="modal">[[#{annuler}]]</button>
+            <button type="submit" class="gbtn">[[#{save}]]</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <div class="modal fade" id="modifTarget" tabindex="-1" role="dialog" aria-labelledby="modifTarget"
+    aria-hidden="true">
+    <form class="addcol-form" method="POST" th:action="@{/editeGalerie}">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content card-body">
+          <div class="modal-header">
+            <h2 class="page-title modal-title" id="exampleModalLongTitle">Nouveau titre galerie</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body p-modal">
+              <span class="glabel">[[#{modifier}]] galerie</span>
+            <input class="form-control" type="hidden" id="id" th:name="id">
+            <input class="form-control" type="text" id="nom" th:name="nom_album">
+          </div>
+          <div class="modal-footer btn-row">
+            <button type="button" class="gbtn cancel" data-dismiss="modal">[[#{annuler}]]</button>
+            <button type="submit" class="gbtn" >[[#{save}]]</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
 	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
 	  <div class="modal-dialog modal-dialog-centered" role="document">
 	    <div class="modal-content card-body">
@@ -124,13 +111,13 @@
 	</div>
 	
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
   <script src="export/js/lib.js"></script>
   <script src="export/js/bootstrap.min.js"></script>
   <script src="export/js/app.js"></script>
-  <script src="export/js/giz.js"></script>
+  <script src="export/js/giz.js"></script> -->
 
   <script type="text/javascript">
     function confirmDeleteGalerie() {

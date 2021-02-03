@@ -183,8 +183,8 @@ body{
 }
 
 .modal-content{
-    /* background-color: #3b4652; */
-    opacity: .85;
+    background-color: #fff;
+    opacity: .98;
     padding: 0 20px;
     
 }
@@ -548,7 +548,8 @@ label{
 	padding: 2px 12px;
 	margin-top:5px;
 	margin-bottom: 16px;
-	color: #000000;
+    color: #000000;
+    border-radius: 5px;
 }
 .form-wrap:not(.add-form) .floating-label{
 	max-width:250px;
@@ -612,7 +613,7 @@ label{
 	    padding: 10px 20px;
 }
 .pds-primary-btn:hover {
-    background: #c80f08;
+    background-color: #c80f08;
 }
 .pds-secondary-btn{
 /* 	background:rgba(3, 20, 81);*/

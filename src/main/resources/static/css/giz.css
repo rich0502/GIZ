@@ -751,7 +751,8 @@ ul.nav-tabs {
     content: '\002b';
     display: inline-block;
     font-size: 22px;
-    margin-bottom: 0;
+    line-height: 1;
+    padding-bottom: 6px;
     margin-right: 12px;
     vertical-align: middle
 }
@@ -1526,7 +1527,8 @@ table.dataTable.composantes-table {
 }
 .table-responsive {
 	border: 1px solid #f1f1f1;
-	min-height: 70px;
+    min-height: 70px;
+    clear: both;
 }
 .composantes-table td.td-action {
     justify-content: center;
@@ -2268,7 +2270,7 @@ tr.relative .table-title.title-child {
 }
 
 .modal-backdrop {
-    z-index: 2;
+    z-index: 900;
 }
 
 .card.modal-dialog {

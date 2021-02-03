@@ -2,41 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>GIZ</title>
-<link rel="icon" type="image/png" href="css/images/icons/favicon.png" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-<!--JQUERY-->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-<!-- Los iconos tipo Solid de Fontawesome-->
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-<!-- Nuestro css-->
-<link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
-<link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
-<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
-<link rel="stylesheet" type="text/css"
-	th:href="@{/css/tracker_table.css}" />
+	<head th:include="/headLinks.html" th:remove="tag"></head>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/tracker_table.css}" />
 </head>
 <body>
 	<div th:include="/pds_header.html"></div>
 
 	<section class="main"> 
-	        <header class="composantesTable-header justify-between">
+	        <header class="composantesTable-header justify-between container">
              <h2 class="page-title">WP3 : Child Protection and Youth Development</h2>
              <br>
              <br>
@@ -232,9 +205,9 @@
 
 
 
-	<script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
+	<!-- <script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
 	<script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
-	<script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
+	<script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script> -->
 
 	<script th:src="@{/js/tracker-table/jquery-1.12.4.js}"></script>
 	<script th:src="@{/js/tracker-table/jquery-ui.js}"></script>
