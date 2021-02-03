@@ -40,18 +40,12 @@
 			<tr>
 				<th scope="col"><span>Nom et prénom</span></th>
 				<th scope="col"><span>Age</span></th>
-				<th scope="col"><span>Genre</span></th>
-				<th scope="col"><span>Année de naissance</span></th>
-				<th scope="col"><span>Code village</span></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="b : ${Beneficiaire}">
 				<td th:text="${b.nom_prenom}"></td>
 				<td th:text="${b.age}== 0 ? ${annee} - ${b.annee_naissance}  : ${b.age}"></td>
-				<td th:text="${b.sexe}"></td>
-				<td th:text="${b.annee_naissance}"></td>
-				<td th:text="${b.code_village}"></td>
 			</tr>
 
 		</tbody>

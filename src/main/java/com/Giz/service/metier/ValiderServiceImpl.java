@@ -403,57 +403,57 @@ public class ValiderServiceImpl implements ValiderService{
 	}
 
 	@Override
-	public int countLakileteloOperatoinnel() {
+	public int countLakileteloOperatoinnel(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countL3Operationnel();
+		return validerrepository.countL3Operationnel(dateChronologique);
 	}
 
 	@Override
-	public int countHLakileteloOperationnel() {
+	public int countHLakileteloOperationnel(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countL3HOperationnel();
+		return validerrepository.countL3HOperationnel(dateChronologique);
 	}
 
 	@Override
-	public int countFLakileteloOperationnel() {
+	public int countFLakileteloOperationnel(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countL3FOperationnel();
+		return validerrepository.countL3FOperationnel(dateChronologique);
 	}
 
 	@Override
-	public int countL3VSLAOperationnel() {
+	public int countL3VSLAOperationnel(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countL3OperationnelVSLA();
+		return validerrepository.countL3OperationnelVSLA(dateChronologique);
 	}
 
 	@Override
-	public int countL3VSLAOperationnelH() {
+	public int countL3VSLAOperationnelH(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countL3HOperationnelVSLA();
+		return validerrepository.countL3HOperationnelVSLA(dateChronologique);
 	}
 
 	@Override
-	public int countL3VSLAOperationnelF() {
+	public int countL3VSLAOperationnelF(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countL3FOperationnelVSLA();
+		return validerrepository.countL3FOperationnelVSLA(dateChronologique);
 	}
 
 	@Override
-	public int countL3GEC() {
+	public int countL3GEC(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countL3OperationnelGEC();
+		return validerrepository.countL3OperationnelGEC(dateChronologique);
 	}
 
 	@Override
-	public int countL3GECH() {
+	public int countL3GECH(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countL3HOperationnelGEC();
+		return validerrepository.countL3HOperationnelGEC(dateChronologique);
 	}
 
 	@Override
-	public int countL3GECF() {
+	public int countL3GECF(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countL3FOperationnelGEC();
+		return validerrepository.countL3FOperationnelGEC(dateChronologique);
 	}
 
 	@Override
@@ -475,93 +475,93 @@ public class ValiderServiceImpl implements ValiderService{
 	}
 
 	@Override
-	public int countMobileMoney() {
+	public int countMobileMoney(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countMobileMoney();
+		return validerrepository.countMobileMoney(dateChronologique);
 	}
 
 	@Override
-	public int countHMobileMoney() {
+	public int countHMobileMoney(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countMobileMoneyH();
+		return validerrepository.countMobileMoneyH(dateChronologique);
 	}
 
 	@Override
-	public int countFMobileMoney() {
+	public int countFMobileMoney(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countMobileMoneyF();
+		return validerrepository.countMobileMoneyF(dateChronologique);
 	}
 
 	@Override
-	public int countFinance() {
+	public int countFinance(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countFinance();
+		return validerrepository.countFinance(dateChronologique);
 	}
 
 	@Override
-	public int countHFinance() {
+	public int countHFinance(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countFinanceH();
+		return validerrepository.countFinanceH(dateChronologique);
 	}
 
 	@Override
-	public int countFFinance() {
+	public int countFFinance(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countFinanceF();
+		return validerrepository.countFinanceF(dateChronologique);
 	}
 
 	@Override
-	public int countProducteur() {
+	public int countProducteur(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countProducteur();
+		return validerrepository.countProducteur(dateChronologique);
 	}
 
 	@Override
-	public int countHProducteur() {
+	public int countHProducteur(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countProducteurH();
+		return validerrepository.countProducteurH(dateChronologique);
 	}
 
 	@Override
-	public int countFProducteur() {
+	public int countFProducteur(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countProducteurF();
+		return validerrepository.countProducteurF(dateChronologique);
 	}
 
 	@Override
-	public int countAdhesion() {
+	public int countAdhesion(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countAdhesion();
+		return validerrepository.countAdhesion(dateChronologique);
 	}
 
 	@Override
-	public int countHAdhesion() {
+	public int countHAdhesion(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countAdhesionH();
+		return validerrepository.countAdhesionH(dateChronologique);
 	}
 
 	@Override
-	public int countFAdhesion() {
+	public int countFAdhesion(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countAdhesionF();
+		return validerrepository.countAdhesionF(dateChronologique);
 	}
 
 	@Override
-	public int countMenage() {
+	public int countMenage(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countMenage();
+		return validerrepository.countMenage(dateChronologique);
 	}
 
 	@Override
-	public int countHMenage() {
+	public int countHMenage(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countMenageH();
+		return validerrepository.countMenageH(dateChronologique);
 	}
 
 	@Override
-	public int countFMenage() {
+	public int countFMenage(String dateChronologique) {
 		// TODO Auto-generated method stub
-		return validerrepository.countMenageF();
+		return validerrepository.countMenageF(dateChronologique);
 	}
 
 

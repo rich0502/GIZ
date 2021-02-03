@@ -45,10 +45,12 @@ public class BeneficiaireController {
 	
 	@RequestMapping("/listbeneficiaireWP3")
 	public String listbeneficiaireWP3(Model model) {
+		System.out.println("miditra");
 		List<Beneficiaire> beneficiaireWP3 = beneficiaireService.getBeneficiereWP3();
 		int year = Calendar.getInstance().get(Calendar.YEAR);
 		model.addAttribute("Beneficiaire", beneficiaireWP3);
 		model.addAttribute("annee", year);
+		System.out.println("qsqdsqdsqd" + beneficiaireWP3);
 		return "beneficiaire/listbeneficiaireWP3";
 	}
 	
