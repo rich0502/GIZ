@@ -1,8 +1,7 @@
-
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>GIZ</title>
+        <title>Mise à jours Lakile Telo</title>
         <link rel="icon" type="image/png" href="css/images/icons/favicon.png">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!--JQUERY-->
@@ -47,44 +46,47 @@
 		<div th:include="/pds_header.html"></div>
 		<section class="main">
             <div class="base-content">
-				<div th:include="crud-form/crudMenu.html" th:remove="tag"></div>
 				<br>
-				<form method="POST" th:action="@{/saveEditActivEcoJeune}"  class="form-edition-cust">
-					<input th:field="*{activEcoJeune.id}" type="hidden">
+				<form method="POST" th:action="@{/saveEditL3}"  class="form-edition-cust">
+					<input th:field="*{lakileTelo.id}" type="hidden">
 					Code village
 					<br>
-					<input th:field="*{activEcoJeune.code_village}" type="text" id="nom_bf">
+					<input th:field="*{lakileTelo.code_village}" type="text">
 					<br>
-					Noms et Prénoms de jeunes entrepreneurs:
+					District:
 					<br>
-					<input th:field="*{activEcoJeune.nom_prenom}" type="text">
+					<input th:field="*{lakileTelo.district}" type="text">
 					<br>
-					 Genre:
+					 Nom du groupe Lakile Telo:
 					<br>
-					<input type="text" th:field="*{activEcoJeune.sexe}">
+					<input type="text" th:field="*{lakileTelo.nom_group_l_telo}">
 					<br>
-					Année de naissance :
+					Catégorie :
 					<br>
-					<input th:field="*{activEcoJeune.annee_naissance}" type="text">
+					<input th:field="*{lakileTelo.categorie}" type="text">
 					<br>
-					Organisme formateur :
+					Date de création :
 					<br>
-					<input th:field="*{activEcoJeune.organisme_formateur}" type="text">
+					<input th:field="*{lakileTelo.date_creation}" type="date" min="2015-01-01" class="form-control select2">
 					<br>
-					 Formation technique suivi:
+					 Effectif des membres:
 					<br>
-					<input type="text" th:field="*{activEcoJeune.frm_tech_suivi}" >
+					<input type="text" th:field="*{lakileTelo.effectif_membre}" >
 					<br>
-					 Date de fin :
+					 Effectif femme :
 					<br>
-					<input type="date" th:field="*{activEcoJeune.date_fin_frm}" min="2015-01-01" class="form-control select2">
+					<input type="text" th:field="*{lakileTelo.nbr_f}">
 					<br>
-					 Activité économique réalisée :
+					 Effectif homme :
 					<br>
-					<input th:field="*{activEcoJeune.activite_eco}" type="text">
-					Date de démarrage :
+					<input th:field="*{lakileTelo.nbr_h}" type="text">
+					Operationnel :
 					<br>
-					<input type="date" th:field="*{activEcoJeune.date_demarrage}" min="2015-01-01" class="form-control select2">
+					<input type="text" th:field="*{lakileTelo.operationnel}">
+					<br>
+					 Date de suivi :
+					<br>
+					<input type="date" th:field="*{lakileTelo.date_suivi}" min="2015-01-01" class="form-control select2">
 					<br>
 					<br>
 					<input type="submit" th:value="#{save}" class="gbtn">

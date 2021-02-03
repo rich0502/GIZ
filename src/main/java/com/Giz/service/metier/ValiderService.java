@@ -2,6 +2,7 @@ package com.Giz.service.metier;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import com.Giz.data.domain.Valider;
 
@@ -15,11 +16,10 @@ public interface ValiderService {
 	
 	public void addValiderL3(String code_village, String district, String nom_group_l_telo, String categorie, Date date_creation, double effectif_membre,int nbr_h,int nbr_f, boolean operationnel, Date date_suivi);
 	
+	public Optional<Valider> findByIdL3(long id);
 	
-	public void modifyL3(Valider valider,String code_village, String district, String nom_group_l_telo, String categorie, Date date_creation,
-			double effectif_membre, String sexe, boolean operationnel, Date date_suivi, Long id);
-	
-	public void deleteL3(Long id);
+	public void modifyL3(String code_village, String district, String nom_group_l_telo, String categorie, Date date_creation,
+			double effectif_membre, int nbr_h,int nbr_f, boolean operationnel, Date date_suivi, Long id);
 	
 	public int countLakileteloOperatoinnel();
 	
@@ -48,6 +48,7 @@ public interface ValiderService {
 
 	public void modifyVSLA(Valider valider,String code_village, String nom_vsla, int annee_creation, boolean vsla_lier_regionale, boolean appuis_recus,
 			String type_appui, boolean operationnel, Date date_suivi, Long id);
+	
 	
 	public int countVSLAOperationnel();
 	
