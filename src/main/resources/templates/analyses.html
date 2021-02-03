@@ -139,11 +139,11 @@
 			<form method="POST" name="theForm">
 				<table>
 					<tr>
-						<td style="width: 100px; padding-left: 8px;">Work Package</td>
+						<td style="width: 100px; padding-left: 8px; padding-bottom: 8px; vertical-align: top;">Work Package</td>
 						<td style="width: 150px; padding-left: 8px;">Canevas</td>
 					</tr>
 					<tr>
-						<td style="width: 100px; padding-left: 8px;">
+						<td style="width: 100px; padding-left: 8px; padding-bottom: 8px; vertical-align: top;">
 							<select th:name="sc" class="ginput form-control" id="sc">
 								<option value="null">-- <span>[[#{selectionner}]] Work Package</span> --</option>
 								<option th:each="sc : ${scList}" th:value="${sc[0]}" th:text="${sc[1]}"></option>
@@ -160,16 +160,16 @@
 				<br>
 				<table style="width: '100%'">
 					<tr>
-						<td style="width: 200px; padding-left: 8px;">Donnée arrêtée</td>
-						<td style="width: 200px; padding-left: 8px;">Subdivision</td>
-						<td style="width: 200px; padding-left: 8px;">Villages</td>
+						<td style="width: 200px; padding-left: 8px; padding-bottom: 8px;">Donnée arrêtée</td>
+						<td style="width: 200px; padding-left: 8px; padding-bottom: 8px;">Subdivision</td>
+						<td style="width: 200px; padding-left: 8px; padding-bottom: 8px;">Villages</td>
 						<td style="width: 150px; padding-left: 8px;">Genre</td>
 						<td style="width: 150px; padding-left: 8px;"></td>
 						<td style="width: 150px; padding-left: 8px;"></td>
 						<td style="width: 150px; padding-left: 8px;"></td>
 					</tr>
 					<tr>						
-						<td style="width: 200px; padding-left: 8px;">
+						<td style="width: 200px; padding-left: 8px; padding-bottom: 8px; vertical-align: top;">
 							<select th:name="date_fin" class="form-control select2">
 									<option value="2020-08-01">Août-20</option>
 									<option value="2020-11-01">Nov-20</option>
@@ -187,19 +187,19 @@
 									<option value="2023-11-01">Nov-23</option>
 							</select>
 						</td>
-						<td style="width: 200px; padding-left: 8px;">
+						<td style="width: 200px; padding-left: 8px; padding-bottom: 8px; vertical-align: top;">
 							<select th:name="subdivision" class="form-control select2" id="subdivision">
 								<option value="district">Districts</option>
 								<option value="commune">Communes</option>
 								<option value="village">Villages</option>
 							</select>
 						</td>
-						<td style="width: 200px; padding-left: 8px;">
+						<td style="width: 200px; padding-left: 8px; padding-bottom: 8px; vertical-align: top;">
 
 							<table>
 							<TD>
 							<div class="containerCombo">
-							<input type="text" class="resultat" th:name="villages" id="villas" disabled>
+							<input type="text" class="resultat form-control" style=" margin-bottom: 8px;" th:name="villages" id="villas" disabled>
 							<input type="button" value="Afficher" id="size" disabled>
 							<ul class="containerElCombo">
 							   <li class="elementCombo" th:each="v : ${villages}" >
@@ -210,7 +210,7 @@
 							</TD>
 							</table>
 						</td>
-						<td style="width: 100px; padding-left: 8px;">
+						<td style="width: 100px; padding-left: 8px; padding-bottom: 8px; vertical-align: top;">
 							<select th:name="genre" class="form-control select2">
 									<option value="H">Homme</option>
 									<option value="F">Femme</option>

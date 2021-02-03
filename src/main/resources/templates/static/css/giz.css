@@ -225,7 +225,16 @@ button {
     right: 11px;
     top: 11px;
 }
-
+/* Chrome, Safari, Edge, Opera */
+.type-number-percent input::-webkit-outer-spin-button,
+.type-number-percent input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+.type-number-percent input[type=number] {
+    -moz-appearance: textfield;
+  }
 .progress {
     background-color: #dadada;
 }
@@ -752,7 +761,8 @@ ul.nav-tabs {
     content: '\002b';
     display: inline-block;
     font-size: 22px;
-    margin-bottom: 0;
+    line-height: 1;
+    padding-bottom: 6px;
     margin-right: 12px;
     vertical-align: middle
 }
