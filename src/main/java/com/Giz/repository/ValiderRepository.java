@@ -1,6 +1,7 @@
 package com.Giz.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,6 +13,10 @@ import com.Giz.data.domain.Valider;
 public interface ValiderRepository extends JpaRepository<Valider, Long>{
 	
 	//lakile telo
+	
+	@Query("SELECT v FROM Valider v WHERE v.id = ?1 and canevas = 'L3'")
+	Optional<Valider> findByL3(Long id);
+	
 	@Query("SELECT v FROM Valider v where  canevas = 'L3'")
 	List<Valider> findAllL3();
 	

@@ -66,9 +66,10 @@
 				<td th:text="${b.fbs_post_fbs_recus}"></td>
 				<td th:text="${b.education_fbs_post_fbs}"></td>
 				<td th:text="${b.date_suivi}"></td>
-				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id}+'\');'}"></a>
-			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/modifyFBS/' + ${b.id}}"></a>
-			</td>
+				<td class="center td-action">	
+					<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id}+'\');'}"></a>
+					<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/modifyFBS/' + ${b.id}}"></a>
+				</td>
 			</tr>
 
 		</tbody>

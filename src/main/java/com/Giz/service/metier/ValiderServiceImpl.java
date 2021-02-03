@@ -2,11 +2,13 @@ package com.Giz.service.metier;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Giz.data.domain.Valider;
+import com.Giz.data.domain.Wp3ActivEcoJeune;
 import com.Giz.repository.ValiderRepository;
 
 @Service
@@ -26,7 +28,8 @@ public class ValiderServiceImpl implements ValiderService{
 		// TODO Auto-generated method stub
 		validerrepository.deleteById(id);
 	}
-
+	
+	
 	
 	@Override
 	public void addValiderL3(String code_village, String district, String nom_group_l_telo, String categorie,
@@ -48,9 +51,15 @@ public class ValiderServiceImpl implements ValiderService{
 	}
 	
 	@Override
-	public void modifyL3(Valider validerL3, String code_village, String district, String nom_group_l_telo,
-			String categorie, Date date_creation, double effectif_membre, String sexe, boolean operationnel,
+	public Optional<Valider> findByIdL3(long id) {
+		return validerrepository.findByL3(id);
+	}
+	
+	@Override
+	public void modifyL3(String code_village, String district, String nom_group_l_telo,
+			String categorie, Date date_creation, double effectif_membre, int nbr_h, int nbr_f, boolean operationnel,
 			Date date_suivi, Long id) {
+		Valider validerL3 = new Valider();
 		validerL3.setId(id);
 		validerL3.setCode_village(code_village);
 		validerL3.setDistrict(district);
@@ -58,17 +67,15 @@ public class ValiderServiceImpl implements ValiderService{
 		validerL3.setCategorie(categorie);
 		validerL3.setDate_creation(date_creation);
 		validerL3.setEffectif_membre(effectif_membre);
-		validerL3.setSexe(sexe.toLowerCase());
+		validerL3.setNbr_f(nbr_f);
+		validerL3.setNbr_h(nbr_h);
 		validerL3.setOperationnel(operationnel);
 		validerL3.setDate_suivi(date_suivi);
+		validerL3.setCanevas("L3");
 		validerrepository.save(validerL3);
 		
 	}
 	
-	@Override
-	public void deleteL3(Long id) {
-		validerrepository.deleteById(id);		
-	}
 
 	@Override
 	public List<Valider> ListValiderVSLA() {
