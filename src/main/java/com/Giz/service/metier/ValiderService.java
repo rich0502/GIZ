@@ -40,13 +40,14 @@ public interface ValiderService {
 	public int countL3GECF();
 
 	
+	public Optional<Valider> findByIdVSLA(long id);
 	
 	public List<Valider> ListValiderVSLA();
 	
 	public void addValiderVSLA(String code_village, String nom_vsla, int annee_creation, boolean vsla_lier_regionale, boolean appuis_recus,
 			String type_appui, boolean operationnel, Date date_suivi);
 
-	public void modifyVSLA(Valider valider,String code_village, String nom_vsla, int annee_creation, boolean vsla_lier_regionale, boolean appuis_recus,
+	public void modifyVSLA(String code_village, String nom_vsla, int annee_creation, boolean vsla_lier_regionale, boolean appuis_recus,
 			String type_appui, boolean operationnel, Date date_suivi, Long id);
 	
 	
@@ -57,12 +58,13 @@ public interface ValiderService {
 	public int countFVSLAOperationnel();
 	
 	
+	public Optional<Valider> findByIdFBS(long id);
 	
 	public List<Valider> ListValiderFBS();
 	
 	public void addValiderFBS(String code_village, boolean fbs_post_fbs_recus, boolean education_fbs_post_fbs, Date date_suivi);
 
-	public void modifyFBS(Valider valider,String code_village, boolean fbs_post_fbs_recus, boolean education_fbs_post_fbs, Date date_suivi, Long id);
+	public void modifyFBS(String code_village, boolean fbs_post_fbs_recus, boolean education_fbs_post_fbs, Date date_suivi, Long id);
 	
 	/*public int countFBS();
 	
@@ -71,12 +73,13 @@ public interface ValiderService {
 	public int countFFBS();*/
 
 	
+	public Optional<Valider> findByIdMoney(long id);
 	
 	public List<Valider> ListValiderMobileMoney();
 	
 	public void addValiderMobileMoney(String code_village, String code_prod, String nom_prenom, String sexe, int annee_naissance, boolean service_mobile_money, Date date_suivi, boolean orange_money, boolean mvola, boolean airtel_money);
 
-	public void modifyMobileMoney(Valider valider,String code_village, String code_prod, String nom_prenom, String sexe, int annee_naissance, boolean service_mobile_money, Date date_suivi, boolean orange_money, boolean mvola, boolean airtel_money, Long id);
+	public void modifyMoney(String code_village, String code_prod, String nom_prenom, String sexe, int annee_naissance, boolean service_mobile_money, Date date_suivi, boolean orange_money, boolean mvola, boolean airtel_money, Long id);
 	
 	public int countMobileMoney();
 	

@@ -226,6 +226,32 @@ public class Wp2Controller {
 		model.addAttribute("validerVSLA", validerVSLA);
 		return "wp2/VSLA/listVSLA";
 	}
+	
+	@RequestMapping("/editVSLA/{id}")
+	public ModelAndView editVSLA(@PathVariable(name = "id") Long id, Model model) throws ParseException {
+		ModelAndView mav = new ModelAndView("wp2/VSLA/Form_modifVSLA");
+		Optional<Valider> bf = validerservice.findByIdVSLA(id);
+		mav.addObject("vsla", bf);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/saveEditVSLA", method = RequestMethod.POST)
+	public String saveEditVSLA(
+			@RequestParam("id") long id,
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("nom_vsla") String noms_vsla,
+			@RequestParam("annee_creation") int annee_creation, 
+			@RequestParam("vsla_lier_regionale") boolean vsla_lier_regionale,
+			@RequestParam("appuis_recus") boolean appuis_recus, 
+			@RequestParam("type_appui") String type_appuis,
+			@RequestParam("operationnel") boolean operationnel, 
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.modifyVSLA(code_village, noms_vsla, annee_creation, vsla_lier_regionale, appuis_recus,
+						type_appuis, operationnel, date_suivi, id);
+		return "redirect:/listVSLA";
+	}
 
 	// Canevas integration de l'education
 	@RequestMapping("/uploadFBS")
@@ -271,6 +297,28 @@ public class Wp2Controller {
 
 		return "redirect:/listFBS";
 	}
+	
+	@RequestMapping("/editFBS/{id}")
+	public ModelAndView editFBS(@PathVariable(name = "id") Long id, Model model) throws ParseException {
+		ModelAndView mav = new ModelAndView("wp2/FBS/Form_modifFBS");
+		Optional<Valider> bf = validerservice.findByIdFBS(id);
+		mav.addObject("fbs", bf);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/saveEditFBS", method = RequestMethod.POST)
+	public String saveEditFBS(
+			@RequestParam("id") long id,
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("fbs_post_fbs_recus") boolean fbs_post_fbs_recus,
+			@RequestParam("education_fbs_post_fbs") boolean education_fbs_post_fbs, 
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.modifyFBS(code_village,fbs_post_fbs_recus,education_fbs_post_fbs,date_suivi, id);
+		return "redirect:/listFBS";
+	}
+
 
 	@RequestMapping("/listFBS")
 	public String listFBS(Model model) {
@@ -337,6 +385,34 @@ public class Wp2Controller {
 
 		return "redirect:/listMoney";
 	}
+	
+	@RequestMapping("/editMoney/{id}")
+	public ModelAndView editMoney(@PathVariable(name = "id") Long id, Model model) throws ParseException {
+		ModelAndView mav = new ModelAndView("wp2/money/Form_modifMoney");
+		Optional<Valider> bf = validerservice.findByIdMoney(id);
+		mav.addObject("money", bf);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/saveEditMoney", method = RequestMethod.POST)
+	public String saveEditMoney(
+			@RequestParam("id") long id,
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("code_prod") String code_prod,
+			@RequestParam("nom_prenom") String nom_prenom,
+			@RequestParam("sexe") String sexe, 
+			@RequestParam("annee_naissance") int annee_naissance,
+			@RequestParam("service_mobile_money") boolean service_mobile_money, 
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			@RequestParam("orange_money") boolean orange_money,
+			@RequestParam("mvola") boolean mvola,
+			@RequestParam("airtel_money") boolean airtel_money,
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.modifyMoney(code_village,code_prod,nom_prenom,sexe,annee_naissance,service_mobile_money,
+						date_suivi,orange_money,mvola,airtel_money, id);
+		return "redirect:/listMoney";
+	}
+
 
 	@RequestMapping("/listMoney")
 	public String listMoney(Model model) {
