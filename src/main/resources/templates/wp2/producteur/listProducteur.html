@@ -72,7 +72,7 @@
 		</thead>
 		<tbody>
 			<tr th:each="b : ${validerProducteur}">
-				<td th:text="${b.code_prod}"></td>
+				<td th:text="${b.num_adhesion}"></td>
 				<td th:text="${b.nom_beneficiaire}"></td>
 				<td th:text="${b.nom_usuel_adherent}"></td>
 				<td th:text="${b.contact}"></td>
@@ -88,7 +88,7 @@
 				<td th:text="${b.nbr_pers_charge}"></td>
 				<td class="center td-action">
 				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id}+'\');'}"></a>
-			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/modifyProducteur/' + ${b.id}}"></a>
+			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editProducteur/' + ${b.id}}"></a>
 			</td>
 			</tr>
 

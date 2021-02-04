@@ -294,12 +294,18 @@ public class ValiderServiceImpl implements ValiderService{
 			validerrepository.save(validerProducteur);
 		
 	}
+	
+	@Override
+	public Optional<Valider> findByIdProducteur(long id) {
+		return validerrepository.findByIdProducteur(id);
+	}
 
 	@Override
-	public void modifyProducteur(Valider valider, String num_adhesion, String nom_beneficiaire,
+	public void modifyProducteur(String num_adhesion, String nom_beneficiaire,
 			String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe,
 			String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation,
-			String ma_1ere_adhesion, int nbr_pers_charge, int annee_adhesion, Long id) {
+			String ma_1ere_adhesion, int nbr_pers_charge,  Long id) {
+		Valider valider= new Valider();
 		valider.setId(id);
 		valider.setCode_village(code_village);
 		valider.setNum_adhesion(num_adhesion);
@@ -316,7 +322,7 @@ public class ValiderServiceImpl implements ValiderService{
 		valider.setAffiliation(affiliation);
 		valider.setMa_1ere_adhesion(ma_1ere_adhesion);
 		valider.setNbr_pers_charge(nbr_pers_charge);
-		valider.setAnnee_adhesion(annee_adhesion);
+		valider.setCanevas("Producteur");
 		validerrepository.save(valider);
 		
 	}

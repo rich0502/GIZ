@@ -113,6 +113,9 @@ public interface ValiderRepository extends JpaRepository<Valider, Long>{
 	int countFinanceF(String dateChronologique);
 	
 	//Producteur
+	@Query("SELECT v FROM Valider v WHERE v.id = ?1 and canevas = 'Producteur'")
+	Optional<Valider> findByIdProducteur(Long id);
+	
 	@Query("SELECT v FROM Valider v where  canevas = 'Producteur'")
 	List<Valider> findAllProducteur();
 	

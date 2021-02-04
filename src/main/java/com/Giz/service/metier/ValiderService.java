@@ -102,12 +102,13 @@ public interface ValiderService {
 	
 	public int countFFinance(String dateChronologique);
 	
+	public Optional<Valider> findByIdProducteur(long id);
 	
 	public List<Valider> ListValiderProducteur();
 	
 	public void addValiderProducteur(String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe, String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,  int nbr_pers_charge);
 
-	public void modifyProducteur(Valider valider,String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe, String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,  int nbr_pers_charge, int annee_adhesion, Long id);
+	public void modifyProducteur(String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe, String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,  int nbr_pers_charge, Long id);
 
 	public int countProducteur(String dateChronologique);
 	

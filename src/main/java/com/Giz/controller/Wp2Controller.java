@@ -3,6 +3,7 @@ package com.Giz.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -570,6 +571,39 @@ public class Wp2Controller {
 
 		}
 
+		return "redirect:/listProducteur";
+	}
+	
+	@RequestMapping("/editProducteur/{id}")
+	public ModelAndView editProducteur(@PathVariable(name = "id") Long id, Model model) throws ParseException {
+		ModelAndView mav = new ModelAndView("wp2/producteur/Form_modifProducteur");
+		Optional<Valider> bf = validerservice.findByIdProducteur(id);
+		mav.addObject("producteur", bf);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/saveEditProducteur", method = RequestMethod.POST)
+	public String saveEditProducteur(
+			@RequestParam("id") long id,
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("num_adhesion") String num_adhesion,
+			@RequestParam("nom_beneficiaire") String nom_beneficiaire,
+			@RequestParam("nom_usuel_adherent") String nom_usuel_adherent,
+			@RequestParam("contact") String contact,
+			@RequestParam("age") int age,
+			@RequestParam("date_naiss") java.sql.Date date_naiss,
+			@RequestParam("cin") String cin,
+			@RequestParam("sexe") String sexe,
+			@RequestParam("code_pro_symrise") String code_pro_symrise,
+			@RequestParam("commune") String commune,
+			@RequestParam("adresse_fkt") String adresse_fkt,
+			@RequestParam("affiliation") String affiliation,
+			@RequestParam("ma_1ere_adhesion") String ma_1ere_adhesion,
+			@RequestParam("nbr_pers_charge") int nbr_pers_charge,
+			
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.modifyProducteur(num_adhesion, nom_beneficiaire,nom_usuel_adherent, contact, age, date_naiss,cin,  sexe, code_village,
+						code_pro_symrise,  commune, adresse_fkt, affiliation,ma_1ere_adhesion,  nbr_pers_charge, id);
 		return "redirect:/listProducteur";
 	}
 
