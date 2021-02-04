@@ -102,6 +102,7 @@ public interface ValiderService {
 	
 	public int countFFinance(String dateChronologique);
 	
+	
 	public Optional<Valider> findByIdProducteur(long id);
 	
 	public List<Valider> ListValiderProducteur();
@@ -117,11 +118,13 @@ public interface ValiderService {
 	public int countFProducteur(String dateChronologique);
 	
 	
+	public Optional<Valider> findByIdAdhesion(long id);
+	
 	public List<Valider> ListValiderAdhesion();
 	
 	public void addValiderAdhesion(String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe, String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,  int nbr_pers_charge );
 
-	public void modifyAdhesion(Valider valider,String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe, String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,  int nbr_pers_charge,int annee_adhesion, Long id);
+	public void modifyAdhesion(String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe, String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,  int nbr_pers_charge,int annee_adhesion, Long id);
 
 	public int countAdhesion(String dateChronologique);
 	
