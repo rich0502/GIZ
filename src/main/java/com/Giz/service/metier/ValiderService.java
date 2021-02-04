@@ -133,11 +133,13 @@ public interface ValiderService {
 	public int countFAdhesion(String dateChronologique);
 	
 	
+	public Optional<Valider> findByIdMenage(long id);
+	
 	public List<Valider> ListValiderMenage();
 	
 	public void addValiderMenage(String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe, String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,  int nbr_pers_charge);
 
-	public void modifyMenage(Valider valider,String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe, String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,  int nbr_pers_charge,int annee_adhesion, Long id);
+	public void modifyMenage(String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe, String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,  int nbr_pers_charge,int annee_adhesion, Long id);
 
 	public int countMenage(String dateChronologique);
 	

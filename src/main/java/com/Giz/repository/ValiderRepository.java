@@ -145,6 +145,9 @@ public interface ValiderRepository extends JpaRepository<Valider, Long>{
 	int countAdhesionF(String dateChronologique);
 	
 	//Menage
+	@Query("SELECT v FROM Valider v WHERE v.id = ?1 and canevas = 'Menage'")
+	Optional<Valider> findByIdMenage(Long id);
+	
 	@Query(value = "SELECT v FROM Valider v where  canevas = 'Menage'")
 	List<Valider> findAllMenage();
 	

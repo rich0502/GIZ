@@ -786,6 +786,42 @@ public class Wp2Controller {
 
 					return "redirect:/listMenage";
 				}
+				
+				@RequestMapping("/editMenage/{id}")
+				public ModelAndView editMenage(@PathVariable(name = "id") Long id, Model model) throws ParseException {
+					ModelAndView mav = new ModelAndView("wp2/menage/Form_modifMenage");
+					Optional<Valider> bf = validerservice.findByIdMenage(id);
+					mav.addObject("menage", bf);
+					return mav;
+				}
+				
+				@RequestMapping(value = "/saveEditMenage", method = RequestMethod.POST)
+				public String saveEditMenage(
+						@RequestParam("id") long id,
+						@RequestParam("code_village") String code_village, 
+						@RequestParam("num_adhesion") String num_adhesion,
+						@RequestParam("nom_beneficiaire") String nom_beneficiaire,
+						@RequestParam("nom_usuel_adherent") String nom_usuel_adherent,
+						@RequestParam("contact") String contact,
+						@RequestParam("age") int age,
+						@RequestParam("date_naiss") java.sql.Date date_naiss,
+						@RequestParam("cin") String cin,
+						@RequestParam("sexe") String sexe,
+						@RequestParam("code_pro_symrise") String code_pro_symrise,
+						@RequestParam("commune") String commune,
+						@RequestParam("adresse_fkt") String adresse_fkt,
+						@RequestParam("affiliation") String affiliation,
+						@RequestParam("ma_1ere_adhesion") String ma_1ere_adhesion,
+						@RequestParam("nbr_pers_charge") int nbr_pers_charge,
+						@RequestParam("annee_adhesion") int annee_adhesion,
+						RedirectAttributes redirectAttributes) throws ParseException {
+							validerservice.modifyMenage( num_adhesion,  nom_beneficiaire,  nom_usuel_adherent,
+									 contact,  age,  date_naiss,  cin,  sexe,  code_village,
+									 code_pro_symrise,  commune,  adresse_fkt,  affiliation,  ma_1ere_adhesion,
+									 nbr_pers_charge,  annee_adhesion, id);
+					return "redirect:/listMenage";
+				}
+
 
 				@RequestMapping("/listMenage")
 				public String listMenage(Model model) {
