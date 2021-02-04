@@ -97,6 +97,9 @@ public interface ValiderRepository extends JpaRepository<Valider, Long>{
 	int countMobileMoneyF(String dateChronologique);
 	
 	//Finance
+	@Query("SELECT v FROM Valider v WHERE v.id = ?1 and canevas = 'Finance'")
+	Optional<Valider> findByIdFinance(Long id);
+	
 	@Query("SELECT v FROM Valider v where  canevas = 'Finance'")
 	List<Valider> findAllFinance();
 	

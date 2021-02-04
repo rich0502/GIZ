@@ -476,6 +476,33 @@ public class Wp2Controller {
 
 		return "redirect:/listFinance";
 	}
+	
+	@RequestMapping("/editFinance/{id}")
+	public ModelAndView editFinance(@PathVariable(name = "id") Long id, Model model) throws ParseException {
+		ModelAndView mav = new ModelAndView("wp2/finance/Form_modifFinance");
+		Optional<Valider> bf = validerservice.findByIdFinance(id);
+		mav.addObject("finance", bf);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/saveEditFinance", method = RequestMethod.POST)
+	public String saveEditFinance(
+			@RequestParam("id") long id,
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("code_prod") String code_prod,
+			@RequestParam("nom_prenom") String nom_prenom,
+			@RequestParam("sexe") String sexe,
+			@RequestParam("annee_naissance") int annee_naissance,
+			@RequestParam("service_IMF") boolean service_IMF,
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			@RequestParam("institution") String institution,
+			@RequestParam("lieu_agence") String lieu_agence,
+			
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.modifyFinance(code_village,code_prod,nom_prenom,sexe,annee_naissance,
+						service_IMF,date_suivi,institution,lieu_agence, id);
+		return "redirect:/listFinance";
+	}
 
 	@RequestMapping("/listFinance")
 	public String listFinance(Model model) {

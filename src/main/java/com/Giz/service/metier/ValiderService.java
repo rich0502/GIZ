@@ -88,11 +88,13 @@ public interface ValiderService {
 	public int countFMobileMoney(String dateChronologique);
 	
 	
+	public Optional<Valider> findByIdFinance(long id);
+	
 	public List<Valider> ListValiderFinance();
 	
 	public void addValiderFinance(String code_village, String code_prod, String nom_prenom, String sexe, int annee_naissance, boolean service_IMF, Date date_suivi, String institution, String lieu_agence);
 
-	public void modifyFinance(Valider valider,String code_village, String code_prod, String nom_prenom, String sexe, int annee_naissance, boolean service_IMF, Date date_suivi, String institution, String lieu_agence, Long id);
+	public void modifyFinance(String code_village, String code_prod, String nom_prenom, String sexe, int annee_naissance, boolean service_IMF, Date date_suivi, String institution, String lieu_agence, Long id);
 
 	public int countFinance(String dateChronologique);
 	

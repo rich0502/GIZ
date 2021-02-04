@@ -237,11 +237,17 @@ public class ValiderServiceImpl implements ValiderService{
 		validerrepository.save(validerFinance);
 		
 	}
+	
+	@Override
+	public Optional<Valider> findByIdFinance(long id) {
+		return validerrepository.findByIdFinance(id);
+	}
 
 	@Override
-	public void modifyFinance(Valider valider, String code_village, String code_prod, String nom_prenom, String sexe,
+	public void modifyFinance(String code_village, String code_prod, String nom_prenom, String sexe,
 			int annee_naissance, boolean service_IMF, Date date_suivi, String institution, String lieu_agence,
 			Long id) {
+		Valider valider = new Valider();
 		valider.setId(id);
 		valider.setCode_village(code_village);
 		valider.setCode_prod(code_prod);
@@ -252,6 +258,7 @@ public class ValiderServiceImpl implements ValiderService{
 		valider.setInstitution(institution);
 		valider.setDate_suivi(date_suivi);
 		valider.setLieu_agence(lieu_agence);
+		valider.setCanevas("Finance");
 		validerrepository.save(valider);
 		
 	}
