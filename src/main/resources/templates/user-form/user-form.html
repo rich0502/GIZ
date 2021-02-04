@@ -21,8 +21,8 @@ $(document).ready(function(){
 
 <div class="addedit"
 	th:with="disableFields=!${editMode} and ${#authorization.expression('hasRole(''ROLE_USER'')')}">
-
-	<form class="form add-form floating-form form-wrap" role="form"
+	
+	<form class="form add-form  form-wrap" role="form"
 		autocomplete="off" th:object="${userForm}"
 		th:action="${signup}?@{/signup}:(${editMode} ?@{/editUser} :@{/userForm})"
 		method="post">
@@ -32,50 +32,54 @@ $(document).ready(function(){
 			name="password" value="xxxx" th:if="${editMode}">
 
 
-		<div class="form-row">
+		<div class="row">
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
+						<label>Identifiant</label>
 						<input class="floating-input" type="text" placeholder=" "
 							th:field="${userForm.username}" th:disabled="${disableFields}">
-						<span class="highlight"></span> <label>Identifiant</label>
+						<span class="highlight"></span> 
 					</div>
 				</div>
 				<div class="alert-danger" th:if="${#fields.hasErrors('username')}"
 					th:errors="*{username}">Name Error</div>
 			</div>
 			<div class="col-6">
-				<div class="floating-label">
+				<div class="">
+					<label>Role</label>
 					<select class="floating-select"
 						onclick="this.setAttribute('value', this.value);"
 						th:field="${userForm.roles}" th:disabled="${disableFields}">
 						<option th:each="role :${roles}" th:value="${role.id}"
 							th:text="${role.name}"></option>
-					</select> <span class="highlight"></span> <label>Role</label>
+					</select> <span class="highlight"></span>
 				</div>
 				<div class="alert-danger" th:if="${#fields.hasErrors('roles')}"
 					th:errors="*{roles}">Name Error</div>
 			</div>
 		</div>
 
-		<div class="form-row">
+		<div class="row">
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
+						<label>Nom</label>
 						<input class="floating-input" type="text" placeholder=" "
 							th:field="${userForm.lastName}" th:disabled="${disableFields}">
-						<span class="highlight"></span> <label>Nom</label>
+						<span class="highlight"></span>
 					</div>
 				</div>
 				<div class="alert-danger" th:if="${#fields.hasErrors('lastName')}"
 					th:errors="*{lastName}">Name Error</div>
 			</div>
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
+						<label>Pr&eacutenom</label>
 						<input class="floating-input" type="text" placeholder=" "
 							th:field="${userForm.firstName}" th:disabled="${disableFields}">
-						<span class="highlight"></span> <label>Pr&eacutenom</label>
+						<span class="highlight"></span> 
 					</div>
 				</div>
 				<div class="alert-danger" th:if="${#fields.hasErrors('firstName')}"
@@ -83,55 +87,60 @@ $(document).ready(function(){
 			</div>
 		</div>
 
-		<div class="form-row  justify-content-start">
+		<div class="row  justify-content-start">
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
+						<label>E-mail</label>
 						<input class="floating-input" type="email" placeholder=" "
 							th:field="${userForm.email}" th:disabled="${disableFields}">
-						<span class="highlight"></span> <label>E-mail</label>
+						<span class="highlight"></span> 
 					</div>
 				</div>
 			</div>
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
+						<label>T&eacute;l&eacute;phone</label>
 						<input class="floating-input" type="text" placeholder=" "
 							th:field="${userForm.tel}" th:disabled="${disableFields}">
-						<span class="highlight"></span> <label>T&eacute;l&eacute;phone</label>
+						<span class="highlight"></span>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="form-row  justify-content-start">
+		<div class="row  justify-content-start">
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
+						<label>Soci&eacute;t&eacute;</label>
 						<input class="floating-input" type="text" placeholder=" "
 							th:field="${userForm.societe}" th:disabled="${disableFields}">
-						<span class="highlight"></span> <label>Soci&eacute;t&eacute;</label>
+						<span class="highlight"></span>
 					</div>
 				</div>
 			</div>
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
+						<label>Fonction</label>
 						<input class="floating-input" type="text" placeholder=" "
 							th:field="${userForm.fonction}" th:disabled="${disableFields}">
-						<span class="highlight"></span> <label>Fonction</label>
+						<span class="highlight"></span>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="form-row">
+		<div class="row">
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label"
+				<div class="">
+					<div class=""
 						th:if="${editMode==null or editMode==false}">
+						<label>Mot de passe</label>
 						<input class="floating-input" type="password" placeholder=" "
 							th:field="${userForm.password}" th:disabled="${disableFields}">
-						<span class="highlight"></span> <label>Mot de passe</label>
+						<span class="highlight"></span>
 					</div>
 				</div>
 				<div class="alert-danger" th:if="${#fields.hasErrors('password')}"
@@ -149,8 +158,8 @@ $(document).ready(function(){
 		</div>
 
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label"
+				<div class="">
+					<div class=""
 						th:if="${editMode==null or editMode==false}">
 						<input class="floating-input" type="password" placeholder=" "
 							th:field="${userForm.confirmPassword}"
@@ -197,7 +206,7 @@ $(document).ready(function(){
 		<div class="collapse" id="collapseExample">
 
 			<form id="changePasswordForm" th:object="${passwordForm}"
-				method="post" class="floating-form form pwd-form" role="form">
+				method="post" class=" form pwd-form" role="form">
 				<input class="form-control" type="hidden"
 					th:field="${passwordForm.id}"> <input
 					th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
@@ -214,10 +223,10 @@ $(document).ready(function(){
 							th:errors="*{currentPassword}">Password</div>
 					</div>
 				</div>
-				<div class="form-row">
+				<div class="row">
 					<div class="col-6">
-						<div class="floating-form">
-							<div class="floating-label">
+						<div class="">
+							<div class="">
 								<input class="floating-input" placeholder=" "type="password" th:field="${passwordForm.newPassword}">
 								<div class="alert-danger"th:if="${#fields.hasErrors('newPassword')}"th:errors="*{newPassword}">Password</div>
 								<label>Nouveau mot de passe</label>
@@ -226,8 +235,8 @@ $(document).ready(function(){
 					
 					</div>
 						<div class="col-6">
-						<div class="floating-form">
-							<div class="floating-label">
+						<div class="">
+							<div class="">
 								<input class="floating-input"	placeholder=" " type="password"	th:field="${passwordForm.confirmPassword}">
 							<div class="alert-danger"th:if="${#fields.hasErrors('confirmPassword')}"th:errors="*{confirmPassword}">Confirm Password</div>
 								<label>Nouveau mot de passe</label>

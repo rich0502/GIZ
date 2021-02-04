@@ -1,15 +1,15 @@
 <div class="addedit" th:with="disableFields=!${editMode} and ${#authorization.expression('hasRole(''ROLE_USER'')')}">
 
-	<form class="floating-form form form-wrap add-form" role="form" autocomplete="off" th:object="${profilForm}"
+	<form class=" form form-wrap add-form" role="form" autocomplete="off" th:object="${profilForm}"
 		th:action="${signup}?@{/signup}:(${editMode} ?@{/editProfil} :@{/profilForm})" method="post">
 
 		<input class="form-control" type=hidden th:field="${profilForm.id}" th:if="${editMode}">
 		<input class="form-control" type=hidden name="password" value="xxxx" th:if="${editMode}">
 
-		<div class="form-row">
+		<div class="row">
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
 						<label>Prénom</label>
 						<input class="floating-input" placeholder=" " type="text" th:field="${profilForm.firstName}"
 							th:disabled="${disableFields}">
@@ -21,8 +21,8 @@
 			</div>
 
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
 						<label>Nom</label>
 						<input class="floating-input" placeholder=" " type="text" th:field="${profilForm.lastName}"
 							th:disabled="${disableFields}">
@@ -33,10 +33,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-row">
+		<div class="row">
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
 						<label>E-mail</label>
 						<input class="floating-input" placeholder=" " type="email" th:field="${profilForm.email}"
 							th:disabled="${disableFields}">
@@ -48,8 +48,8 @@
 			</div>
 
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
 						<label>Téléphone</label>
 						<input class="floating-input" placeholder=" " type="text" th:field="${profilForm.tel}"
 							th:disabled="${disableFields}">
@@ -60,10 +60,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-row">
+		<div class="row">
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
 						<label>Fonction</label>
 						<input class="floating-input" placeholder=" " type="text" th:field="${profilForm.fonction}"
 							th:disabled="${disableFields}">
@@ -75,8 +75,8 @@
 			</div>
 
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
 						<label>Société</label>
 						<input class="floating-input" placeholder=" " type="text" th:field="${profilForm.societe}"
 							th:disabled="${disableFields}">
@@ -88,10 +88,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="form-row">
+		<div class="row">
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
 						<label>Identifiant</label>
 						<input class="floating-input" placeholder=" " type="text" th:field="${profilForm.username}"
 							th:disabled="${disableFields}">
@@ -103,8 +103,8 @@
 			</div>
 
 			<div class="col-6">
-				<div class="floating-form">
-					<div class="floating-label">
+				<div class="">
+					<div class="">
 						<label>Role</label>
 						<select class="floating-select" th:field="${profilForm.roles}" th:disabled="${disableFields}">
 							<option th:each="role :${roles}" th:value="${role.id}" th:text="${role.name}">
@@ -169,7 +169,7 @@
 
 	<div class="collapse" id="collapseExample">
 
-		<form id="changePasswordForm" th:object="${passwordForm}" method="post" class="floating-form form pwd-form"
+		<form id="changePasswordForm" th:object="${passwordForm}" method="post" class=" form pwd-form"
 			role="form">
 			<input class="form-control" type="hidden" th:field="${passwordForm.id}">
 			<input th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" type="hidden" id="currentPassword"
