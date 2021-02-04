@@ -56,7 +56,7 @@ $(document).ready(function(){
 					</select> <span class="highlight"></span>
 				</div>
 				<div class="alert-danger" th:if="${#fields.hasErrors('roles')}"
-					th:errors="*{roles}">Name Error</div>
+					th:errors="*{roles}">Role Error</div>
 			</div>
 		</div>
 
@@ -144,7 +144,7 @@ $(document).ready(function(){
 					</div>
 				</div>
 				<div class="alert-danger" th:if="${#fields.hasErrors('password')}"
-					th:errors="*{password}">Name Error</div>
+					th:errors="*{password}">Password Error</div>
 					
 				<div th:if="${editMode==null or editMode==false}">
 					<a href="#" class="btn btn-danger" id="myLink" >[[#{generer}]]</a> 
@@ -152,11 +152,9 @@ $(document).ready(function(){
 				</div>
 					
 			</div>
-			
-			
-			
 		</div>
-
+		
+		<div class="form-group row">
 			<div class="col-6">
 				<div class="">
 					<div class=""
@@ -169,7 +167,7 @@ $(document).ready(function(){
 				</div>
 				<div class="alert-danger"
 					th:if="${#fields.hasErrors('confirmPassword')}"
-					th:errors="*{confirmPassword}">Name Error</div>
+					th:errors="*{confirmPassword}">Password Error</div>
 			</div>
 		</div>
 		
@@ -193,15 +191,12 @@ $(document).ready(function(){
 </div>
 
 <!--  START COLLAPSE CHANGE PASSWORD -->
-<div class="form-group bloc-change-pwd row" th:if="${editMode}">
+<div class="form-group bloc-change-pwd row" th:if="${editMode}" style="margin-top: -55px; position: relative; z-index: 1;">
 
-	
-		<p>
-			<a class="btn pds-primary-btn pds-edit-btn btn1"
-				data-toggle="collapse" href="#collapseExample" role="button"
-				aria-expanded="false" aria-controls="collapseExample">
-				[[#{change}]] </a>
-		</p>
+		<a class="btn pds-primary-btn pds-edit-btn btn1"
+			data-toggle="collapse" href="#collapseExample" role="button"
+			aria-expanded="false" aria-controls="collapseExample">
+			[[#{change}]] </a>
 
 		<div class="collapse" id="collapseExample">
 
@@ -225,34 +220,27 @@ $(document).ready(function(){
 				</div>
 				<div class="row">
 					<div class="col-6">
-						<div class="">
-							<div class="">
-								<input class="floating-input" placeholder=" "type="password" th:field="${passwordForm.newPassword}">
-								<div class="alert-danger"th:if="${#fields.hasErrors('newPassword')}"th:errors="*{newPassword}">Password</div>
-								<label>Nouveau mot de passe</label>
-							</div>
-						</div>
-					
+						<label>Nouveau mot de passe</label>
+						<input class="floating-input" placeholder=" "type="password" th:field="${passwordForm.newPassword}">
+						<div class="alert-danger"th:if="${#fields.hasErrors('newPassword')}"th:errors="*{newPassword}">Password</div>
+						
 					</div>
-						<div class="col-6">
-						<div class="">
-							<div class="">
-								<input class="floating-input"	placeholder=" " type="password"	th:field="${passwordForm.confirmPassword}">
-							<div class="alert-danger"th:if="${#fields.hasErrors('confirmPassword')}"th:errors="*{confirmPassword}">Confirm Password</div>
-								<label>Nouveau mot de passe</label>
-							</div>
-						</div>
 					
-					</div>
+					<div class="col-6">
+						<label>Confirmer nouveau mot de passe</label>
+						<input class="floating-input"	placeholder=" " type="password"	th:field="${passwordForm.confirmPassword}">
+						<div class="alert-danger"th:if="${#fields.hasErrors('confirmPassword')}"th:errors="*{confirmPassword}">Confirm Password</div>
+							
 					</div>
 				
-					<div class="col-lg-9">
-						<div class="alert alert-danger d-none text-center"
-							id="changePasswordError">Change Password Error</div>
-					</div>
-
-					<div class="alert alert-success text-center d-none"
-						id="formSuccess" th:if="${editMode}">Success MEssage</div>
+					
+				</div>
+				<div class="col-lg-9">
+					<div class="alert alert-danger d-none text-center"
+						id="changePasswordError">Change Password Error</div>
+				</div>
+				<div class="alert alert-success text-center d-none"
+					id="formSuccess" th:if="${editMode}">Success MEssage</div>
 			</form>
 
 			<div class="text-right action-flex">
@@ -270,8 +258,8 @@ $(document).ready(function(){
 <!-- START HIDE FORM -->
 <script>
 	$(document).ready(function() {
-		$(".btn1").click(function() {
-			$(".addedit").hide(1000, function() {
+		$(".btn1").click(function() {			
+			$(".addedit").toggle(400, function() {
 				// alert("Hide() method has finished its working!"); 
 			});
 		});
