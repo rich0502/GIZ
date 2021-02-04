@@ -218,12 +218,23 @@ button {
     font-size: 18px;
     font-weight: bold;
     display: inline-block;
+    padding-right: 12px;
 }
+/* Chrome, Safari, Edge, Opera */
+.type-number-percent input::-webkit-outer-spin-button,
+.type-number-percent input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+.type-number-percent input[type=number] {
+    -moz-appearance: textfield;
+  }
 .type-number-percent::after {
     content: '%';
     position: absolute;
     right: 11px;
-    top: 11px;
+    top: 12px;
 }
 
 .progress {

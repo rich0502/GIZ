@@ -22,7 +22,7 @@
              	<a class="pds-btn" th:href="@{/listbeneficiaire}"><span class="menu-item-label">BENEFICIAIRE</span></a>  
              	<a class="pds-btn" th:href="@{/template}"><span class="menu-item-label">[[#{menu.template}]]</span></a>
             </div>
-            <div class="user-menu" style="margin-right: -90px;">
+            <div class="user-menu" >
                 <div class="dropdown">
                     <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -37,9 +37,39 @@
                         <a class="dropdown-item pds-logout" th:href="@{/logout}">[[#{logout}]]</a>
                     </div>
                 </div>
+                <div class="dropdown">
+                    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink_lang" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <div class="name-user-top">
+                            <i class="flag-icon flag-icon-gb img-logo" title="lang" data-lang="gb" id="lang_selector"></i>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu lang-menu" aria-labelledby="dropdownMenuLink_lang">
+                        <a class="dropdown-item " th:href="@{?lang=us}"><i class="flag-icon flag-icon-gb" title="us" id="gb"></i> [[#{us}]]</a>
+                        <a class="dropdown-item " th:href="@{?lang=fr}"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> [[#{fr}]]</a>
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function() {
+                        let current_lang = $("#lang_selector").attr('data-lang')
+                        let location = window.location.search
+                        if(location.includes("lang=us")) {
+                            $("#lang_selector").toggleClass("flag-icon-"+current_lang)
+                            $("#lang_selector").toggleClass("flag-icon-gb")
+                            $("#lang_selector").attr('data-lang', 'gb')
+                        }
+                            
+                        else if(location.includes("lang=fr")) {
+                            $("#lang_selector").toggleClass("flag-icon-"+current_lang)
+                            $("#lang_selector").toggleClass("flag-icon-fr")
+                            $("#lang_selector").attr('data-lang', 'fr')
+                        }
+                            
+                        
+                    })
+                    
+                </script>
                 
-                <a class="col" th:href="@{?lang=us}"><i class="flag-icon flag-icon-gb" title="us" id="us"></i> [[#{us}]]</a>
-                <a class="col" th:href="@{?lang=fr}"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> [[#{fr}]]</a>
             </div>        
         </nav>
         

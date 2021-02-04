@@ -2,25 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>GIZ</title>
-	<link rel="icon" type="image/png" href="css/images/icons/favicon.png"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	  
-	  <!--JQUERY-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    
-	  <!-- Los iconos tipo Solid de Fontawesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-	 <!-- Nuestro css-->
-    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">   
-	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
+	<head th:include="/headLinks.html" th:remove="tag"></head>
 </head>
 <body class="stories">
 <div th:include="/pds_header.html"></div>
@@ -33,25 +15,19 @@
 	<header class="composantesTable-header justify-between">
 		<h2 class="page-title">Benefciaire WP2</h2>
 	</header>
-<div class="card">
+<div class="card container">
 
 	<table class="composantes-table" id="myTable">
 		<thead>
 			<tr>
 				<th scope="col"><span>Nom et prénom</span></th>
 				<th scope="col"><span>Age</span></th>
-				<th scope="col"><span>Genre</span></th>
-				<th scope="col"><span>Année de naissance</span></th>
-				<th scope="col"><span>Code village</span></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="b : ${Beneficiaire}">
 				<td th:text="${b.nom_prenom}"></td>
 				<td th:text="${b.age}== 0 ? ${annee} - ${b.annee_naissance}  : ${b.age}"></td>
-				<td th:text="${b.sexe}"></td>
-				<td th:text="${b.annee_naissance}"></td>
-				<td th:text="${b.code_village}"></td>
 			</tr>
 
 		</tbody>

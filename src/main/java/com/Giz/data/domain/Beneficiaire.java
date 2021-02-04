@@ -15,7 +15,6 @@ public class Beneficiaire {
 	String sexe;
 	int annee_naissance;
 	int age;
-	String code_village;
 	public String getNom_prenom() {
 		return nom_prenom;
 	}
@@ -31,15 +30,6 @@ public class Beneficiaire {
 	public int getAnnee_naissance() {
 		return annee_naissance;
 	}
-	
-	
-	public String getCode_village() {
-		return code_village;
-	}
-	public void setCode_village(String code_village) {
-		this.code_village = code_village;
-	}
-	
 	public void setAnnee_naissance(int annee_naissance) {
 		this.annee_naissance = annee_naissance;
 	}
@@ -49,23 +39,20 @@ public class Beneficiaire {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public Beneficiaire(String nom_prenom, String sexe, int annee_naissance, int age, String code_village) {
+	public Beneficiaire(String nom_prenom, String sexe, int annee_naissance, int age) {
 		super();
 		this.nom_prenom = nom_prenom;
 		this.sexe = sexe;
 		this.annee_naissance = annee_naissance;
 		this.age = age;
-		this.code_village = code_village;
-		
 	}
 	
 	
-	public Beneficiaire(String nom_prenom, String sexe, int annee_naissance, String code_village) {
+	public Beneficiaire(String nom_prenom, String sexe, int annee_naissance) {
 		super();
 		this.nom_prenom = nom_prenom;
 		this.sexe = sexe;
 		this.annee_naissance = annee_naissance;
-		this.code_village = code_village;
 	}
 	public Beneficiaire() {
 		super();

@@ -14,30 +14,24 @@ public class IndicateurValiderController {
 	@Autowired
 	ValiderService validerService;
 	
-	@RequestMapping("/indicateurWP2")
-	public String indicateur(@RequestParam("nom_bf") String nom_bf,Model model) {
-		System.out.println("any zani" + nom_bf);
-		return "indicateur";
-	}
-	
 	@RequestMapping("/indicateurWP2Liste")
-	public String indicateurWP2(Model model) {
+	public String indicateurWP2(@RequestParam("chronologie") String dateChronologique, Model model) {
 		
 		//lakile telo operationnel
 		float target = 421;
-		float l3_operationnel = (float) ((validerService.countLakileteloOperatoinnel()/target)*100.0);
-		int l3H_operationnel = validerService.countHLakileteloOperationnel();
-		int l3F_operationnel = validerService.countFLakileteloOperationnel();
+		float l3_operationnel = (float) ((validerService.countLakileteloOperatoinnel(dateChronologique)/target)*100.0);
+		int l3H_operationnel = validerService.countHLakileteloOperationnel(dateChronologique);
+		int l3F_operationnel = validerService.countFLakileteloOperationnel(dateChronologique);
 		
 		target = 157;
-		float l3_vsla_ope = (float) ((validerService.countL3VSLAOperationnel()/target)*100.0);
-		int l3H_vsla_operationnel = validerService.countL3VSLAOperationnelH();
-		int l3F_vsla_operationnel = validerService.countL3VSLAOperationnelF();
+		float l3_vsla_ope = (float) ((validerService.countL3VSLAOperationnel(dateChronologique)/target)*100.0);
+		int l3H_vsla_operationnel = validerService.countL3VSLAOperationnelH(dateChronologique);
+		int l3F_vsla_operationnel = validerService.countL3VSLAOperationnelF(dateChronologique);
 		
 		target = 3000;
-		float l3_gec = (float) ((validerService.countL3GEC()/target)*100.0);
-		int l3H_gec = validerService.countL3GECH();
-		int l3F_gec = validerService.countL3GECF();
+		float l3_gec = (float) ((validerService.countL3GEC(dateChronologique)/target)*100.0);
+		int l3H_gec = validerService.countL3GECH(dateChronologique);
+		int l3F_gec = validerService.countL3GECF(dateChronologique);
 		
 		//VSLA
 		int vsla = 0;
@@ -47,33 +41,33 @@ public class IndicateurValiderController {
 		
 		//mobile money
 		target = 1800;
-		float mobil = (float) ((validerService.countMobileMoney()/target)*100.0);
-		int mobilH = validerService.countHMobileMoney();
-		int mobilF = validerService.countFMobileMoney();
+		float mobil = (float) ((validerService.countMobileMoney(dateChronologique)/target)*100.0);
+		int mobilH = validerService.countHMobileMoney(dateChronologique);
+		int mobilF = validerService.countFMobileMoney(dateChronologique);
 		
 		//Finance
 		target = 1200;
-		float finance = (float) ((validerService.countFinance()/target)*100.0);
-		int financeH = validerService.countHFinance();
-		int financeF = validerService.countFFinance();
+		float finance = (float) ((validerService.countFinance(dateChronologique)/target)*100.0);
+		int financeH = validerService.countHFinance(dateChronologique);
+		int financeF = validerService.countFFinance(dateChronologique);
 		
 		//Producteur
 		target = 3500;
-		float producteur = (float)((validerService.countProducteur()/target)*100.0);
-		int producteurH = validerService.countHProducteur();
-		int producteurF = validerService.countFProducteur();
+		float producteur = (float)((validerService.countProducteur(dateChronologique)/target)*100.0);
+		int producteurH = validerService.countHProducteur(dateChronologique);
+		int producteurF = validerService.countFProducteur(dateChronologique);
 		
 		//Adhesion
 		target = 500;
-		float adhesion = (float)((validerService.countAdhesion()/target)*100.0);
-		int adhesionH = validerService.countHAdhesion();
-		int adhesionF = validerService.countFAdhesion();
+		float adhesion = (float)((validerService.countAdhesion(dateChronologique)/target)*100.0);
+		int adhesionH = validerService.countHAdhesion(dateChronologique);
+		int adhesionF = validerService.countFAdhesion(dateChronologique);
 		
 		//Menage
 		target = 1150;
-		float menage = (float)((validerService.countMenage()/target)*100.0);
-		int menageH = validerService.countHMenage();
-		int menageF = validerService.countFMenage();
+		float menage = (float)((validerService.countMenage(dateChronologique)/target)*100.0);
+		int menageH = validerService.countHMenage(dateChronologique);
+		int menageF = validerService.countFMenage(dateChronologique);
 		
 		model.addAttribute("l3_operationnel", l3_operationnel);
 		model.addAttribute("l3H_operationnel", l3H_operationnel);
