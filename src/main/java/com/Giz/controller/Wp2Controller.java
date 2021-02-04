@@ -3,6 +3,7 @@ package com.Giz.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -226,6 +227,32 @@ public class Wp2Controller {
 		model.addAttribute("validerVSLA", validerVSLA);
 		return "wp2/VSLA/listVSLA";
 	}
+	
+	@RequestMapping("/editVSLA/{id}")
+	public ModelAndView editVSLA(@PathVariable(name = "id") Long id, Model model) throws ParseException {
+		ModelAndView mav = new ModelAndView("wp2/VSLA/Form_modifVSLA");
+		Optional<Valider> bf = validerservice.findByIdVSLA(id);
+		mav.addObject("vsla", bf);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/saveEditVSLA", method = RequestMethod.POST)
+	public String saveEditVSLA(
+			@RequestParam("id") long id,
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("nom_vsla") String noms_vsla,
+			@RequestParam("annee_creation") int annee_creation, 
+			@RequestParam("vsla_lier_regionale") boolean vsla_lier_regionale,
+			@RequestParam("appuis_recus") boolean appuis_recus, 
+			@RequestParam("type_appui") String type_appuis,
+			@RequestParam("operationnel") boolean operationnel, 
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.modifyVSLA(code_village, noms_vsla, annee_creation, vsla_lier_regionale, appuis_recus,
+						type_appuis, operationnel, date_suivi, id);
+		return "redirect:/listVSLA";
+	}
 
 	// Canevas integration de l'education
 	@RequestMapping("/uploadFBS")
@@ -271,6 +298,28 @@ public class Wp2Controller {
 
 		return "redirect:/listFBS";
 	}
+	
+	@RequestMapping("/editFBS/{id}")
+	public ModelAndView editFBS(@PathVariable(name = "id") Long id, Model model) throws ParseException {
+		ModelAndView mav = new ModelAndView("wp2/FBS/Form_modifFBS");
+		Optional<Valider> bf = validerservice.findByIdFBS(id);
+		mav.addObject("fbs", bf);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/saveEditFBS", method = RequestMethod.POST)
+	public String saveEditFBS(
+			@RequestParam("id") long id,
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("fbs_post_fbs_recus") boolean fbs_post_fbs_recus,
+			@RequestParam("education_fbs_post_fbs") boolean education_fbs_post_fbs, 
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.modifyFBS(code_village,fbs_post_fbs_recus,education_fbs_post_fbs,date_suivi, id);
+		return "redirect:/listFBS";
+	}
+
 
 	@RequestMapping("/listFBS")
 	public String listFBS(Model model) {
@@ -337,6 +386,34 @@ public class Wp2Controller {
 
 		return "redirect:/listMoney";
 	}
+	
+	@RequestMapping("/editMoney/{id}")
+	public ModelAndView editMoney(@PathVariable(name = "id") Long id, Model model) throws ParseException {
+		ModelAndView mav = new ModelAndView("wp2/money/Form_modifMoney");
+		Optional<Valider> bf = validerservice.findByIdMoney(id);
+		mav.addObject("money", bf);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/saveEditMoney", method = RequestMethod.POST)
+	public String saveEditMoney(
+			@RequestParam("id") long id,
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("code_prod") String code_prod,
+			@RequestParam("nom_prenom") String nom_prenom,
+			@RequestParam("sexe") String sexe, 
+			@RequestParam("annee_naissance") int annee_naissance,
+			@RequestParam("service_mobile_money") boolean service_mobile_money, 
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			@RequestParam("orange_money") boolean orange_money,
+			@RequestParam("mvola") boolean mvola,
+			@RequestParam("airtel_money") boolean airtel_money,
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.modifyMoney(code_village,code_prod,nom_prenom,sexe,annee_naissance,service_mobile_money,
+						date_suivi,orange_money,mvola,airtel_money, id);
+		return "redirect:/listMoney";
+	}
+
 
 	@RequestMapping("/listMoney")
 	public String listMoney(Model model) {
@@ -398,6 +475,33 @@ public class Wp2Controller {
 
 		}
 
+		return "redirect:/listFinance";
+	}
+	
+	@RequestMapping("/editFinance/{id}")
+	public ModelAndView editFinance(@PathVariable(name = "id") Long id, Model model) throws ParseException {
+		ModelAndView mav = new ModelAndView("wp2/finance/Form_modifFinance");
+		Optional<Valider> bf = validerservice.findByIdFinance(id);
+		mav.addObject("finance", bf);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/saveEditFinance", method = RequestMethod.POST)
+	public String saveEditFinance(
+			@RequestParam("id") long id,
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("code_prod") String code_prod,
+			@RequestParam("nom_prenom") String nom_prenom,
+			@RequestParam("sexe") String sexe,
+			@RequestParam("annee_naissance") int annee_naissance,
+			@RequestParam("service_IMF") boolean service_IMF,
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			@RequestParam("institution") String institution,
+			@RequestParam("lieu_agence") String lieu_agence,
+			
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.modifyFinance(code_village,code_prod,nom_prenom,sexe,annee_naissance,
+						service_IMF,date_suivi,institution,lieu_agence, id);
 		return "redirect:/listFinance";
 	}
 
@@ -467,6 +571,39 @@ public class Wp2Controller {
 
 		}
 
+		return "redirect:/listProducteur";
+	}
+	
+	@RequestMapping("/editProducteur/{id}")
+	public ModelAndView editProducteur(@PathVariable(name = "id") Long id, Model model) throws ParseException {
+		ModelAndView mav = new ModelAndView("wp2/producteur/Form_modifProducteur");
+		Optional<Valider> bf = validerservice.findByIdProducteur(id);
+		mav.addObject("producteur", bf);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/saveEditProducteur", method = RequestMethod.POST)
+	public String saveEditProducteur(
+			@RequestParam("id") long id,
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("num_adhesion") String num_adhesion,
+			@RequestParam("nom_beneficiaire") String nom_beneficiaire,
+			@RequestParam("nom_usuel_adherent") String nom_usuel_adherent,
+			@RequestParam("contact") String contact,
+			@RequestParam("age") int age,
+			@RequestParam("date_naiss") java.sql.Date date_naiss,
+			@RequestParam("cin") String cin,
+			@RequestParam("sexe") String sexe,
+			@RequestParam("code_pro_symrise") String code_pro_symrise,
+			@RequestParam("commune") String commune,
+			@RequestParam("adresse_fkt") String adresse_fkt,
+			@RequestParam("affiliation") String affiliation,
+			@RequestParam("ma_1ere_adhesion") String ma_1ere_adhesion,
+			@RequestParam("nbr_pers_charge") int nbr_pers_charge,
+			
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.modifyProducteur(num_adhesion, nom_beneficiaire,nom_usuel_adherent, contact, age, date_naiss,cin,  sexe, code_village,
+						code_pro_symrise,  commune, adresse_fkt, affiliation,ma_1ere_adhesion,  nbr_pers_charge, id);
 		return "redirect:/listProducteur";
 	}
 

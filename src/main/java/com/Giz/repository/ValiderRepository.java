@@ -48,6 +48,9 @@ public interface ValiderRepository extends JpaRepository<Valider, Long>{
 	int countL3FOperationnelGEC(String dateChronologique);
 	
 	//VSLA
+	@Query("SELECT v FROM Valider v WHERE v.id = ?1 and canevas = 'VSLA'")
+	Optional<Valider> findByIdVSLA(Long id);
+	
 	@Query("SELECT v FROM Valider v where  canevas = 'VSLA'")
 	List<Valider> findAllVSLA();
 	
@@ -61,6 +64,9 @@ public interface ValiderRepository extends JpaRepository<Valider, Long>{
 	int countVSLAFOperationnel();
 	
 	//FBS
+	@Query("SELECT v FROM Valider v WHERE v.id = ?1 and canevas = 'FBS'")
+	Optional<Valider> findByIdFBS(Long id);
+	
 	@Query("SELECT v FROM Valider v where  canevas = 'FBS'")
 	List<Valider> findAllFBS();
 	/*
@@ -75,6 +81,9 @@ public interface ValiderRepository extends JpaRepository<Valider, Long>{
 	*/
 	
 	//Mobile money
+	@Query("SELECT v FROM Valider v WHERE v.id = ?1 and canevas = 'Mobile'")
+	Optional<Valider> findByIdMoney(Long id);
+	
 	@Query("SELECT v FROM Valider v where  canevas = 'Mobile'")
 	List<Valider> findAllMobileMoney();
 	
@@ -88,6 +97,9 @@ public interface ValiderRepository extends JpaRepository<Valider, Long>{
 	int countMobileMoneyF(String dateChronologique);
 	
 	//Finance
+	@Query("SELECT v FROM Valider v WHERE v.id = ?1 and canevas = 'Finance'")
+	Optional<Valider> findByIdFinance(Long id);
+	
 	@Query("SELECT v FROM Valider v where  canevas = 'Finance'")
 	List<Valider> findAllFinance();
 	
@@ -101,6 +113,9 @@ public interface ValiderRepository extends JpaRepository<Valider, Long>{
 	int countFinanceF(String dateChronologique);
 	
 	//Producteur
+	@Query("SELECT v FROM Valider v WHERE v.id = ?1 and canevas = 'Producteur'")
+	Optional<Valider> findByIdProducteur(Long id);
+	
 	@Query("SELECT v FROM Valider v where  canevas = 'Producteur'")
 	List<Valider> findAllProducteur();
 	

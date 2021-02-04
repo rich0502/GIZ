@@ -40,13 +40,14 @@ public interface ValiderService {
 	public int countL3GECF(String dateChronologique);
 
 	
+	public Optional<Valider> findByIdVSLA(long id);
 	
 	public List<Valider> ListValiderVSLA();
 	
 	public void addValiderVSLA(String code_village, String nom_vsla, int annee_creation, boolean vsla_lier_regionale, boolean appuis_recus,
 			String type_appui, boolean operationnel, Date date_suivi);
 
-	public void modifyVSLA(Valider valider,String code_village, String nom_vsla, int annee_creation, boolean vsla_lier_regionale, boolean appuis_recus,
+	public void modifyVSLA(String code_village, String nom_vsla, int annee_creation, boolean vsla_lier_regionale, boolean appuis_recus,
 			String type_appui, boolean operationnel, Date date_suivi, Long id);
 	
 	
@@ -57,12 +58,13 @@ public interface ValiderService {
 	public int countFVSLAOperationnel();
 	
 	
+	public Optional<Valider> findByIdFBS(long id);
 	
 	public List<Valider> ListValiderFBS();
 	
 	public void addValiderFBS(String code_village, boolean fbs_post_fbs_recus, boolean education_fbs_post_fbs, Date date_suivi);
 
-	public void modifyFBS(Valider valider,String code_village, boolean fbs_post_fbs_recus, boolean education_fbs_post_fbs, Date date_suivi, Long id);
+	public void modifyFBS(String code_village, boolean fbs_post_fbs_recus, boolean education_fbs_post_fbs, Date date_suivi, Long id);
 	
 	/*public int countFBS();
 	
@@ -71,12 +73,13 @@ public interface ValiderService {
 	public int countFFBS();*/
 
 	
+	public Optional<Valider> findByIdMoney(long id);
 	
 	public List<Valider> ListValiderMobileMoney();
 	
 	public void addValiderMobileMoney(String code_village, String code_prod, String nom_prenom, String sexe, int annee_naissance, boolean service_mobile_money, Date date_suivi, boolean orange_money, boolean mvola, boolean airtel_money);
 
-	public void modifyMobileMoney(Valider valider,String code_village, String code_prod, String nom_prenom, String sexe, int annee_naissance, boolean service_mobile_money, Date date_suivi, boolean orange_money, boolean mvola, boolean airtel_money, Long id);
+	public void modifyMoney(String code_village, String code_prod, String nom_prenom, String sexe, int annee_naissance, boolean service_mobile_money, Date date_suivi, boolean orange_money, boolean mvola, boolean airtel_money, Long id);
 	
 	public int countMobileMoney(String dateChronologique);
 	
@@ -85,11 +88,13 @@ public interface ValiderService {
 	public int countFMobileMoney(String dateChronologique);
 	
 	
+	public Optional<Valider> findByIdFinance(long id);
+	
 	public List<Valider> ListValiderFinance();
 	
 	public void addValiderFinance(String code_village, String code_prod, String nom_prenom, String sexe, int annee_naissance, boolean service_IMF, Date date_suivi, String institution, String lieu_agence);
 
-	public void modifyFinance(Valider valider,String code_village, String code_prod, String nom_prenom, String sexe, int annee_naissance, boolean service_IMF, Date date_suivi, String institution, String lieu_agence, Long id);
+	public void modifyFinance(String code_village, String code_prod, String nom_prenom, String sexe, int annee_naissance, boolean service_IMF, Date date_suivi, String institution, String lieu_agence, Long id);
 
 	public int countFinance(String dateChronologique);
 	
@@ -97,12 +102,13 @@ public interface ValiderService {
 	
 	public int countFFinance(String dateChronologique);
 	
+	public Optional<Valider> findByIdProducteur(long id);
 	
 	public List<Valider> ListValiderProducteur();
 	
 	public void addValiderProducteur(String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe, String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,  int nbr_pers_charge);
 
-	public void modifyProducteur(Valider valider,String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe, String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,  int nbr_pers_charge, int annee_adhesion, Long id);
+	public void modifyProducteur(String num_adhesion, String nom_beneficiaire, String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe, String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation, String ma_1ere_adhesion,  int nbr_pers_charge, Long id);
 
 	public int countProducteur(String dateChronologique);
 	

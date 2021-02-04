@@ -2,32 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>GIZ</title>
-	<link rel="icon" type="image/png" href="css/images/icons/favicon.png"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	  
-	  <!--JQUERY-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    
-	  <!-- Los iconos tipo Solid de Fontawesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-	 <!-- Nuestro css-->
-    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">   
-	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
+	<head th:include="/headLinks.html" th:remove="tag"></head>
 </head>
 <body class="stories">
 <div th:include="/pds_header.html"></div>
 <br>
 <br>
 <br>
-<div class="card">
+<div class="card containers">
 	<header class="composantesTable-header justify-between">
 	    <h2></h2>
 	</header>
@@ -53,7 +35,7 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><img src="http://localhost:8080/Giz/images/eye.png" style="width: 33px;"></td>
+				<td class="text-center"><img src="http://localhost:8080/Giz/images/eye.png" style="width: 28px;"></td>
 			</tr>
 			<tr>
 				<td>WP2</td>
@@ -61,7 +43,7 @@
 				<td th:text="${beneficiaireWP2Fille}"></td>
 				<td th:text="${beneficiaireWP2Homme}"></td>
 				<td th:text="${beneficiaireWP2Femme}"></td>
-				<td ><a th:href="@{/listbeneficiaireWP2}"><img src="http://localhost:8080/Giz/images/eye.png" style="width: 33px;"></a></td>
+				<td class="text-center" ><a th:href="@{/listbeneficiaireWP2}"><img src="http://localhost:8080/Giz/images/eye.png" style="width: 28px;"></a></td>
 			</tr>
 			<tr>
 				<td>WP3</td>
@@ -69,7 +51,7 @@
 				<td th:text="${beneficiaireWP3Fille}"></td>
 				<td th:text="${beneficiaireWP3Homme}"></td>
 				<td th:text="${beneficiaireWP3Femme}"></td>
-				<td ><a th:href="@{/listbeneficiaireWP3}"><img src="http://localhost:8080/Giz/images/eye.png" style="width: 33px;"></a></td>
+				<td class="text-center"><a th:href="@{/listbeneficiaireWP3}"><img src="http://localhost:8080/Giz/images/eye.png" style="width: 28px;"></a></td>
 			</tr>
 			<tr>
 				<td>WP4</td>
@@ -77,7 +59,7 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><img src="http://localhost:8080/Giz/images/eye.png" style="width: 33px;"></td>
+				<td class="text-center"><img src="http://localhost:8080/Giz/images/eye.png" style="width: 28px;"></td>
 			</tr>
 			<tr>
 				<td>Total</td>

@@ -223,7 +223,7 @@ button {
     content: '%';
     position: absolute;
     right: 11px;
-    top: 11px;
+    top: 12px;
 }
 /* Chrome, Safari, Edge, Opera */
 .type-number-percent input::-webkit-outer-spin-button,

@@ -99,11 +99,17 @@ public class ValiderServiceImpl implements ValiderService{
 		validerrepository.save(validerVSLA);
 		
 	}
+	
+	@Override
+	public Optional<Valider> findByIdVSLA(long id) {
+		return validerrepository.findByIdVSLA(id);
+	}
 
 	@Override
-	public void modifyVSLA(Valider validerVSLA, String code_village, String nom_vsla, int annee_creation,
+	public void modifyVSLA(String code_village, String nom_vsla, int annee_creation,
 			boolean vsla_lier_regionale, boolean appuis_recus, String type_appui, boolean operationnel, Date date_suivi,
 			Long id) {
+		Valider validerVSLA = new Valider();
 		validerVSLA.setId(id);
 		validerVSLA.setCode_village(code_village);
 		validerVSLA.setNom_vsla(nom_vsla);
@@ -113,6 +119,7 @@ public class ValiderServiceImpl implements ValiderService{
 		validerVSLA.setType_appui(type_appui);
 		validerVSLA.setOperationnel(operationnel);
 		validerVSLA.setDate_suivi(date_suivi);
+		validerVSLA.setCanevas("VSLA");
 		validerrepository.save(validerVSLA);
 		
 	}
@@ -135,15 +142,22 @@ public class ValiderServiceImpl implements ValiderService{
 		validerrepository.save(validerFBS);
 		
 	}
+	
+	@Override
+	public Optional<Valider> findByIdFBS(long id) {
+		return validerrepository.findByIdFBS(id);
+	}
 
 	@Override
-	public void modifyFBS(Valider valider, String code_village, boolean fbs_post_fbs_recus,
+	public void modifyFBS(String code_village, boolean fbs_post_fbs_recus,
 			boolean education_fbs_post_fbs, Date date_suivi, Long id) {
+		Valider valider = new Valider();
 		valider.setId(id);
 		valider.setCode_village(code_village);
 		valider.setFbs_post_fbs_recus(fbs_post_fbs_recus);
 		valider.setEducation_fbs_post_fbs(education_fbs_post_fbs);
 		valider.setDate_suivi(date_suivi);
+		valider.setCanevas("FBS");
 		validerrepository.save(valider);
 		
 	}
@@ -173,11 +187,17 @@ public class ValiderServiceImpl implements ValiderService{
 		validerrepository.save(validerMoney);
 		
 	}
+	
+	@Override
+	public Optional<Valider> findByIdMoney(long id) {
+		return validerrepository.findByIdMoney(id);
+	}
 
 	@Override
-	public void modifyMobileMoney(Valider valider, String code_village, String code_prod, String nom_prenom,
+	public void modifyMoney(String code_village, String code_prod, String nom_prenom,
 			String sexe, int annee_naissance, boolean service_mobile_money, Date date_suivi, boolean orange_money,
 			boolean mvola, boolean airtel_money, Long id) {
+		Valider valider = new Valider();
 		valider.setId(id);
 		valider.setCode_village(code_village);
 		valider.setCode_prod(code_prod);
@@ -187,6 +207,7 @@ public class ValiderServiceImpl implements ValiderService{
 		valider.setService_mobile_money(service_mobile_money);
 		valider.setOrange_money(orange_money);
 		valider.setDate_suivi(date_suivi);
+		valider.setCanevas("Mobile");
 		valider.setMvola(mvola);
 		valider.setAirtel_money(airtel_money);
 		validerrepository.save(valider);
@@ -216,11 +237,17 @@ public class ValiderServiceImpl implements ValiderService{
 		validerrepository.save(validerFinance);
 		
 	}
+	
+	@Override
+	public Optional<Valider> findByIdFinance(long id) {
+		return validerrepository.findByIdFinance(id);
+	}
 
 	@Override
-	public void modifyFinance(Valider valider, String code_village, String code_prod, String nom_prenom, String sexe,
+	public void modifyFinance(String code_village, String code_prod, String nom_prenom, String sexe,
 			int annee_naissance, boolean service_IMF, Date date_suivi, String institution, String lieu_agence,
 			Long id) {
+		Valider valider = new Valider();
 		valider.setId(id);
 		valider.setCode_village(code_village);
 		valider.setCode_prod(code_prod);
@@ -231,6 +258,7 @@ public class ValiderServiceImpl implements ValiderService{
 		valider.setInstitution(institution);
 		valider.setDate_suivi(date_suivi);
 		valider.setLieu_agence(lieu_agence);
+		valider.setCanevas("Finance");
 		validerrepository.save(valider);
 		
 	}
@@ -266,12 +294,18 @@ public class ValiderServiceImpl implements ValiderService{
 			validerrepository.save(validerProducteur);
 		
 	}
+	
+	@Override
+	public Optional<Valider> findByIdProducteur(long id) {
+		return validerrepository.findByIdProducteur(id);
+	}
 
 	@Override
-	public void modifyProducteur(Valider valider, String num_adhesion, String nom_beneficiaire,
+	public void modifyProducteur(String num_adhesion, String nom_beneficiaire,
 			String nom_usuel_adherent, String contact, int age, Date date_naiss, String cin, String sexe,
 			String code_village, String code_pro_symrise, String commune, String adresse_fkt, String affiliation,
-			String ma_1ere_adhesion, int nbr_pers_charge, int annee_adhesion, Long id) {
+			String ma_1ere_adhesion, int nbr_pers_charge,  Long id) {
+		Valider valider= new Valider();
 		valider.setId(id);
 		valider.setCode_village(code_village);
 		valider.setNum_adhesion(num_adhesion);
@@ -288,7 +322,7 @@ public class ValiderServiceImpl implements ValiderService{
 		valider.setAffiliation(affiliation);
 		valider.setMa_1ere_adhesion(ma_1ere_adhesion);
 		valider.setNbr_pers_charge(nbr_pers_charge);
-		valider.setAnnee_adhesion(annee_adhesion);
+		valider.setCanevas("Producteur");
 		validerrepository.save(valider);
 		
 	}
