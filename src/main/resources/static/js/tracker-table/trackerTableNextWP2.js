@@ -54,7 +54,7 @@ $(document).ready(function () {
                 unit: "mm"
             });
 
-            document.body.innerHTML += '<form id="dynForm" action="http://localhost:8080/Giz/saveTrackerWP2" method="post">'
+            document.body.innerHTML += '<form id="dynForm" action="http://168.119.185.165:8080/Giz/saveTrackerWP2" method="post">'
             	+'<input type="hidden" name="tableWp" value="'+newData+'">'
             	+'<input type="hidden" name="imageValue" value="'+imageValue+'">'
             	+'<input type="hidden" name="desc_file" value="'+desc_file+'">'

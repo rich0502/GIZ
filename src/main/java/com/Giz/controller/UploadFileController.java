@@ -40,10 +40,10 @@ public class UploadFileController {
 	UploadsRepository uploadsRepository;
     //Save the uploaded file to this folder
     //private static String UPLOADED_FOLDER = "/usr/local/tomcat/webapps/documents/";	
-	private static String UPLOADED_FOLDER = "C://uploads//";
+	private static String UPLOADED_FOLDER = "/usr/share/apache-tomcat-8.5.6/webapps/documents/";
 	
     //private static String DOWNLOAD_FOLDER = "http://plan-etech.dev.arkeup.com/documents/";
-	private static String DOWNLOAD_FOLDER = "http://localhost:8080/documents/";
+	private static String DOWNLOAD_FOLDER = "http://168.119.185.165:8080/documents/";
     
 	@Autowired
 	UserService userService;

@@ -61,7 +61,7 @@
 									<a class="link-album dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
 										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> </a>
 									<div class="dropdown-menu show-action" aria-labelledby="dropdownMenuLink">
-										<a class="dropdown-item dwn" href="#" th:href="@{'/downloadImage/' + ${album.id}}">Télécharger</a>
+										<a class="dropdown-item dwn" href="#" th:href="@{'/galerie/' + ${album.id}}">Télécharger</a>
 										<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="dropdown-item spr" href="#"
 											th:onclick="'javascript:confirmDelete(\''+ ${album.id} +'\', \'' + ${album_image.id} +'\');'">[[#{supprimer}]]</a>
 
