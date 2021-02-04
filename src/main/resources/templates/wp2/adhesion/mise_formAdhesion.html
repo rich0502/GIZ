@@ -85,6 +85,15 @@
 								  </td>
 								</tr>
 								<tr>
+								  <td  width=200px >Age : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="age"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>
+								<tr>
 								  <td  width=200px >Sexe : </td>
 								  <td height=45px width=575px;>
 									<select class="form-control select2" th:name="sex"
@@ -186,7 +195,6 @@
 								  </td>
 								</tr>
 							</table>
-							<input type="text" th:name="pratique_realise" th:value="100">
 							</form>
 						</fieldset>
 						</div>
@@ -197,10 +205,4 @@
 	</section>
 	
 </body>
-
-<span class="span-user" th:object="${nomUser}"> 
-<span class="span-user" th:text="${nomUser}" id="lastUser">  
-<span th:text="${nomUser.username}"></span>
-</span>
-
 </html>

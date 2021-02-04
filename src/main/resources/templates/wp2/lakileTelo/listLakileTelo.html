@@ -75,9 +75,9 @@
 				<td th:text="${b.operationnel}"></td>
 				<td th:text="${b.date_suivi}"></td>
 				<td class="center td-action">
-				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id}+'\');'}"></a>
-			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/modifyL3/' + ${b.id}}"></a>
-			</td>
+					<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id}+'\');'}"></a>
+					<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editL3/' + ${b.id}}"></a>
+				</td>
 			</tr>
 
 		</tbody>

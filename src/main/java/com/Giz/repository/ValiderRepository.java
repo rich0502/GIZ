@@ -1,6 +1,7 @@
 package com.Giz.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,35 +13,39 @@ import com.Giz.data.domain.Valider;
 public interface ValiderRepository extends JpaRepository<Valider, Long>{
 	
 	//lakile telo
+	
+	@Query("SELECT v FROM Valider v WHERE v.id = ?1 and canevas = 'L3'")
+	Optional<Valider> findByL3(Long id);
+	
 	@Query("SELECT v FROM Valider v where  canevas = 'L3'")
 	List<Valider> findAllL3();
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' and operationnel ", nativeQuery = true)
-	int countL3Operationnel();
+	@Query(value = "SELECT CASE WHEN sum(nbr_h + nbr_f) IS NULL THEN 0 ELSE sum(nbr_h + nbr_f) END AS total FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel ", nativeQuery = true)
+	int countL3Operationnel(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' and sexe in ('homme', 'h') and operationnel", nativeQuery = true)
-	int countL3HOperationnel();
+	@Query(value = "SELECT CASE WHEN sum(nbr_h) IS NULL THEN 0 ELSE sum(nbr_h) END AS h FROM Valider where  canevas = 'L3' and sexe in ('h', 'H')  AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel", nativeQuery = true)
+	int countL3HOperationnel(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' and sexe in ('femme', 'f') and operationnel", nativeQuery = true)
-	int countL3FOperationnel();
+	@Query(value = "SELECT CASE WHEN sum(nbr_f) IS NULL THEN 0 ELSE sum(nbr_f) END AS f FROM Valider where  canevas = 'L3' and sexe in ('f', 'H')  AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel", nativeQuery = true)
+	int countL3FOperationnel(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' and operationnel and categorie = 'VSLA'", nativeQuery = true)
-	int countL3OperationnelVSLA();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'VSLA'", nativeQuery = true)
+	int countL3OperationnelVSLA(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' and operationnel and categorie = 'VSLA' and sexe in ('homme', 'h')", nativeQuery = true)
-	int countL3HOperationnelVSLA();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'VSLA' and sexe in ('h', 'H')", nativeQuery = true)
+	int countL3HOperationnelVSLA(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' and operationnel and categorie = 'VSLA' and sexe in ('femme', 'f')", nativeQuery = true)
-	int countL3FOperationnelVSLA();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'VSLA' and sexe in ('f', 'F')", nativeQuery = true)
+	int countL3FOperationnelVSLA(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' and operationnel and categorie = 'GEC'", nativeQuery = true)
-	int countL3OperationnelGEC();
+	@Query(value = "SELECT CASE WHEN sum(nbr_h + nbr_f) IS NULL THEN 0 ELSE sum(nbr_h + nbr_f) END AS total FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'GEC'", nativeQuery = true)
+	int countL3OperationnelGEC(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' and operationnel and categorie = 'GEC' and sexe in ('homme', 'h')", nativeQuery = true)
-	int countL3HOperationnelGEC();
+	@Query(value = "SELECT CASE WHEN sum(nbr_h) IS NULL THEN 0 ELSE sum(nbr_h) END AS h FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'GEC' and sexe in ('h', 'H')", nativeQuery = true)
+	int countL3HOperationnelGEC(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' and operationnel and categorie = 'GEC' and sexe in ('femme', 'f')", nativeQuery = true)
-	int countL3FOperationnelGEC();
+	@Query(value = "SELECT CASE WHEN sum(nbr_f) IS NULL THEN 0 ELSE sum(nbr_f) END AS f FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'GEC' and sexe in ('f', 'H')", nativeQuery = true)
+	int countL3FOperationnelGEC(String dateChronologique);
 	
 	//VSLA
 	@Query("SELECT v FROM Valider v where  canevas = 'VSLA'")
@@ -73,65 +78,65 @@ public interface ValiderRepository extends JpaRepository<Valider, Long>{
 	@Query("SELECT v FROM Valider v where  canevas = 'Mobile'")
 	List<Valider> findAllMobileMoney();
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Mobile' and service_mobile_money", nativeQuery = true)
-	int countMobileMoney();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Mobile' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and service_mobile_money", nativeQuery = true)
+	int countMobileMoney(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Mobile' and sexe in ('homme', 'h') and service_mobile_money", nativeQuery = true)
-	int countMobileMoneyH();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Mobile' and sexe in ('homme', 'h') AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and service_mobile_money", nativeQuery = true)
+	int countMobileMoneyH(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Mobile' and sexe in ('femme', 'f') and service_mobile_money", nativeQuery = true)
-	int countMobileMoneyF();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Mobile' and sexe in ('femme', 'f') AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and service_mobile_money", nativeQuery = true)
+	int countMobileMoneyF(String dateChronologique);
 	
 	//Finance
 	@Query("SELECT v FROM Valider v where  canevas = 'Finance'")
 	List<Valider> findAllFinance();
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Finance'", nativeQuery = true)
-	int countFinance();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Finance' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	int countFinance(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Finance' and sexe in ('homme', 'h') and service_IMF", nativeQuery = true)
-	int countFinanceH();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Finance' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and sexe in ('homme', 'h') and service_IMF", nativeQuery = true)
+	int countFinanceH(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Finance' and sexe in ('femme', 'f') and service_IMF", nativeQuery = true)
-	int countFinanceF();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Finance' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and sexe in ('femme', 'f') and service_IMF", nativeQuery = true)
+	int countFinanceF(String dateChronologique);
 	
 	//Producteur
 	@Query("SELECT v FROM Valider v where  canevas = 'Producteur'")
 	List<Valider> findAllProducteur();
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Producteur' and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
-	int countProducteur();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Producteur' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
+	int countProducteur(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Producteur' and sexe in ('homme', 'h') and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
-	int countProducteurH();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Producteur' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and sexe in ('homme', 'h') and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
+	int countProducteurH(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Producteur' and sexe in ('femme', 'f') and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
-	int countProducteurF();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Producteur' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and sexe in ('femme', 'f') and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
+	int countProducteurF(String dateChronologique);
 	
 	//Adhesion
 	@Query("SELECT v FROM Valider v where  canevas = 'Adhesion'")
 	List<Valider> findAllAdhesion();
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Adhesion' and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
-	int countAdhesion();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Adhesion' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
+	int countAdhesion(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Adhesion' and sexe in ('homme', 'h') and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
-	int countAdhesionH();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Adhesion' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and sexe in ('homme', 'h') and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
+	int countAdhesionH(String dateChronologique);
 	
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Adhesion' and sexe in ('femme', 'f') and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
-	int countAdhesionF();
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'Adhesion' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and sexe in ('femme', 'f') and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
+	int countAdhesionF(String dateChronologique);
 	
 	//Menage
 	@Query(value = "SELECT v FROM Valider v where  canevas = 'Menage'")
 	List<Valider> findAllMenage();
 	
-	@Query(value = "SELECT count(*)  FROM Valider where  canevas = 'Menage' and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
-	int countMenage();
+	@Query(value = "SELECT count(*)  FROM Valider where  canevas = 'Menage' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
+	int countMenage(String dateChronologique);
 	
-	@Query(value = "SELECT count(*)  FROM Valider where  canevas = 'Menage' and sexe in ('homme', 'h') and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
-	int countMenageH();
+	@Query(value = "SELECT count(*)  FROM Valider where  canevas = 'Menage' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and sexe in ('homme', 'h') and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
+	int countMenageH(String dateChronologique);
 	
-	@Query(value = "SELECT count(*)  FROM Valider where  canevas = 'Menage' and sexe in ('femme', 'f') and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
-	int countMenageF();
+	@Query(value = "SELECT count(*)  FROM Valider where  canevas = 'Menage' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and sexe in ('femme', 'f') and annee_adhesion = EXTRACT(YEAR FROM CURRENT_DATE)", nativeQuery = true)
+	int countMenageF(String dateChronologique);
 
 }

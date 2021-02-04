@@ -24,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.Giz.data.constants.theme.ListeWp;
 import com.Giz.data.domain.MiseForme;
 import com.Giz.data.domain.Valider;
+import com.Giz.data.domain.Wp3ActivEcoJeune;
 import com.Giz.service.metier.ValiderService;
 
 @Controller
@@ -32,6 +33,48 @@ public class Wp2Controller {
 
 	@Autowired
 	ValiderService validerservice;
+	
+	// Suppression de chaque canevas
+	@RequestMapping("/deleteMoney/{id}")
+	public String deleteMoney(@PathVariable(name = "id") Long id) {
+		validerservice.deleteValider(id);
+		return "redirect:/listMoney";
+	}
+	@RequestMapping("/deleteFinance/{id}")
+	public String deleteFinance(@PathVariable(name = "id") Long id) {
+		validerservice.deleteValider(id);
+		return "redirect:/listFinance";
+	}
+	@RequestMapping("/deleteMenage/{id}")
+	public String deleteMenage(@PathVariable(name = "id") Long id) {
+		validerservice.deleteValider(id);
+		return "redirect:/listMenage";
+	}
+	@RequestMapping("/deleteL3/{id}")
+	public String deleteL3(@PathVariable(name = "id") Long id) {
+		validerservice.deleteValider(id);
+		return "redirect:/listLakileTelo";
+	}
+	@RequestMapping("/deleteVSLA/{id}")
+	public String deleteVSLA(@PathVariable(name = "id") Long id) {
+		validerservice.deleteValider(id);
+		return "redirect:/listVSLA";
+	}
+	@RequestMapping("/deleteFBS/{id}")
+	public String deleteFBS(@PathVariable(name = "id") Long id) {
+		validerservice.deleteValider(id);
+		return "redirect:/listFBS";
+	}
+	@RequestMapping("/deleteAdhesion/{id}")
+	public String deleteAdhesion(@PathVariable(name = "id") Long id) {
+		validerservice.deleteValider(id);
+		return "redirect:/listAdhesion";
+	}
+	@RequestMapping("/deleteProducteur/{id}")
+	public String deleteProducteur(@PathVariable(name = "id") Long id) {
+		validerservice.deleteValider(id);
+		return "redirect:/listProducteur";
+	}
 
 	// Canevas lakile telo
 	@RequestMapping("/uploadL3")
@@ -93,9 +136,32 @@ public class Wp2Controller {
 		return "wp2/LakileTelo/listLakileTelo";
 	}
 	
-	@RequestMapping("/deleteL3/{id}")
-	public String deleteL3(@PathVariable(name = "id") Long id) {
-		validerservice.deleteL3(id);
+	
+	@RequestMapping("/editL3/{id}")
+	public ModelAndView editL3(@PathVariable(name = "id") Long id, Model model) throws ParseException {
+		ModelAndView mav = new ModelAndView("wp2/lakileTelo/Form_modifL3");
+		Optional<Valider> bf = validerservice.findByIdL3(id);
+		mav.addObject("lakileTelo", bf);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/saveEditL3", method = RequestMethod.POST)
+	public String saveEditL3(
+			@RequestParam("id") long id,
+			@RequestParam("code_village") String code_village,
+			@RequestParam("district") String district,
+			@RequestParam("nom_group_l_telo") String nom_group_l_telo,
+			@RequestParam("categorie") String categorie,
+			@RequestParam("date_creation") java.sql.Date date_creation,
+			@RequestParam("effectif_membre") double effectif_membre,
+			@RequestParam("nbr_f") int nbr_h, 
+			@RequestParam("nbr_f") int nbr_f,
+			@RequestParam("operationnel") boolean operationnel,
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.modifyL3(code_village, district, nom_group_l_telo, categorie, date_creation,
+						effectif_membre, nbr_h, nbr_f, operationnel, date_suivi, id);
 		return "redirect:/listLakileTelo";
 	}
 
