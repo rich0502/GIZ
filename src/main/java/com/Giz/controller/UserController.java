@@ -287,7 +287,8 @@ public class UserController {
 	}
 
 	@PostMapping("/editUser/changePassword")
-	public ResponseEntity postEditUseChangePassword(@Valid @RequestBody ChangePasswordForm form, Errors errors) {
+	public ResponseEntity postEditUseChangePassword(ChangePasswordForm form, Errors errors) {
+		System.out.println("ChangePasswordForm" + form);
 		try {
 			if (errors.hasErrors()) {
 				String result = errors.getAllErrors().stream().map(x -> x.getDefaultMessage())

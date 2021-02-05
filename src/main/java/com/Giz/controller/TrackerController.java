@@ -127,7 +127,7 @@ public class TrackerController {
         document.add( new Paragraph(  "  Activities highlights based on status", font ) );
         document.add(imgNext);
         document.close();
-		tracker.setFile_name("tracker-" + formater.format(date_tracker));
+		tracker.setFile_name(formater.format(date_tracker)+"TrackerWP1.pdf");
 		trackerService.addTracker(tracker);
 		return "redirect:trackerListWP1";
     }
@@ -207,7 +207,7 @@ public class TrackerController {
         document.add( new Paragraph(  "  Activities highlights based on status", font ) );
         document.add(imgNext);
         document.close();
-		tracker.setFile_name("tracker-" + formater.format(date_tracker));
+		tracker.setFile_name(formater.format(date_tracker)+"TrackerWP2.pdf");
 		trackerService.addTracker(tracker);
 		return "redirect:trackerListWP2";
     }
@@ -286,7 +286,7 @@ public class TrackerController {
 	        document.add( new Paragraph(  "  Activities highlights based on status", font ) );
 	        document.add(imgNext);
 	        document.close();
-			tracker.setFile_name("tracker-" + formater.format(date_tracker));
+			tracker.setFile_name(formater.format(date_tracker)+"TrackerWP3.pdf");
 			trackerService.addTracker(tracker);
 			return "redirect:trackerListWP3";
 	    }
@@ -365,7 +365,7 @@ public class TrackerController {
 	        document.add( new Paragraph(  " Activities highlights based on status", font ) );
 	        document.add(imgNext);
 	        document.close();
-			tracker.setFile_name("tracker-" + formater.format(date_tracker));
+			tracker.setFile_name(formater.format(date_tracker)+"TrackerWP4.pdf");
 			trackerService.addTracker(tracker);
 			return "redirect:trackerListWP4";
 	    }

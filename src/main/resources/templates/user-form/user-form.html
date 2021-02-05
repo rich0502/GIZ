@@ -201,11 +201,11 @@ $(document).ready(function(){
 		<div class="collapse" id="collapseExample">
 
 			<form id="changePasswordForm" th:object="${passwordForm}"
-				method="post" class=" form pwd-form" role="form">
+				method="post" class=" form pwd-form" role="form" action="/Giz/editUser/changePassword">
 				<input class="form-control" type="hidden"
 					th:field="${passwordForm.id}"> <input
 					th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
-					type="hidden" id="currentPassword" th:value="blank" />
+					type="hidden" id="currentPassword" name="currentPassword" th:value="blank" />
 				<div
 					th:unless="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
 					class="form-group row">
@@ -232,7 +232,8 @@ $(document).ready(function(){
 						<div class="alert-danger"th:if="${#fields.hasErrors('confirmPassword')}"th:errors="*{confirmPassword}">Confirm Password</div>
 							
 					</div>
-				
+								<input type="submit" value="save"
+					class="btn pds-primary-btn pds-save-btn">
 					
 				</div>
 				<div class="col-lg-9">
@@ -246,8 +247,8 @@ $(document).ready(function(){
 			<div class="text-right action-flex">
 				<a class="btn pds-secondary-btn btn-secondary pds-cancel-btn"
 					th:href="@{'/userForm/cancel'}">[[#{fermer}]]</a>
-				<button type="button" onClick="submitChangePassword()"
-					class="btn pds-primary-btn pds-save-btn">[[#{save}]]</button>
+				<input type="submit" value="save"
+					class="btn pds-primary-btn pds-save-btn">[[#{save}]]
 			</div>
 
 		</div>
@@ -269,12 +270,13 @@ $(document).ready(function(){
 
 <script type="text/javascript">
 	function submitChangePassword() {
+		console.log("kkkk", $("#confirmPassword").val(), $("#newPassword").val() );
 		var params = {};
 		params["id"] = $("#id").val();
 		params["currentPassword"] = $("#currentPassword").val();
 		params["newPassword"] = $("#newPassword").val();
 		params["confirmPassword"] = $("#confirmPassword").val();
-
+console.log("params",params);
 		$.ajax({
 			type : "POST",
 			contentType : "application/json",
@@ -284,8 +286,8 @@ $(document).ready(function(){
 			cache : false,
 			timeout : 600000,
 			success : function(data) {
+				console.log("zdadadadadadadzzz",data);
 				$("#changePasswordForm")[0].reset();
-
 				$("#changePasswordError").addClass("d-none");
 				$("#formSuccess").removeClass("d-none");
 				$("#formSuccess").html("Votre mot de passe a été modifié");
@@ -296,6 +298,7 @@ $(document).ready(function(){
 				}, 2000);
 			},
 			error : function(e) {
+				console.log("zzzz",e);
 				$("#changePasswordError").removeClass("d-none");
 				$("#formSuccess").addClass("d-none");
 				$("#changePasswordError").html(e.responseText);
