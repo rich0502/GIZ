@@ -88,7 +88,7 @@
 				<td th:text="${b.nbr_pers_charge}"></td>
 				<td class="center td-action">
 				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id}+'\');'}"></a>
-			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/modifyAdhesion/' + ${b.id}}"></a>
+			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editAdhesion/' + ${b.id}}"></a>
 			</td>
 			</tr>
 
