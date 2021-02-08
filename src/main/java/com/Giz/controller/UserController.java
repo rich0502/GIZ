@@ -36,6 +36,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Giz.Exception.CustomeFieldValidationException;
 import com.Giz.Exception.UsernameOrIdNotFound;
@@ -287,8 +288,8 @@ public class UserController {
 	}
 
 	@PostMapping("/editUser/changePassword")
-	public ResponseEntity postEditUseChangePassword(ChangePasswordForm form, Errors errors) {
-		System.out.println("ChangePasswordForm" + form);
+	public String postEditUseChangePassword(ChangePasswordForm form, Errors errors,Model model,RedirectAttributes redirectAttributes) {
+		String succes = "Modification avec succès";
 		try {
 			if (errors.hasErrors()) {
 				String result = errors.getAllErrors().stream().map(x -> x.getDefaultMessage())
@@ -298,9 +299,12 @@ public class UserController {
 			}
 			userService.ChangePasswordDto(form);
 		} catch (Exception e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
+			String errs = "Erreur de changement de mot de passe";
+			redirectAttributes.addFlashAttribute("errs", errs );
+			return "redirect:/editUser/"+form.getId();
 		}
-		return ResponseEntity.ok("Success");
+		redirectAttributes.addFlashAttribute("succes", succes);
+		return "redirect:/editUser/"+form.getId();
 	}
 	
 	

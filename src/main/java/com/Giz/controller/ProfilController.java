@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Giz.Exception.CustomeFieldValidationException;
 import com.Giz.dto.ChangePasswordForm;
@@ -107,10 +108,8 @@ public class ProfilController {
 
 	
 	@PostMapping("/editProfil/changePassword")
-	public ResponseEntity postEditProfilChangePassword(@Valid @RequestBody ChangePasswordForm form, Errors errors) {
-		System.out.println("getCurrentPassword" + form.getCurrentPassword());
-		System.out.println("NewPassword" + form.getNewPassword());
-		System.out.println("ConfirmPassword" + form.getConfirmPassword());
+	public String postEditProfilChangePassword(ChangePasswordForm form, Errors errors,Model model,RedirectAttributes redirectAttributes) {
+		String succes = "Modification avec succès";
 		try {
 			if (errors.hasErrors()) {
 				String result = errors.getAllErrors().stream().map(x -> x.getDefaultMessage())
@@ -120,9 +119,12 @@ public class ProfilController {
 			}
 			userService.ChangePasswordDto(form);
 		} catch (Exception e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
+			String errs = "Erreur de changement de mot de passe";
+			redirectAttributes.addFlashAttribute("errs", errs );
+			return "redirect:/editProfil/"+form.getId();
 		}
-		return ResponseEntity.ok("Success");
+		redirectAttributes.addFlashAttribute("succes", succes);
+		return "redirect:/editProfil/"+form.getId();
 	}
 
 }
