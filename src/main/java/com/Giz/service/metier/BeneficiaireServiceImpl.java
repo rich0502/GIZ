@@ -92,7 +92,7 @@ public class BeneficiaireServiceImpl implements BeneficiaireService {
 					if(nomText.trim().equalsIgnoreCase(distinctList.get(j))) {
 						if(!efao.contains(nomText.toLowerCase())){
 							efao.add(nomText.toLowerCase());
-							ben = new Beneficiaire(data1[0], data1[1], Integer.parseInt(data1[2]));
+							ben = new Beneficiaire(data1[0], data1[1], Integer.parseInt(data1[2]), data1[3]);
 							benef.add(ben);
 							break;
 						}
