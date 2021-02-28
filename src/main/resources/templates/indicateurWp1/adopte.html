@@ -10,9 +10,9 @@
 	<td th:include="indiSelectorState :: state_selector(selectedOption='reported')" th:remove="tag"></td>
 	
 	<td class="row-field"><div class="editable-field">
-		<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${#numbers.formatDecimal(adopte,0,2)}" disabled></div>
+		<div class="type-number-percent"><input id="prog01" min="0" max="100" th:value="${#numbers.formatDecimal(adopte,1,2)}" disabled></div>
 		<div class="progress custom-progress">
-			<div id="progbar01" class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(adopte,0,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+			<div id="progbar01" class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(adopte,1,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 		</div>
 	</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Nombre de producteurs adoptant au moins une mesure d'agriculture intelligente</div></td>
@@ -36,9 +36,9 @@
 	<td th:include="indiSelectorState :: state_selector(selectedOption='reported')" th:remove="tag"></td>
 	
 	<td class="row-field"><div class="editable-field">
-		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(recheche,0,2)}" disabled></div>
+		<div class="type-number-percent"><input min="0" max="100" th:value="${#numbers.formatDecimal(recheche,1,2)}" disabled></div>
 		<div class="progress custom-progress">
-			<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(recheche,0,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+			<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(recheche,1,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 		</div>
 	</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Nombre de producteurs de vanille qui ont vu une augmentation de 20 % des revenus issus de la diversification</div></td>
