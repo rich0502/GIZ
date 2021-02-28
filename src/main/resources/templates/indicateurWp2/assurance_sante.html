@@ -4,7 +4,7 @@
 	<td class="row-field"><div class="editable-field" >3500  ménages de producteurs adhérés à Mahavelona par année.</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 34</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 	<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${producteur}" disabled></div>
 		<div class="progress custom-progress">
@@ -25,7 +25,7 @@
 	<td class="row-field"><div class="editable-field" >500 nouvelles adhésion volontaire M7 et M12 par année</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 35</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 	<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${adhesion}" disabled></div>
 		<div class="progress custom-progress">
@@ -46,7 +46,7 @@
 	<td class="row-field"><div class="editable-field" >1150 ménages vulnérables sont couverts en M7</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 36</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 	<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${menage}" disabled></div>
 		<div class="progress custom-progress">

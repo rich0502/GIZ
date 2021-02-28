@@ -7,7 +7,7 @@
 			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 2</div></td>
 			
 			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 			<td class="row-field"><div class="editable-field">
 				<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${#numbers.formatDecimal(recheche,0,2)}" disabled></div>
 				<div class="progress custom-progress">
@@ -31,7 +31,7 @@
 			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 1</div></td>
 
 			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
-			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Repoussée</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='reported')" th:remove="tag"></td>
 			
 			<td class="row-field"><div class="editable-field">
 				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(adopte,0,2)}" disabled></div>
@@ -57,7 +57,7 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 3</div></td>
 
 			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
-			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 			
 			<td class="row-field"><div class="editable-field">
 				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${bpa}" disabled></div>
@@ -84,7 +84,7 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 4</div></td>
 
 			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
-			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 			
 			<td class="row-field"><div class="editable-field">
 				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(test,0,2)}" disabled></div>
@@ -110,7 +110,7 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
 
 			<td class="row-field"><div class="editable-field" contenteditable="false">Encore en attente (Lalaina)</div></td>
-			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 			
 			<td class="row-field"><div class="editable-field">
 				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(pepiniere,0,2)}" disabled></div>
@@ -134,7 +134,7 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 6</div></td>
 
 			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
-			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 			
 			<td class="row-field"><div class="editable-field">
 				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(recheche,0,2)}" disabled></div>
@@ -159,7 +159,7 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 7</div></td>
 
 			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
-			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 			
 			<td class="row-field"><div class="editable-field">
 				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(recheche,0,2)}" disabled></div>
@@ -184,7 +184,7 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 8, Canevas N° 9</div></td>
 
 			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
-			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 			
 			<td class="row-field"><div class="editable-field">
 				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(recheche,0,2)}" disabled></div>
@@ -210,7 +210,7 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
 
 			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
-			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 			
 			<td class="row-field"><div class="editable-field">
 				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(recheche,0,2)}" disabled></div>
@@ -235,7 +235,7 @@ A prendre en compte les innovations développées par Symrise qui pourront être
 			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 10</div></td>
 
 			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
-			<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 			
 			<td class="row-field"><div class="editable-field">
 				<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(recheche,0,2)}" disabled></div>

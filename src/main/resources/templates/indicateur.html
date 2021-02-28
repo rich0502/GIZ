@@ -70,7 +70,7 @@
 						<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 1</div></td>
 						
 						<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-						<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Repoussée</div></td>
+						<td th:include="indiSelectorState :: state_selector(selectedOption='reported')" th:remove="tag"></td>
 						<td class="row-field"><div class="editable-field">
 							<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" value="1"></div>
 							<div class="progress custom-progress">
@@ -94,7 +94,7 @@
 						<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
 	
 						<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
-						<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Repoussée</div></td>
+						<td th:include="indiSelectorState :: state_selector(selectedOption='reported')" th:remove="tag"></td>
 						
 						<td class="row-field"><div class="editable-field">
 							<div class="type-number-percent"><input type="number" min="0" max="100" value="1"></div>

@@ -4,7 +4,7 @@
 	<td class="row-field"><div class="editable-field" >Intégration de l'éducation financière  dans les formations FBS Evo-lution et Post-FBS.</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 31</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 	</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
@@ -21,7 +21,7 @@
 	<td class="row-field"><div class="editable-field" >Modèles de financement pour les jeunes les entrepreneurs établis (lien WP3)</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 	</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
@@ -38,7 +38,7 @@
 	<td class="row-field"><div class="editable-field" >Au moins 1800 producteurs  utilisent le mobile money</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 32</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 	<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${mobil}" disabled></div>
 		<div class="progress custom-progress">
@@ -59,7 +59,7 @@
 	<td class="row-field"><div class="editable-field" >Au moins 1200 producteurs utilisent les services financiers formels auprès des institutions</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 33</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 	<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${finance}" disabled></div>
 		<div class="progress custom-progress">

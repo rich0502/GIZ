@@ -167,6 +167,14 @@
 .trakcer-select-menu {
     width: 185px;
 }
+.trakcer-select-menu.level-state-select {
+    background-color: rgba(255, 255, 255, 0.75);
+    width: auto;
+    padding: 5px;
+}
+.trakcer-select-menu.level-state-select:disabled {
+    background-color: rgba(255, 255, 255, 0.25);
+}
 .d-table-tracker.indicator-table .col-title {
     min-width: 60px;
 }

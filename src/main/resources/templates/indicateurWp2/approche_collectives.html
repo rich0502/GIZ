@@ -5,7 +5,7 @@
 	<td class="row-field"><div class="editable-field" >263 lakile telo sont crées dans les zones du projet</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 29</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Sous tiré de/Utiliser le canevas N° 29</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 	
 	</div></td>
@@ -23,7 +23,7 @@
 	<td class="row-field"><div class="editable-field" >157 existing VSLA plus groups are operational</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 29</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Sous tiré de/Utiliser le canevas N° 29</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 	<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${l3_vsla_ope}" disabled></div>
 		<div class="progress custom-progress">
@@ -44,7 +44,7 @@
 	<td class="row-field"><div class="editable-field" >3000 producteurs membres des GEC qui utilisent les services pour investir dans leur exploitation</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 29</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Sous tiré de/Utiliser le canevas N° 29</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 	<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${l3_gec}" disabled></div>
 		<div class="progress custom-progress">
@@ -65,7 +65,8 @@
 	<td class="row-field"><div class="editable-field" >Epargne moyenne par membre des GEC</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation </div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false"></div></td>
+	<!-- <td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false"></div></td> -->
+	<td th:include="indiSelectorState :: state_selector(selectedOption=' ')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
@@ -81,7 +82,7 @@
 	<td class="row-field"><div class="editable-field" >Renforcement de la plateforme VSLA</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Soutien et renforcement de la VSLA régionale pour améliorer les méthodologies existantes, la gouvernance et les services aux membres.</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
@@ -97,7 +98,7 @@
 	<td class="row-field"><div class="editable-field" >Au moins 1 VSLA municipal (Andapa et Sambava) renforcé et opérationnel, lié à la plate-forme régionale VSLA renforcée.</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 30</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 	<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${vsla}" disabled></div>
 		<div class="progress custom-progress">

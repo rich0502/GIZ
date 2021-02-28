@@ -28,7 +28,7 @@ Work package :
  <button type="button" name="btnExport" id="btnExport" class="gbtn">[[#{exporter}]]</button>
  <button type="button" name="btnEditableToggle" id="btnEditableToggle" class="gbtn">Modifier</button> 
 <script>
-    $(function(){   
+  $(function(){   
       $('#chronologie').on('change', function () {
     	  var e = document.getElementById("dynamic_select");
     	  var strWP = e.value;
@@ -38,45 +38,92 @@ Work package :
               $('#chronologie').show();
           }
           return false;
-      });
+      });    
       
-    });
-    $("#btnExport").click(function(e) {
+      $("#btnExport").click(function(e) {
         let file = new Blob([$('#html-content-holder').html()], {type:"application/vnd.ms-excel"});
         let url = URL.createObjectURL(file);
         let a = $("<a />", {
         href: url,
         download: "filename.xls"}).appendTo("body").get(0).click();
         e.preventDefault();
-   });
-   $("#btnEditableToggle").click(function(event) {
-    let allEditable = $(".editable-field")
+      });
+
+      $("#btnEditableToggle").click(function(event) {
+        let allEditable = $(".editable-field")        
+
+        if(!$(this).hasClass("active")) {
+          $(this).text("Terminer")
+          allEditable.each(function(index, elemEditable) {
+            let childProgress = $(elemEditable).find(".type-number-percent") ? $(elemEditable).find(".type-number-percent").length : 0
+            let isParentTh = $(elemEditable).parent().prop("tagName") == "TH"
+            let childSelect = $(elemEditable).find(".level-state-select") ? $(elemEditable).find(".level-state-select") : null
+           
+            if(childProgress < 1 && childSelect && childSelect.length < 1 && !isParentTh && !$(elemEditable).hasClass("disable-edition") )
+              $(elemEditable).attr('contenteditable','true');
+
+            if(childSelect && childSelect.length > 0)
+              $(childSelect).removeAttr('disabled');
+             
+            
+          })
+          
+        }
+        else {
+          $(this).text("Modifier")
+          allEditable.each(function(index, elemEditable) {
+            let childProgress = $(elemEditable).find(".type-number-percent") ? $(elemEditable).find(".type-number-percent").length : 0
+            let isParentTh = $(elemEditable).parent().prop("tagName") == "TH"
+            let childSelect = $(elemEditable).find(".level-state-select") ? $(elemEditable).find(".level-state-select") : null
+
+            if(childProgress < 1 && childSelect && childSelect.length < 1 && !isParentTh && !$(elemEditable).hasClass("disable-edition") )
+              $(elemEditable).attr('contenteditable','false');
+
+            if(childSelect && childSelect.length > 0)
+              $(childSelect).attr('disabled','');            
+          })
+        }
+        $(this).toggleClass('active')
+      });
     
+      function stateColorHandle(elem) {
+        let parentTd = $(elem).closest('td.row-field')
+        let value = $(elem).val()
 
-    if(!$(this).hasClass("active")) {
-      $(this).text("Terminer")
+        console.log("CHANGE", [parentTd, value])
+        if(parentTd) {
+          switch (value) {
+            case levelStates.reported.value :
+              parentTd.addClass(levelStates.reported.color)
+              parentTd.removeClass(levelStates.stopped.color)
+              parentTd.removeClass(levelStates.running.color)
+              break;
 
-      allEditable.each(function(index, elemEdiable) {
-        let childProgress = $(elemEdiable).find(".type-number-percent") ? $(elemEdiable).find(".type-number-percent").length : 0
-        let isParentTh = $(elemEdiable).parent().prop("tagName") == "TH"
-        console.log("EDITABLE", childProgress)
-        if(childProgress < 1 && !isParentTh && !$(elemEdiable).hasClass("disable-edition") )
-          $(elemEdiable).attr('contenteditable','true')
-      })
+            case levelStates.stopped.value :
+              parentTd.removeClass(levelStates.reported.color)
+              parentTd.addClass(levelStates.stopped.color)
+              parentTd.removeClass(levelStates.running.color)
+              break;
+
+            case levelStates.running.value :
+              parentTd.removeClass(levelStates.reported.color)
+              parentTd.removeClass(levelStates.stopped.color)
+              parentTd.addClass(levelStates.running.color)
+              break;
+
+          }
+        }
+      }
+
+      var levelStates = {
+        reported : {value: 'reported', color: 'bg-orange-ffcc'},
+        stopped : {value: 'stopped', color: 'bg-red-99'},
+        running : {value: 'running', color: 'bg-green-aa'},
+      }
+      $(".level-state-select").on("change", function() {stateColorHandle($(this))} );
       
-    }
-    else {
-      $(this).text("Modifier")
-      allEditable.each(function(index, elemEdiable) {
-        let childProgress = $(elemEdiable).find(".type-number-percent") ? $(elemEdiable).find(".type-number-percent").length : 0
-        let isParentTh = $(elemEdiable).parent().prop("tagName") == "TH"
-        if(childProgress < 1 && !isParentTh && !$(elemEdiable).hasClass("disable-edition") )
-          $(elemEdiable).attr('contenteditable','false')
-      })
-    }
-    $(this).toggleClass('active')
-
-   
-});
-    
+      $(".level-state-select").each(function() {
+        stateColorHandle($(this))
+      });
+  });    
 </script>

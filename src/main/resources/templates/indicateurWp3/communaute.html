@@ -4,7 +4,7 @@
 	<td class="row-field"><div class="editable-field" >Un comité local par village pouvant rapporter les violations des droits des enfants</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N°50</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Un comité local par village opérationnel pour rapporter les violations des droits des enfants</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
@@ -20,7 +20,7 @@
 	<td class="row-field"><div class="editable-field" >Au moins 2 000 personnes locales/parties prenantes ont une capacité accrue pour renforcer la protection des enfants mécanismes, politiques et la législation.</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Nombre de personnes locales/ parties prenantes ayant une capacité accrue pour renforcer la protection des enfants mécanismes, politiques et la législation</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>

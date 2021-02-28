@@ -5,7 +5,7 @@
 	<td class="row-field"><div class="editable-field" >20% des producteurs utilisent les services financiers formels auprès des institutions</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Pourcentage des producteurs qui utilisent des services financiers formels auprès des institutions</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Liste complète des prods utilisant les services des institution</div></td>
@@ -21,7 +21,7 @@
 	<td class="row-field"><div class="editable-field" >30% des producteurs sensibilisés utilisent le mobile money</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Pourcentage de bénéficiaires sensibilisés en mobile banking</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Enquête sur un échantillon des personnes sensibilisées, comparaison baseline-endline</div></td>
@@ -37,7 +37,7 @@
 	<td class="row-field"><div class="editable-field" >Taux de sinistralité  de Mahavelona stabilisé entre 60 à 70%</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Taux de sinistralité = rapport entre le montant de prestation payé et les cotisations reçues pour une période déterminée</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Rapport d'activité Mahavelona</div></td>
@@ -53,7 +53,7 @@
 	<td class="row-field"><div class="editable-field" >421 "LAKILE TELO"  sont établis et opérationnels</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 29</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 	<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${l3_operationnel}" disabled></div>
 		<div class="progress custom-progress">

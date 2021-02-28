@@ -4,7 +4,7 @@
 	<td class="row-field"><div class="editable-field" >- 4 Ateliers/évenements promotionnels annuels du réseau de MFR dans la SAVA</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 52</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplisage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field"><div class="type-number-percent"><input type="number" min="0" max="100" th:value="${can52} >= 12 ? '100' : '0' " disabled></div>
 		<div class="progress custom-progress">
 			<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${can52} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -23,7 +23,7 @@
 	<td class="row-field"><div class="editable-field" > 1 Dialogue régional sur l'accès au financement</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 53</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${can53} >= 12 ? '100' : '0' " disabled></div>
 		<div class="progress custom-progress">
@@ -43,7 +43,7 @@
 	<td class="row-field"><div class="editable-field" > 1 Dialogue régional sur l'accès au financement</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 53</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${can53} >= 12 ? '100' : '0' " disabled></div>
 		<div class="progress custom-progress">
@@ -63,7 +63,7 @@
 	<td class="row-field"><div class="editable-field" >Au moins un atelier de capitalisation et de partage des acquis du projet en matière d’élevage et de santé animale dans la région SAVA est organisé pour les partenaires et acteurs du développement</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 54</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" value="0" disabled></div>
 		<div class="progress custom-progress">
@@ -83,7 +83,7 @@
 	<td class="row-field"><div class="editable-field" > 3 Ateliers/événements promotionnels de Mahavelona dans la SAVA</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 55</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${can55} >= 3 ? '100' : '0' " disabled></div>
 		<div class="progress custom-progress">
@@ -103,7 +103,7 @@
 	<td class="row-field"><div class="editable-field" >  2 ateliers de partage des bonnes pratiques et des outils aux producteurs de lvanille de la SAVA (via associations, groupements, plate-forme, syndicats...)</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 55</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${can56} >= 2 ? '100' : '0' " disabled></div>
 		<div class="progress custom-progress">

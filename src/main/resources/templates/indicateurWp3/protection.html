@@ -5,7 +5,7 @@
 	<td class="row-field"><div class="editable-field" >1925 jeunes membres de la communauté se sentent mieux protégés grâce à une meilleure compréhension des questions de protection de l'enfance et les mécanismes de référencement</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Nombre de jeunes dans la communauté qui déclarent être mieux protégés par les mécanismes de référencement et une meilleure connaissance des droits liés à la protection de l'enfance</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Enquête de base vs. étude finale</div></td>
@@ -23,7 +23,7 @@
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N°37</div></td>
 
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(can37,0,2)}" disabled></div>

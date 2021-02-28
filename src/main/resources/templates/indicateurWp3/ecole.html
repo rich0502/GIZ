@@ -5,7 +5,7 @@
 	<td class="row-field"><div class="editable-field" >Au moins 77 youth committee actifs au niveau des zones d'intervention</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N°38</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplisage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field"><div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(can38,0,2)}" disabled></div>
 		<div class="progress custom-progress">
 			<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${#numbers.formatDecimal(can38,0,2)} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -24,7 +24,7 @@
 	<td class="row-field"><div class="editable-field" >Au moins 2 460 jeunes ont terminé leur formation sur les techniques et métiers</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N°39</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(can39,0,2)}" disabled></div>
 		<div class="progress custom-progress">
@@ -45,7 +45,7 @@
 	<td class="row-field"><div class="editable-field" >Au moins 800 jeunes (18 à 24 ans) sont formés, accompagnés et démarrent une unité d’élevage en adoptant les bonnes pratiques appropriées</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N°40</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(can40,0,2)}" disabled></div>
 		<div class="progress custom-progress">
@@ -66,7 +66,7 @@
 	<td class="row-field"><div class="editable-field" >Nombre d'élèves inscrits dans les MFR</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N°41</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${can41}" disabled></div>
 		<div class="progress custom-progress">
@@ -87,7 +87,7 @@
 	<td class="row-field"><div class="editable-field" >Au moins 600 jeunes jeunes formés des MFR bénéficient d'un accompagnement à leur sortie.</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N°42</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(can42,0,2)}" disabled></div>
 		<div class="progress custom-progress">
@@ -108,7 +108,7 @@
 	<td class="row-field"><div class="editable-field" >La fédération régionale MFR est légalisée et animée par un plan stratégique.</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N°43</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(can43,0,2)}" disabled></div>
 		<div class="progress custom-progress">
@@ -129,7 +129,7 @@
 	<td class="row-field"><div class="editable-field" >La fédération dispose une capacité technique en « ingénierie de formation »</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N°44</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(can44,0,2)}" disabled></div>
 		<div class="progress custom-progress">
@@ -150,7 +150,7 @@
 	<td class="row-field"><div class="editable-field" >05 AGR  sont développées dans les MFR SAVA</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N°45</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(can45,0,2)}" disabled></div>
 		<div class="progress custom-progress">
@@ -171,7 +171,7 @@
 	<td class="row-field"><div class="editable-field" >La part des familles  augmente de 25 % dans le budget de chaque MFR</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Augmentation de 25% du budget des MFR de la part des familles des étudiants</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
@@ -187,7 +187,7 @@
 	<td class="row-field"><div class="editable-field" >Au moins 3 850 jeunes ont complété les parcours/la formation pathway</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N°46</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">Non démarrée</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(can46,0,2)}" disabled></div>
 		<div class="progress custom-progress">
@@ -208,7 +208,7 @@
 	<td class="row-field"><div class="editable-field" >77 projets FRAM EPP subventionnés annuellement</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N°47</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Remplissage obligatoire</div></td>
-	<td class="row-field bg-orange-ffcc"><div class="editable-field" contenteditable="false">En cours</div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
 		<div class="type-number-percent"><input type="number" min="0" max="100" th:value="${#numbers.formatDecimal(can47,0,2)}" disabled></div>
 		<div class="progress custom-progress">
