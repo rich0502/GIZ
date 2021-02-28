@@ -1,5 +1,5 @@
 Work package : 
-<select id="dynamic_select" class="ginput form-control" name="choix" >
+<select id="dynamic_select" class="ginput form-control trakcer-select-menu" name="choix" >
   <option value="" selected>[[#{selectionner}]]</option>
   <option value="indicateurWP1">WP1</option>
   <option value="indicateurWP2Liste">WP2</option>
@@ -7,7 +7,7 @@ Work package :
   <option value="indicateurWP4">WP4</option>
 </select>
 
-<select class="ginput form-control" id="chronologie" name="chronologie"  >
+<select class="ginput form-control trakcer-select-menu" id="chronologie" name="chronologie"  >
   <option value="" selected>[[#{selectionner}]]</option>
   <option value="31/08/2020">Août 2020</option>
   <option value="30/11/2020">Novembre 2020</option>
@@ -25,7 +25,8 @@ Work package :
   <option value="30/11/2023">Novembre 2023</option>
   <option value="31/01/2024">Janvier 2024</option>
 </select>
- <button type="button" name="btnExport" id="btnExport" class="gbtn">[[#{exporter}]]</button> 
+ <button type="button" name="btnExport" id="btnExport" class="gbtn">[[#{exporter}]]</button>
+ <button type="button" name="btnEditableToggle" id="btnEditableToggle" class="gbtn">Modifier</button> 
 <script>
     $(function(){   
       $('#chronologie').on('change', function () {
@@ -42,11 +43,40 @@ Work package :
     });
     $("#btnExport").click(function(e) {
         let file = new Blob([$('#html-content-holder').html()], {type:"application/vnd.ms-excel"});
-   let url = URL.createObjectURL(file);
-   let a = $("<a />", {
+        let url = URL.createObjectURL(file);
+        let a = $("<a />", {
         href: url,
         download: "filename.xls"}).appendTo("body").get(0).click();
         e.preventDefault();
    });
+   $("#btnEditableToggle").click(function(event) {
+    let allEditable = $(".editable-field")
+    
+
+    if(!$(this).hasClass("active")) {
+      $(this).text("Terminer")
+
+      allEditable.each(function(index, elemEdiable) {
+        let childProgress = $(elemEdiable).find(".type-number-percent") ? $(elemEdiable).find(".type-number-percent").length : 0
+        let isParentTh = $(elemEdiable).parent().prop("tagName") == "TH"
+        console.log("EDITABLE", childProgress)
+        if(childProgress < 1 && !isParentTh && !$(elemEdiable).hasClass("disable-edition") )
+          $(elemEdiable).attr('contenteditable','true')
+      })
+      
+    }
+    else {
+      $(this).text("Modifier")
+      allEditable.each(function(index, elemEdiable) {
+        let childProgress = $(elemEdiable).find(".type-number-percent") ? $(elemEdiable).find(".type-number-percent").length : 0
+        let isParentTh = $(elemEdiable).parent().prop("tagName") == "TH"
+        if(childProgress < 1 && !isParentTh && !$(elemEdiable).hasClass("disable-edition") )
+          $(elemEdiable).attr('contenteditable','false')
+      })
+    }
+    $(this).toggleClass('active')
+
+   
+});
     
 </script>

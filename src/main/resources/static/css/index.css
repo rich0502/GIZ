@@ -927,7 +927,12 @@ PSD HEADER
     background: url(../img/pds_user_orange.svg) center no-repeat;
     background-size: 100% 100%;
 }
-
+.user-menu .dropdown-item.pds-profil-users:before {    
+    background: url(../img/pds_users.svg) center no-repeat;
+}
+.user-menu .dropdown-item.pds-canevas:before {    
+    background: url(../img/pds_canevas.svg) center no-repeat;
+}
 .dropdown-item.pds-logout:before  {
     background:url(../img/pds_exit-orange.svg) center no-repeat;
 }

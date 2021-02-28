@@ -429,6 +429,9 @@ ul.nav-tabs {
     cursor: pointer;
     transition: all 0.2s ease;
 }
+.gbtn.active {
+    background-color: #f48c5f;
+}
 .gbtn:hover {
     background-color: #ed3832;
 }
@@ -545,7 +548,7 @@ ul.nav-tabs {
     width: 100%;
     display: flex;
     width: 100%;
-    height: 350px;
+    /* height: 350px; */
     justify-content: center;
     align-items: flex-start;
     overflow: hidden;
@@ -560,7 +563,7 @@ ul.nav-tabs {
     max-width: 990px;
 }
 .home-content h2 {
-    font-size: 48px;
+    font-size: 32px;
     display: block;
     padding-bottom: 20px;
     height: 70px;

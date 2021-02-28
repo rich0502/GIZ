@@ -35,8 +35,13 @@
         <div class="home-content" >
             <h2 class="content-title" style="margin-bottom: 12px;">[[#{accueil.titre}]] <a th:href="@{'/acc'}" class="btn pds-primary-btn pds-add-user-btn pds-icon-btn" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">[[#{btn.accueil}]]</a></h2>        
 
-            <div class="welcome-img">
-                <img alt="" th:src="@{/img/bg-login4.jpg}">
+            <div class="welcome-img row">
+                <div class="col-6">
+                    <img alt="" th:src="@{/img/bg-login4.jpg}">
+                </div>
+                <div class="col-6">
+                    Texte de bienvenue
+                </div>
             </div>
             <div>
             	<div th:each="b : ${Accueil}">

@@ -20,7 +20,6 @@
 			<div th:include="indiMenu.html" th:remove="tag"></div>
 			<br>
 			<br>	
-			<br>
 			<form method="POST" name="theForm" th:action="@{/indicateur}">
 			<div class="table-tracker-container indicator" id="html-content-holder" crossorigin="anonymous">
 				<table class="d-table-tracker indicator-table" id="dynamicTableTracker">
@@ -36,8 +35,7 @@
 						<th class="row-field" rowspan="2"><div class="editable-field">Sources et moyens de vérification</div></th>
 						<th class="row-field" rowspan="2"><div class="editable-field">Responsables</div></th>
 						<th class="row-field" rowspan="2"><div class="editable-field">Hypothèses / Risques</div></th>
-						<th class="row-field" colspan="4"><div class="editable-field">"Situation actuelle<br>
-							A la date du "</div></th>
+						<th class="row-field" colspan="4"><div class="editable-field">Situation actuelle à la date du ...</div></th>
 					</tr>
 					<tr class="">
 						<th class="row-field" ><div class="editable-field">Situation / chiffres clés</div></th>

@@ -19,8 +19,8 @@
              	<a class="pds-btn" th:href="@{/galerie}"><span class="menu-item-label">[[#{menu.galeries}]]</span></a> 
              	<a class="pds-btn" th:href="@{/uploadList}"><span class="menu-item-label">[[#{menu.archivages}]]</span></a>
              	<a class="pds-btn" th:href="@{/storieList}"><span class="menu-item-label">[[#{menu.stories}]]</span></a>  
-             	<a class="pds-btn" th:href="@{/listbeneficiaire}"><span class="menu-item-label">BENEFICIAIRE</span></a>  
-             	<a class="pds-btn" th:href="@{/template}"><span class="menu-item-label">[[#{menu.template}]]</span></a>
+             	<a class="pds-btn" th:href="@{/listbeneficiaire}"><span class="menu-item-label">BENEFICIAIRES</span></a>  
+             	<!-- <a class="pds-btn" th:href="@{/template}"><span class="menu-item-label">[[#{menu.template}]]</span></a> -->
             </div>
             <div class="user-menu" >
                 <div class="dropdown">
@@ -34,7 +34,8 @@
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item pds-profil" th:href="@{/profilForm}">[[#{profil}]]</a>
-                        <a class="dropdown-item pds-profil" th:href="@{/userForm}">Utilisateurs</a>
+                        <a class="dropdown-item pds-profil pds-profil-users" th:href="@{/userForm}">Utilisateurs</a>
+                        <a class="dropdown-item pds-profil pds-canevas " th:href="@{/template}">[[#{menu.template}]]</a>
                         <a class="dropdown-item pds-logout" th:href="@{/logout}">[[#{logout}]]</a>
                     </div>
                 </div>
