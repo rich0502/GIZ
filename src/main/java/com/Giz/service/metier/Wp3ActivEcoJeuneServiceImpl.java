@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.Giz.data.domain.Beneficiaire;
+import com.Giz.data.domain.Storie;
 import com.Giz.data.domain.TpsFormes;
 import com.Giz.data.domain.Wp3ActivEcoJeune;
 import com.Giz.repository.Wp3ActivEcoJeuneRepository;
@@ -17,6 +18,11 @@ public class Wp3ActivEcoJeuneServiceImpl implements Wp3ActivEcoJeuneService {
 
 	@Autowired
 	Wp3ActivEcoJeuneRepository wp3ActivEcoJeuneRepository;
+	
+	@Override
+	public Wp3ActivEcoJeune createWp3ActivEcoJeune(Wp3ActivEcoJeune wp3ActivEcoJeune) throws Exception {
+		return wp3ActivEcoJeune = wp3ActivEcoJeuneRepository.save(wp3ActivEcoJeune);
+	}
 
 	@Override
 	public List<Wp3ActivEcoJeune> ListWp3ActivEcoJeune() {

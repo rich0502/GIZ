@@ -44,14 +44,20 @@ public class Wp3FormTechMetierJeuneServiceImpl implements Wp3FormTechMetierJeune
 
 	@Override
 	public long countChronologique(String dateChronologique) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(StringUtils.isEmpty(dateChronologique)) {
+			return wp3FormTechMetierJeuneRepository.count();
+		} else {
+			return wp3FormTechMetierJeuneRepository.countChronologique(dateChronologique);
+		}
 	}
 
 	@Override
 	public long countChronologiqueGenre(String dateChronologique, String genre) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(StringUtils.isEmpty(dateChronologique)) {
+			return wp3FormTechMetierJeuneRepository.countGenre(genre);
+		} else {
+			return wp3FormTechMetierJeuneRepository.countChronologiqueGenre(dateChronologique, genre);
+		}
 	}
 
 	@Override

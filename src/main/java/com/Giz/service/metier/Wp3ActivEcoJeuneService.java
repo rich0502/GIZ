@@ -4,10 +4,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import com.Giz.data.domain.TpsFormes;
 import com.Giz.data.domain.Wp3ActivEcoJeune;
 
 public interface Wp3ActivEcoJeuneService {
+	
+	public Wp3ActivEcoJeune createWp3ActivEcoJeune(Wp3ActivEcoJeune wp3ActivEcoJeune) throws Exception;
 
 	public List<Wp3ActivEcoJeune> ListWp3ActivEcoJeune();
 
