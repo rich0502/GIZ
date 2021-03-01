@@ -1,14 +1,8 @@
 package com.Giz.controller;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,8 +10,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,9 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Giz.data.constants.theme.ListeWp;
-import com.Giz.data.domain.Beneficiaire;
 import com.Giz.data.domain.MiseForme;
-import com.Giz.data.domain.Storie;
 import com.Giz.data.domain.Wp3ActivEcoJeune;
 import com.Giz.data.domain.Wp3AgrDevMfr;
 import com.Giz.data.domain.Wp3CommitteeActif;
@@ -44,11 +34,9 @@ import com.Giz.data.domain.Wp3FedeMfr;
 import com.Giz.data.domain.Wp3FormTechMetierJeune;
 import com.Giz.data.domain.Wp3JeuneFormeMfr;
 import com.Giz.data.domain.Wp3JeunePathway;
-import com.Giz.data.domain.Wp3JeuneTech;
 import com.Giz.data.domain.Wp3PeerEducator;
 import com.Giz.data.domain.Wp3SanteeComm;
 import com.Giz.data.domain.Wp3UniteElevJeune;
-import com.Giz.entity.User;
 import com.Giz.service.metier.Wp3ActivEcoJeuneService;
 import com.Giz.service.metier.Wp3AgrDevMfrService;
 import com.Giz.service.metier.Wp3CommitteeActifService;
@@ -243,6 +231,33 @@ public class Wp3Controller {
 	/* END #37-CANEVAS ACTIVITE ECONOMIQUE JEUNE */
 
 	/* START #38-CANEVAS YOUTH COMMITTEE ACTIF */
+	
+	@GetMapping("/Wp3CommitteeActifForm")
+	public String Wp3CommitteeActifForm(Model model) throws Exception {
+		return "wp3/Wp3CommitteeActif/Form_addWp3CommitteeActif";
+	}
+
+	@PostMapping("/createWp3CommitteeActif")
+	public String createWp3CommitteeActif(@RequestParam("code_village") String code_village,
+			@RequestParam("nom_comite") String nom_comite, @RequestParam("mois_annee_creation") String mois_annee_creation,
+			@RequestParam("committee_actif") boolean committee_actif, @RequestParam("date_suivi") java.sql.Date date_suivi,
+			@RequestParam("effectif_membre") int effectif_membre, @RequestParam("sexe_h") int sexe_h,
+			@RequestParam("sexe_f") int sexe_f, RedirectAttributes redirectAttributes)
+			throws Exception {
+		Wp3CommitteeActif wp3CommitteeActif = new Wp3CommitteeActif();
+		wp3CommitteeActif.setCode_village(code_village);
+		wp3CommitteeActif.setNom_comite(nom_comite);
+		wp3CommitteeActif.setMois_annee_creation(mois_annee_creation);
+		wp3CommitteeActif.setCommittee_actif(committee_actif);
+		wp3CommitteeActif.setDate_suivi(date_suivi);
+		wp3CommitteeActif.setEffectif_membre(effectif_membre);
+		wp3CommitteeActif.setSexe_h(sexe_h);
+		wp3CommitteeActif.setSexe_f(sexe_f);
+		wp3CommitteeActifService.createWp3CommitteeActif(wp3CommitteeActif);
+
+		return "redirect:/listWp3CommitteeActif";
+
+	}
 
 	@RequestMapping("/uploadWp3CommitteeActif")
 	public String uploadWp3CommitteeActif(Model model) {
@@ -322,7 +337,7 @@ public class Wp3Controller {
 			RedirectAttributes redirectAttributes) throws ParseException {
 		wp3CommitteeActifService.modifyWp3CommitteeActif(code_village, nom_comite, mois_annee_creation, committee_actif,
 				date_suivi, effectif_membre, sexe_h, sexe_f, id);
-		return "redirect:/listWp3ActivEcoJeune";
+		return "redirect:/listWp3CommitteeActif";
 	}
 
 	@RequestMapping("/deleteWp3CommitteeActif/{id}")

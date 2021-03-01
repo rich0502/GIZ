@@ -16,6 +16,11 @@ public class Wp3CommitteeActifServiceImpl implements Wp3CommitteeActifService {
 
 	@Autowired
 	Wp3CommitteeActifRepository wp3CommitteeActifRepository;
+	
+	@Override
+	public Wp3CommitteeActif createWp3CommitteeActif(Wp3CommitteeActif wp3CommitteeActif) throws Exception {
+		return wp3CommitteeActif = wp3CommitteeActifRepository.save(wp3CommitteeActif);
+	}
 
 	@Override
 	public List<Wp3CommitteeActif> ListWp3CommitteeActif() {

@@ -7,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.Giz.data.domain.Beneficiaire;
-import com.Giz.data.domain.Storie;
-import com.Giz.data.domain.TpsFormes;
 import com.Giz.data.domain.Wp3ActivEcoJeune;
 import com.Giz.repository.Wp3ActivEcoJeuneRepository;
 
