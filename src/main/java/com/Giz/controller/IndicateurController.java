@@ -36,6 +36,7 @@ import com.Giz.service.metier.Wp3ElevMfrService;
 import com.Giz.service.metier.Wp3EppFramService;
 import com.Giz.service.metier.Wp3EquipeTechMfrService;
 import com.Giz.service.metier.Wp3FedeMfrService;
+import com.Giz.service.metier.Wp3FormTechMetierJeuneService;
 import com.Giz.service.metier.Wp3JeuneFormeMfrService;
 import com.Giz.service.metier.Wp3JeunePathwayService;
 import com.Giz.service.metier.Wp3JeuneTechService;
@@ -67,6 +68,9 @@ public class IndicateurController {
 	
 	@Autowired
 	Wp3ActivEcoJeuneService wp3ActivEcoJeuneService;
+	
+	@Autowired
+	Wp3FormTechMetierJeuneService  wp3FormTechMetierJeuneService; 
 	
 	@Autowired
 	Wp3AgrDevMfrService wp3AgrDevMfrService;
@@ -161,34 +165,34 @@ public class IndicateurController {
 		float can37F = wp3ActivEcoJeuneService.countActivEcoJeuneGenre(dateChronologique, "f");
 		
 		target = 77;
-		float can38 = (float) ((wp3AgrDevMfrService.countChronologique(dateChronologique)/target)*100.0);
-		float can38H = wp3AgrDevMfrService.countChronologiqueGenre(dateChronologique, "h");
-		float can38F = wp3AgrDevMfrService.countChronologiqueGenre(dateChronologique, "f");
+		float can38 = (float) ((wp3CommitteeActifService.countChronologique(dateChronologique)/target)*100.0);
+		float can38H = wp3CommitteeActifService.countChronologiqueGenre(dateChronologique, "h");
+		float can38F = wp3CommitteeActifService.countChronologiqueGenre(dateChronologique, "f");
 		
 		
 		target = 2460; 
-		float can39 = (float) ((wp3CommitteeActifService.countChronologique(dateChronologique)/target)*100.0);
-		float can39H = wp3CommitteeActifService.countChronologiqueGenre(dateChronologique, "h");
-		float can39F = wp3CommitteeActifService.countChronologiqueGenre(dateChronologique, "f");
+		float can39 = (float) ((wp3FormTechMetierJeuneService.countChronologique(dateChronologique)/target)*100.0);
+		float can39H = wp3FormTechMetierJeuneService.countChronologiqueGenre(dateChronologique, "h");
+		float can39F = wp3FormTechMetierJeuneService.countChronologiqueGenre(dateChronologique, "f");
 		
 		target = 800;
-		float can40 = (float) ((wp3ElevMfrService.countChronologie(dateChronologique)/target)*100.0);
-		float can40H = wp3ElevMfrService.countChronologieGenre(dateChronologique, "h");
-		float can40F = wp3ElevMfrService.countChronologieGenre(dateChronologique, "f");
+		float can40 = (float) ((wp3UniteElevJeuneService.countChronologique(dateChronologique)/target)*100.0);
+		float can40H = wp3UniteElevJeuneService.countChronologiqueGenre(dateChronologique, "h");
+		float can40F = wp3UniteElevJeuneService.countChronologiqueGenre(dateChronologique, "f");
 		
 		target = 0; //1 => 100%
 		// float can41 = (float) ((wp3EppFramService.countChronologique(dateChronologique)/target)*100.0);
 		float can41 = 0.0f;
-		if(wp3EppFramService.countChronologique(dateChronologique) > 0) {
+		if(wp3ElevMfrService.countChronologie(dateChronologique) > 0) {
 			can41 = 100.0f;
 		}
-		float can41H = wp3EppFramService.countChronologiqueGenre(dateChronologique, "h");
-		float can41F = wp3EppFramService.countChronologiqueGenre(dateChronologique, "f");
+		float can41H = wp3ElevMfrService.countChronologieGenre(dateChronologique, "h");
+		float can41F = wp3ElevMfrService.countChronologieGenre(dateChronologique, "f");
 		
 		target = 600;
-		float can42 = (float) ((wp3EquipeTechMfrService.countChronologique(dateChronologique)/target)*100.0);
-		float can42H = wp3EquipeTechMfrService.countChronologiqueGenre(dateChronologique, "h");
-		float can42F = wp3EquipeTechMfrService.countChronologiqueGenre(dateChronologique, "f");
+		float can42 = (float) ((wp3JeuneFormeMfrService.countChronologique(dateChronologique)/target)*100.0);
+		float can42H = wp3JeuneFormeMfrService.countChronologiqueGenre(dateChronologique, "h");
+		float can42F = wp3JeuneFormeMfrService.countChronologiqueGenre(dateChronologique, "f");
 		
 		target = 1; // oui plan
 		// float can43 = (float) ((wp3FedeMfrService.countChronologique(dateChronologique)/target)*100.0);
@@ -202,30 +206,30 @@ public class IndicateurController {
 		target = 1;//ingeniori de formation
 		// float can44 = (float) ((wp3JeuneFormeMfrService.countChronologique(dateChronologique)/target)*100.0);
 		float can44 = 0.0f;
-		if(wp3JeuneFormeMfrService.countChronologique(dateChronologique) > 0) {
+		if(wp3EquipeTechMfrService.countChronologique(dateChronologique) > 0) {
 			can44 = 100.0f;
 		}
-		float can44H = wp3JeuneFormeMfrService.countChronologiqueGenre(dateChronologique, "h");
-		float can44F = wp3JeuneFormeMfrService.countChronologiqueGenre(dateChronologique, "f");
+		float can44H = wp3EquipeTechMfrService.countChronologiqueGenre(dateChronologique, "h");
+		float can44F = wp3EquipeTechMfrService.countChronologiqueGenre(dateChronologique, "f");
 		
 		target = 5;//existance agr
 		// float can45 = (float) ((wp3JeunePathwayService.countChronologique(dateChronologique)/target)*100.0);
 		float can45 = 0.0f;
-		if(wp3JeunePathwayService.countChronologique(dateChronologique) > 5) {
+		if(wp3AgrDevMfrService.countChronologique(dateChronologique) > 5) {
 			can45 = 100.0f;
 		}
-		float can45H = wp3JeunePathwayService.countChronologiqueGenre(dateChronologique, "h");
-		float can45F = wp3JeunePathwayService.countChronologiqueGenre(dateChronologique, "f");
+		float can45H = wp3AgrDevMfrService.countChronologiqueGenre(dateChronologique, "h");
+		float can45F = wp3AgrDevMfrService.countChronologiqueGenre(dateChronologique, "f");
 		
 		target = 3850;
-		float can46 = (float) ((wp3JeuneTechService.countChronologique(dateChronologique)/target)*100.0);
-		float can46H = wp3JeuneTechService.countChronologiqueGenre(dateChronologique, "h");
-		float can46F = wp3JeuneTechService.countChronologiqueGenre(dateChronologique, "f");
+		float can46 = (float) ((wp3JeunePathwayService.countChronologique(dateChronologique)/target)*100.0);
+		float can46H = wp3JeunePathwayService.countChronologiqueGenre(dateChronologique, "h");
+		float can46F = wp3JeunePathwayService.countChronologiqueGenre(dateChronologique, "f");
 		
 		target = 77; 
-		float can47 = (float) ((wp3PeerEducatorService.countChronologique(dateChronologique)/target)*100.0);
-		float can47H = wp3PeerEducatorService.countChronologiqueGenre(dateChronologique, "h");
-		float can47F = wp3PeerEducatorService.countChronologiqueGenre(dateChronologique, "f");
+		float can47 = (float) ((wp3EppFramService.countChronologique(dateChronologique)/target)*100.0);
+		float can47H = wp3EppFramService.countChronologiqueGenre(dateChronologique, "h");
+		float can47F = wp3EppFramService.countChronologiqueGenre(dateChronologique, "f");
 		
 		target = 1;
 		// float can48 = (float) ((wp3SanteeCommService.countChronologique(dateChronologique)/target)*100.0);
@@ -239,11 +243,11 @@ public class IndicateurController {
 		target = 2; 
 		// float can49 = (float) ((wp3UniteElevJeuneService.countChronologique(dateChronologique)/target)*100.0);
 		float can49 = 0.0f;
-		if(wp3UniteElevJeuneService.countChronologique(dateChronologique) > 2) {
+		if(wp3PeerEducatorService.countChronologique(dateChronologique) > 2) {
 			can49 = 100.0f;
 		}
-		float can49H = wp3UniteElevJeuneService.countChronologiqueGenre(dateChronologique, "h");
-		float can49F = wp3UniteElevJeuneService.countChronologiqueGenre(dateChronologique, "f");
+		float can49H = wp3PeerEducatorService.countChronologiqueGenre(dateChronologique, "h");
+		float can49F = wp3PeerEducatorService.countChronologiqueGenre(dateChronologique, "f");
 		
 		model.addAttribute("can37", can37);
 		model.addAttribute("can37H", can37H);
