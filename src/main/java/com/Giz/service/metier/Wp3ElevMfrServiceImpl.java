@@ -16,6 +16,11 @@ public class Wp3ElevMfrServiceImpl implements Wp3ElevMfrService {
 
 	@Autowired
 	Wp3ElevMfrRepository wp3ElevMfrRepository;
+	
+	@Override
+	public Wp3ElevMfr createWp3ElevMfr(Wp3ElevMfr wp3ElevMfr) throws Exception {
+		return wp3ElevMfr = wp3ElevMfrRepository.save(wp3ElevMfr);
+	}
 
 	@Override
 	public List<Wp3ElevMfr> ListWp3ElevMfr() {

@@ -607,6 +607,47 @@ public class Wp3Controller {
 	 */
 
 	/* START #41-CANEVAS ELÈVE INSCRIT MFR DRAFT */
+	
+	@GetMapping("/Wp3ElevMfrForm")
+	public String Wp3ElevMfrForm(Model model) throws Exception {
+		return "wp3/Wp3ElevMfr/Form_addWp3ElevMfr";
+	}
+
+	@PostMapping("/createWp3ElevMfr")
+	public String createWp3ElevMfr(@RequestParam("code_village") String code_village,
+			@RequestParam("nom_prenom") String nom_prenom, @RequestParam("village_origine") String village_origine,
+			@RequestParam("sexe") String sexe, @RequestParam("annee_naissance") int annee_naissance,
+			@RequestParam("inscrit") boolean inscrit, @RequestParam("annee_inscription") int annee_inscription,
+			@RequestParam("date_suivi") java.sql.Date date_suivi, @RequestParam("type_frm") String type_frm,
+			@RequestParam("annee_etude") int annee_etude, @RequestParam("date_sortie") java.sql.Date date_sortie,
+			@RequestParam("type_projet") String type_projet, @RequestParam("niveau_demarrage") String niveau_demarrage,
+			@RequestParam("date_validation") java.sql.Date date_validation, @RequestParam("accompagne") boolean accompagne,
+			@RequestParam("date_suivi1") java.sql.Date date_suivi1, RedirectAttributes redirectAttributes)
+			throws Exception {
+		String activite = "CANEVAS ELÈVE INSCRIT MFR DRAFT";
+		Wp3ElevMfr wp3ElevMfr = new Wp3ElevMfr();
+		wp3ElevMfr.setCode_village(code_village);
+		wp3ElevMfr.setNom_prenom(nom_prenom);
+		wp3ElevMfr.setVillage_origine(village_origine);
+		wp3ElevMfr.setSexe(sexe);
+		wp3ElevMfr.setAnnee_naissance(annee_naissance);
+		wp3ElevMfr.setInscrit(inscrit);
+		wp3ElevMfr.setAnnee_inscription(annee_inscription);
+		wp3ElevMfr.setDate_suivi(date_suivi);
+		wp3ElevMfr.setType_frm(type_frm);
+		wp3ElevMfr.setAnnee_etude(annee_etude);
+		wp3ElevMfr.setDate_sortie(date_sortie);
+		wp3ElevMfr.setType_projet(type_projet);
+		wp3ElevMfr.setNiveau_demarrage(niveau_demarrage);
+		wp3ElevMfr.setDate_validation(date_validation);
+		wp3ElevMfr.setAccompagne(accompagne);
+		wp3ElevMfr.setDate_suivi1(date_suivi1);
+		wp3ElevMfr.setActivite(activite);
+		wp3ElevMfrService.createWp3ElevMfr(wp3ElevMfr);
+
+		return "redirect:/listWp3ElevMfr";
+
+	}
 
 	@RequestMapping("/uploadWp3ElevMfr")
 	public String uploadWp3ElevMfr(Model model) {
