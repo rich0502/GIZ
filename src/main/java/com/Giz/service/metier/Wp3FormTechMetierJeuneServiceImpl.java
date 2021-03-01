@@ -8,15 +8,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.Giz.data.domain.Wp3FormTechMetierJeune;
-import com.Giz.data.domain.Wp3JeuneTech;
 import com.Giz.repository.Wp3FormTechMetierJeuneRepository;
-import com.Giz.repository.Wp3JeuneTechRepository;
 
 @Service
 public class Wp3FormTechMetierJeuneServiceImpl implements Wp3FormTechMetierJeuneService {
 
 	@Autowired
 	Wp3FormTechMetierJeuneRepository wp3FormTechMetierJeuneRepository;
+	
+	@Override
+	public Wp3FormTechMetierJeune createWp3FormTechMetierJeune(Wp3FormTechMetierJeune wp3FormTechMetierJeune) throws Exception {
+		return wp3FormTechMetierJeune = wp3FormTechMetierJeuneRepository.save(wp3FormTechMetierJeune);
+	}
 
 	@Override
 	public List<Wp3FormTechMetierJeune> ListWp3FormTechMetierJeune() {

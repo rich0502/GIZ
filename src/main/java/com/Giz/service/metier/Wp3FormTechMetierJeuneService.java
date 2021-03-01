@@ -8,6 +8,8 @@ import com.Giz.data.domain.Wp3FormTechMetierJeune;
 
 
 public interface Wp3FormTechMetierJeuneService {
+	
+	public Wp3FormTechMetierJeune createWp3FormTechMetierJeune(Wp3FormTechMetierJeune wp3FormTechMetierJeune) throws Exception;
 
 	public List<Wp3FormTechMetierJeune> ListWp3FormTechMetierJeune();
 

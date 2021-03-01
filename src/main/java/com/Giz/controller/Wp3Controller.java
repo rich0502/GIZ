@@ -349,6 +349,36 @@ public class Wp3Controller {
 	/* END #38-CANEVAS YOUTH COMMITTEE ACTIF */
 
 	/* START #39 CANEVAS FORMATION SUR LES TECHNIQUES/METIERS POUR LES JEUNES */
+	
+	@GetMapping("/Wp3FormTechMetierJeuneForm")
+	public String Wp3FormTechMetierJeuneForm(Model model) throws Exception {
+		return "wp3/Wp3FormTechMetierJeune/Form_addWp3FormTechMetierJeune";
+	}
+
+	@PostMapping("/createWp3FormTechMetierJeune")
+	public String createWp3FormTechMetierJeune(@RequestParam("code_village") String code_village,
+			@RequestParam("sexe") String sexe, @RequestParam("annee_naissance") int annee_naissance,
+			@RequestParam("organisme_formateur") String organisme_formateur,
+			@RequestParam("formation_recue") Boolean formation_recue, @RequestParam("theme") String theme,
+			@RequestParam("date_fin") java.sql.Date date_fin, @RequestParam("etape_suivre") String etape_suivre,
+			@RequestParam("date_realise") java.sql.Date date_realise, RedirectAttributes redirectAttributes)
+			throws Exception {
+		Wp3FormTechMetierJeune wp3FormTechMetierJeune = new Wp3FormTechMetierJeune();
+		wp3FormTechMetierJeune.setCode_village(code_village);
+		wp3FormTechMetierJeune.setSexe(sexe);
+		wp3FormTechMetierJeune.setAnnee_naissance(annee_naissance);
+		wp3FormTechMetierJeune.setOrganisme_formateur(organisme_formateur);
+		wp3FormTechMetierJeune.setFormation_recue(formation_recue);
+		wp3FormTechMetierJeune.setTheme(theme);
+		wp3FormTechMetierJeune.setDate_fin(date_fin);
+		wp3FormTechMetierJeune.setEtape_suivre(etape_suivre);
+		wp3FormTechMetierJeune.setDate_realise(date_realise);
+		wp3FormTechMetierJeuneService.createWp3FormTechMetierJeune(wp3FormTechMetierJeune);
+
+		return "redirect:/listWp3FormTechMetierJeune";
+
+	}
+
 
 	@RequestMapping("/uploadWp3FormTechMetierJeune")
 	public String uploadWp3FormTechMetierJeune(Model model) {
