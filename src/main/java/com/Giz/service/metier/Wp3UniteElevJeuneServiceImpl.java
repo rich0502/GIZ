@@ -16,6 +16,11 @@ public class Wp3UniteElevJeuneServiceImpl implements Wp3UniteElevJeuneService {
 
 	@Autowired
 	Wp3UniteElevJeuneRepository wp3UniteElevJeuneRepository;
+	
+	@Override
+	public Wp3UniteElevJeune createWp3UniteElevJeune(Wp3UniteElevJeune wp3UniteElevJeune) throws Exception {
+		return wp3UniteElevJeune = wp3UniteElevJeuneRepository.save(wp3UniteElevJeune);
+	}
 
 	@Override
 	public List<Wp3UniteElevJeune> ListWp3UniteElevJeune() {

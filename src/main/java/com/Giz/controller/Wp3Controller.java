@@ -478,6 +478,36 @@ public class Wp3Controller {
 	 * START 40 CANEVAS DEMARRAGE UNITE D'ELEVAGE EN ADOPTANT LES BONNES PRATIQUES
 	 * POUR LES JEUNES DE 18 à 24 ans
 	 */
+	
+	@GetMapping("/Wp3UniteElevJeuneForm")
+	public String Wp3UniteElevJeuneForm(Model model) throws Exception {
+		return "wp3/Wp3UniteElevJeune/Form_addWp3UniteElevJeune";
+	}
+
+	@PostMapping("/createWp3UniteElevJeune")
+	public String createWp3UniteElevJeune(@RequestParam("code_village") String code_village,
+			@RequestParam("nom_prenom") String nom_prenom, @RequestParam("sexe") String sexe,
+			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("demarrage_unite") boolean demarrage_unite,
+			@RequestParam("date_dem") java.sql.Date date_dem, @RequestParam("type_activite") String type_activite,
+			@RequestParam("theme1_traite") String theme1_traite, @RequestParam("date_suivi1") java.sql.Date date_suivi1, RedirectAttributes redirectAttributes)
+			throws Exception {
+		String activite = "CANEVAS DEMARRAGE UNITE D'ELEVAGE EN ADOPTANT LES BONNES PRATIQUES POUR LES JEUNES DE 18 à 24 ans";
+		Wp3UniteElevJeune wp3UniteElevJeune = new Wp3UniteElevJeune();
+		wp3UniteElevJeune.setCode_village(code_village);
+		wp3UniteElevJeune.setNom_prenom(nom_prenom);
+		wp3UniteElevJeune.setSexe(sexe);
+		wp3UniteElevJeune.setAnnee_naissance(annee_naissance);
+		wp3UniteElevJeune.setDemarrage_unite(demarrage_unite);
+		wp3UniteElevJeune.setDate_dem(date_dem);
+		wp3UniteElevJeune.setType_activite(type_activite);
+		wp3UniteElevJeune.setTheme1_traite(theme1_traite);
+		wp3UniteElevJeune.setDate_suivi1(date_suivi1);
+		wp3UniteElevJeune.setActivite(activite);
+		wp3UniteElevJeuneService.createWp3UniteElevJeune(wp3UniteElevJeune);
+
+		return "redirect:/listWp3UniteElevJeune";
+
+	}
 
 	@RequestMapping("/uploadWp3UniteElevJeune")
 	public String uploadWp3UniteElevJeune(Model model) {
