@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.Giz.data.domain.Plateforme;
-import com.Giz.data.domain.TpsFormes;
 
 
 public interface PlateformeService {

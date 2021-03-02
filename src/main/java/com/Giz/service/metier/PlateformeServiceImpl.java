@@ -7,12 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.Giz.data.domain.Adoption_innovation;
-import com.Giz.data.domain.AtelierMFR;
 import com.Giz.data.domain.Plateforme;
-import com.Giz.data.domain.TpsFormes;
-import com.Giz.repository.Adopte_InnovationRepository;
-import com.Giz.repository.AtelierMFRRepository;
 import com.Giz.repository.PlateformRepository;
 
 @Service

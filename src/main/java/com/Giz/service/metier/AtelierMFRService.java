@@ -5,9 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.Giz.data.domain.AtelierMFR;
-import com.Giz.data.domain.GraphDist;
-import com.Giz.data.domain.GraphDistrict;
-import com.Giz.data.domain.TpsFormes;
 
 
 public interface AtelierMFRService {

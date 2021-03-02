@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.Giz.data.domain.Adoption_innovation;
 import com.Giz.data.domain.DocCap;
-import com.Giz.data.domain.TpsFormes;
-import com.Giz.repository.Adopte_InnovationRepository;
 import com.Giz.repository.DocCapRepository;
 
 @Service

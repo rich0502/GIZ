@@ -2,10 +2,7 @@ package com.Giz.controller;
 
 
 import java.io.IOException;
-import java.sql.Date;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -82,6 +80,25 @@ public class Wp4Controller {
 	}
 	
 	/* CANEVAS PARTAGE DE DOCUMENT DE CAPITALISATION AUX ACTEURS  */
+	
+	@GetMapping("/DocCapForm")
+	public String DocCapForm(Model model) throws Exception {
+		return "wp4/DocCap/Form_addDocCap";
+	}
+
+	@PostMapping("/createDocCap")
+	public String createDocCap(
+			@RequestParam("titre_doc") String titre_doc,
+			@RequestParam("thematique") String thematique,
+			@RequestParam("type_doc") String type_doc,
+			@RequestParam("auteur_doc") String auteur_doc,
+			@RequestParam("date_partage") java.sql.Date date_partage,
+			@RequestParam("reception") String reception,
+			RedirectAttributes redirectAttributes) throws Exception {
+		docCapService.addDocCap( titre_doc, thematique, type_doc, auteur_doc, date_partage, reception);
+		return "redirect:/listDocCap";
+
+	}
 	
 	@RequestMapping("/uploadDocCap")
 	public String uploadDocCap(Model model) {
@@ -165,6 +182,30 @@ public class Wp4Controller {
 	}
 	
 	/* CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DU RESEAU DE MFR DANS LA REGION */
+	
+	@GetMapping("/AtelierMFRForm")
+	public String AtelierMFRForm(Model model) throws Exception {
+		return "wp4/AtelierMFR/Form_addAtelierMFR";
+	}
+
+	@PostMapping("/createAtelierMFR")
+	public String createAtelierMFR(
+			@RequestParam("code_village") String code_village,
+			@RequestParam("atelier_resp") String atelier_resp,
+			@RequestParam("date_realise") java.sql.Date date_realise,
+			@RequestParam("lieu_realise") String lieu_realise,
+			@RequestParam("theme_choise") String theme_choise,
+			@RequestParam("nbr_particip") long nbr_particip,
+			@RequestParam("nbr_homme") int nbr_homme,
+			@RequestParam("nbr_femme") int nbr_femme, 
+			@RequestParam("cible_atelier") String cible_atelier,
+			@RequestParam("type_atelier") String type_atelier,
+			RedirectAttributes redirectAttributes) throws ParseException {
+		atelierMFRService.addAtelierMFR( code_village, atelier_resp, date_realise, lieu_realise, theme_choise, nbr_particip, nbr_homme, nbr_femme, cible_atelier, type_atelier);
+		return "redirect:/listAtelier";
+
+	}
+	
 	@RequestMapping("/uploadAtelier")
 	public String uploadAtelier(Model model) {
 		int canevas = 52;
@@ -262,6 +303,7 @@ public class Wp4Controller {
 	}
 	
 	/* CANEVAS DIALOGUE REGIONAL SUR L'ACCES AU FINANCEMENT */
+	
 	@RequestMapping("/uploadAccesFinance")
 	public String uploadAccesFinance(Model model) {
 		String[][] scList = ListeWp.wp();
@@ -312,6 +354,25 @@ public class Wp4Controller {
 	}
 	
 	/*  CANEVAS EXISTENCE DE DISPOSITIF CONCERTE DE SUIVI ET PROTECTION DES ENFANTS */
+	
+	@GetMapping("/PlateformeForm")
+	public String PlateformeForm(Model model) throws Exception {
+		return "wp4/plateforme/Form_addPlateforme";
+	}
+
+	@PostMapping("/createPlateforme")
+	public String createPlateforme(
+			@RequestParam("code_village") String code_village,
+			@RequestParam("exist_platform") Boolean exist_platform,
+			@RequestParam("operationnel") Boolean operationnel,
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			@RequestParam("commentaire") String commentaire,
+			@RequestParam("type_plateform") String type_plateform,
+			RedirectAttributes redirectAttributes) throws ParseException {
+		plateformeService.addPlateforme(  code_village,  exist_platform,  operationnel,  date_suivi, commentaire,  type_plateform);
+		return "redirect:/listPlateforme";
+
+	}
 	
 	@RequestMapping("/uploadPlateforme")
 	public String uploadPlateforme(Model model) {
