@@ -15,6 +15,11 @@ public class Wp3JeuneFormeMfrServiceImpl implements Wp3JeuneFormeMfrService {
 
 	@Autowired
 	Wp3JeuneFormeMfrRepository wp3JeuneFormeMfrRepository;
+	
+	@Override
+	public Wp3JeuneFormeMfr createWp3JeuneFormeMfr(Wp3JeuneFormeMfr wp3JeuneFormeMfr) throws Exception {
+		return wp3JeuneFormeMfr = wp3JeuneFormeMfrRepository.save(wp3JeuneFormeMfr);
+	}
 
 	@Override
 	public List<Wp3JeuneFormeMfr> ListWp3JeuneFormeMfr() {

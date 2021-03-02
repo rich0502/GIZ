@@ -757,6 +757,34 @@ public class Wp3Controller {
 	/* END #41-CANEVAS ELÈVE INSCRIT MFR DRAFT */
 
 	/* START #42-CANEVAS JEUNE FORME MFR ACCOMPAGNE */
+	@GetMapping("/Wp3JeuneFormeMfrForm")
+	public String Wp3JeuneFormeMfrForm(Model model) throws Exception {
+		return "wp3/Wp3JeuneFormeMfr/Form_addWp3JeuneFormeMfr";
+	}
+
+	@PostMapping("/createWp3JeuneFormeMfr")
+	public String createWp3JeuneFormeMfr(@RequestParam("code_village") String code_village,
+			@RequestParam("nom_prenom") String nom_prenom, @RequestParam("sexe") String sexe,
+			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("forme") boolean forme,
+			@RequestParam("accompagne_sortie") boolean accompagne_sortie,
+			@RequestParam("type_accompagnement") String type_accompagnement, @RequestParam("date_suivi") java.sql.Date date_suivi, RedirectAttributes redirectAttributes)
+			throws Exception {
+		String activite = "CANEVAS JEUNE FORME MFR ACCOMPAGNE";
+		Wp3JeuneFormeMfr wp3JeuneFormeMfr = new Wp3JeuneFormeMfr();
+		wp3JeuneFormeMfr.setCode_village(code_village);
+		wp3JeuneFormeMfr.setNom_prenom(nom_prenom);
+		wp3JeuneFormeMfr.setSexe(sexe);
+		wp3JeuneFormeMfr.setAnnee_naissance(annee_naissance);
+		wp3JeuneFormeMfr.setForme(forme);
+		wp3JeuneFormeMfr.setAccompagne_sortie(accompagne_sortie);
+		wp3JeuneFormeMfr.setType_accompagnement(type_accompagnement);
+		wp3JeuneFormeMfr.setDate_suivi(date_suivi);
+		wp3JeuneFormeMfr.setActivite(activite);
+		wp3JeuneFormeMfrService.createWp3JeuneFormeMfr(wp3JeuneFormeMfr);
+
+		return "redirect:/listWp3JeuneFormeMfr";
+
+	}
 
 	@RequestMapping("/uploadWp3JeuneFormeMfr")
 	public String uploadWp3JeuneFormeMfr(Model model) {
