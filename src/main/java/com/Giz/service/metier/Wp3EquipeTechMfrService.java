@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.Giz.data.domain.Wp3EquipeTechMfr;
 
 public interface Wp3EquipeTechMfrService {
+	
+	public Wp3EquipeTechMfr createWp3EquipeTechMfr(Wp3EquipeTechMfr wp3EquipeTechMfr) throws Exception;
 
 	public List<Wp3EquipeTechMfr> ListWp3EquipeTechMfr();
 

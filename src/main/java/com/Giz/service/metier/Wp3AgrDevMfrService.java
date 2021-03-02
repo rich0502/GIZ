@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.Giz.data.domain.Wp3AgrDevMfr;
 
 public interface Wp3AgrDevMfrService {
+	
+	public Wp3AgrDevMfr createWp3AgrDevMfr(Wp3AgrDevMfr wp3AgrDevMfr) throws Exception;
 
 	public List<Wp3AgrDevMfr> ListWp3AgrDevMfr();
 

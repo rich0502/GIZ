@@ -15,6 +15,11 @@ public class Wp3AgrDevMfrServiceImpl implements Wp3AgrDevMfrService {
 
 	@Autowired
 	Wp3AgrDevMfrRepository wp3AgrDevMfrRepository;
+	
+	@Override
+	public Wp3AgrDevMfr createWp3AgrDevMfr(Wp3AgrDevMfr wp3AgrDevMfr) throws Exception {
+		return wp3AgrDevMfr = wp3AgrDevMfrRepository.save(wp3AgrDevMfr);
+	}
 
 	@Override
 	public List<Wp3AgrDevMfr> ListWp3AgrDevMfr() {

@@ -231,7 +231,7 @@ public class Wp3Controller {
 	/* END #37-CANEVAS ACTIVITE ECONOMIQUE JEUNE */
 
 	/* START #38-CANEVAS YOUTH COMMITTEE ACTIF */
-	
+
 	@GetMapping("/Wp3CommitteeActifForm")
 	public String Wp3CommitteeActifForm(Model model) throws Exception {
 		return "wp3/Wp3CommitteeActif/Form_addWp3CommitteeActif";
@@ -239,11 +239,12 @@ public class Wp3Controller {
 
 	@PostMapping("/createWp3CommitteeActif")
 	public String createWp3CommitteeActif(@RequestParam("code_village") String code_village,
-			@RequestParam("nom_comite") String nom_comite, @RequestParam("mois_annee_creation") String mois_annee_creation,
-			@RequestParam("committee_actif") boolean committee_actif, @RequestParam("date_suivi") java.sql.Date date_suivi,
-			@RequestParam("effectif_membre") int effectif_membre, @RequestParam("sexe_h") int sexe_h,
-			@RequestParam("sexe_f") int sexe_f, RedirectAttributes redirectAttributes)
-			throws Exception {
+			@RequestParam("nom_comite") String nom_comite,
+			@RequestParam("mois_annee_creation") String mois_annee_creation,
+			@RequestParam("committee_actif") boolean committee_actif,
+			@RequestParam("date_suivi") java.sql.Date date_suivi, @RequestParam("effectif_membre") int effectif_membre,
+			@RequestParam("sexe_h") int sexe_h, @RequestParam("sexe_f") int sexe_f,
+			RedirectAttributes redirectAttributes) throws Exception {
 		Wp3CommitteeActif wp3CommitteeActif = new Wp3CommitteeActif();
 		wp3CommitteeActif.setCode_village(code_village);
 		wp3CommitteeActif.setNom_comite(nom_comite);
@@ -349,7 +350,7 @@ public class Wp3Controller {
 	/* END #38-CANEVAS YOUTH COMMITTEE ACTIF */
 
 	/* START #39 CANEVAS FORMATION SUR LES TECHNIQUES/METIERS POUR LES JEUNES */
-	
+
 	@GetMapping("/Wp3FormTechMetierJeuneForm")
 	public String Wp3FormTechMetierJeuneForm(Model model) throws Exception {
 		return "wp3/Wp3FormTechMetierJeune/Form_addWp3FormTechMetierJeune";
@@ -378,7 +379,6 @@ public class Wp3Controller {
 		return "redirect:/listWp3FormTechMetierJeune";
 
 	}
-
 
 	@RequestMapping("/uploadWp3FormTechMetierJeune")
 	public String uploadWp3FormTechMetierJeune(Model model) {
@@ -478,7 +478,7 @@ public class Wp3Controller {
 	 * START 40 CANEVAS DEMARRAGE UNITE D'ELEVAGE EN ADOPTANT LES BONNES PRATIQUES
 	 * POUR LES JEUNES DE 18 à 24 ans
 	 */
-	
+
 	@GetMapping("/Wp3UniteElevJeuneForm")
 	public String Wp3UniteElevJeuneForm(Model model) throws Exception {
 		return "wp3/Wp3UniteElevJeune/Form_addWp3UniteElevJeune";
@@ -487,9 +487,10 @@ public class Wp3Controller {
 	@PostMapping("/createWp3UniteElevJeune")
 	public String createWp3UniteElevJeune(@RequestParam("code_village") String code_village,
 			@RequestParam("nom_prenom") String nom_prenom, @RequestParam("sexe") String sexe,
-			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("demarrage_unite") boolean demarrage_unite,
-			@RequestParam("date_dem") java.sql.Date date_dem, @RequestParam("type_activite") String type_activite,
-			@RequestParam("theme1_traite") String theme1_traite, @RequestParam("date_suivi1") java.sql.Date date_suivi1, RedirectAttributes redirectAttributes)
+			@RequestParam("annee_naissance") int annee_naissance,
+			@RequestParam("demarrage_unite") boolean demarrage_unite, @RequestParam("date_dem") java.sql.Date date_dem,
+			@RequestParam("type_activite") String type_activite, @RequestParam("theme1_traite") String theme1_traite,
+			@RequestParam("date_suivi1") java.sql.Date date_suivi1, RedirectAttributes redirectAttributes)
 			throws Exception {
 		String activite = "CANEVAS DEMARRAGE UNITE D'ELEVAGE EN ADOPTANT LES BONNES PRATIQUES POUR LES JEUNES DE 18 à 24 ans";
 		Wp3UniteElevJeune wp3UniteElevJeune = new Wp3UniteElevJeune();
@@ -607,7 +608,7 @@ public class Wp3Controller {
 	 */
 
 	/* START #41-CANEVAS ELÈVE INSCRIT MFR DRAFT */
-	
+
 	@GetMapping("/Wp3ElevMfrForm")
 	public String Wp3ElevMfrForm(Model model) throws Exception {
 		return "wp3/Wp3ElevMfr/Form_addWp3ElevMfr";
@@ -621,9 +622,9 @@ public class Wp3Controller {
 			@RequestParam("date_suivi") java.sql.Date date_suivi, @RequestParam("type_frm") String type_frm,
 			@RequestParam("annee_etude") int annee_etude, @RequestParam("date_sortie") java.sql.Date date_sortie,
 			@RequestParam("type_projet") String type_projet, @RequestParam("niveau_demarrage") String niveau_demarrage,
-			@RequestParam("date_validation") java.sql.Date date_validation, @RequestParam("accompagne") boolean accompagne,
-			@RequestParam("date_suivi1") java.sql.Date date_suivi1, RedirectAttributes redirectAttributes)
-			throws Exception {
+			@RequestParam("date_validation") java.sql.Date date_validation,
+			@RequestParam("accompagne") boolean accompagne, @RequestParam("date_suivi1") java.sql.Date date_suivi1,
+			RedirectAttributes redirectAttributes) throws Exception {
 		String activite = "CANEVAS ELÈVE INSCRIT MFR DRAFT";
 		Wp3ElevMfr wp3ElevMfr = new Wp3ElevMfr();
 		wp3ElevMfr.setCode_village(code_village);
@@ -767,7 +768,8 @@ public class Wp3Controller {
 			@RequestParam("nom_prenom") String nom_prenom, @RequestParam("sexe") String sexe,
 			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("forme") boolean forme,
 			@RequestParam("accompagne_sortie") boolean accompagne_sortie,
-			@RequestParam("type_accompagnement") String type_accompagnement, @RequestParam("date_suivi") java.sql.Date date_suivi, RedirectAttributes redirectAttributes)
+			@RequestParam("type_accompagnement") String type_accompagnement,
+			@RequestParam("date_suivi") java.sql.Date date_suivi, RedirectAttributes redirectAttributes)
 			throws Exception {
 		String activite = "CANEVAS JEUNE FORME MFR ACCOMPAGNE";
 		Wp3JeuneFormeMfr wp3JeuneFormeMfr = new Wp3JeuneFormeMfr();
@@ -885,10 +887,11 @@ public class Wp3Controller {
 	}
 
 	@PostMapping("/createWp3FedeMfr")
-	public String createWp3FedeMfr(@RequestParam("code_region") String code_region, @RequestParam("nom_mfr") String nom_mfr,
-			@RequestParam("annee_miseplace") int annee_miseplace, @RequestParam("statut") boolean statut,
-			@RequestParam("reglement_interieur") boolean reglement_interieur,
-			@RequestParam("recepisse_mfr") boolean recepisse_mfr, @RequestParam("date_recepisse") java.sql.Date date_recepisse,
+	public String createWp3FedeMfr(@RequestParam("code_region") String code_region,
+			@RequestParam("nom_mfr") String nom_mfr, @RequestParam("annee_miseplace") int annee_miseplace,
+			@RequestParam("statut") boolean statut, @RequestParam("reglement_interieur") boolean reglement_interieur,
+			@RequestParam("recepisse_mfr") boolean recepisse_mfr,
+			@RequestParam("date_recepisse") java.sql.Date date_recepisse,
 			@RequestParam("plan_strategique") boolean plan_strategique,
 			@RequestParam("date_validation") java.sql.Date date_validation, RedirectAttributes redirectAttributes)
 			throws Exception {
@@ -1002,6 +1005,32 @@ public class Wp3Controller {
 	/* END #43-CANEVAS FEDERATION REGIONALE MFR */
 
 	/* START #44-CANEVAS BDD ÉQUIPE TECHNIQUE MFR */
+	@GetMapping("/Wp3EquipeTechMfrForm")
+	public String Wp3EquipeTechMfrForm(Model model) throws Exception {
+		return "wp3/Wp3EquipeTechMfr/Form_addWp3EquipeTechMfr";
+	}
+
+	@PostMapping("/createWp3EquipeTechMfr")
+	public String createWp3EquipeTechMfr(@RequestParam("code_village") String code_village,
+			@RequestParam("nom_prenom") String nom_prenom, @RequestParam("sexe") String sexe,
+			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("frm_recue1") String frm_recue1,
+			@RequestParam("competence_frm") boolean competence_frm, @RequestParam("date_eval") java.sql.Date date_eval,
+			RedirectAttributes redirectAttributes) throws Exception {
+		String activite = "CANEVAS BDD ÉQUIPE TECHNIQUE MFR";
+		Wp3EquipeTechMfr wp3EquipeTechMfr = new Wp3EquipeTechMfr();
+		wp3EquipeTechMfr.setCode_village(code_village);
+		wp3EquipeTechMfr.setNom_prenom(nom_prenom);
+		wp3EquipeTechMfr.setSexe(sexe);
+		wp3EquipeTechMfr.setAnnee_naissance(annee_naissance);
+		wp3EquipeTechMfr.setFrm_recue1(frm_recue1);
+		wp3EquipeTechMfr.setCompetence_frm(competence_frm);
+		wp3EquipeTechMfr.setDate_eval(date_eval);
+		wp3EquipeTechMfr.setActivite(activite);
+		wp3EquipeTechMfrService.createWp3EquipeTechMfr(wp3EquipeTechMfr);
+
+		return "redirect:/listWp3EquipeTechMfr";
+
+	}
 
 	@RequestMapping("/uploadWp3EquipeTechMfr")
 	public String uploadWp3EquipeTechMfr(Model model) {
@@ -1093,6 +1122,30 @@ public class Wp3Controller {
 	/* END #44-CANEVAS BDD ÉQUIPE TECHNIQUE MFR */
 
 	/* START #45-CANEVAS AGR DÉVELOPPÉ MFR SAVA */
+	@GetMapping("/Wp3AgrDevMfrForm")
+	public String Wp3AgrDevMfrForm(Model model) throws Exception {
+		return "wp3/Wp3AgrDevMfr/Form_addWp3AgrDevMfr";
+	}
+
+	@PostMapping("/createWp3AgrDevMfr")
+	public String createWp3AgrDevMfr(@RequestParam("code_village") String code_village, @RequestParam("nom_mfr") String nom_mfr,
+			@RequestParam("annee_miseplace") int annee_miseplace, @RequestParam("agr_developpe") boolean agr_developpe,
+			@RequestParam("date_eval") java.sql.Date date_eval, @RequestParam("type_agr_dev1") String type_agr_dev1,
+			@RequestParam("date_suivi1") java.sql.Date date_suivi1,
+			RedirectAttributes redirectAttributes) throws Exception {
+		Wp3AgrDevMfr wp3AgrDevMfr = new Wp3AgrDevMfr();		
+		wp3AgrDevMfr.setCode_village(code_village);
+		wp3AgrDevMfr.setNom_mfr(nom_mfr);
+		wp3AgrDevMfr.setAnnee_miseplace(annee_miseplace);
+		wp3AgrDevMfr.setAgr_developpe(agr_developpe);
+		wp3AgrDevMfr.setDate_eval(date_eval);
+		wp3AgrDevMfr.setType_agr_dev1(type_agr_dev1);
+		wp3AgrDevMfr.setDate_suivi1(date_suivi1);
+		wp3AgrDevMfrService.createWp3AgrDevMfr(wp3AgrDevMfr);
+
+		return "redirect:/listWp3AgrDevMfr";
+
+	}
 
 	@RequestMapping("/uploadWp3AgrDevMfr")
 	public String uploadWp3AgrDevMfr(Model model) {

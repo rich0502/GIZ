@@ -15,6 +15,11 @@ public class Wp3EquipeTechMfrServiceImpl implements Wp3EquipeTechMfrService {
 
 	@Autowired
 	Wp3EquipeTechMfrRepository wp3EquipeTechMfrRepository;
+	
+	@Override
+	public Wp3EquipeTechMfr createWp3EquipeTechMfr(Wp3EquipeTechMfr wp3EquipeTechMfr) throws Exception {
+		return wp3EquipeTechMfr = wp3EquipeTechMfrRepository.save(wp3EquipeTechMfr);
+	}
 
 	@Override
 	public List<Wp3EquipeTechMfr> ListWp3EquipeTechMfr() {
