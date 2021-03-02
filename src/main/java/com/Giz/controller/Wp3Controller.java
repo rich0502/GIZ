@@ -879,6 +879,35 @@ public class Wp3Controller {
 	/* END #42-CANEVAS JEUNE FORME MFR ACCOMPAGNE */
 
 	/* START #43-CANEVAS FEDERATION REGIONALE MFR */
+	@GetMapping("/Wp3FedeMfrForm")
+	public String Wp3FedeMfrForm(Model model) throws Exception {
+		return "wp3/Wp3FedeMfr/Form_addWp3FedeMfr";
+	}
+
+	@PostMapping("/createWp3FedeMfr")
+	public String createWp3FedeMfr(@RequestParam("code_region") String code_region, @RequestParam("nom_mfr") String nom_mfr,
+			@RequestParam("annee_miseplace") int annee_miseplace, @RequestParam("statut") boolean statut,
+			@RequestParam("reglement_interieur") boolean reglement_interieur,
+			@RequestParam("recepisse_mfr") boolean recepisse_mfr, @RequestParam("date_recepisse") java.sql.Date date_recepisse,
+			@RequestParam("plan_strategique") boolean plan_strategique,
+			@RequestParam("date_validation") java.sql.Date date_validation, RedirectAttributes redirectAttributes)
+			throws Exception {
+		Wp3FedeMfr wp3FedeMfr = new Wp3FedeMfr();
+
+		wp3FedeMfr.setCode_region(code_region);
+		wp3FedeMfr.setNom_mfr(nom_mfr);
+		wp3FedeMfr.setAnnee_miseplace(annee_miseplace);
+		wp3FedeMfr.setStatut(statut);
+		wp3FedeMfr.setReglement_interieur(reglement_interieur);
+		wp3FedeMfr.setRecepisse_mfr(recepisse_mfr);
+		wp3FedeMfr.setDate_recepisse(date_recepisse);
+		wp3FedeMfr.setPlan_strategique(plan_strategique);
+		wp3FedeMfr.setDate_validation(date_validation);
+		wp3FedeMfrService.createWp3FedeMfr(wp3FedeMfr);
+
+		return "redirect:/listWp3FedeMfr";
+
+	}
 
 	@RequestMapping("/uploadWp3FedeMfr")
 	public String uploadWp3FedeMfr(Model model) {

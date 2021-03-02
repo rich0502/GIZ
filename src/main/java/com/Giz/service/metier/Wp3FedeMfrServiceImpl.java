@@ -16,6 +16,11 @@ public class Wp3FedeMfrServiceImpl implements Wp3FedeMfrService {
 
 	@Autowired
 	Wp3FedeMfrRepository wp3FedeMfrRepository;
+	
+	@Override
+	public Wp3FedeMfr createWp3FedeMfr(Wp3FedeMfr wp3FedeMfr) throws Exception {
+		return wp3FedeMfr = wp3FedeMfrRepository.save(wp3FedeMfr);
+	}
 
 	@Override
 	public List<Wp3FedeMfr> ListWp3FedeMfr() {
