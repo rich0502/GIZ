@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Giz.data.domain.Valider;
-import com.Giz.data.domain.Wp3ActivEcoJeune;
 import com.Giz.repository.ValiderRepository;
 
 @Service

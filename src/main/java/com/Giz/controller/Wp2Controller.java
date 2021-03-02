@@ -3,7 +3,6 @@ package com.Giz.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +25,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.Giz.data.constants.theme.ListeWp;
 import com.Giz.data.domain.MiseForme;
 import com.Giz.data.domain.Valider;
-import com.Giz.data.domain.Wp3ActivEcoJeune;
 import com.Giz.service.metier.ValiderService;
 
 @Controller
@@ -78,6 +77,32 @@ public class Wp2Controller {
 	}
 
 	// Canevas lakile telo
+	
+	@GetMapping("/L3Form")
+	public String L3Form(Model model) throws Exception {
+		return "wp2/lakileTelo/Form_addL3";
+	}
+
+	@PostMapping("/createL3")
+	public String createL3(
+			@RequestParam("code_village") String code_village,
+			@RequestParam("district") String district,
+			@RequestParam("nom_group_l_telo") String nom_group_l_telo,
+			@RequestParam("categorie") String categorie,
+			@RequestParam("date_creation") java.sql.Date date_creation,
+			@RequestParam("effectif_membre") double effectif_membre,
+			@RequestParam("nbr_f") int nbr_h, 
+			@RequestParam("nbr_f") int nbr_f,
+			@RequestParam("operationnel") boolean operationnel,
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.addValiderL3(code_village, district, nom_group_l_telo, categorie, date_creation,
+						effectif_membre, nbr_h, nbr_f, operationnel, date_suivi);
+		return "redirect:/listLakileTelo";
+
+	}
+	
 	@RequestMapping("/uploadL3")
 	public String uploadL3(Model model) {
 		String[][] scList = ListeWp.wp();
@@ -167,6 +192,30 @@ public class Wp2Controller {
 	}
 
 	// Canevas VSLA Municipal
+	
+	@GetMapping("/VSLAForm")
+	public String VSLAForm(Model model) throws Exception {
+		return "wp2/VSLA/Form_addVSLA";
+	}
+
+	@PostMapping("/createVSLA")
+	public String createVSLA(
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("nom_vsla") String noms_vsla,
+			@RequestParam("annee_creation") int annee_creation, 
+			@RequestParam("vsla_lier_regionale") boolean vsla_lier_regionale,
+			@RequestParam("appuis_recus") boolean appuis_recus, 
+			@RequestParam("type_appui") String type_appuis,
+			@RequestParam("operationnel") boolean operationnel, 
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.addValiderVSLA(code_village, noms_vsla, annee_creation, vsla_lier_regionale, appuis_recus,
+						type_appuis, operationnel, date_suivi);
+		return "redirect:/listVSLA";
+
+	}
+	
 	@RequestMapping("/uploadVSLA")
 	public String uploadVSLA(Model model) {
 		String[][] scList = ListeWp.wp();
@@ -255,6 +304,25 @@ public class Wp2Controller {
 	}
 
 	// Canevas integration de l'education
+	
+	@GetMapping("/FBSForm")
+	public String FBSForm(Model model) throws Exception {
+		return "wp2/FBS/Form_addFBS";
+	}
+
+	@PostMapping("/createFBS")
+	public String createFBS(
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("fbs_post_fbs_recus") boolean fbs_post_fbs_recus,
+			@RequestParam("education_fbs_post_fbs") boolean education_fbs_post_fbs, 
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.addValiderFBS(code_village,fbs_post_fbs_recus,education_fbs_post_fbs,date_suivi);
+		return "redirect:/listFBS";
+
+	}
+	
 	@RequestMapping("/uploadFBS")
 	public String uploadFBS(Model model) {
 		String[][] scList = ListeWp.wp();
