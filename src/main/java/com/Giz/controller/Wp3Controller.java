@@ -1232,6 +1232,29 @@ public class Wp3Controller {
 	/* END #45-CANEVAS AGR DÉVELOPPÉ MFR SAVA */
 
 	/* START #46-CANEVAS JEUNE AYANT TERMINÉ FORMATION PATHWAY */
+	@GetMapping("/Wp3JeunePathwayForm")
+	public String Wp3JeunePathwayForm(Model model) throws Exception {
+		return "wp3/Wp3JeunePathway/Form_addWp3JeunePathway";
+	}
+
+	@PostMapping("/createWp3JeunePathway")
+	public String createWp3JeunePathway(@RequestParam("code_village") String code_village,
+			@RequestParam("nom_prenom") String nom_prenom, @RequestParam("sexe") String sexe,
+			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("date_fin_frm") java.sql.Date date_fin_frm,
+			RedirectAttributes redirectAttributes) throws Exception {
+		Wp3JeunePathway wp3JeunePathway = new Wp3JeunePathway();
+		String activite = "CANEVAS JEUNE AYANT TERMINÉ FORMATION PATHWAY";
+		wp3JeunePathway.setCode_village(code_village);
+		wp3JeunePathway.setNom_prenom(nom_prenom);
+		wp3JeunePathway.setSexe(sexe);
+		wp3JeunePathway.setAnnee_naissance(annee_naissance);
+		wp3JeunePathway.setDate_fin_frm(date_fin_frm);
+		wp3JeunePathway.setActivite(activite);
+		wp3JeunePathwayService.createWp3JeunePathway(wp3JeunePathway);
+
+		return "redirect:/listWp3JeunePathway";
+
+	}
 
 	@RequestMapping("/uploadWp3JeunePathway")
 	public String uploadWp3JeunePathway(Model model) {

@@ -15,6 +15,11 @@ public class Wp3JeunePathwayServiceImpl implements Wp3JeunePathwayService {
 
 	@Autowired
 	Wp3JeunePathwayRepository wp3JeunePathwayRepository;
+	
+	@Override
+	public Wp3JeunePathway createWp3JeunePathway(Wp3JeunePathway wp3JeunePathway) throws Exception {
+		return wp3JeunePathway = wp3JeunePathwayRepository.save(wp3JeunePathway);
+	}
 
 	@Override
 	public List<Wp3JeunePathway> ListWp3JeunePathway() {

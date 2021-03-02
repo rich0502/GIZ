@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.Giz.data.domain.Wp3JeunePathway;
 
 public interface Wp3JeunePathwayService {
+	
+	public Wp3JeunePathway createWp3JeunePathway(Wp3JeunePathway wp3JeunePathway) throws Exception;
 
 	public List<Wp3JeunePathway> ListWp3JeunePathway();
 
