@@ -16,6 +16,11 @@ public class Wp3PeerEducatorServiceImpl implements Wp3PeerEducatorService {
 
 	@Autowired
 	Wp3PeerEducatorRepository wp3PeerEducatorRepository;
+	
+	@Override
+	public Wp3PeerEducator createWp3PeerEducator(Wp3PeerEducator wp3PeerEducator) throws Exception {
+		return wp3PeerEducator = wp3PeerEducatorRepository.save(wp3PeerEducator);
+	}
 
 	@Override
 	public List<Wp3PeerEducator> ListWp3PeerEducator() {

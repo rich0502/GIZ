@@ -1341,6 +1341,30 @@ public class Wp3Controller {
 	/* END #46-CANEVAS JEUNE AYANT TERMINÉ FORMATION PATHWAY */
 
 	/* START #47-CANEVAS EPP FRAM DRAFT */
+	@GetMapping("/Wp3EppFramForm")
+	public String Wp3EppFramForm(Model model) throws Exception {
+		return "wp3/Wp3EppFram/Form_addWp3EppFram";
+	}
+
+	@PostMapping("/createWp3EppFram")
+	public String createWp3EppFram(@RequestParam("code_village") String code_village,
+			@RequestParam("nom_ecole") String nom_ecole, @RequestParam("projet_fram") boolean projet_fram,
+			@RequestParam("projet_valide") boolean projet_valide, @RequestParam("type_projet") String type_projet,
+			@RequestParam("date_validation") java.sql.Date date_validation,
+			RedirectAttributes redirectAttributes) throws Exception {
+		Wp3EppFram wp3EppFram = new Wp3EppFram();
+		wp3EppFram.setCode_village(code_village);
+		wp3EppFram.setNom_ecole(nom_ecole);
+		wp3EppFram.setProjet_fram(projet_fram);
+		wp3EppFram.setProjet_valide(projet_valide);
+		wp3EppFram.setType_projet(type_projet);
+		wp3EppFram.setDate_validation(date_validation);
+		wp3EppFramService.createWp3EppFram(wp3EppFram);
+
+		return "redirect:/listWp3EppFram";
+
+	}
+
 
 	@RequestMapping("/uploadWp3EppFram")
 	public String uploadWp3EppFram(Model model) {
@@ -1427,6 +1451,29 @@ public class Wp3Controller {
 	/* END #47-CANEVAS EPP FRAM DRAFT */
 
 	/* START #48-CANEVAS SERVICE SANTÉ PAR COMMUNAUTÉ */
+	
+	@GetMapping("/Wp3SanteeCommForm")
+	public String Wp3SanteeCommForm(Model model) throws Exception {
+		return "wp3/Wp3SanteeComm/Form_addWp3SanteeComm";
+	}
+
+	@PostMapping("/createWp3SanteeComm")
+	public String createWp3SanteeComm(@RequestParam("code_village") String code_village, @RequestParam("csb") String csb,
+			@RequestParam("gps_x") int gps_x, @RequestParam("gps_y") int gps_y,
+			@RequestParam("repro_sexuelle") String repro_sexuelle, @RequestParam("date_suivi") java.sql.Date date_suivi,
+			RedirectAttributes redirectAttributes) throws Exception {
+		Wp3SanteeComm wp3SanteeComm = new Wp3SanteeComm();	
+		wp3SanteeComm.setCode_village(code_village);
+		wp3SanteeComm.setCsb(csb);
+		wp3SanteeComm.setGps_x(gps_x);
+		wp3SanteeComm.setGps_y(gps_y);
+		wp3SanteeComm.setRepro_sexuelle(repro_sexuelle);
+		wp3SanteeComm.setDate_suivi(date_suivi);
+		wp3SanteeCommService.createWp3SanteeComm(wp3SanteeComm);
+
+		return "redirect:/listWp3SanteeComm";
+
+	}
 
 	@RequestMapping("/uploadWp3SanteeComm")
 	public String uploadWp3SanteeComm(Model model) {
@@ -1510,6 +1557,33 @@ public class Wp3Controller {
 	/* END #48-CANEVAS SERVICE SANTÉ PAR COMMUNAUTÉ */
 
 	/* START #49-CANEVAS PEER EDUCATOR */
+	
+	@GetMapping("/Wp3PeerEducatorForm")
+	public String Wp3PeerEducatorForm(Model model) throws Exception {
+		return "wp3/Wp3PeerEducator/Form_addWp3PeerEducator";
+	}
+
+	@PostMapping("/createWp3PeerEducator")
+	public String createWp3PeerEducator(@RequestParam("code_village") String code_village,
+			@RequestParam("nom_prenom") String nom_prenom, @RequestParam("sexe") String sexe,
+			@RequestParam("annee_naissance") int annee_naissance,
+			@RequestParam("operationnelle") Boolean operationnelle,
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			RedirectAttributes redirectAttributes) throws Exception {
+		Wp3PeerEducator wp3PeerEducator = new Wp3PeerEducator();
+		String activite = "CANEVAS PEER EDUCATOR";
+		wp3PeerEducator.setCode_village(code_village);
+		wp3PeerEducator.setNom_prenom(nom_prenom);
+		wp3PeerEducator.setSexe(sexe);
+		wp3PeerEducator.setAnnee_naissance(annee_naissance);
+		wp3PeerEducator.setOperationnelle(operationnelle);
+		wp3PeerEducator.setDate_suivi(date_suivi);
+		wp3PeerEducator.setActivite(activite);
+		wp3PeerEducatorService.createWp3PeerEducator(wp3PeerEducator);
+
+		return "redirect:/listWp3PeerEducator";
+
+	}
 
 	@RequestMapping("/uploadWp3PeerEducator")
 	public String uploadWp3PeerEducator(Model model) {

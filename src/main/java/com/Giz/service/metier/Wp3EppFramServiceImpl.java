@@ -16,6 +16,11 @@ public class Wp3EppFramServiceImpl implements Wp3EppFramService {
 
 	@Autowired
 	Wp3EppFramRepository wp3EppFramRepository;
+	
+	@Override
+	public Wp3EppFram createWp3EppFram(Wp3EppFram wp3EppFram) throws Exception {
+		return wp3EppFram = wp3EppFramRepository.save(wp3EppFram);
+	}
 
 	@Override
 	public List<Wp3EppFram> ListWp3EppFram() {

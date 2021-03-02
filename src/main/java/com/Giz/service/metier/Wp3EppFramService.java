@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.Giz.data.domain.Wp3EppFram;
 
 public interface Wp3EppFramService {
+	
+	public Wp3EppFram createWp3EppFram(Wp3EppFram wp3EppFram) throws Exception;
 
 	public List<Wp3EppFram> ListWp3EppFram();
 

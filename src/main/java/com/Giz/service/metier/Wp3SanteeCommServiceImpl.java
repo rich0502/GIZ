@@ -16,6 +16,11 @@ public class Wp3SanteeCommServiceImpl implements Wp3SanteeCommService {
 
 	@Autowired
 	Wp3SanteeCommRepository wp3SanteeCommRepository;
+	
+	@Override
+	public Wp3SanteeComm createWp3SanteeComm(Wp3SanteeComm wp3SanteeComm) throws Exception {
+		return wp3SanteeComm = wp3SanteeCommRepository.save(wp3SanteeComm);
+	}
 
 	@Override
 	public List<Wp3SanteeComm> ListWp3SanteeComm() {
