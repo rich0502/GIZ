@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Giz.data.domain.Recherche;
-import com.Giz.repository.Adopte_InnovationRepository;
 import com.Giz.repository.RechercheRepository;
 
 @Service

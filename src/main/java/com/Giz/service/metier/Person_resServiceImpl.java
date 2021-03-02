@@ -31,6 +31,7 @@ public class Person_resServiceImpl implements Person_resService {
 			boolean operationnalite, Date date_suivi, String types_services_dev) {
 		Person_res person_res = new Person_res();
 		person_res.setCode_village(code_village);
+		person_res.setNomPrenom(nomPrenom);
 		person_res.setGenre_pr(genre_pr.toLowerCase());
 		person_res.setAnnee_naiss(annee_naiss);
 		person_res.setOperationnalite(operationnalite);

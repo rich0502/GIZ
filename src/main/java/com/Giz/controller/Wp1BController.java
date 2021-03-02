@@ -1,11 +1,7 @@
 package com.Giz.controller;
 
-
 import java.io.IOException;
-import java.sql.Date;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +11,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.context.Theme;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,7 +21,6 @@ import com.Giz.data.domain.CiForme;
 import com.Giz.data.domain.Concours;
 import com.Giz.data.domain.Cooperative;
 import com.Giz.data.domain.FocusGroup;
-import com.Giz.data.domain.Formateur;
 import com.Giz.data.domain.Leaders;
 import com.Giz.data.domain.MiseForme;
 import com.Giz.data.domain.ParcelleVG;
@@ -46,11 +40,6 @@ import com.Giz.service.metier.SensiEnvService;
 import com.Giz.service.metier.ThemeService;
 import com.Giz.service.metier.ZoneForestService;
 import com.Giz.service.metier.ZoneRebService;
-
-
-
-
-
 
 @Controller
 public class Wp1BController {

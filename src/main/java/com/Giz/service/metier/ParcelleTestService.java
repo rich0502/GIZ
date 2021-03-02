@@ -3,7 +3,6 @@ package com.Giz.service.metier;
 import java.util.Date;
 import java.util.List;
 
-import com.Giz.data.domain.Adoption_innovation;
 import com.Giz.data.domain.Parcelle_test;
 
 

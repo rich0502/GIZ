@@ -47,7 +47,7 @@
 <div class="card">
 	<header class="composantesTable-header justify-between">
 		<h2 class="page-title">Bénéficiaire</h2>
-		<button type="submit" class="gbtn add" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >[[#{ajouter}]]</button>
+		<a href="PtForm" class="gbtn add">[[#{ajouter}]]</a>
 		<a 	th:href="@{'/success'}" class="gbtn btAdd btn-base" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">[[#{liste}]] Success stories</a>
 	</header>
 <table class="composantes-table" id="myTable">

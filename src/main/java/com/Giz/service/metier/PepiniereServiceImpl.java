@@ -6,11 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.Giz.data.domain.Adoption_innovation;
-import com.Giz.data.domain.Parcelle_test;
 import com.Giz.data.domain.Pepiniere;
-import com.Giz.repository.Adopte_InnovationRepository;
-import com.Giz.repository.Parcelle_testRepository;
 import com.Giz.repository.PepiniereRepository;
 
 @Service
