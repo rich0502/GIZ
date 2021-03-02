@@ -397,6 +397,29 @@ public class Wp2Controller {
 	}
 
 	// Canevas mobile money
+	@GetMapping("/MoneyForm")
+	public String MoneyForm(Model model) throws Exception {
+		return "wp2/money/Form_addMoney";
+	}
+
+	@PostMapping("/createMoney")
+	public String createMoney(
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("code_prod") String code_prod,
+			@RequestParam("nom_prenom") String nom_prenom,
+			@RequestParam("sexe") String sexe, 
+			@RequestParam("annee_naissance") int annee_naissance,
+			@RequestParam("service_mobile_money") boolean service_mobile_money, 
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			@RequestParam("orange_money") boolean orange_money,
+			@RequestParam("mvola") boolean mvola,
+			@RequestParam("airtel_money") boolean airtel_money,
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.addValiderMobileMoney(code_village,code_prod,nom_prenom,sexe,annee_naissance,service_mobile_money,
+						date_suivi,orange_money,mvola,airtel_money);
+		return "redirect:/listMoney";
+
+	}
 	@RequestMapping("/uploadMoney")
 	public String uploadMoney(Model model) {
 		String[][] scList = ListeWp.wp();
@@ -491,6 +514,31 @@ public class Wp2Controller {
 	}
 
 	// Canevas Finance
+	
+	@GetMapping("/FinanceForm")
+	public String FinanceForm(Model model) throws Exception {
+		return "wp2/finance/Form_addFinance";
+	}
+
+	@PostMapping("/createFinance")
+	public String createFinance(
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("code_prod") String code_prod,
+			@RequestParam("nom_prenom") String nom_prenom,
+			@RequestParam("sexe") String sexe,
+			@RequestParam("annee_naissance") int annee_naissance,
+			@RequestParam("service_IMF") boolean service_IMF,
+			@RequestParam("date_suivi") java.sql.Date date_suivi,
+			@RequestParam("institution") String institution,
+			@RequestParam("lieu_agence") String lieu_agence,
+			
+			RedirectAttributes redirectAttributes) throws ParseException {
+				validerservice.addValiderFinance(code_village,code_prod,nom_prenom,sexe,annee_naissance,
+						service_IMF,date_suivi,institution,lieu_agence);
+		return "redirect:/listFinance";
+
+	}
+	
 	@RequestMapping("/uploadFinance")
 	public String uploadFinance(Model model) {
 		String[][] scList = ListeWp.wp();
@@ -581,6 +629,37 @@ public class Wp2Controller {
 	}
 
 	// Canevas Production
+	
+	@GetMapping("/ProducteurForm")
+	public String ProducteurForm(Model model) throws Exception {
+		return "wp2/producteur/Form_addProducteur";
+	}
+
+	@PostMapping("/createProducteur")
+	public String createProducteur(
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("num_adhesion") String num_adhesion,
+			@RequestParam("nom_beneficiaire") String nom_beneficiaire,
+			@RequestParam("nom_usuel_adherent") String nom_usuel_adherent,
+			@RequestParam("contact") String contact,
+			@RequestParam("age") int age,
+			@RequestParam("date_naiss") java.sql.Date date_naiss,
+			@RequestParam("cin") String cin,
+			@RequestParam("sexe") String sexe,
+			@RequestParam("code_pro_symrise") String code_pro_symrise,
+			@RequestParam("commune") String commune,
+			@RequestParam("adresse_fkt") String adresse_fkt,
+			@RequestParam("affiliation") String affiliation,
+			@RequestParam("ma_1ere_adhesion") String ma_1ere_adhesion,
+			@RequestParam("nbr_pers_charge") int nbr_pers_charge,
+			
+			RedirectAttributes redirectAttributes) throws ParseException {
+		validerservice.addValiderProducteur(num_adhesion, nom_beneficiaire, nom_usuel_adherent, contact, age, date_naiss, cin, sexe, code_village, code_pro_symrise, commune, adresse_fkt, affiliation, ma_1ere_adhesion, nbr_pers_charge);
+
+		return "redirect:/listProducteur";
+
+	}
+	
 	@RequestMapping("/uploadProducteur")
 	public String uploadProduction(Model model) {
 		String[][] scList = ListeWp.wp();
@@ -684,6 +763,37 @@ public class Wp2Controller {
 	
 	
 	// Canevas Adhesion
+	
+	@GetMapping("/AdhesionForm")
+	public String AdhesionForm(Model model) throws Exception {
+		return "wp2/adhesion/Form_addAdhesion";
+	}
+
+	@PostMapping("/createAdhesion")
+	public String createAdhesion(
+			@RequestParam("code_village") String code_village, 
+			@RequestParam("num_adhesion") String num_adhesion,
+			@RequestParam("nom_beneficiaire") String nom_beneficiaire,
+			@RequestParam("nom_usuel_adherent") String nom_usuel_adherent,
+			@RequestParam("contact") String contact,
+			@RequestParam("age") int age,
+			@RequestParam("date_naiss") java.sql.Date date_naiss,
+			@RequestParam("cin") String cin,
+			@RequestParam("sexe") String sexe,
+			@RequestParam("code_pro_symrise") String code_pro_symrise,
+			@RequestParam("commune") String commune,
+			@RequestParam("adresse_fkt") String adresse_fkt,
+			@RequestParam("affiliation") String affiliation,
+			@RequestParam("ma_1ere_adhesion") String ma_1ere_adhesion,
+			@RequestParam("nbr_pers_charge") int nbr_pers_charge,
+			@RequestParam("annee_adhesion") int annee_adhesion,
+			RedirectAttributes redirectAttributes) throws ParseException {
+		validerservice.addValiderAdhesion(num_adhesion, nom_beneficiaire, nom_usuel_adherent, contact, age, date_naiss, cin, sexe, code_village, code_pro_symrise, commune, adresse_fkt, affiliation, ma_1ere_adhesion, nbr_pers_charge);
+
+		return "redirect:/listAdhesion";
+
+	}
+	
 		@RequestMapping("/uploadAdhesion")
 		public String uploadAdhesion(Model model) {
 			String[][] scList = ListeWp.wp();
@@ -794,6 +904,36 @@ public class Wp2Controller {
 		
 		
 		// Canevas Menage
+		
+		@GetMapping("/MenageForm")
+		public String MenageForm(Model model) throws Exception {
+			return "wp2/menage/Form_addMenage";
+		}
+
+		@PostMapping("/createMenage")
+		public String createMenage(
+				@RequestParam("code_village") String code_village, 
+				@RequestParam("num_adhesion") String num_adhesion,
+				@RequestParam("nom_beneficiaire") String nom_beneficiaire,
+				@RequestParam("nom_usuel_adherent") String nom_usuel_adherent,
+				@RequestParam("contact") String contact,
+				@RequestParam("age") int age,
+				@RequestParam("date_naiss") java.sql.Date date_naiss,
+				@RequestParam("cin") String cin,
+				@RequestParam("sexe") String sexe,
+				@RequestParam("code_pro_symrise") String code_pro_symrise,
+				@RequestParam("commune") String commune,
+				@RequestParam("adresse_fkt") String adresse_fkt,
+				@RequestParam("affiliation") String affiliation,
+				@RequestParam("ma_1ere_adhesion") String ma_1ere_adhesion,
+				@RequestParam("nbr_pers_charge") int nbr_pers_charge,
+				@RequestParam("annee_adhesion") int annee_adhesion,
+				RedirectAttributes redirectAttributes) throws ParseException {
+			validerservice.addValiderMenage(num_adhesion, nom_beneficiaire, nom_usuel_adherent, contact, age, date_naiss, cin, sexe, code_village, code_pro_symrise, commune, adresse_fkt, affiliation, ma_1ere_adhesion, nbr_pers_charge);
+			return "redirect:/listMenage";
+
+		}
+		
 				@RequestMapping("/uploadMenage")
 				public String uploadMenage(Model model) {
 					String[][] scList = ListeWp.wp();
