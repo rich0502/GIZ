@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Mise à jours Adhesion</title>
+        <link rel="icon" type="image/png" href="css/images/icons/favicon.png">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--JQUERY-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- Los iconos tipo Solid de Fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <!-- Nuestro css-->
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/index.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/fonts.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/giz.css}">
+        <style type="text/css">
+.select2-container .select2-selection--single {
+	height: 34px !important;
+}
+
+.select2-container--default .select2-selection--single {
+	border: 1px solid #ccc !important;
+}
+        </style>
+        <script type="text/javascript">
+		$(document).ready(function () {
+			$('#datepicker').datepicker({
+				format: 'dd-mm-yyyy',
+				"autoclose": true,
+				language: 'en'
+			})//.datepicker("setDate", 'now')
+				;
+			var valeur = $('#error_value').text();
+			if(valeur != '') {
+				$('#messageModal').modal('show');
+				$('#msg').text(valeur);
+			}
+		});
+        </script>
+    </head>
+    <body class="add-success">
+		<div th:include="/pds_header.html"></div>
+		<section class="main">
+            <div class="base-content">
+				<br>
+				<form method="POST" th:action="@{/createFerme}"  class="form-edition-cust">
+					Code village
+					<br>
+					<input type="text" name="code_village" id="code_village">
+					<br>
+					Coord X
+					<br>
+					<input type="text" name="x" id="x">
+					<br>
+					Coord Y
+					<br>
+					<input type="text" name="y" id="y">
+					<br>
+					Nom responsable
+					<br>
+					<input type="text" name="nomResponsable" id="nomResponsable">
+					<br>
+					Genre
+					<br>
+					<input type="text" name="genre_elev" id="genre_elev">
+					<br>
+					Année de naissance
+					<br>
+					<input type="text" name="annee_naiss" id="annee_naiss">
+					<br>
+					
+					Date de suivi :
+					<br>
+					<input type="date" min="2015-01-01" class="form-control select2" name="date_suivi" id="date_suivi">
+					<br>
+					Operationnel :
+					<br>
+					<select class="form-control select2" name="operationnel" id="operationnel"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="True">Oui</option>
+						<option th:value="False">Non</option>
+					</select>
+					<br>
+					<input type="submit" th:value="#{save}" class="gbtn">
+				</form>
+			</div>
+		</section>
+    </body>
+    <html>
