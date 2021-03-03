@@ -74,7 +74,7 @@
 				<td th:text="${b.genre_pt}"></td>
 				<td th:text="${b.annee_naiss}"></td>
 				<td th:text="${b.pratique_realise}"></td>
-				<td th:text="${b.date_mise}"></td>
+				<td th:text="${#dates.format(b.date_mise,'dd-MM-yyyy')}"></td>
 				<td th:text="${b.superficies}"></td>
 				<td class="center td-action">
 				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id_pt}+'\');'}"></a>

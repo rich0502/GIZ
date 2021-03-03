@@ -63,9 +63,9 @@
 							<td th:text="${b.annee_naissance}"></td>
 							<td th:text="${b.organisme_formateur}"></td>
 							<td th:text="${b.frm_tech_suivi}"></td>
-							<td th:text="${b.date_fin_frm}"></td>
+							<td th:text="${#dates.format(b.date_fin_frm,'dd-MM-yyyy')}"></td>
 							<td th:text="${b.activite_eco}"></td>
-							<td th:text="${b.date_demarrage}"></td>
+							<td th:text="${#dates.format(b.date_demarrage,'dd-MM-yyyy')}"></td>
 							<td th:text="${b.activite}"></td>
 							<td class="center td-action"><a
 								th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"

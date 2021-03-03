@@ -69,7 +69,7 @@
 			<tr th:each="b : ${atelier}">
 				<td th:text="${b.code_village}"></td>
 				<td th:text="${b.atelier_resp}"></td>
-				<td th:text="${b.date_realise}"></td>
+				<td th:text="${#dates.format(b.date_realise,'dd-MM-yyyy')}"></td>
 				<td th:text="${b.lieu_realise}"></td>
 				<td th:text="${b.theme_choise}"></td>
 				<td th:text="${b.nbr_particip}"></td>

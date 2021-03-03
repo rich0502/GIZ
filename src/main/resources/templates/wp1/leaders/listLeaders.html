@@ -70,8 +70,8 @@
 				<td th:text="${b.genre_pt}"></td>
 				<td th:text="${b.annee_naiss}"></td>
 				<td th:text="${b.operationnel}? 'Oui' : 'Non'"></td>
-				<td th:text="${b.date_mise}"></td>
-				<td th:text="${b.date_suivi}"></td>
+				<td th:text="${#dates.format(b.date_mise,'dd-MM-yyyy')}"></td>
+				<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
 				<td class="center td-action">
 				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id_lds}+'\');'}"></a>
 			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editBeneficiaire/' + ${b.id_lds}}"></a>

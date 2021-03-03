@@ -76,7 +76,7 @@
 				<td th:text="${b.annee_naiss}"></td>
 				<td th:text="${b.suivi_numeric}"></td>
 				<td th:text="${b.diffusion_resultat}"></td>
-				<td th:text="${b.date_suivi}"></td>
+				<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
 				<td class="center td-action">
 				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${id_pvg}+'\');'}"></a>
 			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editBeneficiaire/' + ${id_pvg}}"></a>

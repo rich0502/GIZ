@@ -81,7 +81,7 @@
 							<td th:text="${b.forme} ? 'Oui' : 'Non'"></td>
 							<td th:text="${b.accompagne_sortie} ? 'Oui' : 'Non'"></td>
 							<td th:text="${b.type_accompagnement}"></td>
-							<td th:text="${b.date_suivi}"></td>
+							<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
 							<td th:text="${b.activite}"></td>
 							<td class="center td-action"><a
 								th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"

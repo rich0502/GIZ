@@ -72,7 +72,7 @@
 				<td th:text="${b.genre_form}"></td>
 				<td th:text="${b.annee_naiss}"></td>
 				<td th:text="${b.formation_recu}"></td>
-				<td th:text="${b.date_forma}"></td>
+				<td th:text="${#dates.format(b.date_forma,'dd-MM-yyyy')}"></td>
 				<td th:text="${b.theme_formation}"></td>
 				<td th:text="${b.adoption}"></td>
 				<td th:text="${b.pratique_adopte}"></td>

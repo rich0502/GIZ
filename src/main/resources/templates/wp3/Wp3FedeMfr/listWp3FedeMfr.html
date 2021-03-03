@@ -83,9 +83,9 @@
 							<td th:text="${b.statut} ? 'Oui' : 'Non'"></td>
 							<td th:text="${b.reglement_interieur} ? 'Oui' : 'Non'"></td>
 							<td th:text="${b.recepisse_mfr} ? 'Oui' : 'Non'"></td>
-							<td th:text="${b.date_recepisse}"></td>
+							<td th:text="${#dates.format(b.date_recepisse,'dd-MM-yyyy')}"></td>
 							<td th:text="${b.plan_strategique} ? 'Oui' : 'Non'"></td>
-							<td th:text="${b.date_validation}"></td>
+							<td th:text="${#dates.format(b.date_validation,'dd-MM-yyyy')}"></td>
 							<td class="center td-action"><a
 								th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
 								class="delete"

@@ -58,8 +58,8 @@
 			<tr th:each="b : ${concours}">
 				<td th:text="${b.code_village}"></td>
 				<td th:text="${b.exist}"></td>
-				<td th:text="${b.date_eval}"></td>
-				<td th:text="${b.date_suivi}"></td>
+				<td th:text="${#dates.format(b.date_eval,'dd-MM-yyyy')}"></td>
+				<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
 				<td class="center td-action">
 				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id_con}+'\');'}"></a>
 			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editBeneficiaire/' + ${b.id_con}}"></a>

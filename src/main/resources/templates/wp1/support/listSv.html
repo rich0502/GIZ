@@ -67,11 +67,11 @@
 			<tr th:each="b : ${sv}">
 				<td th:text="${b.code_village}"></td>
 				<td th:text="${b.nom_support}"></td>
-				<td th:text="${b.date_dissemination}"></td>
+				<td th:text="${#dates.format(b.date_dissemination,'dd-MM-yyyy')}"></td>
 				<td th:text="${b.receptionnaire}"></td>
 				<td th:text="${b.genre_sv}"></td>
 				<td th:text="${b.responsable}"></td>
-				<td th:text="${b.date_suivi}"></td>
+				<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
 				<td class="center td-action">
 				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id_sv}+'\');'}"></a>
 			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editBeneficiaire/' + ${b.id_sv}}"></a>

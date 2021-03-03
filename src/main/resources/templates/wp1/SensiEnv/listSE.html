@@ -65,7 +65,7 @@
 			<tr th:each="b : ${se}">
 				<td th:text="${b.code_village}"></td>
 				<td th:text="${b.exist_sens} ? 'Oui' : 'Non'"></td>
-				<td th:text="${b.date_fin}"></td>
+				<td th:text="${#dates.format(b.date_fin,'dd-MM-yyyy')}"></td>
 				<td th:text="${b.theme_sens}"></td>
 				<td th:text="${b.nbr_homme}"></td>
 				<td th:text="${b.nbr_femme}"></td>
@@ -74,7 +74,6 @@
 			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editBeneficiaire/' + ${b.id_se}}"></a>
 			</td>
 			</tr>
-
 		</tbody>
 	</table>
 </div>

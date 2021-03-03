@@ -69,7 +69,7 @@
 		<tbody>
 			<tr th:each="b : ${recherche}">
 				<td th:text="${b.code_village}"></td>
-				<td th:text="${b.date_restitution}"></td>
+				<td th:text="${#dates.format(b.date_restitution,'dd-MM-yyyy')}"></td>
 				<td th:text="${b.theme}"></td>
 				<td th:text="${b.nbr_homme}"></td>
 				<td th:text="${b.nbr_femme}"></td>

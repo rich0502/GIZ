@@ -72,7 +72,7 @@
 				<td th:text="${b.genre_ai}"></td>
 				<td th:text="${b.annee_naiss}"></td>
 				<td th:text="${b.frm_recu}"></td>
-				<td th:text="${b.date_frm}"></td>
+				<td th:text="${#dates.format(b.date_frm,'dd-MM-yyyy')}"></td>
 				<td th:text="${b.theme_frm}"></td>
 				<td class="center td-action">
 				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id_bpa}+'\');'}"></a>

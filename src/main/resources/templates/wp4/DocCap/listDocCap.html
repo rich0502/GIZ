@@ -68,7 +68,7 @@
 				<td th:text="${b.thematique}"></td>
 				<td th:text="${b.type_doc}"></td>
 				<td th:text="${b.auteur_doc}"></td>
-				<td th:text="${b.date_partage}"></td>
+				<td th:text="${#dates.format(b.date_partage,'dd-MM-yyyy')}"></td>
 				<td th:text="${b.reception}"></td>
 				<td class="center td-action">
 				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id_dc}+'\');'}"></a>

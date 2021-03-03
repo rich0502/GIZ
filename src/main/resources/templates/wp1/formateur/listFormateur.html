@@ -70,10 +70,10 @@
 				<td th:text="${b.nomPrenom}"></td>
 				<td th:text="${b.zoneInterv}"></td>
 				<td th:text="${b.date_naiss}"></td>
-				<td th:text="${b.date_debut}"></td>
-				<td th:text="${b.date_fin}"></td>
+				<td th:text="${#dates.format(b.date_debut,'dd-MM-yyyy')}"></td>
+				<td th:text="${#dates.format(b.date_fin,'dd-MM-yyyy')}"></td>
 				<td th:text="${b.operationnel}? 'Oui' : 'Non'"></td>
-				<td th:text="${b.date_suivi}"></td>
+				<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
 				<td class="center td-action">
 				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id_ft}+'\');'}"></a>
 			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editBeneficiaire/' + ${b.id_ft}}"></a>

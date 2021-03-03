@@ -66,7 +66,7 @@
 				<td th:text="${b.code_village}"></td>
 				<td th:text="${b.exist_platform} ? 'Oui' : 'Non'"></td>
 				<td th:text="${b.operationnel} ? 'Oui' : 'Non'"></td>
-				<td th:text="${b.date_suivi}"></td>
+				<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
 				<td th:text="${b.commentaire}"></td>
 				<td class="center td-action">
 				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id_am}+'\');'}"></a>

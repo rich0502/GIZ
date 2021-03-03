@@ -73,7 +73,7 @@
 				<td th:text="${b.nom_prenom}"></td>
 				<td th:text="${b.sexe}"></td>
 				<td th:text="${b.annee_naissance}"></td>
-				<td th:text="${b.date_suivi}"></td>
+				<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
 				<td th:text="${b.service_mobile_money}"></td>
 				<td th:text="${b.orange_money}"></td>
 				<td th:text="${b.mvola}"></td>
