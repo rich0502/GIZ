@@ -41,27 +41,10 @@
 <br>
 <br>
 <div th:include="crud-form/crudMenu.html" th:remove="tag"></div><br>
-
-
 <form method="POST" th:action="@{/addBeneficiaire}">
 <div class="card">
 	<header class="composantesTable-header justify-between">
-		<h2 class="page-title">Bénéficiaire</h2>
-		<button type="submit" class="btAdd" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >[[#{ajouter}]]</button>
-		<a 	th:href="@{'/success'}" style="margin-left: 54px;
-    margin-top: 32px;
-    background-color: #e9676d;
-    border: none;
-    color: white;
-    padding: 2px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 11px;
-    margin: 15px 38px;
-    cursor: pointer;
-    margin-top: -4px;
-    margin-bottom: 36px;" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">[[#{liste}]] Success stories</a>
+		<a href="ZRForm" class="btAdd">[[#{ajouter}]]</a>
 	</header>
 	<table class="composantes-table" id="myTable">
 		<thead>

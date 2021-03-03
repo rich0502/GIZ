@@ -6,9 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.Giz.data.domain.Adoption_innovation;
 import com.Giz.data.domain.Formations;
-import com.Giz.repository.Adopte_InnovationRepository;
 import com.Giz.repository.FormationsRepository;
 
 @Service
@@ -27,6 +25,16 @@ public class FormationsServiceImpl implements FormationsService {
 	public void deleteFormateur(Long id_ft) {
 		formationsRepository.deleteById(id_ft);
 		
+	}
+	
+	@Override
+	public Formations createFormEFA(Formations Formations) throws Exception {
+		return Formations = formationsRepository.save(Formations);
+	}
+	
+	@Override
+	public Formations createFormFBS(Formations Formations) throws Exception {
+		return Formations = formationsRepository.save(Formations);
 	}
 
 	@Override

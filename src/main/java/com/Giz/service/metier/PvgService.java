@@ -13,6 +13,9 @@ public interface PvgService {
 
 	public void deleteParcelleVG(Long id_pvg);
 	
+	public void createParcelleVG(String code_village, float x, float y, boolean exist, String nomResp,
+			String genre_pvg, int annee_naiss, boolean suivi_numeric, boolean diffusion_resultat, Date date_suivi);
+	
 	public void addParcelleVG(String code_village, float x, float y, boolean exist, String nomResp,
 			String genre_pvg, int annee_naiss, boolean suivi_numeric, boolean diffusion_resultat, Date date_suivi);
 	

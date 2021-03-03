@@ -26,6 +26,11 @@ public class FormateurServiceImpl implements FormateurService {
 		formateurRepository.deleteById(id_ft);
 		
 	}
+	
+	@Override
+	public Formateur createFormElev(Formateur Formateur) throws Exception {
+		return Formateur = formateurRepository.save(Formateur);
+	}
 
 	@Override
 	public void addFormateur(String code_village, String nomPrenom, String zoneInterv, String genre_ft,

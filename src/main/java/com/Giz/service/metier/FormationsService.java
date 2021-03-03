@@ -3,13 +3,13 @@ package com.Giz.service.metier;
 import java.util.Date;
 import java.util.List;
 
-import com.Giz.data.domain.Adoption_innovation;
-import com.Giz.data.domain.Formateur;
 import com.Giz.data.domain.Formations;
 
-
 public interface FormationsService {
-
+	
+	public Formations createFormFBS(Formations Formations) throws Exception;
+	
+	public Formations createFormEFA(Formations Formations) throws Exception;
 
 	public List<Formations> ListFormations();
 
@@ -17,7 +17,6 @@ public interface FormationsService {
 	
 	public void addFormations( String code_village, String nom_eleveur, String genre_form, int annee_naiss,
 			String formation_recu, String theme_formation, Date date_forma, String type_formation);
-	
 	
 	public void modifyFormations(Formations formations,String code_village, String nom_eleveur, String genre_form, int annee_naiss,
 			String formation_recu, String theme_formation, Date date_forma,

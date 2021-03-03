@@ -5,9 +5,9 @@ import java.util.List;
 
 import com.Giz.data.domain.Formateur;
 
-
 public interface FormateurService {
-
+	
+	public Formateur createFormElev(Formateur Formateur) throws Exception;
 
 	public List<Formateur> ListFormateur();
 

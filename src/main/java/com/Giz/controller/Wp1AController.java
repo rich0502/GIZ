@@ -180,6 +180,25 @@ public class Wp1AController {
 		return "redirect:/listPtAGC";
 	}
 
+	@GetMapping("/PtAGCForm")
+	public String PtAGCForm(Model model) throws Exception {
+		return "wp1/ParcelleTest/addPtAGC";
+	}
+
+	@PostMapping("/createPtAGC")
+	public String createPtAGC(@RequestParam("x") float x, @RequestParam("code_village") String code_village,
+			@RequestParam("y") float y, @RequestParam("nomResponsable") String nomResponsable,
+			@RequestParam("annee_naiss") int annee_naiss, @RequestParam("genre_pt") String genre_pt,
+			@RequestParam("superficies") float superficies, @RequestParam("date_suivi") java.sql.Date date_suivi,
+			@RequestParam("technique_exergue") String technique_exergue,
+			@RequestParam("operationnel") boolean operationnel, RedirectAttributes redirectAttributes)
+			throws ParseException {
+		parcelleTestService.addParcelle_AGC(code_village, x, y, nomResponsable, genre_pt, annee_naiss, superficies,
+				operationnel, date_suivi, technique_exergue);
+		return "redirect:/listPtAGC";
+
+	}
+
 	@RequestMapping("/listPtAGC")
 	public String listPtAGC(Model model) {
 		List<Parcelle_test> pt = parcelleTestService.ListParcelle_test();
@@ -240,6 +259,24 @@ public class Wp1AController {
 		}
 
 		return "redirect:/listPtParticipant";
+	}
+
+	@GetMapping("/PtParticipantForm")
+	public String PtParticipantForm(Model model) throws Exception {
+		return "wp1/ParcelleTest/addPtParticipant";
+	}
+
+	@PostMapping("/createPtParticipant")
+	public String createPtParticipant(@RequestParam("x") float x, @RequestParam("code_village") String code_village,
+			@RequestParam("y") float y, @RequestParam("nomResponsable") String nomResponsable,
+			@RequestParam("annee_naiss") int annee_naiss, @RequestParam("genre_pt") String genre_pt,
+			@RequestParam("date_suivi") java.sql.Date date_suivi, @RequestParam("nbr_homme") long nbr_homme,
+			@RequestParam("nbr_femme") long nbr_femme, @RequestParam("nbr_participant") Long nbr_participant,
+			RedirectAttributes redirectAttributes) throws ParseException {
+		parcelleTestService.addParcelleParticipant(code_village, x, y, nomResponsable, genre_pt, annee_naiss,
+				nbr_participant, nbr_homme, nbr_femme, date_suivi);
+		return "redirect:/listPtParticipant";
+
 	}
 
 	@RequestMapping("/listPtParticipant")
@@ -307,6 +344,34 @@ public class Wp1AController {
 		return "redirect:/listFomations";
 	}
 
+	@GetMapping("/FomationsForm")
+	public String FomationsForm(Model model) throws Exception {
+		return "wp1/formations/addFomations";
+	}
+
+	@PostMapping("/createFomations")
+	public String createFomations(@RequestParam("code_village") String code_village,
+			@RequestParam("nom_eleveur") String nom_eleveur, @RequestParam("annee_naiss") int annee_naiss,
+			@RequestParam("genre_form") String genre_form, @RequestParam("adoption") boolean adoption,
+			@RequestParam("pratique_adopte") String pratique_adopte,
+			@RequestParam("formation_recu") String formation_recu, @RequestParam("date_forma") java.sql.Date date_forma,
+			@RequestParam("theme_formation") String theme_formation, RedirectAttributes redirectAttributes)
+					throws Exception {
+		String type_formation = "ADOPTION DES BONNES PRATIQUES EN ELEVAGE";
+		Formations formations = new Formations();
+		formations.setCode_village(code_village);
+		formations.setNom_eleveur(nom_eleveur);
+		formations.setGenre_form(genre_form.toLowerCase());
+		formations.setAnnee_naiss(annee_naiss);
+		formations.setFormation_recu(formation_recu);
+		formations.setTheme_formation(theme_formation);
+		formations.setDate_forma(date_forma);
+		formations.setType_formation(type_formation);
+		formationsService.createFormEFA(formations);
+		return "redirect:/listFomations";
+
+	}
+
 	@RequestMapping("/listFomations")
 	public String listFomations(Model model) {
 		List<Formations> formations = formationsService.ListFormations("ADOPTION DES BONNES PRATIQUES EN ELEVAGE");
@@ -364,6 +429,31 @@ public class Wp1AController {
 
 		}
 
+		return "redirect:/listFormElev";
+	}
+	
+	@GetMapping("/FormElevForm")
+	public String FormElevForm(Model model) throws Exception {
+		return "wp1/formateur/addFormElev";
+	}
+
+	@PostMapping("/createFormElev")
+	public String createFormElev(@RequestParam("code_village") String code_village,
+			@RequestParam("genre_ft") String genre_ft, @RequestParam("nomPrenom") String nomPrenom,
+			@RequestParam("date_naiss") int date_naiss, @RequestParam("operationnel") boolean operationnel,
+			@RequestParam("date_mise_place") java.sql.Date date_mise_place, @RequestParam("date_suivi") java.sql.Date date_suivi, 
+			RedirectAttributes redirectAttributes) throws Exception {
+		String type_form = "ELEVAGE";
+		Formateur formateur = new Formateur();
+		formateur.setCode_village(code_village);
+		formateur.setNomPrenom(nomPrenom);
+		formateur.setGenre_ft(genre_ft.toLowerCase());
+		formateur.setDate_naiss(date_naiss);
+		formateur.setOperationnel(operationnel);
+		formateur.setDate_mise_place(date_mise_place);
+		formateur.setDate_suivi(date_suivi);
+		formateur.setType_form(type_form);
+		formateursService.createFormElev(formateur);
 		return "redirect:/listFormElev";
 	}
 
@@ -424,6 +514,31 @@ public class Wp1AController {
 
 		}
 
+		return "redirect:/listFormFBS";
+	}
+	
+	@GetMapping("/FormFBSForm")
+	public String FormFBSForm(Model model) throws Exception {
+		return "wp1/formations/addFormFBS";
+	}
+
+	@PostMapping("/createFormFBS")
+	public String createFormFBS(@RequestParam("code_village") String code_village,
+			@RequestParam("nom_eleveur") String nom_eleveur, @RequestParam("annee_naiss") int annee_naiss,
+			@RequestParam("genre_form") String genre_form, @RequestParam("formation_recu") String formation_recu,
+			@RequestParam("date_forma") java.sql.Date date_forma, @RequestParam("theme_formation") String theme_formation,
+			RedirectAttributes redirectAttributes) throws Exception {
+		String type_formation = "FBS ET POST FBS";
+		Formations formations = new Formations();
+		formations.setCode_village(code_village);
+		formations.setNom_eleveur(nom_eleveur);
+		formations.setGenre_form(genre_form.toLowerCase());
+		formations.setAnnee_naiss(annee_naiss);
+		formations.setFormation_recu(formation_recu);
+		formations.setTheme_formation(theme_formation);
+		formations.setDate_forma(date_forma);
+		formations.setType_formation(type_formation);
+		formationsService.createFormFBS(formations);
 		return "redirect:/listFormFBS";
 	}
 
