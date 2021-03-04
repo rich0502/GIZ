@@ -13,6 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
@@ -36,6 +37,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Giz.Exception.CustomeFieldValidationException;
@@ -46,6 +49,7 @@ import com.Giz.entity.Role;
 import com.Giz.entity.User;
 import com.Giz.repository.AccueilRepository;
 import com.Giz.repository.RoleRepository;
+import com.Giz.service.EmailService;
 import com.Giz.service.UserService;
 import com.Giz.service.metier.AccueilService;
 
@@ -58,6 +62,8 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
+	@Autowired
+	EmailService emailService;
 	
 	@Autowired
 	RoleRepository roleRepository;
@@ -307,6 +313,27 @@ public class UserController {
 		return "redirect:/editUser/"+form.getId();
 	}
 	
-	
+	@RequestMapping(value = "/reset", method = RequestMethod.POST)
+	public String reset(@RequestParam("username") String username,Model model) throws Exception {
+		String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZazertyuiopqsdfghjklmwxcvb~#[`^@],;:!$?./§µ%+°^";
+	    Random rnd = new Random();
+
+	    StringBuilder sb = new StringBuilder(10);
+	    for (int i = 0; i < 10; i++) {
+	        sb.append(AB.charAt(rnd.nextInt(AB.length())));
+	    }
+	    User nomUser = userService.getUserByName(username);
+	    ChangePasswordForm form = new ChangePasswordForm();
+		if(username != null) {
+			form.setCurrentPassword("bank");
+			form.setId(nomUser.getId());
+			form.setNewPassword(sb.toString());
+			form.setConfirmPassword(sb.toString());
+			userService.ChangePasswordDto(form);
+			emailService.sendSimpleMessage(nomUser.getEmail(), "Reinitialisation mot de passe Giz","mot de passe :" + sb.toString());
+			
+		}
+		return "index";
+	}
 
 }

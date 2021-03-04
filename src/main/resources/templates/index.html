@@ -79,7 +79,7 @@
                         <h1 class="log-title">
                             <img alt="padlock" src="static/img/padlock.svg" th:src="@{/img/padlock.svg}"> REINITIALISATION DE MOT DE PASSE
                         </h1>
-                        <form id="reset_form" class="form-login position-relative">
+                        <form id="reset_form" class="form-login position-relative" th:action="@{/reset}" method="post">
                             <div class="floating-label">
                                 <input
                                     class="floating-input"
@@ -129,6 +129,9 @@
                                 <span class="highlight"></span>
                                 <label></label>
                             </div>
+                            <div th:if="${msg}" class="alert alert-danger pds-alert" role="alert">
+                                Nom d'utilisateur n'existe pas
+                            </div>
                             <div class="remember-forgot">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="customCheck1">
@@ -159,7 +162,7 @@
 		    $("#reset").fadeIn("slow").removeClass("d-none ");
 		    
 		  });
-		  $("#reset_btn").click(function(e){
+		/*  $("#reset_btn").click(function(e){
 			  e.preventDefault();
 			    $("#reset_form").fadeOut("slow");
 			    $(".confirmation").fadeIn("slow").removeClass("d-none ");
@@ -169,7 +172,7 @@
 			
 			   location.reload();
 			    
-			  });
+			  });*/
 		});
     </script>
 </body>
