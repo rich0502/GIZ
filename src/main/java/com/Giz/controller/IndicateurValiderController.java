@@ -39,6 +39,9 @@ public class IndicateurValiderController {
 			vsla = 100;
 		}
 		
+		//canevas31 FBS iNTEGRATION EDUCATION FINANCIERE
+		float FBS = (float) ((validerService.countFBS(dateChronologique)));
+		
 		//mobile money
 		target = 1800;
 		float mobil = (float) ((validerService.countMobileMoney(dateChronologique)/target)*100.0);
@@ -69,6 +72,7 @@ public class IndicateurValiderController {
 		int menageH = validerService.countHMenage(dateChronologique);
 		int menageF = validerService.countFMenage(dateChronologique);
 		
+		model.addAttribute("FBS", FBS);
 		model.addAttribute("l3_operationnel", l3_operationnel);
 		model.addAttribute("l3H_operationnel", l3H_operationnel);
 		model.addAttribute("l3F_operationnel", l3F_operationnel);

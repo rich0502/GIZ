@@ -618,10 +618,9 @@ public class ValiderServiceImpl implements ValiderService{
 		return validerrepository.countMenageF(dateChronologique);
 	}
 
-
-
-	
-
-
-
+	@Override
+	public int countFBS(String dateChronologique) {
+		// TODO Auto-generated method stub
+		return validerrepository.countFBS(dateChronologique);
+	}
 }

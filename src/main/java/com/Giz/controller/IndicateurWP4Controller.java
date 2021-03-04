@@ -1,55 +1,14 @@
 package com.Giz.controller;
 
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.Giz.data.domain.GraphDistrict;
-import com.Giz.service.metier.AdopteInnovationService;
 import com.Giz.service.metier.AtelierMFRService;
 import com.Giz.service.metier.DocCapService;
-import com.Giz.service.metier.FormationBpaService;
-import com.Giz.service.metier.ParcelleTestService;
-import com.Giz.service.metier.PepiniereService;
 import com.Giz.service.metier.PlateformeService;
-import com.Giz.service.metier.RechercheService;
-import com.Giz.service.metier.Wp3ActivEcoJeuneService;
-import com.Giz.service.metier.Wp3AgrDevMfrService;
-import com.Giz.service.metier.Wp3CommitteeActifService;
-import com.Giz.service.metier.Wp3ElevMfrService;
-import com.Giz.service.metier.Wp3EppFramService;
-import com.Giz.service.metier.Wp3EquipeTechMfrService;
-import com.Giz.service.metier.Wp3FedeMfrService;
-import com.Giz.service.metier.Wp3JeuneFormeMfrService;
-import com.Giz.service.metier.Wp3JeunePathwayService;
-import com.Giz.service.metier.Wp3JeuneTechService;
-import com.Giz.service.metier.Wp3PeerEducatorService;
-import com.Giz.service.metier.Wp3SanteeCommService;
-import com.Giz.service.metier.Wp3UniteElevJeuneService;
-
-
-
-
-
 
 @Controller
 public class IndicateurWP4Controller {
@@ -103,12 +62,12 @@ public class IndicateurWP4Controller {
 		float can57T = plateformeService.getCount(dateChronologique, "CANEVAS EXISTENCE DE DISPOSITIF CONCERTE DE SUIVI ET PROTECTION DES ENFANTS");
 		
 		float target58 = 1;
-		float can58 = (float) ((plateformeService.countPlateforme(dateChronologique, "CANEVAS PLATE FORME DE REFLEXION ET DE PLANIFICATION")/target58)*100.0);
-		float can58T = plateformeService.getCount(dateChronologique, "CANEVAS PLATE FORME DE REFLEXION ET DE PLANIFICATION");
+		float can58 = (float) ((plateformeService.countPlateforme(dateChronologique, "CANEVAS PLATE FORME DE REFLEXION ET DE PLANIFICATION DE L'AMELIORATION DE LA FORMATION PROFESSIONNELLE")/target58)*100.0);
+		float can58T = plateformeService.getCount(dateChronologique, "CANEVAS PLATE FORME DE REFLEXION ET DE PLANIFICATION DE L'AMELIORATION DE LA FORMATION PROFESSIONNELLE");
 		
 		float target59 = 1;
-		float can59 = (float) ((plateformeService.countPlateforme(dateChronologique, "CANEVAS PLATE FORME DE CONCERTATION ET DE PLANIFICAT")/target59)*100.0);
-		float can59T = plateformeService.getCount(dateChronologique, "CANEVAS PLATE FORME DE CONCERTATION ET DE PLANIFICAT");
+		float can59 = (float) ((plateformeService.countPlateforme(dateChronologique, "CANEVAS PLATE FORME DE CONCERTATION ET DE PLANIFICATION SUR L'ENVIRONNEMENT, BIODIVERSITE ET CHANGEMENT CLIMATIQUE DANS LA REGION SAVA")/target59)*100.0);
+		float can59T = plateformeService.getCount(dateChronologique, "CANEVAS PLATE FORME DE CONCERTATION ET DE PLANIFICATION SUR L'ENVIRONNEMENT, BIODIVERSITE ET CHANGEMENT CLIMATIQUE DANS LA REGION SAVA");
 		
 		model.addAttribute("can51", can51);
 		model.addAttribute("can52H", can52H);

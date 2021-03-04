@@ -69,6 +69,10 @@ public interface ValiderRepository extends JpaRepository<Valider, Long>{
 	
 	@Query("SELECT v FROM Valider v where  canevas = 'FBS'")
 	List<Valider> findAllFBS();
+	
+	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'FBS' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and fbs_post_fbs_recus and education_fbs_post_fbs", nativeQuery = true)
+	int countFBS(String dateChronologique);
+	
 	/*
 	@Query("SELECT count(*) FROM Valider where  canevas = 'FBS'")
 	int countFBS();

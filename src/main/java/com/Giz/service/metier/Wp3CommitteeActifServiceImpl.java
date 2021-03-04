@@ -18,6 +18,24 @@ public class Wp3CommitteeActifServiceImpl implements Wp3CommitteeActifService {
 	Wp3CommitteeActifRepository wp3CommitteeActifRepository;
 	
 	@Override
+	public long getCountHomme(String dateChronologique) {
+		if(wp3CommitteeActifRepository.getCountHommeIsExist(dateChronologique)) {
+			return wp3CommitteeActifRepository.getCountHomme(dateChronologique);
+		} else {
+			return 0;
+		}
+	}
+
+	@Override
+	public long getCountFemme(String dateChronologique) {
+		boolean nbr = wp3CommitteeActifRepository.getCountFemmeIsExist(dateChronologique);
+				if(nbr) {
+					return wp3CommitteeActifRepository.getCountFemme(dateChronologique);
+				}
+			return 0;
+	}
+	
+	@Override
 	public Wp3CommitteeActif createWp3CommitteeActif(Wp3CommitteeActif wp3CommitteeActif) throws Exception {
 		return wp3CommitteeActif = wp3CommitteeActifRepository.save(wp3CommitteeActif);
 	}

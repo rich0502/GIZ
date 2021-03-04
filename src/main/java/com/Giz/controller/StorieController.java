@@ -14,7 +14,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -58,7 +59,7 @@ public class StorieController {
 		return "storie/storie-list";
 	}
 	
-	@PostMapping("/saveStorie")
+	@RequestMapping(value = "/saveStorie", method = RequestMethod.POST)
     public String saveStorie(@RequestParam("file") MultipartFile file, @RequestParam("nom_str") String nom_str,
             RedirectAttributes redirectAttributes) throws Exception{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

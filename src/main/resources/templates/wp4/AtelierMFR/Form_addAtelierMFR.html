@@ -87,10 +87,16 @@
 				<input type="text" id="cible_atelier" name="cible_atelier">
 				<br>
 				Type de l'atelier/évènement :
-				<br>
-				<input type="text" id="type_atelier" name="type_atelier">
-				<br>
-				<br>
+					<br>
+					<select class="form-control select2" name="type_atelier" id="type_atelier"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DU RESEAU DE MFR DANS LA REGION">Canevas 52</option>
+						<option value="CANEVAS DIALOGUE REGIONAL SUR L'ACCES AU FINANCEMENT">Canevas 53</option>
+						<option value="CANEVAS ATELIERS DE CAPITALISATION ET PARTAGE DES ACQUIS">Canevas 54</option>
+						<option value="CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DE MAHAVELONA DANS LA SAVA">Canevas 55</option>
+						<option value="CANEVAS ATELIERS DE PARTAGES DES BONNES PRATIQUES ET OUTILS AUX PRODUCTEURS DE VANILLE">Canevas 56</option>
+					</select>
+					<br>
 				<input type="submit" th:value="#{save}" class="gbtn">
 			</form>
 		</div>

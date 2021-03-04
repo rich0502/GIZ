@@ -80,9 +80,13 @@
 				<input type="text" name="commentaire" id="commentaire">
 				<br>
 				Type plateforme:
-				<br>
-				<input type="text" name="type_plateform" id="type_plateform">
-				<br>
+					<br>
+					<select class="form-control select2" name="type_plateform" id="type_plateform"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="CANEVAS EXISTENCE DE DISPOSITIF CONCERTE DE SUIVI ET PROTECTION DES ENFANTS">Canevas 57</option>
+						<option value="CANEVAS PLATE FORME DE REFLEXION ET DE PLANIFICATION DE L'AMELIORATION DE LA FORMATION PROFESSIONNELLE">Canevas 58</option>
+						<option value="CANEVAS PLATE FORME DE CONCERTATION ET DE PLANIFICATION SUR L'ENVIRONNEMENT, BIODIVERSITE ET CHANGEMENT CLIMATIQUE DANS LA REGION SAVA">Canevas 59</option>
+					</select>
 
 				<br>
 				<input type="submit" th:value="#{save}" class="gbtn">

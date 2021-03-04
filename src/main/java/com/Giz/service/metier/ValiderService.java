@@ -66,8 +66,9 @@ public interface ValiderService {
 
 	public void modifyFBS(String code_village, boolean fbs_post_fbs_recus, boolean education_fbs_post_fbs, Date date_suivi, Long id);
 	
-	/*public int countFBS();
+	public int countFBS(String dateChronologique);
 	
+	/*
 	public int countHFBS();
 	
 	public int countFFBS();*/
@@ -146,5 +147,7 @@ public interface ValiderService {
 	public int countHMenage(String dateChronologique);
 	
 	public int countFMenage(String dateChronologique);
+
+
 	
 }

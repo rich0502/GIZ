@@ -17,6 +17,10 @@ public interface Wp3CommitteeActifService {
 	
 	public long countChronologique(String dateChronologique);
 	
+	public long getCountHomme(String dateChronologique);
+	
+	public long getCountFemme(String dateChronologique);
+	
 	public long countChronologiqueGenre(String dateChronologique, String genre);
 	
 	public Optional<Wp3CommitteeActif> findByIdCommitteeActif(long id);

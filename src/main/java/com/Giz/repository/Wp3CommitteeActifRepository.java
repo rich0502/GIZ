@@ -22,6 +22,20 @@ public interface Wp3CommitteeActifRepository extends JpaRepository<Wp3CommitteeA
 	@Query(value="select count(*) from wp3_committee_actif where lower(sexe)=:sexe and date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
 	long countChronologeGenre(String dateChronologique, String sexe);
 	
+	@Query(value="Select sum(sexe_f) as femme from wp3_committee_actif where  date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	long getCountFemme(String dateChronologique);
+	
+	@Query(value="Select CASE WHEN sum(sexe_f) >= 1 THEN true ELSE false END from wp3_committee_actif where date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	boolean getCountFemmeIsExist(String dateChronologique);
+	
+	
+	@Query(value="Select sum(sexe_h) as homme from wp3_committee_actif where date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	long getCountHomme(String dateChronologique);
+	
+	@Query(value="Select CASE WHEN sum(sexe_h) >= 1 THEN true ELSE false END from wp3_committee_actif where date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	boolean getCountHommeIsExist(String dateChronologique);
+	
+	
 	@Modifying
     @Transactional
     @Query("delete from Wp3CommitteeActif e where id = ?1")

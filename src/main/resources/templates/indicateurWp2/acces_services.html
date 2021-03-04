@@ -2,10 +2,14 @@
 <tr class="">
 	<td class="row-field" rowspan="4"><div class="editable-field" contenteditable="false" >2.3.Accès aux services financiers formels</div></td>
 	<td class="row-field"><div class="editable-field" >Intégration de l'éducation financière  dans les formations FBS Evo-lution et Post-FBS.</div></td>
-	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 31</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
 	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
+	<div class="type-number-percent"><input id="prog01" type="text" min="0" max="100" th:value="${#numbers.formatDecimal(FBS,1,2)}" disabled></div>
+		<div class="progress custom-progress">
+			<div id="progbar01" class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${FBS} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
 	</div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
 	<td class="row-field"><div class="editable-field" contenteditable="false">Liste des modules EFI développés et intégrés dans les formations fbs et post-FBS</div></td>
@@ -40,7 +44,7 @@
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
 	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
-	<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${mobil}" disabled></div>
+	<div class="type-number-percent"><input id="prog01" type="text" min="0" max="100" th:value="${#numbers.formatDecimal(mobil,1,2)}" disabled></div>
 		<div class="progress custom-progress">
 			<div id="progbar01" class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${mobil} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 		</div>
@@ -61,7 +65,7 @@
 	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
 	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
 	<td class="row-field"><div class="editable-field">
-	<div class="type-number-percent"><input id="prog01" type="number" min="0" max="100" th:value="${finance}" disabled></div>
+	<div class="type-number-percent"><input id="prog01" type="text" min="0" max="100" th:value="${#numbers.formatDecimal(finance,1,2)}" disabled></div>
 		<div class="progress custom-progress">
 			<div id="progbar01" class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${finance} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 		</div>

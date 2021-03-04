@@ -1,29 +1,11 @@
 package com.Giz.controller;
 
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.Giz.data.domain.GraphDistrict;
 import com.Giz.service.metier.AdopteInnovationService;
 import com.Giz.service.metier.FormationBpaService;
 import com.Giz.service.metier.ParcelleTestService;
@@ -43,11 +25,6 @@ import com.Giz.service.metier.Wp3JeuneTechService;
 import com.Giz.service.metier.Wp3PeerEducatorService;
 import com.Giz.service.metier.Wp3SanteeCommService;
 import com.Giz.service.metier.Wp3UniteElevJeuneService;
-
-
-
-
-
 
 @Controller
 public class IndicateurController {
@@ -166,8 +143,8 @@ public class IndicateurController {
 		
 		target = 77;
 		float can38 = (float) ((wp3CommitteeActifService.countChronologique(dateChronologique)/target)*100.0);
-		float can38H = wp3CommitteeActifService.countChronologiqueGenre(dateChronologique, "h");
-		float can38F = wp3CommitteeActifService.countChronologiqueGenre(dateChronologique, "f");
+		float can38H = wp3CommitteeActifService.getCountHomme(dateChronologique);
+		float can38F = wp3CommitteeActifService.getCountFemme(dateChronologique);
 		
 		
 		target = 2460; 
