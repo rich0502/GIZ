@@ -23,8 +23,8 @@
 
 		<!-- Raha hampiasa ny profiles -->
 		<tomcat.username>admin</tomcat.username>
-		<tomcat.password>dKbiKDYd3i8l3mBBLCZy</tomcat.password>
-		<tomcat.url>http://salon2d.dev.arkeup.com/manager/text</tomcat.url>
+		<tomcat.password>2O2lFandr!aK2</tomcat.password>
+		<tomcat.url>http://168.119.185.165/manager/text</tomcat.url>
 		<!-- FIN Raha hampiasa ny profiles -->
 
 	</properties>
@@ -148,8 +148,8 @@
 			<id>dev</id>
 			<properties>
 				<tomcat.username>admin</tomcat.username>
-				<tomcat.password>dKbiKDYd3i8l3mBBLCZy</tomcat.password>
-				<tomcat.url>http://salon2d.dev.arkeup.com/manager/text</tomcat.url>
+				<tomcat.password>2O2lFandr!aK2</tomcat.password>
+				<tomcat.url>http://168.119.185.165/manager/text</tomcat.url>
 			</properties>
 		</profile>
 		<profile>
@@ -160,7 +160,7 @@
 			<properties>
 				<tomcat.username>script</tomcat.username>
 				<tomcat.password>script</tomcat.password>
-				<tomcat.url>http://salon2d.dev.arkeup.com/manager/text</tomcat.url>
+				<tomcat.url>http://168.119.185.165/manager/text</tomcat.url>
 			</properties>
 		</profile>
 	</profiles>
