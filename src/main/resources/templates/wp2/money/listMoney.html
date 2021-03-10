@@ -58,8 +58,8 @@
 				<th scope="col"><span>Nom et prenom</span></th>
 				<th scope="col"><span>Sexe</span></th>
 				<th scope="col"><span>Année de naissance</span></th>
-				<th scope="col"><span>Service mobile money</span></th>
 				<th scope="col"><span>Date suivi</span></th>
+				<th scope="col"><span>Service mobile money</span></th>
 				<th scope="col"><span>Orange money</span></th>
 				<th scope="col"><span>Mvola</span></th>
 				<th scope="col"><span>Airtel Money</span></th>
@@ -74,10 +74,10 @@
 				<td th:text="${b.sexe}"></td>
 				<td th:text="${b.annee_naissance}"></td>
 				<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
-				<td th:text="${b.service_mobile_money}"></td>
-				<td th:text="${b.orange_money}"></td>
-				<td th:text="${b.mvola}"></td>
-				<td th:text="${b.airtel_money}"></td>
+				<td th:text="${b.service_mobile_money} ? 'Oui' : 'Non'"></td>
+				<td th:text="${b.orange_money} ? 'Oui' : 'Non'"></td>
+				<td th:text="${b.mvola} ? 'Oui' : 'Non'"></td>
+				<td th:text="${b.airtel_money} ? 'Oui' : 'Non'"></td>
 				<td class="center td-action">
 				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id}+'\');'}"></a>
 			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editMoney/' + ${b.id}}"></a>

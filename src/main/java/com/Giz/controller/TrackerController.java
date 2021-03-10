@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,7 +49,28 @@ public class TrackerController {
 	@Autowired
 	TrackerService trackerService;
 	
-	
+	// DELETE TRACKER WP1 à WP4
+	@RequestMapping("/deleteTrackerWP1/{id}")
+	public String deleteTrackerWP1(@PathVariable(name = "id") Long id) {
+		trackerService.deleteTracker(id);
+		return "redirect:/trackerListWP1";
+	}
+	@RequestMapping("/deleteTrackerWP2/{id}")
+	public String deleteTrackerWP2(@PathVariable(name = "id") Long id) {
+		trackerService.deleteTracker(id);
+		return "redirect:/trackerListWP2";
+	}
+	@RequestMapping("/deleteTrackerWP3/{id}")
+	public String deleteTrackerWP3(@PathVariable(name = "id") Long id) {
+		trackerService.deleteTracker(id);
+		return "redirect:/trackerListWP3";
+	}
+	@RequestMapping("/deleteTrackerWP4/{id}")
+	public String deleteTrackerWP4(@PathVariable(name = "id") Long id) {
+		trackerService.deleteTracker(id);
+		return "redirect:/trackerListWP4";
+	}
+
 	//WP1
 	@RequestMapping("/trackerAddWP1")
 	public String trackerAddWP1(Model model) {

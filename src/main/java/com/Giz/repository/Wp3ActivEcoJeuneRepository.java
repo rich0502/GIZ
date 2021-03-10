@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import com.Giz.data.domain.TpsFormes;
 import com.Giz.data.domain.Wp3ActivEcoJeune;
 
 public interface Wp3ActivEcoJeuneRepository extends JpaRepository<Wp3ActivEcoJeune, Long> {

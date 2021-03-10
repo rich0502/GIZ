@@ -75,7 +75,7 @@
 							<td th:text="${b.code_village}"></td>
 							<td th:text="${b.nom_comite}"></td>
 							<td th:text="${b.mois_annee_creation}"></td>
-							<td th:text="${b.committee_actif}"></td>
+							<td th:text="${b.committee_actif} ? 'Oui' : 'Non'"></td>
 							<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
 							<td th:text="${b.effectif_membre}"></td>
 							<td th:text="${b.sexe_h}"></td>

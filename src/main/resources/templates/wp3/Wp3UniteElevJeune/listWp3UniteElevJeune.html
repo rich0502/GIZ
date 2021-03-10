@@ -79,7 +79,7 @@
 							<td th:text="${b.nom_prenom}"></td>
 							<td th:text="${b.sexe}"></td>
 							<td th:text="${b.annee_naissance}"></td>
-							<td th:text="${b.demarrage_unite}"></td>
+							<td th:text="${b.demarrage_unite} ? 'Oui' : 'Non'"></td>
 							<td th:text="${#dates.format(b.date_dem,'dd-MM-yyyy')}"></td>
 							<td th:text="${b.type_activite}"></td>
 							<td th:text="${b.theme1_traite}"></td>

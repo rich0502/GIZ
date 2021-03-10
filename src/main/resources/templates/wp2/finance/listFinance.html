@@ -72,7 +72,7 @@
 				<td th:text="${b.nom_prenom}"></td>
 				<td th:text="${b.sexe}"></td>
 				<td th:text="${b.annee_naissance}"></td>
-				<td th:text="${b.service_IMF}"></td>
+				<td th:text="${b.service_IMF} ? 'Oui' : 'Non'"></td>
 				<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
 				<td th:text="${b.institution}"></td>
 				<td th:text="${b.lieu_agence}"></td>

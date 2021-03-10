@@ -69,10 +69,10 @@
 				<td th:text="${b.code_village}"></td>
 				<td th:text="${b.nom_vsla}"></td>
 				<td th:text="${b.annee_creation}"></td>
-				<td th:text="${b.vsla_lier_regionale}"></td>
-				<td th:text="${b.appuis_recus}"></td>
+				<td th:text="${b.vsla_lier_regionale} ? 'Oui' : 'Non'"></td>
+				<td th:text="${b.appuis_recus} ? 'Oui' : 'Non'"></td>
 				<td th:text="${b.type_appui}"></td>
-				<td th:text="${b.operationnel}"></td>
+				<td th:text="${b.operationnel} ? 'Oui' : 'Non'"></td>
 				<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
 				<td class="center td-action">
 				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id}+'\');'}"></a>

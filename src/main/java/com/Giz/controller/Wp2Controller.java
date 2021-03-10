@@ -159,7 +159,7 @@ public class Wp2Controller {
 	public String listLakileTelo(Model model) {
 		List<Valider> validerL3 = validerservice.ListValiderL3();
 		model.addAttribute("validerL3", validerL3);
-		return "wp2/LakileTelo/listLakileTelo";
+		return "wp2/lakileTelo/listLakileTelo";
 	}
 	
 	

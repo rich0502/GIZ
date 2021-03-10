@@ -10,4 +10,6 @@ public interface TrackerService {
 	
 	public List<Tracker> getTracker(String type_tracker) throws Exception;
 	
+	public void deleteTracker(Long id);
+	
 }

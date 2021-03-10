@@ -28,5 +28,12 @@ public class TrackerServiceImpl implements TrackerService {
 		return list;
 	}
 
+	@Override
+	public void deleteTracker(Long id) {
+		// TODO Auto-generated method stub
+		trackerRepository.deleteById(id);
+		
+	}
+
 	
 }

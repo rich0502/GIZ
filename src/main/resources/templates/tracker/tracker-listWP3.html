@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-    <head th:include="/headLinks.html" th:remove="tag"></head>
+    <head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
                             <th scope="col">Description</th>
                             <th scope="col">Nom du fichier </th>
                             <th scope="col">Date </th>
-                            <th scope="col" >Download</th>
+                            <th scope="col" >Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +37,7 @@
                        
                                 <span class="action-btn">
                                     <a th:href="'/tracker/' + ${listFile.file_name}"/><img src="img/pds_download_black.svg"></a>
+                                    <a class="btn" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" th:onclick="@{'javascript:confirmDelete(\''+${listFile.id}+'\');'}"/><img src="images/delete.svg"></a>
                                 </span>
                                  </div>
                             </td>
@@ -48,7 +49,45 @@
             <!-- document -->
         </div>
 	</div>
-	<section class="main">
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+			aria-labelledby="deleteModalTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content card-body">
+					<div class="modal-header">
+						<h2 class="page-title modal-title" id="exampleModalLongTitle">[[#{confirm.titre}]]</h2>
+						<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">X</span>
+						</button> -->
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body p-modal">
+						<span>[[#{confirm}]]</span> <input type="hidden"
+							id="sensibileIdHiddenInput">
+					</div>
+					<div class="modal-footer btn-row">
+						<button type="button" class="gbtn cancel" data-dismiss="modal">[[#{fermer}]]</button>
+						<button type="button" class="gbtn"
+							th:onclick="confirmDeleteSensibilise()">[[#{supprimer}]]</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript" th:src="@{js/ajaxEdition.js}"></script>
+	<script type="text/javascript">
+            function confirmDelete(id) {
+                $('#deleteModal').modal('show');
+                $("#sensibileIdHiddenInput").val(id);
+            }
+
+            function confirmDeleteSensibilise() {
+                var id = $("#sensibileIdHiddenInput").val();
+                window.location = "deleteTrackerWP3/" + id;
+            }
+    </script>
 </body>
 
 </html>

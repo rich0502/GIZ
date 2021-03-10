@@ -66,7 +66,7 @@
 									<td th:text="${b.code_village}"></td>
 									<td th:text="${b.nom_mfr}"></td>
 									<td th:text="${b.annee_miseplace}"></td>
-									<td th:text="${b.agr_developpe}"></td>
+									<td th:text="${b.agr_developpe} ? 'Oui' : 'Non'"></td>
 									<td th:text="${#dates.format(b.date_eval,'dd-MM-yyyy')}"></td>
 									<td th:text="${b.type_agr_dev1}"></td>
 									<td th:text="${#dates.format(b.date_suivi1,'dd-MM-yyyy')}"></td>
