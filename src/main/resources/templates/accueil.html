@@ -33,22 +33,16 @@
 
 	 <section class="main">
         <div class="home-content" >
-            <h2 class="content-title" style="margin-bottom: 12px;">[[#{accueil.titre}]] <a th:href="@{'/acc'}" class="btn pds-primary-btn pds-add-user-btn pds-icon-btn" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">[[#{btn.accueil}]]</a></h2>        
+            <h2 class="content-title" style="margin-bottom: 12px;">[[#{accueil.titre}]]</h2>        
 
             <div class="welcome-img row">
                 <div class="col-6">
                     <img alt="" th:src="@{/img/bg-login4.jpg}">
                 </div>
-                <div class="col-6">
-                    Texte de bienvenue
+                <div class="col-6" th:each="b : ${Accueil}">
+                    <div th:utext="${b.contenu_acc}"></div>	
                 </div>
             </div>
-            <div>
-            	<div th:each="b : ${Accueil}">
-					<p th:utext="${b.contenu_acc}"></p>		
-				</div>
-            </div>
-            
             <div class="welcome"></div>
         </div>
     </section>

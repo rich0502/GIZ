@@ -1,29 +1,16 @@
 package com.Giz.controller;
 
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Giz.data.domain.Beneficiaire;
-import com.Giz.data.domain.Valider;
 import com.Giz.repository.BeneficiaireRepository;
 import com.Giz.service.metier.BeneficiaireService;
-
-
-
 
 @Controller
 public class BeneficiaireController {

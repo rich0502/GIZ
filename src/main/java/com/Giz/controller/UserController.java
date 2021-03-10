@@ -1,27 +1,14 @@
 package com.Giz.controller;
 
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -35,7 +22,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -315,7 +301,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/reset", method = RequestMethod.POST)
 	public String reset(@RequestParam("username") String username,Model model) throws Exception {
-		String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZazertyuiopqsdfghjklmwxcvb~#[`^@],;:!$?./§µ%+°^";
+		String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZazertyuiopqsdfghjklmwxcvb~#[`^@],;:!$?./ï¿½ï¿½%+ï¿½^";
 	    Random rnd = new Random();
 
 	    StringBuilder sb = new StringBuilder(10);

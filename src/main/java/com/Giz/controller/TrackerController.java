@@ -15,21 +15,16 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Giz.data.domain.Tracker;
-import com.Giz.entity.User;
 import com.Giz.service.TrackerService;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -41,16 +36,11 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
-
-
-
-
-
 @Controller
 public class TrackerController {
 	
     //private static String UPLOADED_FOLDER = "/usr/local/tomcat/webapps/documents/";	
-	private static String UPLOADED_FOLDER = "/usr/share/apache-tomcat-8.5.6/webapps/tracker/";
+	private static String UPLOADED_FOLDER = "/home/liantsoa/Documents/Uploads/tracker/";
 	
     //private static String DOWNLOAD_FOLDER = "http://plan-etech.dev.arkeup.com/documents/";
 	private static String DOWNLOAD_FOLDER = "http://168.119.185.165:8080/tracker/";
@@ -138,6 +128,40 @@ public class TrackerController {
 		return "tracker/tracker-listWP1";
 	}
 	
+	@GetMapping("/trackerFormWP1")
+	public String trackerFormWP1(Model model) throws Exception {
+		return "tracker/tracker-uploadWP1";
+	}
+	
+	@RequestMapping(value = "/uploadtrackerWP1", method = RequestMethod.POST)
+    public String uploadtrackerWP1(@RequestParam("file") MultipartFile file, @RequestParam("desc_file") String desc_file,
+            RedirectAttributes redirectAttributes) throws Exception{
+		DateFormat formater = null;
+		Date date_tracker = new Date();
+		formater = new SimpleDateFormat("dd-MM-yyyy");
+		Tracker tracker = new Tracker();
+		tracker.setDesc_file(desc_file);
+		tracker.setDate_tracker(formater.format(date_tracker));
+		tracker.setType_tracker("WP1");
+		
+		 if (file.isEmpty()) {
+	            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+	            return "redirect:trackerListWP1";
+	        }
+	        try {
+	            // Get the file and save it somewhere
+	            byte[] bytes = file.getBytes();
+	            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+	            Files.write(path, bytes);
+	    		String file_name = file.getOriginalFilename();
+	    		tracker.setFile_name(file_name);
+	    		trackerService.addTracker(tracker);
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	        return "redirect:/trackerListWP1";
+	}
 	
 	//WP2
 	@RequestMapping("/trackerAddWP2")
@@ -216,6 +240,41 @@ public class TrackerController {
 	public String trackerListWP2(Model model) throws Exception {
 		model.addAttribute("ListFiles",trackerService.getTracker("WP2"));
 		return "tracker/tracker-listWP2";
+	}
+	
+	@GetMapping("/trackerFormWP2")
+	public String trackerFormWP2(Model model) throws Exception {
+		return "tracker/tracker-uploadWP2";
+	}
+	
+	@RequestMapping(value = "/uploadtrackerWP2", method = RequestMethod.POST)
+    public String uploadtrackerWP2(@RequestParam("file") MultipartFile file, @RequestParam("desc_file") String desc_file,
+            RedirectAttributes redirectAttributes) throws Exception{
+		DateFormat formater = null;
+		Date date_tracker = new Date();
+		formater = new SimpleDateFormat("dd-MM-yyyy");
+		Tracker tracker = new Tracker();
+		tracker.setDesc_file(desc_file);
+		tracker.setDate_tracker(formater.format(date_tracker));
+		tracker.setType_tracker("WP2");
+		
+		 if (file.isEmpty()) {
+	            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+	            return "redirect:trackerListWP2";
+	        }
+	        try {
+	            // Get the file and save it somewhere
+	            byte[] bytes = file.getBytes();
+	            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+	            Files.write(path, bytes);
+	    		String file_name = file.getOriginalFilename();
+	    		tracker.setFile_name(file_name);
+	    		trackerService.addTracker(tracker);
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	        return "redirect:/trackerListWP2";
 	}
 	
 		//WP3
@@ -297,6 +356,41 @@ public class TrackerController {
 			return "tracker/tracker-listWP3";
 		}
 		
+		@GetMapping("/trackerFormWP3")
+		public String trackerFormWP3(Model model) throws Exception {
+			return "tracker/tracker-uploadWP3";
+		}
+		
+		@RequestMapping(value = "/uploadtrackerWP3", method = RequestMethod.POST)
+	    public String uploadtrackerWP3(@RequestParam("file") MultipartFile file, @RequestParam("desc_file") String desc_file,
+	            RedirectAttributes redirectAttributes) throws Exception{
+			DateFormat formater = null;
+			Date date_tracker = new Date();
+			formater = new SimpleDateFormat("dd-MM-yyyy");
+			Tracker tracker = new Tracker();
+			tracker.setDesc_file(desc_file);
+			tracker.setDate_tracker(formater.format(date_tracker));
+			tracker.setType_tracker("WP3");
+			
+			 if (file.isEmpty()) {
+		            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+		            return "redirect:trackerListWP3";
+		        }
+		        try {
+		            // Get the file and save it somewhere
+		            byte[] bytes = file.getBytes();
+		            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+		            Files.write(path, bytes);
+		    		String file_name = file.getOriginalFilename();
+		    		tracker.setFile_name(file_name);
+		    		trackerService.addTracker(tracker);
+
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+		        return "redirect:/trackerListWP3";
+		}
+		
 		//WP4
 		@RequestMapping("/trackerAddWP4")
 		public String trackerAddWP4(Model model) {
@@ -374,5 +468,40 @@ public class TrackerController {
 		public String trackerListWP4(Model model) throws Exception {
 			model.addAttribute("ListFiles",trackerService.getTracker("WP4"));
 			return "tracker/tracker-listWP4";
+		}
+		
+		@GetMapping("/trackerFormWP4")
+		public String trackerFormWP4(Model model) throws Exception {
+			return "tracker/tracker-uploadWP4";
+		}
+		
+		@RequestMapping(value = "/uploadtrackerWP4", method = RequestMethod.POST)
+	    public String uploadtrackerWP4(@RequestParam("file") MultipartFile file, @RequestParam("desc_file") String desc_file,
+	            RedirectAttributes redirectAttributes) throws Exception{
+			DateFormat formater = null;
+			Date date_tracker = new Date();
+			formater = new SimpleDateFormat("dd-MM-yyyy");
+			Tracker tracker = new Tracker();
+			tracker.setDesc_file(desc_file);
+			tracker.setDate_tracker(formater.format(date_tracker));
+			tracker.setType_tracker("WP4");
+			
+			 if (file.isEmpty()) {
+		            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+		            return "redirect:trackerListWP4";
+		        }
+		        try {
+		            // Get the file and save it somewhere
+		            byte[] bytes = file.getBytes();
+		            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+		            Files.write(path, bytes);
+		    		String file_name = file.getOriginalFilename();
+		    		tracker.setFile_name(file_name);
+		    		trackerService.addTracker(tracker);
+
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+		        return "redirect:/trackerListWP4";
 		}
 }

@@ -1,8 +1,5 @@
 package com.Giz.data.domain;
 
-import java.sql.Date;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
