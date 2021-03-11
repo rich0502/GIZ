@@ -7,19 +7,9 @@ var drawControl, app, vectorLayer, tab, mapUI, layer_bat,layerArea, lastName, mo
 		var start_month = date_debut.substring(5,7);
 		var finish_year = date_fin.substring(0,4);
 		var finish_month = date_fin.substring(5,7);
+		var spaceVillages = villages.replace(/\s/g, '');
+		var arrayVillages = spaceVillages.split(';');
 		var sub = subdivision + theme;
-		var limit = new OpenLayers.Layer.WMS("limite",
-				    constants.adresseIP + "/geoserver/mada/wms/", {
-				        layers: "mada:" + subdivision + theme,
-				        viewparams: "MIN_OBS_YEAR:"+start_year+";MAX_OBS_YEAR:"+finish_year+";MIN_OBS_MONTH:"+start_month+";MAX_OBS_MONTH:"+finish_month,
-				        transparent: true,
-				        format: "image/gif"
-				    },
-				    {
-				        buffer: 0,
-				        displayInLayerSwitcher: true,
-				        visibility: true
-				    });
 		var district = new OpenLayers.Layer.WMS("district",
 			    constants.adresseIP + "/geoserver/mada/wms/", {
 			        layers: "mada:district",
@@ -42,14 +32,47 @@ var drawControl, app, vectorLayer, tab, mapUI, layer_bat,layerArea, lastName, mo
 			        displayInLayerSwitcher: true,
 			        visibility: false
 			    });
-		console.log(limit);
+	    layer_bat = [district, commune];
 		var osm_layer = new OpenLayers.Layer.OSM('osm');
+	    if(subdivision === "village"){
+		    arrayVillages.forEach(elt => {
+				var limit = new OpenLayers.Layer.WMS(elt,
+					    constants.adresseIP + "/geoserver/mada/wms/", {
+					        layers: "mada:"+subdivision+theme,
+					        viewparams: "SEXE:"+genre+";VILLAGE:"+elt+";MIN_OBS_YEAR:2020;MAX_OBS_YEAR:2022;MIN_OBS_MONTH:01;MAX_OBS_MONTH:12",
+					        transparent: true,
+					        styles:xmlcheck,
+					        format: "image/gif"
+					    },
+					    {
+					        buffer: 0,
+					        displayInLayerSwitcher: true,
+					        visibility: true
+					    });
+				 layer_bat = [...layer_bat, limit]
+				});
+	    }else{
+			var limit = new OpenLayers.Layer.WMS("SELECTION",
+				    constants.adresseIP + "/geoserver/mada/wms/", {
+				        layers: "mada:"+subdivision+theme,
+				        viewparams: "SEXE:"+genre+";MIN_OBS_YEAR:"+start_year+";MAX_OBS_YEAR:"+finish_year+";MIN_OBS_MONTH:"+start_month+";MAX_OBS_MONTH:"+finish_month,
+				        transparent: true,
+				        styles:xmlcheck,
+				        format: "image/gif"
+				    },
+				    {
+				        buffer: 0,
+				        displayInLayerSwitcher: true,
+				        visibility: true
+				    });
+			layer_bat = [...layer_bat, limit];
+	    }
 	    // [1] - layer
-	    layer_bat = [limit];
+
 	    var mercator = constants.mercator;
 	    //declarer le proxy cgi  a utiliser
 	   // OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
-	    layer_bat[0].setVisibility(true);
+	  //  layer_bat[0].setVisibility(true);
 	    vectorLayer = new OpenLayers.Layer.Vector("Editable features");
 	    vector = new OpenLayers.Layer.Vector();
 	    vectorPoint = new OpenLayers.Layer.Vector();
@@ -79,11 +102,12 @@ var drawControl, app, vectorLayer, tab, mapUI, layer_bat,layerArea, lastName, mo
 	        id: "mp",
 	        cls: 'pds-map',
 	        title: 'couche',
-	        layers: [district, commune, limit]
+	        layers: layer_bat
 	    }
 	    );
 	    //ajout du vecteur a editer
 	    mapUI.map.addLayer(osm_layer);
+
 	    mapUI.map.setCenter(
                 new OpenLayers.LonLat(49.66633828357455,-14.154428089787606).transform(
                     new OpenLayers.Projection("EPSG:4326"),
@@ -110,6 +134,7 @@ var drawControl, app, vectorLayer, tab, mapUI, layer_bat,layerArea, lastName, mo
 	                });
 	        }
 	    };
+	    
 	    //ajouter des controls
 	     modifyControl = new OpenLayers.Control.ModifyFeature(
 	        vectorLayer, modifyOptions, { autoActivate: true }, { standalone: true });
@@ -345,8 +370,8 @@ var drawControl, app, vectorLayer, tab, mapUI, layer_bat,layerArea, lastName, mo
 
 	    //appeler le popup, layers fixera les couches a afficher
 	   var info = new OpenLayers.Control.WMSGetFeatureInfo({
-	        autoActivate: true,
-	        hover:true,
+	        autoActivate: false,
+	        hover:false,
 	            //choisir les couches a afficher
 	            layers: mapUI.map.layers,
 	        infoFormat: "application/vnd.ogc.gml",

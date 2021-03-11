@@ -19,7 +19,6 @@
 	<script type="text/javascript" th:src="@{/css/js/vanilla-picker.js?123456}"></script>
 	    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
-	<script src="https://unpkg.com/vanilla-picker@2.5"></script>
 	<script type="module" th:src="@{/js/carte.js}"></script>
 	<script src="http://168.119.185.165:8080/geoserver/pdf/info.json?var=printCapabilities"></script>
 
@@ -49,10 +48,13 @@
     var date_fin = [[${date_fin}]];
     var subdivision = [[${subdivision}]];
     var type_atelier = [[${type_atelier}]];
+    var villages = [[${villages}]];
     var theme = [[${theme}]];
-    console.log("thme",theme);
+    var genre = [[${genre}]];
+    var xmlcheck = [[${xmlcheck}]];
+    console.log("xmlcheck",xmlcheck);
     console.log("subdivision",subdivision);
-    console.log("type_atelier",type_atelier);
+    console.log("villages",villages);
 </script>
 <script type="text/javascript">
 

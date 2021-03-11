@@ -1,24 +1,45 @@
 package com.Giz.controller;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Date;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.StringJoiner;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Giz.data.constants.theme.ListeWp;
+import com.Giz.data.domain.Beneficiaire;
+import com.Giz.data.domain.DocCap;
+import com.Giz.data.domain.Formation;
+import com.Giz.data.domain.GraphDist;
+import com.Giz.data.domain.GraphDistrict;
+import com.Giz.data.domain.TpsFormes;
 import com.Giz.data.domain.Village;
 import com.Giz.entity.User;
+import com.Giz.repository.BeneficiaireRepository;
 import com.Giz.service.UserService;
 import com.Giz.service.metier.AtelierMFRService;
+import com.Giz.service.metier.BeneficiaireService;
 import com.Giz.service.metier.DocCapService;
 import com.Giz.service.metier.PlateformeService;
 import com.Giz.service.metier.VillageService;
@@ -35,6 +56,9 @@ import com.Giz.service.metier.Wp3JeunePathwayService;
 import com.Giz.service.metier.Wp3PeerEducatorService;
 import com.Giz.service.metier.Wp3SanteeCommService;
 import com.Giz.service.metier.Wp3UniteElevJeuneService;
+
+
+
 
 @Controller
 public class AnalysesController {
@@ -135,12 +159,21 @@ public class AnalysesController {
 	
 	@RequestMapping("/carte")
 	public String carte(@RequestParam("theme") int theme,
-			@RequestParam("date_fin") String date_fin, @RequestParam("subdivision") String subdivision, Model model) throws Exception {
-		System.out.println("theme" + theme);
+			@RequestParam("date_fin") String date_fin, @RequestParam("subdivision") String subdivision,@RequestParam("genre") String genre,@RequestParam(defaultValue = "null") String villages, Model model) throws Exception {
+		System.out.println("genre" + genre);
 		java.sql.Date fin=  Date.valueOf(date_fin);
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentUserName = authentication.getName();
 		User nomUser = userService.getUserByName(currentUserName);
+		String xmlcheck = subdivision+genre;
+		System.out.println("xmlcheck" + xmlcheck);
+		URL url = new URL("http://localhost:8083/geoserver/styles/"+xmlcheck+".xml");
+		HttpURLConnection huc = (HttpURLConnection) url.openConnection();		 
+		int responseCode = huc.getResponseCode();
+		if(responseCode == 404) {
+			xmlcheck = subdivision;
+		}
+		System.out.println("responseCode" + responseCode);
 		String type_atelier = canevas(theme);
 		String date_debut = "2020-01-01";
 		model.addAttribute("date_fin", fin);
@@ -148,6 +181,9 @@ public class AnalysesController {
 		model.addAttribute("theme", theme);
 		model.addAttribute("type_atelier", type_atelier);
 		model.addAttribute("subdivision", subdivision);
+		model.addAttribute("villages", villages);
+		model.addAttribute("genre", genre);
+		model.addAttribute("xmlcheck", xmlcheck);
 		model.addAttribute("type", nomUser.getLastName());
 		return "carte";
 	}	
@@ -173,7 +209,7 @@ public class AnalysesController {
 		params=new ArrayList<String>(Arrays.asList(replaceString.split(";")));		
 		switch (theme) {
 		 case "37":
-			  nameCanevas = "activité economique réalisée";
+			  nameCanevas = "activitÃ© economique rÃ©alisÃ©e";
 			  //ayant un champ nom_prenom count
 			  if(subdivision.equalsIgnoreCase("district")) {
 				  tpsDist = wp3ActivEcoJeuneService.ListTableauDist(debut_date, fin, genre);
@@ -184,7 +220,7 @@ public class AnalysesController {
 			  }
 		    break;
 		  case "38":
-			  nameCanevas = "youth committée actif";
+			  nameCanevas = "youth committÃ©e actif";
 			  //sum F et H  
 			  if(subdivision.equalsIgnoreCase("district")) {
 				  tpsDist = wp3CommitteeActifService.ListTableauDist(debut_date, fin);
@@ -205,7 +241,7 @@ public class AnalysesController {
 			  }
 		    break;
 		 case "40":
-			  nameCanevas = "élévage en adoptant les bonnes pratiques";
+			  nameCanevas = "Ã©lÃ©vage en adoptant les bonnes pratiques";
 			  //ayant un champ nom_prenom count
 			  if(subdivision.equalsIgnoreCase("district")) {
 				  tpsDist = wp3UniteElevJeuneService.ListTableauDist(debut_date, fin, genre);
@@ -216,7 +252,7 @@ public class AnalysesController {
 			  }
 		    break;
 		 case "41":
-			  nameCanevas = "élèves inscrits dans les MFR";
+			  nameCanevas = "Ã©lÃ¨ves inscrits dans les MFR";
 			  //ayant un champ nom_prenom count
 			  if(subdivision.equalsIgnoreCase("district")) {
 				  tpsDist = wp3ElevMfrService.ListTableauDist(debut_date, fin, genre);
@@ -227,7 +263,7 @@ public class AnalysesController {
 			  }
 		    break;
 		 case "42":
-			  nameCanevas = "jeunes formés des MFR ";
+			  nameCanevas = "jeunes formÃ©s des MFR ";
 			  //ayant un champ nom_prenom count
 			  if(subdivision.equalsIgnoreCase("district")) {
 				  tpsDist = wp3JeuneFormeMfrService.ListTableauDist(debut_date, fin, genre);
@@ -238,7 +274,7 @@ public class AnalysesController {
 			  }
 		    break;
 		 case "43":
-			  nameCanevas = "fédération régionale MFR";
+			  nameCanevas = "feÌ�deÌ�ration reÌ�gionale MFR";
 			  //ayant un champ nom_prenom count
 			  if(subdivision.equalsIgnoreCase("district")) {
 				  tpsDist = wp3FedeMfrService.ListTableauDist(debut_date, fin, genre);
@@ -249,7 +285,7 @@ public class AnalysesController {
 			  }
 		    break;
 		 case "44":
-			  nameCanevas = "équipe technique MFR";
+			  nameCanevas = "eÌ�quipe technique MFR";
 			  //ayant un champ nom_prenom count
 			  if(subdivision.equalsIgnoreCase("district")) {
 				  tpsDist = wp3EquipeTechMfrService.ListTableauDist(debut_date, fin, genre);
@@ -260,7 +296,7 @@ public class AnalysesController {
 			  }
 		    break;
 		 case "45":
-			  nameCanevas = "AGR développé MFR";
+			  nameCanevas = "AGR deÌ�veloppeÌ� MFR";
 			  //ayant un champ nom_prenom count
 			  if(subdivision.equalsIgnoreCase("district")) {
 				  tpsDist = wp3AgrDevMfrService.ListTableauDist(debut_date, fin, genre);
@@ -271,7 +307,7 @@ public class AnalysesController {
 			  }
 		    break;
 		 case "46":
-			  nameCanevas = "jeune ayant terminé formation pathway";
+			  nameCanevas = "jeune ayant termineÌ� formation pathway";
 			//ayant un champ nom_prenom count
 			  if(subdivision.equalsIgnoreCase("district")) {
 				  tpsDist = wp3JeunePathwayService.ListTableauDist(debut_date, fin, genre);
@@ -293,7 +329,7 @@ public class AnalysesController {
 			  }
 		    break;
 		 case "48":
-			  nameCanevas = "service santé par communauté";
+			  nameCanevas = "service santeÌ� par communauteÌ�";
 			  //ayant un champ nom_prenom count
 			  if(subdivision.equalsIgnoreCase("district")) {
 				  tpsDist = wp3SanteeCommService.ListTableauDist(debut_date, fin, genre);
@@ -332,7 +368,7 @@ public class AnalysesController {
 			  }
 		    break;
 		  case "53":
-			  nameCanevas = "Dialogue région";
+			  nameCanevas = "Dialogue rÃ©gion";
 			  type_atelier = "CANEVAS DIALOGUE REGIONAL SUR L'ACCES AU FINANCEMENT";
 			  //sum F et H  
 			  if(subdivision.equalsIgnoreCase("district")) {
@@ -448,7 +484,7 @@ public class AnalysesController {
 			  tps = wp3PeerEducatorService.ListGraphe(debut_date, fin);
 		    break;
 		 case "48":
-			  nameCanevas = "service santé par communauté";
+			  nameCanevas = "service santeÌ� par communauteÌ�";
 			  tot = (int) wp3SanteeCommService.TotTotal(debut_date, fin);
 			  crosshair = wp3SanteeCommService.ListFetch();
 			  camembertTot = (int) wp3SanteeCommService.CamembertTot();
@@ -462,49 +498,49 @@ public class AnalysesController {
 			  tps = wp3EppFramService.ListGraphe(debut_date, fin);
 		    break;
 		 case "46":
-			  nameCanevas = "jeune ayant terminé formation pathway";
+			  nameCanevas = "jeune ayant termineÌ� formation pathway";
 			  tot = (int) wp3JeunePathwayService.TotTotal(debut_date, fin);
 			  crosshair = wp3JeunePathwayService.ListFetch();
 			  camembertTot = (int) wp3JeunePathwayService.CamembertTot();
 			  tps = wp3JeunePathwayService.ListGraphe(debut_date, fin);
 		    break;
 		 case "45":
-			  nameCanevas = "AGR développé MFR";
+			  nameCanevas = "AGR deÌ�veloppeÌ� MFR";
 			  tot = (int) wp3AgrDevMfrService.TotTotal(debut_date, fin);
 			  crosshair = wp3AgrDevMfrService.ListFetch();
 			  camembertTot = (int) wp3AgrDevMfrService.CamembertTot();
 			  tps = wp3AgrDevMfrService.ListGraphe(debut_date, fin);
 		    break;
 		 case "44":
-			  nameCanevas = "équipe technique MFR";
+			  nameCanevas = "eÌ�quipe technique MFR";
 			  tot = (int) wp3EquipeTechMfrService.TotTotal(debut_date, fin);
 			  crosshair = wp3EquipeTechMfrService.ListFetch();
 			  camembertTot = (int) wp3EquipeTechMfrService.CamembertTot();
 			  tps = wp3EquipeTechMfrService.ListGraphe(debut_date, fin);
 		    break;
 		 case "43":
-			  nameCanevas = "fédération régionale MFR";
+			  nameCanevas = "feÌ�deÌ�ration reÌ�gionale MFR";
 			  tot = (int) wp3FedeMfrService.TotTotal(debut_date, fin);
 			  crosshair = wp3FedeMfrService.ListFetch();
 			  camembertTot = (int) wp3FedeMfrService.CamembertTot();
 			  tps = wp3FedeMfrService.ListGraphe(debut_date, fin);
 		    break;
 		 case "42":
-			  nameCanevas = "jeunes formés des MFR ";
+			  nameCanevas = "jeunes formÃ©s des MFR ";
 			  tot = (int) wp3JeuneFormeMfrService.TotTotal(debut_date, fin);
 			  crosshair = wp3JeuneFormeMfrService.ListFetch();
 			  camembertTot = (int) wp3JeuneFormeMfrService.CamembertTot();
 			  tps = wp3JeuneFormeMfrService.ListGraphe(debut_date, fin);
 		    break;
 		 case "41":
-			  nameCanevas = "élèves inscrits dans les MFR";
+			  nameCanevas = "Ã©lÃ¨ves inscrits dans les MFR";
 			  tot = (int) wp3ElevMfrService.TotTotal(debut_date, fin);
 			  crosshair = wp3ElevMfrService.ListFetch();
 			  camembertTot = (int) wp3ElevMfrService.CamembertTot();
 			  tps = wp3ElevMfrService.ListGraphe(debut_date, fin);
 		    break;
 		 case "40":
-			  nameCanevas = "élévage en adoptant les bonnes pratiques";
+			  nameCanevas = "Ã©lÃ©vage en adoptant les bonnes pratiques";
 			  tot = (int) wp3UniteElevJeuneService.TotTotal(debut_date, fin);
 			  crosshair = wp3UniteElevJeuneService.ListFetch();
 			  camembertTot = (int) wp3UniteElevJeuneService.CamembertTot();
@@ -518,14 +554,14 @@ public class AnalysesController {
 			  tps = wp3FormTechMetierJeuneService.ListGraphe(debut_date, fin);
 		    break;
 		  case "38":
-			  nameCanevas = "youth committée actif";
+			  nameCanevas = "youth committÃ©e actif";
 			  tot = (int) wp3CommitteeActifService.TotTotal(debut_date, fin);
 			  crosshair = wp3CommitteeActifService.ListFetch();
 			  camembertTot = (int) wp3CommitteeActifService.CamembertTot();
 			  tps = wp3CommitteeActifService.ListGraphe(debut_date, fin);
 		    break;
 		  case "37":
-			  nameCanevas = "activité economique réalisée";
+			  nameCanevas = "activitÃ© economique rÃ©alisÃ©e";
 			  tot = (int) wp3ActivEcoJeuneService.TotTotal(debut_date, fin);
 			  crosshair = wp3ActivEcoJeuneService.ListFetch();
 			  camembertTot = (int) wp3ActivEcoJeuneService.CamembertTot();
@@ -545,7 +581,7 @@ public class AnalysesController {
 			  tps = atelierMFRService.TpsAtelierMFR(type_atelier, debut_date, fin);
 		    break;
 		  case "53":
-			  nameCanevas = "Dialogue région";
+			  nameCanevas = "Dialogue rÃ©gion";
 			  type_atelier = "CANEVAS DIALOGUE REGIONAL SUR L'ACCES AU FINANCEMENT";
 			  crosshair = atelierMFRService.ListAtelierFetch(type_atelier);
 			  camembertTot = (int) atelierMFRService.TotAtelierMFR(type_atelier);
