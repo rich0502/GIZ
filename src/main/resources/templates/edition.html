@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>GIZ</title>
+<head th:include="/headLinksFragment.html" th:remove="tag"></head>
+</head>
+<body class="stories">
+	<div th:include="/pds_header.html"></div>
+	<section class="main">
+		<br>
+		<form>
+			<div class="card">
+				<div th:include="canevasMenu.html" th:remove="tag"></div>
+			</div>
+		</form>
+	</section>
+	<script type="text/javascript" th:src="@{js/ajaxEdition.js}"></script>
+</body>
+</html>
