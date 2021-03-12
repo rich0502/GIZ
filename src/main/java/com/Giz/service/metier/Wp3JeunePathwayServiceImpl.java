@@ -133,4 +133,22 @@ public class Wp3JeunePathwayServiceImpl implements Wp3JeunePathwayService {
 		// TODO Auto-generated method stub
 		return wp3JeunePathwayRepository.TableDataDist(debut_date, fin_date, sexe);
 	}
+	
+	@Override
+	public List<Object[]> ListTableauAll(Date debut_date, Date fin_date, List<String> params) {
+		// TODO Auto-generated method stub
+		return wp3JeunePathwayRepository.TableDataAll(debut_date, fin_date, params);
+	}
+
+	@Override
+	public List<Object[]> ListTableauCommuneAll(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3JeunePathwayRepository.TableDataCommuneAll(debut_date, fin_date);
+	}
+
+	@Override
+	public List<Object[]> ListTableauDistAll(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3JeunePathwayRepository.TableDataDistAll(debut_date, fin_date);
+	}
 }

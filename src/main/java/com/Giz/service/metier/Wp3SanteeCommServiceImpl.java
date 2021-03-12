@@ -135,4 +135,22 @@ public class Wp3SanteeCommServiceImpl implements Wp3SanteeCommService {
 		return wp3SanteeCommRepository.TableDataDist(debut_date, fin_date, sexe);
 	}
 	
+	@Override
+	public List<Object[]> ListTableauAll(Date debut_date, Date fin_date, List<String> params) {
+		// TODO Auto-generated method stub
+		return wp3SanteeCommRepository.TableDataAll(debut_date, fin_date, params);
+	}
+
+	@Override
+	public List<Object[]> ListTableauCommuneAll(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3SanteeCommRepository.TableDataCommuneAll(debut_date, fin_date);
+	}
+
+	@Override
+	public List<Object[]> ListTableauDistAll(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3SanteeCommRepository.TableDataDistAll(debut_date, fin_date);
+	}
+	
 }

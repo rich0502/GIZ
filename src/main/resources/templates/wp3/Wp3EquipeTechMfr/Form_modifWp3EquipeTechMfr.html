@@ -58,7 +58,12 @@
 					<br>
 					Sexe (H/F) :
 					<br>
-					<input th:field="*{equipeTechMfr.sexe}" type="text">
+					<select class="form-control select2" th:field="*{equipeTechMfr.sexe}"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="" selected>[[#{selectionner}]]</option>
+						<option value="H">Homme</option>
+						<option value="F">Femme</option>
+					</select>
 					<br>
 					Année de naissance :
 					<br>

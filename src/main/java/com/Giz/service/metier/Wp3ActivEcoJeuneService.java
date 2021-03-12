@@ -41,9 +41,13 @@ public interface Wp3ActivEcoJeuneService {
 	//tableau
 	
 	public List<Object[]> ListTableau(Date debut_date, Date fin_date,List<String> params,String sexe);
+	public List<Object[]> ListTableauAll(Date debut_date, Date fin_date,List<String> params);
 	
 	public List<Object[]> ListTableauCommune(Date debut_date, Date fin_date, String sexe);
+	public List<Object[]> ListTableauCommuneAll(Date debut_date, Date fin_date);
+	
 	
 	public List<Object[]> ListTableauDist(Date debut_date, Date fin_date, String sexe);
+	public List<Object[]> ListTableauDistAll(Date debut_date, Date fin_date);
 	
 }

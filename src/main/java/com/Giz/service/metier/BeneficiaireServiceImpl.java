@@ -1,22 +1,16 @@
 package com.Giz.service.metier;
 
-import java.sql.Date;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Giz.data.domain.Beneficiaire;
-import com.Giz.data.domain.Valider;
 import com.Giz.repository.BeneficiaireRepository;
-
-
 
 @Service
 public class BeneficiaireServiceImpl implements BeneficiaireService {

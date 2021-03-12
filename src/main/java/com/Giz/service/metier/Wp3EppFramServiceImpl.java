@@ -133,4 +133,22 @@ public class Wp3EppFramServiceImpl implements Wp3EppFramService {
 		// TODO Auto-generated method stub
 		return wp3EppFramRepository.TableDataDist(debut_date, fin_date, sexe);
 	}
+	
+	@Override
+	public List<Object[]> ListTableauAll(Date debut_date, Date fin_date, List<String> params) {
+		// TODO Auto-generated method stub
+		return wp3EppFramRepository.TableDataAll(debut_date, fin_date, params);
+	}
+
+	@Override
+	public List<Object[]> ListTableauCommuneAll(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3EppFramRepository.TableDataCommuneAll(debut_date, fin_date);
+	}
+
+	@Override
+	public List<Object[]> ListTableauDistAll(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3EppFramRepository.TableDataDistAll(debut_date, fin_date);
+	}
 }

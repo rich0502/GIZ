@@ -135,5 +135,23 @@ public class Wp3FormTechMetierJeuneServiceImpl implements Wp3FormTechMetierJeune
 		// TODO Auto-generated method stub
 		return wp3FormTechMetierJeuneRepository.TableDataDist(debut_date, fin_date, sexe);
 	}
+
+	@Override
+	public List<Object[]> ListTableauAll(Date debut_date, Date fin_date, List<String> params) {
+		// TODO Auto-generated method stub
+		return wp3FormTechMetierJeuneRepository.TableDataAll(debut_date, fin_date, params);
+	}
+
+	@Override
+	public List<Object[]> ListTableauCommuneAll(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3FormTechMetierJeuneRepository.TableDataCommuneAll(debut_date, fin_date);
+	}
+
+	@Override
+	public List<Object[]> ListTableauDistAll(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3FormTechMetierJeuneRepository.TableDataDistAll(debut_date, fin_date);
+	}
 	
 }

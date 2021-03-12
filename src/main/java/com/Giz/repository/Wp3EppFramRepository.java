@@ -41,16 +41,16 @@ public interface Wp3EppFramRepository extends JpaRepository<Wp3EppFram, Long> {
 	@Query(value = "SELECT e.date_validation as x,count(e.nom_ecole) as y FROM wp3_epp_fram e WHERE e.date_validation BETWEEN ?1 AND ?2 GROUP BY e.date_validation ORDER BY e.date_validation ASC", nativeQuery = true)
 	List<Object[]> TpsData(Date debut_date,Date fin_date);
 	
-	@Query(value = "SELECT village.code_village,village.district,count(wp3_epp_fram.sexe) as nbr, wp3_epp_fram.sexe FROM"
+	@Query(value = "SELECT village.code_village,village.village,count(wp3_epp_fram.sexe) as nbr, wp3_epp_fram.sexe FROM"
 			+ " village,wp3_epp_fram WHERE wp3_epp_fram.sexe=?4 AND village.code_village=wp3_epp_fram.code_village AND wp3_epp_fram.code_village "
 			+ " IN (null, ?3) AND wp3_epp_fram.date_validation BETWEEN ?1 AND ?2 \r\n" + 
-			"GROUP BY village.code_village,village.district, wp3_epp_fram.sexe", nativeQuery = true)
+			"GROUP BY village.code_village,village.village, wp3_epp_fram.sexe", nativeQuery = true)
 	List<Object[]> TableData(Date debut_date,Date fin_date,List<String> params,String sexe);
 	
-	@Query(value = "SELECT village.code_village,village.commune,count(wp3_epp_fram.sexe) as nbr, wp3_epp_fram.sexe FROM"
+	@Query(value = "SELECT village.commune,count(wp3_epp_fram.sexe) as nbr, wp3_epp_fram.sexe FROM"
 			+ " village,wp3_epp_fram WHERE wp3_epp_fram.sexe=?3 AND village.code_village=wp3_epp_fram.code_village AND "
 			+ " wp3_epp_fram.date_validation BETWEEN ?1 AND ?2 \r\n" + 
-			"GROUP BY village.code_village,village.commune, wp3_epp_fram.sexe", nativeQuery = true)
+			"GROUP BY village.commune, wp3_epp_fram.sexe", nativeQuery = true)
 	List<Object[]> TableDataCommune(Date debut_date,Date fin_date, String sexe);
 	
 	@Query(value = "SELECT village.district,count(wp3_epp_fram.sexe) as nbr, wp3_epp_fram.sexe FROM"
@@ -58,4 +58,37 @@ public interface Wp3EppFramRepository extends JpaRepository<Wp3EppFram, Long> {
 			+ " AND wp3_epp_fram.date_validation BETWEEN ?1 AND ?2 \r\n" + 
 			"GROUP BY village.district, wp3_epp_fram.sexe", nativeQuery = true)
 	List<Object[]> TableDataDist(Date debut_date,Date fin_date,String sexe);
+	
+	@Query(value = "select hommes.code_village,hommes.village,hommes.homme,femmes.femme\r\n"
+			+ "	from (SELECT village.code_village,village.village,count(wp3_epp_fram.sexe) as homme FROM"
+			+ "	 village,wp3_epp_fram WHERE wp3_epp_fram.sexe= 'H' AND village.code_village=wp3_epp_fram.code_village AND wp3_epp_fram.code_village \r\n"
+			+ " IN (null, ?3) AND wp3_epp_fram.date_validation BETWEEN ?1 AND ?2 \r\n"
+			+ "GROUP BY village.code_village,village.village) as hommes,\r\n"
+			+ "	(SELECT village.code_village,village.village,count(wp3_epp_fram.sexe) as femme FROM\r\n"
+			+ "	 village,wp3_epp_fram WHERE wp3_epp_fram.sexe= 'F' AND village.code_village=wp3_epp_fram.code_village AND wp3_epp_fram.code_village \r\n"
+			+ " IN (null, ?3) AND wp3_epp_fram.date_validation BETWEEN ?1 AND ?2 \r\n"
+			+ "GROUP BY village.code_village,village.village) as femmes where hommes.village=femmes.village", nativeQuery = true)
+	List<Object[]> TableDataAll(Date debut_date, Date fin_date, List<String> params);
+	
+	@Query(value = "select hommes.commune,hommes.homme,femmes.femme\r\n"
+			+ "	from (SELECT village.commune,count(wp3_epp_fram.sexe) as homme FROM\r\n"
+			+ "	 village,wp3_epp_fram WHERE village.code_village=wp3_epp_fram.code_village AND\r\n"
+			+ "	wp3_epp_fram.date_validation BETWEEN ?1 AND ?2 \r\n" + "	and wp3_epp_fram.sexe = 'H'\r\n"
+			+ "	GROUP BY village.commune) as hommes,\r\n"
+			+ "	(SELECT village.commune,count(wp3_epp_fram.sexe) as femme FROM\r\n"
+			+ "	 village,wp3_epp_fram WHERE village.code_village=wp3_epp_fram.code_village AND\r\n"
+			+ "	wp3_epp_fram.date_validation BETWEEN ?1 AND ?2 \r\n" + " and wp3_epp_fram.sexe = 'F'\r\n"
+			+ "	GROUP BY village.commune) as femmes where hommes.commune=femmes.commune", nativeQuery = true)
+	List<Object[]> TableDataCommuneAll(Date debut_date, Date fin_date);
+	
+	@Query(value = "select hommes.district,hommes.homme,femmes.femme\r\n"
+			+ "	from (SELECT village.district,count(wp3_epp_fram.sexe) as homme FROM\r\n"
+			+ "	 village,wp3_epp_fram WHERE village.code_village=wp3_epp_fram.code_village AND\r\n"
+			+ "	wp3_epp_fram.date_validation BETWEEN ?1 AND ?2 \r\n" + "	and wp3_epp_fram.sexe = 'H'\r\n"
+			+ "	GROUP BY village.district) as hommes,\r\n"
+			+ "	(SELECT village.district,count(wp3_epp_fram.sexe) as femme FROM\r\n"
+			+ "	 village,wp3_epp_fram WHERE village.code_village=wp3_epp_fram.code_village AND\r\n"
+			+ "	wp3_epp_fram.date_validation BETWEEN ?1 AND ?2 \r\n" + " and wp3_epp_fram.sexe = 'F'\r\n"
+			+ "	GROUP BY village.district) as femmes where hommes.district=femmes.district", nativeQuery = true)
+	List<Object[]> TableDataDistAll(Date debut_date, Date fin_date);
 }

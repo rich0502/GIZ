@@ -55,7 +55,12 @@
 					<br>
 					Genre:
 					<br>
-					<input th:field="*{formTechMetierJeune.sexe}" type="text">
+					<select class="form-control select2" th:field="*{formTechMetierJeune.sexe}"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="" selected>[[#{selectionner}]]</option>
+						<option value="H">Homme</option>
+						<option value="F">Femme</option>
+					</select>
 					<br>
 					Année de naissance:
 					<br>

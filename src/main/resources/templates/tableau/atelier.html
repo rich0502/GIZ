@@ -1,94 +1,303 @@
-<table class="composantes-table" id="myTable" th:if="${not #lists.isEmpty(tps)}">
-									<thead>
-										<tr>
-											<th scope="col"><span>Code village</span></th>
-											<th scope="col"><span>District</span></th>
-											<th scope="col"><span>Hommes</span></th>
-											<th scope="col"><span>Femmes</span></th>
-											<th scope="col"><span>Sous-total</span></th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr th:each="b : ${tps}">
-											<td th:text="${b[0]}"></td>
-											<td th:text="${b[1]}"></td>
-											<td th:text="${b[2]}"></td>
-											<td th:text="${b[3]}"></td>
-											<td th:text="${b[2]} + ${b[3]}"></td>
-										</tr>
-										  <tr>
-									        <td colspan="2"><b>Total</b></td>
-									        <td th:text="*{#aggregates.sum(tps.![[2]])}" /></td>
-									        <td th:text="*{#aggregates.sum(tps.![[3]])}" /></td>
-									        <td th:text="*{#aggregates.sum(tps.![[2]+[3]])}" /></td>
-									    </tr>
-							
-									</tbody>
-								</table>
-								<table class="composantes-table" id="myTable" th:if="${not #lists.isEmpty(tpsGenre)}">
-									<thead>
-										<tr>
-											<th scope="col"><span>Code village</span></th>
-											<th scope="col"><span>District</span></th>
-											<th scope="col"><span>Nombres</span></th>
-											<th scope="col"><span>Sexe</span></th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr th:each="b : ${tpsGenre}">
-											<td th:text="${b[0]}"></td>
-											<td th:text="${b[1]}"></td>
-											<td th:text="${b[2]}"></td>
-											<td th:text="${b[3]}"></td>
-										</tr>
-										  <tr>
-									        <td colspan="3"><b>Total</b></td>
-									        <td th:text="*{#aggregates.sum(tpsGenre.![[2]])}" /></td>
-									    </tr>
-							
-									</tbody>
-								</table>
-								
-									<table class="composantes-table" id="myTable" th:if="${not #lists.isEmpty(tpsCom)}">
-									<thead>
-										<tr>
-											<th scope="col"><span>Communes</span></th>
-											<th scope="col"><span>Nombres</span></th>
-											<th scope="col"><span>Sexe</span></th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr th:each="b : ${tpsCom}">
-											<td th:text="${b[0]}"></td>
-											<td th:text="${b[1]}"></td>
-											<td th:text="${b[2]}"></td>
-										</tr>
-										  <tr>
-									        <td colspan="2"><b>Total</b></td>
-									        <td th:text="*{#aggregates.sum(tpsCom.![[2]])}" /></td>
-									    </tr>
-							
-									</tbody>
-								</table>
-								
-								<table class="composantes-table" id="myTable" th:if="${not #lists.isEmpty(tpsDist)}">
-									<thead>
-										<tr>
-											<th scope="col"><span>District</span></th>
-											<th scope="col"><span>Nombres</span></th>
-											<th scope="col"><span>Sexe</span></th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr th:each="b : ${tpsDist}">
-											<td th:text="${b[0]}"></td>
-											<td th:text="${b[1]}"></td>
-											<td th:text="${b[2]}"></td>
-										</tr>
-										  <tr>
-									        <td colspan="2"><b>Total</b></td>
-									        <td th:text="*{#aggregates.sum(tpsDist.![[1]])}" /></td>
-									    </tr>
-							
-									</tbody>
-								</table>
+<table class="composantes-table" id="myTable"
+	th:if="${not #lists.isEmpty(tps)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>Code village</span></th>
+			<th scope="col"><span>District</span></th>
+			<th scope="col"><span>Hommes</span></th>
+			<th scope="col"><span>Femmes</span></th>
+			<th scope="col"><span>Sous-total</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tps}">
+			<td th:text="${b[0]}"></td>
+			<td th:text="${b[1]}"></td>
+			<td th:text="${b[2]}"></td>
+			<td th:text="${b[3]}"></td>
+			<td th:text="${b[2]} + ${b[3]}"></td>
+		</tr>
+		<tr>
+			<td colspan="2"><b>Total</b></td>
+			<td th:text="*{#aggregates.sum(tps.![[2]])}" /></td>
+			<td th:text="*{#aggregates.sum(tps.![[3]])}" /></td>
+			<td th:text="*{#aggregates.sum(tps.![[2]+[3]])}" /></td>
+		</tr>
+
+	</tbody>
+</table>
+<table class="composantes-table" id="myTable"
+	th:if="${not #lists.isEmpty(tpsGenre)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>Code village</span></th>
+			<th scope="col"><span>Village</span></th>
+			<th scope="col"><span th:text="${tpsGenre.![[3]][0] == 'H'? 'Homme' : 'Femme'}"></span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsGenre}">
+			<td class="center" th:text="${b[0]}"></td>
+			<td class="center" th:text="${b[1]}"></td>
+			<td class="center" th:text="${b[2]}"></td>
+		</tr>
+		<tr>
+			<td class="center" colspan="1"><b>Total</b></td>
+			<td></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsGenre.![[2]])}" /></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<table class="composantes-table" id="myTable"
+	th:if="${not #lists.isEmpty(tpsGenreH)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>Village</span></th>
+			<th scope="col"><span>Homme</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsGenreH}">
+			<td class="center" th:text="${b[0]}"></td>
+			<td class="center" th:text="${b[2]}"></td>
+		</tr>
+		<tr>
+			<td class="center" colspan="1"><b>Total</b></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsGenreH.![[2]])}"></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<table class="composantes-table" id="myTable"
+	th:if="${not #lists.isEmpty(tpsGenreF)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>Village</span></th>
+			<th scope="col"><span>Femme</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsGenreF}">
+			<td class="center" th:text="${b[0]}"></td>
+			<td class="center" th:text="${b[3]}"></td>
+		</tr>
+		<tr>
+			<td class="center" colspan="1"><b>Total</b></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsGenreF.![[3]])}"></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<table class="composantes-table" id="myTable"
+	th:if="${not #lists.isEmpty(tpsGenreAll)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>Code village</span></th>
+			<th scope="col"><span>Village</span></th>
+			<th scope="col"><span>Homme</span></th>
+			<th scope="col"><span>Femme</span></th>
+			<th scope="col"><span>Sous Total</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsGenreAll}">
+			<td class="center" th:text="${b[0]}"></td>
+			<td class="center" th:text="${b[1]}"></td>
+			<td class="center" th:text="${b[2]}"></td>
+			<td class="center" th:text="${b[3]}"></td>
+			<td class="center" th:text="${b[2]} + ${b[3]}"></td>
+		</tr>
+		<tr>
+			<td class="center" colspan="1"><b>Total</b></td>
+			<td></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsGenreAll.![[2]])}"></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsGenreAll.![[3]])}"></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsGenreAll.![[2]+[3]])}" /></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<table class="composantes-table" id="myTable"
+	th:if="${not #lists.isEmpty(tpsCom)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>Communes</span></th>
+			<th scope="col"><span th:text="${tpsCom.![[2]][0] == 'H'? 'Homme' : 'Femme'}"></span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsCom}">
+			<td class="center" th:text="${b[0]}"></td>
+			<td class="center" th:text="${b[1]}"></td>
+		</tr>
+		<tr>
+			<td class="center" colspan="1"><b>Total</b></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsCom.![[1]])}" /></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<table class="composantes-table" id="myTable"
+	th:if="${not #lists.isEmpty(tpsComH)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>Commune</span></th>
+			<th scope="col"><span>Homme</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsComH}">
+			<td class="center" th:text="${b[0]}"></td>
+			<td class="center" th:text="${b[1]}"></td>
+		</tr>
+		<tr>
+			<td class="center" colspan="1"><b>Total</b></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsComH.![[1]])}"></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<table class="composantes-table" id="myTable"
+	th:if="${not #lists.isEmpty(tpsComF)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>Commune</span></th>
+			<th scope="col"><span>Femme</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsComF}">
+			<td class="center" th:text="${b[0]}"></td>
+			<td class="center" th:text="${b[2]}"></td>
+		</tr>
+		<tr>
+			<td class="center" colspan="1"><b>Total</b></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsComF.![[2]])}"></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<table class="composantes-table" id="myTable"
+	th:if="${not #lists.isEmpty(tpsComAll)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>Communes</span></th>
+			<th scope="col"><span>Homme</span></th>
+			<th scope="col"><span>Femme</span></th>
+			<th scope="col"><span>Sous Total</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsComAll}">
+			<td class="center" th:text="${b[0]}"></td>
+			<td class="center" th:text="${b[1]}"></td>
+			<td class="center" th:text="${b[2]}"></td>
+			<td class="center" th:text="${b[1]} + ${b[2]}"></td>
+		</tr>
+		<tr>
+			<td class="center" colspan="1"><b>Total</b></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsComAll.![[1]])}"></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsComAll.![[2]])}"></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsComAll.![[1]+[2]])}" /></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<table class="composantes-table" id="myTable"
+	th:if="${not #lists.isEmpty(tpsDist)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>District</span></th>
+			<th scope="col"><span th:text="${tpsDist.![[2]][0] == 'H'? 'Homme' : 'Femme'}"></span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsDist}">
+			<td class="center" th:text="${b[0]}"></td>
+			<td class="center" th:text="${b[1]}"></td>
+		</tr>
+		<tr>
+			<td class="center" colspan="1"><b>Total</b></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsDist.![[1]])}"></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<table class="composantes-table" id="myTable"
+	th:if="${not #lists.isEmpty(tpsDistH)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>District</span></th>
+			<th scope="col"><span>Homme</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsDistH}">
+			<td class="center" th:text="${b[0]}"></td>
+			<td class="center" th:text="${b[1]}"></td>
+		</tr>
+		<tr>
+			<td class="center" colspan="1"><b>Total</b></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsDistH.![[1]])}"></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<table class="composantes-table" id="myTable"
+	th:if="${not #lists.isEmpty(tpsDistF)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>District</span></th>
+			<th scope="col"><span>Femme</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsDistF}">
+			<td class="center" th:text="${b[0]}"></td>
+			<td class="center" th:text="${b[2]}"></td>
+		</tr>
+		<tr>
+			<td class="center" colspan="1"><b>Total</b></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsDistF.![[2]])}"></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<table class="composantes-table" id="myTable"
+	th:if="${not #lists.isEmpty(tpsDistAll)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>District</span></th>
+			<th scope="col"><span>Homme</span></th>
+			<th scope="col"><span>Femme</span></th>
+			<th scope="col"><span>Sous Total</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsDistAll}">
+			<td class="center" th:text="${b[0]}"></td>
+			<td class="center" th:text="${b[1]}"></td>
+			<td class="center" th:text="${b[2]}"></td>
+			<td class="center" th:text="${b[1]} + ${b[2]}"></td>
+		</tr>
+		<tr>
+			<td class="center" colspan="1"><b>Total</b></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsDistAll.![[1]])}"></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsDistAll.![[2]])}"></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsDistAll.![[1]+[2]])}" /></td>
+		</tr>
+
+	</tbody>
+</table>

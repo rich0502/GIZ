@@ -53,6 +53,7 @@
 								<tr>
 									<th scope="col"><span>Code Villages</span></th>
 									<th scope="col"><span>Noms de l'école EPP</span></th>
+									<th scope="col"><span>Genre</span></th>
 									<th scope="col"><span>Existence de projet de FRAM (Oui/Non)</span></th>
 									<th scope="col"><span>Projet de FRAM validé/subventionné (Oui/Non)</span></th>
 									<th scope="col"><span>Type de projet</span></th>
@@ -64,6 +65,7 @@
 								<tr th:each="b : ${wp3EppFram}">
 									<td th:text="${b.code_village}"></td>
 									<td th:text="${b.nom_ecole}"></td>
+									<td th:text="${b.sexe}"></td>
 									<td th:text="${b.projet_fram} ? 'Oui' : 'Non'"></td>
 									<td th:text="${b.projet_valide} ? 'Oui' : 'Non'"></td>
 									<td th:text="${b.type_projet}"></td>

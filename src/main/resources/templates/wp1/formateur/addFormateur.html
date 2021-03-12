@@ -62,7 +62,12 @@
 					<br>
 					Genre
 					<br>
-					<input type="text" name="genre_ft" id="genre_ft">
+					<select class="form-control select2" name="genre_ft" id="genre_ft"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="" selected>[[#{selectionner}]]</option>
+						<option value="H">Homme</option>
+						<option value="F">Femme</option>
+					</select>
 					<br>
 					Année de naissance
 					<br>

@@ -57,7 +57,12 @@
 					<br>
 					Sexe (H/F) :
 					<br>
-					<input type="text" name="sexe" id="sexe">
+					<select class="form-control select2" name="sexe" id="sexe"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="" selected>[[#{selectionner}]]</option>
+						<option value="H">Homme</option>
+						<option value="F">Femme</option>
+					</select>
 					<br>
 					Année de naissance :
 					<br>

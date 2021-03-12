@@ -53,6 +53,7 @@
 								<tr>
 									<th scope="col"><span>Code village</span></th>
 									<th scope="col"><span>Noms de MFR</span></th>
+									<th scope="col"><span>Genre</span></th>
 									<th scope="col"><span>Année de mise en place</span></th>
 									<th scope="col"><span>Existence d'AGR développé</span></th>
 									<th scope="col"><span>Date d'évaluation</span></th>
@@ -65,6 +66,7 @@
 								<tr th:each="b : ${wp3AgrDevMfr}">
 									<td th:text="${b.code_village}"></td>
 									<td th:text="${b.nom_mfr}"></td>
+									<td th:text="${b.sexe}"></td>
 									<td th:text="${b.annee_miseplace}"></td>
 									<td th:text="${b.agr_developpe} ? 'Oui' : 'Non'"></td>
 									<td th:text="${#dates.format(b.date_eval,'dd-MM-yyyy')}"></td>

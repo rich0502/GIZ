@@ -141,4 +141,22 @@ public class Wp3FedeMfrServiceImpl implements Wp3FedeMfrService {
 		// TODO Auto-generated method stub
 		return wp3FedeMfrRepository.TableDataDist(debut_date, fin_date, sexe);
 	}
+	
+	@Override
+	public List<Object[]> ListTableauAll(Date debut_date, Date fin_date, List<String> params) {
+		// TODO Auto-generated method stub
+		return wp3FedeMfrRepository.TableDataAll(debut_date, fin_date, params);
+	}
+
+	@Override
+	public List<Object[]> ListTableauCommuneAll(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3FedeMfrRepository.TableDataCommuneAll(debut_date, fin_date);
+	}
+
+	@Override
+	public List<Object[]> ListTableauDistAll(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3FedeMfrRepository.TableDataDistAll(debut_date, fin_date);
+	}
 }

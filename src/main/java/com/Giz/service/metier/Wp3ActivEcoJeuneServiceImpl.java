@@ -128,17 +128,35 @@ public class Wp3ActivEcoJeuneServiceImpl implements Wp3ActivEcoJeuneService {
 		// TODO Auto-generated method stub
 		return wp3ActivEcoJeuneRepository.TableData(debut_date, fin_date, params, sexe);
 	}
+	
+	@Override
+	public List<Object[]> ListTableauAll(Date debut_date, Date fin_date,List<String> params) {
+		// TODO Auto-generated method stub
+		return wp3ActivEcoJeuneRepository.TableDataAll(debut_date, fin_date, params);
+	}
 
 	@Override
 	public List<Object[]> ListTableauCommune(Date debut_date, Date fin_date, String sexe) {
 		// TODO Auto-generated method stub
 		return wp3ActivEcoJeuneRepository.TableDataCommune(debut_date, fin_date, sexe);
 	}
+	
+	@Override
+	public List<Object[]> ListTableauCommuneAll(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3ActivEcoJeuneRepository.TableDataCommuneAll(debut_date, fin_date);
+	}
 
 	@Override
 	public List<Object[]> ListTableauDist(Date debut_date, Date fin_date, String sexe) {
 		// TODO Auto-generated method stub
 		return wp3ActivEcoJeuneRepository.TableDataDist(debut_date, fin_date, sexe);
+	}
+	
+	@Override
+	public List<Object[]> ListTableauDistAll(Date debut_date, Date fin_date) {
+		// TODO Auto-generated method stub
+		return wp3ActivEcoJeuneRepository.TableDataDistAll(debut_date, fin_date);
 	}
 	
 

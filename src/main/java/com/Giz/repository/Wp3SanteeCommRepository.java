@@ -42,16 +42,16 @@ public interface Wp3SanteeCommRepository extends JpaRepository<Wp3SanteeComm, Lo
 	@Query(value = "SELECT e.date_suivi as x,count(e.csb) as y FROM wp3_santee_comm e WHERE e.date_suivi BETWEEN ?1 AND ?2 GROUP BY e.date_suivi ORDER BY e.date_suivi ASC", nativeQuery = true)
 	List<Object[]> TpsData(Date debut_date,Date fin_date);
 	
-	@Query(value = "SELECT village.code_village,village.district,count(wp3_santee_comm.sexe) as nbr, wp3_santee_comm.sexe FROM"
+	@Query(value = "SELECT village.code_village,village.village,count(wp3_santee_comm.sexe) as nbr, wp3_santee_comm.sexe FROM"
 			+ " village,wp3_santee_comm WHERE wp3_santee_comm.sexe=?4 AND village.code_village=wp3_santee_comm.code_village AND wp3_santee_comm.code_village "
 			+ " IN (null, ?3) AND wp3_santee_comm.date_suivi BETWEEN ?1 AND ?2 \r\n" + 
-			"GROUP BY village.code_village,village.district, wp3_santee_comm.sexe", nativeQuery = true)
+			"GROUP BY village.code_village,village.village, wp3_santee_comm.sexe", nativeQuery = true)
 	List<Object[]> TableData(Date debut_date,Date fin_date,List<String> params,String sexe);
 	
-	@Query(value = "SELECT village.code_village,village.commune,count(wp3_santee_comm.sexe) as nbr, wp3_santee_comm.sexe FROM"
+	@Query(value = "SELECT village.commune,count(wp3_santee_comm.sexe) as nbr, wp3_santee_comm.sexe FROM"
 			+ " village,wp3_santee_comm WHERE wp3_santee_comm.sexe=?3 AND village.code_village=wp3_santee_comm.code_village AND "
 			+ " wp3_santee_comm.date_suivi BETWEEN ?1 AND ?2 \r\n" + 
-			"GROUP BY village.code_village,village.commune, wp3_santee_comm.sexe", nativeQuery = true)
+			"GROUP BY village.commune, wp3_santee_comm.sexe", nativeQuery = true)
 	List<Object[]> TableDataCommune(Date debut_date,Date fin_date, String sexe);
 	
 	@Query(value = "SELECT village.district,count(wp3_santee_comm.sexe) as nbr, wp3_santee_comm.sexe FROM"
@@ -59,5 +59,38 @@ public interface Wp3SanteeCommRepository extends JpaRepository<Wp3SanteeComm, Lo
 			+ " AND wp3_santee_comm.date_suivi BETWEEN ?1 AND ?2 \r\n" + 
 			"GROUP BY village.district, wp3_santee_comm.sexe", nativeQuery = true)
 	List<Object[]> TableDataDist(Date debut_date,Date fin_date,String sexe);
+	
+	@Query(value = "select hommes.code_village,hommes.village,hommes.homme,femmes.femme\r\n"
+			+ "	from (SELECT village.code_village,village.village,count(wp3_santee_comm.sexe) as homme FROM"
+			+ "	 village,wp3_santee_comm WHERE wp3_santee_comm.sexe= 'H' AND village.code_village=wp3_santee_comm.code_village AND wp3_santee_comm.code_village \r\n"
+			+ " IN (null, ?3) AND wp3_santee_comm.date_suivi BETWEEN ?1 AND ?2 \r\n"
+			+ "GROUP BY village.code_village,village.village) as hommes,\r\n"
+			+ "	(SELECT village.code_village,village.village,count(wp3_santee_comm.sexe) as femme FROM\r\n"
+			+ "	 village,wp3_santee_comm WHERE wp3_santee_comm.sexe= 'F' AND village.code_village=wp3_santee_comm.code_village AND wp3_santee_comm.code_village \r\n"
+			+ " IN (null, ?3) AND wp3_santee_comm.date_suivi BETWEEN ?1 AND ?2 \r\n"
+			+ "GROUP BY village.code_village,village.village) as femmes where hommes.village=femmes.village", nativeQuery = true)
+	List<Object[]> TableDataAll(Date debut_date, Date fin_date, List<String> params);
+	
+	@Query(value = "select hommes.commune,hommes.homme,femmes.femme\r\n"
+			+ "	from (SELECT village.commune,count(wp3_santee_comm.sexe) as homme FROM\r\n"
+			+ "	 village,wp3_santee_comm WHERE village.code_village=wp3_santee_comm.code_village AND\r\n"
+			+ "	wp3_santee_comm.date_suivi BETWEEN ?1 AND ?2 \r\n" + "	and wp3_santee_comm.sexe = 'H'\r\n"
+			+ "	GROUP BY village.commune) as hommes,\r\n"
+			+ "	(SELECT village.commune,count(wp3_santee_comm.sexe) as femme FROM\r\n"
+			+ "	 village,wp3_santee_comm WHERE village.code_village=wp3_santee_comm.code_village AND\r\n"
+			+ "	wp3_santee_comm.date_suivi BETWEEN ?1 AND ?2 \r\n" + " and wp3_santee_comm.sexe = 'F'\r\n"
+			+ "	GROUP BY village.commune) as femmes where hommes.commune=femmes.commune", nativeQuery = true)
+	List<Object[]> TableDataCommuneAll(Date debut_date, Date fin_date);
+	
+	@Query(value = "select hommes.district,hommes.homme,femmes.femme\r\n"
+			+ "	from (SELECT village.district,count(wp3_santee_comm.sexe) as homme FROM\r\n"
+			+ "	 village,wp3_santee_comm WHERE village.code_village=wp3_santee_comm.code_village AND\r\n"
+			+ "	wp3_santee_comm.date_suivi BETWEEN ?1 AND ?2 \r\n" + "	and wp3_santee_comm.sexe = 'H'\r\n"
+			+ "	GROUP BY village.district) as hommes,\r\n"
+			+ "	(SELECT village.district,count(wp3_santee_comm.sexe) as femme FROM\r\n"
+			+ "	 village,wp3_santee_comm WHERE village.code_village=wp3_santee_comm.code_village AND\r\n"
+			+ "	wp3_santee_comm.date_suivi BETWEEN ?1 AND ?2 \r\n" + " and wp3_santee_comm.sexe = 'F'\r\n"
+			+ "	GROUP BY village.district) as femmes where hommes.district=femmes.district", nativeQuery = true)
+	List<Object[]> TableDataDistAll(Date debut_date, Date fin_date);
 
 }

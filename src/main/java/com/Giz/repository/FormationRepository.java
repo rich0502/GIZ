@@ -1,6 +1,5 @@
 package com.Giz.repository;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -10,7 +9,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.Giz.data.domain.Formation;
-
 
 public interface FormationRepository extends JpaRepository<Formation, Long> {
 	//liste des Beneficiaires

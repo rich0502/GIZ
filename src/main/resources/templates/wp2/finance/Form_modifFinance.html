@@ -63,7 +63,12 @@
 					<br>
 					 Sexe :
 					<br>
-					<input th:field="*{finance.sexe}" type="text">
+					<select class="form-control select2" th:field="*{finance.sexe}"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="" selected>[[#{selectionner}]]</option>
+						<option value="H">Homme</option>
+						<option value="F">Femme</option>
+					</select>
 					<br>
 					Annee naissance
 					<br>

@@ -62,7 +62,12 @@
 					<br>
 					Youth committee actif :
 					<br>
-					<input type="text" id="committee_actif" name="committee_actif">
+					<select class="form-control select2" name="committee_actif" id="committee_actif"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="" selected>[[#{selectionner}]]</option>
+						<option value="true">Oui</option>
+						<option value="false">Non</option>
+					</select>
 					<br>
 					Date de suivi:
 					<br>

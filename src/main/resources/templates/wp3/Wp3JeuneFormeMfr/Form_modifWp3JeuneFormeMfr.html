@@ -58,7 +58,12 @@
 					<br>
 					 Genre:
 					<br>
-					<input type="text" th:field="*{jeuneFormeMfr.sexe}">
+					<select class="form-control select2" th:field="*{jeuneFormeMfr.sexe}"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="" selected>[[#{selectionner}]]</option>
+						<option value="H">Homme</option>
+						<option value="F">Femme</option>
+					</select>
 					<br>
 					Année de naissance :
 					<br>

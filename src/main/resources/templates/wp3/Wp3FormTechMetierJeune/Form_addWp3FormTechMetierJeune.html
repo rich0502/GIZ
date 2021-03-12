@@ -54,7 +54,12 @@
 					<br>
 					Genre:
 					<br>
-					<input type="text" name="sexe" id="sexe">
+					<select class="form-control select2" name="sexe" id="sexe"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="" selected>[[#{selectionner}]]</option>
+						<option value="H">Homme</option>
+						<option value="F">Femme</option>
+					</select>
 					<br>
 					Année de naissance:
 					<br>
@@ -66,7 +71,12 @@
 					<br>
 					Formation reçue :
 					<br>
-					<input type="text" name="formation_recue" id="formation_recue">
+					<select class="form-control select2" name="formation_recue" id="formation_recue"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="" selected>[[#{selectionner}]]</option>
+						<option value="true">Oui</option>
+						<option value="false">Non</option>
+					</select>
 					<br>
 					Theme :
 					<br>

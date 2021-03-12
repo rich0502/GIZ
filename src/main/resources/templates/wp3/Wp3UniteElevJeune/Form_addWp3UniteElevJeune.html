@@ -58,7 +58,12 @@
 					<br>
 					Sexe (H/F) :
 					<br>
-					<input type="text" name="sexe" id="sexe">				
+					<select class="form-control select2" name="sexe" id="sexe"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="" selected>[[#{selectionner}]]</option>
+						<option value="H">Homme</option>
+						<option value="F">Femme</option>
+					</select>				
 					<br>
 					Année de naissance :
 					<br>
@@ -66,7 +71,12 @@
 					<br>
 					Demarrage unité :
 					<br>
-					<input type="text" name="demarrage_unite" id="demarrage_unite">
+					<select class="form-control select2" name="demarrage_unite" id="demarrage_unite"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="" selected>[[#{selectionner}]]</option>
+						<option value="true">Oui</option>
+						<option value="false">Non</option>
+					</select>
 					<br>
 					Date de démarrage de l'unité :
 					<br>

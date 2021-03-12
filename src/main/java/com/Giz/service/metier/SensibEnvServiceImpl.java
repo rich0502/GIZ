@@ -6,9 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.Giz.data.domain.Adoption_innovation;
 import com.Giz.data.domain.SensibEnv;
-import com.Giz.repository.Adopte_InnovationRepository;
 import com.Giz.repository.SensiEnvRepository;
 
 @Service
