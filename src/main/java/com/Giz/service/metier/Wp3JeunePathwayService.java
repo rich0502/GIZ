@@ -22,7 +22,7 @@ public interface Wp3JeunePathwayService {
 	public Optional<Wp3JeunePathway> findByIdJeunePathway(long id);
 	
 	public void modifyWp3JeunePathway(String code_village, String nom_prenom, String sexe, int annee_naissance,
-			Date date_fin_frm, long id);
+			boolean existance_agr, Date date_fin_frm, long id);
 	
 	public void deleteWp3JeunePathway(Long id);
 	

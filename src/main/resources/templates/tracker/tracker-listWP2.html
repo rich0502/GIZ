@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
@@ -36,8 +36,8 @@
                             <div class="doclist-flex-action">
                        
                                 <span class="action-btn">
-                                    <a th:href="'/tracker/' + ${listFile.file_name}"/><img src="img/pds_download_black.svg"></a>
-                                    <a class="btn" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" th:onclick="@{'javascript:confirmDelete(\''+${listFile.id}+'\');'}"/><img src="images/delete.svg"></a>
+                                    <a th:href="'/tracker/' + ${listFile.file_name}"><img src="img/pds_download_black.svg"></a>
+                                    <a class="btn" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" th:onclick="@{'javascript:confirmDelete(\''+${listFile.id}+'\');'}"><img src="images/delete.svg"></a>
                                 </span>
                                  </div>
                             </td>

@@ -26,21 +26,6 @@
 	border: 1px solid #ccc !important;
 }
         </style>
-        <script type="text/javascript">
-		$(document).ready(function () {
-			$('#datepicker').datepicker({
-				format: 'dd-mm-yyyy',
-				"autoclose": true,
-				language: 'en'
-			})//.datepicker("setDate", 'now')
-				;
-			var valeur = $('#error_value').text();
-			if(valeur != '') {
-				$('#messageModal').modal('show');
-				$('#msg').text(valeur);
-			}
-		});
-        </script>
     </head>
     <body class="add-success">
 		<div th:include="/pds_header.html"></div>
@@ -55,6 +40,14 @@
 					Noms de MFR:
 					<br>
 					<input th:field="*{agrDevMfr.nom_mfr}" type="text">
+					<br>
+					Genre :
+					<br>
+					<select class="form-control select2" th:field="*{agrDevMfr.sexe}"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="H">Homme</option>
+							<option th:value="F">Femme</option>
+					</select>
 					<br>
 					 Année de mise en place :
 					<br>

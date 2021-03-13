@@ -71,7 +71,7 @@ public class Wp3SanteeCommServiceImpl implements Wp3SanteeCommService {
 
 	@Override
 	public void modifyWp3SanteeComm(String code_village, String csb, float gps_x, float gps_y, String repro_sexuelle,
-			Date date_suivi, long id) {
+			String sexe, Date date_suivi, long id) {
 
 		Wp3SanteeComm wp3SanteeComm = new Wp3SanteeComm();
 		
@@ -80,6 +80,7 @@ public class Wp3SanteeCommServiceImpl implements Wp3SanteeCommService {
 		wp3SanteeComm.setGps_x(gps_x);
 		wp3SanteeComm.setGps_y(gps_y);
 		wp3SanteeComm.setRepro_sexuelle(repro_sexuelle);
+		wp3SanteeComm.setSexe(sexe);
 		wp3SanteeComm.setDate_suivi(date_suivi);
 		wp3SanteeComm.setId(id);
 		wp3SanteeCommRepository.save(wp3SanteeComm);

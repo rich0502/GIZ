@@ -55,6 +55,7 @@
 									<th scope="col"><span>Noms et Prénom de jeunes </span></th>
 									<th scope="col"><span>Sexe (H/F)</span></th>
 									<th scope="col"><span>Année de naissance</span></th>
+									<th scope="col"><span>Existance</span></th>
 									<th scope="col"><span>Date de fin formation</span></th>
 									<th scope="col"><span>Activité</span></th>
 									<th class="center td-action"><span>Action</span></th>
@@ -66,6 +67,7 @@
 									<td th:text="${b.nom_prenom}"></td>
 									<td th:text="${b.sexe}"></td>
 									<td th:text="${b.annee_naissance}"></td>
+									<td th:text="${b.existance_agr ? 'Oui' : 'Non'}"></td>
 									<td th:text="${#dates.format(b.date_fin_frm,'dd-MM-yyyy')}"></td>
 									<td th:text="${b.activite}"></td>
 									<td class="center td-action">

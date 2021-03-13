@@ -80,12 +80,13 @@ public class Wp3AgrDevMfrServiceImpl implements Wp3AgrDevMfrService {
 	}
 
 	@Override
-	public void modifyWp3AgrDevMfr(String code_village, String nom_mfr, int annee_miseplace, Boolean agr_developpe,
+	public void modifyWp3AgrDevMfr(String code_village, String nom_mfr,String sexe, int annee_miseplace, Boolean agr_developpe,
 			Date date_eval, String type_agr_dev1, Date date_suivi1, long id) {
 Wp3AgrDevMfr wp3AgrDevMfr = new Wp3AgrDevMfr();
 		
 		wp3AgrDevMfr.setCode_village(code_village);
 		wp3AgrDevMfr.setNom_mfr(nom_mfr);
+		wp3AgrDevMfr.setSexe(sexe);
 		wp3AgrDevMfr.setAnnee_miseplace(annee_miseplace);
 		wp3AgrDevMfr.setAgr_developpe(agr_developpe);
 		wp3AgrDevMfr.setDate_eval(date_eval);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Area Management</title>
 <head th:include="/headLinksFragment.html"></head>
@@ -27,41 +27,40 @@
 			</div>
 			<!-- document -->
 
-			<div class="">				
-					<form class="floating-form add-form file form-wrap " method="POST"
-						enctype="multipart/form-data" action="/Giz/saveUploads">
-						
-							<div class="">								
-								<div style="margin-bottom:8px">Chronologie pour rappel</div>										
-								<input class="floating-input " type="text" placeholder=" "
-									id="chr_rappel" name="chr_rappel">							
-									
-								<br>
-								
-								<div>Données arrêtée</div>
-								<div class="">
-									<input class="date-picker date-picker-custom" type="text" placeholder="Date"
-										id="arret" name="arret"> <span class="highlight "></span>
-									
-								</div>
-							</div>
-						
-						<div class=" ">
-							<div class="">
-								<div id="upload">
-									<div id="drop">
-										<span class="manual-upload">
-											[[#{choisir.doc}]]</span> <a class="btn pds-primary-btn pds-upload-btn">
-											[[#{choisir.file}]]</a> <input type="file" name="file" multiple />
-									</div>
+			<div class="">
+				<form class="floating-form add-form file form-wrap " method="POST"
+					enctype="multipart/form-data" action="/Giz/saveUploads">
 
-									<ul>
-										<!-- The file uploads will be shown here -->
-									</ul>
-									<input type="submit" class="btn pds-primary-btn pds-save-btn"
-										th:value="#{save}">
-					</form>
-				
+					<div class="">
+						<div style="margin-bottom: 8px">Chronologie pour rappel</div>
+						<input class="floating-input " type="text" placeholder=" "
+							id="chr_rappel" name="chr_rappel"> <br>
+
+						<div>Données arrêtée</div>
+						<div class="">
+							<input class="date-picker date-picker-custom" type="text"
+								placeholder="Date" id="arret" name="arret"> <span
+								class="highlight "></span>
+
+						</div>
+					</div>
+
+					<div class=" ">
+						<div class="">
+							<div id="upload">
+								<div id="drop">
+									<span class="manual-upload"> [[#{choisir.doc}]]</span> <a
+										class="btn pds-primary-btn pds-upload-btn">
+										[[#{choisir.file}]]</a> <input type="file" name="file" multiple />
+								</div>
+
+								<ul>
+									<!-- The file uploads will be shown here -->
+								</ul>
+								<input type="submit" class="btn pds-primary-btn pds-save-btn"
+									th:value="#{save}">
+				</form>
+
 			</div>
 
 		</div>
@@ -95,10 +94,10 @@
 			});
 		</script>
 		<style>
-.ui-datepicker-calendar {
-	display: none;
-}
-</style>
+		.ui-datepicker-calendar {
+			display: none;
+		}
+		</style>
 
 		<script src="js/drag-drop/jquery.knob.js"></script>
 

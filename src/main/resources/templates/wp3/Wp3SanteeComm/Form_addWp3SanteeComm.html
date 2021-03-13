@@ -64,7 +64,19 @@
 					<input type="text" name="gps_y" id="gps_y">
 					<br>
 					 Existence de service de santé reproductive et sexuelle :
-					<input type="text" name="repro_sexuelle" id="repro_sexuelle">
+					<select class="form-control select2" name="repro_sexuelle" id="repro_sexuelle"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="Oui">Oui</option>
+							<option th:value="Non">Non</option>
+					</select>
+					<br>
+					Genre :
+					<br>
+					<select class="form-control select2" name="sexe" id="sexe"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="H">Homme</option>
+							<option th:value="F">Femme</option>
+					</select>
 					<br>
 					 Date de suivi:
 					<br>

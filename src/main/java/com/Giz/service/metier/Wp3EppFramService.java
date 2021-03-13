@@ -21,7 +21,7 @@ public interface Wp3EppFramService {
 	
 	public Optional<Wp3EppFram> findByIdEppFram (long id);
 	
-	public void modifyWp3EppFram(String code_village, String nom_ecole, boolean projet_fram, boolean projet_valide,
+	public void modifyWp3EppFram(String code_village, String nom_ecole, String sexe, boolean projet_fram, boolean projet_valide,
 			String type_projet, Date date_validation,long id);
 	
 	public void deleteWp3EppFram(Long id);

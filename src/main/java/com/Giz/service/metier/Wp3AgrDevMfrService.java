@@ -21,7 +21,7 @@ public interface Wp3AgrDevMfrService {
 	
 	public Optional<Wp3AgrDevMfr> finbByIdAgrDevMfr(long id);
 	
-	public void modifyWp3AgrDevMfr(String code_village, String nom_mfr, int annee_miseplace, Boolean agr_developpe,
+	public void modifyWp3AgrDevMfr(String code_village, String nom_mfr,String sexe, int annee_miseplace, Boolean agr_developpe,
 			Date date_eval, String type_agr_dev1, Date date_suivi1,long id);
 	
 	public void deleteWp3AgrDevMfr(Long id);

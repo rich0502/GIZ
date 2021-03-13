@@ -56,6 +56,14 @@
 					<br>
 					<input th:field="*{fedeMfr.nom_mfr}" type="text">
 					<br>
+					Genre :
+					<br>
+					<select class="form-control select2" th:field="*{fedeMfr.sexe}"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="H">Homme</option>
+							<option th:value="F">Femme</option>
+					</select>
+					<br>
 					 Année de mise en place :
 					<br>
 					<input type="text" th:field="*{fedeMfr.annee_miseplace}">

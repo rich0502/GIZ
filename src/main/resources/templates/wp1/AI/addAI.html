@@ -26,21 +26,6 @@
 	border: 1px solid #ccc !important;
 }
         </style>
-        <script type="text/javascript">
-		$(document).ready(function () {
-			$('#datepicker').datepicker({
-				format: 'dd-mm-yyyy',
-				"autoclose": true,
-				language: 'en'
-			})//.datepicker("setDate", 'now')
-				;
-			var valeur = $('#error_value').text();
-			if(valeur != '') {
-				$('#messageModal').modal('show');
-				$('#msg').text(valeur);
-			}
-		});
-        </script>
     </head>
     <body class="add-success">
 		<div th:include="/pds_header.html"></div>
@@ -82,4 +67,4 @@
 			</div>
 		</section>
     </body>
-    <html>
+    </html>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Area Management</title>
     <head th:include="/headLinksFragment.html"></head>
@@ -38,7 +39,7 @@
                             <div class="doclist-flex-action">
                        
                                 <span class="action-btn">
-                                    <a th:href="'documents' +${listFile.links_file}"/><img src="img/pds_download_black.svg"></a>
+                                    <a th:href="'documents' +${listFile.links_file}"><img src="img/pds_download_black.svg"></a>
                                 </span>
                                  </div>
                             </td>

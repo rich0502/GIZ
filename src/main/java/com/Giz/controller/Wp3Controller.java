@@ -888,8 +888,9 @@ public class Wp3Controller {
 
 	@PostMapping("/createWp3FedeMfr")
 	public String createWp3FedeMfr(@RequestParam("code_region") String code_region,
-			@RequestParam("nom_mfr") String nom_mfr, @RequestParam("annee_miseplace") int annee_miseplace,
-			@RequestParam("statut") boolean statut, @RequestParam("reglement_interieur") boolean reglement_interieur,
+			@RequestParam("nom_mfr") String nom_mfr, @RequestParam("sexe") String sexe,
+			@RequestParam("annee_miseplace") int annee_miseplace, @RequestParam("statut") boolean statut,
+			@RequestParam("reglement_interieur") boolean reglement_interieur,
 			@RequestParam("recepisse_mfr") boolean recepisse_mfr,
 			@RequestParam("date_recepisse") java.sql.Date date_recepisse,
 			@RequestParam("plan_strategique") boolean plan_strategique,
@@ -899,6 +900,7 @@ public class Wp3Controller {
 
 		wp3FedeMfr.setCode_region(code_region);
 		wp3FedeMfr.setNom_mfr(nom_mfr);
+		wp3FedeMfr.setSexe(sexe);
 		wp3FedeMfr.setAnnee_miseplace(annee_miseplace);
 		wp3FedeMfr.setStatut(statut);
 		wp3FedeMfr.setReglement_interieur(reglement_interieur);
@@ -984,14 +986,15 @@ public class Wp3Controller {
 
 	@RequestMapping(value = "/saveEditWp3FedeMfr", method = RequestMethod.POST)
 	public String saveEditWp3FedeMfr(@RequestParam("code_region") String code_region,
-			@RequestParam("nom_mfr") String nom_mfr, @RequestParam("annee_miseplace") int annee_miseplace,
-			@RequestParam("statut") Boolean statut, @RequestParam("reglement_interieur") Boolean reglement_interieur,
+			@RequestParam("nom_mfr") String nom_mfr, @RequestParam("sexe") String sexe,
+			@RequestParam("annee_miseplace") int annee_miseplace, @RequestParam("statut") Boolean statut,
+			@RequestParam("reglement_interieur") Boolean reglement_interieur,
 			@RequestParam("recepisse_mfr") Boolean recepisse_mfr,
 			@RequestParam("date_recepisse") java.sql.Date date_recepisse,
 			@RequestParam("plan_strategique") Boolean plan_strategique,
 			@RequestParam("date_validation") java.sql.Date date_validation, long id,
 			RedirectAttributes redirectAttributes) throws ParseException {
-		wp3FedeMfrService.modifyWp3FedeMfr(code_region, nom_mfr, annee_miseplace, statut, reglement_interieur,
+		wp3FedeMfrService.modifyWp3FedeMfr(code_region, nom_mfr, sexe, annee_miseplace, statut, reglement_interieur,
 				recepisse_mfr, date_recepisse, plan_strategique, date_validation, id);
 		return "redirect:/listWp3FedeMfr";
 	}
@@ -1128,14 +1131,16 @@ public class Wp3Controller {
 	}
 
 	@PostMapping("/createWp3AgrDevMfr")
-	public String createWp3AgrDevMfr(@RequestParam("code_village") String code_village, @RequestParam("nom_mfr") String nom_mfr,
+	public String createWp3AgrDevMfr(@RequestParam("code_village") String code_village,
+			@RequestParam("nom_mfr") String nom_mfr, @RequestParam("sexe") String sexe,
 			@RequestParam("annee_miseplace") int annee_miseplace, @RequestParam("agr_developpe") boolean agr_developpe,
 			@RequestParam("date_eval") java.sql.Date date_eval, @RequestParam("type_agr_dev1") String type_agr_dev1,
-			@RequestParam("date_suivi1") java.sql.Date date_suivi1,
-			RedirectAttributes redirectAttributes) throws Exception {
-		Wp3AgrDevMfr wp3AgrDevMfr = new Wp3AgrDevMfr();		
+			@RequestParam("date_suivi1") java.sql.Date date_suivi1, RedirectAttributes redirectAttributes)
+			throws Exception {
+		Wp3AgrDevMfr wp3AgrDevMfr = new Wp3AgrDevMfr();
 		wp3AgrDevMfr.setCode_village(code_village);
 		wp3AgrDevMfr.setNom_mfr(nom_mfr);
+		wp3AgrDevMfr.setSexe(sexe);
 		wp3AgrDevMfr.setAnnee_miseplace(annee_miseplace);
 		wp3AgrDevMfr.setAgr_developpe(agr_developpe);
 		wp3AgrDevMfr.setDate_eval(date_eval);
@@ -1214,11 +1219,12 @@ public class Wp3Controller {
 
 	@RequestMapping(value = "/saveEditWp3AgrDevMfr", method = RequestMethod.POST)
 	public String saveEditWp3AgrDevMfr(@RequestParam("code_village") String code_village,
-			@RequestParam("nom_mfr") String nom_mfr, @RequestParam("annee_miseplace") int annee_miseplace,
-			@RequestParam("agr_developpe") Boolean agr_developpe, @RequestParam("date_eval") java.sql.Date date_eval,
-			@RequestParam("type_agr_dev1") String type_agr_dev1, @RequestParam("date_suivi1") java.sql.Date date_suivi1,
-			long id, RedirectAttributes redirectAttributes) throws ParseException {
-		wp3AgrDevMfrService.modifyWp3AgrDevMfr(code_village, nom_mfr, annee_miseplace, agr_developpe, date_eval,
+			@RequestParam("nom_mfr") String nom_mfr, @RequestParam("sexe") String sexe,
+			@RequestParam("annee_miseplace") int annee_miseplace, @RequestParam("agr_developpe") Boolean agr_developpe,
+			@RequestParam("date_eval") java.sql.Date date_eval, @RequestParam("type_agr_dev1") String type_agr_dev1,
+			@RequestParam("date_suivi1") java.sql.Date date_suivi1, long id, RedirectAttributes redirectAttributes)
+			throws ParseException {
+		wp3AgrDevMfrService.modifyWp3AgrDevMfr(code_village, nom_mfr, sexe, annee_miseplace, agr_developpe, date_eval,
 				type_agr_dev1, date_suivi1, id);
 		return "redirect:/listWp3AgrDevMfr";
 	}
@@ -1240,14 +1246,16 @@ public class Wp3Controller {
 	@PostMapping("/createWp3JeunePathway")
 	public String createWp3JeunePathway(@RequestParam("code_village") String code_village,
 			@RequestParam("nom_prenom") String nom_prenom, @RequestParam("sexe") String sexe,
-			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("date_fin_frm") java.sql.Date date_fin_frm,
-			RedirectAttributes redirectAttributes) throws Exception {
+			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("existance_agr") boolean existance_agr,
+			@RequestParam("date_fin_frm") java.sql.Date date_fin_frm, RedirectAttributes redirectAttributes)
+			throws Exception {
 		Wp3JeunePathway wp3JeunePathway = new Wp3JeunePathway();
 		String activite = "CANEVAS JEUNE AYANT TERMINÉ FORMATION PATHWAY";
 		wp3JeunePathway.setCode_village(code_village);
 		wp3JeunePathway.setNom_prenom(nom_prenom);
 		wp3JeunePathway.setSexe(sexe);
 		wp3JeunePathway.setAnnee_naissance(annee_naissance);
+		wp3JeunePathway.setExistance_agr(existance_agr);
 		wp3JeunePathway.setDate_fin_frm(date_fin_frm);
 		wp3JeunePathway.setActivite(activite);
 		wp3JeunePathwayService.createWp3JeunePathway(wp3JeunePathway);
@@ -1325,10 +1333,11 @@ public class Wp3Controller {
 	@RequestMapping(value = "/saveEditWp3JeunePathway", method = RequestMethod.POST)
 	public String saveEditWp3JeunePathway(@RequestParam("code_village") String code_village,
 			@RequestParam("nom_prenom") String nom_prenom, @RequestParam("sexe") String sexe,
-			@RequestParam("annee_naissance") int annee_naissance,
+			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("existance_agr") boolean existance_agr,
 			@RequestParam("date_fin_frm") java.sql.Date date_fin_frm, long id, RedirectAttributes redirectAttributes)
 			throws ParseException {
-		wp3JeunePathwayService.modifyWp3JeunePathway(code_village, nom_prenom, sexe, annee_naissance, date_fin_frm, id);
+		wp3JeunePathwayService.modifyWp3JeunePathway(code_village, nom_prenom, sexe, annee_naissance, existance_agr,
+				date_fin_frm, id);
 		return "redirect:/listWp3JeunePathway";
 	}
 
@@ -1348,13 +1357,15 @@ public class Wp3Controller {
 
 	@PostMapping("/createWp3EppFram")
 	public String createWp3EppFram(@RequestParam("code_village") String code_village,
-			@RequestParam("nom_ecole") String nom_ecole, @RequestParam("projet_fram") boolean projet_fram,
-			@RequestParam("projet_valide") boolean projet_valide, @RequestParam("type_projet") String type_projet,
-			@RequestParam("date_validation") java.sql.Date date_validation,
-			RedirectAttributes redirectAttributes) throws Exception {
+			@RequestParam("nom_ecole") String nom_ecole, @RequestParam("sexe") String sexe,
+			@RequestParam("projet_fram") boolean projet_fram, @RequestParam("projet_valide") boolean projet_valide,
+			@RequestParam("type_projet") String type_projet,
+			@RequestParam("date_validation") java.sql.Date date_validation, RedirectAttributes redirectAttributes)
+			throws Exception {
 		Wp3EppFram wp3EppFram = new Wp3EppFram();
 		wp3EppFram.setCode_village(code_village);
 		wp3EppFram.setNom_ecole(nom_ecole);
+		wp3EppFram.setSexe(sexe);
 		wp3EppFram.setProjet_fram(projet_fram);
 		wp3EppFram.setProjet_valide(projet_valide);
 		wp3EppFram.setType_projet(type_projet);
@@ -1364,7 +1375,6 @@ public class Wp3Controller {
 		return "redirect:/listWp3EppFram";
 
 	}
-
 
 	@RequestMapping("/uploadWp3EppFram")
 	public String uploadWp3EppFram(Model model) {
@@ -1433,11 +1443,12 @@ public class Wp3Controller {
 
 	@RequestMapping(value = "/saveEditWp3EppFram", method = RequestMethod.POST)
 	public String saveEditWp3EppFram(@RequestParam("code_village") String code_village,
-			@RequestParam("nom_ecole") String nom_ecole, @RequestParam("projet_fram") Boolean projet_fram,
-			@RequestParam("projet_valide") Boolean projet_valide, @RequestParam("type_projet") String type_projet,
+			@RequestParam("nom_ecole") String nom_ecole, @RequestParam("sexe") String sexe,
+			@RequestParam("projet_fram") Boolean projet_fram, @RequestParam("projet_valide") Boolean projet_valide,
+			@RequestParam("type_projet") String type_projet,
 			@RequestParam("date_validation") java.sql.Date date_validation, long id,
 			RedirectAttributes redirectAttributes) throws ParseException {
-		wp3EppFramService.modifyWp3EppFram(code_village, nom_ecole, projet_fram, projet_valide, type_projet,
+		wp3EppFramService.modifyWp3EppFram(code_village, nom_ecole, sexe, projet_fram, projet_valide, type_projet,
 				date_validation, id);
 		return "redirect:/listWp3EppFram";
 	}
@@ -1451,23 +1462,24 @@ public class Wp3Controller {
 	/* END #47-CANEVAS EPP FRAM DRAFT */
 
 	/* START #48-CANEVAS SERVICE SANTÉ PAR COMMUNAUTÉ */
-	
+
 	@GetMapping("/Wp3SanteeCommForm")
 	public String Wp3SanteeCommForm(Model model) throws Exception {
 		return "wp3/Wp3SanteeComm/Form_addWp3SanteeComm";
 	}
 
 	@PostMapping("/createWp3SanteeComm")
-	public String createWp3SanteeComm(@RequestParam("code_village") String code_village, @RequestParam("csb") String csb,
-			@RequestParam("gps_x") int gps_x, @RequestParam("gps_y") int gps_y,
+	public String createWp3SanteeComm(@RequestParam("code_village") String code_village,@RequestParam("sexe") String sexe,
+			@RequestParam("csb") String csb, @RequestParam("gps_x") int gps_x, @RequestParam("gps_y") int gps_y,
 			@RequestParam("repro_sexuelle") String repro_sexuelle, @RequestParam("date_suivi") java.sql.Date date_suivi,
 			RedirectAttributes redirectAttributes) throws Exception {
-		Wp3SanteeComm wp3SanteeComm = new Wp3SanteeComm();	
+		Wp3SanteeComm wp3SanteeComm = new Wp3SanteeComm();
 		wp3SanteeComm.setCode_village(code_village);
 		wp3SanteeComm.setCsb(csb);
 		wp3SanteeComm.setGps_x(gps_x);
 		wp3SanteeComm.setGps_y(gps_y);
 		wp3SanteeComm.setRepro_sexuelle(repro_sexuelle);
+		wp3SanteeComm.setSexe(sexe);
 		wp3SanteeComm.setDate_suivi(date_suivi);
 		wp3SanteeCommService.createWp3SanteeComm(wp3SanteeComm);
 
@@ -1540,11 +1552,11 @@ public class Wp3Controller {
 	}
 
 	@RequestMapping(value = "/saveEditWp3SanteeComm", method = RequestMethod.POST)
-	public String saveEditWp3SanteeComm(@RequestParam("code_village") String code_village,
+	public String saveEditWp3SanteeComm(@RequestParam("code_village") String code_village,@RequestParam("sexe") String sexe,
 			@RequestParam("csb") String csb, @RequestParam("gps_x") float gps_x, @RequestParam("gps_y") float gps_y,
 			@RequestParam("repro_sexuelle") String repro_sexuelle, @RequestParam("date_suivi") java.sql.Date date_suivi,
 			long id, RedirectAttributes redirectAttributes) throws ParseException {
-		wp3SanteeCommService.modifyWp3SanteeComm(code_village, csb, gps_x, gps_y, repro_sexuelle, date_suivi, id);
+		wp3SanteeCommService.modifyWp3SanteeComm(code_village, csb, gps_x, gps_y, repro_sexuelle,sexe, date_suivi, id);
 		return "redirect:/listWp3SanteeComm";
 	}
 
@@ -1557,7 +1569,7 @@ public class Wp3Controller {
 	/* END #48-CANEVAS SERVICE SANTÉ PAR COMMUNAUTÉ */
 
 	/* START #49-CANEVAS PEER EDUCATOR */
-	
+
 	@GetMapping("/Wp3PeerEducatorForm")
 	public String Wp3PeerEducatorForm(Model model) throws Exception {
 		return "wp3/Wp3PeerEducator/Form_addWp3PeerEducator";
@@ -1568,8 +1580,8 @@ public class Wp3Controller {
 			@RequestParam("nom_prenom") String nom_prenom, @RequestParam("sexe") String sexe,
 			@RequestParam("annee_naissance") int annee_naissance,
 			@RequestParam("operationnelle") Boolean operationnelle,
-			@RequestParam("date_suivi") java.sql.Date date_suivi,
-			RedirectAttributes redirectAttributes) throws Exception {
+			@RequestParam("date_suivi") java.sql.Date date_suivi, RedirectAttributes redirectAttributes)
+			throws Exception {
 		Wp3PeerEducator wp3PeerEducator = new Wp3PeerEducator();
 		String activite = "CANEVAS PEER EDUCATOR";
 		wp3PeerEducator.setCode_village(code_village);

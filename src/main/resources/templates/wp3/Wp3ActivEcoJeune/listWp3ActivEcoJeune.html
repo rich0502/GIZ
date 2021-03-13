@@ -5,10 +5,6 @@
 <head th:include="/headLinksFragment.html" th:remove="tag"></head>
 
 <script type="text/javascript">
-            $(document).ready(function () {
-                $('#myTable').DataTable();
-            });
-
             function confirmDelete(id) {
                 $('#deleteModal').modal('show');
                 $("#sensibileIdHiddenInput").val(id);

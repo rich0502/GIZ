@@ -30,8 +30,6 @@ public class Wp3ActivEcoJeune {
 	private Date date_demarrage;
 	private String activite;
 
-	
-
 	public Wp3ActivEcoJeune() {
 		super();
 		// TODO Auto-generated constructor stub

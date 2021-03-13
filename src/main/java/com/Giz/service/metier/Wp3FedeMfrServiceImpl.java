@@ -74,13 +74,14 @@ public class Wp3FedeMfrServiceImpl implements Wp3FedeMfrService {
 	}
 
 	@Override
-	public void modifyWp3FedeMfr(String code_region, String nom_mfr, int annee_miseplace, boolean statut,
+	public void modifyWp3FedeMfr(String code_region, String nom_mfr,String sexe, int annee_miseplace, boolean statut,
 			boolean reglement_interieur, boolean recepisse_mfr, Date date_recepisse, boolean plan_strategique,
 			Date date_validation, long id) {
 		Wp3FedeMfr wp3FedeMfr = new Wp3FedeMfr();
 
 		wp3FedeMfr.setCode_region(code_region);
 		wp3FedeMfr.setNom_mfr(nom_mfr);
+		wp3FedeMfr.setSexe(sexe);
 		wp3FedeMfr.setAnnee_miseplace(annee_miseplace);
 		wp3FedeMfr.setStatut(statut);
 		wp3FedeMfr.setReglement_interieur(reglement_interieur);

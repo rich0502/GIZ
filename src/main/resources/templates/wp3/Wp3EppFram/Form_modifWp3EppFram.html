@@ -56,6 +56,14 @@
 					<br>
 					<input th:field="*{eppFram.nom_ecole}" type="text">
 					<br>
+					Genre :
+					<br>
+					<select class="form-control select2" th:field="*{eppFram.sexe}"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="H">Homme</option>
+							<option th:value="F">Femme</option>
+					</select>
+					<br>
 					Existence de projet de FRAM (Oui/Non) :
 					<br>
 					<select class="form-control select2" th:field="*{eppFram.projet_fram}"

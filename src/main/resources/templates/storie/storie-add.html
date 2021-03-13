@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>stories Management</title>
 <head th:include="/headLinksFragment.html"></head>
@@ -28,33 +28,32 @@
 			</div>
 			<!-- document -->
 
-			<div class="">				
-					<form class="floating-form add-form file form-wrap " method="POST"
-						enctype="multipart/form-data" action="/Giz/saveStorie">
-						
-							<div class="">								
-								<div style="margin-bottom:8px">Nom du success stories</div>										
-								<input class="floating-input " type="text" placeholder=" "
-									id="nom_str" name="nom_str">																
-								<br>
-							</div>
-						
-						<div class=" ">
-							<div class="">
-								<div id="upload">
-									<div id="drop">
-										<span class="manual-upload">
-											[[#{choisir.doc}]]</span> <a class="btn pds-primary-btn pds-upload-btn">
-											[[#{choisir.file}]]</a> <input type="file" name="file" multiple />
-									</div>
+			<div class="">
+				<form class="floating-form add-form file form-wrap " method="POST"
+					enctype="multipart/form-data" action="/Giz/saveStorie">
 
-									<ul>
-										<!-- The file uploads will be shown here -->
-									</ul>
-									<input type="submit" class="btn pds-primary-btn pds-save-btn"
-										th:value="#{save}">
-					</form>
-				
+					<div class="">
+						<div style="margin-bottom: 8px">Nom du success stories</div>
+						<input class="floating-input " type="text" placeholder=" "
+							id="nom_str" name="nom_str"> <br>
+					</div>
+
+					<div class=" ">
+						<div class="">
+							<div id="upload">
+								<div id="drop">
+									<span class="manual-upload"> [[#{choisir.doc}]]</span> <a
+										class="btn pds-primary-btn pds-upload-btn">
+										[[#{choisir.file}]]</a> <input type="file" name="file" multiple />
+								</div>
+
+								<ul>
+									<!-- The file uploads will be shown here -->
+								</ul>
+								<input type="submit" class="btn pds-primary-btn pds-save-btn"
+									th:value="#{save}">
+				</form>
+
 			</div>
 
 		</div>
@@ -87,7 +86,7 @@
 						});
 			});
 		</script>
-		<style>
+<style>
 .ui-datepicker-calendar {
 	display: none;
 }

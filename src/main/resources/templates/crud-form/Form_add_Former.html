@@ -38,7 +38,7 @@
   Nom et Prénom Bénéficiaire:<br>
   <select class="form-control select2" th:name="id_bf"
 	style="height: 40px !important;width: 27%;" required>
-	<option th:value="null">-- <span>nom et prénom</span> --
+	<option th:value="null">-- nom et prénom --
 	</option>
 	<option th:each="b : ${Beneficiaire}" th:value="${b.id_bf}"
 		th:text="${b.nom_bf +' '+ b.prenom_bf }"></option>
@@ -46,7 +46,7 @@
   Type de formation :<br>
   <select class="form-control select2" th:name="id_form"
 	style="height: 40px !important;width: 27%;" required>
-	<option th:value="null">-- <span>Type de Formation</span> --
+	<option th:value="null">-- Type de Formation --
 	</option>
 	<option th:each="f : ${Formation}" th:value="${f.id_form}"
 		th:text="${f.type_form +' par ' +  f.nom_form + ' à ' + f.commune_form +' ('+ f.district_form +')'}"></option>
@@ -57,4 +57,4 @@
 </form>
 					
 </body>
-<html>
+</html>

@@ -65,7 +65,19 @@
 					<input th:field="*{santeeComm.gps_y}" type="text">
 					<br>
 					 Existence de service de santé reproductive et sexuelle :
-					<input th:field="*{santeeComm.repro_sexuelle}" type="text">
+					<select class="form-control select2" th:field="*{santeeComm.repro_sexuelle}"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="Oui">Oui</option>
+							<option th:value="Non">Non</option>
+					</select>
+					<br>
+					Genre :
+					<br>
+					<select class="form-control select2" th:field="*{santeeComm.sexe}"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="H">Homme</option>
+							<option th:value="F">Femme</option>
+					</select>
 					<br>
 					 Date de suivi:
 					<br>

@@ -22,7 +22,7 @@ public interface Wp3SanteeCommService {
 	public Optional<Wp3SanteeComm> findByIdSanteeComm(long id);
 	
 	public void modifyWp3SanteeComm(String code_village, String csb, float gps_x, float gps_y, String repro_sexuelle,
-			Date date_suivi,long id);
+			String sexe, Date date_suivi,long id);
 	
 	public void deleteWp3SanteeComm(Long id);
 	

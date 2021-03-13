@@ -22,7 +22,7 @@ public interface Wp3FedeMfrService {
 	
 	public Optional<Wp3FedeMfr> findByIdFedeMfr(long id);
 	
-	public void modifyWp3FedeMfr(String code_region, String nom_mfr, int annee_miseplace, boolean statut,
+	public void modifyWp3FedeMfr(String code_region, String nom_mfr,String sexe, int annee_miseplace, boolean statut,
 			boolean reglement_interieur, boolean recepisse_mfr, Date date_recepisse, boolean plan_strategique,
 			Date date_validation,long id);
 	

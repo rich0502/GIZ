@@ -70,12 +70,13 @@ public class Wp3EppFramServiceImpl implements Wp3EppFramService {
 	}
 
 	@Override
-	public void modifyWp3EppFram(String code_village, String nom_ecole, boolean projet_fram, boolean projet_valide,
+	public void modifyWp3EppFram(String code_village, String nom_ecole,String sexe, boolean projet_fram, boolean projet_valide,
 			String type_projet, Date date_validation, long id) {
 		Wp3EppFram wp3EppFram = new Wp3EppFram();
 
 		wp3EppFram.setCode_village(code_village);
 		wp3EppFram.setNom_ecole(nom_ecole);
+		wp3EppFram.setSexe(sexe);
 		wp3EppFram.setProjet_fram(projet_fram);
 		wp3EppFram.setProjet_valide(projet_valide);
 		wp3EppFram.setType_projet(type_projet);
