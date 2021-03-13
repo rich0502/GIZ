@@ -44,18 +44,18 @@ public interface PlateformRepository extends JpaRepository<Plateforme, Long> {
 	@Query(value="Select CASE WHEN  count(*) >= 1 THEN true ELSE false END from plateforme where  type_plateform=:type_plateform and date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
 	boolean getCountChronologiqueIsExist(String dateChronologique, String type_plateform);
 	
-	@Query(value = "SELECT village.code_village,village.district,count(plateforme.commentaire) as nbr\r\n" + 
+	@Query(value = "SELECT village.code_village,village.village,count(plateforme.commentaire) as nbr\r\n" + 
 			"FROM village,plateforme\r\n" + 
 			" WHERE    plateforme.type_plateform=?1 AND \r\n" + 
 			" village.code_village=plateforme.code_village AND plateforme.code_village  IN (null, ?2) AND plateforme.date_suivi BETWEEN ?3 AND ?4 \r\n" + 
-			"GROUP BY village.code_village,village.district", nativeQuery = true)
+			"GROUP BY village.code_village,village.village", nativeQuery = true)
 	List<Object[]> TableData(String type_plateform, List<String> params, Date debut_date, Date fin_date);
 	
-	@Query(value = "SELECT village.district,count(plateforme.commentaire) as nbr\r\n" + 
+	@Query(value = "SELECT village.commune,count(plateforme.commentaire) as nbr\r\n" + 
 			"FROM village,plateforme\r\n" + 
 			" WHERE    plateforme.type_plateform=?1 AND \r\n" + 
 			" village.code_village=plateforme.code_village AND plateforme.date_suivi BETWEEN ?2 AND ?3 \r\n" + 
-			"GROUP BY village.district", nativeQuery = true)
+			"GROUP BY village.commune", nativeQuery = true)
 	List<Object[]> TableDataCommune(String type_plateform,Date debut_date, Date fin_date);
 	
 	@Query(value = "SELECT village.district,count(plateforme.commentaire) as nbr\r\n" + 

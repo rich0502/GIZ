@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-     
+    <head>    
         <head th:include="/headLinks.html" th:remove="tag"></head>
     </head>
     <body class="stories">
@@ -15,6 +14,7 @@
                         </header>
                             <div th:if="${not #lists.isEmpty(nb)}" th:include="tableau/plateforme.html"></div>
 							<div th:if="${nb} != 'ok'" th:include="tableau/atelier.html"></div>
+							
                     </div>
                 </div>
         </section>

@@ -79,13 +79,9 @@
 				Commentaires :
 				<br>
 				<input th:field="*{plateforme.commentaire}" type="text">
-				<br>
-				Type plateforme:
-				<br>
-				<input type="text" th:field="*{plateforme.type_plateform}">
-				<br>
-
-				<br>
+				
+				<input type="hidden" th:field="*{plateforme.type_plateform}">
+				
 				<input type="submit" th:value="#{save}" class="gbtn">
 			</form>
 		</div>

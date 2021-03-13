@@ -86,12 +86,9 @@
 				Cible de l'atelier/évènement :
 				<br>
 				<input type="text" th:field="*{atelierMFR.cible_atelier}">
-				<br>
-				Type de l'atelier/évènement :
-				<br>
-				<input type="text" th:field="*{atelierMFR.type_atelier}">
-				<br>
-				<br>
+				
+				<input type="hidden" th:field="*{atelierMFR.type_atelier}">
+				
 				<input type="submit" th:value="#{save}" class="gbtn">
 			</form>
 		</div>

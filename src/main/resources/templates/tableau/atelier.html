@@ -3,7 +3,7 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>Code village</span></th>
-			<th scope="col"><span>District</span></th>
+			<th scope="col"><span>Village</span></th>
 			<th scope="col"><span>Hommes</span></th>
 			<th scope="col"><span>Femmes</span></th>
 			<th scope="col"><span>Sous-total</span></th>
@@ -297,6 +297,27 @@
 			<td class="center" th:text="*{#aggregates.sum(tpsDistAll.![[1]])}"></td>
 			<td class="center" th:text="*{#aggregates.sum(tpsDistAll.![[2]])}"></td>
 			<td class="center" th:text="*{#aggregates.sum(tpsDistAll.![[1]+[2]])}" /></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<table class="composantes-table" id="myTable"
+	th:if="${not #lists.isEmpty(tpsDC)}">
+	<thead>
+		<tr>
+			<th scope="col"><span>Date de partage</span></th>
+			<th scope="col"><span>Nombre d'auteur documents</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="b : ${tpsDC}">
+			<td class="center" th:text="${#dates.format(b[0],'dd-MM-yyyy')}"></td>
+			<td class="center" th:text="${b[1]}"></td>
+		</tr>
+		<tr>
+			<td class="center" colspan="1"><b>Total</b></td>
+			<td class="center" th:text="*{#aggregates.sum(tpsDC.![[1]])}" /></td>
 		</tr>
 
 	</tbody>

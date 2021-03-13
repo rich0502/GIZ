@@ -201,6 +201,7 @@ public class Wp4Controller {
 			@RequestParam("cible_atelier") String cible_atelier,
 			@RequestParam("type_atelier") String type_atelier,
 			RedirectAttributes redirectAttributes) throws ParseException {
+		type_at = type_atelier;
 		atelierMFRService.addAtelierMFR( code_village, atelier_resp, date_realise, lieu_realise, theme_choise, nbr_particip, nbr_homme, nbr_femme, cible_atelier, type_atelier);
 		return "redirect:/listAtelier";
 
@@ -298,6 +299,7 @@ public class Wp4Controller {
 			@RequestParam("cible_atelier") String cible_atelier,
 			@RequestParam("type_atelier") String type_atelier,
 			RedirectAttributes redirectAttributes) throws ParseException {
+		type_at = type_atelier;
 		atelierMFRService.modifyAtelierMFR( code_village, atelier_resp, date_realise, lieu_realise, theme_choise, nbr_particip, nbr_homme, nbr_femme, cible_atelier, type_atelier, id_am);
 		return "redirect:/listAtelier";
 	}
@@ -369,6 +371,7 @@ public class Wp4Controller {
 			@RequestParam("commentaire") String commentaire,
 			@RequestParam("type_plateform") String type_plateform,
 			RedirectAttributes redirectAttributes) throws ParseException {
+		type_at = type_plateform;
 		plateformeService.addPlateforme(  code_village,  exist_platform,  operationnel,  date_suivi, commentaire,  type_plateform);
 		return "redirect:/listPlateforme";
 
@@ -454,6 +457,7 @@ public class Wp4Controller {
 			@RequestParam("commentaire") String commentaire,
 			@RequestParam("type_plateform") String type_plateform,
 			RedirectAttributes redirectAttributes) throws ParseException {
+		type_at = type_plateform;
 		plateformeService.modifyPlateforme(  code_village,  exist_platform,  operationnel,  date_suivi, commentaire,  type_plateform, id_am);
 		return "redirect:/listPlateforme";
 	}

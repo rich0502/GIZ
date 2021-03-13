@@ -183,6 +183,7 @@ public class AnalysesController {
 		List<Object[]> tpsComF = null;
 		List<Object[]> tpsDistF = null;
 		List<Object[]> tpsGenreF = null;
+		List<Object[]> tpsDC = null;
 		String nb = null;
 		List<Object[]> plate_village = null;
 		List<Object[]> plate_com = null;
@@ -481,66 +482,161 @@ public class AnalysesController {
 
 		case "51":
 			nameCanevas = "document de capitalisation";
-			tps = docCapService.ListGraphe(debut_date, fin);
+			tpsDC = docCapService.ListGraphe(debut_date, fin);
 			break;
 		case "52":
 			nameCanevas = "ateliers MFR ";
 			type_atelier = "CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DU RESEAU DE MFR DANS LA REGION";
 			// sum F et H
-			if (subdivision.equalsIgnoreCase("district")) {
-				tpsDist = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
-			} else if (subdivision.equalsIgnoreCase("commune")) {
-				tpsCom = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+			if (genre.equalsIgnoreCase("F")) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistF = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComF = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreF = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+				}
+
+			} else if (genre.equalsIgnoreCase("H")) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistH = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComH = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreH = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+				}
 			} else {
-				tps = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreAll = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+				}
 			}
 			break;
 		case "53":
-			nameCanevas = "Dialogue rÃ©gion";
+			nameCanevas = "Dialogue région";
 			type_atelier = "CANEVAS DIALOGUE REGIONAL SUR L'ACCES AU FINANCEMENT";
 			// sum F et H
-			if (subdivision.equalsIgnoreCase("district")) {
-				tpsDist = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
-			} else if (subdivision.equalsIgnoreCase("commune")) {
-				tpsCom = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+			if (genre.equalsIgnoreCase("F")) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistF = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComF = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreF = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+				}
+
+			} else if (genre.equalsIgnoreCase("H")) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistH = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComH = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreH = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+				}
 			} else {
-				tps = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreAll = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+				}
 			}
 			break;
 		case "54":
 			nameCanevas = "Atelier de capitalisation";
 			type_atelier = "CANEVAS ATELIERS DE CAPITALISATION ET PARTAGE DES ACQUIS";
 			// sum F et H
-			if (subdivision.equalsIgnoreCase("district")) {
-				tpsDist = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
-			} else if (subdivision.equalsIgnoreCase("commune")) {
-				tpsCom = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+			if (genre.equalsIgnoreCase("F")) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistF = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComF = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreF = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+				}
+
+			} else if (genre.equalsIgnoreCase("H")) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistH = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComH = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreH = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+				}
 			} else {
-				tps = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreAll = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+				}
 			}
 			break;
 		case "55":
 			nameCanevas = "Atelier promotion Mahavelona";
 			type_atelier = "CANEVAS ATELIERS/EVENEMENTS PROMOTIONNELS DE MAHAVELONA DANS LA SAVA";
 			// sum F et H
-			if (subdivision.equalsIgnoreCase("district")) {
-				tpsDist = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
-			} else if (subdivision.equalsIgnoreCase("commune")) {
-				tpsCom = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+			if (genre.equalsIgnoreCase("F")) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistF = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComF = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreF = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+				}
+
+			} else if (genre.equalsIgnoreCase("H")) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistH = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComH = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreH = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+				}
 			} else {
-				tps = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreAll = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+				}
 			}
 			break;
 		case "56":
 			nameCanevas = "Outils aux producteurs de vanille";
 			type_atelier = "CANEVAS ATELIERS DE PARTAGES DES BONNES PRATIQUES ET OUTILS AUX PRODUCTEURS DE VANILLE";
 			// sum F et H
-			if (subdivision.equalsIgnoreCase("district")) {
-				tpsDist = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
-			} else if (subdivision.equalsIgnoreCase("commune")) {
-				tpsCom = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+			if (genre.equalsIgnoreCase("F")) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistF = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComF = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreF = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+				}
+
+			} else if (genre.equalsIgnoreCase("H")) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistH = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComH = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreH = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+				}
 			} else {
-				tps = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+				} else {
+					tpsGenreAll = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+				}
 			}
 			break;
 		case "57":
@@ -589,6 +685,7 @@ public class AnalysesController {
 		model.addAttribute("tpsGenreF", tpsGenreF);
 		model.addAttribute("tpsGenreAll", tpsGenreAll);
 		model.addAttribute("nb", nb);
+		model.addAttribute("tpsDC", tpsDC);
 		model.addAttribute("tps", tps);
 		model.addAttribute("tpsCom", tpsCom);
 		model.addAttribute("tpsComH", tpsComH);

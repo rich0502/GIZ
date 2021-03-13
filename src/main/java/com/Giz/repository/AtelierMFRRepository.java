@@ -52,19 +52,19 @@ public interface AtelierMFRRepository extends JpaRepository<AtelierMFR, Long> {
 	@Query(value="Select CASE WHEN  count(*) >= 1 THEN true ELSE false END from ateliermfr where  type_atelier=:type_atelier and date_realise BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
 	boolean getCountChronologiqueIsExist(String dateChronologique, String type_atelier);
 	
-	@Query(value = "SELECT village.code_village,village.district,sum(atelierMFR.nbr_femme) as F,sum(atelierMFR.nbr_homme) as H FROM village,"
+	@Query(value = "SELECT village.code_village,village.village,sum(atelierMFR.nbr_homme) as H, sum(atelierMFR.nbr_femme) as F FROM village,"
 			+ "atelierMFR WHERE atelierMFR.type_atelier=?1 AND village.code_village=atelierMFR.code_village AND atelierMFR.code_village  IN (null, ?2) "
-			+ "AND atelierMFR.date_realise BETWEEN ?3 AND ?4 GROUP BY village.code_village,village.district", nativeQuery = true)
+			+ "AND atelierMFR.date_realise BETWEEN ?3 AND ?4 GROUP BY village.code_village,village.village", nativeQuery = true)
 	List<Object[]> TableData(String type_atelier, List<String> params, java.util.Date debut_date,
 			java.util.Date fin_date);
 	
-	@Query(value = "SELECT village.commune,sum(atelierMFR.nbr_femme) as F,sum(atelierMFR.nbr_homme) as H FROM\r\n" + 
+	@Query(value = "SELECT village.commune,sum(atelierMFR.nbr_homme) as H,sum(atelierMFR.nbr_femme) as F FROM\r\n" + 
 			"village,atelierMFR WHERE atelierMFR.type_atelier=?1 \r\n" + 
 			"AND village.code_village=atelierMFR.code_village \r\n" + 
 			"AND atelierMFR.date_realise BETWEEN ?2 AND ?3 GROUP BY village.commune", nativeQuery = true)
 	List<Object[]> TableDataCommune(String type_atelier,java.util.Date debut_date,java.util.Date fin_date);
 	
-	@Query(value = "SELECT village.district,sum(atelierMFR.nbr_femme) as F,sum(atelierMFR.nbr_homme) as H FROM\r\n" + 
+	@Query(value = "SELECT village.district,sum(atelierMFR.nbr_homme) as H,sum(atelierMFR.nbr_femme) as F FROM\r\n" + 
 			"village,atelierMFR WHERE atelierMFR.type_atelier=?1 \r\n" + 
 			"AND village.code_village=atelierMFR.code_village \r\n" + 
 			"AND atelierMFR.date_realise BETWEEN ?2 AND ?3 GROUP BY village.district", nativeQuery = true)
