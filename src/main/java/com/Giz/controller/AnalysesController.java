@@ -134,23 +134,27 @@ public class AnalysesController {
 	}
 
 	@RequestMapping("/carte")
-	public String carte(@RequestParam("theme") int theme, @RequestParam("date_fin") String date_fin,
-			@RequestParam("subdivision") String subdivision, @RequestParam("genre") String genre,
-			@RequestParam(defaultValue = "null") String villages, Model model) throws Exception {
+	public String carte(@RequestParam("theme") int theme,
+			@RequestParam("date_fin") String date_fin, @RequestParam("subdivision") String subdivision,@RequestParam("genre") String genre,@RequestParam(defaultValue = "null") String villages, Model model) throws Exception {
 		System.out.println("genre" + genre);
-		java.sql.Date fin = Date.valueOf(date_fin);
+		if(genre=="F") {
+			genre="H";
+		}else {
+			genre="F";
+		}
+		java.sql.Date fin=  Date.valueOf(date_fin);
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentUserName = authentication.getName();
 		User nomUser = userService.getUserByName(currentUserName);
-		String xmlcheck = subdivision + genre;
-		System.out.println("xmlcheck" + xmlcheck);
-		URL url = new URL("http://localhost:8083/geoserver/styles/" + xmlcheck + ".xml");
-		HttpURLConnection huc = (HttpURLConnection) url.openConnection();
+		String xmlcheck = subdivision+theme+"T";
+		URL url = new URL("http://168.119.185.165:8080/geoserver/styles/"+xmlcheck+".xml");
+		HttpURLConnection huc = (HttpURLConnection) url.openConnection();		 
 		int responseCode = huc.getResponseCode();
-		if (responseCode == 404) {
-			xmlcheck = subdivision;
+		if(responseCode == 404) {
+			xmlcheck = subdivision+theme;
 		}
 		System.out.println("responseCode" + responseCode);
+		System.out.println("xmlcheck"+xmlcheck);
 		String type_atelier = canevas(theme);
 		String date_debut = "2020-01-01";
 		model.addAttribute("date_fin", fin);
@@ -163,7 +167,7 @@ public class AnalysesController {
 		model.addAttribute("xmlcheck", xmlcheck);
 		model.addAttribute("type", nomUser.getLastName());
 		return "carte";
-	}
+	}	
 
 	@RequestMapping("/tableau")
 	public String tableau(@RequestParam("theme") String theme,
