@@ -70,6 +70,7 @@ public class FormationController {
 		return "crud-form/Form_add_Formation";
 	}
 
+	@SuppressWarnings("unused")
 	private boolean istPalindrom(char[] cs) {
 		// TODO Auto-generated method stub
 		return false;

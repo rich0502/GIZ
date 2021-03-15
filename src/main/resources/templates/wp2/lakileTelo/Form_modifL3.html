@@ -82,7 +82,11 @@
 					<input th:field="*{lakileTelo.nbr_h}" type="text">
 					Operationnel :
 					<br>
-					<input type="text" th:field="*{lakileTelo.operationnel}">
+					<select class="form-control select2" th:field="*{lakileTelo.operationnel}"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="True">Oui</option>
+						<option th:value="False">Non</option>
+					</select>
 					<br>
 					 Date de suivi :
 					<br>

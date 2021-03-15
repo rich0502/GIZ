@@ -22,6 +22,7 @@ import com.Giz.service.UserService;
 import com.Giz.service.metier.AtelierMFRService;
 import com.Giz.service.metier.DocCapService;
 import com.Giz.service.metier.PlateformeService;
+import com.Giz.service.metier.ValiderService;
 import com.Giz.service.metier.VillageService;
 import com.Giz.service.metier.Wp3ActivEcoJeuneService;
 import com.Giz.service.metier.Wp3AgrDevMfrService;
@@ -39,6 +40,10 @@ import com.Giz.service.metier.Wp3UniteElevJeuneService;
 
 @Controller
 public class AnalysesController {
+	
+	@Autowired
+	ValiderService validerService;
+	
 	@Autowired
 	UserService userService;
 
@@ -194,6 +199,7 @@ public class AnalysesController {
 		List<Object[]> plate_dist = null;
 		String type_atelier = null;
 		String nameCanevas = null;
+		String canevas = null;
 		List<String> params = null;
 		java.sql.Date debut_date = Date.valueOf("2020-01-01");
 		java.sql.Date fin = Date.valueOf(date_fin);
@@ -201,6 +207,146 @@ public class AnalysesController {
 		String replaceString = villages.replaceAll("\\s+", "");
 		params = new ArrayList<String>(Arrays.asList(replaceString.split(";")));
 		switch (theme) {
+		case "29":
+			nameCanevas = "Lakile telo";
+			canevas = "L3";
+			// sum F et H
+			if (genre.equalsIgnoreCase("F")) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistF = validerService.ListTableauDistSum(debut_date, fin, canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComF = validerService.ListTableauCommuneSum(debut_date, fin, canevas);
+				} else {
+					tpsGenreF = validerService.ListTableauSum(debut_date, fin, params, canevas);
+				}
+
+			} else if (genre.equalsIgnoreCase("H")) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistH = validerService.ListTableauDistSum(debut_date, fin, canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComH = validerService.ListTableauCommuneSum(debut_date, fin, canevas);
+				} else {
+					tpsGenreH = validerService.ListTableauSum(debut_date, fin, params, canevas);
+				}
+			} else {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = validerService.ListTableauDistSum(debut_date, fin, canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = validerService.ListTableauCommuneSum(debut_date, fin, canevas);
+				} else {
+					tpsGenreAll = validerService.ListTableauSum(debut_date, fin, params, canevas);
+				}
+			}
+			break;
+		case "32":
+			nameCanevas = "Mobile money";
+			canevas = "Mobile";
+			// ayant un champ nom_prenom count
+			if (genre.isEmpty()) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = validerService.ListTableauDistAllCount(debut_date, fin,canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = validerService.ListTableauCommuneAllCount(debut_date, fin,canevas);
+				} else {
+					tpsGenreAll = validerService.ListTableauAllCount(debut_date, fin, params,canevas);
+				}
+			} else {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDist = validerService.ListTableauDistCount(debut_date, fin, genre,canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsCom = validerService.ListTableauCommuneCount(debut_date, fin, genre,canevas);
+				} else {
+					tpsGenre = validerService.ListTableauCount(debut_date, fin, params, genre,canevas);
+				}
+			}
+			break;
+		case "33":
+			nameCanevas = "Finance";
+			canevas = "Finance";
+			// ayant un champ nom_prenom count
+			if (genre.isEmpty()) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = validerService.ListTableauDistAllCount(debut_date, fin,canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = validerService.ListTableauCommuneAllCount(debut_date, fin,canevas);
+				} else {
+					tpsGenreAll = validerService.ListTableauAllCount(debut_date, fin, params,canevas);
+				}
+			} else {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDist = validerService.ListTableauDistCount(debut_date, fin, genre,canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsCom = validerService.ListTableauCommuneCount(debut_date, fin, genre,canevas);
+				} else {
+					tpsGenre = validerService.ListTableauCount(debut_date, fin, params, genre,canevas);
+				}
+			}
+		case "34":
+			nameCanevas = "Producteur";
+			canevas = "Producteur";
+			// ayant un champ nom_prenom count
+			if (genre.isEmpty()) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = validerService.ListTableauDistAllCountNoDate(canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = validerService.ListTableauCommuneAllCountNoDate(canevas);
+				} else {
+					tpsGenreAll = validerService.ListTableauAllCountNoDate( params,canevas);
+				}
+			} else {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDist = validerService.ListTableauDistCountNoDate( genre,canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsCom = validerService.ListTableauCommuneCountNoDate( genre,canevas);
+				} else {
+					tpsGenre = validerService.ListTableauCountNoDate( params, genre,canevas);
+				}
+			}
+			break;
+		case "35":
+			nameCanevas = "Adhesion";
+			canevas = "Finance";
+			// ayant un champ nom_prenom count
+			if (genre.isEmpty()) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = validerService.ListTableauDistAllCount(debut_date, fin,canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = validerService.ListTableauCommuneAllCount(debut_date, fin,canevas);
+				} else {
+					tpsGenreAll = validerService.ListTableauAllCount(debut_date, fin, params,canevas);
+				}
+			} else {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDist = validerService.ListTableauDistCount(debut_date, fin, genre,canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsCom = validerService.ListTableauCommuneCount(debut_date, fin, genre,canevas);
+				} else {
+					tpsGenre = validerService.ListTableauCount(debut_date, fin, params, genre,canevas);
+				}
+			}
+			break;
+		case "36":
+			nameCanevas = "Menage";
+			canevas = "Menage";
+			// ayant un champ nom_prenom count
+			if (genre.isEmpty()) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = validerService.ListTableauDistAllCountNoDate(canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = validerService.ListTableauCommuneAllCountNoDate(canevas);
+				} else {
+					tpsGenreAll = validerService.ListTableauAllCountNoDate( params,canevas);
+				}
+			} else {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDist = validerService.ListTableauDistCountNoDate( genre,canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsCom = validerService.ListTableauCommuneCountNoDate( genre,canevas);
+				} else {
+					tpsGenre = validerService.ListTableauCountNoDate( params, genre,canevas);
+				}
+			}
+			break;
 		case "37":
 			nameCanevas = "activité economique réalisée";
 			// ayant un champ nom_prenom count

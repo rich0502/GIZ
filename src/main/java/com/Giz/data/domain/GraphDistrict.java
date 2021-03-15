@@ -21,6 +21,7 @@ public class GraphDistrict {
 	}
 	/**
 	 * @param district the district to set
+	 * @param district_form 
 	 */
 	public void setDistrict(String district) {
 		this.district_form = district_form;

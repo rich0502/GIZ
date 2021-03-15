@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>GIZ</title>
+	<title>List Lakile telo</title>
 	<link rel="icon" type="image/png" href="css/images/icons/favicon.png"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	  
@@ -58,7 +58,8 @@
 				<th scope="col"><span>Nom du groupe lakile telo</span></th>
 				<th scope="col"><span>Catégorie</span></th>
 				<th scope="col"><span>Date création</span></th>
-				<th scope="col"><span>Sexe</span></th>
+				<th scope="col"><span>Homme</span></th>
+				<th scope="col"><span>Femme</span></th>
 				<th scope="col"><span>Operationnel</span></th>
 				<th scope="col"><span>Date suivi</span></th>
 				<th class="center td-action"><span>Action</span></th>
@@ -71,7 +72,8 @@
 				<td th:text="${b.nom_group_l_telo}"></td>
 				<td th:text="${b.categorie}"></td>
 				<td th:text="${#dates.format(b.date_creation,'dd-MM-yyyy')}"></td>
-				<td th:text="${b.sexe}"></td>
+				<td th:text="${b.nbr_h}"></td>
+				<td th:text="${b.nbr_f}"></td>
 				<td th:text="${b.operationnel} ? 'Oui' : 'Non'"></td>
 				<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
 				<td class="center td-action">

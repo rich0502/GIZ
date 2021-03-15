@@ -66,8 +66,8 @@
 					<select class="form-control select2" th:field="*{finance.sexe}"
 						style="height: 40px !important;width: 100%;" required>
 						<option value="" selected>[[#{selectionner}]]</option>
-						<option value="H">Homme</option>
-						<option value="F">Femme</option>
+						<option value="h">Homme</option>
+						<option value="f">Femme</option>
 					</select>
 					<br>
 					Annee naissance
@@ -76,7 +76,11 @@
 					<br>
 					Service IMF :
 					<br>
-					<input th:field="*{finance.service_IMF}" type="text">
+					<select class="form-control select2" th:field="*{finance.service_IMF}"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="True">Oui</option>
+						<option th:value="False">Non</option>
+					</select>
 					<br>
 					Date suivi :
 					<br>
@@ -95,4 +99,4 @@
 			</div>
 		</section>
     </body>
-    <html>
+    </html>

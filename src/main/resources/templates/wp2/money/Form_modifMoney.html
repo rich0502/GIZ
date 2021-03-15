@@ -66,8 +66,8 @@
 					<select class="form-control select2" th:field="*{money.sexe}"
 						style="height: 40px !important;width: 100%;" required>
 						<option value="" selected>[[#{selectionner}]]</option>
-						<option value="H">Homme</option>
-						<option value="F">Femme</option>
+						<option value="h">Homme</option>
+						<option value="f">Femme</option>
 					</select>
 					<br>
 					annee naissance
@@ -76,7 +76,11 @@
 					<br>
 					service mobile money :
 					<br>
-					<input th:field="*{money.service_mobile_money}" type="text">
+					<select class="form-control select2" th:field="*{money.service_mobile_money}"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="True">Oui</option>
+						<option th:value="False">Non</option>
+					</select>
 					<br>
 					date suivi :
 					<br>
@@ -84,15 +88,27 @@
 					<br>
 					mvola :
 					<br>
-					<input th:field="*{money.mvola}" type="text">
+					<select class="form-control select2" th:field="*{money.mvola}"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="True">Oui</option>
+						<option th:value="False">Non</option>
+					</select>
 					<br>
 					orange money
 					<br>
-					<input th:field="*{money.orange_money}" type="text">
+					<select class="form-control select2" th:field="*{money.orange_money}"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="True">Oui</option>
+						<option th:value="False">Non</option>
+					</select>
 					<br>
 					airtel money :
 					<br>
-					<input th:field="*{money.airtel_money}" type="text">
+					<select class="form-control select2" th:field="*{money.airtel_money}"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="True">Oui</option>
+						<option th:value="False">Non</option>
+					</select>
 					<br>
 					<input type="submit" th:value="#{save}" class="gbtn">
 				</form>

@@ -10,8 +10,6 @@ public interface ValiderService {
 	
 	public void deleteValider(Long id);
 	
-	
-	
 	public List<Valider> ListValiderL3();
 	
 	public void addValiderL3(String code_village, String district, String nom_group_l_telo, String categorie, Date date_creation, double effectif_membre,int nbr_h,int nbr_f, boolean operationnel, Date date_suivi);
@@ -147,6 +145,42 @@ public interface ValiderService {
 	public int countHMenage(String dateChronologique);
 	
 	public int countFMenage(String dateChronologique);
+	
+	// TABLEAU SUM
+	
+	public List<Object[]> ListTableauSum(Date debut_date, Date fin_date, List<String> params,String canevas);
+	
+	public List<Object[]> ListTableauCommuneSum(Date debut_date, Date fin_date,String canevas);
+	
+	public List<Object[]> ListTableauDistSum(Date debut_date, Date fin_date,String canevas);
+	
+	// TABLEAU COUNT
+	
+	public List<Object[]> ListTableauCount(Date debut_date, Date fin_date, List<String> params, String sexe,String canevas);
+
+	public List<Object[]> ListTableauCommuneCount(Date debut_date, Date fin_date, String sexe,String canevas);
+
+	public List<Object[]> ListTableauDistCount(Date debut_date, Date fin_date, String sexe,String canevas);
+
+	public List<Object[]> ListTableauAllCount(Date debut_date, Date fin_date, List<String> params,String canevas);
+
+	public List<Object[]> ListTableauCommuneAllCount(Date debut_date, Date fin_date,String canevas);
+
+	public List<Object[]> ListTableauDistAllCount(Date debut_date, Date fin_date,String canevas);
+	
+	// TABLEAU COUNT NO DATE
+	
+	public List<Object[]> ListTableauCountNoDate(List<String> params, String sexe,String canevas);
+
+	public List<Object[]> ListTableauCommuneCountNoDate(String sexe,String canevas);
+
+	public List<Object[]> ListTableauDistCountNoDate(String sexe,String canevas);
+
+	public List<Object[]> ListTableauAllCountNoDate(List<String> params,String canevas);
+
+	public List<Object[]> ListTableauCommuneAllCountNoDate(String canevas);
+
+	public List<Object[]> ListTableauDistAllCountNoDate(String canevas);
 
 
 	
