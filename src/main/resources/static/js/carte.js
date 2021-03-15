@@ -184,6 +184,7 @@ var drawControl, app, vectorLayer, tab, mapUI, layer_bat,layerArea, lastName, mo
 					xtype : 'button',
 					itemId : 'calcul',
 					text : 'import',
+					cls: 'map-gbtn',
 					handler: function () {
 					 var printDialog = new Ext.Window({
 							title: "Aperçu avant impression",

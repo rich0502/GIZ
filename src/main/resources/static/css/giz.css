@@ -412,7 +412,19 @@ ul.nav-tabs {
 .flex {
     display: flex;
 }
-
+.map-gbtn {
+    margin-bottom: 10px !important;
+    margin: auto;
+}
+.map-gbtn .x-btn-text {
+    padding: 0 10px !important;
+    /* background-color: rgba(205, 49, 49, 0.15) !important;
+    border: 1px solid #cd3231  !important;
+    color: #cd3231 !important; */
+    font-weight: bold;
+    height: 25px !important;
+    min-width: 60px !important;
+}
 .gbtn {
     background-color: rgba(205, 49, 49, 0.15);
     border: 1px solid #cd3231  ;
@@ -436,6 +448,10 @@ ul.nav-tabs {
 .gbtn:hover, .gbtn:focus {
     background-color: #cd3231 ;
     color: #FFF;
+}
+.map-gbtn .x-btn-text:hover {
+    /* background-color: #cd3231 !important;
+    color: #FFF !important; */
 }
 .error-msg {
     color: #C30F08;
