@@ -146,7 +146,7 @@
 			class="span-user" th:text="${nomUser}" id="lastUser"> <span
 				th:text="${nomUser.username}"></span>
 		</span> <br>
-			<form method="POST" name="theForm row" style="display: flex;">
+			<form method="POST" name="theForm" style="display: flex;">
 				<div class="col-9">
 					<table style="width: 100%;">
 						<tr>
@@ -221,7 +221,7 @@
 							</td>
 							<td style="width: 25%; padding-left: 8px; padding-bottom: 8px; vertical-align: top;">
 								<select th:name="genre" class="form-control select2">
-										<option value="">Toutes</option>
+										<option value="T">Autres</option>
 										<option value="H">Homme</option>
 										<option value="F">Femme</option>
 									</select>
