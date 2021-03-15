@@ -35,7 +35,7 @@
             <h2 class="content-title" style="margin-bottom: 12px;">[[#{accueil.titre}]]</h2>
 
             <div class="welcome-img row">
-                <div class="col-8 slideshow">
+                <div class="col-md-7 col-sm-6 slideshow">
                     <div class="zoom slider">
                         <!-- <img alt="" th:src="@{/img/bg-login4.jpg}"> -->
                         <div class="item">
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4" th:each="b : ${Accueil}">
+                <div class="col-md-5 col-sm-6" th:each="b : ${Accueil}">
                     <div th:utext="${b.contenu_acc}"></div>
                 </div>
             </div>

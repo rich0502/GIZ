@@ -351,8 +351,10 @@ LOGIN
 label:not(.custom-control-label) {
 /*   color:#031451;  */
     color:#000000; 
-  font-size:10px;
-  font-weight:normal;
+  font-size:14px;
+  margin-bottom: 4px;
+  margin-top: 10px;
+  font-weight:bold;
   /* position:absolute; */
   pointer-events:none;
   left: 0;
@@ -891,9 +893,9 @@ PSD HEADER
 }
 
 .user-menu .dropdown-menu {
-    width: 209px;
+    width: 210px;
     background: #fff;
-    padding: 0 15px;
+    padding: 0 5px;
     -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -906,7 +908,7 @@ PSD HEADER
 	background:#f8f9fa;
 }
 .user-menu .dropdown-item {
-    padding: 20px 0 12px 43px;
+    padding: 15px 0 15px 48px;
     border: 0;
     position: relative;
     font-weight: 900;
@@ -922,8 +924,8 @@ PSD HEADER
     width: 20px;
     height: 20px;
     position: absolute;
-    top: 15px;
-    left: 0;
+    top: calc(50% - 10px);
+    left: 12px;
     background: url(../img/pds_user_orange.svg) center no-repeat;
     background-size: 100% 100%;
 }
@@ -932,6 +934,9 @@ PSD HEADER
 }
 .user-menu .dropdown-item.pds-canevas:before {    
     background: url(../img/pds_canevas.svg) center no-repeat;
+}
+.user-menu .dropdown-item.pds-manage-content:before {    
+    background: url(../img/pds_manage_content.svg) center no-repeat;
 }
 .dropdown-item.pds-logout:before  {
     background:url(../img/pds_exit-orange.svg) center no-repeat;
@@ -1079,9 +1084,12 @@ PSD CONTENT
 
 .action-btn{
 	display:inline-block;
-	padding-right:40px;
+	padding: 0 15px;
 }
-
+/* td.td-action .action-btn + .action-btn{
+    padding-right: 0;
+    padding-left: 30px;
+} */
 /*addUser*/
 .add-form{
 	width:768px;

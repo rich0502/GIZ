@@ -18,7 +18,7 @@ $(document).on('ready', function () {
         consoledraggable: true,
         arrows: false,
         fade: true,
-        speed: 900,
+        speed: 500,
         infinite: true,
         cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
         touchThreshold: 100,

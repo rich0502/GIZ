@@ -1543,6 +1543,9 @@ table.dataTable.composantes-table {
     display: flex;
     align-items: center;
 }
+td.td-action, th.td-action {
+    display: table-cell;
+}
 .table-responsive {
 	border: 1px solid #f1f1f1;
 	min-height: 70px;
