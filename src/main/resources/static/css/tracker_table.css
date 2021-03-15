@@ -220,3 +220,11 @@
 .bg-orange-ffcc {
     background-color: #ffcc66;
 }
+
+.table-tracker-container select[disabled] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    width: 100%;
+}
