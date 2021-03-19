@@ -1,4 +1,4 @@
-package com.Giz.repository;
+package com.Giz.data.domain;
 
 import java.util.Optional;
 
