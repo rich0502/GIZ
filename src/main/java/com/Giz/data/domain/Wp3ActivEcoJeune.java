@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "wp3_activ_eco_jeune")
-public class Wp3ActivEcoJeune {
+public class Wp3ActivEcoJeune extends Auditable<String>{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

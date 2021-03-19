@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "wp3_agr_deev_mfr")
-public class Wp3AgrDevMfr {
+public class Wp3AgrDevMfr extends Auditable<String> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
