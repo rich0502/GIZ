@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>    
+        <head th:include="/headLinks.html" th:remove="tag"></head>
+    </head>
+    <body class="stories">
+        <div th:include="/pds_header.html"></div>
+        <section class="main">
+                <div class="home-content" >
+                <br>
+                    <div class="card">
+                        <header class="composantesTable-header justify-between">
+                            <h2 class="page-title">Détails du tableau</h2>
+                        </header>
+                            <table class="composantes-table">
+									<thead>
+										<tr>
+											<th scope="col"><span>Code village</span></th>
+											<th scope="col"><span>Nom</span></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="b : ${detailList}">
+											<td class="center" th:text="${b[0]}"></td>
+											<td class="center" th:text="${b[1]}"></td>
+										</tr>
+								
+									</tbody>
+								</table>
+                    </div>
+                </div>
+        </section>
+    </body>
+</html>

@@ -119,7 +119,7 @@ public class Wp1Controller {
 	@PostMapping("/saveAI")
 	public String saveAI(@RequestParam("code_pro") int code_pro, @RequestParam("nomPrenom_ai") int nomPrenom_ai,
 			@RequestParam("genre_ai") int genre_ai, @RequestParam("annee_naiss") int annee_naiss,
-			@RequestParam("date_suivi") int date_suivi, @RequestParam("type") int type, Model model)
+			@RequestParam("date_suivi") int date_suivi, @RequestParam("type") int type, Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
@@ -133,7 +133,7 @@ public class Wp1Controller {
 			adopteInnovationService.addAdoption_innovation(code_pr, nomPr, genre, annee_nais, date_suiv, type_ai);
 
 		}
-
+		redirAttrs.addFlashAttribute("ImportReussi");
 		return "redirect:/listAI";
 	}
 
@@ -191,7 +191,7 @@ public class Wp1Controller {
 			@RequestParam("date_restitution") int date_restitution, @RequestParam("theme") int theme,
 			@RequestParam("nbr_homme") int nbr_homme, @RequestParam("nbr_femme") int nbr_femme,
 			@RequestParam("pr") int pr, @RequestParam("producteurs") int producteurs, @RequestParam("ep") int ep,
-			@RequestParam("std_ctd") int std_ctd, @RequestParam("autres") int autres, Model model)
+			@RequestParam("std_ctd") int std_ctd, @RequestParam("autres") int autres, Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
@@ -210,7 +210,7 @@ public class Wp1Controller {
 					std_ctds, autre);
 
 		}
-
+		redirAttrs.addFlashAttribute("ImportReussi");
 		return "redirect:/listRecherche";
 	}
 
@@ -271,7 +271,7 @@ public class Wp1Controller {
 			@RequestParam("nomResponsable") int nomResponsable, @RequestParam("x") int x, @RequestParam("y") int y,
 			@RequestParam("genre_elev") int genre_elev, @RequestParam("annee_naiss") int annee_naiss,
 			@RequestParam("date_mise") int date_mise, @RequestParam("tf") int tf,
-			@RequestParam("nbr_visiteur") int nbr_visiteur, @RequestParam("date_suivi") int date_suivi, Model model)
+			@RequestParam("nbr_visiteur") int nbr_visiteur, @RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
@@ -293,7 +293,7 @@ public class Wp1Controller {
 					date_mis, tfs, nbr_visiteurs, date_suiv, false);
 
 		}
-
+		redirAttrs.addFlashAttribute("ImportReussi");
 		return "redirect:/listElevage";
 	}
 
@@ -355,7 +355,7 @@ public class Wp1Controller {
 	public String saveFomBpa(@RequestParam("code_pro") int code_pro, @RequestParam("code_village") int code_village,
 			@RequestParam("nomPrenom_bpa") int nomPrenom_bpa, @RequestParam("genre_ai") int genre_ai,
 			@RequestParam("frm_recu") int frm_recu, @RequestParam("annee_naiss") int annee_naiss,
-			@RequestParam("date_frm") int date_frm, @RequestParam("theme_frm") int theme_frm, Model model)
+			@RequestParam("date_frm") int date_frm, @RequestParam("theme_frm") int theme_frm, Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
@@ -372,7 +372,7 @@ public class Wp1Controller {
 					date_frms, theme_frms);
 
 		}
-
+		redirAttrs.addFlashAttribute("ImportReussi");
 		return "redirect:/listFomBpa";
 	}
 
@@ -432,7 +432,7 @@ public class Wp1Controller {
 			@RequestParam("y") int y, @RequestParam("nomResponsable") int nomResponsable,
 			@RequestParam("annee_naiss") int annee_naiss, @RequestParam("genre_pt") int genre_pt,
 			@RequestParam("date_mise") int date_mise, @RequestParam("superficies") int superficies,
-			@RequestParam("pratique_realise") int pratique_realise, Model model) throws IOException, ParseException {
+			@RequestParam("pratique_realise") int pratique_realise, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -455,7 +455,7 @@ public class Wp1Controller {
 					nbr_participants, type);
 
 		}
-
+		redirAttrs.addFlashAttribute("ImportReussi");
 		return "redirect:/listPt";
 	}
 
@@ -520,7 +520,7 @@ public class Wp1Controller {
 			@RequestParam("y") int y, @RequestParam("nomResp") int nomResp,
 			@RequestParam("annee_naiss") int annee_naiss, @RequestParam("genre_pep") int genre_pep,
 			@RequestParam("annee_mise_place") int annee_mise_place, @RequestParam("operationnel") int operationnel,
-			@RequestParam("date_suivi") int date_suivi, Model model) throws IOException, ParseException {
+			@RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -537,7 +537,7 @@ public class Wp1Controller {
 					annee_mise_places, operationnels, date_suivis);
 
 		}
-
+		redirAttrs.addFlashAttribute("ImportReussi");
 		return "redirect:/listPepiniere";
 	}
 
@@ -597,7 +597,7 @@ public class Wp1Controller {
 	public String saveSA(@RequestParam("genre_sa") int genre_sa, @RequestParam("code_village") int code_village,
 			@RequestParam("date_mise_place") int date_mise_place, @RequestParam("nomPrenom") int nomPrenom,
 			@RequestParam("annee_naiss") int annee_naiss, @RequestParam("operationnel") int operationnel,
-			@RequestParam("date_suivi") int date_suivi, Model model) throws IOException, ParseException {
+			@RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -612,7 +612,7 @@ public class Wp1Controller {
 					date_mise_places, date_suivis);
 
 		}
-
+		redirAttrs.addFlashAttribute("ImportReussi");
 		return "redirect:/listSA";
 	}
 
@@ -671,7 +671,7 @@ public class Wp1Controller {
 	public String savePr(@RequestParam("genre_pr") int genre_pr, @RequestParam("code_village") int code_village,
 			@RequestParam("types_services_dev") int types_services_dev, @RequestParam("nomPrenom") int nomPrenom,
 			@RequestParam("annee_naiss") int annee_naiss, @RequestParam("operationnalite") int operationnalite,
-			@RequestParam("date_suivi") int date_suivi, Model model) throws IOException, ParseException {
+			@RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -686,7 +686,7 @@ public class Wp1Controller {
 					types_services_devs);
 
 		}
-
+		redirAttrs.addFlashAttribute("ImportReussi");
 		return "redirect:/listPr";
 	}
 
@@ -746,7 +746,7 @@ public class Wp1Controller {
 			@RequestParam("zoneInterv") int zoneInterv, @RequestParam("nomPrenom") int nomPrenom,
 			@RequestParam("annee_naiss") int annee_naiss, @RequestParam("operationnalite") int operationnalite,
 			@RequestParam("date_debut") int date_debut, @RequestParam("date_fin") int date_fin,
-			@RequestParam("date_suivi") int date_suivi, Model model) throws IOException, ParseException {
+			@RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -763,7 +763,7 @@ public class Wp1Controller {
 					date_suivis, date_debuts, date_fins, type_forms);
 
 		}
-
+		redirAttrs.addFlashAttribute("ImportReussi");
 		return "redirect:/listFormateur";
 	}
 

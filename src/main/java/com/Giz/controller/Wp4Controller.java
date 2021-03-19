@@ -129,7 +129,7 @@ public class Wp4Controller {
 	public String saveDocCap(@RequestParam("thematique") int thematique,@RequestParam("titre_doc") int titre_doc,
 			@RequestParam("type_doc") int type_doc, @RequestParam("auteur_doc") int auteur_doc,
 			@RequestParam("date_partage") int date_partage,
-			@RequestParam("reception") int reception , Model model ) throws IOException, ParseException {
+			@RequestParam("reception") int reception , Model model , RedirectAttributes redirAttrs) throws IOException, ParseException {
 	    XSSFSheet worksheet = workbook.getSheetAt(0);	
 	    for(int i=1;i<worksheet.getPhysicalNumberOfRows() ;i++) {
 	        XSSFRow row = worksheet.getRow(i);
@@ -142,7 +142,7 @@ public class Wp4Controller {
 	        docCapService.addDocCap(titre_docs,thematiques, type_docs, auteur_docs, date_partages, receptions);
 	        
 	    }
-
+	    redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 	    return "redirect:/listDocCap";
 	}
 	
@@ -241,7 +241,7 @@ public class Wp4Controller {
 	public String saveAtelier(@RequestParam("code_village") int code_village,@RequestParam("atelier_resp") int atelier_resp,
 			@RequestParam("date_realise") int date_realise, @RequestParam("lieu_realise") int lieu_realise,@RequestParam("cible_atelier") int cible_atelier,
 			@RequestParam("nbr_particip") int nbr_particip, @RequestParam("nbr_homme") int nbr_homme, @RequestParam("nbr_femme") int nbr_femme,@RequestParam("canevas") int canevas,
-			@RequestParam("theme_choise") int theme_choise , Model model ) throws IOException, ParseException {
+			@RequestParam("theme_choise") int theme_choise , Model model , RedirectAttributes redirAttrs) throws IOException, ParseException {
 		System.out.println("io iz e! " + canevas + " ererer : " + canevas(canevas));
 	    XSSFSheet worksheet = workbook.getSheetAt(0);	
 	    for(int i=1;i<worksheet.getPhysicalNumberOfRows() ;i++) {
@@ -258,7 +258,7 @@ public class Wp4Controller {
 	        type_at = canevas(canevas);
 	        atelierMFRService.addAtelierMFR(code_villages, atelier_resps, date_realises, lieu_realises, theme_choises, nbr_particips, nbr_hommes, nbr_femmes, cible_ateliers, canevas(canevas));
 	    }
-
+	    redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 	    return "redirect:/listAtelier";
 	}
 	
@@ -409,7 +409,7 @@ public class Wp4Controller {
 	@PostMapping("/savePlateforme")
 	public String savePlateforme(@RequestParam("code_village") int code_village,@RequestParam("exist_platform") int exist_platform,
 			@RequestParam("operationnel") int operationnel, @RequestParam("date_suivi") int date_suivi,@RequestParam("commentaire") int commentaire,
-			@RequestParam("canevas") int canevas, Model model ) throws IOException, ParseException {
+			@RequestParam("canevas") int canevas, Model model , RedirectAttributes redirAttrs) throws IOException, ParseException {
 	    XSSFSheet worksheet = workbook.getSheetAt(0);	
 	    for(int i=1;i<worksheet.getPhysicalNumberOfRows() ;i++) {
 	        XSSFRow row = worksheet.getRow(i);
@@ -421,7 +421,7 @@ public class Wp4Controller {
 	        type_at = canevas(canevas);
 	        plateformeService.addPlateforme(code_villages, exist_platforms, operationnels, date_suivis, commentaires, canevas(canevas));
 	    }
-
+	    redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 	    return "redirect:/listPlateforme";
 	}
 	

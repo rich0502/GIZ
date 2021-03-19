@@ -153,5 +153,42 @@ public class Wp3SanteeCommServiceImpl implements Wp3SanteeCommService {
 		// TODO Auto-generated method stub
 		return wp3SanteeCommRepository.TableDataDistAll(debut_date, fin_date);
 	}
+	// VILLAGE DETAIL TABLEAU COUNT
+
+	@Override
+	public List<Object[]> TableauCountDetailGenre(String village, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3SanteeCommRepository.TableCountDetailGenre(village, sexe);
+	}
+	@Override
+	public List<Object[]> TableauCountDetailGenreAll(String village) {
+		// TODO Auto-generated method stub
+		return wp3SanteeCommRepository.TableCountDetailGenreAll(village);
+	}
 	
+		// COMMUNE DETAIL TABLEAU COUNT
+	
+	@Override
+	public List<Object[]> TableauCountDetailGenreComm(String commune, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3SanteeCommRepository.TableCountDetailGenreComm(commune, sexe);
+	}
+	@Override
+	public List<Object[]> TableauCountDetailGenreAllComm(String commune) {
+		// TODO Auto-generated method stub
+		return wp3SanteeCommRepository.TableCountDetailGenreAllComm(commune);
+	}
+	
+	// DISTRICT DETAIL TABLEAU COUNT
+	
+	@Override
+	public List<Object[]> TableauCountDetailGenreDist(String district, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3SanteeCommRepository.TableCountDetailGenreDist(district, sexe);
+	}
+	@Override
+	public List<Object[]> TableauCountDetailGenreAllDist(String district) {
+		// TODO Auto-generated method stub
+		return wp3SanteeCommRepository.TableCountDetailGenreAllDist(district);
+	}
 }

@@ -183,113 +183,162 @@ public interface ValiderRepository extends JpaRepository<Valider, Long> {
 	
 	// TABLEAU COUNT
 	
-	@Query(value = "SELECT village.code_village,village.village,count(Valider.sexe) as nbr, upper(Valider.sexe) FROM"
+	@Query(value = "SELECT village.code_village,village.village,count(Valider.sexe) as nbr, upper(Valider.sexe), Valider.canevas FROM"
 			+ " village,Valider WHERE upper(Valider.sexe)=?4 AND village.code_village=Valider.code_village AND Valider.code_village "
 			+ " IN (null, ?3) AND Valider.date_suivi BETWEEN ?1 AND ?2 AND\r\n" + " Valider.canevas = ?5 \r\n" + 
-			"GROUP BY village.code_village,village.village, Valider.sexe", nativeQuery = true)
+			"GROUP BY village.code_village,village.village, Valider.sexe, Valider.canevas", nativeQuery = true)
 	List<Object[]> TableDataCount(Date debut_date,Date fin_date,List<String> params,String sexe, String canevas);
 	
-	@Query(value = "SELECT village.commune,count(Valider.sexe) as nbr, upper(Valider.sexe) FROM"
+	@Query(value = "SELECT village.commune,count(Valider.sexe) as nbr, upper(Valider.sexe), Valider.canevas FROM"
 			+ " village,Valider WHERE upper(Valider.sexe)=?3 AND village.code_village=Valider.code_village AND "
 			+ " Valider.date_suivi BETWEEN ?1 AND ?2 AND\r\n" + " Valider.canevas = ?4 \r\n" + 
-			"GROUP BY village.commune, Valider.sexe", nativeQuery = true)
+			"GROUP BY village.commune, Valider.sexe, Valider.Canevas", nativeQuery = true)
 	List<Object[]> TableDataCommuneCount(Date debut_date,Date fin_date, String sexe, String canevas);
 	
-	@Query(value = "SELECT village.district,count(Valider.sexe) as nbr, upper(Valider.sexe) FROM"
+	@Query(value = "SELECT village.district,count(Valider.sexe) as nbr, upper(Valider.sexe), Valider.canevas FROM"
 			+ " village,Valider WHERE upper(Valider.sexe)=?3 AND village.code_village=Valider.code_village "
 			+ " AND Valider.date_suivi BETWEEN ?1 AND ?2 AND\r\n" + " Valider.canevas = ?4 \r\n" + 
-			"GROUP BY village.district, Valider.sexe", nativeQuery = true)
+			"GROUP BY village.district, Valider.sexe, Valider.canevas", nativeQuery = true)
 	List<Object[]> TableDataDistCount(Date debut_date,Date fin_date,String sexe, String canevas);
 	
-	@Query(value = "select hommes.code_village,hommes.village,hommes.homme,femmes.femme\r\n"
-			+ "	from (SELECT village.code_village,village.village,count(Valider.sexe) as homme FROM"
+	@Query(value = "select hommes.code_village,hommes.village,hommes.homme,femmes.femme,hommes.canevas\r\n"
+			+ "	from (SELECT village.code_village,village.village,count(Valider.sexe) as homme, Valider.canevas FROM"
 			+ "	 village,Valider WHERE upper(Valider.sexe)= 'H' AND village.code_village=Valider.code_village AND Valider.code_village \r\n"
 			+ " IN (null, ?3) AND Valider.date_suivi BETWEEN ?1 AND ?2 AND\r\n" + " Valider.canevas = ?4 \r\n"
-			+ "GROUP BY village.code_village,village.village) as hommes,\r\n"
-			+ "	(SELECT village.code_village,village.village,count(Valider.sexe) as femme FROM\r\n"
+			+ "GROUP BY village.code_village,village.village, Valider.canevas) as hommes,\r\n"
+			+ "	(SELECT village.code_village,village.village,count(Valider.sexe) as femme, Valider.canevas FROM\r\n"
 			+ "	 village,Valider WHERE upper(Valider.sexe) = 'F' AND village.code_village=Valider.code_village AND Valider.code_village \r\n"
 			+ " IN (null, ?3) AND Valider.date_suivi BETWEEN ?1 AND ?2 AND\r\n" + " Valider.canevas = ?4 \r\n"
-			+ "GROUP BY village.code_village,village.village) as femmes where hommes.village=femmes.village", nativeQuery = true)
+			+ "GROUP BY village.code_village,village.village, Valider.canevas) as femmes where hommes.village=femmes.village AND hommes.canevas=femmes.canevas", nativeQuery = true)
 	List<Object[]> TableDataAllCount(Date debut_date, Date fin_date, List<String> params, String canevas);
 	
-	@Query(value = "select hommes.commune,hommes.homme,femmes.femme\r\n"
-			+ "	from (SELECT village.commune,count(Valider.sexe) as homme FROM\r\n"
+	@Query(value = "select hommes.commune,hommes.homme,femmes.femme,hommes.canevas\r\n"
+			+ "	from (SELECT village.commune,count(Valider.sexe) as homme, Valider.canevas FROM\r\n"
 			+ "	 village,Valider WHERE village.code_village=Valider.code_village AND\r\n"
 			+ "	Valider.date_suivi BETWEEN ?1 AND ?2 \r\n" + "	and upper(Valider.sexe) = 'H' AND \r\n" + " Valider.canevas = ?3 \r\n"
-			+ "	GROUP BY village.commune) as hommes,\r\n"
-			+ "	(SELECT village.commune,count(Valider.sexe) as femme FROM\r\n"
+			+ "	GROUP BY village.commune, Valider.canevas) as hommes,\r\n"
+			+ "	(SELECT village.commune,count(Valider.sexe) as femme, Valider.canevas FROM\r\n"
 			+ "	 village,Valider WHERE village.code_village=Valider.code_village AND\r\n"
 			+ "	Valider.date_suivi BETWEEN ?1 AND ?2 \r\n" + " and upper(Valider.sexe) = 'F' AND\r\n" + " Valider.canevas = ?3 \r\n"
-			+ "	GROUP BY village.commune) as femmes where hommes.commune=femmes.commune", nativeQuery = true)
+			+ "	GROUP BY village.commune, Valider.canevas) as femmes where hommes.commune=femmes.commune AND hommes.canevas=femmes.canevas", nativeQuery = true)
 	List<Object[]> TableDataCommuneAllCount(Date debut_date, Date fin_date, String canevas);
 	
-	@Query(value = "select hommes.district,hommes.homme,femmes.femme\r\n"
-			+ "	from (SELECT village.district,count(Valider.sexe) as homme FROM\r\n"
+	@Query(value = "select hommes.district,hommes.homme,femmes.femme,hommes.canevas\r\n"
+			+ "	from (SELECT village.district,count(Valider.sexe) as homme, Valider.canevas FROM\r\n"
 			+ "	 village,Valider WHERE village.code_village=Valider.code_village AND\r\n"
 			+ "	Valider.date_suivi BETWEEN ?1 AND ?2 \r\n" + "	and upper(Valider.sexe) = 'H' AND\r\n"
 			+ " Valider.canevas = ?3 \r\n"
-			+ "	GROUP BY village.district) as hommes,\r\n"
-			+ "	(SELECT village.district,count(Valider.sexe) as femme FROM\r\n"
+			+ "	GROUP BY village.district, Valider.canevas) as hommes,\r\n"
+			+ "	(SELECT village.district,count(Valider.sexe) as femme, Valider.canevas FROM\r\n"
 			+ "	 village,Valider WHERE village.code_village=Valider.code_village AND\r\n"
 			+ "	Valider.date_suivi BETWEEN ?1 AND ?2 \r\n" + " and upper(Valider.sexe) = 'F' AND\r\n"
 			+ " Valider.canevas = ?3 \r\n"
-			+ "	GROUP BY village.district) as femmes where hommes.district=femmes.district", nativeQuery = true)
+			+ "	GROUP BY village.district, Valider.canevas) as femmes where hommes.district=femmes.district AND hommes.canevas=femmes.canevas", nativeQuery = true)
 	List<Object[]> TableDataDistAllCount(Date debut_date, Date fin_date, String canevas);
 	
 		// TABLEAU COUNT SANS DATE
 	
-		@Query(value = "SELECT village.code_village,village.village,count(Valider.sexe) as nbr, upper(Valider.sexe) FROM"
+		@Query(value = "SELECT village.code_village,village.village,count(Valider.sexe) as nbr, upper(Valider.sexe) , Valider.canevas FROM"
 				+ " village,Valider WHERE upper(Valider.sexe)=?2 AND village.code_village=Valider.code_village AND Valider.code_village "
 				+ " IN (null, ?1) AND\r\n" + " Valider.canevas = ?3 \r\n" + 
-				"GROUP BY village.code_village,village.village, Valider.sexe", nativeQuery = true)
+				"GROUP BY village.code_village,village.village, Valider.sexe, Valider.canevas", nativeQuery = true)
 		List<Object[]> TableDataCountNoDate(List<String> params,String sexe, String canevas);
 		
-		@Query(value = "SELECT village.commune,count(Valider.sexe) as nbr, upper(Valider.sexe) FROM"
+		@Query(value = "SELECT village.commune,count(Valider.sexe) as nbr, upper(Valider.sexe) , Valider.canevas FROM"
 				+ " village,Valider WHERE upper(Valider.sexe)=?1 AND village.code_village=Valider.code_village AND "
 				+ " Valider.canevas = ?2 \r\n" + 
-				"GROUP BY village.commune, Valider.sexe", nativeQuery = true)
+				"GROUP BY village.commune, Valider.sexe, Valider.canevas", nativeQuery = true)
 		List<Object[]> TableDataCommuneCountNoDate(String sexe, String canevas);
 		
-		@Query(value = "SELECT village.district,count(Valider.sexe) as nbr, upper(Valider.sexe) FROM"
+		@Query(value = "SELECT village.district,count(Valider.sexe) as nbr, upper(Valider.sexe) , Valider.canevas FROM"
 				+ " village,Valider WHERE upper(Valider.sexe)=?1 AND village.code_village=Valider.code_village "
 				+ " AND Valider.canevas = ?2 \r\n" + 
-				"GROUP BY village.district, Valider.sexe", nativeQuery = true)
+				"GROUP BY village.district, Valider.sexe, Valider.canevas", nativeQuery = true)
 		List<Object[]> TableDataDistCountNoDate(String sexe, String canevas);
 		
-		@Query(value = "select hommes.code_village,hommes.village,hommes.homme,femmes.femme\r\n"
-				+ "	from (SELECT village.code_village,village.village,count(Valider.sexe) as homme FROM"
+		@Query(value = "select hommes.code_village,hommes.village,hommes.homme,femmes.femme, hommes.canevas\r\n"
+				+ "	from (SELECT village.code_village,village.village,count(Valider.sexe) as homme, Valider.canevas FROM"
 				+ "	 village,Valider WHERE upper(Valider.sexe)= 'H' AND village.code_village=Valider.code_village AND Valider.code_village \r\n"
 				+ " IN (null, ?1) AND\r\n" + " Valider.canevas = ?2 \r\n"
-				+ "GROUP BY village.code_village,village.village) as hommes,\r\n"
-				+ "	(SELECT village.code_village,village.village,count(Valider.sexe) as femme FROM\r\n"
+				+ "GROUP BY village.code_village,village.village, Valider.canevas) as hommes,\r\n"
+				+ "	(SELECT village.code_village,village.village,count(Valider.sexe) as femme, Valider.canevas FROM\r\n"
 				+ "	 village,Valider WHERE upper(Valider.sexe) = 'F' AND village.code_village=Valider.code_village AND Valider.code_village \r\n"
 				+ " IN (null, ?1) AND\r\n" + " Valider.canevas = ?2 \r\n"
-				+ "GROUP BY village.code_village,village.village) as femmes where hommes.village=femmes.village", nativeQuery = true)
+				+ "GROUP BY village.code_village,village.village, Valider.canevas) as femmes where hommes.village=femmes.village AND hommes.canevas=femmes.canevas", nativeQuery = true)
 		List<Object[]> TableDataAllCountNoDate(List<String> params, String canevas);
 		
-		@Query(value = "select hommes.commune,hommes.homme,femmes.femme\r\n"
-				+ "	from (SELECT village.commune,count(Valider.sexe) as homme FROM\r\n"
+		@Query(value = "select hommes.commune,hommes.homme,femmes.femme, hommes.canevas\r\n"
+				+ "	from (SELECT village.commune,count(Valider.sexe) as homme, Valider.canevas FROM\r\n"
 				+ "	 village,Valider WHERE village.code_village=Valider.code_village AND\r\n"
 				+ "	upper(Valider.sexe) = 'H' AND \r\n" + " Valider.canevas = ?1 \r\n"
-				+ "	GROUP BY village.commune) as hommes,\r\n"
-				+ "	(SELECT village.commune,count(Valider.sexe) as femme FROM\r\n"
+				+ "	GROUP BY village.commune, Valider.canevas) as hommes,\r\n"
+				+ "	(SELECT village.commune,count(Valider.sexe) as femme, Valider.canevas FROM\r\n"
 				+ "	 village,Valider WHERE village.code_village=Valider.code_village AND\r\n"
 				+ " upper(Valider.sexe) = 'F' AND\r\n" + " Valider.canevas = ?1 \r\n"
-				+ "	GROUP BY village.commune) as femmes where hommes.commune=femmes.commune", nativeQuery = true)
+				+ "	GROUP BY village.commune, Valider.canevas) as femmes where hommes.commune=femmes.commune AND hommes.canevas=femmes.canevas", nativeQuery = true)
 		List<Object[]> TableDataCommuneAllCountNoDate(String canevas);
 		
-		@Query(value = "select hommes.district,hommes.homme,femmes.femme\r\n"
-				+ "	from (SELECT village.district,count(Valider.sexe) as homme FROM\r\n"
+		@Query(value = "select hommes.district,hommes.homme,femmes.femme, hommes.canevas\r\n"
+				+ "	from (SELECT village.district,count(Valider.sexe) as homme, Valider.canevas FROM\r\n"
 				+ "	 village,Valider WHERE village.code_village=Valider.code_village AND\r\n"
 				+ "	upper(Valider.sexe) = 'H' AND\r\n"
 				+ " Valider.canevas = ?1 \r\n"
-				+ "	GROUP BY village.district) as hommes,\r\n"
-				+ "	(SELECT village.district,count(Valider.sexe) as femme FROM\r\n"
+				+ "	GROUP BY village.district, Valider.canevas) as hommes,\r\n"
+				+ "	(SELECT village.district,count(Valider.sexe) as femme, Valider.canevas FROM\r\n"
 				+ "	 village,Valider WHERE village.code_village=Valider.code_village AND\r\n"
 			    + " upper(Valider.sexe) = 'F' AND\r\n"
 				+ " Valider.canevas = ?1 \r\n"
-				+ "	GROUP BY village.district) as femmes where hommes.district=femmes.district", nativeQuery = true)
+				+ "	GROUP BY village.district, Valider.canevas) as femmes where hommes.district=femmes.district AND hommes.canevas=femmes.canevas", nativeQuery = true)
 		List<Object[]> TableDataDistAllCountNoDate(String canevas);
+		
+		// TABLEAU COUNT NO SEXE
+		
+		@Query(value = "SELECT village.village,count(Valider.code_village) as nbr FROM"
+				+ " village,Valider WHERE village.code_village=Valider.code_village AND Valider.code_village "
+				+ " IN (null, ?3) AND Valider.date_suivi BETWEEN ?1 AND ?2 AND\r\n" + " Valider.canevas = ?4 \r\n" + 
+				"GROUP BY village.village", nativeQuery = true)
+		List<Object[]> TableDataCountNoSexe(Date debut_date,Date fin_date,List<String> params, String canevas);
+		
+		@Query(value = "SELECT village.commune,count(Valider.code_village) as nbr FROM"
+				+ " village,Valider WHERE village.code_village=Valider.code_village AND "
+				+ " Valider.date_suivi BETWEEN ?1 AND ?2 AND\r\n" + " Valider.canevas = ?3 \r\n" + 
+				"GROUP BY village.commune", nativeQuery = true)
+		List<Object[]> TableDataCommuneCountNoSexe(Date debut_date,Date fin_date, String canevas);
+		
+		@Query(value = "SELECT village.district,count(Valider.code_village) as nbr FROM"
+				+ " village,Valider WHERE village.code_village=Valider.code_village "
+				+ " AND Valider.date_suivi BETWEEN ?1 AND ?2 AND\r\n" + " Valider.canevas = ?3 \r\n" + 
+				"GROUP BY village.district", nativeQuery = true)
+		List<Object[]> TableDataDistCountNoSexe(Date debut_date,Date fin_date, String canevas);
+		
+			// VILLAGE DETAIL TABLEAU COUNT
 
+		@Query(value = "SELECT village.code_village,COALESCE(Valider.nom_prenom,Valider.nom_usuel_adherent) FROM village,Valider WHERE"
+				+ " village.code_village=Valider.code_village AND village.village = ?1  AND Valider.canevas = ?2 AND upper(Valider.sexe)= ?3 \r\n", nativeQuery = true)
+		List<Object[]> TableCountDetailGenre(String village, String canevas, String sexe);
+		
+		@Query(value = "SELECT village.code_village,COALESCE(Valider.nom_prenom,Valider.nom_usuel_adherent)FROM village,Valider WHERE"
+				+ " village.code_village=Valider.code_village AND village.village = ?1  AND Valider.canevas = ?2 \r\n", nativeQuery = true)
+		List<Object[]> TableCountDetailGenreAll(String village, String canevas);
+		
+			// COMMUNE DETAIL TABLEAU COUNT
+		
+		@Query(value = "SELECT village.code_village,COALESCE(Valider.nom_prenom,Valider.nom_usuel_adherent) FROM village,Valider WHERE"
+				+ " village.code_village=Valider.code_village AND village.commune = ?1  AND Valider.canevas = ?2 AND upper(Valider.sexe)= ?3 \r\n", nativeQuery = true)
+		List<Object[]> TableCountDetailGenreComm(String commune, String canevas, String sexe);
+		
+		@Query(value = "SELECT village.code_village,COALESCE(Valider.nom_prenom,Valider.nom_usuel_adherent) FROM village,Valider WHERE"
+				+ " village.code_village=Valider.code_village AND village.commune = ?1  AND Valider.canevas = ?2 \r\n", nativeQuery = true)
+		List<Object[]> TableCountDetailGenreAllComm(String commune, String canevas);
+		
+			// DISTRICT DETAIL TABLEAU COUNT
+		
+		@Query(value = "SELECT village.code_village,COALESCE(Valider.nom_prenom,Valider.nom_usuel_adherent) FROM village,Valider WHERE"
+				+ " village.code_village=Valider.code_village AND village.district = ?1  AND Valider.canevas = ?2 AND upper(Valider.sexe)= ?3 \r\n", nativeQuery = true)
+		List<Object[]> TableCountDetailGenreDist(String district, String canevas, String sexe);
+		
+		@Query(value = "SELECT village.code_village,COALESCE(Valider.nom_prenom,Valider.nom_usuel_adherent) FROM village,Valider WHERE"
+				+ " village.code_village=Valider.code_village AND village.district = ?1  AND Valider.canevas = ?2 \r\n", nativeQuery = true)
+		List<Object[]> TableCountDetailGenreAllDist(String district, String canevas);
 
 }

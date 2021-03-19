@@ -92,4 +92,35 @@ public interface Wp3ActivEcoJeuneRepository extends JpaRepository<Wp3ActivEcoJeu
 			+ "	wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n" + " and wp3_activ_eco_jeune.sexe = 'F'\r\n"
 			+ "	GROUP BY village.district) as femmes where hommes.district=femmes.district", nativeQuery = true)
 	List<Object[]> TableDataDistAll(Date debut_date, Date fin_date);
+	
+	// VILLAGE DETAIL TABLEAU COUNT
+
+	@Query(value = "SELECT village.code_village,wp3_activ_eco_jeune.nom_prenom FROM village,wp3_activ_eco_jeune WHERE"
+			+ " village.code_village=wp3_activ_eco_jeune.code_village AND village.village = ?1   AND wp3_activ_eco_jeune.sexe= ?2 \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenre(String village, String sexe);
+	
+	@Query(value = "SELECT village.code_village,wp3_activ_eco_jeune.nom_prenom FROM village,wp3_activ_eco_jeune WHERE"
+			+ " village.code_village=wp3_activ_eco_jeune.code_village AND village.village = ?1   \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreAll(String village);
+	
+		// COMMUNE DETAIL TABLEAU COUNT
+	
+	@Query(value = "SELECT village.code_village,wp3_activ_eco_jeune.nom_prenom FROM village,wp3_activ_eco_jeune WHERE"
+			+ " village.code_village=wp3_activ_eco_jeune.code_village AND village.commune = ?1   AND wp3_activ_eco_jeune.sexe= ?2 \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreComm(String commune, String sexe);
+	
+	@Query(value = "SELECT village.code_village,wp3_activ_eco_jeune.nom_prenom FROM village,wp3_activ_eco_jeune WHERE"
+			+ " village.code_village=wp3_activ_eco_jeune.code_village AND village.commune = ?1   \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreAllComm(String commune);
+	
+		// DISTRICT DETAIL TABLEAU COUNT
+	
+	@Query(value = "SELECT village.code_village,wp3_activ_eco_jeune.nom_prenom FROM village,wp3_activ_eco_jeune WHERE"
+			+ " village.code_village=wp3_activ_eco_jeune.code_village AND village.district = ?1   AND wp3_activ_eco_jeune.sexe= ?2 \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreDist(String district, String sexe);
+	
+	@Query(value = "SELECT village.code_village,wp3_activ_eco_jeune.nom_prenom FROM village,wp3_activ_eco_jeune WHERE"
+			+ " village.code_village=wp3_activ_eco_jeune.code_village AND village.district = ?1   \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreAllDist(String district);
+
 }
