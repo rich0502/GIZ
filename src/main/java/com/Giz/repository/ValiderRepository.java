@@ -24,28 +24,28 @@ public interface ValiderRepository extends JpaRepository<Valider, Long> {
 	@Query(value = "SELECT CASE WHEN sum(nbr_h + nbr_f) IS NULL THEN 0 ELSE sum(nbr_h + nbr_f) END AS total FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel ", nativeQuery = true)
 	int countL3Operationnel(String dateChronologique);
 
-	@Query(value = "SELECT CASE WHEN sum(nbr_h) IS NULL THEN 0 ELSE sum(nbr_h) END AS h FROM Valider where  canevas = 'L3' and sexe in ('h', 'H')  AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel", nativeQuery = true)
+	@Query(value = "SELECT CASE WHEN sum(nbr_h) IS NULL THEN 0 ELSE sum(nbr_h) END AS h FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel", nativeQuery = true)
 	int countL3HOperationnel(String dateChronologique);
 
-	@Query(value = "SELECT CASE WHEN sum(nbr_f) IS NULL THEN 0 ELSE sum(nbr_f) END AS f FROM Valider where  canevas = 'L3' and sexe in ('f', 'H')  AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel", nativeQuery = true)
+	@Query(value = "SELECT CASE WHEN sum(nbr_f) IS NULL THEN 0 ELSE sum(nbr_f) END AS f FROM Valider where  canevas = 'L3'   AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel", nativeQuery = true)
 	int countL3FOperationnel(String dateChronologique);
 
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'VSLA'", nativeQuery = true)
+	@Query(value = "SELECT CASE WHEN sum(nbr_h + nbr_f) IS NULL THEN 0 ELSE sum(nbr_h + nbr_f) END AS total FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'VSLA'", nativeQuery = true)
 	int countL3OperationnelVSLA(String dateChronologique);
 
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'VSLA' and sexe in ('h', 'H')", nativeQuery = true)
+	@Query(value = "SELECT CASE WHEN sum(nbr_h) IS NULL THEN 0 ELSE sum(nbr_h) END AS h FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'VSLA'", nativeQuery = true)
 	int countL3HOperationnelVSLA(String dateChronologique);
 
-	@Query(value = "SELECT count(*) FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'VSLA' and sexe in ('f', 'F')", nativeQuery = true)
+	@Query(value = "SELECT CASE WHEN sum(nbr_f) IS NULL THEN 0 ELSE sum(nbr_f) END AS f FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'VSLA'", nativeQuery = true)
 	int countL3FOperationnelVSLA(String dateChronologique);
 
 	@Query(value = "SELECT CASE WHEN sum(nbr_h + nbr_f) IS NULL THEN 0 ELSE sum(nbr_h + nbr_f) END AS total FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'GEC'", nativeQuery = true)
 	int countL3OperationnelGEC(String dateChronologique);
 
-	@Query(value = "SELECT CASE WHEN sum(nbr_h) IS NULL THEN 0 ELSE sum(nbr_h) END AS h FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'GEC' and sexe in ('h', 'H')", nativeQuery = true)
+	@Query(value = "SELECT CASE WHEN sum(nbr_h) IS NULL THEN 0 ELSE sum(nbr_h) END AS h FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'GEC'", nativeQuery = true)
 	int countL3HOperationnelGEC(String dateChronologique);
 
-	@Query(value = "SELECT CASE WHEN sum(nbr_f) IS NULL THEN 0 ELSE sum(nbr_f) END AS f FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'GEC' and sexe in ('f', 'H')", nativeQuery = true)
+	@Query(value = "SELECT CASE WHEN sum(nbr_f) IS NULL THEN 0 ELSE sum(nbr_f) END AS f FROM Valider where  canevas = 'L3' AND date_suivi BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date) and operationnel and categorie = 'GEC'", nativeQuery = true)
 	int countL3FOperationnelGEC(String dateChronologique);
 
 	// VSLA
