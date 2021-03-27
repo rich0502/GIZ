@@ -48,7 +48,11 @@
 					<br>
 					Catégorie :
 					<br>
-					<input th:field="*{lakileTelo.categorie}" type="text">
+					<select class="form-control select2" th:field="*{lakileTelo.categorie}"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="VSLA">VSLA</option>
+						<option th:value="GEC">GEC</option>
+					</select>
 					<br>
 					Date de création :
 					<br>
