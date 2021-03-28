@@ -64,4 +64,10 @@ public class AdopteInnovationServiceImpl implements AdopteInnovationService {
 		return adopte_InnovationRepository.countAdoption_innov(genre);
 	}
 
+	@Override
+	public void deleteAllAI() {
+		// TODO Auto-generated method stub
+		adopte_InnovationRepository.deleteAll();
+	}
+
 }

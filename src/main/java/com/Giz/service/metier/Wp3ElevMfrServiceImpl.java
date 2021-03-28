@@ -221,4 +221,11 @@ public class Wp3ElevMfrServiceImpl implements Wp3ElevMfrService {
 		// TODO Auto-generated method stub
 		return wp3ElevMfrRepository.TableCountDetailGenreAllDist(district);
 	}
+	
+	@Override
+	public void deleteAll41() {
+		// TODO Auto-generated method stub
+		wp3ElevMfrRepository.deleteAll();
+		
+	}
 }

@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.Giz.data.domain.Wp3ElevMfr;
 
 public interface Wp3ElevMfrService {
+	
+	public void deleteAll41();
 
 	public Wp3ElevMfr createWp3ElevMfr(Wp3ElevMfr wp3ElevMfr) throws Exception;
 

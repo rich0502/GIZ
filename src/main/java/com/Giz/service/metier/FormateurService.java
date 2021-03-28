@@ -13,6 +13,8 @@ public interface FormateurService {
 
 	public void deleteFormateur(Long id_ft);
 	
+	public void deleteAllFormElev();
+	
 	public void addFormateur(String code_village, String nomPrenom, String zoneInterv, String genre_ft,
 			int date_naiss, boolean operationnel, Date date_mise_place, Date date_suivi, Date date_debut,
 			Date date_fin, String type_form);

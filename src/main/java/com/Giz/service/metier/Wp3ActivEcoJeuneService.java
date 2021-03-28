@@ -8,6 +8,8 @@ import com.Giz.data.domain.Wp3ActivEcoJeune;
 
 public interface Wp3ActivEcoJeuneService {
 	
+	public void deleteAll37();
+	
 	public Wp3ActivEcoJeune createWp3ActivEcoJeune(Wp3ActivEcoJeune wp3ActivEcoJeune) throws Exception;
 
 	public List<Wp3ActivEcoJeune> ListWp3ActivEcoJeune();

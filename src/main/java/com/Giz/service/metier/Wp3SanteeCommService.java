@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.Giz.data.domain.Wp3SanteeComm;
 
 public interface Wp3SanteeCommService {
+	
+	public void deleteAll48();
 
 	public Wp3SanteeComm createWp3SanteeComm(Wp3SanteeComm wp3SanteeComm) throws Exception;
 

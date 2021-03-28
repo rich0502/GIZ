@@ -199,4 +199,11 @@ public class Wp3FedeMfrServiceImpl implements Wp3FedeMfrService {
 		// TODO Auto-generated method stub
 		return wp3FedeMfrRepository.TableCountDetailGenreAllDist(district);
 	}
+	
+	@Override
+	public void deleteAll43() {
+		// TODO Auto-generated method stub
+		wp3FedeMfrRepository.deleteAll();
+		
+	}
 }

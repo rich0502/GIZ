@@ -192,4 +192,11 @@ public class Wp3PeerEducatorServiceImpl implements Wp3PeerEducatorService {
 		// TODO Auto-generated method stub
 		return wp3PeerEducatorRepository.TableCountDetailGenreAllDist(district);
 	}
+	
+	@Override
+	public void deleteAll49() {
+		// TODO Auto-generated method stub
+		wp3PeerEducatorRepository.deleteAll();
+		
+	}
 }

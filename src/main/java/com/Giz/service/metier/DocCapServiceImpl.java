@@ -90,6 +90,13 @@ public class DocCapServiceImpl implements DocCapService {
 		}
 	}
 
+	@Override
+	public void deleteAll51() {
+		// TODO Auto-generated method stub
+		 docCapRepository.deleteAll();
+		
+	}
+
 	
 	
 }

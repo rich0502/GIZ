@@ -19,5 +19,7 @@ public interface ThemeService {
 	
 	public void modifyThemeRealise(ThemeRealise themeRealise, String code_village, String epp_youth, boolean env, String activites,
 			Date date_suivi, Long id_tr);
+
+	public void deleteAllTheme();
 	
 }

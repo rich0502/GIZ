@@ -48,6 +48,12 @@ public class ConcoursServiceImpl implements ConcoursService {
 		concoursRepository.save(concours);
 		
 	}
+
+	@Override
+	public void deleteAllConcours() {
+		// TODO Auto-generated method stub
+		concoursRepository.deleteAll();
+	}
 	
 	
 

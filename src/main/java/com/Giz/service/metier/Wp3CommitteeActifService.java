@@ -8,6 +8,8 @@ import com.Giz.data.domain.Wp3CommitteeActif;
 
 public interface Wp3CommitteeActifService {
 	
+	public void deleteAll38();
+	
 	public Wp3CommitteeActif createWp3CommitteeActif(Wp3CommitteeActif wp3CommitteeActif) throws Exception;
 
 	public List<Wp3CommitteeActif> ListWp3CommitteeActif();

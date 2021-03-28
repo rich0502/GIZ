@@ -9,7 +9,8 @@ import com.Giz.data.domain.AtelierMFR;
 
 public interface AtelierMFRService {
 
-
+	public void deleteAllAtelier(String type_atelier);
+	
 	public List<AtelierMFR> ListAtelierMFR();
 	
 	public List<AtelierMFR> fetchAtelier(String type_atelier);

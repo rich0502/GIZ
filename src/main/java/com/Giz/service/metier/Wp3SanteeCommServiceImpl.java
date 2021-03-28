@@ -191,4 +191,11 @@ public class Wp3SanteeCommServiceImpl implements Wp3SanteeCommService {
 		// TODO Auto-generated method stub
 		return wp3SanteeCommRepository.TableCountDetailGenreAllDist(district);
 	}
+	
+	@Override
+	public void deleteAll48() {
+		// TODO Auto-generated method stub
+		wp3SanteeCommRepository.deleteAll();
+		
+	}
 }

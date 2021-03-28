@@ -57,4 +57,11 @@ public class CooperativeServiceImpl implements CooperativeService {
 		
 	}
 
+	@Override
+	public void deleteAllCooperative() {
+		// TODO Auto-generated method stub
+		cooperativeRepository.deleteAll();
+		
+	}
+
 }

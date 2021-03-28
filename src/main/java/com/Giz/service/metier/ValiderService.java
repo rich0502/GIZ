@@ -9,6 +9,8 @@ import com.Giz.data.domain.Valider;
 public interface ValiderService {
 
 	public void deleteValider(Long id);
+	
+	public void deleteValiderAll(String canevas);
 
 	public List<Valider> ListValiderL3();
 

@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.Giz.data.domain.Wp3ActivEcoJeune;
 
 public interface Wp3ActivEcoJeuneRepository extends JpaRepository<Wp3ActivEcoJeune, Long> {
-
+	
 	@Query("Select count(*) from Wp3ActivEcoJeune where lower(sexe) =:sexe")
 	long getCountGenre(String sexe);
 

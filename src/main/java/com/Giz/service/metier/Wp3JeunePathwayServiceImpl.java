@@ -191,4 +191,11 @@ public class Wp3JeunePathwayServiceImpl implements Wp3JeunePathwayService {
 		// TODO Auto-generated method stub
 		return wp3JeunePathwayRepository.TableCountDetailGenreAllDist(district);
 	}
+	
+	@Override
+	public void deleteAll46() {
+		// TODO Auto-generated method stub
+		wp3JeunePathwayRepository.deleteAll();
+		
+	}
 }

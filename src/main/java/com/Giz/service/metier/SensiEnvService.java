@@ -19,5 +19,7 @@ public interface SensiEnvService {
 	
 	public void modifySensibEnv(SensibEnv sensibEnv, String code_village, boolean exist_sens, Date date_fin, String theme_sens,
 			int nbr_participant, int nbr_homme, int nbr_femme, Long id_se);
+
+	public void deleteAllSE();
 	
 }

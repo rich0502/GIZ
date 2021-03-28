@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.Giz.data.domain.Wp3PeerEducator;
 
 public interface Wp3PeerEducatorService {
+	
+	public void deleteAll49();
 
 	public Wp3PeerEducator createWp3PeerEducator(Wp3PeerEducator wp3PeerEducator) throws Exception;
 

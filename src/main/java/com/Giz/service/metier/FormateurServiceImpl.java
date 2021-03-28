@@ -92,6 +92,12 @@ public class FormateurServiceImpl implements FormateurService {
 		return formateurRepository.findElevage(type_form);
 	}
 
+	@Override
+	public void deleteAllFormElev() {
+		// TODO Auto-generated method stub
+		formateurRepository.deleteAll();
+	}
+
 	
 	
 

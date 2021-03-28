@@ -19,5 +19,7 @@ public interface ZoneRebService {
 	
 	public void modifyZoneReboise(ZoneReboise zoneReboise,String code_village, boolean exist_zr, float superficies, int jeunePlant,
 			int nbrTotalJeune, Date date_suivi, Long id_zr);
+
+	public void deleteAllZR();
 	
 }

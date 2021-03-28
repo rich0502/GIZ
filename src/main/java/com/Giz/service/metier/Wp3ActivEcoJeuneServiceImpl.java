@@ -198,4 +198,11 @@ public class Wp3ActivEcoJeuneServiceImpl implements Wp3ActivEcoJeuneService {
 				return wp3ActivEcoJeuneRepository.TableCountDetailGenreAllDist(district);
 			}
 
+			@Override
+			public void deleteAll37() {
+				// TODO Auto-generated method stub
+				wp3ActivEcoJeuneRepository.deleteAll();
+				
+			}
+
 }

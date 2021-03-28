@@ -197,4 +197,11 @@ public class Wp3EquipeTechMfrServiceImpl implements Wp3EquipeTechMfrService {
 		// TODO Auto-generated method stub
 		return wp3EquipeTechMfrRepository.TableCountDetailGenreAllDist(district);
 	}
+	
+	@Override
+	public void deleteAll44() {
+		// TODO Auto-generated method stub
+		wp3EquipeTechMfrRepository.deleteAll();
+		
+	}
 }

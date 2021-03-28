@@ -38,14 +38,12 @@
 
 <body class="stories">
 <div th:include="/pds_header.html"></div>
-<br>
-<br>
-<br>
-<br>
-<form method="POST" th:action="@{/addBeneficiaire}">
 <div class="card">
 	<header class="composantesTable-header justify-between">
-		<a href="ZFForm" class="btAdd">[[#{ajouter}]]</a>
+		<br><br><br><br>
+		<h2 class="page-title">CANEVAS SUPERFICIES ZONES FORESTIERES</h2>
+		<a href="ZFForm" class="gbtn btAdd">[[#{ajouter}]]</a>
+		<a onclick="SupprimerTout()" href="deleteAllZF" class="gbtn btAdd btn-base" >[[#{supprimer}]] [[#{tout}]]</a>
 	</header>
 	<table class="composantes-table" id="myTable">
 		<thead>
@@ -71,7 +69,6 @@
 		</tbody>
 	</table>
 </div>
-</form>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

@@ -21,5 +21,7 @@ public interface RechercheService {
 	
 	public void modifyRecherche(Recherche recherche,String code_village, Date date_restitution, String theme, double nbr_homme, double nbr_femme, boolean pr, boolean producteurs,
 			boolean ep, boolean std_ctd, boolean autres, Long id_re);
+
+	public void deleteAllRecherche();
 	
 }

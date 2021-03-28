@@ -101,7 +101,11 @@
     					$('#myModal').modal('hide');
 					}            
                 </script>
-                
+                <script>
+					function SupprimerTout() {
+  						alert("Êtes-vous sûr de vouloir tout supprimer!");
+					}
+				</script>
 			<div class="text-center" th:if="${success}">
 				 <script type="text/javascript">
     				$(window).on('load', function() {

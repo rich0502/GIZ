@@ -776,4 +776,10 @@ public class ValiderServiceImpl implements ValiderService{
 			// TODO Auto-generated method stub
 			return validerrepository.TableCountDetailGenreAllDist(district, canevas);
 		}
+
+		@Override
+		public void deleteValiderAll(String canevas) {
+			// TODO Auto-generated method stub
+			validerrepository.deleteAllCanevasWp2(canevas);
+		}
 }

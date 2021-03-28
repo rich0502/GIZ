@@ -191,4 +191,11 @@ public class Wp3FormTechMetierJeuneServiceImpl implements Wp3FormTechMetierJeune
 		// TODO Auto-generated method stub
 		return wp3FormTechMetierJeuneRepository.TableCountDetailGenreAllDist(district);
 	}
+	
+	@Override
+	public void deleteAll39() {
+		// TODO Auto-generated method stub
+		wp3FormTechMetierJeuneRepository.deleteAll();
+		
+	}
 }

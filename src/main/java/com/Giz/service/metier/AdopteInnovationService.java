@@ -23,5 +23,7 @@ public interface AdopteInnovationService {
 	
 	public void modifyAdoption_innovation(Adoption_innovation adoption_innovation,String code_pro, String nomPrenom_ai, String genre_ai, String annee_naiss,
 			Date date_suivi, String type, Long id_ai);
+
+	public void deleteAllAI();
 	
 }

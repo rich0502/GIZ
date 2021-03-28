@@ -9,7 +9,8 @@ import com.Giz.data.domain.DocCap;
 
 public interface DocCapService {
 
-
+	public void deleteAll51();
+	
 	public List<DocCap> ListDocCap();
 
 	public void deleteDocCap(Long id_dc);

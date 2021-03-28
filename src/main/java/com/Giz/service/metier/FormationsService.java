@@ -15,6 +15,8 @@ public interface FormationsService {
 
 	public void deleteFormateur(Long id_ft);
 	
+	public void deleteAllFormations();
+	
 	public void addFormations( String code_village, String nom_eleveur, String genre_form, int annee_naiss,
 			String formation_recu, String theme_formation, Date date_forma, String type_formation);
 	

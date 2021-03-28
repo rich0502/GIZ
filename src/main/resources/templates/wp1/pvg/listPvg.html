@@ -38,17 +38,14 @@
 
 <body class="stories">
 <div th:include="/pds_header.html"></div>
-<br>
-<br>
-<div th:include="crud-form/crudMenu.html" th:remove="tag"></div><br>
-
-
-<form method="POST" th:action="@{/addBeneficiaire}">
 <div class="card">
 	<header class="composantesTable-header justify-between">
-		<a href="PvgForm" class="btAdd">[[#{ajouter}]]</a>
+		<br><br><br><br><br>
+		<h2 class="page-title">CANEVAS PARCELLES DE VANILLES ET DE GINGEMBRES QUI ONT FAIT L'OBJET DE SUIVI NUMERIQUE</h2>
+		<a href="PvgForm" class="gbtn btAdd">[[#{ajouter}]]</a>
+		<a onclick="SupprimerTout()" href="deleteAllSE" class="gbtn btAdd btn-base" >[[#{supprimer}]] [[#{tout}]]</a>
 	</header>
-	<h2 class="page-title">CANEVAS PARCELLES DE VANILLES ET DE GINGEMBRES QUI ONT FAIT L'OBJET DE SUIVI NUMERIQUE</h2>
+	
 	<table class="composantes-table" id="myTable">
 		<thead>
 			<tr>
@@ -86,7 +83,6 @@
 		</tbody>
 	</table>
 </div>
-</form>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

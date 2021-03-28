@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.Giz.data.domain.Wp3EquipeTechMfr;
 
 public interface Wp3EquipeTechMfrService {
+	
+	public void deleteAll44();
 
 	public Wp3EquipeTechMfr createWp3EquipeTechMfr(Wp3EquipeTechMfr wp3EquipeTechMfr) throws Exception;
 

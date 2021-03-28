@@ -204,5 +204,12 @@ public class Wp3UniteElevJeuneServiceImpl implements Wp3UniteElevJeuneService {
 		// TODO Auto-generated method stub
 		return wp3UniteElevJeuneRepository.TableCountDetailGenreAllDist(district);
 	}
+	
+	@Override
+	public void deleteAll40() {
+		// TODO Auto-generated method stub
+		wp3UniteElevJeuneRepository.deleteAll();
+		
+	}
 
 }

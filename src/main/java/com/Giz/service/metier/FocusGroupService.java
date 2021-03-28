@@ -16,5 +16,7 @@ public interface FocusGroupService {
 	
 	public void modifyFocusGroup(FocusGroup focusGroup,String code_village, boolean realisation, String nomResp, String genre_fg,
 			String risque_env, String mesure_prise, Date date_fg, Long id_fg);
+
+	public void deleteAllFG();
 	
 }

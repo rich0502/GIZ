@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.Giz.data.domain.Wp3JeunePathway;
 
 public interface Wp3JeunePathwayService {
+	
+	public void deleteAll46();
 
 	public Wp3JeunePathway createWp3JeunePathway(Wp3JeunePathway wp3JeunePathway) throws Exception;
 

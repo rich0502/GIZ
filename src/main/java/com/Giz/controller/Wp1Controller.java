@@ -90,6 +90,12 @@ public class Wp1Controller {
 	}
 
 	/* CANEVAS ADOPTION INNOVATION */
+	
+	@RequestMapping("/deleteAllAI")
+	public String deleteAllAI() {
+		adopteInnovationService.deleteAllAI();
+		return "redirect:/listAI";
+	}
 
 	@RequestMapping("/uploadAI")
 	public String uploadFile(Model model) {
@@ -160,6 +166,12 @@ public class Wp1Controller {
 	}
 
 	/* CANEVAS DE RESTITUTION DE RECHERCHES */
+	
+	@RequestMapping("/deleteAllRecherche")
+	public String deleteAllRecherche() {
+		rechercheService.deleteAllRecherche();
+		return "redirect:/listRecherche";
+	}
 
 	@RequestMapping("/uploadRecherche")
 	public String uploadRecherche(Model model) {
@@ -240,7 +252,7 @@ public class Wp1Controller {
 	}
 
 	/* CANEVAS FERME D'ELEVAGE OPERATIONNEL */
-
+	
 	@RequestMapping("/uploadElevage")
 	public String uploadElevage(Model model) {
 		String[][] scList = ListeWp.wp();
@@ -325,6 +337,12 @@ public class Wp1Controller {
 	}
 
 	/* CANEVAS FORMATION SUR LES BONNES PRATIQUES DES PRODUCTEURS */
+	
+	@RequestMapping("/deleteAllFomBpa")
+	public String deleteAllFomBpa() {
+		formationBpaService.deleteAllFomBpa();
+		return "redirect:/listFomBpa";
+	}
 
 	@RequestMapping("/uploadFomBpa")
 	public String uploadFomBpa(Model model) {
@@ -489,6 +507,12 @@ public class Wp1Controller {
 	}
 
 	/* CANEVAS PEPINIERE MISE EN PLACE */
+	
+	@RequestMapping("/deleteAllPepiniere")
+	public String deleteAllPepiniere() {
+		pepiniereService.deleteAllPepiniere();
+		return "redirect:/listPepiniere";
+	}
 
 	@RequestMapping("/uploadPepiniere")
 	public String uploadFomPepiniere(Model model) {
@@ -567,6 +591,12 @@ public class Wp1Controller {
 	}
 
 	/* CANEVAS AGENT DE SANTE ANIMAL OPERATIONNEL */
+	
+	@RequestMapping("/deleteAllSA")
+	public String deleteAllSA() {
+		sante_animalService.deleteAllSA();
+		return "redirect:/listSA";
+	}
 
 	@RequestMapping("/uploadSA")
 	public String uploadSA(Model model) {
@@ -641,6 +671,12 @@ public class Wp1Controller {
 	}
 
 	/* CANEVAS PERSONNES RESSOURCES */
+	
+	@RequestMapping("/deleteAllPr")
+	public String deleteAllPr() {
+		person_resService.deleteAllPr();
+		return "redirect:/listPr";
+	}
 
 	@RequestMapping("/uploadPr")
 	public String uploadPr(Model model) {

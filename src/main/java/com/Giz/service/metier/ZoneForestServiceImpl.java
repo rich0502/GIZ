@@ -48,6 +48,12 @@ public class ZoneForestServiceImpl implements ZoneForestService {
 		zoneForestRepository.save(zoneForest);
 		
 	}
+
+	@Override
+	public void deleteAllZF() {
+		// TODO Auto-generated method stub
+		zoneForestRepository.deleteAll();
+	}
 	
 	
 

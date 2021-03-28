@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.Giz.data.domain.Wp3UniteElevJeune;
 
 public interface Wp3UniteElevJeuneService {
+	
+	public void deleteAll40();
 
 	public Wp3UniteElevJeune createWp3UniteElevJeune(Wp3UniteElevJeune wp3UniteElevJeune) throws Exception;
 

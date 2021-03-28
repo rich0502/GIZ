@@ -9,7 +9,8 @@ import com.Giz.data.domain.Plateforme;
 
 public interface PlateformeService {
 
-
+	public void deleteAllPlateform(String type_plateform);
+	
 	public List<Plateforme> ListPlateforme();
 	
 	public List<Plateforme> fetchPlateforme(String type_plateform);

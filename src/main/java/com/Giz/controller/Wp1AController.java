@@ -50,6 +50,12 @@ public class Wp1AController {
 	FormateurService formateursService;
 
 	/* CANEVAS FERME DE REFERENCE */
+	
+	@RequestMapping("/deleteAllFerme")
+	public String deleteAllFerme() {
+		elevageService.deleteElevageAll();
+		return "redirect:/listFerme";
+	}
 
 	@RequestMapping("/uploadFerme")
 	public String uploadFormateur(Model model) {
@@ -119,13 +125,19 @@ public class Wp1AController {
 	}
 
 	@RequestMapping("/listFerme")
-	public String listFormateur(Model model) {
+	public String listFerme(Model model) {
 		List<Elevage> ferme = elevageService.ListElevage();
 		model.addAttribute("ferme", ferme);
-		return "wp1/Elevage/listFerme";
+		return "wp1/elevage/listFerme";
 	}
 
 	/* CANEVAS PARCELLES AGC OPERATION */
+	
+	@RequestMapping("/deleteAllPtAGC")
+	public String deleteAllPtAGC() {
+		parcelleTestService.deleteAllPtAGC();
+		return "redirect:/listPtAGC";
+	}
 
 	@RequestMapping("/uploadPtAGC")
 	public String uploadFomPtAGC(Model model) {
@@ -291,6 +303,12 @@ public class Wp1AController {
 	 * CANEVAS ELEVEURS FORMES ET ADOPTION DES BONNES PRATIQUES CONSEILLEES EN
 	 * ELEVAGE
 	 */
+	
+	@RequestMapping("/deleteAllFormations")
+	public String deleteAllFormations() {
+		formationsService.deleteAllFormations();
+		return "redirect:/listFomations";
+	}
 
 	@RequestMapping("/uploadFomations")
 	public String uploadFomations(Model model) {
@@ -381,6 +399,12 @@ public class Wp1AController {
 	}
 
 	/* CANEVAS FORMATEURS EN ELEVAGE OPERATIONNELS */
+	
+	@RequestMapping("/deleteAllFormElev")
+	public String deleteAllFormElev() {
+		formateursService.deleteAllFormElev();
+		return "redirect:/listFormElev";
+	}
 
 	@RequestMapping("/uploadFormElev")
 	public String uploadFormateurElev(Model model) {

@@ -53,6 +53,12 @@ public class ZoneRebServiceImpl implements ZoneRebService {
 		zoneReboiseRepository.save(zoneReboise);
 		
 	}
+
+	@Override
+	public void deleteAllZR() {
+		// TODO Auto-generated method stub
+		zoneReboiseRepository.deleteAll();
+	}
 	
 	
 

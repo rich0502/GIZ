@@ -130,7 +130,8 @@ public class Wp4Controller {
 			@RequestParam("type_doc") int type_doc, @RequestParam("auteur_doc") int auteur_doc,
 			@RequestParam("date_partage") int date_partage,
 			@RequestParam("reception") int reception , Model model , RedirectAttributes redirAttrs) throws IOException, ParseException {
-	    XSSFSheet worksheet = workbook.getSheetAt(0);	
+		docCapService.deleteAll51();
+		XSSFSheet worksheet = workbook.getSheetAt(0);	
 	    for(int i=1;i<worksheet.getPhysicalNumberOfRows() ;i++) {
 	        XSSFRow row = worksheet.getRow(i);
 	        String thematiques = row.getCell(thematique).getStringCellValue();
@@ -243,7 +244,8 @@ public class Wp4Controller {
 			@RequestParam("nbr_particip") int nbr_particip, @RequestParam("nbr_homme") int nbr_homme, @RequestParam("nbr_femme") int nbr_femme,@RequestParam("canevas") int canevas,
 			@RequestParam("theme_choise") int theme_choise , Model model , RedirectAttributes redirAttrs) throws IOException, ParseException {
 		System.out.println("io iz e! " + canevas + " ererer : " + canevas(canevas));
-	    XSSFSheet worksheet = workbook.getSheetAt(0);	
+		atelierMFRService.deleteAllAtelier(canevas(canevas));
+		XSSFSheet worksheet = workbook.getSheetAt(0);	
 	    for(int i=1;i<worksheet.getPhysicalNumberOfRows() ;i++) {
 	        XSSFRow row = worksheet.getRow(i);
 	        String code_villages = row.getCell(code_village).getStringCellValue();
@@ -410,7 +412,8 @@ public class Wp4Controller {
 	public String savePlateforme(@RequestParam("code_village") int code_village,@RequestParam("exist_platform") int exist_platform,
 			@RequestParam("operationnel") int operationnel, @RequestParam("date_suivi") int date_suivi,@RequestParam("commentaire") int commentaire,
 			@RequestParam("canevas") int canevas, Model model , RedirectAttributes redirAttrs) throws IOException, ParseException {
-	    XSSFSheet worksheet = workbook.getSheetAt(0);	
+		plateformeService.deleteAllPlateform(canevas(canevas));
+		XSSFSheet worksheet = workbook.getSheetAt(0);	
 	    for(int i=1;i<worksheet.getPhysicalNumberOfRows() ;i++) {
 	        XSSFRow row = worksheet.getRow(i);
 	        String code_villages = row.getCell(code_village).getStringCellValue();
@@ -485,6 +488,26 @@ public class Wp4Controller {
 		model.addAttribute("scList", scList);
 		return "wp4/plateforme/uploadPlateforme";
 	}
-
+	
+	// SUPPRIMER TOUT //
+	
+	@RequestMapping("/deleteAll51")
+	public String deleteAll51() {
+		docCapService.deleteAll51();
+		return "redirect:/listDocCap";
+	}
+	
+	@RequestMapping("/deleteAllAtelier")
+	public String deleteAllAtelier(@RequestParam("type_atelier") String type_atelier) {
+		atelierMFRService.deleteAllAtelier(type_atelier);
+		return "redirect:/listAtelier";
+	}
+	
+	@RequestMapping("/deleteAllPlateform")
+	public String deleteAllPlateform(@RequestParam("type_plateform") String type_plateform) {
+		plateformeService.deleteAllPlateform(type_plateform);
+		return "redirect:/listPlateforme";
+	}
+	
 	
 }

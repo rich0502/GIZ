@@ -66,6 +66,12 @@ public class RechercheServiceImpl implements RechercheService {
 	public float countRecherche() {
 		return rechercheRepository.count();
 	}
+
+	@Override
+	public void deleteAllRecherche() {
+		// TODO Auto-generated method stub
+		rechercheRepository.deleteAll();
+	}
 	
 	
 }

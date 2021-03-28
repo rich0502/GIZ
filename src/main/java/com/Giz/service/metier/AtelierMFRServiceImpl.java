@@ -142,4 +142,11 @@ public class AtelierMFRServiceImpl implements AtelierMFRService {
 		// TODO Auto-generated method stub
 		return atelierMFRRepository.TableDataDist(type_atelier, debut_date, fin_date);
 	}
+
+	@Override
+	public void deleteAllAtelier(String type_atelier) {
+		// TODO Auto-generated method stub
+		atelierMFRRepository.deleteAllAtelier(type_atelier);
+		
+	}
 }

@@ -127,6 +127,13 @@ public class PlateformeServiceImpl implements PlateformeService {
 		return plateformRepository.TableDataDist(type_atelier, debut_date, fin_date);
 	}
 
+	@Override
+	public void deleteAllPlateform(String type_plateform) {
+		// TODO Auto-generated method stub
+		plateformRepository.deleteAllPlateform(type_plateform);
+		
+	}
+
 	
 
 }

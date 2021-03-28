@@ -195,4 +195,11 @@ public class Wp3JeuneFormeMfrServiceImpl implements Wp3JeuneFormeMfrService {
 		// TODO Auto-generated method stub
 		return wp3JeuneFormeMfrRepository.TableCountDetailGenreAllDist(district);
 	}
+	
+	@Override
+	public void deleteAll42() {
+		// TODO Auto-generated method stub
+		wp3JeuneFormeMfrRepository.deleteAll();
+		
+	}
 }

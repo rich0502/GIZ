@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.Giz.data.domain.Wp3FedeMfr;
 
 public interface Wp3FedeMfrService {
+	
+	public void deleteAll43();
 
 	public Wp3FedeMfr createWp3FedeMfr(Wp3FedeMfr wp3FedeMfr) throws Exception;
 

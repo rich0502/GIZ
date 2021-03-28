@@ -4,7 +4,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +17,11 @@ import com.Giz.data.domain.Valider;
 public interface ValiderRepository extends JpaRepository<Valider, Long> {
 
 	// lakile telo
+	
+	@Modifying
+    @Transactional
+    @Query("delete from Valider v where canevas = ?1")
+    void deleteAllCanevasWp2(String canevas);
 
 	@Query("SELECT v FROM Valider v WHERE v.id = ?1 and canevas = 'L3'")
 	Optional<Valider> findByL3(Long id);

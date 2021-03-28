@@ -18,4 +18,6 @@ public interface Sante_animalService {
 	
 	public void modifySante_animal(Sante_animal sante_animal,String code_village, String nomPrenom, String genre_sa, int annee_naiss,
 			boolean operationnel, java.util.Date date_mise_place, java.util.Date date_suivi, Long id);
+
+	public void deleteAllSA();
 }

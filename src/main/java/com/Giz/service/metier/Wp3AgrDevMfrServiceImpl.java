@@ -203,5 +203,12 @@ Wp3AgrDevMfr wp3AgrDevMfr = new Wp3AgrDevMfr();
 		// TODO Auto-generated method stub
 		return wp3AgrDevMfrRepository.TableCountDetailGenreAllDist(district);
 	}
+	
+	@Override
+	public void deleteAll45() {
+		// TODO Auto-generated method stub
+		wp3AgrDevMfrRepository.deleteAll();
+		
+	}
 
 }

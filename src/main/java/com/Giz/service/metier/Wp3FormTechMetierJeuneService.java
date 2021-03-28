@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.Giz.data.domain.Wp3FormTechMetierJeune;
 
 public interface Wp3FormTechMetierJeuneService {
+	
+	public void deleteAll39();
 
 	public Wp3FormTechMetierJeune createWp3FormTechMetierJeune(Wp3FormTechMetierJeune wp3FormTechMetierJeune)
 			throws Exception;

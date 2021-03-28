@@ -111,6 +111,12 @@ public class FormationsServiceImpl implements FormationsService {
 		
 	}
 
+	@Override
+	public void deleteAllFormations() {
+		// TODO Auto-generated method stub
+		formationsRepository.deleteAll();
+	}
+
 	
 
 }

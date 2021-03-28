@@ -191,4 +191,11 @@ public class Wp3EppFramServiceImpl implements Wp3EppFramService {
 		// TODO Auto-generated method stub
 		return wp3EppFramRepository.TableCountDetailGenreAllDist(district);
 	}
+	
+	@Override
+	public void deleteAll47() {
+		// TODO Auto-generated method stub
+		wp3EppFramRepository.deleteAll();
+		
+	}
 }

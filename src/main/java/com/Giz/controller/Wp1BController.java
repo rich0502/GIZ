@@ -82,6 +82,12 @@ public class Wp1BController {
 	PvgService pvgService;
 
 	/* CANEVAS DISSEMINATION DE SUPPORT VIDEO AU NIVEAU VILLAGE */
+	
+	@RequestMapping("/deleteAllSv")
+	public String deleteAllSv() {
+		svService.deleteAllSv();
+		return "redirect:/listSv";
+	}
 
 	@RequestMapping("/uploadSv")
 	public String uploadSv(Model model) {
@@ -158,7 +164,13 @@ public class Wp1BController {
 	}
 
 	/* CANEVAS FEMMES LEADERS APPUYEES */
-
+	
+	@RequestMapping("/deleteAllLeaders")
+	public String deleteAllLeaders() {
+		leadersService.deleteAllLeaders();
+		return "redirect:/listLeaders";
+	}
+	
 	@RequestMapping("/uploadLeaders")
 	public String uploadLeaders(Model model) {
 		String[][] scList = ListeWp.wp();
@@ -231,6 +243,12 @@ public class Wp1BController {
 	}
 
 	/* CANEVAS COOPERATIVE FAIRTRADE RENFORCEE */
+	
+	@RequestMapping("/deleteAllCooperative")
+	public String deleteAllCooperative() {
+		cooperativeService.deleteAllCooperative();
+		return "redirect:/listCooperative";
+	}
 
 	@RequestMapping("/uploadCooperative")
 	public String uploadCooperative(Model model) {
@@ -307,6 +325,12 @@ public class Wp1BController {
 
 	/* CANEVAS FOCUS GROUP ENVIRONNEMENTAL */
 
+	@RequestMapping("/deleteAllFG")
+	public String deleteAllFG() {
+		focusGroupService.deleteAllFG();
+		return "redirect:/listFG";
+	}
+	
 	@RequestMapping("/uploadFG")
 	public String uploadFG(Model model) {
 		String[][] scList = ListeWp.wp();
@@ -383,6 +407,12 @@ public class Wp1BController {
 	 * CANEVAS THEME REALISEE SUR L' ENVIRONNEMENT AU NIVEAU D' EPP ET LES YOUTH
 	 * COMMITTEE
 	 */
+	
+	@RequestMapping("/deleteAllTheme")
+	public String deleteAllTheme() {
+		themeService.deleteAllTheme();
+		return "redirect:/listTheme";
+	}
 
 	@RequestMapping("/uploadTheme")
 	public String uploadTheme(Model model) {
@@ -451,6 +481,12 @@ public class Wp1BController {
 	}
 
 	/* CANEVAS EXISTENCE DE CONCOURS ENVIRONNEMENTAL */
+	
+	@RequestMapping("/deleteAllConcours")
+	public String deleteAllConcours() {
+		concoursService.deleteAllConcours();
+		return "redirect:/listConcours";
+	}
 
 	@RequestMapping("/uploadConcours")
 	public String uploadConcours(Model model) {
@@ -518,6 +554,12 @@ public class Wp1BController {
 	}
 
 	/* CANEVAS SUPERFICIES ZONES FORESTIERES */
+	
+	@RequestMapping("/deleteAllZF")
+	public String deleteAllZF() {
+		zoneForest.deleteAllZF();
+		return "redirect:/listZF";
+	}
 
 	@RequestMapping("/uploadZF")
 	public String uploadZF(Model model) {
@@ -585,6 +627,12 @@ public class Wp1BController {
 	}
 
 	/* CANEVAS SUPERFICIE ZONE REBOISEE */
+	
+	@RequestMapping("/deleteAllZR")
+	public String deleteAllZR() {
+		zoneRebService.deleteAllZR();
+		return "redirect:/listZR";
+	}
 
 	@RequestMapping("/uploadZR")
 	public String uploadZR(Model model) {
@@ -656,6 +704,12 @@ public class Wp1BController {
 	}
 
 	/* CANEVAS SENSIBILISATION ENVIRONNEMENTALE */
+	
+	@RequestMapping("/deleteAllSE")
+	public String deleteAllSE() {
+		sensiEnvService.deleteAllSE();
+		return "redirect:/listSE";
+	}
 
 	@RequestMapping("/uploadSE")
 	public String uploadSE(Model model) {
@@ -731,6 +785,12 @@ public class Wp1BController {
 
 	/* CANEVAS CONTROLEUR INTERNE FORME ET EQUIPE */
 
+	@RequestMapping("/deleteAllCI")
+	public String deleteAllCI() {
+		ciFormeService.deleteAllCI();
+		return "redirect:/listCI";
+	}
+	
 	@RequestMapping("/uploadCI")
 	public String uploadCI(Model model) {
 		String[][] scList = ListeWp.wp();
@@ -810,6 +870,12 @@ public class Wp1BController {
 	 * CANEVAS PARCELLES DE VANILLES ET DE GINGEMBRES QUI ONT FAIT L'OBJET DE SUIVI
 	 * NUMERIQUE
 	 */
+	
+	@RequestMapping("/deleteAllPvg")
+	public String deleteAllPvg() {
+		pvgService.deleteAllPvg();
+		return "redirect:/listPvg";
+	}
 
 	@RequestMapping("/uploadPvg")
 	public String uploadPvg(Model model) {
