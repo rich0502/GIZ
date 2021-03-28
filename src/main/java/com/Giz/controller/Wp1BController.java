@@ -120,6 +120,7 @@ public class Wp1BController {
 			@RequestParam("receptionnaire") int receptionnaire, @RequestParam("genre_sv") int genre_sv,
 			@RequestParam("responsable") int responsable, @RequestParam("date_suivi") int date_suivi, 
 			Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		svService.deleteAllSv();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -201,6 +202,7 @@ public class Wp1BController {
 			@RequestParam("operationnalite") int operationnalite, @RequestParam("genre_pt") int genre_pt,
 			@RequestParam("annee_naiss") int annee_naiss, @RequestParam("date_mise") int date_mise,
 			@RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		leadersService.deleteAllLeaders();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -280,6 +282,7 @@ public class Wp1BController {
 			@RequestParam("nom_coop") int nom_coop, @RequestParam("environnement") int environnement,
 			@RequestParam("socio") int socio, @RequestParam("date_creation") int date_creation,
 			@RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		cooperativeService.deleteAllCooperative();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -361,6 +364,7 @@ public class Wp1BController {
 			@RequestParam("nomResp") int nomResp, @RequestParam("genre_fg") int genre_fg,
 			@RequestParam("risque_env") int risque_env, @RequestParam("mesure_prise") int mesure_prise,
 			@RequestParam("date_fg") int date_fg, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		focusGroupService.deleteAllFG();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -443,6 +447,7 @@ public class Wp1BController {
 	public String saveTheme(@RequestParam("code_village") int code_village, @RequestParam("env") int env,
 			@RequestParam("epp_youth") int epp_youth, @RequestParam("activites") int activites,
 			@RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		themeService.deleteAllTheme();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -517,6 +522,7 @@ public class Wp1BController {
 	public String saveConcours(@RequestParam("code_village") int code_village, @RequestParam("exist") int exist,
 			@RequestParam("date_eval") int date_eval, @RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
+		concoursService.deleteAllConcours();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -590,6 +596,7 @@ public class Wp1BController {
 	public String saveZF(@RequestParam("code_village") int code_village, @RequestParam("exist_zn") int exist_zn,
 			@RequestParam("superficies") int superficies, @RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
+		zoneForest.deleteAllZF();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -664,6 +671,7 @@ public class Wp1BController {
 			@RequestParam("superficies") int superficies, @RequestParam("jeunePlant") int jeunePlant,
 			@RequestParam("nbrTotalJeune") int nbrTotalJeune, @RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
+		zoneRebService.deleteAllZR();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -741,6 +749,7 @@ public class Wp1BController {
 			@RequestParam("theme_sens") int theme_sens, @RequestParam("nbr_participant") int nbr_participant,
 			@RequestParam("nbr_homme") int nbr_homme, @RequestParam("nbr_femme") int nbr_femme,
 			@RequestParam("date_fin") int date_fin, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		sensiEnvService.deleteAllSE();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -822,6 +831,7 @@ public class Wp1BController {
 			@RequestParam("annee_naiss") int annee_naiss, @RequestParam("date_form") int date_form,
 			@RequestParam("equipe") int equipe, @RequestParam("date_dotation") int date_dotation, Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
+		ciFormeService.deleteAllCI();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -909,6 +919,7 @@ public class Wp1BController {
 			@RequestParam("suivi_numeric") int suivi_numeric,
 			@RequestParam("diffusion_resultat") int diffusion_resultat, @RequestParam("genre_pvg") int genre_pvg,
 			Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		pvgService.deleteAllPvg();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
