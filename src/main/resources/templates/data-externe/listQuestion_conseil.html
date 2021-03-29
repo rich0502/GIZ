@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Données externes</title>
+<head th:include="/headLinksFragment.html" th:remove="tag"></head>
+</head>
+<body class="stories">
+	<div th:include="/pds_header.html"></div>
+	<section class="main">
+		<div class="card">
+			<header class="composantesTable-header justify-between">
+				<h2 class="page-title">QUESTION ET CONSEIL</h2>
+			</header>
+			<table class="composantes-table" id="myTable">
+				<thead>
+					<tr>
+						<th scope="col"><span>Code producteur</span></th>
+						<th scope="col"><span>Question Symrise</span></th>
+						<th scope="col"><span>Conseil rural</span></th>
+						<th scope="col"><span>Etat vanille</span></th>
+						<th scope="col"><span>Assistance</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="b : ${question_conseil}">
+						<td th:text="${b.code_pro}"></td>
+						<td th:text="${b.question_symrise}"></td>
+						<td th:text="${b.conseil_rural}"></td>
+						<td th:text="${b.etat_vanille}"></td>
+						<td th:text="${b.assistance}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</body>
+</html>

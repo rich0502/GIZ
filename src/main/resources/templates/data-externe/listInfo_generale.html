@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Données externes</title>
+<head th:include="/headLinksFragment.html" th:remove="tag"></head>
+</head>
+<body class="stories">
+	<div th:include="/pds_header.html"></div>
+	<section class="main">
+		<div class="card">
+			<header class="composantesTable-header justify-between">
+				<h2 class="page-title">INFORMATION GENERALE</h2>
+			</header>
+			<table class="composantes-table" id="myTable">
+				<thead>
+					<tr>
+						<th scope="col"><span>Code producteur</span></th>
+						<th scope="col"><span>Nombre parcelle producteur</span></th>
+						<th scope="col"><span>Appris culture</span></th>
+						<th scope="col"><span>Autre</span></th>
+						<th scope="col"><span>Moyen</span></th>
+						<th scope="col"><span>Technique conseil</span></th>
+						<th scope="col"><span>change technique</span></th>
+						<th scope="col"><span>Prepare</span></th>
+						<th scope="col"><span>Dernier compagne</span></th>
+						<th scope="col"><span>Place dedié</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="b : ${info_generale}">
+						<td th:text="${b.code_pro}"></td>
+						<td th:text="${b.nbr_parcel_prod}"></td>
+						<td th:text="${b.appris_culture}"></td>
+						<td th:text="${b.autre}"></td>
+						<td th:text="${b.moyen}"></td>
+						<td th:text="${b.technic_conseil}"></td>
+						<td th:text="${b.change_tech}"></td>
+						<td th:text="${b.prepare}"></td>
+						<td th:text="${b.dernier_compagne}"></td>
+						<td th:text="${b.place_dedie}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</body>
+</html>

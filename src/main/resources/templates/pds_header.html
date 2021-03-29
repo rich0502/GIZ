@@ -55,6 +55,8 @@
 						th:href="@{/template}">[[#{menu.template}]]</a> <a
 						class="dropdown-item pds-profil pds-manage-content"
 						th:href="@{/acc}">[[#{btn.accueil}]]</a> <a
+						class="dropdown-item pds-profil pds-manage-content"
+						th:href="@{/listActivite}">Données externes</a> <a
 						class="dropdown-item pds-logout" th:href="@{/logout}">[[#{logout}]]</a>
 				</div>
 			</div>
@@ -101,13 +103,13 @@
     					$('#myModal').modal('hide');
 					}            
                 </script>
-                <script>
+			<script>
 					function SupprimerTout() {
   						alert("Êtes-vous sûr de vouloir tout supprimer!");
 					}
 				</script>
 			<div class="text-center" th:if="${success}">
-				 <script type="text/javascript">
+				<script type="text/javascript">
     				$(window).on('load', function() {
         			$('#myModal').modal('show');
         			window.setTimeout(hide_modal, 2500);
@@ -119,7 +121,8 @@
 				<div class="modal-dialog modal-dialog-centered" role="document">
 					<div class="modal-content card-body">
 						<div class="modal-header">
-							<h2 class="page-title modal-title" id="exampleModalLongTitle">Message de notification</h2>
+							<h2 class="page-title modal-title" id="exampleModalLongTitle">Message
+								de notification</h2>
 							<button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>

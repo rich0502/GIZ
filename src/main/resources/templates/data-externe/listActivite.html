@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Données externes</title>
+<head th:include="/headLinksFragment.html" th:remove="tag"></head>
+</head>
+<body class="stories">
+	<div th:include="/pds_header.html"></div>
+	<section class="main">
+		<div class="card">
+			<header class="composantesTable-header justify-between">
+				<h2 class="page-title">LISTE ACTIVITE</h2>
+			</header>
+			<table class="composantes-table" id="myTable">
+				<thead>
+					<tr>
+						<th scope="col"><span>Type intervention</span></th>
+						<th scope="col"><span>Theme principal</span></th>
+						<th scope="col"><span>Sous theme</span></th>
+						<th scope="col"><span>Date enregistrement</span></th>
+						<th scope="col"><span>Nom utilisateur</span></th>
+						<th scope="col"><span>GPS latitude</span></th>
+						<th scope="col"><span>GPS longitude</span></th>
+						<th scope="col"><span>Formateur</span></th>
+						<th scope="col"><span>Code formateur</span></th>
+						<th scope="col"><span>Lieu formation</span></th>
+						<th scope="col"><span>Producteur present</span></th>
+						<th scope="col"><span>Producteur externe</span></th>
+						<th scope="col"><span>Participant externe</span></th>
+						<th scope="col"><span>Image 1</span></th>
+						<th scope="col"><span>Image 2</span></th>
+						<th scope="col"><span>Image 3</span></th>
+						<th scope="col"><span>Remarques</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="b : ${activite}">
+						<td th:text="${b.type_intervention}"></td>
+						<td th:text="${b.theme_principal}"></td>
+						<td th:text="${b.sous_theme}"></td>
+						<td th:text="${b.date_enreg}"></td>
+						<td th:text="${b.nom_utilisateur}"></td>
+						<td th:text="${b.gps_lat}"></td>
+						<td th:text="${b.gps_long}"></td>
+						<td th:text="${b.formateur}"></td>
+						
+						<td th:text="${b.code_formateur}"></td>
+						<td th:text="${b.lieu_formation}"></td>
+						<td th:text="${b.prod_present}"></td>
+						<td th:text="${b.prod_externe}"></td>
+						<td th:text="${b.participant_externe}"></td>
+						<td th:text="${b.image1}"></td>
+						<td th:text="${b.image2}"></td>
+						<td th:text="${b.image3}"></td>
+						<td th:text="${b.remarques}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</body>
+</html>

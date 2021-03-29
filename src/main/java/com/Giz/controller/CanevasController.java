@@ -8,10 +8,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.Giz.data.constants.theme.GetTheme;
 
-
-
-
-
 @Controller
 public class CanevasController {
 	

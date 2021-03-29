@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Données externes</title>
+<head th:include="/headLinksFragment.html" th:remove="tag"></head>
+</head>
+<body class="stories">
+	<div th:include="/pds_header.html"></div>
+	<section class="main">
+		<div class="card">
+			<header class="composantesTable-header justify-between">
+				<h2 class="page-title">LISTE FERTILISANT VANILLE</h2>
+			</header>
+			<table class="composantes-table" id="myTable">
+				<thead>
+					<tr>
+						<th scope="col"><span>Code producteur</span></th>
+						<th scope="col"><span>Utilisation fertilisant</span></th>
+						<th scope="col"><span>Type d'utilisation</span></th>
+						<th scope="col"><span>Autre</span></th>
+						<th scope="col"><span>Quantité</span></th>
+						<th scope="col"><span>Nombre d'années</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="b : ${fertilisant_vanille}">
+						<td th:text="${b.code_pro}"></td>
+						<td th:text="${b.use_fertilisant}"></td>
+						<td th:text="${b.type_use}"></td>
+						<td th:text="${b.autre}"></td>
+						<td th:text="${b.qte}"></td>
+						<td th:text="${b.nbr_ans}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</body>
+</html>

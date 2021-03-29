@@ -49,6 +49,7 @@
 	<table class="composantes-table" id="myTable">
 		<thead>
 			<tr>
+				<th scope="col"><span>Code village</span></th>
 				<th scope="col"><span>Numéro Adhesion</span></th>
 				<th scope="col"><span>Nom benéficiaire</span></th>
 				<th scope="col"><span>Nom usuel adherent</span></th>
@@ -56,7 +57,6 @@
 				<th scope="col"><span>Age</span></th>
 				<th scope="col"><span>CIN</span></th>
 				<th scope="col"><span>Sexe</span></th>
-				<th scope="col"><span>Code village</span></th>
 				<th scope="col"><span>Code pro symrise</span></th>
 				<th scope="col"><span>Commune</span></th>
 				<th scope="col"><span>Adresse Fokotany</span></th>
@@ -68,6 +68,7 @@
 		</thead>
 		<tbody>
 			<tr th:each="b : ${validerMenage}">
+				<td th:text="${b.code_village}"></td>
 				<td th:text="${b.num_adhesion}"></td>
 				<td th:text="${b.nom_beneficiaire}"></td>
 				<td th:text="${b.nom_usuel_adherent}"></td>
@@ -75,7 +76,6 @@
 				<td th:text="${b.age}"></td>
 				<td th:text="${b.cin}"></td>
 				<td th:text="${b.sexe}"></td>
-				<td th:text="${b.code_village}"></td>
 				<td th:text="${b.code_pro_symrise}"></td>
 				<td th:text="${b.commune}"></td>
 				<td th:text="${b.adresse_fkt}"></td>
