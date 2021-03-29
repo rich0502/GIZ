@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "DocCap")
-public class DocCap {
+public class DocCap extends Auditable<String>{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

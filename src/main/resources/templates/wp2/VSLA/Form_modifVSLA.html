@@ -63,11 +63,19 @@
 					<br>
 					VSLA lier regional :
 					<br>
-					<input th:field="*{vsla.vsla_lier_regionale}" type="text">
+					<select class="form-control select2" th:field="*{vsla.vsla_lier_regionale}"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="True">Oui</option>
+						<option th:value="False">Non</option>
+					</select>
 					<br>
 					Appuis recus :
 					<br>
-					<input th:field="*{vsla.appuis_recus}" type="text">
+					<select class="form-control select2" th:field="*{vsla.appuis_recus}"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="True">Oui</option>
+						<option th:value="False">Non</option>
+					</select>
 					<br>
 					 Types appuis :
 					<br>
@@ -75,7 +83,11 @@
 					<br>
 					 Operationnel :
 					<br>
-					<input type="text" th:field="*{vsla.operationnel}">
+					<select class="form-control select2" th:field="*{vsla.operationnel}"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="True">Oui</option>
+						<option th:value="False">Non</option>
+					</select>
 					<br>
 					 Date suivi :
 					<br>

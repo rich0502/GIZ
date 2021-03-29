@@ -2,13 +2,21 @@ package com.Giz.repository;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.Giz.data.domain.AtelierMFR;
 
 
 public interface AtelierMFRRepository extends JpaRepository<AtelierMFR, Long> {
+	
+	@Modifying
+    @Transactional
+    @Query("delete from AtelierMFR v where type_atelier = ?1")
+    void deleteAllAtelier(String type_atelier);
 	
 	@Query("SELECT e FROM AtelierMFR e WHERE  e.type_atelier=?1")
 	List<AtelierMFR> fetchAtelier(String type_atelier);

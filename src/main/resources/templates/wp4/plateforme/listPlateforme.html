@@ -38,17 +38,15 @@
 
 <body class="stories">
 <div th:include="/pds_header.html"></div>
-<br>
-<br>
-<div th:include="crud-form/crudMenu.html" th:remove="tag"></div><br>
-
-
-<form method="POST" th:action="@{/addBeneficiaire}">
+<section class="main">
 <div class="card">
 	<header class="composantesTable-header justify-between">
 		<h2 class="page-title" th:text="${type_at}"></h2>
 		<a href="PlateformeForm" class="gbtn add" >[[#{ajouter}]]</a>
-		<a 	th:href="@{'/success'}" class="gbtn btAdd btn-base" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">[[#{liste}]] Success stories</a>
+		<form th:action="@{/deleteAllPlateform}">
+			<input type="hidden" th:name="type_plateform" th:value="${type_at}"/> 
+			<button onclick="SupprimerTout()" class="gbtn btAdd btn-base" type="submit">[[#{supprimer}]] [[#{tout}]]</button> 
+		</form>
 	</header>
 	<table class="composantes-table" id="myTable">
 		<thead>
@@ -77,7 +75,6 @@
 		</tbody>
 	</table>
 </div>
-</form>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -101,6 +98,7 @@
     </div>
   </div>
 </div>
+</section>
 </body>
 
 </html>

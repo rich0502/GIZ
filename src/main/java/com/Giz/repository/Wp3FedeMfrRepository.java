@@ -95,5 +95,35 @@ public interface Wp3FedeMfrRepository extends JpaRepository<Wp3FedeMfr, Long> {
 			+ "	wp3_fede_mfr.date_validation BETWEEN ?1 AND ?2 \r\n" + " and wp3_fede_mfr.sexe = 'F'\r\n"
 			+ "	GROUP BY village.district) as femmes where hommes.district=femmes.district", nativeQuery = true)
 	List<Object[]> TableDataDistAll(Date debut_date, Date fin_date);
+	
+	// VILLAGE DETAIL TABLEAU COUNT
+
+	@Query(value = "SELECT village.code_village,wp3_fede_mfr.nom_mfr FROM village,wp3_fede_mfr WHERE"
+			+ " village.code_village=wp3_fede_mfr.code_region AND village.village = ?1   AND upper(wp3_fede_mfr.sexe)= ?2 \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenre(String village, String sexe);
+
+	@Query(value = "SELECT village.code_village,wp3_fede_mfr.nom_mfr FROM village,wp3_fede_mfr WHERE"
+			+ " village.code_village=wp3_fede_mfr.code_region AND village.village = ?1   \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreAll(String village);
+
+	// COMMUNE DETAIL TABLEAU COUNT
+
+	@Query(value = "SELECT village.code_village,wp3_fede_mfr.nom_mfr FROM village,wp3_fede_mfr WHERE"
+			+ " village.code_village=wp3_fede_mfr.code_region AND village.commune = ?1   AND upper(wp3_fede_mfr.sexe)= ?2 \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreComm(String commune, String sexe);
+
+	@Query(value = "SELECT village.code_village,wp3_fede_mfr.nom_mfr FROM village,wp3_fede_mfr WHERE"
+			+ " village.code_village=wp3_fede_mfr.code_region AND village.commune = ?1   \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreAllComm(String commune);
+
+	// DISTRICT DETAIL TABLEAU COUNT
+
+	@Query(value = "SELECT village.code_village,wp3_fede_mfr.nom_mfr FROM village,wp3_fede_mfr WHERE"
+			+ " village.code_village=wp3_fede_mfr.code_region AND village.district = ?1   AND upper(wp3_fede_mfr.sexe)= ?2 \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreDist(String district, String sexe);
+
+	@Query(value = "SELECT village.code_village,wp3_fede_mfr.nom_mfr FROM village,wp3_fede_mfr WHERE"
+			+ " village.code_village=wp3_fede_mfr.code_region AND village.district = ?1   \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreAllDist(String district);
 
 }

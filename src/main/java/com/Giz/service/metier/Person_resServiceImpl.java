@@ -56,6 +56,12 @@ public class Person_resServiceImpl implements Person_resService {
 		
 	}
 
+	@Override
+	public void deleteAllPr() {
+		// TODO Auto-generated method stub
+		person_resRepository.deleteAll();
+	}
+
 	
 
 }

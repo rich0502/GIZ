@@ -57,6 +57,12 @@ public class CiFormeServiceImpl implements CiFormeService {
 		ciFormeRepository.save(ciForme);
 		
 	}
+
+	@Override
+	public void deleteAllCI() {
+		// TODO Auto-generated method stub
+		ciFormeRepository.deleteAll();
+	}
 	
 	
 

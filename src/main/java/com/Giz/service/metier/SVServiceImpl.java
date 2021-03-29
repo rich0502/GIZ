@@ -60,6 +60,12 @@ public class SVServiceImpl implements SVService {
 		svRepository.save(supportVideo);
 		
 	}
+
+	@Override
+	public void deleteAllSv() {
+		// TODO Auto-generated method stub
+		svRepository.deleteAll();
+	}
 	
 
 	

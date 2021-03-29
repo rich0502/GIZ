@@ -4,7 +4,10 @@ package com.Giz.repository;
 import java.util.Date;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 
@@ -12,6 +15,11 @@ import com.Giz.data.domain.Plateforme;
 
 
 public interface PlateformRepository extends JpaRepository<Plateforme, Long> {
+	
+	@Modifying
+    @Transactional
+    @Query("delete from Plateforme v where type_plateform = ?1")
+    void deleteAllPlateform(String type_plateform);
 	
 	@Query("SELECT e FROM Plateforme e where type_plateform = ?1")
 	List<Plateforme> fetchPlateforme(String type_plateform);

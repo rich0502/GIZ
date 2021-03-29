@@ -152,4 +152,50 @@ public class Wp3JeunePathwayServiceImpl implements Wp3JeunePathwayService {
 		// TODO Auto-generated method stub
 		return wp3JeunePathwayRepository.TableDataDistAll(debut_date, fin_date);
 	}
+	
+	// VILLAGE DETAIL TABLEAU COUNT
+
+	@Override
+	public List<Object[]> TableauCountDetailGenre(String village, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3JeunePathwayRepository.TableCountDetailGenre(village, sexe);
+	}
+	@Override
+	public List<Object[]> TableauCountDetailGenreAll(String village) {
+		// TODO Auto-generated method stub
+		return wp3JeunePathwayRepository.TableCountDetailGenreAll(village);
+	}
+	
+		// COMMUNE DETAIL TABLEAU COUNT
+	
+	@Override
+	public List<Object[]> TableauCountDetailGenreComm(String commune, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3JeunePathwayRepository.TableCountDetailGenreComm(commune, sexe);
+	}
+	@Override
+	public List<Object[]> TableauCountDetailGenreAllComm(String commune) {
+		// TODO Auto-generated method stub
+		return wp3JeunePathwayRepository.TableCountDetailGenreAllComm(commune);
+	}
+	
+	// DISTRICT DETAIL TABLEAU COUNT
+	
+	@Override
+	public List<Object[]> TableauCountDetailGenreDist(String district, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3JeunePathwayRepository.TableCountDetailGenreDist(district, sexe);
+	}
+	@Override
+	public List<Object[]> TableauCountDetailGenreAllDist(String district) {
+		// TODO Auto-generated method stub
+		return wp3JeunePathwayRepository.TableCountDetailGenreAllDist(district);
+	}
+	
+	@Override
+	public void deleteAll46() {
+		// TODO Auto-generated method stub
+		wp3JeunePathwayRepository.deleteAll();
+		
+	}
 }

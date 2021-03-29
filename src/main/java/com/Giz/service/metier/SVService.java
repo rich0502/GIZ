@@ -11,6 +11,8 @@ public interface SVService {
 
 	public void deleteSupportVideo(Long id_sv);
 	
+	public void deleteAllSv();
+	
 	public void addSupportVideo( String code_village, String nom_support, Date date_dissemination,
 			String receptionnaire, String genre_sv, String responsable, Date date_suivi);
 	

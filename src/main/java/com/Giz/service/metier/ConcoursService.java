@@ -18,5 +18,7 @@ public interface ConcoursService {
 	
 	public void modifyConcours(Concours concours,String code_village, boolean exist, Date date_eval, Date date_suivi, Long id_con);
 
+	public void deleteAllConcours();
+
 	
 }

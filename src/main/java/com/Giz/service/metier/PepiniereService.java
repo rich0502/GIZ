@@ -23,5 +23,7 @@ public interface PepiniereService {
 	
 	public void modifyPepiniere(Pepiniere pepiniere,String code_village, float x, float y, String nomResp, String genre_pep,
 			int annee_naiss, int annee_mise_place, boolean operationnel, Date date_suivi, Long id_pep);
+
+	public void deleteAllPepiniere();
 	
 }

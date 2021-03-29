@@ -158,4 +158,50 @@ public class Wp3EquipeTechMfrServiceImpl implements Wp3EquipeTechMfrService {
 		// TODO Auto-generated method stub
 		return wp3EquipeTechMfrRepository.TableDataDistAll(debut_date, fin_date);
 	}
+	
+	// VILLAGE DETAIL TABLEAU COUNT
+
+	@Override
+	public List<Object[]> TableauCountDetailGenre(String village, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.TableCountDetailGenre(village, sexe);
+	}
+	@Override
+	public List<Object[]> TableauCountDetailGenreAll(String village) {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.TableCountDetailGenreAll(village);
+	}
+	
+		// COMMUNE DETAIL TABLEAU COUNT
+	
+	@Override
+	public List<Object[]> TableauCountDetailGenreComm(String commune, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.TableCountDetailGenreComm(commune, sexe);
+	}
+	@Override
+	public List<Object[]> TableauCountDetailGenreAllComm(String commune) {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.TableCountDetailGenreAllComm(commune);
+	}
+	
+	// DISTRICT DETAIL TABLEAU COUNT
+	
+	@Override
+	public List<Object[]> TableauCountDetailGenreDist(String district, String sexe) {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.TableCountDetailGenreDist(district, sexe);
+	}
+	@Override
+	public List<Object[]> TableauCountDetailGenreAllDist(String district) {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.TableCountDetailGenreAllDist(district);
+	}
+	
+	@Override
+	public void deleteAll44() {
+		// TODO Auto-generated method stub
+		wp3EquipeTechMfrRepository.deleteAll();
+		
+	}
 }

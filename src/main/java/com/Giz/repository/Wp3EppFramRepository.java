@@ -91,4 +91,34 @@ public interface Wp3EppFramRepository extends JpaRepository<Wp3EppFram, Long> {
 			+ "	wp3_epp_fram.date_validation BETWEEN ?1 AND ?2 \r\n" + " and wp3_epp_fram.sexe = 'F'\r\n"
 			+ "	GROUP BY village.district) as femmes where hommes.district=femmes.district", nativeQuery = true)
 	List<Object[]> TableDataDistAll(Date debut_date, Date fin_date);
+
+	// VILLAGE DETAIL TABLEAU COUNT
+
+	@Query(value = "SELECT village.code_village,wp3_epp_fram.nom_ecole FROM village,wp3_epp_fram WHERE"
+			+ " village.code_village=wp3_epp_fram.code_village AND village.village = ?1   AND upper(wp3_epp_fram.sexe)= ?2 \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenre(String village, String sexe);
+
+	@Query(value = "SELECT village.code_village,wp3_epp_fram.nom_ecole FROM village,wp3_epp_fram WHERE"
+			+ " village.code_village=wp3_epp_fram.code_village AND village.village = ?1   \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreAll(String village);
+
+	// COMMUNE DETAIL TABLEAU COUNT
+
+	@Query(value = "SELECT village.code_village,wp3_epp_fram.nom_ecole FROM village,wp3_epp_fram WHERE"
+			+ " village.code_village=wp3_epp_fram.code_village AND village.commune = ?1   AND upper(wp3_epp_fram.sexe)= ?2 \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreComm(String commune, String sexe);
+
+	@Query(value = "SELECT village.code_village,wp3_epp_fram.nom_ecole FROM village,wp3_epp_fram WHERE"
+			+ " village.code_village=wp3_epp_fram.code_village AND village.commune = ?1   \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreAllComm(String commune);
+
+	// DISTRICT DETAIL TABLEAU COUNT
+
+	@Query(value = "SELECT village.code_village,wp3_epp_fram.nom_ecole FROM village,wp3_epp_fram WHERE"
+			+ " village.code_village=wp3_epp_fram.code_village AND village.district = ?1   AND upper(wp3_epp_fram.sexe)= ?2 \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreDist(String district, String sexe);
+
+	@Query(value = "SELECT village.code_village,wp3_epp_fram.nom_ecole FROM village,wp3_epp_fram WHERE"
+			+ " village.code_village=wp3_epp_fram.code_village AND village.district = ?1   \r\n", nativeQuery = true)
+	List<Object[]> TableCountDetailGenreAllDist(String district);
 }

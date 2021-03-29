@@ -1,58 +1,81 @@
 
-     <link rel="stylesheet" type="text/css" th:href="@{/flag-icon-css/flag-icon.min.css}" />
-    <!-- <head><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script></head> -->
-   
-    <header class="header-container">
-        <nav class="pds-header">        
-            <!-- <div class="logo-section">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/flag-icon-css/flag-icon.min.css}" />
+<!-- <head><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script></head> -->
+
+<header class="header-container">
+	<nav class="pds-header">
+		<!-- <div class="logo-section">
                 <img th:src="@{/img/giz_logo_notext.png}" class="img-logo" alt="logo">				
             </div> -->
-            
-        	 <div class=" menu-list">
-        	 	<div class="text-logo" >[[#{app.logo}]]</div>        	 	
-             	<a class="pds-btn" th:href="@{/accueil}"><span class="menu-item-label">[[#{menu.accueil}]]</span></a> 
-             	<a class="pds-btn" th:href="@{/uploadFile}"><span class="menu-item-label">[[#{menu.import}]]</span></a>    
-             	<a class="pds-btn" th:href="@{/edition}"><span class="menu-item-label">[[#{menu.edition}]]</span></a>   
-             	<a class="pds-btn" th:href="@{/trackerListWP1}"><span class="menu-item-label">[[#{menu.tracker}]]</span></a>       
-             	<a class="pds-btn" th:href="@{/indicateurWP1}" ><span class="menu-item-label">[[#{menu.indicateur}]]</span></a>  
-             	<a class="pds-btn" th:href="@{/analyses}"><span class="menu-item-label">[[#{menu.analyses}]]</span></a> 
-             	<a class="pds-btn" th:href="@{/galerie}"><span class="menu-item-label">[[#{menu.galeries}]]</span></a> 
-             	<a class="pds-btn" th:href="@{/uploadList}"><span class="menu-item-label">[[#{menu.archivages}]]</span></a>
-             	<a class="pds-btn" th:href="@{/storieList}"><span class="menu-item-label">[[#{menu.stories}]]</span></a>  
-             	<a class="pds-btn" th:href="@{/listbeneficiaire}"><span class="menu-item-label">BENEFICIAIRES</span></a>  
-             	<!-- <a class="pds-btn" th:href="@{/template}"><span class="menu-item-label">[[#{menu.template}]]</span></a> -->
-            </div>
-            <div class="user-menu" >
-                <div class="dropdown">
-                    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <div class="name-user-top">
-                         <img src="./img/pds_user_avatar.svg" th:src="@{/img/pds_user_avatar.svg}" class="img-logo" alt="logo">
-                        <div class="user-info-top"><span th:text="${#authentication.getPrincipal().getUsername()}"></span><small class="role-user">[[#{user}]]</small></div>
-                         </div>
-                    </a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item pds-profil" th:href="@{/profilForm}">[[#{profil}]]</a>
-                        <a class="dropdown-item pds-profil pds-profil-users" th:href="@{/userForm}">Utilisateurs</a>
-                        <a class="dropdown-item pds-profil pds-canevas " th:href="@{/template}">[[#{menu.template}]]</a>
-                        <a class="dropdown-item pds-profil pds-manage-content" th:href="@{/acc}">[[#{btn.accueil}]]</a>
-                        <a class="dropdown-item pds-logout" th:href="@{/logout}">[[#{logout}]]</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink_lang" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <div class="name-user-top">
-                            <i class="flag-icon flag-icon-gb img-logo" title="lang" data-lang="gb" id="lang_selector"></i>
-                        </div>
-                    </a>
-                    <div class="dropdown-menu lang-menu" aria-labelledby="dropdownMenuLink_lang">
-                        <a class="dropdown-item " th:href="@{?lang=us}"><i class="flag-icon flag-icon-gb" title="us" id="gb"></i> [[#{us}]]</a>
-                        <a class="dropdown-item " th:href="@{?lang=fr}"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> [[#{fr}]]</a>
-                    </div>
-                </div>
-                <script>
+		<div class=" menu-list">
+			<div class="text-logo">[[#{app.logo}]]</div>
+			<a class="pds-btn" th:href="@{/accueil}"><span
+				class="menu-item-label">[[#{menu.accueil}]]</span></a> <a
+				class="pds-btn" th:href="@{/uploadFile}"><span
+				class="menu-item-label">[[#{menu.import}]]</span></a> <a class="pds-btn"
+				th:href="@{/edition}"><span class="menu-item-label">[[#{menu.edition}]]</span></a>
+			<a class="pds-btn" th:href="@{/trackerListWP1}"><span
+				class="menu-item-label">[[#{menu.tracker}]]</span></a> <a
+				class="pds-btn" th:href="@{/indicateurWP1}"><span
+				class="menu-item-label">[[#{menu.indicateur}]]</span></a> <a
+				class="pds-btn" th:href="@{/analyses}"><span
+				class="menu-item-label">[[#{menu.analyses}]]</span></a> <a
+				class="pds-btn" th:href="@{/galerie}"><span
+				class="menu-item-label">[[#{menu.galeries}]]</span></a> <a
+				class="pds-btn" th:href="@{/uploadList}"><span
+				class="menu-item-label">[[#{menu.archivages}]]</span></a> <a
+				class="pds-btn" th:href="@{/storieList}"><span
+				class="menu-item-label">[[#{menu.stories}]]</span></a> <a
+				class="pds-btn" th:href="@{/listbeneficiaire}"><span
+				class="menu-item-label">BENEFICIAIRES</span></a>
+			<!-- <a class="pds-btn" th:href="@{/template}"><span class="menu-item-label">[[#{menu.template}]]</span></a> -->
+		</div>
+		<div class="user-menu">
+			<div class="dropdown">
+				<a class="btn dropdown-toggle" href="#" role="button"
+					id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">
+					<div class="name-user-top">
+						<img src="./img/pds_user_avatar.svg"
+							th:src="@{/img/pds_user_avatar.svg}" class="img-logo" alt="logo">
+						<div class="user-info-top">
+							<span th:text="${#authentication.getPrincipal().getUsername()}"></span><small
+								class="role-user">[[#{user}]]</small>
+						</div>
+					</div>
+				</a>
+
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					<a class="dropdown-item pds-profil" th:href="@{/profilForm}">[[#{profil}]]</a>
+					<a class="dropdown-item pds-profil pds-profil-users"
+						th:href="@{/userForm}">Utilisateurs</a> <a
+						class="dropdown-item pds-profil pds-canevas "
+						th:href="@{/template}">[[#{menu.template}]]</a> <a
+						class="dropdown-item pds-profil pds-manage-content"
+						th:href="@{/acc}">[[#{btn.accueil}]]</a> <a
+						class="dropdown-item pds-logout" th:href="@{/logout}">[[#{logout}]]</a>
+				</div>
+			</div>
+			<div class="dropdown">
+				<a class="btn dropdown-toggle" href="#" role="button"
+					id="dropdownMenuLink_lang" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false">
+					<div class="name-user-top">
+						<i class="flag-icon flag-icon-gb img-logo" title="lang"
+							data-lang="gb" id="lang_selector"></i>
+					</div>
+				</a>
+				<div class="dropdown-menu lang-menu"
+					aria-labelledby="dropdownMenuLink_lang">
+					<a class="dropdown-item " th:href="@{?lang=us}"><i
+						class="flag-icon flag-icon-gb" title="us" id="gb"></i> [[#{us}]]</a> <a
+						class="dropdown-item " th:href="@{?lang=fr}"><i
+						class="flag-icon flag-icon-fr" title="fr" id="fr"></i> [[#{fr}]]</a>
+				</div>
+			</div>
+			<script>
                     $(document).ready(function() {
                         let current_lang = $("#lang_selector").attr('data-lang')
                         let location = window.location.search
@@ -67,14 +90,50 @@
                             $("#lang_selector").toggleClass("flag-icon-fr")
                             $("#lang_selector").attr('data-lang', 'fr')
                         }
-                            
-                        
+                                                    
                     })
-                    
+                       				
+    				function show_modal(){
+    					$('#myModal').modal('show');
+					}   
+
+					function hide_modal(){
+    					$('#myModal').modal('hide');
+					}            
                 </script>
-                
-            </div>        
-        </nav>
-        
-    </header>
-    
+                <script>
+					function SupprimerTout() {
+  						alert("Êtes-vous sûr de vouloir tout supprimer!");
+					}
+				</script>
+			<div class="text-center" th:if="${success}">
+				 <script type="text/javascript">
+    				$(window).on('load', function() {
+        			$('#myModal').modal('show');
+        			window.setTimeout(hide_modal, 2500);
+    				});
+				</script>
+			</div>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+				aria-labelledby="deleteModalTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content card-body">
+						<div class="modal-header">
+							<h2 class="page-title modal-title" id="exampleModalLongTitle">Message de notification</h2>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body p-modal">
+							<h1 th:text="${success}"></h1>
+						</div>
+						<div class="modal-footer btn-row">
+							<button type="button" class="gbtn cancel" data-dismiss="modal">[[#{fermer}]]</button>
+						</div>
+					</div>
+				</div>
+			</div>
+	</nav>
+
+</header>

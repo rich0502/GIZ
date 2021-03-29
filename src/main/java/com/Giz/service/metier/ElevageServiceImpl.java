@@ -83,6 +83,13 @@ public class ElevageServiceImpl implements ElevageService {
 		
 	}
 
+	@Override
+	public void deleteElevageAll() {
+		// TODO Auto-generated method stub
+		elevageRepository.deleteAll();
+		
+	}
+
 	
 	
 }

@@ -120,6 +120,7 @@ public class UserServiceImpl implements UserService {
 		return repository.save(user);
 	}
 
+	@SuppressWarnings("unused")
 	private boolean isLoggedUserADMIN() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails loggedUser = null;

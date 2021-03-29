@@ -56,6 +56,12 @@ public class SensibEnvServiceImpl implements SensiEnvService {
 		
 	}
 
+	@Override
+	public void deleteAllSE() {
+		// TODO Auto-generated method stub
+		sensiEnvRepository.deleteAll();
+	}
+
 	
 
 }

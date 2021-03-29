@@ -50,6 +50,12 @@ public class Wp1AController {
 	FormateurService formateursService;
 
 	/* CANEVAS FERME DE REFERENCE */
+	
+	@RequestMapping("/deleteAllFerme")
+	public String deleteAllFerme() {
+		elevageService.deleteElevageAll();
+		return "redirect:/listFerme";
+	}
 
 	@RequestMapping("/uploadFerme")
 	public String uploadFormateur(Model model) {
@@ -81,7 +87,7 @@ public class Wp1AController {
 			@RequestParam("nomResponsable") int nomResponsable, @RequestParam("x") int x, @RequestParam("y") int y,
 			@RequestParam("genre_elev") int genre_elev, @RequestParam("annee_naiss") int annee_naiss,
 			@RequestParam("operationnalite") int operationnalite, @RequestParam("date_suivi") int date_suivi,
-			Model model) throws IOException, ParseException {
+			Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -97,7 +103,7 @@ public class Wp1AController {
 					operationnels);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listFerme";
 	}
 
@@ -119,13 +125,19 @@ public class Wp1AController {
 	}
 
 	@RequestMapping("/listFerme")
-	public String listFormateur(Model model) {
+	public String listFerme(Model model) {
 		List<Elevage> ferme = elevageService.ListElevage();
 		model.addAttribute("ferme", ferme);
-		return "wp1/Elevage/listFerme";
+		return "wp1/elevage/listFerme";
 	}
 
 	/* CANEVAS PARCELLES AGC OPERATION */
+	
+	@RequestMapping("/deleteAllPtAGC")
+	public String deleteAllPtAGC() {
+		parcelleTestService.deleteAllPtAGC();
+		return "redirect:/listPtAGC";
+	}
 
 	@RequestMapping("/uploadPtAGC")
 	public String uploadFomPtAGC(Model model) {
@@ -158,7 +170,7 @@ public class Wp1AController {
 			@RequestParam("annee_naiss") int annee_naiss, @RequestParam("genre_pt") int genre_pt,
 			@RequestParam("superficies") int superficies, @RequestParam("date_suivi") int date_suivi,
 			@RequestParam("technique_exergue") int technique_exergue,
-			@RequestParam("operationnalite") int operationnalite, Model model) throws IOException, ParseException {
+			@RequestParam("operationnalite") int operationnalite, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -176,7 +188,7 @@ public class Wp1AController {
 					superficie, operationnels, date_suiv, technique_exergues);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listPtAGC";
 	}
 
@@ -238,7 +250,8 @@ public class Wp1AController {
 			@RequestParam("y") int y, @RequestParam("nomResponsable") int nomResponsable,
 			@RequestParam("annee_naiss") int annee_naiss, @RequestParam("genre_pt") int genre_pt,
 			@RequestParam("date_suivi") int date_suivi, @RequestParam("nbr_homme") int nbr_homme,
-			@RequestParam("nbr_femme") int nbr_femme, @RequestParam("nbr_participant") int nbr_participant, Model model)
+			@RequestParam("nbr_femme") int nbr_femme, @RequestParam("nbr_participant") int nbr_participant,
+			Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
@@ -257,7 +270,7 @@ public class Wp1AController {
 					annee_nais, nbr_participants, nbr_hommes, nbr_femmes, date_suiv);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listPtParticipant";
 	}
 
@@ -290,6 +303,12 @@ public class Wp1AController {
 	 * CANEVAS ELEVEURS FORMES ET ADOPTION DES BONNES PRATIQUES CONSEILLEES EN
 	 * ELEVAGE
 	 */
+	
+	@RequestMapping("/deleteAllFormations")
+	public String deleteAllFormations() {
+		formationsService.deleteAllFormations();
+		return "redirect:/listFomations";
+	}
 
 	@RequestMapping("/uploadFomations")
 	public String uploadFomations(Model model) {
@@ -322,7 +341,7 @@ public class Wp1AController {
 			@RequestParam("genre_form") int genre_form, @RequestParam("genre_form") int adoption,
 			@RequestParam("pratique_adopte") int pratique_adopte, @RequestParam("formation_recu") int formation_recu,
 			@RequestParam("date_forma") int date_forma, @RequestParam("theme_formation") int theme_formation,
-			Model model) throws IOException, ParseException {
+			Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -340,7 +359,7 @@ public class Wp1AController {
 					date_frms, adoptions, pratique_adoptes, type_formations);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listFomations";
 	}
 
@@ -380,6 +399,12 @@ public class Wp1AController {
 	}
 
 	/* CANEVAS FORMATEURS EN ELEVAGE OPERATIONNELS */
+	
+	@RequestMapping("/deleteAllFormElev")
+	public String deleteAllFormElev() {
+		formateursService.deleteAllFormElev();
+		return "redirect:/listFormElev";
+	}
 
 	@RequestMapping("/uploadFormElev")
 	public String uploadFormateurElev(Model model) {
@@ -411,7 +436,7 @@ public class Wp1AController {
 			@RequestParam("genre_ft") int genre_ft, @RequestParam("nomPrenom") int nomPrenom,
 			@RequestParam("annee_naiss") int annee_naiss, @RequestParam("operationnalite") int operationnalite,
 			@RequestParam("date_mise_place") int date_mise_place, @RequestParam("date_suivi") int date_suivi,
-			Model model) throws IOException, ParseException {
+			Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -428,7 +453,7 @@ public class Wp1AController {
 			;
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listFormElev";
 	}
 	
@@ -496,7 +521,7 @@ public class Wp1AController {
 			@RequestParam("nom_eleveur") int nom_eleveur, @RequestParam("annee_naiss") int annee_naiss,
 			@RequestParam("genre_form") int genre_form, @RequestParam("formation_recu") int formation_recu,
 			@RequestParam("date_forma") int date_forma, @RequestParam("theme_formation") int theme_formation,
-			Model model) throws IOException, ParseException {
+			Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -513,7 +538,7 @@ public class Wp1AController {
 			;
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listFormFBS";
 	}
 	

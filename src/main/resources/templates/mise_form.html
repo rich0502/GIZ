@@ -25,6 +25,7 @@
 	 <!-- Nuestro css-->
     <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">
+    <link rel="stylesheet"  type="text/css" th:href="@{/css/giz.css}" />
 
 </head>
 <body>
@@ -32,7 +33,6 @@
 <script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
 <script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
 <script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
-<link rel="stylesheet"  type="text/css" th:href="@{/css/giz.css}" />
 	<section class="main">
 		<div class="container">
 			<div class="main-section" id="myTab" role="tablist">
@@ -108,10 +108,5 @@
 	</section>
 	
 </body>
-
-<span class="span-user" th:object="${nomUser}"> 
-<span class="span-user" th:text="${nomUser}" id="lastUser">  
-<span th:text="${nomUser.username}"></span>
-</span>
 
 </html>

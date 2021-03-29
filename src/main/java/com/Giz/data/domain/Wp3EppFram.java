@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "wp3_epp_fram")
-public class Wp3EppFram {
+public class Wp3EppFram extends Auditable<String> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -13,6 +13,8 @@ public interface ElevageService {
 
 	public void deleteElevage(Long id_elev);
 	
+	public void deleteElevageAll();
+	
 	public void addElevage(String code_village, float x, float y, String nomResponsable, String genre_elev,
 			int annee_naiss, String pratique_realise, int date_mise, String tf, double nbr_visiteurs,
 			Date date_suivi, boolean operationnel);

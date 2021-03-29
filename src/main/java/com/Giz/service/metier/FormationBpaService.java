@@ -21,5 +21,7 @@ public interface FormationBpaService {
 	
 	public void modifyFormation_bpa(Formation_bpa formation_bpa,String code_pro, String code_village, String nomPrenom_bpa, String genre_ai,
 			int annee_naiss, String frm_recu, Date date_frm, String theme_frm, Long id_bpa);
+
+	public void deleteAllFomBpa();
 	
 }

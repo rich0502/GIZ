@@ -82,6 +82,12 @@ public class Wp1BController {
 	PvgService pvgService;
 
 	/* CANEVAS DISSEMINATION DE SUPPORT VIDEO AU NIVEAU VILLAGE */
+	
+	@RequestMapping("/deleteAllSv")
+	public String deleteAllSv() {
+		svService.deleteAllSv();
+		return "redirect:/listSv";
+	}
 
 	@RequestMapping("/uploadSv")
 	public String uploadSv(Model model) {
@@ -112,8 +118,9 @@ public class Wp1BController {
 	public String saveFormateur(@RequestParam("code_village") int code_village,
 			@RequestParam("nom_support") int nom_support, @RequestParam("date_dissemination") int date_dissemination,
 			@RequestParam("receptionnaire") int receptionnaire, @RequestParam("genre_sv") int genre_sv,
-			@RequestParam("responsable") int responsable, @RequestParam("date_suivi") int date_suivi, Model model)
-			throws IOException, ParseException {
+			@RequestParam("responsable") int responsable, @RequestParam("date_suivi") int date_suivi, 
+			Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		svService.deleteAllSv();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -128,7 +135,7 @@ public class Wp1BController {
 					responsables, date_suivis);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listSv";
 	}
 
@@ -158,7 +165,13 @@ public class Wp1BController {
 	}
 
 	/* CANEVAS FEMMES LEADERS APPUYEES */
-
+	
+	@RequestMapping("/deleteAllLeaders")
+	public String deleteAllLeaders() {
+		leadersService.deleteAllLeaders();
+		return "redirect:/listLeaders";
+	}
+	
 	@RequestMapping("/uploadLeaders")
 	public String uploadLeaders(Model model) {
 		String[][] scList = ListeWp.wp();
@@ -188,7 +201,8 @@ public class Wp1BController {
 	public String saveLeaders(@RequestParam("code_village") int code_village, @RequestParam("nomPrenom") int nomPrenom,
 			@RequestParam("operationnalite") int operationnalite, @RequestParam("genre_pt") int genre_pt,
 			@RequestParam("annee_naiss") int annee_naiss, @RequestParam("date_mise") int date_mise,
-			@RequestParam("date_suivi") int date_suivi, Model model) throws IOException, ParseException {
+			@RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		leadersService.deleteAllLeaders();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -203,7 +217,7 @@ public class Wp1BController {
 					date_suivis);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listLeaders";
 	}
 
@@ -231,6 +245,12 @@ public class Wp1BController {
 	}
 
 	/* CANEVAS COOPERATIVE FAIRTRADE RENFORCEE */
+	
+	@RequestMapping("/deleteAllCooperative")
+	public String deleteAllCooperative() {
+		cooperativeService.deleteAllCooperative();
+		return "redirect:/listCooperative";
+	}
 
 	@RequestMapping("/uploadCooperative")
 	public String uploadCooperative(Model model) {
@@ -261,7 +281,8 @@ public class Wp1BController {
 	public String saveCooperative(@RequestParam("code_village") int code_village, @RequestParam("exist") int exist,
 			@RequestParam("nom_coop") int nom_coop, @RequestParam("environnement") int environnement,
 			@RequestParam("socio") int socio, @RequestParam("date_creation") int date_creation,
-			@RequestParam("date_suivi") int date_suivi, Model model) throws IOException, ParseException {
+			@RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		cooperativeService.deleteAllCooperative();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -276,7 +297,7 @@ public class Wp1BController {
 					date_suivis);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listCooperative";
 	}
 
@@ -307,6 +328,12 @@ public class Wp1BController {
 
 	/* CANEVAS FOCUS GROUP ENVIRONNEMENTAL */
 
+	@RequestMapping("/deleteAllFG")
+	public String deleteAllFG() {
+		focusGroupService.deleteAllFG();
+		return "redirect:/listFG";
+	}
+	
 	@RequestMapping("/uploadFG")
 	public String uploadFG(Model model) {
 		String[][] scList = ListeWp.wp();
@@ -336,7 +363,8 @@ public class Wp1BController {
 	public String saveFG(@RequestParam("code_village") int code_village, @RequestParam("realisation") int realisation,
 			@RequestParam("nomResp") int nomResp, @RequestParam("genre_fg") int genre_fg,
 			@RequestParam("risque_env") int risque_env, @RequestParam("mesure_prise") int mesure_prise,
-			@RequestParam("date_fg") int date_fg, Model model) throws IOException, ParseException {
+			@RequestParam("date_fg") int date_fg, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		focusGroupService.deleteAllFG();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -351,7 +379,7 @@ public class Wp1BController {
 					date_fgs);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listFG";
 	}
 
@@ -383,6 +411,12 @@ public class Wp1BController {
 	 * CANEVAS THEME REALISEE SUR L' ENVIRONNEMENT AU NIVEAU D' EPP ET LES YOUTH
 	 * COMMITTEE
 	 */
+	
+	@RequestMapping("/deleteAllTheme")
+	public String deleteAllTheme() {
+		themeService.deleteAllTheme();
+		return "redirect:/listTheme";
+	}
 
 	@RequestMapping("/uploadTheme")
 	public String uploadTheme(Model model) {
@@ -412,7 +446,8 @@ public class Wp1BController {
 	@PostMapping("/saveTheme")
 	public String saveTheme(@RequestParam("code_village") int code_village, @RequestParam("env") int env,
 			@RequestParam("epp_youth") int epp_youth, @RequestParam("activites") int activites,
-			@RequestParam("date_suivi") int date_suivi, Model model) throws IOException, ParseException {
+			@RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		themeService.deleteAllTheme();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -424,7 +459,7 @@ public class Wp1BController {
 			themeService.addThemeRealise(code_villag, epp_youths, envs, activite, date_suivis);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listTheme";
 	}
 
@@ -451,6 +486,12 @@ public class Wp1BController {
 	}
 
 	/* CANEVAS EXISTENCE DE CONCOURS ENVIRONNEMENTAL */
+	
+	@RequestMapping("/deleteAllConcours")
+	public String deleteAllConcours() {
+		concoursService.deleteAllConcours();
+		return "redirect:/listConcours";
+	}
 
 	@RequestMapping("/uploadConcours")
 	public String uploadConcours(Model model) {
@@ -479,8 +520,9 @@ public class Wp1BController {
 
 	@PostMapping("/saveConcours")
 	public String saveConcours(@RequestParam("code_village") int code_village, @RequestParam("exist") int exist,
-			@RequestParam("date_eval") int date_eval, @RequestParam("date_suivi") int date_suivi, Model model)
+			@RequestParam("date_eval") int date_eval, @RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
+		concoursService.deleteAllConcours();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -491,7 +533,7 @@ public class Wp1BController {
 			concoursService.addConcours(code_villag, exists, date_evals, date_suivis);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listConcours";
 	}
 
@@ -518,6 +560,12 @@ public class Wp1BController {
 	}
 
 	/* CANEVAS SUPERFICIES ZONES FORESTIERES */
+	
+	@RequestMapping("/deleteAllZF")
+	public String deleteAllZF() {
+		zoneForest.deleteAllZF();
+		return "redirect:/listZF";
+	}
 
 	@RequestMapping("/uploadZF")
 	public String uploadZF(Model model) {
@@ -546,8 +594,9 @@ public class Wp1BController {
 
 	@PostMapping("/saveZF")
 	public String saveZF(@RequestParam("code_village") int code_village, @RequestParam("exist_zn") int exist_zn,
-			@RequestParam("superficies") int superficies, @RequestParam("date_suivi") int date_suivi, Model model)
+			@RequestParam("superficies") int superficies, @RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
+		zoneForest.deleteAllZF();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -558,7 +607,7 @@ public class Wp1BController {
 			zoneForest.addZoneForest(code_villag, exist_zns, superficie, date_suivis);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listZF";
 	}
 
@@ -585,6 +634,12 @@ public class Wp1BController {
 	}
 
 	/* CANEVAS SUPERFICIE ZONE REBOISEE */
+	
+	@RequestMapping("/deleteAllZR")
+	public String deleteAllZR() {
+		zoneRebService.deleteAllZR();
+		return "redirect:/listZR";
+	}
 
 	@RequestMapping("/uploadZR")
 	public String uploadZR(Model model) {
@@ -614,8 +669,9 @@ public class Wp1BController {
 	@PostMapping("/saveZR")
 	public String saveZR(@RequestParam("code_village") int code_village, @RequestParam("exist_zr") int exist_zr,
 			@RequestParam("superficies") int superficies, @RequestParam("jeunePlant") int jeunePlant,
-			@RequestParam("nbrTotalJeune") int nbrTotalJeune, @RequestParam("date_suivi") int date_suivi, Model model)
+			@RequestParam("nbrTotalJeune") int nbrTotalJeune, @RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
+		zoneRebService.deleteAllZR();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -628,7 +684,7 @@ public class Wp1BController {
 			zoneRebService.addZoneReboise(code_villag, exist_zrs, superficie, jeunePlants, nbrTotalJeunes, date_suivis);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listZR";
 	}
 
@@ -656,6 +712,12 @@ public class Wp1BController {
 	}
 
 	/* CANEVAS SENSIBILISATION ENVIRONNEMENTALE */
+	
+	@RequestMapping("/deleteAllSE")
+	public String deleteAllSE() {
+		sensiEnvService.deleteAllSE();
+		return "redirect:/listSE";
+	}
 
 	@RequestMapping("/uploadSE")
 	public String uploadSE(Model model) {
@@ -686,7 +748,8 @@ public class Wp1BController {
 	public String saveSE(@RequestParam("code_village") int code_village, @RequestParam("exist_sens") int exist_sens,
 			@RequestParam("theme_sens") int theme_sens, @RequestParam("nbr_participant") int nbr_participant,
 			@RequestParam("nbr_homme") int nbr_homme, @RequestParam("nbr_femme") int nbr_femme,
-			@RequestParam("date_fin") int date_fin, Model model) throws IOException, ParseException {
+			@RequestParam("date_fin") int date_fin, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		sensiEnvService.deleteAllSE();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -701,7 +764,7 @@ public class Wp1BController {
 					nbr_femmes);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listSE";
 	}
 
@@ -731,6 +794,12 @@ public class Wp1BController {
 
 	/* CANEVAS CONTROLEUR INTERNE FORME ET EQUIPE */
 
+	@RequestMapping("/deleteAllCI")
+	public String deleteAllCI() {
+		ciFormeService.deleteAllCI();
+		return "redirect:/listCI";
+	}
+	
 	@RequestMapping("/uploadCI")
 	public String uploadCI(Model model) {
 		String[][] scList = ListeWp.wp();
@@ -760,8 +829,9 @@ public class Wp1BController {
 	public String saveCI(@RequestParam("code_village") int code_village, @RequestParam("nomPrenom_ci") int nomPrenom_ci,
 			@RequestParam("genre_ci") int genre_ci, @RequestParam("type_materiel") int type_materiel,
 			@RequestParam("annee_naiss") int annee_naiss, @RequestParam("date_form") int date_form,
-			@RequestParam("equipe") int equipe, @RequestParam("date_dotation") int date_dotation, Model model)
+			@RequestParam("equipe") int equipe, @RequestParam("date_dotation") int date_dotation, Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
+		ciFormeService.deleteAllCI();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -777,7 +847,7 @@ public class Wp1BController {
 					type_materiels, date_dotations);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listCI";
 	}
 
@@ -810,6 +880,12 @@ public class Wp1BController {
 	 * CANEVAS PARCELLES DE VANILLES ET DE GINGEMBRES QUI ONT FAIT L'OBJET DE SUIVI
 	 * NUMERIQUE
 	 */
+	
+	@RequestMapping("/deleteAllPvg")
+	public String deleteAllPvg() {
+		pvgService.deleteAllPvg();
+		return "redirect:/listPvg";
+	}
 
 	@RequestMapping("/uploadPvg")
 	public String uploadPvg(Model model) {
@@ -842,7 +918,8 @@ public class Wp1BController {
 			@RequestParam("date_suivi") int date_suivi, @RequestParam("annee_naiss") int annee_naiss,
 			@RequestParam("suivi_numeric") int suivi_numeric,
 			@RequestParam("diffusion_resultat") int diffusion_resultat, @RequestParam("genre_pvg") int genre_pvg,
-			Model model) throws IOException, ParseException {
+			Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		pvgService.deleteAllPvg();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -860,7 +937,7 @@ public class Wp1BController {
 					suivi_numerics, diffusion_resultats, date_suivis);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listPvg";
 	}
 

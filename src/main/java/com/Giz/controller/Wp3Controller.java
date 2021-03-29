@@ -142,8 +142,8 @@ public class Wp3Controller {
 			@RequestParam("organisme_formateur") int organisme_formateur,
 			@RequestParam("frm_tech_suivi") int frm_tech_suivi, @RequestParam("date_fin_frm") int date_fin_frm,
 			@RequestParam("activite_eco") int activite_eco, @RequestParam("date_demarrage") int date_demarrage,
-			Model model) throws IOException, ParseException {
-
+			Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		wp3ActivEcoJeuneService.deleteAll37();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -159,12 +159,11 @@ public class Wp3Controller {
 			java.util.Date date_demarrage37 = row.getCell(date_demarrage).getDateCellValue();
 
 			String activite = "CANEVAS ACTIVITE ECONOMIQUE JEUNE";
-
 			wp3ActivEcoJeuneService.addWp3ActivEcoJeune(code_village37, nom_prenom37, sexe37, annee_naissance37,
 					organisme_formateur37, frm_tech_suivi37, date_fin_frm37, activite_eco37, date_demarrage37,
 					activite);
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listWp3ActivEcoJeune";
 	}
 
@@ -297,8 +296,8 @@ public class Wp3Controller {
 			@RequestParam("nom_comite") int nom_comite, @RequestParam("mois_annee_creation") int mois_annee_creation,
 			@RequestParam("committee_actif") int committee_actif, @RequestParam("date_suivi") int date_suivi,
 			@RequestParam("effectif_membre") int effectif_membre, @RequestParam("sexe_h") int sexe_h,
-			@RequestParam("sexe_f") int sexe_f, Model model) throws IOException, ParseException {
-
+			@RequestParam("sexe_f") int sexe_f, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		wp3CommitteeActifService.deleteAll38();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -316,7 +315,7 @@ public class Wp3Controller {
 					committee_actif38, date_suivi38, effectif_membre38, sexe_h38, sexe_f38);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listWp3CommitteeActif";
 	}
 
@@ -419,8 +418,8 @@ public class Wp3Controller {
 			@RequestParam("organisme_formateur") int organisme_formateur,
 			@RequestParam("formation_recue") int formation_recue, @RequestParam("theme") int theme,
 			@RequestParam("date_fin") int date_fin, @RequestParam("etape_suivre") int etape_suivre,
-			@RequestParam("date_realise") int date_realise, Model model) throws IOException, ParseException {
-
+			@RequestParam("date_realise") int date_realise, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		wp3FormTechMetierJeuneService.deleteAll39();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -439,7 +438,7 @@ public class Wp3Controller {
 					organisme_formateur39, formation_recue39, theme39, date_fin39, etape_suivre39, date_realise39);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listWp3FormTechMetierJeune";
 	}
 
@@ -547,10 +546,10 @@ public class Wp3Controller {
 			@RequestParam("nom_prenom") int nom_prenom, @RequestParam("sexe") int sexe,
 			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("demarrage_unite") int demarrage_unite,
 			@RequestParam("date_dem") int date_dem, @RequestParam("type_activite") int type_activite,
-			@RequestParam("theme1_traite") int theme1_traite, @RequestParam("date_suivi1") int date_suivi1, Model model)
+			@RequestParam("theme1_traite") int theme1_traite, @RequestParam("date_suivi1") int date_suivi1, Model model, RedirectAttributes redirAttrs)
 
 			throws IOException, ParseException {
-
+		wp3UniteElevJeuneService.deleteAll40();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -571,7 +570,7 @@ public class Wp3Controller {
 			wp3UniteElevJeuneService.addWp3UniteElevJeune(code_village40, nom_prenom40, sexe40, annee_naissance40,
 					demarrage_unite40, date_dem40, type_activite40, theme1_traite40, date_suivi140, activite);
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listWp3UniteElevJeune";
 	}
 
@@ -691,8 +690,8 @@ public class Wp3Controller {
 			@RequestParam("annee_etude") int annee_etude, @RequestParam("date_sortie") int date_sortie,
 			@RequestParam("type_projet") int type_projet, @RequestParam("niveau_demarrage") int niveau_demarrage,
 			@RequestParam("date_validation") int date_validation, @RequestParam("accompagne") int accompagne,
-			@RequestParam("date_suivi1") int date_suivi1, Model model) throws IOException, ParseException {
-
+			@RequestParam("date_suivi1") int date_suivi1, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		wp3ElevMfrService.deleteAll41();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -720,7 +719,7 @@ public class Wp3Controller {
 					inscrit41, annee_inscription41, date_suivi41, type_frm41, annee_etude41, date_sortie41,
 					type_projet41, niveau_demarrage41, date_validation41, accompagne41, date_suivi141, activite);
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listWp3ElevMfr";
 	}
 
@@ -826,8 +825,8 @@ public class Wp3Controller {
 			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("forme") int forme,
 			@RequestParam("accompagne_sortie") int accompagne_sortie,
 			@RequestParam("type_accompagnement") int type_accompagnement, @RequestParam("date_suivi") int date_suivi,
-			Model model) throws IOException, ParseException {
-
+			Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		wp3JeuneFormeMfrService.deleteAll42();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -847,7 +846,7 @@ public class Wp3Controller {
 					forme42, accompagne_sortie42, type_accompagnement42, date_suivi42, activite);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listWp3JeuneFormeMfr";
 	}
 
@@ -952,8 +951,8 @@ public class Wp3Controller {
 			@RequestParam("reglement_interieur") int reglement_interieur,
 			@RequestParam("recepisse_mfr") int recepisse_mfr, @RequestParam("date_recepisse") int date_recepisse,
 			@RequestParam("plan_strategique") int plan_strategique,
-			@RequestParam("date_validation") int date_validation, Model model) throws IOException, ParseException {
-
+			@RequestParam("date_validation") int date_validation, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		wp3FedeMfrService.deleteAll43();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -972,7 +971,7 @@ public class Wp3Controller {
 			wp3FedeMfrService.addWp3FedeMfr(code_region43, nom_mfr43, annee_miseplace43, statut43,
 					reglement_interieur43, recepisse_mfr43, date_recepisse43, plan_strategique43, date_validation43);
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listWp3FedeMfr";
 	}
 
@@ -1071,10 +1070,9 @@ public class Wp3Controller {
 	public String saveWp3EquipeTechMfr(@RequestParam("code_village") int code_village,
 			@RequestParam("nom_prenom") int nom_prenom, @RequestParam("sexe") int sexe,
 			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("Frm_recue1") int Frm_recue1,
-
-			@RequestParam("competence_frm") int competence_frm, @RequestParam("date_eval") int date_eval, Model model)
-			throws IOException, ParseException {
-
+			@RequestParam("competence_frm") int competence_frm, @RequestParam("date_eval") int date_eval, Model model, 
+			RedirectAttributes redirAttrs) throws IOException, ParseException {
+		wp3EquipeTechMfrService.deleteAll44();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -1093,7 +1091,7 @@ public class Wp3Controller {
 					Frm_recue144, competence_frm44, date_eval44, activite);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listWp3EquipeTechMfr";
 	}
 
@@ -1188,8 +1186,8 @@ public class Wp3Controller {
 	public String saveWp3AgrDevMfr(@RequestParam("code_village") int code_village, @RequestParam("nom_mfr") int nom_mfr,
 			@RequestParam("annee_miseplace") int annee_miseplace, @RequestParam("agr_developpe") int agr_developpe,
 			@RequestParam("date_eval") int date_eval, @RequestParam("type_agr_dev1") int type_agr_dev1,
-			@RequestParam("date_suivi1") int date_suivi1, Model model) throws IOException, ParseException {
-
+			@RequestParam("date_suivi1") int date_suivi1, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		wp3AgrDevMfrService.deleteAll45();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -1205,7 +1203,7 @@ public class Wp3Controller {
 					date_eval38, type_agr_dev138, date_suivi138);
 			;
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listWp3AgrDevMfr";
 	}
 
@@ -1300,8 +1298,8 @@ public class Wp3Controller {
 	public String saveWp3JeunePathway(@RequestParam("code_village") int code_village,
 			@RequestParam("nom_prenom") int nom_prenom, @RequestParam("sexe") int sexe,
 			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("date_fin_frm") int date_fin_frm,
-			Model model) throws IOException, ParseException {
-
+			Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		wp3JeunePathwayService.deleteAll46();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -1318,7 +1316,7 @@ public class Wp3Controller {
 					date_fin_frm45, activite);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listWp3JeunePathway";
 	}
 
@@ -1412,8 +1410,8 @@ public class Wp3Controller {
 	public String saveWp3EppFram(@RequestParam("code_village") int code_village,
 			@RequestParam("nom_ecole") int nom_ecole, @RequestParam("projet_fram") int projet_fram,
 			@RequestParam("projet_valide") int projet_valide, @RequestParam("type_projet") int type_projet,
-			@RequestParam("date_validation") int date_validation, Model model) throws IOException, ParseException {
-
+			@RequestParam("date_validation") int date_validation, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		wp3EppFramService.deleteAll47();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -1429,7 +1427,7 @@ public class Wp3Controller {
 					date_validation41);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listWp3EppFram";
 	}
 
@@ -1522,9 +1520,9 @@ public class Wp3Controller {
 	@PostMapping("/saveWp3SanteeComm")
 	public String saveWp3SanteeComm(@RequestParam("code_village") int code_village, @RequestParam("csb") int csb,
 			@RequestParam("gps_x") int gps_x, @RequestParam("gps_y") int gps_y,
-			@RequestParam("repro_sexuelle") int repro_sexuelle, @RequestParam("date_suivi") int date_suivi, Model model)
-			throws IOException, ParseException {
-
+			@RequestParam("repro_sexuelle") int repro_sexuelle, @RequestParam("date_suivi") int date_suivi, Model model, 
+			RedirectAttributes redirAttrs) throws IOException, ParseException {
+		wp3SanteeCommService.deleteAll48();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -1535,11 +1533,11 @@ public class Wp3Controller {
 			float gps_y48 = (float) row.getCell(gps_y).getNumericCellValue();
 			String repro_sexuelle48 = row.getCell(repro_sexuelle).getStringCellValue();
 			java.util.Date date_suivi48 = row.getCell(date_suivi).getDateCellValue();
-
 			wp3SanteeCommService.addWp3SanteeComm(code_village48, csb48, gps_x48, gps_y48, repro_sexuelle48,
 					date_suivi48);
 		}
-
+		
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listWp3SanteeComm";
 	}
 
@@ -1633,8 +1631,8 @@ public class Wp3Controller {
 	public String saveWp3PeerEducator(@RequestParam("code_village") int code_village,
 			@RequestParam("nom_prenom") int nom_prenom, @RequestParam("sexe") int sexe,
 			@RequestParam("annee_naissance") int annee_naissance, @RequestParam("operationnelle") int operationnelle,
-			@RequestParam("date_suivi") int date_suivi, Model model) throws IOException, ParseException {
-
+			@RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		wp3PeerEducatorService.deleteAll49();
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -1651,7 +1649,7 @@ public class Wp3Controller {
 			wp3PeerEducatorService.addWp3PeerEducator(code_village47, nom_prenom47, sexe47, annee_naissance47,
 					operationnelle47, date_suivi47, activite);
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listWp3PeerEducator";
 	}
 
@@ -1683,5 +1681,84 @@ public class Wp3Controller {
 	}
 
 	/* END #49-CANEVAS PEER EDUCATOR */
-
+	
+	// SUPPRIMER TOUT //
+	
+	@RequestMapping("/deleteAll37")
+	public String deleteAll37() {
+		wp3ActivEcoJeuneService.deleteAll37();
+		return "redirect:/listWp3ActivEcoJeune";
+	}
+	
+	@RequestMapping("/deleteAll38")
+	public String deleteAll38() {
+		wp3CommitteeActifService.deleteAll38();
+		return "redirect:/listWp3CommitteeActif";
+	}
+	
+	@RequestMapping("/deleteAll39")
+	public String deleteAll39() {
+		wp3FormTechMetierJeuneService.deleteAll39();
+		return "redirect:/listWp3FormTechMetierJeune";
+	}
+	
+	@RequestMapping("/deleteAll40")
+	public String deleteAll40() {
+		wp3UniteElevJeuneService.deleteAll40();
+		return "redirect:/listWp3UniteElevJeune";
+	}
+	
+	@RequestMapping("/deleteAll41")
+	public String deleteAll41() {
+		wp3ElevMfrService.deleteAll41();
+		return "redirect:/listWp3ElevMfr";
+	}
+	
+	@RequestMapping("/deleteAll42")
+	public String deleteAll42() {
+		wp3JeuneFormeMfrService.deleteAll42();
+		return "redirect:/listWp3JeuneFormeMfr";
+	}
+	
+	@RequestMapping("/deleteAll43")
+	public String deleteAll43() {
+		wp3FedeMfrService.deleteAll43();
+		return "redirect:/listWp3FedeMfr";
+	}
+	
+	@RequestMapping("/deleteAll44")
+	public String deleteAll44() {
+		wp3EquipeTechMfrService.deleteAll44();
+		return "redirect:/listWp3EquipeTechMfr";
+	}
+	
+	@RequestMapping("/deleteAll45")
+	public String deleteAll45() {
+		wp3AgrDevMfrService.deleteAll45();
+		return "redirect:/listWp3AgrDevMfr";
+	}
+	
+	@RequestMapping("/deleteAll46")
+	public String deleteAll46() {
+		wp3JeunePathwayService.deleteAll46();
+		return "redirect:/listWp3JeunePathway";
+	}
+	
+	@RequestMapping("/deleteAll47")
+	public String deleteAll47() {
+		wp3EppFramService.deleteAll47();
+		return "redirect:/listWp3EppFram";
+	}
+	
+	@RequestMapping("/deleteAll48")
+	public String deleteAll48() {
+		wp3SanteeCommService.deleteAll48();
+		return "redirect:/listWp3SanteeComm";
+	}
+	
+	@RequestMapping("/deleteAll49")
+	public String deleteAll49() {
+		wp3PeerEducatorService.deleteAll49();
+		return "redirect:/listWp3PeerEducator";
+	}
 }

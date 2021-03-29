@@ -64,6 +64,12 @@ public class FormationBpaServiceImpl implements FormationBpaService {
 		return formation_bpaRepository.count();
 	}
 
+	@Override
+	public void deleteAllFomBpa() {
+		// TODO Auto-generated method stub
+		formation_bpaRepository.deleteAll();
+	}
+
 
 
 }

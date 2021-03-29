@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.Giz.data.domain.Wp3UniteElevJeune;
 
 public interface Wp3UniteElevJeuneService {
+	
+	public void deleteAll40();
 
 	public Wp3UniteElevJeune createWp3UniteElevJeune(Wp3UniteElevJeune wp3UniteElevJeune) throws Exception;
 
@@ -49,4 +51,19 @@ public interface Wp3UniteElevJeuneService {
 	public List<Object[]> ListTableauCommuneAll(Date debut_date, Date fin_date);
 
 	public List<Object[]> ListTableauDistAll(Date debut_date, Date fin_date);
+
+	// VILLAGE DETAIL TABLEAU COUNT
+	public List<Object[]> TableauCountDetailGenre(String village, String sexe);
+
+	public List<Object[]> TableauCountDetailGenreAll(String village);
+
+	// COMMUNE DETAIL TABLEAU COUNT
+	public List<Object[]> TableauCountDetailGenreComm(String commune, String sexe);
+
+	public List<Object[]> TableauCountDetailGenreAllComm(String commune);
+
+	// DISTRICT DETAIL TABLEAU COUNT
+	public List<Object[]> TableauCountDetailGenreDist(String district, String sexe);
+
+	public List<Object[]> TableauCountDetailGenreAllDist(String district);
 }

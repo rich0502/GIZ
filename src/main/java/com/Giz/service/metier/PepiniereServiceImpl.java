@@ -71,6 +71,12 @@ public class PepiniereServiceImpl implements PepiniereService {
 		return pepiniereRepository.countPepiniere(genre);
 	}
 
+	@Override
+	public void deleteAllPepiniere() {
+		// TODO Auto-generated method stub
+		pepiniereRepository.deleteAll();
+	}
+
 	
 	
 }

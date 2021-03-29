@@ -55,6 +55,12 @@ public class FocusGroupServiceImpl implements FocusGroupService {
 		focusGroupRepository.save(focusGroup);
 		
 	}
+
+	@Override
+	public void deleteAllFG() {
+		// TODO Auto-generated method stub
+		focusGroupRepository.deleteAll();
+	}
 	
 	
 

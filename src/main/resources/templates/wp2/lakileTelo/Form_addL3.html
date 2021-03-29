@@ -62,7 +62,11 @@
 					<br>
 					Catégorie :
 					<br>
-					<input type="text" name="categorie" id="categorie">
+					<select class="form-control select2" name="categorie" id="categorie"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="VSLA">VSLA</option>
+						<option th:value="GEC">GEC</option>
+					</select>
 					<br>
 					Date de création :
 					<br>

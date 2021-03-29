@@ -16,5 +16,7 @@ public interface CooperativeService {
 	
 	public void modifyCooperative(Cooperative cooperative,String code_village, boolean exist, String nom_coop, Date date_creation,
 			boolean socio, boolean environnement, Date date_suivi, Long id_coop);
+
+	public void deleteAllCooperative();
 	
 }

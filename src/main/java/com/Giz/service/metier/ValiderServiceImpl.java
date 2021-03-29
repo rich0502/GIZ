@@ -623,4 +623,163 @@ public class ValiderServiceImpl implements ValiderService{
 		// TODO Auto-generated method stub
 		return validerrepository.countFBS(dateChronologique);
 	}
+	
+	// TABLEAU SUM
+	
+	@Override
+	public List<Object[]> ListTableauSum(Date debut_date, Date fin_date, List<String> params,String canevas) {
+		// TODO Auto-generated method stub
+		return validerrepository.TableDataSum(debut_date, fin_date,params, canevas);
+	}
+
+	@Override
+	public List<Object[]> ListTableauCommuneSum(Date debut_date, Date fin_date,String canevas) {
+		return validerrepository.TableDataCommuneSum(debut_date, fin_date,canevas);
+	}
+
+	@Override
+	public List<Object[]> ListTableauDistSum(Date debut_date, Date fin_date,String canevas) {
+		return validerrepository.TableDataDistSum(debut_date, fin_date, canevas);
+	}
+	
+	// TABLEAU COUNT
+	
+	@Override
+	public List<Object[]> ListTableauCount(Date debut_date, Date fin_date, List<String> params, String sexe,String canevas) {
+		// TODO Auto-generated method stub
+		return validerrepository.TableDataCount(debut_date, fin_date, params, sexe, canevas);
+	}
+
+	@Override
+	public List<Object[]> ListTableauCommuneCount(Date debut_date, Date fin_date, String sexe,String canevas) {
+		// TODO Auto-generated method stub
+		return validerrepository.TableDataCommuneCount(debut_date, fin_date, sexe, canevas);
+	}
+
+	@Override
+	public List<Object[]> ListTableauDistCount(Date debut_date, Date fin_date, String sexe,String canevas) {
+		// TODO Auto-generated method stub
+		return validerrepository.TableDataDistCount(debut_date, fin_date, sexe, canevas);
+	}
+
+	@Override
+	public List<Object[]> ListTableauAllCount(Date debut_date, Date fin_date, List<String> params,String canevas) {
+		// TODO Auto-generated method stub
+		return validerrepository.TableDataAllCount(debut_date, fin_date, params, canevas);
+	}
+
+	@Override
+	public List<Object[]> ListTableauCommuneAllCount(Date debut_date, Date fin_date,String canevas) {
+		// TODO Auto-generated method stub
+		return validerrepository.TableDataCommuneAllCount(debut_date, fin_date, canevas);
+	}
+
+	@Override
+	public List<Object[]> ListTableauDistAllCount(Date debut_date, Date fin_date,String canevas) {
+		// TODO Auto-generated method stub
+		return validerrepository.TableDataDistAllCount(debut_date, fin_date, canevas);
+	}
+	
+	// TABLEAU COUNT NO DATE
+	
+		@Override
+		public List<Object[]> ListTableauCountNoDate(List<String> params, String sexe,String canevas) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableDataCountNoDate(params, sexe, canevas);
+		}
+
+		@Override
+		public List<Object[]> ListTableauCommuneCountNoDate(String sexe,String canevas) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableDataCommuneCountNoDate(sexe, canevas);
+		}
+
+		@Override
+		public List<Object[]> ListTableauDistCountNoDate(String sexe,String canevas) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableDataDistCountNoDate(sexe, canevas);
+		}
+
+		@Override
+		public List<Object[]> ListTableauAllCountNoDate(List<String> params,String canevas) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableDataAllCountNoDate(params, canevas);
+		}
+
+		@Override
+		public List<Object[]> ListTableauCommuneAllCountNoDate(String canevas) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableDataCommuneAllCountNoDate(canevas);
+		}
+
+		@Override
+		public List<Object[]> ListTableauDistAllCountNoDate(String canevas) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableDataDistAllCountNoDate(canevas);
+		}
+
+		@Override
+		public List<Object[]> ListTableauCountNoSexe(Date debut_date, Date fin_date, List<String> params,
+				String canevas) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableDataCountNoSexe(debut_date, fin_date, params, canevas);
+		}
+
+		@Override
+		public List<Object[]> ListTableauCommuneCountNoSexe(Date debut_date, Date fin_date, String canevas) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableDataCommuneCountNoSexe(debut_date, fin_date, canevas);
+		}
+
+		@Override
+		public List<Object[]> ListTableauDistCountNoSexe(Date debut_date, Date fin_date, String canevas) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableDataDistCountNoSexe(debut_date, fin_date, canevas);
+		}
+		
+		
+			// VILLAGE DETAIL TABLEAU COUNT
+
+		@Override
+		public List<Object[]> TableauCountDetailGenre(String village, String canevas, String sexe) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableCountDetailGenre(village, canevas, sexe);
+		}
+		@Override
+		public List<Object[]> TableauCountDetailGenreAll(String village, String canevas) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableCountDetailGenreAll(village, canevas);
+		}
+		
+			// COMMUNE DETAIL TABLEAU COUNT
+		
+		@Override
+		public List<Object[]> TableauCountDetailGenreComm(String commune, String canevas, String sexe) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableCountDetailGenreComm(commune, canevas, sexe);
+		}
+		@Override
+		public List<Object[]> TableauCountDetailGenreAllComm(String commune, String canevas) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableCountDetailGenreAllComm(commune, canevas);
+		}
+		
+		// DISTRICT DETAIL TABLEAU COUNT
+		
+		@Override
+		public List<Object[]> TableauCountDetailGenreDist(String district, String canevas, String sexe) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableCountDetailGenreDist(district, canevas, sexe);
+		}
+		@Override
+		public List<Object[]> TableauCountDetailGenreAllDist(String district, String canevas) {
+			// TODO Auto-generated method stub
+			return validerrepository.TableCountDetailGenreAllDist(district, canevas);
+		}
+
+		@Override
+		public void deleteValiderAll(String canevas) {
+			// TODO Auto-generated method stub
+			validerrepository.deleteAllCanevasWp2(canevas);
+		}
 }

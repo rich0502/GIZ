@@ -14,14 +14,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.Giz.data.constants.theme.ListeWp;
+
 import com.Giz.data.domain.Village;
 import com.Giz.entity.User;
 import com.Giz.service.UserService;
 import com.Giz.service.metier.AtelierMFRService;
 import com.Giz.service.metier.DocCapService;
 import com.Giz.service.metier.PlateformeService;
+import com.Giz.service.metier.ValiderService;
 import com.Giz.service.metier.VillageService;
 import com.Giz.service.metier.Wp3ActivEcoJeuneService;
 import com.Giz.service.metier.Wp3AgrDevMfrService;
@@ -39,6 +40,10 @@ import com.Giz.service.metier.Wp3UniteElevJeuneService;
 
 @Controller
 public class AnalysesController {
+
+	@Autowired
+	ValiderService validerService;
+
 	@Autowired
 	UserService userService;
 
@@ -134,27 +139,28 @@ public class AnalysesController {
 	}
 
 	@RequestMapping("/carte")
-	public String carte(@RequestParam("theme") int theme,
-			@RequestParam("date_fin") String date_fin, @RequestParam("subdivision") String subdivision,@RequestParam("genre") String genre,@RequestParam(defaultValue = "null") String villages, Model model) throws Exception {
+	public String carte(@RequestParam("theme") int theme, @RequestParam("date_fin") String date_fin,
+			@RequestParam("subdivision") String subdivision, @RequestParam("genre") String genre,
+			@RequestParam(defaultValue = "null") String villages, Model model) throws Exception {
 		System.out.println("genre" + genre);
-		if(genre=="F") {
-			genre="H";
-		}else {
-			genre="F";
+		if (genre == "F") {
+			genre = "H";
+		} else {
+			genre = "F";
 		}
-		java.sql.Date fin=  Date.valueOf(date_fin);
+		java.sql.Date fin = Date.valueOf(date_fin);
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentUserName = authentication.getName();
 		User nomUser = userService.getUserByName(currentUserName);
-		String xmlcheck = subdivision+theme+"T";
-		URL url = new URL("http://168.119.185.165:8080/geoserver/styles/"+xmlcheck+".xml");
-		HttpURLConnection huc = (HttpURLConnection) url.openConnection();		 
+		String xmlcheck = subdivision + theme + "T";
+		URL url = new URL("http://168.119.185.165:8080/geoserver/styles/" + xmlcheck + ".xml");
+		HttpURLConnection huc = (HttpURLConnection) url.openConnection();
 		int responseCode = huc.getResponseCode();
-		if(responseCode == 404) {
-			xmlcheck = subdivision+theme;
+		if (responseCode == 404) {
+			xmlcheck = subdivision + theme;
 		}
 		System.out.println("responseCode" + responseCode);
-		System.out.println("xmlcheck"+xmlcheck);
+		System.out.println("xmlcheck" + xmlcheck);
 		String type_atelier = canevas(theme);
 		String date_debut = "2020-01-01";
 		model.addAttribute("date_fin", fin);
@@ -167,7 +173,274 @@ public class AnalysesController {
 		model.addAttribute("xmlcheck", xmlcheck);
 		model.addAttribute("type", nomUser.getLastName());
 		return "carte";
-	}	
+	}
+
+	////////////////////////////////// WP2 DETAILS TABLEAU
+	////////////////////////////////// /////////////////////////////////////////////////////
+
+	// VILLAGE DETAIL TABLEAU AVEC ATRRIBUT SEXE
+
+	@RequestMapping("/detailGenreCount")
+	public String detailGenreCount(@RequestParam("village") String village, @RequestParam("canevas") String canevas,
+			@RequestParam("sexe") String sexe, Model model) throws Exception {
+		List<Object[]> detailList = validerService.TableauCountDetailGenre(village, canevas, sexe);
+		model.addAttribute("detailList", detailList);
+		return "tableau/TableauDetail";
+	}
+
+	@RequestMapping("/detailGenreCountAll")
+	public String detailGenreCountAll(@RequestParam("village") String village, @RequestParam("canevas") String canevas,
+			Model model) throws Exception {
+		List<Object[]> detailList = validerService.TableauCountDetailGenreAll(village, canevas);
+		model.addAttribute("detailList", detailList);
+		return "tableau/TableauDetail";
+	}
+
+	// COMMUNE DETAIL TABLEAU AVEC ATRRIBUT SEXE
+
+	@RequestMapping("/detailGenreCountComm")
+	public String detailGenreCountComm(@RequestParam("commune") String commune, @RequestParam("canevas") String canevas,
+			@RequestParam("sexe") String sexe, Model model) throws Exception {
+		List<Object[]> detailList = validerService.TableauCountDetailGenreComm(commune, canevas, sexe);
+		model.addAttribute("detailList", detailList);
+		return "tableau/TableauDetail";
+	}
+
+	@RequestMapping("/detailGenreCountAllComm")
+	public String detailGenreCountAllComm(@RequestParam("commune") String commune,
+			@RequestParam("canevas") String canevas, Model model) throws Exception {
+		List<Object[]> detailList = validerService.TableauCountDetailGenreAllComm(commune, canevas);
+		model.addAttribute("detailList", detailList);
+		return "tableau/TableauDetail";
+	}
+
+	// DISTRICT DETAIL TABLEAU AVEC ATRRIBUT SEXE
+
+	@RequestMapping("/detailGenreCountDist")
+	public String detailGenreCountDist(@RequestParam("district") String district,
+			@RequestParam("canevas") String canevas, @RequestParam("sexe") String sexe, Model model) throws Exception {
+		List<Object[]> detailList = validerService.TableauCountDetailGenreDist(district, canevas, sexe);
+		model.addAttribute("detailList", detailList);
+		return "tableau/TableauDetail";
+	}
+
+	@RequestMapping("/detailGenreCountAllDist")
+	public String detailGenreCountAllDist(@RequestParam("district") String district,
+			@RequestParam("canevas") String canevas, Model model) throws Exception {
+		List<Object[]> detailList = validerService.TableauCountDetailGenreAllDist(district, canevas);
+		model.addAttribute("detailList", detailList);
+		return "tableau/TableauDetail";
+	}
+
+	////////////////////////////////// WP3 DETAILS TABLEAU
+	////////////////////////////////// /////////////////////////////////////////////////////
+
+	// PAR VILLAGE ET SEXE
+	@RequestMapping("/detailWP3")
+	public String detailWP3(@RequestParam("village") String village, @RequestParam("sexe") String sexe,
+			@RequestParam("nameCanevas") String nameCanevas, Model model) throws Exception {
+		List<Object[]> detailList = null;
+		if (nameCanevas.equalsIgnoreCase("activité economique réalisée")) {
+			detailList = wp3ActivEcoJeuneService.TableauCountDetailGenre(village, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("formation sur les techniques/metiers")) {
+			detailList = wp3FormTechMetierJeuneService.TableauCountDetailGenre(village, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("élévage en adoptant les bonnes pratiques")) {
+			detailList = wp3UniteElevJeuneService.TableauCountDetailGenre(village, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("élèves inscrits dans les MFR")) {
+			detailList = wp3ElevMfrService.TableauCountDetailGenre(village, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("jeunes formés des MFR")) {
+			detailList = wp3JeuneFormeMfrService.TableauCountDetailGenre(village, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("Federation régionale MFR")) {
+			detailList = wp3FedeMfrService.TableauCountDetailGenre(village, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("Equipe technique MFR")) {
+			detailList = wp3EquipeTechMfrService.TableauCountDetailGenre(village, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("AGR développé MFR")) {
+			detailList = wp3AgrDevMfrService.TableauCountDetailGenre(village, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("jeune ayant terminé formation pathway")) {
+			detailList = wp3JeunePathwayService.TableauCountDetailGenre(village, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("EPP FRAM draft")) {
+			detailList = wp3EppFramService.TableauCountDetailGenre(village, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("service santé par communauté")) {
+			detailList = wp3SanteeCommService.TableauCountDetailGenre(village, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("peer educator")) {
+			detailList = wp3PeerEducatorService.TableauCountDetailGenre(village, sexe);
+		}
+		model.addAttribute("detailList", detailList);
+		return "tableau/TableauDetail";
+	}
+
+	// PAR VILLAGE
+	@RequestMapping("/detailWP3All")
+	public String detailWP3All(@RequestParam("village") String village, @RequestParam("nameCanevas") String nameCanevas,
+			Model model) throws Exception {
+		List<Object[]> detailList = null;
+		if (nameCanevas.equalsIgnoreCase("activité economique réalisée")) {
+			detailList = wp3ActivEcoJeuneService.TableauCountDetailGenreAll(village);
+		} else if (nameCanevas.equalsIgnoreCase("formation sur les techniques/metiers")) {
+			detailList = wp3FormTechMetierJeuneService.TableauCountDetailGenreAll(village);
+		} else if (nameCanevas.equalsIgnoreCase("élévage en adoptant les bonnes pratiques")) {
+			detailList = wp3UniteElevJeuneService.TableauCountDetailGenreAll(village);
+		} else if (nameCanevas.equalsIgnoreCase("élèves inscrits dans les MFR")) {
+			detailList = wp3ElevMfrService.TableauCountDetailGenreAll(village);
+		} else if (nameCanevas.equalsIgnoreCase("jeunes formés des MFR")) {
+			detailList = wp3JeuneFormeMfrService.TableauCountDetailGenreAll(village);
+		} else if (nameCanevas.equalsIgnoreCase("Federation régionale MFR")) {
+			detailList = wp3FedeMfrService.TableauCountDetailGenreAll(village);
+		} else if (nameCanevas.equalsIgnoreCase("Equipe technique MFR")) {
+			detailList = wp3EquipeTechMfrService.TableauCountDetailGenreAll(village);
+		} else if (nameCanevas.equalsIgnoreCase("AGR développé MFR")) {
+			detailList = wp3AgrDevMfrService.TableauCountDetailGenreAll(village);
+		} else if (nameCanevas.equalsIgnoreCase("jeune ayant terminé formation pathway")) {
+			detailList = wp3JeunePathwayService.TableauCountDetailGenreAll(village);
+		} else if (nameCanevas.equalsIgnoreCase("EPP FRAM draft")) {
+			detailList = wp3EppFramService.TableauCountDetailGenreAll(village);
+		} else if (nameCanevas.equalsIgnoreCase("service santé par communauté")) {
+			detailList = wp3SanteeCommService.TableauCountDetailGenreAll(village);
+		} else if (nameCanevas.equalsIgnoreCase("peer educator")) {
+			detailList = wp3PeerEducatorService.TableauCountDetailGenreAll(village);
+		}
+		model.addAttribute("detailList", detailList);
+		return "tableau/TableauDetail";
+	}
+	
+	// PAR COMMUNE ET SEXE
+	@RequestMapping("/detailWP3Comm")
+	public String detailWP3Comm(@RequestParam("commune") String commune, @RequestParam("sexe") String sexe,
+			@RequestParam("nameCanevas") String nameCanevas, Model model) throws Exception {
+		List<Object[]> detailList = null;
+		if (nameCanevas.equalsIgnoreCase("activité economique réalisée")) {
+			detailList = wp3ActivEcoJeuneService.TableauCountDetailGenreComm(commune, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("formation sur les techniques/metiers")) {
+			detailList = wp3FormTechMetierJeuneService.TableauCountDetailGenreComm(commune, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("élévage en adoptant les bonnes pratiques")) {
+			detailList = wp3UniteElevJeuneService.TableauCountDetailGenreComm(commune, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("élèves inscrits dans les MFR")) {
+			detailList = wp3ElevMfrService.TableauCountDetailGenreComm(commune, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("jeunes formés des MFR")) {
+			detailList = wp3JeuneFormeMfrService.TableauCountDetailGenreComm(commune, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("Federation régionale MFR")) {
+			detailList = wp3FedeMfrService.TableauCountDetailGenreComm(commune, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("Equipe technique MFR")) {
+			detailList = wp3EquipeTechMfrService.TableauCountDetailGenreComm(commune, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("AGR développé MFR")) {
+			detailList = wp3AgrDevMfrService.TableauCountDetailGenreComm(commune, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("jeune ayant terminé formation pathway")) {
+			detailList = wp3JeunePathwayService.TableauCountDetailGenreComm(commune, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("EPP FRAM draft")) {
+			detailList = wp3EppFramService.TableauCountDetailGenreComm(commune, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("service santé par communauté")) {
+			detailList = wp3SanteeCommService.TableauCountDetailGenreComm(commune, sexe);
+		} else if (nameCanevas.equalsIgnoreCase("peer educator")) {
+			detailList = wp3PeerEducatorService.TableauCountDetailGenreComm(commune, sexe);
+		}
+		model.addAttribute("detailList", detailList);
+		return "tableau/TableauDetail";
+	}
+
+	// PAR COMMUNE
+	@RequestMapping("/detailWP3AllComm")
+	public String detailWP3AllComm(@RequestParam("commune") String commune, @RequestParam("nameCanevas") String nameCanevas,
+			Model model) throws Exception {
+		List<Object[]> detailList = null;
+		if (nameCanevas.equalsIgnoreCase("activité economique réalisée")) {
+			detailList = wp3ActivEcoJeuneService.TableauCountDetailGenreAllComm(commune);
+		} else if (nameCanevas.equalsIgnoreCase("formation sur les techniques/metiers")) {
+			detailList = wp3FormTechMetierJeuneService.TableauCountDetailGenreAllComm(commune);
+		} else if (nameCanevas.equalsIgnoreCase("élévage en adoptant les bonnes pratiques")) {
+			detailList = wp3UniteElevJeuneService.TableauCountDetailGenreAllComm(commune);
+		} else if (nameCanevas.equalsIgnoreCase("élèves inscrits dans les MFR")) {
+			detailList = wp3ElevMfrService.TableauCountDetailGenreAllComm(commune);
+		} else if (nameCanevas.equalsIgnoreCase("jeunes formés des MFR")) {
+			detailList = wp3JeuneFormeMfrService.TableauCountDetailGenreAllComm(commune);
+		} else if (nameCanevas.equalsIgnoreCase("Federation régionale MFR")) {
+			detailList = wp3FedeMfrService.TableauCountDetailGenreAllComm(commune);
+		} else if (nameCanevas.equalsIgnoreCase("Equipe technique MFR")) {
+			detailList = wp3EquipeTechMfrService.TableauCountDetailGenreAllComm(commune);
+		} else if (nameCanevas.equalsIgnoreCase("AGR développé MFR")) {
+			detailList = wp3AgrDevMfrService.TableauCountDetailGenreAllComm(commune);
+		} else if (nameCanevas.equalsIgnoreCase("jeune ayant terminé formation pathway")) {
+			detailList = wp3JeunePathwayService.TableauCountDetailGenreAllComm(commune);
+		} else if (nameCanevas.equalsIgnoreCase("EPP FRAM draft")) {
+			detailList = wp3EppFramService.TableauCountDetailGenreAllComm(commune);
+		} else if (nameCanevas.equalsIgnoreCase("service santé par communauté")) {
+			detailList = wp3SanteeCommService.TableauCountDetailGenreAllComm(commune);
+		} else if (nameCanevas.equalsIgnoreCase("peer educator")) {
+			detailList = wp3PeerEducatorService.TableauCountDetailGenreAllComm(commune);
+		}
+		model.addAttribute("detailList", detailList);
+		return "tableau/TableauDetail";
+	}
+	
+	// PAR DISTRICT ET SEXE
+		@RequestMapping("/detailWP3Dist")
+		public String detailWP3Dist(@RequestParam("district") String district, @RequestParam("sexe") String sexe,
+				@RequestParam("nameCanevas") String nameCanevas, Model model) throws Exception {
+			List<Object[]> detailList = null;
+			if (nameCanevas.equalsIgnoreCase("activité economique réalisée")) {
+				detailList = wp3ActivEcoJeuneService.TableauCountDetailGenreDist(district, sexe);
+			} else if (nameCanevas.equalsIgnoreCase("formation sur les techniques/metiers")) {
+				detailList = wp3FormTechMetierJeuneService.TableauCountDetailGenreDist(district, sexe);
+			} else if (nameCanevas.equalsIgnoreCase("élévage en adoptant les bonnes pratiques")) {
+				detailList = wp3UniteElevJeuneService.TableauCountDetailGenreDist(district, sexe);
+			} else if (nameCanevas.equalsIgnoreCase("élèves inscrits dans les MFR")) {
+				detailList = wp3ElevMfrService.TableauCountDetailGenreDist(district, sexe);
+			} else if (nameCanevas.equalsIgnoreCase("jeunes formés des MFR")) {
+				detailList = wp3JeuneFormeMfrService.TableauCountDetailGenreDist(district, sexe);
+			} else if (nameCanevas.equalsIgnoreCase("Federation régionale MFR")) {
+				detailList = wp3FedeMfrService.TableauCountDetailGenreDist(district, sexe);
+			} else if (nameCanevas.equalsIgnoreCase("Equipe technique MFR")) {
+				detailList = wp3EquipeTechMfrService.TableauCountDetailGenreDist(district, sexe);
+			} else if (nameCanevas.equalsIgnoreCase("AGR développé MFR")) {
+				detailList = wp3AgrDevMfrService.TableauCountDetailGenreDist(district, sexe);
+			} else if (nameCanevas.equalsIgnoreCase("jeune ayant terminé formation pathway")) {
+				detailList = wp3JeunePathwayService.TableauCountDetailGenreDist(district, sexe);
+			} else if (nameCanevas.equalsIgnoreCase("EPP FRAM draft")) {
+				detailList = wp3EppFramService.TableauCountDetailGenreDist(district, sexe);
+			} else if (nameCanevas.equalsIgnoreCase("service santé par communauté")) {
+				detailList = wp3SanteeCommService.TableauCountDetailGenreDist(district, sexe);
+			} else if (nameCanevas.equalsIgnoreCase("peer educator")) {
+				detailList = wp3PeerEducatorService.TableauCountDetailGenreDist(district, sexe);
+			}
+			model.addAttribute("detailList", detailList);
+			return "tableau/TableauDetail";
+		}
+
+		// PAR COMMUNE
+		@RequestMapping("/detailWP3AllDist")
+		public String detailWP3AllDist(@RequestParam("district") String district, @RequestParam("nameCanevas") String nameCanevas,
+				Model model) throws Exception {
+			List<Object[]> detailList = null;
+			if (nameCanevas.equalsIgnoreCase("activité economique réalisée")) {
+				detailList = wp3ActivEcoJeuneService.TableauCountDetailGenreAllDist(district);
+			} else if (nameCanevas.equalsIgnoreCase("formation sur les techniques/metiers")) {
+				detailList = wp3FormTechMetierJeuneService.TableauCountDetailGenreAllDist(district);
+			} else if (nameCanevas.equalsIgnoreCase("élévage en adoptant les bonnes pratiques")) {
+				detailList = wp3UniteElevJeuneService.TableauCountDetailGenreAllDist(district);
+			} else if (nameCanevas.equalsIgnoreCase("élèves inscrits dans les MFR")) {
+				detailList = wp3ElevMfrService.TableauCountDetailGenreAllDist(district);
+			} else if (nameCanevas.equalsIgnoreCase("jeunes formés des MFR")) {
+				detailList = wp3JeuneFormeMfrService.TableauCountDetailGenreAllDist(district);
+			} else if (nameCanevas.equalsIgnoreCase("Federation régionale MFR")) {
+				detailList = wp3FedeMfrService.TableauCountDetailGenreAllDist(district);
+			} else if (nameCanevas.equalsIgnoreCase("Equipe technique MFR")) {
+				detailList = wp3EquipeTechMfrService.TableauCountDetailGenreAllDist(district);
+			} else if (nameCanevas.equalsIgnoreCase("AGR développé MFR")) {
+				detailList = wp3AgrDevMfrService.TableauCountDetailGenreAllDist(district);
+			} else if (nameCanevas.equalsIgnoreCase("jeune ayant terminé formation pathway")) {
+				detailList = wp3JeunePathwayService.TableauCountDetailGenreAllDist(district);
+			} else if (nameCanevas.equalsIgnoreCase("EPP FRAM draft")) {
+				detailList = wp3EppFramService.TableauCountDetailGenreAllDist(district);
+			} else if (nameCanevas.equalsIgnoreCase("service santé par communauté")) {
+				detailList = wp3SanteeCommService.TableauCountDetailGenreAllDist(district);
+			} else if (nameCanevas.equalsIgnoreCase("peer educator")) {
+				detailList = wp3PeerEducatorService.TableauCountDetailGenreAllDist(district);
+			}
+			model.addAttribute("detailList", detailList);
+			return "tableau/TableauDetail";
+		}
+
+	
+	////////////////////////////////// TABLEAU WP2, WP3, WP4 //////////////////////////////////
 
 	@RequestMapping("/tableau")
 	public String tableau(@RequestParam("theme") String theme,
@@ -188,12 +461,24 @@ public class AnalysesController {
 		List<Object[]> tpsDistF = null;
 		List<Object[]> tpsGenreF = null;
 		List<Object[]> tpsDC = null;
+		List<Object[]> tpsGenreWP3 = null;
+		List<Object[]> tpsGenreAllWP3 = null;
+		List<Object[]> tpsComWP3 = null;
+		List<Object[]> tpsComAllWP3 = null;
+		List<Object[]> tpsDistWP3 = null;
+		List<Object[]> tpsDistAllWP3 = null;
+		List<Object[]> tpsComAllSum = null;
+		List<Object[]> tpsDistAllSum = null;
+		List<Object[]> tpsGenreAllSum = null;
 		String nb = null;
+		String namePlace = null;
 		List<Object[]> plate_village = null;
 		List<Object[]> plate_com = null;
 		List<Object[]> plate_dist = null;
 		String type_atelier = null;
 		String nameCanevas = null;
+		String canevas = null;
+		List<Object[]> tpsNosexe = null;
 		List<String> params = null;
 		java.sql.Date debut_date = Date.valueOf("2020-01-01");
 		java.sql.Date fin = Date.valueOf(date_fin);
@@ -201,24 +486,194 @@ public class AnalysesController {
 		String replaceString = villages.replaceAll("\\s+", "");
 		params = new ArrayList<String>(Arrays.asList(replaceString.split(";")));
 		switch (theme) {
+		case "29":
+			nameCanevas = "Lakile telo";
+			canevas = "L3";
+			// sum F et H
+			if (genre.equalsIgnoreCase("F")) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistF = validerService.ListTableauDistSum(debut_date, fin, canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComF = validerService.ListTableauCommuneSum(debut_date, fin, canevas);
+				} else {
+					tpsGenreF = validerService.ListTableauSum(debut_date, fin, params, canevas);
+				}
+
+			} else if (genre.equalsIgnoreCase("H")) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistH = validerService.ListTableauDistSum(debut_date, fin, canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComH = validerService.ListTableauCommuneSum(debut_date, fin, canevas);
+				} else {
+					tpsGenreH = validerService.ListTableauSum(debut_date, fin, params, canevas);
+				}
+			} else {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAllSum = validerService.ListTableauDistSum(debut_date, fin, canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAllSum = validerService.ListTableauCommuneSum(debut_date, fin, canevas);
+				} else {
+					tpsGenreAllSum = validerService.ListTableauSum(debut_date, fin, params, canevas);
+				}
+			}
+			break;
+		case "30":
+			nameCanevas = "VSLA Municipal";
+			canevas = "VSLA";
+			// ayant un champ nom_prenom count
+			if (subdivision.equalsIgnoreCase("district")) {
+				namePlace = "District";
+				tpsNosexe = validerService.ListTableauDistCountNoSexe(debut_date, fin, canevas);
+			} else if (subdivision.equalsIgnoreCase("commune")) {
+				namePlace = "Commune";
+				tpsNosexe = validerService.ListTableauCommuneCountNoSexe(debut_date, fin, canevas);
+			} else {
+				namePlace = "Village";
+				tpsNosexe = validerService.ListTableauCountNoSexe(debut_date, fin, params, canevas);
+			}
+			break;
+		case "31":
+			nameCanevas = "Integration de l'education";
+			canevas = "FBS";
+			// ayant un champ nom_prenom count
+			if (subdivision.equalsIgnoreCase("district")) {
+				namePlace = "District";
+				tpsNosexe = validerService.ListTableauDistCountNoSexe(debut_date, fin, canevas);
+			} else if (subdivision.equalsIgnoreCase("commune")) {
+				namePlace = "Commune";
+				tpsNosexe = validerService.ListTableauCommuneCountNoSexe(debut_date, fin, canevas);
+			} else {
+				namePlace = "Village";
+				tpsNosexe = validerService.ListTableauCountNoSexe(debut_date, fin, params, canevas);
+			}
+			break;
+		case "32":
+			nameCanevas = "Mobile money";
+			canevas = "Mobile";
+			// ayant un champ nom_prenom count
+			if (genre.isEmpty()) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = validerService.ListTableauDistAllCount(debut_date, fin, canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = validerService.ListTableauCommuneAllCount(debut_date, fin, canevas);
+				} else {
+					tpsGenreAll = validerService.ListTableauAllCount(debut_date, fin, params, canevas);
+				}
+			} else {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDist = validerService.ListTableauDistCount(debut_date, fin, genre, canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsCom = validerService.ListTableauCommuneCount(debut_date, fin, genre, canevas);
+				} else {
+					tpsGenre = validerService.ListTableauCount(debut_date, fin, params, genre, canevas);
+				}
+			}
+			break;
+		case "33":
+			nameCanevas = "Finance";
+			canevas = "Finance";
+			// ayant un champ nom_prenom count
+			if (genre.isEmpty()) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = validerService.ListTableauDistAllCount(debut_date, fin, canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = validerService.ListTableauCommuneAllCount(debut_date, fin, canevas);
+				} else {
+					tpsGenreAll = validerService.ListTableauAllCount(debut_date, fin, params, canevas);
+				}
+			} else {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDist = validerService.ListTableauDistCount(debut_date, fin, genre, canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsCom = validerService.ListTableauCommuneCount(debut_date, fin, genre, canevas);
+				} else {
+					tpsGenre = validerService.ListTableauCount(debut_date, fin, params, genre, canevas);
+				}
+			}
+		case "34":
+			nameCanevas = "Producteur";
+			canevas = "Producteur";
+			// ayant un champ nom_prenom count
+			if (genre.isEmpty()) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = validerService.ListTableauDistAllCountNoDate(canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = validerService.ListTableauCommuneAllCountNoDate(canevas);
+				} else {
+					tpsGenreAll = validerService.ListTableauAllCountNoDate(params, canevas);
+				}
+			} else {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDist = validerService.ListTableauDistCountNoDate(genre, canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsCom = validerService.ListTableauCommuneCountNoDate(genre, canevas);
+				} else {
+					tpsGenre = validerService.ListTableauCountNoDate(params, genre, canevas);
+				}
+			}
+			break;
+		case "35":
+			nameCanevas = "Adhesion";
+			canevas = "Adhesion";
+			// ayant un champ nom_prenom count
+			if (genre.isEmpty()) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = validerService.ListTableauDistAllCount(debut_date, fin, canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = validerService.ListTableauCommuneAllCount(debut_date, fin, canevas);
+				} else {
+					tpsGenreAll = validerService.ListTableauAllCount(debut_date, fin, params, canevas);
+				}
+			} else {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDist = validerService.ListTableauDistCount(debut_date, fin, genre, canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsCom = validerService.ListTableauCommuneCount(debut_date, fin, genre, canevas);
+				} else {
+					tpsGenre = validerService.ListTableauCount(debut_date, fin, params, genre, canevas);
+				}
+			}
+			break;
+		case "36":
+			nameCanevas = "Menage";
+			canevas = "Menage";
+			// ayant un champ nom_prenom count
+			if (genre.isEmpty()) {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDistAll = validerService.ListTableauDistAllCountNoDate(canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsComAll = validerService.ListTableauCommuneAllCountNoDate(canevas);
+				} else {
+					tpsGenreAll = validerService.ListTableauAllCountNoDate(params, canevas);
+				}
+			} else {
+				if (subdivision.equalsIgnoreCase("district")) {
+					tpsDist = validerService.ListTableauDistCountNoDate(genre, canevas);
+				} else if (subdivision.equalsIgnoreCase("commune")) {
+					tpsCom = validerService.ListTableauCommuneCountNoDate(genre, canevas);
+				} else {
+					tpsGenre = validerService.ListTableauCountNoDate(params, genre, canevas);
+				}
+			}
+			break;
 		case "37":
 			nameCanevas = "activité economique réalisée";
 			// ayant un champ nom_prenom count
 			if (genre.isEmpty()) {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = wp3ActivEcoJeuneService.ListTableauDistAll(debut_date, fin);
+					tpsDistAllWP3 = wp3ActivEcoJeuneService.ListTableauDistAll(debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = wp3ActivEcoJeuneService.ListTableauCommuneAll(debut_date, fin);
+					tpsComAllWP3 = wp3ActivEcoJeuneService.ListTableauCommuneAll(debut_date, fin);
 				} else {
-					tpsGenreAll = wp3ActivEcoJeuneService.ListTableauAll(debut_date, fin, params);
+					tpsGenreAllWP3 = wp3ActivEcoJeuneService.ListTableauAll(debut_date, fin, params);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDist = wp3ActivEcoJeuneService.ListTableauDist(debut_date, fin, genre);
+					tpsDistWP3 = wp3ActivEcoJeuneService.ListTableauDist(debut_date, fin, genre);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsCom = wp3ActivEcoJeuneService.ListTableauCommune(debut_date, fin, genre);
+					tpsComWP3 = wp3ActivEcoJeuneService.ListTableauCommune(debut_date, fin, genre);
 				} else {
-					tpsGenre = wp3ActivEcoJeuneService.ListTableau(debut_date, fin, params, genre);
+					tpsGenreWP3 = wp3ActivEcoJeuneService.ListTableau(debut_date, fin, params, genre);
 				}
 			}
 			break;
@@ -244,11 +699,11 @@ public class AnalysesController {
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = wp3CommitteeActifService.ListTableauDist(debut_date, fin);
+					tpsDistAllSum = wp3CommitteeActifService.ListTableauDist(debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = wp3CommitteeActifService.ListTableauCommune(debut_date, fin);
+					tpsComAllSum = wp3CommitteeActifService.ListTableauCommune(debut_date, fin);
 				} else {
-					tpsGenreAll = wp3CommitteeActifService.ListTableau(debut_date, fin, params);
+					tpsGenreAllSum = wp3CommitteeActifService.ListTableau(debut_date, fin, params);
 				}
 			}
 			break;
@@ -256,19 +711,19 @@ public class AnalysesController {
 			nameCanevas = "formation sur les techniques/metiers";
 			if (genre.isEmpty()) {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = wp3FormTechMetierJeuneService.ListTableauDistAll(debut_date, fin);
+					tpsDistAllWP3 = wp3FormTechMetierJeuneService.ListTableauDistAll(debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = wp3FormTechMetierJeuneService.ListTableauCommuneAll(debut_date, fin);
+					tpsComAllWP3 = wp3FormTechMetierJeuneService.ListTableauCommuneAll(debut_date, fin);
 				} else {
-					tpsGenreAll = wp3FormTechMetierJeuneService.ListTableauAll(debut_date, fin, params);
+					tpsGenreAllWP3 = wp3FormTechMetierJeuneService.ListTableauAll(debut_date, fin, params);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDist = wp3FormTechMetierJeuneService.ListTableauDist(debut_date, fin, genre);
+					tpsDistWP3 = wp3FormTechMetierJeuneService.ListTableauDist(debut_date, fin, genre);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsCom = wp3FormTechMetierJeuneService.ListTableauCommune(debut_date, fin, genre);
+					tpsComWP3 = wp3FormTechMetierJeuneService.ListTableauCommune(debut_date, fin, genre);
 				} else {
-					tpsGenre = wp3FormTechMetierJeuneService.ListTableau(debut_date, fin, params, genre);
+					tpsGenreWP3 = wp3FormTechMetierJeuneService.ListTableau(debut_date, fin, params, genre);
 				}
 			}
 			break;
@@ -277,19 +732,19 @@ public class AnalysesController {
 			// ayant un champ nom_prenom count
 			if (genre.isEmpty()) {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = wp3UniteElevJeuneService.ListTableauDistAll(debut_date, fin);
+					tpsDistAllWP3 = wp3UniteElevJeuneService.ListTableauDistAll(debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = wp3UniteElevJeuneService.ListTableauCommuneAll(debut_date, fin);
+					tpsComAllWP3 = wp3UniteElevJeuneService.ListTableauCommuneAll(debut_date, fin);
 				} else {
-					tpsGenreAll = wp3UniteElevJeuneService.ListTableauAll(debut_date, fin, params);
+					tpsGenreAllWP3 = wp3UniteElevJeuneService.ListTableauAll(debut_date, fin, params);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDist = wp3UniteElevJeuneService.ListTableauDist(debut_date, fin, genre);
+					tpsDistWP3 = wp3UniteElevJeuneService.ListTableauDist(debut_date, fin, genre);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsCom = wp3UniteElevJeuneService.ListTableauCommune(debut_date, fin, genre);
+					tpsComWP3 = wp3UniteElevJeuneService.ListTableauCommune(debut_date, fin, genre);
 				} else {
-					tpsGenre = wp3UniteElevJeuneService.ListTableau(debut_date, fin, params, genre);
+					tpsGenreWP3 = wp3UniteElevJeuneService.ListTableau(debut_date, fin, params, genre);
 				}
 			}
 			break;
@@ -298,40 +753,40 @@ public class AnalysesController {
 			// ayant un champ nom_prenom count
 			if (genre.isEmpty()) {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = wp3ElevMfrService.ListTableauDistAll(debut_date, fin);
+					tpsDistAllWP3 = wp3ElevMfrService.ListTableauDistAll(debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = wp3ElevMfrService.ListTableauCommuneAll(debut_date, fin);
+					tpsComAllWP3 = wp3ElevMfrService.ListTableauCommuneAll(debut_date, fin);
 				} else {
-					tpsGenreAll = wp3ElevMfrService.ListTableauAll(debut_date, fin, params);
+					tpsGenreAllWP3 = wp3ElevMfrService.ListTableauAll(debut_date, fin, params);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDist = wp3ElevMfrService.ListTableauDist(debut_date, fin, genre);
+					tpsDistWP3 = wp3ElevMfrService.ListTableauDist(debut_date, fin, genre);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsCom = wp3ElevMfrService.ListTableauCommune(debut_date, fin, genre);
+					tpsComWP3 = wp3ElevMfrService.ListTableauCommune(debut_date, fin, genre);
 				} else {
-					tpsGenre = wp3ElevMfrService.ListTableau(debut_date, fin, params, genre);
+					tpsGenreWP3 = wp3ElevMfrService.ListTableau(debut_date, fin, params, genre);
 				}
 			}
 			break;
 		case "42":
-			nameCanevas = "jeunes formés des MFR ";
+			nameCanevas = "jeunes formés des MFR";
 			// ayant un champ nom_prenom count
 			if (genre.isEmpty()) {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = wp3JeuneFormeMfrService.ListTableauDistAll(debut_date, fin);
+					tpsDistAllWP3 = wp3JeuneFormeMfrService.ListTableauDistAll(debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = wp3JeuneFormeMfrService.ListTableauCommuneAll(debut_date, fin);
+					tpsComAllWP3 = wp3JeuneFormeMfrService.ListTableauCommuneAll(debut_date, fin);
 				} else {
-					tpsGenreAll = wp3JeuneFormeMfrService.ListTableauAll(debut_date, fin, params);
+					tpsGenreAllWP3 = wp3JeuneFormeMfrService.ListTableauAll(debut_date, fin, params);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDist = wp3JeuneFormeMfrService.ListTableauDist(debut_date, fin, genre);
+					tpsDistWP3 = wp3JeuneFormeMfrService.ListTableauDist(debut_date, fin, genre);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsCom = wp3JeuneFormeMfrService.ListTableauCommune(debut_date, fin, genre);
+					tpsComWP3 = wp3JeuneFormeMfrService.ListTableauCommune(debut_date, fin, genre);
 				} else {
-					tpsGenre = wp3JeuneFormeMfrService.ListTableau(debut_date, fin, params, genre);
+					tpsGenreWP3 = wp3JeuneFormeMfrService.ListTableau(debut_date, fin, params, genre);
 				}
 			}
 			break;
@@ -340,19 +795,19 @@ public class AnalysesController {
 			// ayant un champ nom_prenom count
 			if (genre.isEmpty()) {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = wp3FedeMfrService.ListTableauDistAll(debut_date, fin);
+					tpsDistAllWP3 = wp3FedeMfrService.ListTableauDistAll(debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = wp3FedeMfrService.ListTableauCommuneAll(debut_date, fin);
+					tpsComAllWP3 = wp3FedeMfrService.ListTableauCommuneAll(debut_date, fin);
 				} else {
-					tpsGenreAll = wp3FedeMfrService.ListTableauAll(debut_date, fin, params);
+					tpsGenreAllWP3 = wp3FedeMfrService.ListTableauAll(debut_date, fin, params);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDist = wp3FedeMfrService.ListTableauDist(debut_date, fin, genre);
+					tpsDistWP3 = wp3FedeMfrService.ListTableauDist(debut_date, fin, genre);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsCom = wp3FedeMfrService.ListTableauCommune(debut_date, fin, genre);
+					tpsComWP3 = wp3FedeMfrService.ListTableauCommune(debut_date, fin, genre);
 				} else {
-					tpsGenre = wp3FedeMfrService.ListTableau(debut_date, fin, params, genre);
+					tpsGenreWP3 = wp3FedeMfrService.ListTableau(debut_date, fin, params, genre);
 				}
 			}
 			break;
@@ -361,19 +816,19 @@ public class AnalysesController {
 			// ayant un champ nom_prenom count
 			if (genre.isEmpty()) {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = wp3EquipeTechMfrService.ListTableauDistAll(debut_date, fin);
+					tpsDistAllWP3 = wp3EquipeTechMfrService.ListTableauDistAll(debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = wp3EquipeTechMfrService.ListTableauCommuneAll(debut_date, fin);
+					tpsComAllWP3 = wp3EquipeTechMfrService.ListTableauCommuneAll(debut_date, fin);
 				} else {
-					tpsGenreAll = wp3EquipeTechMfrService.ListTableauAll(debut_date, fin, params);
+					tpsGenreAllWP3 = wp3EquipeTechMfrService.ListTableauAll(debut_date, fin, params);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDist = wp3EquipeTechMfrService.ListTableauDist(debut_date, fin, genre);
+					tpsDistWP3 = wp3EquipeTechMfrService.ListTableauDist(debut_date, fin, genre);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsCom = wp3EquipeTechMfrService.ListTableauCommune(debut_date, fin, genre);
+					tpsComWP3 = wp3EquipeTechMfrService.ListTableauCommune(debut_date, fin, genre);
 				} else {
-					tpsGenre = wp3EquipeTechMfrService.ListTableau(debut_date, fin, params, genre);
+					tpsGenreWP3 = wp3EquipeTechMfrService.ListTableau(debut_date, fin, params, genre);
 				}
 			}
 			break;
@@ -382,19 +837,19 @@ public class AnalysesController {
 			// ayant un champ nom_prenom count
 			if (genre.isEmpty()) {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = wp3AgrDevMfrService.ListTableauDistAll(debut_date, fin);
+					tpsDistAllWP3 = wp3AgrDevMfrService.ListTableauDistAll(debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = wp3AgrDevMfrService.ListTableauCommuneAll(debut_date, fin);
+					tpsComAllWP3 = wp3AgrDevMfrService.ListTableauCommuneAll(debut_date, fin);
 				} else {
-					tpsGenreAll = wp3AgrDevMfrService.ListTableauAll(debut_date, fin, params);
+					tpsGenreAllWP3 = wp3AgrDevMfrService.ListTableauAll(debut_date, fin, params);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDist = wp3AgrDevMfrService.ListTableauDist(debut_date, fin, genre);
+					tpsDistWP3 = wp3AgrDevMfrService.ListTableauDist(debut_date, fin, genre);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsCom = wp3AgrDevMfrService.ListTableauCommune(debut_date, fin, genre);
+					tpsComWP3 = wp3AgrDevMfrService.ListTableauCommune(debut_date, fin, genre);
 				} else {
-					tpsGenre = wp3AgrDevMfrService.ListTableau(debut_date, fin, params, genre);
+					tpsGenreWP3 = wp3AgrDevMfrService.ListTableau(debut_date, fin, params, genre);
 				}
 			}
 			break;
@@ -403,19 +858,19 @@ public class AnalysesController {
 			// ayant un champ nom_prenom count
 			if (genre.isEmpty()) {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = wp3JeunePathwayService.ListTableauDistAll(debut_date, fin);
+					tpsDistAllWP3 = wp3JeunePathwayService.ListTableauDistAll(debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = wp3JeunePathwayService.ListTableauCommuneAll(debut_date, fin);
+					tpsComAllWP3 = wp3JeunePathwayService.ListTableauCommuneAll(debut_date, fin);
 				} else {
-					tpsGenreAll = wp3JeunePathwayService.ListTableauAll(debut_date, fin, params);
+					tpsGenreAllWP3 = wp3JeunePathwayService.ListTableauAll(debut_date, fin, params);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDist = wp3JeunePathwayService.ListTableauDist(debut_date, fin, genre);
+					tpsDistWP3 = wp3JeunePathwayService.ListTableauDist(debut_date, fin, genre);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsCom = wp3JeunePathwayService.ListTableauCommune(debut_date, fin, genre);
+					tpsComWP3 = wp3JeunePathwayService.ListTableauCommune(debut_date, fin, genre);
 				} else {
-					tpsGenre = wp3JeunePathwayService.ListTableau(debut_date, fin, params, genre);
+					tpsGenreWP3 = wp3JeunePathwayService.ListTableau(debut_date, fin, params, genre);
 				}
 			}
 			break;
@@ -424,20 +879,20 @@ public class AnalysesController {
 			// ayant un champ nom_prenom count
 			if (genre.isEmpty()) {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = wp3EppFramService.ListTableauDistAll(debut_date, fin);
+					tpsDistAllWP3 = wp3EppFramService.ListTableauDistAll(debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = wp3EppFramService.ListTableauCommuneAll(debut_date, fin);
+					tpsComAllWP3 = wp3EppFramService.ListTableauCommuneAll(debut_date, fin);
 				} else {
-					tpsGenreAll = wp3EppFramService.ListTableauAll(debut_date, fin, params);
+					tpsGenreAllWP3 = wp3EppFramService.ListTableauAll(debut_date, fin, params);
 				}
 			} else {
 
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDist = wp3EppFramService.ListTableauDist(debut_date, fin, genre);
+					tpsDistWP3 = wp3EppFramService.ListTableauDist(debut_date, fin, genre);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsCom = wp3EppFramService.ListTableauCommune(debut_date, fin, genre);
+					tpsComWP3 = wp3EppFramService.ListTableauCommune(debut_date, fin, genre);
 				} else {
-					tpsGenre = wp3EppFramService.ListTableau(debut_date, fin, params, genre);
+					tpsGenreWP3 = wp3EppFramService.ListTableau(debut_date, fin, params, genre);
 				}
 			}
 			break;
@@ -446,19 +901,19 @@ public class AnalysesController {
 			// ayant un champ nom_prenom count
 			if (genre.isEmpty()) {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = wp3SanteeCommService.ListTableauDistAll(debut_date, fin);
+					tpsDistAllWP3 = wp3SanteeCommService.ListTableauDistAll(debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = wp3SanteeCommService.ListTableauCommuneAll(debut_date, fin);
+					tpsComAllWP3 = wp3SanteeCommService.ListTableauCommuneAll(debut_date, fin);
 				} else {
-					tpsGenreAll = wp3SanteeCommService.ListTableauAll(debut_date, fin, params);
+					tpsGenreAllWP3 = wp3SanteeCommService.ListTableauAll(debut_date, fin, params);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDist = wp3SanteeCommService.ListTableauDist(debut_date, fin, genre);
+					tpsDistWP3 = wp3SanteeCommService.ListTableauDist(debut_date, fin, genre);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsCom = wp3SanteeCommService.ListTableauCommune(debut_date, fin, genre);
+					tpsComWP3 = wp3SanteeCommService.ListTableauCommune(debut_date, fin, genre);
 				} else {
-					tpsGenre = wp3SanteeCommService.ListTableau(debut_date, fin, params, genre);
+					tpsGenreWP3 = wp3SanteeCommService.ListTableau(debut_date, fin, params, genre);
 				}
 			}
 			break;
@@ -467,19 +922,19 @@ public class AnalysesController {
 			// ayant un champ nom_prenom count
 			if (genre.isEmpty()) {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = wp3PeerEducatorService.ListTableauDistAll(debut_date, fin);
+					tpsDistAllWP3 = wp3PeerEducatorService.ListTableauDistAll(debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = wp3PeerEducatorService.ListTableauCommuneAll(debut_date, fin);
+					tpsComAllWP3 = wp3PeerEducatorService.ListTableauCommuneAll(debut_date, fin);
 				} else {
-					tpsGenreAll = wp3PeerEducatorService.ListTableauAll(debut_date, fin, params);
+					tpsGenreAllWP3 = wp3PeerEducatorService.ListTableauAll(debut_date, fin, params);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDist = wp3PeerEducatorService.ListTableauDist(debut_date, fin, genre);
+					tpsDistWP3 = wp3PeerEducatorService.ListTableauDist(debut_date, fin, genre);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsCom = wp3PeerEducatorService.ListTableauCommune(debut_date, fin, genre);
+					tpsComWP3 = wp3PeerEducatorService.ListTableauCommune(debut_date, fin, genre);
 				} else {
-					tpsGenre = wp3PeerEducatorService.ListTableau(debut_date, fin, params, genre);
+					tpsGenreWP3 = wp3PeerEducatorService.ListTableau(debut_date, fin, params, genre);
 				}
 			}
 			break;
@@ -498,7 +953,7 @@ public class AnalysesController {
 				} else if (subdivision.equalsIgnoreCase("commune")) {
 					tpsComF = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreF = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+					tpsGenreF = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 
 			} else if (genre.equalsIgnoreCase("H")) {
@@ -507,7 +962,7 @@ public class AnalysesController {
 				} else if (subdivision.equalsIgnoreCase("commune")) {
 					tpsComH = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreH = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+					tpsGenreH = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
@@ -529,7 +984,7 @@ public class AnalysesController {
 				} else if (subdivision.equalsIgnoreCase("commune")) {
 					tpsComF = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreF = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+					tpsGenreF = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 
 			} else if (genre.equalsIgnoreCase("H")) {
@@ -538,7 +993,7 @@ public class AnalysesController {
 				} else if (subdivision.equalsIgnoreCase("commune")) {
 					tpsComH = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreH = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+					tpsGenreH = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
@@ -560,7 +1015,7 @@ public class AnalysesController {
 				} else if (subdivision.equalsIgnoreCase("commune")) {
 					tpsComF = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreF = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+					tpsGenreF = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 
 			} else if (genre.equalsIgnoreCase("H")) {
@@ -569,7 +1024,7 @@ public class AnalysesController {
 				} else if (subdivision.equalsIgnoreCase("commune")) {
 					tpsComH = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreH = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+					tpsGenreH = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
@@ -591,7 +1046,7 @@ public class AnalysesController {
 				} else if (subdivision.equalsIgnoreCase("commune")) {
 					tpsComF = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreF = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+					tpsGenreF = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 
 			} else if (genre.equalsIgnoreCase("H")) {
@@ -600,7 +1055,7 @@ public class AnalysesController {
 				} else if (subdivision.equalsIgnoreCase("commune")) {
 					tpsComH = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreH = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+					tpsGenreH = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
@@ -622,7 +1077,7 @@ public class AnalysesController {
 				} else if (subdivision.equalsIgnoreCase("commune")) {
 					tpsComF = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreF = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+					tpsGenreF = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 
 			} else if (genre.equalsIgnoreCase("H")) {
@@ -631,7 +1086,7 @@ public class AnalysesController {
 				} else if (subdivision.equalsIgnoreCase("commune")) {
 					tpsComH = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreH = atelierMFRService.ListTableau(type_atelier,params, debut_date, fin);
+					tpsGenreH = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
@@ -684,10 +1139,13 @@ public class AnalysesController {
 		}
 
 		model.addAttribute("nameCanevas", nameCanevas);
+		model.addAttribute("namePlace", namePlace);
 		model.addAttribute("tpsGenre", tpsGenre);
 		model.addAttribute("tpsGenreH", tpsGenreH);
 		model.addAttribute("tpsGenreF", tpsGenreF);
 		model.addAttribute("tpsGenreAll", tpsGenreAll);
+		model.addAttribute("tpsGenreAllSum", tpsGenreAllSum);
+		model.addAttribute("tpsNosexe", tpsNosexe);
 		model.addAttribute("nb", nb);
 		model.addAttribute("tpsDC", tpsDC);
 		model.addAttribute("tps", tps);
@@ -695,10 +1153,18 @@ public class AnalysesController {
 		model.addAttribute("tpsComH", tpsComH);
 		model.addAttribute("tpsComF", tpsComF);
 		model.addAttribute("tpsComAll", tpsComAll);
+		model.addAttribute("tpsComAllSum", tpsComAllSum);
 		model.addAttribute("tpsDist", tpsDist);
 		model.addAttribute("tpsDistH", tpsDistH);
 		model.addAttribute("tpsDistF", tpsDistF);
 		model.addAttribute("tpsDistAll", tpsDistAll);
+		model.addAttribute("tpsDistAllSum", tpsDistAllSum);
+		model.addAttribute("tpsGenreWP3", tpsGenreWP3);
+		model.addAttribute("tpsGenreAllWP3", tpsGenreAllWP3);
+		model.addAttribute("tpsComWP3", tpsComWP3);
+		model.addAttribute("tpsComAllWP3", tpsComAllWP3);
+		model.addAttribute("tpsDistWP3", tpsDistWP3);
+		model.addAttribute("tpsDistAllWP3", tpsDistAllWP3);
 		return "tableau/listTableau";
 	}
 

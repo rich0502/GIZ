@@ -38,17 +38,13 @@
 
 <body class="stories">
 <div th:include="/pds_header.html"></div>
-<br>
-<br>
-<div th:include="crud-form/crudMenu.html" th:remove="tag"></div><br>
-
-
+<section class="main">
 <form method="POST" th:action="@{/addMenage}">
 <div class="card">
 	<header class="composantesTable-header justify-between">
-		<h2 class="page-title">Validé</h2>
+		<h2 class="page-title">CANEVAS MAHAVELONA MENAGE VULNERABLES</h2>
 		<a href="MenageForm" class="gbtn add">[[#{ajouter}]]</a>
-		<a 	th:href="@{'/success'}" class="gbtn btAdd btn-base" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">[[#{liste}]] Success stories</a>
+		<a onclick="SupprimerTout()" href="deleteAllMenage" class="gbtn btAdd btn-base" >[[#{supprimer}]] [[#{tout}]]</a>
 	</header>
 	<table class="composantes-table" id="myTable">
 		<thead>
@@ -96,7 +92,7 @@
 	</table>
 </div>
 </form>
-
+</section>
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content card-body">

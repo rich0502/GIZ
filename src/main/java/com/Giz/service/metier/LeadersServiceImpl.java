@@ -55,6 +55,13 @@ public class LeadersServiceImpl implements LeadersService {
 		leadersRepository.save(leaders);
 		
 	}
+
+	@Override
+	public void deleteAllLeaders() {
+		// TODO Auto-generated method stub
+		leadersRepository.deleteAll();
+		
+	}
 	
 	
 

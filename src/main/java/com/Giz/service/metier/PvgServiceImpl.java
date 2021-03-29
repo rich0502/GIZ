@@ -72,6 +72,12 @@ public class PvgServiceImpl implements PvgService {
 		pvgRepository.save(parcelleVG);
 		
 	}
+
+	@Override
+	public void deleteAllPvg() {
+		// TODO Auto-generated method stub
+		pvgRepository.deleteAll();
+	}
 	
 	
 

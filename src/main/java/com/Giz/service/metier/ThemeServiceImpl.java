@@ -50,6 +50,12 @@ public class ThemeServiceImpl implements ThemeService {
 		themeRepository.save(themeRealise);
 		
 	}
+
+	@Override
+	public void deleteAllTheme() {
+		// TODO Auto-generated method stub
+		themeRepository.deleteAll();
+	}
 	
 	
 

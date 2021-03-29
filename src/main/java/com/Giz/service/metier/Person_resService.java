@@ -20,5 +20,7 @@ public interface Person_resService {
 	
 	public void modifyPerson_res(Person_res person_res, String code_village, String nomPrenom, String genre_pr, int annee_naiss, boolean operationnalite,
 			Date date_suivi, String types_services_dev, Long id_pr);
+
+	public void deleteAllPr();
 	
 }

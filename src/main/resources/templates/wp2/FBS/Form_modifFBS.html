@@ -55,11 +55,19 @@
 					<br>
 					Formation FBS :
 					<br>
-					<input th:field="*{fbs.fbs_post_fbs_recus}" type="text">
+					<select class="form-control select2" th:field="*{fbs.fbs_post_fbs_recus}"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="True">Oui</option>
+						<option th:value="False">Non</option>
+					</select>
 					<br>
 					Integration FBS :
 					<br>
-					<input th:field="*{fbs.education_fbs_post_fbs}" type="text">
+					<select class="form-control select2" th:field="*{fbs.education_fbs_post_fbs}"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="True">Oui</option>
+						<option th:value="False">Non</option>
+					</select>
 					<br>
 					 Date suivi :
 					<br>

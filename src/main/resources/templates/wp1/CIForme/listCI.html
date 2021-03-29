@@ -42,16 +42,12 @@
 
 <body class="stories">
 	<div th:include="/pds_header.html"></div>
-	<br>
-	<br>
-	<div th:include="crud-form/crudMenu.html" th:remove="tag"></div>
-	<br>
-
-
-	<form method="POST" th:action="@{/addBeneficiaire}">
 		<div class="card">
 			<header class="composantesTable-header justify-between">
-				<a href="CIForm" class="btAdd">[[#{ajouter}]]</a>
+				<br><br><br><br><br>
+				<h2 class="page-title">CANEVAS CONTROLEUR INTERNE FORME ET EQUIPE</h2>
+				<a href="CIForm" class="gbtn btAdd">[[#{ajouter}]]</a>
+				<a onclick="SupprimerTout()" href="deleteAllCI" class="gbtn btAdd btn-base" >[[#{supprimer}]] [[#{tout}]]</a>
 			</header>
 			<table class="composantes-table" id="myTable">
 				<thead>
@@ -90,7 +86,6 @@
 				</tbody>
 			</table>
 		</div>
-	</form>
 
 	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
 		aria-labelledby="deleteModalTitle" aria-hidden="true">

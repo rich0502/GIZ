@@ -8,6 +8,8 @@ import com.Giz.data.domain.Wp3ActivEcoJeune;
 
 public interface Wp3ActivEcoJeuneService {
 	
+	public void deleteAll37();
+	
 	public Wp3ActivEcoJeune createWp3ActivEcoJeune(Wp3ActivEcoJeune wp3ActivEcoJeune) throws Exception;
 
 	public List<Wp3ActivEcoJeune> ListWp3ActivEcoJeune();
@@ -49,5 +51,18 @@ public interface Wp3ActivEcoJeuneService {
 	
 	public List<Object[]> ListTableauDist(Date debut_date, Date fin_date, String sexe);
 	public List<Object[]> ListTableauDistAll(Date debut_date, Date fin_date);
+	
+	// VILLAGE DETAIL TABLEAU COUNT
+	public List<Object[]> TableauCountDetailGenre(String village, String sexe);
+	public List<Object[]> TableauCountDetailGenreAll(String village);
+	
+		//COMMUNE DETAIL TABLEAU COUNT
+	public List<Object[]> TableauCountDetailGenreComm(String commune, String sexe);
+	public List<Object[]> TableauCountDetailGenreAllComm(String commune);
+	
+	 	// DISTRICT DETAIL TABLEAU COUNT
+	public List<Object[]> TableauCountDetailGenreDist(String district, String sexe);
+	public List<Object[]> TableauCountDetailGenreAllDist(String district);
+
 	
 }

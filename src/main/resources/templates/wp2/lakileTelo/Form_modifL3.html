@@ -26,21 +26,6 @@
 	border: 1px solid #ccc !important;
 }
         </style>
-        <script type="text/javascript">
-		$(document).ready(function () {
-			$('#datepicker').datepicker({
-				format: 'dd-mm-yyyy',
-				"autoclose": true,
-				language: 'en'
-			})//.datepicker("setDate", 'now')
-				;
-			var valeur = $('#error_value').text();
-			if(valeur != '') {
-				$('#messageModal').modal('show');
-				$('#msg').text(valeur);
-			}
-		});
-        </script>
     </head>
     <body class="add-success">
 		<div th:include="/pds_header.html"></div>
@@ -63,7 +48,11 @@
 					<br>
 					Catégorie :
 					<br>
-					<input th:field="*{lakileTelo.categorie}" type="text">
+					<select class="form-control select2" th:field="*{lakileTelo.categorie}"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="VSLA">VSLA</option>
+						<option th:value="GEC">GEC</option>
+					</select>
 					<br>
 					Date de création :
 					<br>
@@ -82,7 +71,11 @@
 					<input th:field="*{lakileTelo.nbr_h}" type="text">
 					Operationnel :
 					<br>
-					<input type="text" th:field="*{lakileTelo.operationnel}">
+					<select class="form-control select2" th:field="*{lakileTelo.operationnel}"
+						style="height: 40px !important;width: 27%;" required>
+						<option th:value="True">Oui</option>
+						<option th:value="False">Non</option>
+					</select>
 					<br>
 					 Date de suivi :
 					<br>
@@ -94,4 +87,4 @@
 			</div>
 		</section>
     </body>
-    <html>
+   </html>

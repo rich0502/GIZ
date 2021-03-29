@@ -19,5 +19,7 @@ public interface CiFormeService {
 	
 	public void modifyCiForme(CiForme ciForme, String code_village, String nomPrenom_ci, String genre_ci, int annee_naiss,
 			Date date_form, boolean equipe, String type_materiel, Date date_dotation, Long id_ci);
+
+	public void deleteAllCI();
 	
 }

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "valider")
-public class Valider {
+public class Valider extends Auditable<String>{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //this is where problem exists

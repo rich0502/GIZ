@@ -153,4 +153,11 @@ public class Wp3CommitteeActifServiceImpl implements Wp3CommitteeActifService {
 	public List<Object[]> ListTableauDist(Date debut_date, Date fin_date) {
 		return wp3CommitteeActifRepository.TableDataDist(debut_date, fin_date);
 	}
+	
+	@Override
+	public void deleteAll38() {
+		// TODO Auto-generated method stub
+		wp3CommitteeActifRepository.deleteAll();
+		
+	}
 }

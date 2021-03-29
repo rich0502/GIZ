@@ -17,6 +17,8 @@ public interface ParcelleTestService {
 
 	public void deleteParcelle_test(Long id_pt);
 	
+	public void deleteAllPtAGC();
+	
 	public void addParcelle_test(String code_village, float x, float y, String nomResponsable, String genre_pt,
 			int annee_naiss, String pratique_realise, Date date_mise, float superficies, boolean operationnel,
 			Date date_suivi, String technique_exergue, long nbr_participant, String type);

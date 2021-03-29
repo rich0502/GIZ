@@ -120,6 +120,13 @@ public class ParcelleTestServiceImpl implements ParcelleTestService {
 	public float countParcellTestVanille() {
 		return parcelle_testRepository.countParcelVanille("TESTS VANILLES");
 	}
+
+	@Override
+	public void deleteAllPtAGC() {
+		// TODO Auto-generated method stub
+		parcelle_testRepository.deleteAll();
+		
+	}
 	
 	
 }

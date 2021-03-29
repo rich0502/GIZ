@@ -2,29 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<head th:include="/headLinks.html" th:remove="tag"></head>
 
-<link rel="stylesheet" type="text/css"
-	href="http://localhost:8080/Giz/css/index.css">
-<link rel="stylesheet" type="text/css"
-	href="http://localhost:8080/Giz/css/fonts.css">
-<link rel="stylesheet" type="text/css"
-	href="http://localhost:8080/Giz/css/giz.css" />
+	<head th:include="/headLinks.html" th:remove="tag"></head>
+	<link rel="stylesheet" type="text/css" href="http://localhost:8080/Giz/css/index.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:8080/Giz/css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:8080/Giz/css/giz.css" />
 
-<!-- CSS -->
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css"
-	href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css">
+	<!-- CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css">
 
-<!-- JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-<script type="text/javascript">
+	<!-- JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+	<script type="text/javascript">
 		$(document).ready(function () {
 			$('input[type="file"]').change(function (e) {
 				var file = e.target.files[0].name;
@@ -32,7 +25,6 @@
 			});
 		});
 	</script>
-
 </head>
 
 <body class="galerie-view">
@@ -43,84 +35,64 @@
 			<header class="flex header-galerie">
 
 				<h2 class="page-title">
-					<br> <span>Titre album</span> : <span
-						th:text="${album_image.nom_album}"></span>
+					<br> <span>Titre album</span> : <span th:text="${album_image.nom_album}"></span>
 				</h2>
 				<div class="btn-row" style="margin-bottom: 10px;">
-					<button class="gbtn add"
-						th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+					<button class="gbtn add" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
 						th:onclick="@{'javascript:confirmDeleteAlbum(\''+${album_image.id}+'\');'}">[[#{supprimer}]]</button>
-					<button type="button" class="gbtn"
-						th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+					<button type="button" class="gbtn" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
 						data-toggle="modal" data-target="#exampleModalCenter">[[#{ajouter}]]
 						photo</button>
 				</div>
 			</header>
-
 			<div class="card">
 				<div class="card-body list-galery show-galery">
 					<!-- <div class="aaaaaa"> -->
 					<div th:each="album: ${imageList}" class="img-item">
 						<div th:each="album_nom: ${album_image}">
-							<div th:if="${album_nom.id == album.id_album}"
-								class="img-show imglist">
-								<a th:href="@{'/image/'+${album.id}}" class=""
-									data-fancybox="images" data-caption=""> <img
-									th:src="@{'/image/'+${album.id}}" width=640 height=320 />
+							<div th:if="${album_nom.id == album.id_album}" class="img-show imglist">
+								<a th:href="@{'/image/'+${album.id}}" class="" data-fancybox="images" data-caption="">
+									<img th:src="@{'/image/'+${album.id}}" width=640 height=320 />
 								</a>
 								<!-- <p class="hidden text-uppercase" th:text="${album.photo_name}"> </p> -->
 								<div class="dropdown show item-image">
 									<a href="#" th:text="${album.photo_name}"></a>
-									<a class="link-album dropdown-toggle" href="#" role="button"
-										id="dropdownMenuLink" data-toggle="dropdown"
-										aria-haspopup="true" aria-expanded="false"> </a>
-									<div class="dropdown-menu show-action"
-										aria-labelledby="dropdownMenuLink">
+									<a class="link-album dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> </a>
+									<div class="dropdown-menu show-action" aria-labelledby="dropdownMenuLink">
 										<a class="dropdown-item dwn" href="#"
 											th:href="@{'/galerie/' + ${album.id}}">Télécharger</a> <a
 											th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
 											class="dropdown-item spr" href="#"
 											th:onclick="'javascript:confirmDelete(\''+ ${album.id} +'\', \'' + ${album_image.id} +'\');'">[[#{supprimer}]]</a>
-
 									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
 					<!-- </div> -->
-
-
-
-
-
 				</div>
 			</div>
-
-
 		</div>
 	</section>
-	<div class="modal fade" id="exampleModalCenter" tabindex="-1"
-		role="dialog" aria-labelledby="exampleModalCenterTitle"
-		aria-hidden="true">
-		<form class="addcol-form" method="POST" th:action="@{/saveImage}"
-			enctype="multipart/form-data">
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<form class="addcol-form" method="POST" th:action="@{/saveImage}" enctype="multipart/form-data">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content card-body">
 					<div class="modal-header">
 						<h2 class="page-title modal-title" id="exampleModalLongTitle">[[#{ajouter}]]
 							image</h2>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body p-modal">
 						<p id="view"></p>
 						<input class="form-control" type="hidden" th:name="nom_album"
-							th:value="${album_image.nom_album}"> <input
-							class="form-control" type="hidden" th:name="id_album"
-							th:value="${album_image.id}"> <span class="gbtn btn-file"><span>Fichier</span>
+							th:value="${album_image.nom_album}"> <input class="form-control" type="hidden"
+							th:name="id_album" th:value="${album_image.id}"> <span
+							class="gbtn btn-file"><span>Fichier</span>
 							<input type="file" th:name="file" multiple> </span>
 					</div>
 					<div class="modal-footer btn-row">
@@ -131,8 +103,8 @@
 			</div>
 		</form>
 	</div>
-	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-		aria-labelledby="deleteModalTitle" aria-hidden="true">
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
+		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content card-body">
 				<div class="modal-header">
@@ -140,29 +112,25 @@
 					<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">X</span>
 					</button> -->
-					<button type="button" class="gmodal-close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="gmodal-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body p-modal">
-					<span>[[#{supprimer}]]</span> <input type="hidden"
-						id="imageIdHiddenInput" /> <input type="hidden"
+					<span>[[#{supprimer}]]</span> <input type="hidden" id="imageIdHiddenInput" /> <input type="hidden"
 						id="imageIdAlbumHiddenInput" />
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="gbtn cancel"
-						style="background-color: #d4002b !important;" data-dismiss="modal">[[#{fermer}]]</button>
-					<button type="button" class="gbtn"
-						th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+					<button type="button" class="gbtn cancel" style="background-color: #d4002b !important;"
+						data-dismiss="modal">[[#{fermer}]]</button>
+					<button type="button" class="gbtn" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
 						th:onclick="confirmDeleteImage()">[[#{supprimer}]]</button>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<div class="modal fade" id="deleteModalAlbum" tabindex="-1"
-		role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+	<div class="modal fade" id="deleteModalAlbum" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
+		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content card-body">
 				<div class="modal-header">
@@ -170,27 +138,22 @@
 					<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">X</span>
 					</button> -->
-					<button type="button" class="gmodal-close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="gmodal-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body p-modal">
-					<span>[[#{supprimer}]]</span> <input type="hidden"
-						id="albumIdHiddenInput" />
+					<span>[[#{supprimer}]]</span> <input type="hidden" id="albumIdHiddenInput" />
 				</div>
 				<div class="modal-footer btn-row">
-					<button type="button" class="gbtn cancel"
-						style="background-color: #000000 !important;" data-dismiss="modal">[[#{fermer}]]</button>
-					<button type="button" class="gbtn"
-						th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
+					<button type="button" class="gbtn cancel" style="background-color: #000000 !important;"
+						data-dismiss="modal">[[#{fermer}]]</button>
+					<button type="button" class="gbtn" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
 						th:onclick="confirmDeleteGalerie()">[[#{supprimer}]]</button>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
 	<script type="text/javascript">
 		function confirmDeleteGalerie() {
 			var id = $("#albumIdHiddenInput").val();
@@ -213,8 +176,7 @@
 			$("#albumIdHiddenInput").val(id);
 		}
 	</script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 		crossorigin="anonymous"></script>
 	<script th:src="@{/export/js/lib.js}"></script>
@@ -229,8 +191,6 @@
 		// 	input.trigger('fileselect', [numFiles, label]);
 		// });
 	</script>
-
-
 </body>
 
 </html>

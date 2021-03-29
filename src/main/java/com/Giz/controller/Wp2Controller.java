@@ -34,6 +34,64 @@ public class Wp2Controller {
 	@Autowired
 	ValiderService validerservice;
 	
+	// Supprimer tout à chaque canevas
+	
+	@RequestMapping("/deleteAllL3")
+	public String deleteAllL3() {
+		String canevas="L3";
+		validerservice.deleteValiderAll(canevas);
+		return "redirect:/listLakileTelo";
+	}
+	
+	@RequestMapping("/deleteAllVSLA")
+	public String deleteAllVSLA() {
+		String canevas="VSLA";
+		validerservice.deleteValiderAll(canevas);
+		return "redirect:/listVSLA";
+	}
+	
+	@RequestMapping("/deleteAllFBS")
+	public String deleteAllFBS() {
+		String canevas="FBS";
+		validerservice.deleteValiderAll(canevas);
+		return "redirect:/listFBS";
+	}
+	
+	@RequestMapping("/deleteAllMobile")
+	public String deleteAllMobile() {
+		String canevas="Mobile";
+		validerservice.deleteValiderAll(canevas);
+		return "redirect:/listMoney";
+	}
+	
+	@RequestMapping("/deleteAllFinance")
+	public String deleteAllFinance() {
+		String canevas="Finance";
+		validerservice.deleteValiderAll(canevas);
+		return "redirect:/listFinance";
+	}
+	
+	@RequestMapping("/deleteAllProducteur")
+	public String deleteAllProducteur() {
+		String canevas="Producteur";
+		validerservice.deleteValiderAll(canevas);
+		return "redirect:/listProducteur";
+	}
+	
+	@RequestMapping("/deleteAllAdhesion")
+	public String deleteAllAdhesion() {
+		String canevas="Adhesion";
+		validerservice.deleteValiderAll(canevas);
+		return "redirect:/listAdhesion";
+	}
+	
+	@RequestMapping("/deleteAllMenage")
+	public String deleteAllMenage() {
+		String canevas="Menage";
+		validerservice.deleteValiderAll(canevas);
+		return "redirect:/listMenage";
+	}
+	
 	// Suppression de chaque canevas
 	@RequestMapping("/deleteMoney/{id}")
 	public String deleteMoney(@PathVariable(name = "id") Long id) {
@@ -91,7 +149,7 @@ public class Wp2Controller {
 			@RequestParam("categorie") String categorie,
 			@RequestParam("date_creation") java.sql.Date date_creation,
 			@RequestParam("effectif_membre") double effectif_membre,
-			@RequestParam("nbr_f") int nbr_h, 
+			@RequestParam("nbr_h") int nbr_h, 
 			@RequestParam("nbr_f") int nbr_f,
 			@RequestParam("operationnel") boolean operationnel,
 			@RequestParam("date_suivi") java.sql.Date date_suivi,
@@ -133,7 +191,8 @@ public class Wp2Controller {
 			@RequestParam("Nom_du_groupe_lakile_telo") int nom_group_l_telo, @RequestParam("categorie") int categorie,
 			@RequestParam("date_creation") int date_creation, @RequestParam("effectif_membre") int effectif_membre,
 			@RequestParam("H") int sexeH, @RequestParam("F") int sexeF, @RequestParam("operationnel") int operationnel,
-			@RequestParam("date_suivi") int date_suivi, Model model) throws IOException, ParseException {
+			@RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		validerservice.deleteValiderAll("L3");
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -151,7 +210,7 @@ public class Wp2Controller {
 					effectif_membres,nbr_h ,nbr_f, operationnels, date_suivis);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listLakileTelo";
 	}
 
@@ -180,7 +239,7 @@ public class Wp2Controller {
 			@RequestParam("categorie") String categorie,
 			@RequestParam("date_creation") java.sql.Date date_creation,
 			@RequestParam("effectif_membre") double effectif_membre,
-			@RequestParam("nbr_f") int nbr_h, 
+			@RequestParam("nbr_h") int nbr_h, 
 			@RequestParam("nbr_f") int nbr_f,
 			@RequestParam("operationnel") boolean operationnel,
 			@RequestParam("date_suivi") java.sql.Date date_suivi,
@@ -249,8 +308,9 @@ public class Wp2Controller {
 			@RequestParam("appui_recus") int appui_recus, 
 			@RequestParam("type_appui") int type_appuis,
 			@RequestParam("operationnel") int operationnel, 
-			@RequestParam("date_suivi") int date_suivi, Model model)
+			@RequestParam("date_suivi") int date_suivi, Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
+		validerservice.deleteValiderAll("VSLA");
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -266,7 +326,7 @@ public class Wp2Controller {
 					type_appui, operationnels, date_suivis);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listVSLA";
 	}
 
@@ -352,7 +412,9 @@ public class Wp2Controller {
 	public String saveVSLA(@RequestParam("code_village") int code_de_village,
 			@RequestParam("formation_fbs") int formation_fbs,
 			@RequestParam("integration_fbs") int integration_fbs,
-			@RequestParam("date_suivi") int date_suivi, Model model) throws IOException, ParseException {
+			@RequestParam("date_suivi") int date_suivi, Model model, 
+			RedirectAttributes redirAttrs) throws IOException, ParseException {
+		validerservice.deleteValiderAll("FBS");
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -363,7 +425,7 @@ public class Wp2Controller {
 			validerservice.addValiderFBS(code_villag, fbs_post_fbs_recus, education_fbs_post_fbs, date_suivis);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listFBS";
 	}
 	
@@ -455,8 +517,9 @@ public class Wp2Controller {
 			@RequestParam("date_suivis") int date_suivis, 
 			@RequestParam("orange") int orange,
 			@RequestParam("mvol") int mvol, 
-			@RequestParam("airtel") int airtel, Model model)
+			@RequestParam("airtel") int airtel, Model model, RedirectAttributes redirAttrs)
 			throws IOException, ParseException {
+		validerservice.deleteValiderAll("Mobile");
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -474,7 +537,7 @@ public class Wp2Controller {
 					service_mobile_money, date_suivi, orange_money, mvola, airtel_money);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listMoney";
 	}
 	
@@ -573,7 +636,9 @@ public class Wp2Controller {
 			@RequestParam("imf") int imf,
 			@RequestParam("date_suivis") int date_suivis, 
 			@RequestParam("list_instut") int list_instut,
-			@RequestParam("lieu_ag") int lieu_ag, Model model) throws IOException, ParseException {
+			@RequestParam("lieu_ag") int lieu_ag, Model model, 
+			RedirectAttributes redirAttrs) throws IOException, ParseException {
+		validerservice.deleteValiderAll("Finance");
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -590,7 +655,7 @@ public class Wp2Controller {
 					date_suivi, institution, lieu_agence);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listFinance";
 	}
 	
@@ -695,7 +760,8 @@ public class Wp2Controller {
 			@RequestParam("code_pro_symrise") int code_pro_symris,
 			@RequestParam("affiliation") int affiliations,
 			@RequestParam("ma_1ere_adhesion") int ma_adhesion, @RequestParam("nbr_pers_charge") int nbr_pers_charges,
-			Model model) throws IOException, ParseException {
+			Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+		validerservice.deleteValiderAll("Producteur");
 		XSSFSheet worksheet = workbook.getSheetAt(0);
 		for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 			XSSFRow row = worksheet.getRow(i);
@@ -717,7 +783,7 @@ public class Wp2Controller {
 			validerservice.addValiderProducteur(num_adhesion, nom_beneficiaire, nom_usuel_adherent, contact, age, date_naiss, cin, sexe, code_village, code_pro_symrise, commune, adresse_fkt, affiliation, ma_1ere_adhesion, nbr_pers_charge);
 
 		}
-
+		redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 		return "redirect:/listProducteur";
 	}
 	
@@ -834,7 +900,8 @@ public class Wp2Controller {
 				@RequestParam("affiliation") int affiliations,
 				@RequestParam("ma_1ere_adhesion") int ma_adhesion, 
 				@RequestParam("nbr_pers_charge") int nbr_pers_charges,
-				Model model) throws IOException, ParseException {
+				Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+			validerservice.deleteValiderAll("Adhesion");
 			XSSFSheet worksheet = workbook.getSheetAt(0);
 			for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 				XSSFRow row = worksheet.getRow(i);
@@ -856,7 +923,7 @@ public class Wp2Controller {
 				validerservice.addValiderAdhesion(num_adhesion, nom_beneficiaire, nom_usuel_adherent, contact, age, date_naiss, cin, sexe, code_village, code_pro_symrise, commune, adresse_fkt, affiliation, ma_1ere_adhesion, nbr_pers_charge);
 
 			}
-
+			redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 			return "redirect:/listAdhesion";
 		}
 		
@@ -969,7 +1036,8 @@ public class Wp2Controller {
 						@RequestParam("code_pro_symrise") int code_pro_symris,
 						@RequestParam("affiliation") int affiliations,
 						@RequestParam("ma_1ere_adhesion") int ma_adhesion, @RequestParam("nbr_pers_charge") int nbr_pers_charges,
-						Model model) throws IOException, ParseException {
+						Model model, RedirectAttributes redirAttrs) throws IOException, ParseException {
+					validerservice.deleteValiderAll("Menage");
 					XSSFSheet worksheet = workbook.getSheetAt(0);
 					for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
 						XSSFRow row = worksheet.getRow(i);
@@ -991,7 +1059,7 @@ public class Wp2Controller {
 						validerservice.addValiderMenage(num_adhesion, nom_beneficiaire, nom_usuel_adherent, contact, age, date_naiss, cin, sexe, code_village, code_pro_symrise, commune, adresse_fkt, affiliation, ma_1ere_adhesion, nbr_pers_charge);
 
 					}
-
+					redirAttrs.addFlashAttribute("success", "Données importer avec succès");
 					return "redirect:/listMenage";
 				}
 				
@@ -1029,7 +1097,6 @@ public class Wp2Controller {
 									 nbr_pers_charge,  annee_adhesion, id);
 					return "redirect:/listMenage";
 				}
-
 
 				@RequestMapping("/listMenage")
 				public String listMenage(Model model) {

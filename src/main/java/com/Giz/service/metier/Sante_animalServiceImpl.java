@@ -56,6 +56,12 @@ public class Sante_animalServiceImpl implements Sante_animalService {
 		sante_animalRepository.save(sante_animal);
 		
 	}
+
+	@Override
+	public void deleteAllSA() {
+		// TODO Auto-generated method stub
+		sante_animalRepository.deleteAll();
+	}
 	
 	
 	
