@@ -14,7 +14,7 @@ $(document).on('ready', function () {
         draggable: true,*/
         slidesToShow: 1,
         autoplay: true,
-        autoplaySpeed: 3500,
+        autoplaySpeed: 5000,
         consoledraggable: true,
         arrows: false,
         fade: true,
@@ -28,7 +28,7 @@ $(document).on('ready', function () {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 3500,
+        autoplaySpeed: 5000,
         arrows: false,
         respondTo: 'slider',
         fade: true,

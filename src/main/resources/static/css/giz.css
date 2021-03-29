@@ -1965,7 +1965,8 @@ header.header {
     vertical-align: middle;
     margin-right: 10px;
     margin-top: 0;
-    line-height: 50px;
+    height: 40px;
+    line-height: 40px;
     text-decoration: none;
     color: #fff;
     float: right;

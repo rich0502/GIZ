@@ -38,18 +38,18 @@
 			</tr>
 			<tr>
 				<td>WP2</td>
-				<td th:text="${beneficiaireWP2Garcon}"></td>
-				<td th:text="${beneficiaireWP2Fille}"></td>
-				<td th:text="${beneficiaireWP2Homme}"></td>
-				<td th:text="${beneficiaireWP2Femme}"></td>
+				<td class="text-center" th:text="${beneficiaireWP2Garcon}"></td>
+				<td class="text-center" th:text="${beneficiaireWP2Fille}"></td>
+				<td class="text-center" th:text="${beneficiaireWP2Homme}"></td>
+				<td class="text-center" th:text="${beneficiaireWP2Femme}"></td>
 				<td class="text-center" ><a th:href="@{/listbeneficiaireWP2}"><img th:src="@{/images/eye.png}" style="width: 28px;"></a></td>
 			</tr>
 			<tr>
 				<td>WP3</td>
-				<td th:text="${beneficiaireWP3Garcon}"></td>
-				<td th:text="${beneficiaireWP3Fille}"></td>
-				<td th:text="${beneficiaireWP3Homme}"></td>
-				<td th:text="${beneficiaireWP3Femme}"></td>
+				<td class="text-center" th:text="${beneficiaireWP3Garcon}"></td>
+				<td class="text-center" th:text="${beneficiaireWP3Fille}"></td>
+				<td class="text-center" th:text="${beneficiaireWP3Homme}"></td>
+				<td class="text-center" th:text="${beneficiaireWP3Femme}"></td>
 				<td class="text-center"><a th:href="@{/listbeneficiaireWP3}"><img th:src="@{/images/eye.png}" style="width: 28px;"></a></td>
 			</tr>
 			<tr>
@@ -62,19 +62,19 @@
 			</tr>
 			<tr>
 				<td>Total</td>
-				<td th:text="${totalGarcon}"></td>
-				<td th:text="${totalFille}"></td>
-				<td th:text="${totalHomme}"></td>
-				<td th:text="${totalFemme}"></td>
+				<td class="text-center" th:text="${totalGarcon}"></td>
+				<td class="text-center" th:text="${totalFille}"></td>
+				<td class="text-center" th:text="${totalHomme}"></td>
+				<td class="text-center" th:text="${totalFemme}"></td>
 				<td></td>
 			</tr>
 			<tr>
-				<td>Total beneficiaire</td>
-				<td colspan="4" th:text="${total}"></td>
+				<td >Total beneficiaire</td>
+				<td class="text-center" colspan="4" th:text="${total}"></td>
 			</tr>
 			<tr>
 				<td>Total Menage</td>
-				<td colspan="4" th:text="${total} / 5"></td>
+				<td class="text-center" colspan="4" th:text="${total} / 5"></td>
 			</tr>
 
 		</tbody>

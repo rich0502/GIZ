@@ -20,7 +20,7 @@
 	<table class="composantes-table" id="myTable">
 		<thead>
 				<tr>
-					<th scope="col"><span>Nom et prénom</span></th>
+					<th scope="col"><span>Nom et prï¿½nom</span></th>
 					<th scope="col"><span>Age</span></th>
 					<th scope="col"><span>Genre</span></th>
 					<th scope="col"><span>Code village</span></th>
@@ -29,7 +29,7 @@
 			<tbody>
 				<tr th:each="b : ${Beneficiaire}">
 					<td th:text="${b.nom_prenom}"></td>
-					<td
+					<td 
 						th:text="${b.age}"></td>
 					<td th:text="${b.sexe}"></td>
 					<td th:text="${b.code_village}"></td>
