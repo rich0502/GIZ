@@ -13,16 +13,16 @@ import com.Giz.data.domain.Wp3JeunePathway;
 
 public interface Wp3JeunePathwayRepository extends JpaRepository<Wp3JeunePathway, Long> {
 
-	@Query("select count(*) from Wp3JeunePathway where existance_agr = 'true'")
+	@Query("select count(*) from Wp3JeunePathway")
 	long countAll();
 
-	@Query("select count(*) from Wp3JeunePathway where existance_agr = 'true' and lower(sexe)=:sexe")
+	@Query("select count(*) from Wp3JeunePathway where lower(sexe)=:sexe")
 	long countGenre(String sexe);
 
-	@Query(value = "select count(*) from wp3_jeune_pathway where existance_agr = 'true'  and date_fin_frm BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	@Query(value = "select count(*) from wp3_jeune_pathway where date_fin_frm BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
 	long countChronologie(String dateChronologique);
 
-	@Query(value = "select count(*) from wp3_jeune_pathway where existance_agr = 'true' and lower(sexe)=:sexe  and date_fin_frm BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
+	@Query(value = "select count(*) from wp3_jeune_pathway where lower(sexe)=:sexe  and date_fin_frm BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
 	long countChronologieGenre(String dateChronologique, String sexe);
 
 	@Modifying
