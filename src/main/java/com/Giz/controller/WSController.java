@@ -36,6 +36,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Giz.data.domain.GraphDistrict;
 import com.Giz.data.domain.Info_generale;
+import com.Giz.data.domain.Wp3ActivEcoJeune;
 import com.Giz.dto.ChangePasswordForm;
 import com.Giz.entity.User;
 import com.Giz.repository.Info_generaleRepository;
@@ -74,6 +75,8 @@ public class WSController {
     		return null;
     	}
 	}
+    
+   
     
   /*  @PostMapping("/editUsers/changePasswords")
 	public String changePasswords(@Valid @RequestBody ChangePasswordForm form, Errors errors) {
@@ -115,26 +118,51 @@ public class WSController {
 		beneficiaireService.addBeneficiaire(nom_bf, prenom_bf, adresse_bf, null, contact_bf, date_naiss_bf);
     }*/
     
-    @PostMapping("/createInfo_generale")
-	public ResponseEntity<Info_generale> createInfo_generale(@RequestBody Info_generale info_generale) {
-		try {
+    @RequestMapping(value="/createInfo_generale",method = RequestMethod.POST)
+	public Info_generale createInfo_generale(
+			@RequestParam("id") Long id,
+			@RequestParam("code_pro") String code_pro,
+   			@RequestParam("nbr_parcel_prod") int nbr_parcel_prod, 
+   			@RequestParam("appris_culture") String appris_culture,
+   			@RequestParam("autre") String autre,
+   			@RequestParam("moyen") String moyen,
+   			@RequestParam("technic_conseil") String technic_conseil,
+   			@RequestParam("change_tech") String change_tech, @RequestParam("prepare") String prepare,
+   			@RequestParam("dernier_compagne") int dernier_compagne,
+   			@RequestParam("place_dedie") String place_dedie) {
+	
 			Info_generale _info_generale = info_generaleRepository
-					.save(new Info_generale(info_generale.getId(),
-							info_generale.getCode_pro(),
-							info_generale.getNbr_parcel_prod(),
-							info_generale.getAppris_culture(),
-							info_generale.getAutre(),
-							info_generale.getMoyen(),
-							info_generale.getTechnic_conseil(),
-							info_generale.getChange_tech(), 
-							info_generale.getPrepare(),
-							info_generale.getDernier_compagne(),
-							info_generale.getPlace_dedie()));
-			return new ResponseEntity<>(_info_generale, HttpStatus.CREATED);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+					.save(new Info_generale(
+							id,
+							code_pro,
+							nbr_parcel_prod,
+							appris_culture,
+							autre,
+							moyen,
+							technic_conseil,
+							change_tech, 
+							prepare,
+							dernier_compagne,
+							place_dedie));
+			return _info_generale;
+		
 	}
     
-    
+   /* @RequestMapping(value="/createInfo_generale",method = RequestMethod.POST)
+   	public String createInfo_generale()
+   			throws Exception {
+   		Info_generale info_generale = new Info_generale();
+   		info_generale.getCode_pro(),
+   		info_generale.getNbr_parcel_prod(),
+   		info_generale.getAppris_culture(),
+   		info_generale.getAutre(),
+   		info_generale.getMoyen(),
+   		info_generale.getTechnic_conseil(),
+   		info_generale.getChange_tech(), 
+   		info_generale.getPrepare(),
+   		info_generale.getDernier_compagne(),
+   		info_generale.getPlace_dedie();
+   		Info_generaleService.createWp3ActivEcoJeune(wp3ActivEcoJeune);
+   	}
+   	*/
 }
