@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Données externes</title>
+<head th:include="/headLinksFragment.html" th:remove="tag"></head>
+</head>
+<body class="stories">
+	<div th:include="/pds_header.html"></div>
+	<section class="main">
+		<div class="card">
+			<header class="composantesTable-header justify-between">
+				<h2 class="page-title">DONNEES EXTERNES &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</h2>
+				<div th:include="/data-externe/choiseDataExterne.html" th:remove="tag"></div>
+			</header>
+			<div class="welcome-img">
+				<div class="col-12 slideshow">
+                    <div class="zoom slider">
+                        <div class="item">
+                            <img alt="" th:src="@{/img/back-images/fndrk-image-5.JPG}">
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

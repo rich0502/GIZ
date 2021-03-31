@@ -62,6 +62,11 @@ public class DataExterneController {
 
 	@Autowired
 	Question_conseilService question_conseilService;
+	
+	@RequestMapping("/dataExterne")
+	public String dataExterne() {
+		return "data-externe/dataExterne";
+	}	
 
 	@Autowired
 	Technique_vanilleService technique_vanilleService;

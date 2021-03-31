@@ -1,0 +1,27 @@
+<span class="label-form">Choisir pour afficher les données: </span>
+<select id="dynamic_select" class="ginput form-control" name="choix">
+  <option value="" selected>[[#{selectionner}]]</option>
+  <option value="listActivite">Activité</option>
+  <option value="listFertilisant_culture">Fértilisant culture</option>
+  <option value="listInfo_parcelle_divers">Information parcelle divers</option>
+  <option value="listParasite_maladie_divers">Parasite et maladie divers</option>
+  <option value="listFertilisant_vanille">Fértilisant vanille</option>
+  <option value="listInfo_generale">Information generale</option>
+  <option value="listInfo_parcelle">Information parcelle</option>
+  <option value="listMain_oeuvre">Main d'ouevre</option>
+  <option value="listParasite_maladie">Parasite et maladie</option>
+  <option value="listQuestion_conseil">Question et conseil</option>
+  <option value="listTechnique_vanille">Technique vanille</option>
+</select> 
+<script>
+$(function(){
+    // bind change event to select
+    $('#dynamic_select').on('change', function () {
+        var url = $(this).val(); // get selected value
+        if (url) { // require a URL
+            window.location = url; // redirect
+        }
+        return false;
+    });
+  });
+</script>
