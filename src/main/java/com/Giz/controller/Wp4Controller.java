@@ -273,6 +273,16 @@ public class Wp4Controller {
 		return "wp4/AtelierMFR/listAtelier";
 	}
 	
+	@RequestMapping("/listAt/{canevas}")
+	public String listAt(@PathVariable(name = "canevas") int canevas,Model model) {
+		System.out.println("afin" + type_at);
+		String type_at = canevas(canevas);
+		List<AtelierMFR> atelier = atelierMFRService.fetchAtelier(type_at);
+		model.addAttribute("atelier", atelier);
+		model.addAttribute("type_at", type_at);
+		return "wp4/AtelierMFR/listAtelier";
+	}
+	
 	@RequestMapping("/deleteAtelierMFR/{id_am}")
 	public String deleteAtelierMFR(@PathVariable(name = "id_am") Long id_am) {
 		atelierMFRService.deleteAtelierMFR(id_am);
@@ -430,6 +440,16 @@ public class Wp4Controller {
 	
 	@RequestMapping("/listPlateforme")
 	public String listPlateformer(Model model) {
+		List<Plateforme> plate = plateformeService.fetchPlateforme(type_at);
+		model.addAttribute("plate", plate);
+		model.addAttribute("type_at", type_at);
+		return "wp4/plateforme/listPlateforme";
+	}
+	
+	@RequestMapping("/listPlate/{canevas}")
+	public String listPlate(@PathVariable(name = "canevas") int canevas,Model model) {
+		System.out.println("afin" + type_at);
+		String type_at = canevas(canevas);
 		List<Plateforme> plate = plateformeService.fetchPlateforme(type_at);
 		model.addAttribute("plate", plate);
 		model.addAttribute("type_at", type_at);
