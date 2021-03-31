@@ -1,5 +1,6 @@
 package com.Giz.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,11 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@Override
+    public List<User> getUserByEmail(String email) throws Exception {
+        return repository.findByIdEmail(email);
+    }
 
 	@Override
 	public Iterable<User> getAllUsers() {

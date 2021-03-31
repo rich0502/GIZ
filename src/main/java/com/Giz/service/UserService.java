@@ -1,11 +1,15 @@
 package com.Giz.service;
 
+import java.util.List;
+
 import com.Giz.dto.ChangePasswordForm;
 import com.Giz.entity.User;
 
 public interface UserService {
 
 	public Iterable<User> getAllUsers();
+	
+	List<User> getUserByEmail(String email) throws Exception;
 
 	public User createUser(User user) throws Exception;
 
