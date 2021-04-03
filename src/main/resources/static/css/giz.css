@@ -578,10 +578,14 @@ ul.nav-tabs {
     text-align: center;
     width: 100%;
     height: auto;
-    border-radius: 20px;
+    /* border-radius: 20px; */
 }
+
 .home-content {
     max-width: 990px;
+}
+.welcome-page .home-content {
+    max-width: 1440px;
 }
 .home-content h2 {
     font-size: 32px;

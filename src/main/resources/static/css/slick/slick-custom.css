@@ -75,3 +75,28 @@
 .slideshow .zoom .slick-active .item img {
     transform: scale(1.04);
 }
+
+
+
+.grid-image-resonsive {
+    /* display: flex; */
+
+}
+.grid-image-resonsive .item {
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto; */
+   
+}
+.grid-image-resonsive .item image {
+    /* display: flex;
+    height: 100%;
+    width: auto; */
+    border-radius: 0;
+}
+.welcome-img .grid-image-resonsive img {
+    
+    border-radius: 0;
+}
