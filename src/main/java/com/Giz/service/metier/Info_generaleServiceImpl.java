@@ -15,9 +15,9 @@ public class Info_generaleServiceImpl implements Info_generaleService{
 	Info_generaleRepository info_generaleRepository;
 	
 	@Override
-	public List<Info_generale> ListInfo_generale() {
+	public List<Info_generale> ListInfo_generale(String code_prod) {
 		// TODO Auto-generated method stub
-		return info_generaleRepository.findAll();
+		return info_generaleRepository.findByCodeProd(code_prod);
 	}
 
 }

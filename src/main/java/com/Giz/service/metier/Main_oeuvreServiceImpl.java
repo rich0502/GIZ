@@ -15,9 +15,9 @@ public class Main_oeuvreServiceImpl implements Main_oeuvreService {
 	private Main_oeuvreRepository main_oeuvreRepository ;
 	
 	@Override
-	public List<Main_oeuvre> ListMain_oeuvre() {
+	public List<Main_oeuvre> ListMain_oeuvre(String code_prod) {
 		// TODO Auto-generated method stub
-		return main_oeuvreRepository.findAll();
+		return main_oeuvreRepository.findByCodeProd(code_prod);
 	}
 
 }

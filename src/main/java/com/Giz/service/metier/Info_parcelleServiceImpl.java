@@ -15,9 +15,9 @@ public class Info_parcelleServiceImpl implements Info_parcelleService {
 	private Info_parcelleRepository info_parcelleRepository ;
 	
 	@Override
-	public List<Info_parcelle> ListInfo_parcelle() {
+	public List<Info_parcelle> ListInfo_parcelle(String code_prod) {
 		// TODO Auto-generated method stub
-		return info_parcelleRepository.findAll();
+		return info_parcelleRepository.findByCodeProd(code_prod);
 	}
 
 }

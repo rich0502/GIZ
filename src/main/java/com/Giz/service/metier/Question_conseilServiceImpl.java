@@ -15,9 +15,9 @@ public class Question_conseilServiceImpl implements Question_conseilService{
 	private Question_conseilRepository question_conseilRepository ;
 	
 	@Override
-	public List<Question_conseil> ListQuestion_conseil() {
+	public List<Question_conseil> ListQuestion_conseil(String code_prod) {
 		// TODO Auto-generated method stub
-		return question_conseilRepository.findAll();
+		return question_conseilRepository.findByCodeProd(code_prod);
 	}
 
 }

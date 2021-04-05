@@ -6,6 +6,6 @@ import com.Giz.data.domain.Parasite_maladie;
 
 public interface Parasite_maladieService {
 
-	List<Parasite_maladie> ListParasite_maladie();
+	List<Parasite_maladie> ListParasite_maladie(String code_prod);
 
 }

@@ -15,7 +15,7 @@ public class Fertilisant_cultureServiceImpl implements Fertilisant_cultureServic
 	private Fertilisant_cultureRepository fertilisant_cultureRepository ;
 	
 	@Override
-	public List<Fertilisant_culture> ListFertilisant_culture() {
+	public List<Fertilisant_culture> ListFertilisant_culture(String code_prod) {
 		// TODO Auto-generated method stub
 		return fertilisant_cultureRepository.findAll();
 	}

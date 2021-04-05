@@ -15,9 +15,9 @@ public class Technique_vanilleServiceImpl implements Technique_vanilleService{
 	private Technique_vanilleRepository technique_vanilleRepository ;
 	
 	@Override
-	public List<Technique_vanille> ListTechnique_vanille() {
+	public List<Technique_vanille> ListTechnique_vanille(String code_prod) {
 		// TODO Auto-generated method stub
-		return technique_vanilleRepository.findAll();
+		return technique_vanilleRepository.findByCodeProd(code_prod);
 	}
 
 }

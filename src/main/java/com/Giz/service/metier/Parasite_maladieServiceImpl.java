@@ -15,9 +15,9 @@ public class Parasite_maladieServiceImpl implements Parasite_maladieService{
 	private Parasite_maladieRepository parasite_maladieRepository ;
 
 	@Override
-	public List<Parasite_maladie> ListParasite_maladie() {
+	public List<Parasite_maladie> ListParasite_maladie(String code_prod) {
 		// TODO Auto-generated method stub
-		return parasite_maladieRepository.findAll();
+		return parasite_maladieRepository.findByCodeProd(code_prod);
 	}
 
 }

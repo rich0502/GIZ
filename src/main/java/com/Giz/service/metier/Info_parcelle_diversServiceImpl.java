@@ -15,9 +15,9 @@ public class Info_parcelle_diversServiceImpl implements Info_parcelle_diversServ
 	private Info_parcelle_diversRepository info_parcelle_diversRepository ;
 	
 	@Override
-	public List<Info_parcelle_divers> ListInfo_parcelle_divers() {
+	public List<Info_parcelle_divers> ListInfo_parcelle_divers(String code_prod) {
 		// TODO Auto-generated method stub
-		return info_parcelle_diversRepository.findAll();
+		return info_parcelle_diversRepository.findByCodeProd(code_prod);
 	}
 
 }

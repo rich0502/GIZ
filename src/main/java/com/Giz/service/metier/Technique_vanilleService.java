@@ -6,6 +6,6 @@ import com.Giz.data.domain.Technique_vanille;
 
 public interface Technique_vanilleService {
 
-	List<Technique_vanille> ListTechnique_vanille();
+	List<Technique_vanille> ListTechnique_vanille(String code_prod);
 
 }

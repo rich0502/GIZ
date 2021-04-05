@@ -3,6 +3,13 @@
 <head>
 <title>Données externes</title>
 <head th:include="/headLinksFragment.html" th:remove="tag"></head>
+<style>
+	#classModal {}
+
+.modal-body {
+  overflow-x: auto;
+}
+</style>
 </head>
 <body class="stories">
 	<div th:include="/pds_header.html"></div>
@@ -14,6 +21,9 @@
 			<table class="composantes-table" id="myTable">
 				<thead>
 					<tr>
+						<th scope="col"><span>Producteur present</span></th>
+						<th scope="col"><span>Producteur externe</span></th>
+						<th scope="col"><span>Participant externe</span></th>				
 						<th scope="col"><span>Type intervention</span></th>
 						<th scope="col"><span>Theme principal</span></th>
 						<th scope="col"><span>Sous theme</span></th>
@@ -24,9 +34,6 @@
 						<th scope="col"><span>Formateur</span></th>
 						<th scope="col"><span>Code formateur</span></th>
 						<th scope="col"><span>Lieu formation</span></th>
-						<th scope="col"><span>Producteur present</span></th>
-						<th scope="col"><span>Producteur externe</span></th>
-						<th scope="col"><span>Participant externe</span></th>
 						<th scope="col"><span>Image 1</span></th>
 						<th scope="col"><span>Image 2</span></th>
 						<th scope="col"><span>Image 3</span></th>
@@ -35,6 +42,27 @@
 				</thead>
 				<tbody>
 					<tr th:each="b : ${activite}">
+						<td>					
+							<form method="GET" th:action="@{/listActiviteProd}">
+								<input type="hidden" th:name="ls_prod" th:id="ls_prod" th:value="${b.prod_present}"/>
+								<input type="hidden" th:name="etat_prod" th:id="etat_prod" value="Producteur present"/>
+								<button th:text="${(#strings.arraySplit(b.prod_present,',')).length}"  type="submit"></button>
+							</form>
+						</td>
+						<td>
+							<form method="GET" th:action="@{/listActiviteProd}">
+								<input type="hidden" th:name="ls_prod" th:id="ls_prod" th:value="${b.prod_externe}"/>
+								<input type="hidden" th:name="etat_prod" th:id="etat_prod" value="Producteur externe"/>
+								<button th:text="${(#strings.arraySplit(b.prod_externe,',')).length}"  type="submit"></button>
+							</form>
+						</td>
+						<td>
+							<form method="GET" th:action="@{/listActiviteProd}">
+								<input type="hidden" th:name="ls_prod" th:id="ls_prod" th:value="${b.participant_externe}"/>
+								<input type="hidden" th:name="etat_prod" th:id="etat_prod" value="Participant externe"/>
+								<button th:text="${(#strings.arraySplit(b.participant_externe,',')).length}"  type="submit"></button>
+							</form>
+						</td>
 						<td th:text="${b.type_intervention}"></td>
 						<td th:text="${b.theme_principal}"></td>
 						<td th:text="${b.sous_theme}"></td>
@@ -42,13 +70,9 @@
 						<td th:text="${b.nom_utilisateur}"></td>
 						<td th:text="${b.gps_lat}"></td>
 						<td th:text="${b.gps_long}"></td>
-						<td th:text="${b.formateur}"></td>
-						
+						<td th:text="${b.formateur}"></td>						
 						<td th:text="${b.code_formateur}"></td>
 						<td th:text="${b.lieu_formation}"></td>
-						<td th:text="${b.prod_present}"></td>
-						<td th:text="${b.prod_externe}"></td>
-						<td th:text="${b.participant_externe}"></td>
 						<td th:text="${b.image1}"></td>
 						<td th:text="${b.image2}"></td>
 						<td th:text="${b.image3}"></td>
@@ -58,5 +82,43 @@
 			</table>
 		</div>
 	</section>
+	<!--
+	<div id="classModal" th:fragment="modalContents" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="classInfo" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          ×
+        </button>
+        <h4 class="modal-title" id="classModalLabel">
+              Information producteur <span th:text="${list_prod.length}"></span>.
+            </h4>
+      </div>
+      <div class="modal-body">
+        <table id="classTable" class="table table-bordered">
+          <thead>         	 
+          </thead>
+          <tbody>
+            <tr>
+				<td th:each="p : ${list_prod}" th:text="${p}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+	
+	<script type="text/javascript">
+	function ShowModal() {
+  		$('#classModal').modal('show')
+	}
+	</script>
+	--->
 </body>
 </html>

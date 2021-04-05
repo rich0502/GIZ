@@ -15,9 +15,9 @@ public class Fertilisant_vanilleServiceImpl implements Fertilisant_vanilleServic
 	private Fertilisant_vanilleRepository fertilisant_vanilleRepository ;
 	
 	@Override
-	public List<Fertilisant_vanille> ListFertilisant_vanille() {
+	public List<Fertilisant_vanille> ListFertilisant_vanille(String code_prod) {
 		// TODO Auto-generated method stub
-		return fertilisant_vanilleRepository.findAll();
+		return fertilisant_vanilleRepository.findByCodeProd(code_prod);
 	}
 
 }

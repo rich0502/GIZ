@@ -6,6 +6,6 @@ import com.Giz.data.domain.Fertilisant_vanille;
 
 public interface Fertilisant_vanilleService {
 
-	List<Fertilisant_vanille> ListFertilisant_vanille();
+	List<Fertilisant_vanille> ListFertilisant_vanille(String code_prod);
 
 }

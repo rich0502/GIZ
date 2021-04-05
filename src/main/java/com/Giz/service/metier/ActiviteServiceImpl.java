@@ -19,5 +19,4 @@ public class ActiviteServiceImpl implements ActiviteService {
 		// TODO Auto-generated method stub
 		return activiteRepository.findAll();
 	}
-
 }

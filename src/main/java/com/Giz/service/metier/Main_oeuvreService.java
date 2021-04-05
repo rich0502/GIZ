@@ -6,6 +6,6 @@ import com.Giz.data.domain.Main_oeuvre;
 
 public interface Main_oeuvreService {
 
-	List<Main_oeuvre> ListMain_oeuvre();
+	List<Main_oeuvre> ListMain_oeuvre(String code_prod);
 
 }

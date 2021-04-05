@@ -966,11 +966,11 @@ public class AnalysesController {
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+					tpsDistAllSum = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+					tpsComAllSum = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreAll = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+					tpsGenreAllSum = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 			}
 			break;
@@ -997,11 +997,11 @@ public class AnalysesController {
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+					tpsDistAllSum = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+					tpsComAllSum = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreAll = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+					tpsGenreAllSum = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 			}
 			break;
@@ -1028,11 +1028,11 @@ public class AnalysesController {
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+					tpsDistAllSum = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+					tpsComAllSum = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreAll = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+					tpsGenreAllSum = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 			}
 			break;
@@ -1059,11 +1059,11 @@ public class AnalysesController {
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+					tpsDistAllSum = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+					tpsComAllSum = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreAll = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+					tpsGenreAllSum = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 			}
 			break;
@@ -1090,11 +1090,11 @@ public class AnalysesController {
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
+					tpsDistAllSum = atelierMFRService.ListTableauDist(type_atelier, debut_date, fin);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
+					tpsComAllSum = atelierMFRService.ListTableauCommune(type_atelier, debut_date, fin);
 				} else {
-					tpsGenreAll = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
+					tpsGenreAllSum = atelierMFRService.ListTableau(type_atelier, params, debut_date, fin);
 				}
 			}
 			break;

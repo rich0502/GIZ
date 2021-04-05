@@ -6,6 +6,6 @@ import com.Giz.data.domain.Info_parcelle;
 
 public interface Info_parcelleService {
 
-	List<Info_parcelle> ListInfo_parcelle();
+	List<Info_parcelle> ListInfo_parcelle(String code_prod);
 
 }

@@ -1,9 +1,14 @@
 package com.Giz.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.Giz.data.domain.Question_conseil;
 
 public interface Question_conseilRepository extends JpaRepository<Question_conseil, Long>{
-
+	@Query(value = "SELECT * FROM Question_conseil,producteur WHERE Question_conseil.code_pro=producteur.code_prod AND"
+		    + " producteur.code_prod = ?1", nativeQuery = true)
+	List<Question_conseil> findByCodeProd(String code_prod);
 }

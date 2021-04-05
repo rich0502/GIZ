@@ -1,6 +1,26 @@
-<span class="label-form">Choisir pour afficher les données: </span>
-<select id="dynamic_select" class="ginput form-control" name="choix">
-  <option value="" selected>[[#{selectionner}]]</option>
+<form id="myForm" method="POST" th:action="@{/FindData}">
+
+<select id="zone" class="ginput form-control" th:name="zone" style="width: 15%;">
+	<option value="" selected>---- Zone ----</option>
+	<option th:each="p : ${prod}" th:value="${p.zone}" th:text="'Zone ' + ${p.zone}"></option>
+</select>
+
+&emsp;
+<select id="fkt" class="ginput form-control" th:name="code_fkt" style="width: 15%;">
+  <option value="" selected>---- Code fokontany ----</option>
+  <option th:each="p : ${prod}" th:value="${p.code_fkt}" th:text="${p.code_fkt}"></option>
+</select>
+
+&emsp;
+<select id="prod" class="ginput form-control" th:name="code_prod" style="width: 15%;">
+  <option value="" selected>---- Code producteur ----</option>
+  <option th:each="p : ${prod}" th:value="${p.code_prod}" th:text="${p.code_prod}"></option>
+</select>
+
+
+&emsp;
+<select id="suivi_select" class="ginput form-control" th:name="suivi" style="width: 15%;">
+  <option value="" selected>---- Suivi parcelle ----</option>
   <option value="listActivite">Activité</option>
   <option value="listFertilisant_culture">Fértilisant culture</option>
   <option value="listInfo_parcelle_divers">Information parcelle divers</option>
@@ -12,16 +32,28 @@
   <option value="listParasite_maladie">Parasite et maladie</option>
   <option value="listQuestion_conseil">Question et conseil</option>
   <option value="listTechnique_vanille">Technique vanille</option>
-</select> 
+</select>
+
+&emsp;&emsp;
+<input class="gbtn" type="submit" value="RECHERCHER">
+</form>
 <script>
 $(function(){
     // bind change event to select
-    $('#dynamic_select').on('change', function () {
-        var url = $(this).val(); // get selected value
-        if (url) { // require a URL
-            window.location = url; // redirect
-        }
-        return false;
+    $('#zone').on('change', function () {
+      $('form#myForm').attr({action: '/Giz/FindData'});
+      $('form#myForm').attr({modelAttribute: 'prod'});
+	  $('form#myForm').attr({method: 'POST'});    
+	  $('form#myForm').submit();
     });
+    
+    $('#fkt').on('change', function () {
+      $('form#myForm').attr({action: '/Giz/FindData'});
+      $('form#myForm').attr({modelAttribute: 'prod'});
+	  $('form#myForm').attr({method: 'POST'});    
+	  $('form#myForm').submit();
+    });
+    
   });
 </script>
+ 
