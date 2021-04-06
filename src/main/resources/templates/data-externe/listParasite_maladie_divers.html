@@ -10,7 +10,9 @@
 		<div class="card">
 			<header class="composantesTable-header justify-between">
 				<h2 class="page-title">LISTE PARASITE ET MALADIE DIVERS</h2>
+				<button type="button" name="btnExport" id="btnExport" style="margin-left: 770px;" class="gbtn">[[#{exporter}]]</button>
 			</header>
+			<div id="html-content-holder">
 			<table class="composantes-table" id="myTable">
 				<thead>
 					<tr>
@@ -47,7 +49,18 @@
 					</tr>
 				</tbody>
 			</table>
+			</div>
 		</div>
 	</section>
+	<script type="text/javascript">
+		$("#btnExport").click(function(e) {
+	        let file = new Blob([$('#html-content-holder').html()], {type:"application/vnd.ms-excel"});
+	        let url = URL.createObjectURL(file);
+	        let a = $("<a />", {
+	        href: url,
+	        download: "filename.xls"}).appendTo("body").get(0).click();
+	        e.preventDefault();
+      });
+	</script>
 </body>
 </html>
