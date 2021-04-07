@@ -1,45 +1,62 @@
 <form id="myForm" method="POST" th:action="@{/FindData}">
-
-<select id="suivi_select" class="ginput form-control" th:name="suivi" style="width: 15%;">
+<select id="suivi" class="ginput form-control" th:name="suivi" style="width: 30%;" required>
   <option value="">[[#{selectionner}]] suivi</option>
-  <option value="listActivite">Activité</option>
-  <option value="listFertilisant_culture">Fértilisant culture</option>
-  <option value="listInfo_parcelle_divers">Information parcelle divers</option>
-  <option value="listParasite_maladie_divers">Parasite et maladie divers</option>
-  <option value="listFertilisant_vanille">Fértilisant vanille</option>
-  <option value="listInfo_generale">Information generale</option>
-  <option value="listInfo_parcelle">Information parcelle</option>
-  <option value="listMain_oeuvre">Main d'ouevre</option>
-  <option value="listParasite_maladie">Parasite et maladie</option>
-  <option value="listQuestion_conseil">Question et conseil</option>
-  <option value="listTechnique_vanille">Technique vanille</option>
+  <option value="Activité">Activité</option>
+  <option value="1">Suivi parcelle vanille</option>
+  <option value="2">Suivi parcelle vanille diversification</option>
 </select>
 
 &emsp;
-<select id="zone" class="ginput form-control" th:name="zone" style="width: 15%;">
-	<option value='-1'>[[#{selectionner}]] zone</option>
+<select id="data" class="ginput form-control" th:name="data" style="width: 30%; margin-left: 18px;">
+  <option value="">[[#{selectionner}]] données externe</option>
+</select>
+
+&emsp;
+<select id="zone" class="ginput form-control" th:name="zone" style="width: 20%;">
+	<option value="">[[#{selectionner}]] zone</option>
 	<option th:each="ob:${zoneList}" th:value="${ob[0]}" th:text="${'Zone ' + ob[0]}"></option>
 </select>
 
 &emsp;
-<select id="code_fkt" class="ginput form-control" th:name="code_fkt" style="width: 15%;">
-	<option value='-1'>[[#{selectionner}]] fokontany</option>
+<select id="code_fkt" class="ginput form-control" th:name="code_fkt" style="width: 20%;">
+	<option value="">[[#{selectionner}]] fokontany</option>
 </select>
 
 &emsp;
-<select id="code_prod" class="ginput form-control" th:name="code_prod" style="width: 15%;">
-  <option value='-1'>[[#{selectionner}]] producteur</option>
+<select id="code_prod" class="ginput form-control" th:name="code_prod" style="width: 20%;">
+  <option value="">[[#{selectionner}]] producteur</option>
 </select>
 
 &emsp;&emsp;
 <input class="gbtn" type="submit" value="RECHERCHER">
 </form>
-<script>
+<<script type="text/javascript">
 	$(document).ready(function() {
+	
+		$("#suivi").change(function() {
+		      var suivi = $(this).val();
+		      //alert(suivi);
+		      var s = '<option value="">[[#{selectionner}]] données externe</option>';
+		   
+		      	$.ajax({
+		        url : '/Giz/getData',
+		        data : { "suivi" : suivi },
+		        success : function(result) {
+		        	var result = JSON.parse(result);
+		        	for (var i = 0; i < result.length; i++) {
+		        	  s += '<option value="' + result[i] + '">'+ result[i]+ '</option>';
+		        	}
+		        	$('#data').html(s);
+		        }
+		      });
+				//reset data
+	     	$('#data').html(s);
+		   });
+	
 	   $("#zone").change(function() {
 	      var zone = $(this).val();
-	      var s = '<option value=' + -1 + '>[[#{selectionner}]] fokotany</option>';
-	       var t = '<option value=' + -1 + '>[[#{selectionner}]] producteur</option>';
+	      var s = '<option value="">[[#{selectionner}]] fokotany</option>';
+	       var t = '<option value="">[[#{selectionner}]] producteur</option>';
 	   
 	      	$.ajax({
 	        url : '/Giz/getFokontany',
@@ -62,7 +79,7 @@
 	$("#code_fkt").change(function() {
 	      var code_fkt = $(this).val();
 	      //alert(code_fkt);
-	      var s = '<option value=' + -1 + '>[[#{selectionner}]] producteur</option>';
+	      var s = '<option value="">[[#{selectionner}]] producteur</option>';
 	     
 	      	$.ajax({
 	        url : '/Giz/getProd',
