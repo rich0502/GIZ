@@ -56,7 +56,7 @@ public interface Wp3ActivEcoJeuneRepository extends JpaRepository<Wp3ActivEcoJeu
 			+ "	(SELECT village.code_village,village.village,count(wp3_activ_eco_jeune.sexe) as femme FROM\r\n"
 			+ "	 village,wp3_activ_eco_jeune WHERE wp3_activ_eco_jeune.sexe= 'F' AND village.code_village=wp3_activ_eco_jeune.code_village AND wp3_activ_eco_jeune.code_village \r\n"
 			+ " IN (null, ?3) AND wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n"
-			+ "GROUP BY village.code_village,village.village) as femmes where hommes.village=femmes.village", nativeQuery = true)
+			+ "GROUP BY village.code_village,village.village) as femmes", nativeQuery = true)
 	List<Object[]> TableDataAll(Date debut_date, Date fin_date, List<String> params);
 
 	@Query(value = "SELECT village.commune,count(wp3_activ_eco_jeune.sexe) as nbr, wp3_activ_eco_jeune.sexe FROM"
@@ -73,7 +73,7 @@ public interface Wp3ActivEcoJeuneRepository extends JpaRepository<Wp3ActivEcoJeu
 			+ "	(SELECT village.commune,count(wp3_activ_eco_jeune.sexe) as femme FROM\r\n"
 			+ "	 village,wp3_activ_eco_jeune WHERE village.code_village=wp3_activ_eco_jeune.code_village AND\r\n"
 			+ "	wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n" + " and wp3_activ_eco_jeune.sexe = 'F'\r\n"
-			+ "	GROUP BY village.commune) as femmes where hommes.commune=femmes.commune", nativeQuery = true)
+			+ "	GROUP BY village.commune) as femmes", nativeQuery = true)
 	List<Object[]> TableDataCommuneAll(Date debut_date, Date fin_date);
 
 	@Query(value = "SELECT village.district,count(wp3_activ_eco_jeune.sexe) as nbr, wp3_activ_eco_jeune.sexe FROM"
@@ -90,7 +90,7 @@ public interface Wp3ActivEcoJeuneRepository extends JpaRepository<Wp3ActivEcoJeu
 			+ "	(SELECT village.district,count(wp3_activ_eco_jeune.sexe) as femme FROM\r\n"
 			+ "	 village,wp3_activ_eco_jeune WHERE village.code_village=wp3_activ_eco_jeune.code_village AND\r\n"
 			+ "	wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n" + " and wp3_activ_eco_jeune.sexe = 'F'\r\n"
-			+ "	GROUP BY village.district) as femmes where hommes.district=femmes.district", nativeQuery = true)
+			+ "	GROUP BY village.district) as femmes", nativeQuery = true)
 	List<Object[]> TableDataDistAll(Date debut_date, Date fin_date);
 	
 	// VILLAGE DETAIL TABLEAU COUNT
