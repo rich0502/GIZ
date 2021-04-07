@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.Giz.data.domain.Activite;
 import com.Giz.data.domain.Fertilisant_culture;
@@ -17,7 +19,6 @@ import com.Giz.data.domain.Info_parcelle_divers;
 import com.Giz.data.domain.Main_oeuvre;
 import com.Giz.data.domain.Parasite_maladie;
 import com.Giz.data.domain.Parasite_maladie_divers;
-import com.Giz.data.domain.Producteur;
 import com.Giz.data.domain.Question_conseil;
 import com.Giz.data.domain.Technique_vanille;
 import com.Giz.service.metier.ActiviteService;
@@ -32,6 +33,8 @@ import com.Giz.service.metier.Parasite_maladie_diversService;
 import com.Giz.service.metier.ProducteurService;
 import com.Giz.service.metier.Question_conseilService;
 import com.Giz.service.metier.Technique_vanilleService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class DataExterneController {
@@ -74,10 +77,34 @@ public class DataExterneController {
 	
 	@RequestMapping("/dataExterne")
 	public String dataExterne(Model model) {
-	
-		List<Producteur> prod = producteurService.ListZone();
-		model.addAttribute("prod", prod);
+		model.addAttribute("zoneList", producteurService.ListZone());
 		return "data-externe/dataExterne";
+	}
+	
+	@GetMapping("/getFokontany")
+	public @ResponseBody String getFokontany(@RequestParam String zone)
+	{
+		String json = null;
+		List<Object[]> list = producteurService.ListFkt(zone);
+		try {
+			json = new ObjectMapper().writeValueAsString(list);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return json;
+	}
+	
+	@GetMapping("/getProd")
+	public @ResponseBody String getProd(@RequestParam String code_fkt)
+	{
+		String json = null;
+		List<Object[]> list = producteurService.ListProd(code_fkt);
+		try {
+			json = new ObjectMapper().writeValueAsString(list);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return json;
 	}
 	
 	@RequestMapping("/listActivite")
@@ -98,19 +125,8 @@ public class DataExterneController {
 	}
 	
 	@RequestMapping("/FindData")
-	public String FindData(@RequestParam(value = "suivi", required = false) String suivi,
-			@RequestParam(value = "zone", required = false) String zone,
-			@RequestParam(value = "code_fkt", required = false) String code_fkt,
-			@RequestParam(value = "code_prod", required = false) String code_prod, Model model) {
-		
-		if (code_fkt.equalsIgnoreCase("")) {
-			List<Producteur> prod = producteurService.ListFkt(zone);
-			model.addAttribute("prod", prod);
-		} else if (code_prod.equalsIgnoreCase("")) {
-			List<Producteur> prod = producteurService.ListProd(code_fkt);
-			model.addAttribute("prod", prod);
-		}
-		
+	public String FindData(@RequestParam("suivi") String suivi,
+			@RequestParam("code_prod") String code_prod, Model model) {
 		if (suivi.equalsIgnoreCase("listActivite")) {
 			List<Activite> activite = activiteService.ListActivite();
 			model.addAttribute("activite", activite);			

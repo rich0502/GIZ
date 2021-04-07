@@ -2,14 +2,12 @@ package com.Giz.service.metier;
 
 import java.util.List;
 
-import com.Giz.data.domain.Producteur;
-
 public interface ProducteurService {
 
-	List<Producteur> ListZone();
+	List<Object[]> ListZone();
 
-	List<Producteur> ListFkt(String zone);
+	List<Object[]> ListFkt(String zone);
 	
-	List<Producteur> ListProd(String code_fkt);
+	List<Object[]> ListProd(String code_fkt);
 
 }

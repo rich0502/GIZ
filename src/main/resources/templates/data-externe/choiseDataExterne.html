@@ -1,26 +1,7 @@
 <form id="myForm" method="POST" th:action="@{/FindData}">
 
-<select id="zone" class="ginput form-control" th:name="zone" style="width: 15%;">
-	<option value="" selected>---- Zone ----</option>
-	<option th:each="p : ${prod}" th:value="${p.zone}" th:text="'Zone ' + ${p.zone}"></option>
-</select>
-
-&emsp;
-<select id="fkt" class="ginput form-control" th:name="code_fkt" style="width: 15%;">
-  <option value="" selected>---- Code fokontany ----</option>
-  <option th:each="p : ${prod}" th:value="${p.code_fkt}" th:text="${p.code_fkt}"></option>
-</select>
-
-&emsp;
-<select id="prod" class="ginput form-control" th:name="code_prod" style="width: 15%;">
-  <option value="" selected>---- Code producteur ----</option>
-  <option th:each="p : ${prod}" th:value="${p.code_prod}" th:text="${p.code_prod}"></option>
-</select>
-
-
-&emsp;
 <select id="suivi_select" class="ginput form-control" th:name="suivi" style="width: 15%;">
-  <option value="" selected>---- Suivi parcelle ----</option>
+  <option value="">[[#{selectionner}]] suivi</option>
   <option value="listActivite">Activité</option>
   <option value="listFertilisant_culture">Fértilisant culture</option>
   <option value="listInfo_parcelle_divers">Information parcelle divers</option>
@@ -34,26 +15,70 @@
   <option value="listTechnique_vanille">Technique vanille</option>
 </select>
 
+&emsp;
+<select id="zone" class="ginput form-control" th:name="zone" style="width: 15%;">
+	<option value='-1'>[[#{selectionner}]] zone</option>
+	<option th:each="ob:${zoneList}" th:value="${ob[0]}" th:text="${'Zone ' + ob[0]}"></option>
+</select>
+
+&emsp;
+<select id="code_fkt" class="ginput form-control" th:name="code_fkt" style="width: 15%;">
+	<option value='-1'>[[#{selectionner}]] fokontany</option>
+</select>
+
+&emsp;
+<select id="code_prod" class="ginput form-control" th:name="code_prod" style="width: 15%;">
+  <option value='-1'>[[#{selectionner}]] producteur</option>
+</select>
+
 &emsp;&emsp;
 <input class="gbtn" type="submit" value="RECHERCHER">
 </form>
 <script>
-$(function(){
-    // bind change event to select
-    $('#zone').on('change', function () {
-      $('form#myForm').attr({action: '/Giz/FindData'});
-      $('form#myForm').attr({modelAttribute: 'prod'});
-	  $('form#myForm').attr({method: 'POST'});    
-	  $('form#myForm').submit();
-    });
-    
-    $('#fkt').on('change', function () {
-      $('form#myForm').attr({action: '/Giz/FindData'});
-      $('form#myForm').attr({modelAttribute: 'prod'});
-	  $('form#myForm').attr({method: 'POST'});    
-	  $('form#myForm').submit();
-    });
-    
-  });
+	$(document).ready(function() {
+	   $("#zone").change(function() {
+	      var zone = $(this).val();
+	      var s = '<option value=' + -1 + '>[[#{selectionner}]] fokotany</option>';
+	       var t = '<option value=' + -1 + '>[[#{selectionner}]] producteur</option>';
+	   
+	      	$.ajax({
+	        url : '/Giz/getFokontany',
+	        data : { "zone" : zone },
+	        success : function(result) {
+	        	var result = JSON.parse(result);
+	        	for (var i = 0; i < result.length; i++) {
+	        	  s += '<option value="' + result[i][0] + '">'+ result[i][0]+ '</option>';
+	        	}
+	        	$('#code_fkt').html(s);
+	        }
+	      });
+	  
+	     //reset data
+	     $('#code_fkt').html(s);
+	     $('#code_prod').html(t);
+	
+	   });
+	
+	$("#code_fkt").change(function() {
+	      var code_fkt = $(this).val();
+	      //alert(code_fkt);
+	      var s = '<option value=' + -1 + '>[[#{selectionner}]] producteur</option>';
+	     
+	      	$.ajax({
+	        url : '/Giz/getProd',
+	        data : {"code_fkt" : code_fkt},
+	        success : function(result) {
+	        	var result = JSON.parse(result);
+	        	for (var i = 0; i < result.length; i++) {
+	        		s += '<option value="' + result[i][0] + '">'+ result[i][1]+ ' - '+ result[i][0]+ '</option>';
+	        	}
+	        	$('#code_prod').html(s);
+	        }
+	       });
+
+	     //reset data
+	     $('#code_prod').html(s);
+	  });
+});
 </script>
  
