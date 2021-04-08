@@ -8,4 +8,6 @@ public interface Main_oeuvreService {
 
 	List<Main_oeuvre> ListMain_oeuvre(String code_prod);
 
+	List<Main_oeuvre> ListMain_oeuvreAll();
+
 }

@@ -20,4 +20,10 @@ public class Parasite_maladieServiceImpl implements Parasite_maladieService{
 		return parasite_maladieRepository.findByCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Parasite_maladie> ListParasite_maladieAll() {
+		// TODO Auto-generated method stub
+		return parasite_maladieRepository.findAll();
+	}
+
 }

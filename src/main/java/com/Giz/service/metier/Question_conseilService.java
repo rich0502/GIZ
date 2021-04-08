@@ -8,4 +8,6 @@ public interface Question_conseilService {
 
 	List<Question_conseil> ListQuestion_conseil(String code_prod);
 
+	List<Question_conseil> ListQuestion_conseilAll();
+
 }

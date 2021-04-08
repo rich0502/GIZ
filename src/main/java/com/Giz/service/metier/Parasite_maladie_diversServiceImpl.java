@@ -20,4 +20,10 @@ public class Parasite_maladie_diversServiceImpl implements Parasite_maladie_dive
 		return parasite_maladie_diversRepository.findByCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Parasite_maladie_divers> ListParasite_maladie_diversAll() {
+		// TODO Auto-generated method stub
+		return parasite_maladie_diversRepository.findAll();
+	}
+
 }

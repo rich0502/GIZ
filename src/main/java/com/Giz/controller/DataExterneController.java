@@ -153,50 +153,121 @@ public class DataExterneController {
 	@RequestMapping("/FindData")
 	public String FindData(@RequestParam("suivi") String suivi,@RequestParam("data") String data,
 			@RequestParam("code_prod") String code_prod, Model model) {
+		
 		if (suivi.equalsIgnoreCase("Activité")) {
 			List<Activite> activite = activiteService.ListActivite();
 			model.addAttribute("activite", activite);			
 			return "data-externe/listActivite";
 		} else if (data.equalsIgnoreCase("Fértilisant culture")) {
-			List<Fertilisant_culture> fertilisant_culture = fertilisant_cultureService.ListFertilisant_culture(code_prod);
-			model.addAttribute("fertilisant_culture", fertilisant_culture);
-			return "data-externe/listFertilisant_culture";
+			if (code_prod.isEmpty()) {
+				List<Fertilisant_culture> fertilisant_culture = fertilisant_cultureService.ListFertilisant_cultureAll();
+				model.addAttribute("fertilisant_culture", fertilisant_culture);
+				return "data-externe/listFertilisant_culture";
+			} else {
+				List<Fertilisant_culture> fertilisant_culture = fertilisant_cultureService.ListFertilisant_culture(code_prod);
+				model.addAttribute("fertilisant_culture", fertilisant_culture);
+				return "data-externe/listFertilisant_culture";
+			}
+			
 		} else if (data.equalsIgnoreCase("Information parcelle divers")) {
-			List<Info_parcelle_divers> info_parcelle_divers = info_parcelle_diversService.ListInfo_parcelle_divers(code_prod);
-			model.addAttribute("info_parcelle_divers", info_parcelle_divers);
-			return "data-externe/listInfo_parcelle_divers";
+			if (code_prod.isEmpty()) {
+				List<Info_parcelle_divers> info_parcelle_divers = info_parcelle_diversService.ListInfo_parcelle_diversAll();
+				model.addAttribute("info_parcelle_divers", info_parcelle_divers);
+				return "data-externe/listInfo_parcelle_divers";
+			} else {
+				List<Info_parcelle_divers> info_parcelle_divers = info_parcelle_diversService.ListInfo_parcelle_divers(code_prod);
+				model.addAttribute("info_parcelle_divers", info_parcelle_divers);
+				return "data-externe/listInfo_parcelle_divers";
+			}
+			
 		} else if (data.equalsIgnoreCase("Parasite et maladie divers")) {
-			List<Parasite_maladie_divers> parasite_maladie_divers = parasite_maladie_diversService.ListParasite_maladie_divers(code_prod);
-			model.addAttribute("parasite_maladie_divers", parasite_maladie_divers);
-			return "data-externe/listParasite_maladie_divers";
+			if (code_prod.isEmpty()) {
+				List<Parasite_maladie_divers> parasite_maladie_divers = parasite_maladie_diversService.ListParasite_maladie_diversAll();
+				model.addAttribute("parasite_maladie_divers", parasite_maladie_divers);
+				return "data-externe/listParasite_maladie_divers";
+			} else {
+				List<Parasite_maladie_divers> parasite_maladie_divers = parasite_maladie_diversService.ListParasite_maladie_divers(code_prod);
+				model.addAttribute("parasite_maladie_divers", parasite_maladie_divers);
+				return "data-externe/listParasite_maladie_divers";
+			}
+			
 		} else if (data.equalsIgnoreCase("Fértilisant vanille")) {
-			List<Fertilisant_vanille> fertilisant_vanille = fertilisant_vanilleService.ListFertilisant_vanille(code_prod);
-			model.addAttribute("fertilisant_vanille", fertilisant_vanille);
-			return "data-externe/listFertilisant_vanille";
+			if (code_prod.isEmpty()) {
+				List<Fertilisant_vanille> fertilisant_vanille = fertilisant_vanilleService.ListFertilisant_vanilleAll();
+				model.addAttribute("fertilisant_vanille", fertilisant_vanille);
+				return "data-externe/listFertilisant_vanille";
+			} else {
+				List<Fertilisant_vanille> fertilisant_vanille = fertilisant_vanilleService.ListFertilisant_vanille(code_prod);
+				model.addAttribute("fertilisant_vanille", fertilisant_vanille);
+				return "data-externe/listFertilisant_vanille";
+			}
+			
 		} else if (data.equalsIgnoreCase("Information generale")) {
-			List<Info_generale> info_generale = info_generaleService.ListInfo_generale(code_prod);
-			model.addAttribute("info_generale", info_generale);
-			return "data-externe/listInfo_generale";
+			if (code_prod.isEmpty()) {
+				List<Info_generale> info_generale = info_generaleService.ListInfo_generaleAll();
+				model.addAttribute("info_generale", info_generale);
+				return "data-externe/listInfo_generale";
+			} else {
+				List<Info_generale> info_generale = info_generaleService.ListInfo_generale(code_prod);
+				model.addAttribute("info_generale", info_generale);
+				return "data-externe/listInfo_generale";
+			}
+			
 		} else if (data.equalsIgnoreCase("Information parcelle")) {
-			List<Info_parcelle> info_parcelle = info_parcelleService.ListInfo_parcelle(code_prod);
-			model.addAttribute("info_parcelle", info_parcelle);
-			return "data-externe/listInfo_parcelle";
+			if (code_prod.isEmpty()) {
+				List<Info_parcelle> info_parcelle = info_parcelleService.ListInfo_parcelleAll();
+				model.addAttribute("info_parcelle", info_parcelle);
+				return "data-externe/listInfo_parcelle";
+			} else {
+				List<Info_parcelle> info_parcelle = info_parcelleService.ListInfo_parcelle(code_prod);
+				model.addAttribute("info_parcelle", info_parcelle);
+				return "data-externe/listInfo_parcelle";
+			}
+			
 		} else if (data.equalsIgnoreCase("Main d'ouevre")) {
-			List<Main_oeuvre> main_oeuvre = main_oeuvreService.ListMain_oeuvre(code_prod);
-			model.addAttribute("main_oeuvre", main_oeuvre);
-			return "data-externe/listMain_oeuvre";
+			if (code_prod.isEmpty()) {
+				List<Main_oeuvre> main_oeuvre = main_oeuvreService.ListMain_oeuvreAll();
+				model.addAttribute("main_oeuvre", main_oeuvre);
+				return "data-externe/listMain_oeuvre";
+			} else {
+				List<Main_oeuvre> main_oeuvre = main_oeuvreService.ListMain_oeuvre(code_prod);
+				model.addAttribute("main_oeuvre", main_oeuvre);
+				return "data-externe/listMain_oeuvre";
+			}
+			
 		} else if (data.equalsIgnoreCase("Parasite et maladie")) {
-			List<Parasite_maladie> parasite_maladie = parasite_maladieService.ListParasite_maladie(code_prod);
-			model.addAttribute("parasite_maladie", parasite_maladie);
-			return "data-externe/listParasite_maladie";
+			if (code_prod.isEmpty()) {
+				List<Parasite_maladie> parasite_maladie = parasite_maladieService.ListParasite_maladieAll();
+				model.addAttribute("parasite_maladie", parasite_maladie);
+				return "data-externe/listParasite_maladie";
+			} else {
+				List<Parasite_maladie> parasite_maladie = parasite_maladieService.ListParasite_maladie(code_prod);
+				model.addAttribute("parasite_maladie", parasite_maladie);
+				return "data-externe/listParasite_maladie";
+			}
+			
 		} else if (data.equalsIgnoreCase("Question et conseil")) {
-			List<Question_conseil> question_conseil = question_conseilService.ListQuestion_conseil(code_prod);
-			model.addAttribute("question_conseil", question_conseil);
-			return "data-externe/listQuestion_conseil";
+			if (code_prod.isEmpty()) {
+				List<Question_conseil> question_conseil = question_conseilService.ListQuestion_conseilAll();
+				model.addAttribute("question_conseil", question_conseil);
+				return "data-externe/listQuestion_conseil";
+			} else {
+				List<Question_conseil> question_conseil = question_conseilService.ListQuestion_conseil(code_prod);
+				model.addAttribute("question_conseil", question_conseil);
+				return "data-externe/listQuestion_conseil";
+			}
+			
 		} else if (data.equalsIgnoreCase("Technique vanille")) {
-			List<Technique_vanille> technique_vanille = technique_vanilleService.ListTechnique_vanille(code_prod);
-			model.addAttribute("technique_vanille", technique_vanille);
-			return "data-externe/listTechnique_vanille";
+			if (code_prod.isEmpty()) {
+				List<Technique_vanille> technique_vanille = technique_vanilleService.ListTechnique_vanilleAll();
+				model.addAttribute("technique_vanille", technique_vanille);
+				return "data-externe/listTechnique_vanille";
+			} else {
+				List<Technique_vanille> technique_vanille = technique_vanilleService.ListTechnique_vanille(code_prod);
+				model.addAttribute("technique_vanille", technique_vanille);
+				return "data-externe/listTechnique_vanille";
+			}
+			
 		}
 				
 		return "redirect:/dataExterne";

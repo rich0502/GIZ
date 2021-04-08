@@ -20,4 +20,10 @@ public class Question_conseilServiceImpl implements Question_conseilService{
 		return question_conseilRepository.findByCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Question_conseil> ListQuestion_conseilAll() {
+		// TODO Auto-generated method stub
+		return question_conseilRepository.findAll();
+	}
+
 }

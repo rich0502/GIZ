@@ -20,4 +20,10 @@ public class Technique_vanilleServiceImpl implements Technique_vanilleService{
 		return technique_vanilleRepository.findByCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Technique_vanille> ListTechnique_vanilleAll() {
+		// TODO Auto-generated method stub
+		return technique_vanilleRepository.findAll();
+	}
+
 }

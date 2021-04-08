@@ -20,4 +20,10 @@ public class Fertilisant_vanilleServiceImpl implements Fertilisant_vanilleServic
 		return fertilisant_vanilleRepository.findByCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Fertilisant_vanille> ListFertilisant_vanilleAll() {
+		// TODO Auto-generated method stub
+		return fertilisant_vanilleRepository.findAll();
+	}
+
 }

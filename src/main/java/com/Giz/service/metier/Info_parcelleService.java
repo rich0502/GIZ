@@ -8,4 +8,6 @@ public interface Info_parcelleService {
 
 	List<Info_parcelle> ListInfo_parcelle(String code_prod);
 
+	List<Info_parcelle> ListInfo_parcelleAll();
+
 }

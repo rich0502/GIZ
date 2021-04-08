@@ -8,4 +8,6 @@ public interface Parasite_maladieService {
 
 	List<Parasite_maladie> ListParasite_maladie(String code_prod);
 
+	List<Parasite_maladie> ListParasite_maladieAll();
+
 }

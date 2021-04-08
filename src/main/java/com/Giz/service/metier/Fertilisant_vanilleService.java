@@ -8,4 +8,6 @@ public interface Fertilisant_vanilleService {
 
 	List<Fertilisant_vanille> ListFertilisant_vanille(String code_prod);
 
+	List<Fertilisant_vanille> ListFertilisant_vanilleAll();
+
 }

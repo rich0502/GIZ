@@ -8,4 +8,6 @@ public interface Technique_vanilleService {
 
 	List<Technique_vanille> ListTechnique_vanille(String code_prod);
 
+	List<Technique_vanille> ListTechnique_vanilleAll();
+
 }

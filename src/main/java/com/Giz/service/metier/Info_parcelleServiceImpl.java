@@ -20,4 +20,10 @@ public class Info_parcelleServiceImpl implements Info_parcelleService {
 		return info_parcelleRepository.findByCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Info_parcelle> ListInfo_parcelleAll() {
+		// TODO Auto-generated method stub
+		return info_parcelleRepository.findAll();
+	}
+
 }

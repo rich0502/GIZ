@@ -20,4 +20,10 @@ public class Main_oeuvreServiceImpl implements Main_oeuvreService {
 		return main_oeuvreRepository.findByCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Main_oeuvre> ListMain_oeuvreAll() {
+		// TODO Auto-generated method stub
+		return main_oeuvreRepository.findAll();
+	}
+
 }

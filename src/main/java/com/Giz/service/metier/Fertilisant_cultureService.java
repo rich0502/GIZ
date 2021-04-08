@@ -9,4 +9,6 @@ public interface Fertilisant_cultureService {
 
 	List<Fertilisant_culture> ListFertilisant_culture(String code_prod);
 
+	List<Fertilisant_culture> ListFertilisant_cultureAll();
+
 }
