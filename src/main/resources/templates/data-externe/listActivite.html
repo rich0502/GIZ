@@ -13,7 +13,7 @@
 				<button type="button" name="btnExport" id="btnExport" style="margin-left: 970px;" class="gbtn">[[#{exporter}]]</button>
 			</header>
 			<div id="html-content-holder">
-			<table class="composantes-table" id="myTable">
+			<table class="composantes-table text-center" id="myTable">
 				<thead>
 					<tr>
 						<th scope="col"><span>Producteur present</span></th>
@@ -41,21 +41,21 @@
 							<form method="GET" th:action="@{/listActiviteProd}">
 								<input type="hidden" th:name="ls_prod" th:id="ls_prod" th:value="${b.prod_present}"/>
 								<input type="hidden" th:name="etat_prod" th:id="etat_prod" value="Producteur present"/>
-								<button class="text-center" th:text="${(#strings.arraySplit(b.prod_present,',')).length}"  type="submit"></button>
+								<button th:text="${(#strings.arraySplit(b.prod_present,',')).length}"  type="submit"></button>
 							</form>
 						</td>
 						<td>
 							<form method="GET" th:action="@{/listActiviteProd}">
 								<input type="hidden" th:name="ls_prod" th:id="ls_prod" th:value="${b.prod_externe}"/>
 								<input type="hidden" th:name="etat_prod" th:id="etat_prod" value="Producteur externe"/>
-								<button class="text-center" th:text="${(#strings.arraySplit(b.prod_externe,',')).length}"  type="submit"></button>
+								<button th:text="${(#strings.arraySplit(b.prod_externe,',')).length}"  type="submit"></button>
 							</form>
 						</td>
 						<td>
 							<form method="GET" th:action="@{/listActiviteProd}">
 								<input type="hidden" th:name="ls_prod" th:id="ls_prod" th:value="${b.participant_externe}"/>
 								<input type="hidden" th:name="etat_prod" th:id="etat_prod" value="Participant externe"/>
-								<button class="text-center" th:text="${(#strings.arraySplit(b.participant_externe,',')).length}"  type="submit"></button>
+								<button th:text="${(#strings.arraySplit(b.participant_externe,',')).length}"  type="submit"></button>
 							</form>
 						</td>
 						<td th:text="${b.type_intervention}"></td>

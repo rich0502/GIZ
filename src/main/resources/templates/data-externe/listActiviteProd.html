@@ -13,7 +13,7 @@
 				<h2 class="page-title" th:text="*{etat_prod}"></h2>
 				<a class="btn pds-secondary-btn pds-add-user-btn pds-icon-btn pds-cancel-btn text-white" th:href="@{/listActivite}" style="margin-bottom: 10px;">[[#{retour}]]</a>
 			</header>
-			<table class="composantes-table" id="myTable">
+			<table class="composantes-table text-center" id="myTable">
 				<thead>
 					<tr>						
 						<th scope="col"><span th:text="*{etat_prod}"></span></th>
@@ -22,7 +22,7 @@
 				<tbody>
 					<tr th:each="p : ${list_prod}">
 						
-						<td class="text-center" th:text="${p}"></td>
+						<td th:text="${p}"></td>
 					</tr>
 				</tbody>
 			</table>
