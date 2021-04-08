@@ -64,6 +64,16 @@ public class WebSecurityConfig  extends  WebSecurityConfigurerAdapter{
         web.ignoring().antMatchers("/loginUser");
         web.ignoring().antMatchers("/reset");
         web.ignoring().antMatchers("/createInfo_generale");
+        web.ignoring().antMatchers("/saveActivite");
+        web.ignoring().antMatchers("/saveFertil");
+        web.ignoring().antMatchers("/saveInfoParcelDiver");
+        web.ignoring().antMatchers("/saveFertilisantVanille");
+        web.ignoring().antMatchers("/saveInfo_generale");
+        web.ignoring().antMatchers("/saveInfoParcelle");
+        web.ignoring().antMatchers("/saveMainOeuvre");
+        web.ignoring().antMatchers("/saveParasiteVanille");
+        web.ignoring().antMatchers("/saveQuestionConseil");
+        web.ignoring().antMatchers("/editUsers/changePasswords");
     }
     
 }

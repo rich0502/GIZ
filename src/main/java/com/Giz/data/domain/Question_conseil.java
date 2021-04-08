@@ -19,9 +19,9 @@ public class Question_conseil {
 	private String question_symrise;
 	@Column(length = 255)
 	private String conseil_rural;
-	@Column(length = 20)
+	@Column(length = 250)
 	private String etat_vanille;
-	@Column(length = 3)
+	@Column(length = 250)
 	private String assistance;
 	
 	public Question_conseil() {

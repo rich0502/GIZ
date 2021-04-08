@@ -8,4 +8,6 @@ public interface Parasite_maladieService {
 
 	List<Parasite_maladie> ListParasite_maladie(String code_prod);
 
+	public void addParasiteMaladieDivers (String code_prod,String constate, String nom_mp, String periode, String pourcentage, String traitement, String mecanique,
+			String chimique, String chimique_qte, String biologique, String autre, String frequence, String effets);
 }

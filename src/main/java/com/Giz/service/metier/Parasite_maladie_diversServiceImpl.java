@@ -20,4 +20,26 @@ public class Parasite_maladie_diversServiceImpl implements Parasite_maladie_dive
 		return parasite_maladie_diversRepository.findByCodeProd(code_prod);
 	}
 
+	@Override
+	public void addParasiteMaladieDivers(String code_prod, String constate, String nom_mp, String periode,
+			String pourcentage, String traitement, String mecanique, String chimique, String chimique_qte,
+			String biologique, String autre, String frequence, String effets) {
+			Parasite_maladie_divers parasite = new Parasite_maladie_divers();
+			parasite.setCode_prod(code_prod);
+			parasite.setConstate(constate);
+			parasite.setNom_mp(nom_mp);
+			parasite.setPeriode(periode);
+			parasite.setPourcentage(pourcentage);
+			parasite.setTraitement(traitement);
+			parasite.setMecanique(mecanique);
+			parasite.setChimique(chimique_qte);
+			parasite.setChimique_qte(chimique_qte);
+			parasite.setBiologique(biologique);
+			parasite.setAutre(autre);
+			parasite.setFrequence(frequence);
+			parasite.setEffets(effets);
+			parasite_maladie_diversRepository.save(parasite);
+		
+	}
+
 }

@@ -19,5 +19,19 @@ public class Fertilisant_cultureServiceImpl implements Fertilisant_cultureServic
 		// TODO Auto-generated method stub
 		return fertilisant_cultureRepository.findByCodeProd(code_prod);
 	}
+	
+	@Override
+	public void addFertilisantCulture(String code_prod, String use_fertilisant, String type_use, String autre,
+			String qte, int nbr_ans) {
+		Fertilisant_culture fertil = new Fertilisant_culture();
+		fertil.setCode_pro(code_prod);
+		fertil.setUse_fertilisant(use_fertilisant);
+		fertil.setType_use(type_use);
+		fertil.setAutre(autre);
+		fertil.setQte(qte);
+		fertil.setNbr_ans(nbr_ans);
+		fertilisant_cultureRepository.save(fertil);
+		
+	}
 
 }

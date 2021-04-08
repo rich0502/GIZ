@@ -8,4 +8,5 @@ public interface Main_oeuvreService {
 
 	List<Main_oeuvre> ListMain_oeuvre(String code_prod);
 
+	public void addMainOeuvre (String code_prod, int nbr_empl_perm, String empl_jour_saison, int nbr_empl_jour, int pay_empl_jour, String mois_tw_empl, String tw, String autre, String activite_vanille);
 }

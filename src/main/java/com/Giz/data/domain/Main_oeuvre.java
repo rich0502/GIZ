@@ -20,13 +20,13 @@ public class Main_oeuvre {
 	private String empl_jour_saison;
 	private int nbr_empl_jour;
 	private int pay_empl_jour;
-	@Column(length = 10)
+	@Column(length = 250)
 	private String mois_tw_empl;
-	@Column(length = 90)
+	@Column(length = 250)
 	private String tw;
-	@Column(length = 90)
+	@Column(length = 250)
 	private String autre;
-	@Column(length = 70)
+	@Column(length = 250)
 	private String activite_vanille;
 	
 	public Main_oeuvre() {

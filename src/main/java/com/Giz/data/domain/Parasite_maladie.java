@@ -16,13 +16,13 @@ public class Parasite_maladie {
 	private Long id;
 	@Column(length = 40)
 	private String code_prod;
-	@Column(length = 3)
+	@Column(length = 250)
 	private String constate;
-	@Column(length = 40)
+	@Column(length = 250)
 	private String nom_mp;
-	@Column(length = 10)
+	@Column(length = 250)
 	private String periode;
-	@Column(length = 10)
+	@Column(length = 250)
 	private String pourcentage;
 	@Column(length = 3)
 	private String traitement;
@@ -34,7 +34,7 @@ public class Parasite_maladie {
 	private String chimique;
 	@Column(length = 70)
 	private String chimique_qte;
-	@Column(length = 70)
+	@Column(length = 250)
 	private String biologique;
 	@Column(length = 200)
 	private String autre;

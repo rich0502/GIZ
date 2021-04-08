@@ -20,4 +20,22 @@ public class Info_generaleServiceImpl implements Info_generaleService{
 		return info_generaleRepository.findByCodeProd(code_prod);
 	}
 
+	@Override
+	public void addInfoGeneral(String code_pro, int nbr_parcel_prod, String appris_culture, String autre, String moyen,
+			String technic_conseil, String change_tech, String prepare, int dernier_compagne, String place_dedie) {
+		Info_generale info = new Info_generale();
+		info.setCode_pro(code_pro);
+		info.setNbr_parcel_prod(nbr_parcel_prod);
+		info.setAppris_culture(appris_culture);
+		info.setAutre(autre);
+		info.setMoyen(moyen);
+		info.setTechnic_conseil(technic_conseil);
+		info.setChange_tech(change_tech);
+		info.setPrepare(prepare);
+		info.setDernier_compagne(dernier_compagne);
+		info.setPlace_dedie(place_dedie);
+		info_generaleRepository.save(info);
+		
+	}
+
 }

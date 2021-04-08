@@ -20,4 +20,17 @@ public class Question_conseilServiceImpl implements Question_conseilService{
 		return question_conseilRepository.findByCodeProd(code_prod);
 	}
 
+	@Override
+	public void addQC(String code_pro, String question_symrise, String conseil_rural, String etat_vanille,
+			String assistance) {
+		Question_conseil qc = new Question_conseil();
+		qc.setCode_pro(code_pro);
+		qc.setQuestion_symrise(question_symrise);
+		qc.setConseil_rural(conseil_rural);
+		qc.setEtat_vanille(etat_vanille);
+		qc.setAssistance(assistance);
+		question_conseilRepository.save(qc);
+		
+	}
+
 }
