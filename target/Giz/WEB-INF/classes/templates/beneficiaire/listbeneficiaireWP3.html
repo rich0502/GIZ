@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<head th:include="/headLinks.html" th:remove="tag"></head>
+</head>
+<body class="stories">
+<div th:include="/pds_header.html"></div>
+<br>
+<br>
+<div class="card container">
+	<header class="composantesTable-header justify-between">
+		<h2 class="page-title">Benefciaire WP3</h2>
+	</header>
+	<table class="composantes-table" id="myTable">
+		<thead>
+			<tr>
+				<th scope="col"><span>Nom et prénom</span></th>
+				<th scope="col"><span>Age</span></th>
+				<th scope="col"><span>Genre</span></th>
+				<th scope="col"><span>Code village</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="b : ${Beneficiaire}">
+				<td th:text="${b.nom_prenom}"></td>
+				<td th:text="${annee} - ${b.annee_naissance}"></td>
+				<td th:text="${b.sexe}"></td>
+				<td th:text="${b.code_village}"></td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+
+</body>
+
+</html>

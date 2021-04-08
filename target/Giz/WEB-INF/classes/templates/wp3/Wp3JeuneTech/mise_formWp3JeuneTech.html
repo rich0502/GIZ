@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<head th:include="/headLinks.html" th:remove="tag"></head>
+
+</head>
+<body>
+<div th:include="/pds_header.html"></div>
+<script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
+<script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<link rel="stylesheet"  type="text/css" th:href="@{/css/giz.css}" />
+	<section class="main">
+		<div class="container">
+			<div class="main-section" id="myTab" role="tablist">
+				<div class="card">
+					<div class="card-body">
+						<fieldset>
+						<h2 class="page-title">[[#{import.msf}]]</h2>
+						<form th:action="@{/saveWp3JeuneTech}" method="post" class="uploadForm" enctype="multipart/form-data">
+							<table>
+							   <tr>
+								  <td  width=200px >Cible </td>
+								  <td height=45px width=575px;>
+									Source
+								  </td>
+								</tr>
+								<tr>
+								  <td  width=200px >Code village : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="code_village"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>
+								<tr>
+								  <td  width=200px >Organisme formateur : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="organisme_formateur"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>
+								<tr>
+								  <td  width=200px >Formation reçue (Oui/Non) : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="frm_recue"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>
+								<tr>
+								  <td  width=200px >Théme formation_1 : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="theme_frm1"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>
+								<tr>
+								  <td  width=200px >Date de fin de formation : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="date_fin_frm1"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>						
+								<tr>
+								  <td  width=200px >Etape à suivre pour la formation : </td>
+								  <td height=45px width=575px;>
+									<select class="form-control select2" th:name="etape_frm1"
+										style="height: 40px !important;width: 27%;" required>
+										<option th:each="headerList : ${headerLists}" th:value="${headerList.num_header}" th:text="${headerList.name_header}"></option>
+									</select>
+								  </td>
+								</tr>
+								<tr>
+								  <td  width=200px ></td>
+								  <td height=45px width=575px;>
+									<input  th:type="submit" value="Import"  class="gbtn" />
+								  </td>
+								</tr>
+							</table>
+							</form>
+						</fieldset>
+						</div>
+						
+				</div>
+			</div>
+		</div>
+	</section>
+	
+</body>
+
+<span class="span-user" th:object="${nomUser}"> 
+<span class="span-user" th:text="${nomUser}" id="lastUser">  
+<span th:text="${nomUser.username}"></span>
+</span>
+
+</html>

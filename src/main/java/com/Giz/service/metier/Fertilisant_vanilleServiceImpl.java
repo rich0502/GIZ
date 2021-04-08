@@ -32,7 +32,10 @@ public class Fertilisant_vanilleServiceImpl implements Fertilisant_vanilleServic
 		fertil.setQte(qte);
 		fertil.setNbr_ans(nbr_ans);
 		fertilisant_vanilleRepository.save(fertil);
-		
+		}	
+	public List<Fertilisant_vanille> ListFertilisant_vanilleAll() {
+		// TODO Auto-generated method stub
+		return fertilisant_vanilleRepository.findAll();
 	}
 
 }

@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<head th:include="/headLinks.html" th:remove="tag"></head>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/tracker_table.css}" />
+</head>
+<body>
+	<div th:include="/pds_header.html"></div>
+
+	<section class="main"> 
+        <header class="composantesTable-header justify-between container">
+             <h2 class="page-title">WP1: Climate Smart Vanilla Production</h2>
+             <br>
+             <br>
+             <br>
+             <br>
+         </header>
+		<div class="table-tracker-container" id="html-content-holder" crossorigin="anonymous">
+			<table class="d-table-tracker" id="dynamicTableTracker">
+				<tr class="row-dnd bg-green-aa">
+					<td class="col-title">Achieved</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+								
+							</div>
+						</div>
+					</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+					
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+					
+					<td class="col-dnd">
+						<div class="dnd-field">
+							<div>
+								<div class="draggable-circ"></div>
+							</div>
+						</div>
+					</td>
+				
+				</tr>
+				<tr class="row-dnd bg-blue-aa">
+					<td class="col-title">In Advance</td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+				</tr>
+				<tr class="row-dnd bg-blue-cc">
+					<td class="col-title">On Track</td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+					<td class="col-dnd"><div class="ontrack-line"></div></td>
+				</tr>
+				<tr class="row-dnd bg-orange-cc">
+					<td class="col-title">Delayed</td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					
+				</tr>
+				<tr class="row-dnd bg-red-99">
+					<td class="col-title">Stopped</td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+					<td class="col-dnd"></td>
+				</tr>
+				<tr class="">
+					<td class="col-title">Outcome</td> 
+					<td class="row-field"><div class="editable-field" contenteditable>50 GEC setting</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>10 Plots tested</div></td>
+					
+					<td class="row-field"><div class="editable-field" contenteditable>3000 farmers trained <br>on post FBS </div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>35 AGC plots</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>1 environemental focus group per village</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>14 ASA</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>15 trees nurseries set up </div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Outcome</div></td>
+					
+					<td class="row-field"><div class="editable-field" contenteditable>15 trees nurseries set up </div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Outcome</div></td>
+				</tr>
+				<tr class="">
+					<td class="col-title">Medium Outcome</td>
+					<td class="row-field"><div class="editable-field" contenteditable>50 GEC</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>10 Plots identified</div></td>
+					
+					<td class="row-field"><div class="editable-field" contenteditable>Post FBS tools available</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>AGC plots validate with spatial plan</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Tools available</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Timeline activities</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>14 nurseries identified with OSDRM and GDV</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Medium Outcome</div></td>
+					
+					<td class="row-field"><div class="editable-field" contenteditable>Harmonised organisation between OSDRM GDV</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Medium Outcome</div></td>
+				</tr>
+				<tr class="">
+					<td class="col-title">Activity</td>
+					<td class="row-field"><div class="editable-field" contenteditable>Mise en place GEC</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Follow up experimentation of vanilla plots Spread of biological practice against insect</div></td>
+					
+					<td class="row-field"><div class="editable-field" contenteditable>Design and validation of module and tools</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Implementation AGC, development spatial plan</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Consultation between SYM, GIZ</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Implementation activities (ToT), identification des éléveurs</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Seting up of nurseries</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Activity #</div></td>
+					
+					<td class="row-field"><div class="editable-field" contenteditable>Activity #</div></td>
+					<td class="row-field"><div class="editable-field" contenteditable>Activity #</div></td>
+				</tr>
+			</table>
+			
+		</div>
+		
+		<div class="base-content">
+			<button id="btn-Preview-Image" class="gbtn btn-export-screenshot">[[#{suivant}]]</button>
+			<div id="previewImage"></div>		
+			</div>
+	  		
+   		<br><br>
+		
+	</section>
+
+	<!-- <script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script> -->
+	<!-- <script th:src="@{/css/vendor/bootstrap/js/popper.js}"></script> -->
+	<!-- <script th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script> -->
+
+	<script th:src="@{/js/tracker-table/jquery-1.12.4.js}"></script>
+	<script th:src="@{/js/tracker-table/jquery-ui.js}"></script>
+	<script th:src="@{/js/tracker-table/html2canvas.min.js}"></script>
+	<script th:src="@{/js/tracker-table/jspdf.min.js}"></script>
+
+	<script th:src="@{/js/tracker-table/trackerTableWP1.js}"></script>
+
+</body>
+
+</html>

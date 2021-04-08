@@ -1,0 +1,254 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--/* canevas numero 2 */-->
+<tr class="">
+			<td class="col-title" rowspan="10"><div>Résultats attendus</div></td> 
+			<td class="row-field" rowspan="10"><div class="editable-field" contenteditable="false">1.1.Recherche, développement et déploiement de pratiques culturales et d'intrants innovants.</div></td>
+			<td class="row-field"><div class="editable-field" >4 sessions de présentation des résultats des différentes recherches est effectué avec les PR </div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 2</div></td>
+			
+			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
+			<td class="row-field"><div class="editable-field">
+				<div class="type-number-percent"><input id="prog01" min="0" max="100" th:value="${#numbers.formatDecimal(recheche,1,2)}" disabled></div>
+				<div class="progress custom-progress">
+					<div id="progbar01" class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${recheche} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Nombre de session de présentation des résultats de recherche</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Rapport des sessions de partage, liste complète des PR présents</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Symrise</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Les résultats pertinents et utiles aux prods sont partagés au niveau des GEC/CEP par les PR</div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+		</tr>
+
+<!--/* canevas numero 1 */-->
+		<tr class="">
+			
+			<td class="row-field"><div class="editable-field" >2100 producteurs ont adopté au moins une innovation pour améliorer la productivité et/ou le revenu</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 1</div></td>
+
+			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='reported')" th:remove="tag"></td>
+			
+			<td class="row-field"><div class="editable-field">
+				<div class="type-number-percent"><input min="0" max="100" th:value="${#numbers.formatDecimal(adopte,1,2)}" disabled></div>
+				<div class="progress custom-progress">
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${adopte} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">A catégoriser par techniques CSA : lutte maladies/parasites, gestion de la fertilité des sols, techniques culturales, etc.
+A prendre en compte les innovations développées par Symrise qui pourront être diffusées.</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Liste complète des producteurs qio ont adopté au moins une innovation agricole</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+</tr>
+
+<!--/* 5 300 producteurs formés sur les bonnes pratiques agricoles */-->
+	<tr class="">
+			
+			<td class="row-field"><div class="editable-field" >5 300 producteurs formés sur les bonnes pratiques agricoles </div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 3</div></td>
+
+			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
+			
+			<td class="row-field"><div class="editable-field">
+				<div class="type-number-percent"><input min="0" max="100" th:value="${#numbers.formatDecimal(bpa,1,2)}" disabled></div>
+				<div class="progress custom-progress">
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${bpa} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Nbr de producteurs formés sur les bonnes pratiques agricoles</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Liste complète des producteurs formés sur les bonnes pratiques, suivi post formation</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Symrise</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">"Le prix de la vanille diminue drastiquement et influence le cours des autres spéculations.
+				Les producteurs dans les zones d'intervention bénéficient de revenu supplémentaire lié à la diversification"</div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+</tr>
+
+<!--/* 10 parcelles  test de vanille sur des pratiques agricoles innovantes (paysan et Benavony ) */-->
+
+	<tr class="">
+			
+			<td class="row-field"><div class="editable-field" >10 parcelles  test de vanille sur des pratiques agricoles innovantes (paysan et Benavony)</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 4</div></td>
+
+			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
+			
+			<td class="row-field"><div class="editable-field">
+				<div class="type-number-percent"><input min="0" max="100" th:value="${#numbers.formatDecimal(test,1,2)}" disabled></div>
+				<div class="progress custom-progress">
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${test} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Nbr de parcelles test de vanille établies avec thématitque: pratiques agricoles innovantes</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Liste regroupant les informations sur les parcelles test de vanille</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Symrise</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+</tr>
+
+<!--/* Au moins 231 fiches floraison  collectés auprès des paysans */-->
+
+	<tr class="">
+			
+			<td class="row-field"><div class="editable-field" >Au moins 231 fiches floraison  collectés auprès des paysans </div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+
+			<td class="row-field"><div class="editable-field" contenteditable="false">Encore en attente (Lalaina)</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
+			
+			<td class="row-field"><div class="editable-field">
+				<div class="type-number-percent"><input min="0" max="100" th:value="${#numbers.formatDecimal(pepiniere,1,2)}" disabled></div>
+				<div class="progress custom-progress">
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${pepiniere} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Nombre de fiche floraison collectés auprès des paysans (un producteur= un suivi)</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Bases de données des suivi floraisons</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Symrise</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" th:utext="${hom_pepi}" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" th:utext="${fem_pepi}" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+</tr>
+<!--/* 15 pépinières mises en place */-->
+	<tr class="">
+			
+			<td class="row-field"><div class="editable-field" >15 pépinières mises en place</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 6</div></td>
+
+			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
+			
+			<td class="row-field"><div class="editable-field">
+				<div class="type-number-percent"><input min="0" max="100" th:value="${#numbers.formatDecimal(recheche,1,2)}" disabled></div>
+				<div class="progress custom-progress">
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${recheche} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Nombre de pépinières mises en place</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Liste regroupant les informations sur les pépinières mises en place</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Symrise</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+</tr>
+
+<!--/* 14  Agents de santé animale opérationnels */-->
+	<tr class="">
+			
+			<td class="row-field"><div class="editable-field" >14  Agents de santé animale opérationnels </div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 7</div></td>
+
+			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
+			
+			<td class="row-field"><div class="editable-field">
+				<div class="type-number-percent"><input min="0" max="100" th:value="${#numbers.formatDecimal(recheche,1,2)}" disabled></div>
+				<div class="progress custom-progress">
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${recheche} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Nombre d'agents de santé animale opérationnels</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Liste des agents de santé animale</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">GIZ/Ruralcap</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+</tr>
+
+<!--/* 86 PR sont opérationnels et délivrent des formations  */-->
+	<tr class="">
+			
+			<td class="row-field"><div class="editable-field" >86 PR sont opérationnels et délivrent des formations </div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 8, Canevas N° 9</div></td>
+
+			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
+			
+			<td class="row-field"><div class="editable-field">
+				<div class="type-number-percent"><input min="0" max="100" th:value="${#numbers.formatDecimal(recheche,1,2)}" disabled></div>
+				<div class="progress custom-progress">
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${recheche} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Nombre de PR opérationnels qui délivrent des formations</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Symrise</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Les PR restent motivés et la formation sur les BPA est bien connue des producteurs</div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+</tr>
+
+<!--/* 1 étude sur la fertilité des sols ( baseline et endline)  */-->
+
+	<tr class="">
+			
+			<td class="row-field"><div class="editable-field" >1 étude sur la fertilité des sols ( baseline et endline)</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+
+			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
+			
+			<td class="row-field"><div class="editable-field">
+				<div class="type-number-percent"><input min="0" max="100" th:value="${#numbers.formatDecimal(recheche,1,2)}" disabled></div>
+				<div class="progress custom-progress">
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${recheche} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Rapport d'étude sur la fertilité des sols (baseline et endline)</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Symrise</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false">En cours, 35 parcelles AGC (prélèvement sols, texture, chimique</div></td>
+</tr>
+<!--/* 100  fermes de référence suivi pour la collecte de donnée socio-économique */-->
+
+	<tr class="">
+			
+			<td class="row-field"><div class="editable-field" >100  fermes de référence suivi pour la collecte de donnée socio-économique</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 10</div></td>
+
+			<td class="row-field"><div class="editable-field" contenteditable="false">Evaluation</div></td>
+			<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
+			
+			<td class="row-field"><div class="editable-field">
+				<div class="type-number-percent"><input min="0" max="100" th:value="${#numbers.formatDecimal(recheche,1,2)}" disabled></div>
+				<div class="progress custom-progress">
+					<div class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${recheche} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Nombre de producteurs "fermes de référenceé" suivi graâce à l'enregistrement de cahier de trésorerie</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">Liste complète des fermes de référence actualisée trimestriellement</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false">GIZ</div></td>
+			<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+			<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+</tr>

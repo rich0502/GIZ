@@ -12,4 +12,7 @@ public interface Info_generaleService {
 
 	public void addInfoGeneral( String code_pro, int nbr_parcel_prod,String appris_culture, String autre, String moyen, String technic_conseil,String change_tech, @RequestParam("prepare") String prepare,
    	 int dernier_compagne, String place_dedie);
+
+	List<Info_generale> ListInfo_generaleAll();
+
 }

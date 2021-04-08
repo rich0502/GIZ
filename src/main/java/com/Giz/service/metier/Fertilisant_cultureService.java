@@ -11,4 +11,6 @@ public interface Fertilisant_cultureService {
 	
 	public void addFertilisantCulture(String code_prod,String use_fertilisant, String type_use, String autre,String qte,int nbr_ans);
 
+	List<Fertilisant_culture> ListFertilisant_cultureAll();
+
 }

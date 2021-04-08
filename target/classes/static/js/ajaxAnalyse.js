@@ -1,0 +1,46 @@
+
+$("#sc").change(
+				function() {
+					var sc = $(this).val();
+					console.log(sc);
+
+					$.ajax({
+						type : 'GET',
+						url : "./dropdownlist/" + sc,
+						success : function(data) {
+							var slctSubcat = $('#theme'), option = "";
+							slctSubcat.empty();
+							option = option
+							+ "<option value='null'>Select canevas</option>";
+							for (var i = 0; i < data.length; i++) {
+								option = option
+										+ "<option value='"+data[i][0]+ "'>"
+										+ data[i][1] + "</option>";
+							}
+							slctSubcat.append(option);
+						},
+						error : function() {
+							alert("error");
+						}
+
+					});
+				});
+$(document).ready(function() {
+	var maxLength = 85;
+	$('select > option').text(function(i, text) {
+		if (text.length > maxLength) {
+			return text.substr(0, maxLength) + '...';
+		}
+	});
+});
+$("#subdivision").change(
+		function() {
+			var subdivision = $(this).val();
+			if(subdivision==="village"){
+				$('#size').prop( 'disabled', false );
+				$('#villas').prop( 'disabled', false );
+			}else{
+				$('#size').prop( 'disabled', true );
+				$('#villas').prop( 'disabled', true );
+			}
+		});

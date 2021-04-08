@@ -35,7 +35,11 @@ public class Info_generaleServiceImpl implements Info_generaleService{
 		info.setDernier_compagne(dernier_compagne);
 		info.setPlace_dedie(place_dedie);
 		info_generaleRepository.save(info);
-		
+			}
+			
+	public List<Info_generale> ListInfo_generaleAll() {
+		// TODO Auto-generated method stub
+		return info_generaleRepository.findAll();
 	}
 
 }

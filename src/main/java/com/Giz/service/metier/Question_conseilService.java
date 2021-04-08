@@ -10,4 +10,6 @@ public interface Question_conseilService {
 	
 	public void addQC(String code_pro, String question_symrise, String conseil_rural, String etat_vanille, String assistance);
 
+	List<Question_conseil> ListQuestion_conseilAll();
+
 }

@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>GIZ</title>
+        <link rel="icon" type="image/png" href="css/images/icons/favicon.png">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--JQUERY-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- Los iconos tipo Solid de Fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <!-- Nuestro css-->
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/index.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/fonts.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/giz.css}">
+        <style type="text/css">
+.select2-container .select2-selection--single {
+	height: 34px !important;
+}
+
+.select2-container--default .select2-selection--single {
+	border: 1px solid #ccc !important;
+}
+        </style>
+        <script type="text/javascript">
+		$(document).ready(function () {
+			$('#datepicker').datepicker({
+				format: 'dd-mm-yyyy',
+				"autoclose": true,
+				language: 'en'
+			})//.datepicker("setDate", 'now')
+				;
+			var valeur = $('#error_value').text();
+			if(valeur != '') {
+				$('#messageModal').modal('show');
+				$('#msg').text(valeur);
+			}
+		});
+        </script>
+    </head>
+    <body class="add-success">
+		<div th:include="/pds_header.html"></div>
+		<section class="main">
+            <div class="base-content">
+				<form method="POST" th:action="@{/createWp3ElevMfr}"  class="form-edition-cust">
+					Code village
+					<br>
+					<input type="text" name="code_village" id="code_village">
+					<br>
+					Noms et Prénoms des élèves:
+					<br>
+					<input type="text" name="nom_prenom" id="nom_prenom">
+					<br>
+					 Village d'origine :
+					<br>
+					<input type="text" name="village_origine" id="village_origine">
+					<br>
+					Sexe (H/F) :
+					<br>
+					<select class="form-control select2" name="sexe" id="sexe"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="" selected>[[#{selectionner}]]</option>
+						<option value="H">Homme</option>
+						<option value="F">Femme</option>
+					</select>
+					<br>
+					Année de naissance :
+					<br>
+					<input type="text" name="annee_naissance" id="annee_naissance">
+					<br>
+					Inscrit (Oui/Non) :
+					<br>
+					<select class="form-control select2" name="inscrit" id="inscrit"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="True">Oui</option>
+							<option th:value="False">Non</option>
+					</select>
+					<br>
+					 Année d'inscription :
+					<br>
+					<input type="text" name="annee_inscription" id="annee_inscription">
+					<br>
+					 Date de suivi des élèves :
+					<br>
+					<input name="date_suivi" id="date_suivi" type="date" min="2015-01-01" class="form-control select2">
+					<br>
+					Type de formation :
+					<br>
+					<input type="text" name="type_frm" id="type_frm">
+					<br>
+					Année d'étude :
+					<br>
+					<input type="text" name="annee_etude" id="annee_etude">
+					<br>
+					Date de sortie :
+					<br>
+					<input type="date" min="2015-01-01" class="form-control select2" name="date_sortie" id="date_sortie">
+					<br>
+					Type de projet :
+					<br>
+					<input type="text" name="type_projet" id="type_projet">
+					<br>
+					Niveau de démarrage du projet :
+					<br>
+					<input type="text" name="niveau_demarrage" id="niveau_demarrage">
+					<br>
+					Date de validation :
+					<br>
+					<input type="date" min="2015-01-01" class="form-control select2" name="date_validation" id="date_validation">
+					<br>
+					Accompagnés (Oui/Non) :
+					<br>
+					<select class="form-control select2" name="accompagne" id="accompagne"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="True">Oui</option>
+							<option th:value="False">Non</option>
+					</select>
+					<br>
+					Date de suivi :
+					<br>
+					<input type="date" min="2015-01-01" class="form-control select2" name="date_suivi1" id="date_suivi1">
+					<br>
+					<br>
+					<input type="submit" th:value="#{save}" class="gbtn">
+				</form>
+			</div>
+		</section>
+    </body>
+    <html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>GIZ</title>
+	<link rel="icon" type="image/png" href="css/images/icons/favicon.png"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	  
+	  <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+	  <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	 <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">   
+	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#myTable').DataTable();
+		});
+		function confirmDelete(id) {
+			$('#deleteModal').modal('show');
+			$("#sensibileIdHiddenInput").val(id);
+		}
+		function confirmDeleteSensibilise() {
+			var id = $("#sensibileIdHiddenInput").val();
+			window.location = "deleteProducteur/" + id;
+		}
+	</script>
+</head>
+
+<body class="stories">
+<div th:include="/pds_header.html"></div>
+<section class="main">
+<form method="POST" th:action="@{/addProducteur}">
+<div class="card">
+	<header class="composantesTable-header justify-between">
+		<h2 class="page-title">CANEVAS MAHAVELONA PRODUCTEUR</h2>
+		<a href="ProducteurForm" class="gbtn add">[[#{ajouter}]]</a>
+		<a onclick="SupprimerTout()" href="deleteAllProducteur" class="gbtn btAdd btn-base" >[[#{supprimer}]] [[#{tout}]]</a>
+	</header>
+	<table class="composantes-table" id="myTable">
+		<thead>
+			<tr>
+				<th scope="col"><span>Code village</span></th>
+				<th scope="col"><span>Numéro Adhesion</span></th>
+				<th scope="col"><span>Nom benéficiaire</span></th>
+				<th scope="col"><span>Nom usuel adherent</span></th>
+				<th scope="col"><span>Contact</span></th>
+				<th scope="col"><span>Age</span></th>
+				<th scope="col"><span>CIN</span></th>
+				<th scope="col"><span>Sexe</span></th>
+				<th scope="col"><span>Code pro symrise</span></th>
+				<th scope="col"><span>Commune</span></th>
+				<th scope="col"><span>Adresse Fokotany</span></th>
+				<th scope="col"><span>Affiliation</span></th>
+				<th scope="col"><span>M/A 1ère adhesion</span></th>
+				<th scope="col"><span>Nombre personne a charge</span></th>
+				<th class="center td-action"><span>Action</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="b : ${validerProducteur}">
+				<td th:text="${b.code_village}"></td>
+				<td th:text="${b.num_adhesion}"></td>
+				<td th:text="${b.nom_beneficiaire}"></td>
+				<td th:text="${b.nom_usuel_adherent}"></td>
+				<td th:text="${b.contact}"></td>
+				<td th:text="${b.age}"></td>
+				<td th:text="${b.cin}"></td>
+				<td th:text="${b.sexe}"></td>
+				<td th:text="${b.code_pro_symrise}"></td>
+				<td th:text="${b.commune}"></td>
+				<td th:text="${b.adresse_fkt}"></td>
+				<td th:text="${b.affiliation}"></td>
+				<td th:text="${b.ma_1ere_adhesion}"></td>
+				<td th:text="${b.nbr_pers_charge}"></td>
+				<td class="center td-action">
+				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id}+'\');'}"></a>
+			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editProducteur/' + ${b.id}}"></a>
+			</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+</form>
+</section>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content card-body">
+      <div class="modal-header">
+        <h2 class="page-title modal-title" id="exampleModalLongTitle">[[#{confirm.titre}]]</h2>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">X</span>
+		</button> -->
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+      </div>
+      <div class="modal-body p-modal"><span>[[#{confirm}]]</span>
+		<input type="hidden" id="sensibileIdHiddenInput" />
+      </div>
+      <div class="modal-footer btn-row">
+        <button type="button" class="gbtn cancel" data-dismiss="modal" >[[#{fermer}]]</button>
+        <button type="button" class="gbtn" th:onclick="confirmDeleteSensibilise()" >[[#{supprimer}]]</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

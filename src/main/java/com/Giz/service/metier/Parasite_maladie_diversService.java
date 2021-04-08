@@ -12,4 +12,6 @@ public interface Parasite_maladie_diversService {
 	public void addParasiteMaladieDivers (String code_prod,String constate, String nom_mp, String periode, String pourcentage, String traitement, String mecanique,
 			String chimique, String chimique_qte, String biologique, String autre, String frequence, String effets);
 
+	List<Parasite_maladie_divers> ListParasite_maladie_diversAll();
+
 }

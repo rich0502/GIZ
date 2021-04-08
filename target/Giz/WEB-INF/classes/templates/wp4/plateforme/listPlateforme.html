@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>GIZ</title>
+	<link rel="icon" type="image/png" href="css/images/icons/favicon.png"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	  
+	  <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+	  <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	 <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">   
+	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#myTable').DataTable();
+		});
+		function confirmDelete(id) {
+			$('#deleteModal').modal('show');
+			$("#sensibileIdHiddenInput").val(id);
+		}
+		function confirmDeleteSensibilise() {
+			var id = $("#sensibileIdHiddenInput").val();
+			window.location = "deletePlateforme/" + id;
+		}
+	</script>
+</head>
+
+<body class="stories">
+<div th:include="/pds_header.html"></div>
+<section class="main">
+<div class="card">
+	<header class="composantesTable-header justify-between">
+		<h2 class="page-title" th:text="${type_at}"></h2>
+		<a href="PlateformeForm" class="gbtn add" >[[#{ajouter}]]</a>
+		<form th:action="@{/deleteAllPlateform}">
+			<input type="hidden" th:name="type_plateform" th:value="${type_at}"/> 
+			<button onclick="SupprimerTout()" class="gbtn btAdd btn-base" type="submit">[[#{supprimer}]] [[#{tout}]]</button> 
+		</form>
+	</header>
+	<table class="composantes-table" id="myTable">
+		<thead>
+			<tr>
+				<th scope="col"><span>Code village</span></th>
+				<th scope="col"><span>Existence de plate forme de refléxion</span></th>
+				<th scope="col"><span>Opérationnelle </span></th>
+				<th scope="col"><span>Date de suivi</span></th>
+				<th scope="col"><span>Commentaires </span></th>
+				<th class="center td-action"><span>Action</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="b : ${plate}">
+				<td th:text="${b.code_village}"></td>
+				<td th:text="${b.exist_platform} ? 'Oui' : 'Non'"></td>
+				<td th:text="${b.operationnel} ? 'Oui' : 'Non'"></td>
+				<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
+				<td th:text="${b.commentaire}"></td>
+				<td class="center td-action">
+				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id_am}+'\');'}"></a>
+			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editPlateforme/' + ${b.id_am}}"></a>
+			</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content card-body">
+      <div class="modal-header">
+        <h2 class="page-title modal-title" id="exampleModalLongTitle">[[#{confirm.titre}]]</h2>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">X</span>
+		</button> -->
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+      </div>
+      <div class="modal-body p-modal"><span>[[#{confirm}]]</span>
+		<input type="hidden" id="sensibileIdHiddenInput" />
+      </div>
+      <div class="modal-footer btn-row">
+        <button type="button" class="gbtn cancel" data-dismiss="modal" >[[#{fermer}]]</button>
+        <button type="button" class="gbtn" th:onclick="confirmDeleteSensibilise()" >[[#{supprimer}]]</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+</body>
+
+</html>

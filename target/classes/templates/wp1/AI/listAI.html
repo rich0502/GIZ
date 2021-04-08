@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>GIZ</title>
+	<link rel="icon" type="image/png" href="css/images/icons/favicon.png"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	  
+	  <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+	  <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	 <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">   
+	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />
+	<script type="text/javascript">
+		function confirmDelete(id) {
+			$('#deleteModal').modal('show');
+			$("#sensibileIdHiddenInput").val(id);
+		}
+		function confirmDeleteSensibilise() {
+			var id = $("#sensibileIdHiddenInput").val();
+			window.location = "deleteBeneficiaire/" + id;
+		}
+	</script>
+</head>
+
+<body class="stories">
+<div th:include="/pds_header.html"></div>
+<div class="card">
+	<header class="composantesTable-header justify-between">
+		<br><br><br><br><br>
+		<h2 class="page-title">CANEVAS ADOPTION INNOVATION</h2>
+		<a href="AIForm" class="gbtn add">[[#{ajouter}]]</a>
+		<a onclick="SupprimerTout()" href="deleteAllAI" class="gbtn btAdd btn-base" >[[#{supprimer}]] [[#{tout}]]</a>
+	</header>
+	<table class="composantes-table" id="myTable">
+		<thead>
+			<tr>
+				<th scope="col"><span>Code producteur</span></th>
+				<th scope="col"><span>Nom et prénom</span></th>
+				<th scope="col"><span>Genre</span></th>
+				<th scope="col"><span>Années de naissance</span></th>
+				<th scope="col"><span>Date de suivi</span></th>
+				<th scope="col"><span>Type</span></th>
+				<th class="center td-action"><span>Action</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="b : ${adopteInnovation}">
+				<td th:text="${b.code_pro}"></td>
+				<td th:text="${b.nomPrenom_ai}"></td>
+				<td th:text="${b.genre_ai}"></td>
+				<td th:text="${b.annee_naiss}"></td>
+				<td th:text="${#dates.format(b.date_suivi,'dd-MM-yyyy')}"></td>
+				<td th:text="${b.type}"></td>
+				<td class="center td-action">
+				<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="delete" th:onclick="@{'javascript:confirmDelete(\''+${b.id_ai}+'\');'}"></a>
+			<a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="edit"	th:href="@{'/editBeneficiaire/' + ${b.id_ai}}"></a>
+			</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content card-body">
+      <div class="modal-header">
+        <h2 class="page-title modal-title" id="exampleModalLongTitle">[[#{confirm.titre}]]</h2>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">X</span>
+		</button> -->
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+      </div>
+      <div class="modal-body p-modal"><span>[[#{confirm}]]</span>
+		<input type="hidden" id="sensibileIdHiddenInput" />
+      </div>
+      <div class="modal-footer btn-row">
+        <button type="button" class="gbtn cancel" data-dismiss="modal" >[[#{fermer}]]</button>
+        <button type="button" class="gbtn" th:onclick="confirmDeleteSensibilise()" >[[#{supprimer}]]</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Données externes</title>
+<head th:include="/headLinksFragment.html" th:remove="tag"></head>
+</head>
+<body class="stories">
+	<div th:include="/pds_header.html"></div>
+	<section class="main">
+		<div class="card">
+			<header class="composantesTable-header justify-between">
+				<h2 class="page-title">TECHNIQUE VANILLE</h2>
+				<button type="button" name="btnExport" id="btnExport" style="margin-left: 900px;" class="gbtn">[[#{exporter}]]</button>
+			</header>
+			<div id="html-content-holder">
+			<table class="composantes-table" id="myTable">
+				<thead>
+					<tr>
+						<th scope="col"><span>Code producteur</span></th>
+						<th scope="col"><span>PTV</span></th>
+						<th scope="col"><span>Taille</span></th>
+						<th scope="col"><span>Select Liane</span></th>
+						<th scope="col"><span>Nouveau plante</span></th>
+						<th scope="col"><span>Entretien</span></th>
+						<th scope="col"><span>Desherb Faush</span></th>
+						<th scope="col"><span>Descent Boucl</span></th>
+						<th scope="col"><span>Preparation Bouton</span></th>
+						<th scope="col"><span>Pollinisation</span></th>
+						<th scope="col"><span>Limite Gousse</span></th>
+						<th scope="col"><span>Nettoyage Mort</span></th>
+						<th scope="col"><span>Arret Coeur</span></th>
+						<th scope="col"><span>Nettoyage Parasite</span></th>
+						<th scope="col"><span>Ady Gasy</span></th>
+						<th scope="col"><span>Appli Compo</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="b : ${technique_vanille}">
+						<td th:text="${b.code_pro}"></td>
+						<td th:text="${b.ptv}"></td>
+						<td th:text="${b.taille}"></td>
+						<td th:text="${b.selectLiane}"></td>
+						<td th:text="${b.plantVao}"></td>
+						<td th:text="${b.entretienCan}"></td>
+						<td th:text="${b.desherbFaush}"></td>
+						<td th:text="${b.descentBoucl}"></td>
+						<td th:text="${b.prepaBouton}"></td>
+						<td th:text="${b.pollinisation}"></td>
+						<td th:text="${b.limitGousse}"></td>
+						<td th:text="${b.nettoyMort}"></td>
+						<td th:text="${b.arretCoeur}"></td>
+						<td th:text="${b.nettoyaParasit}"></td>
+						<td th:text="${b.adyGasy}"></td>
+						<td th:text="${b.appliCompo}"></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		$("#btnExport").click(function(e) {
+	        let file = new Blob([$('#html-content-holder').html()], {type:"application/vnd.ms-excel"});
+	        let url = URL.createObjectURL(file);
+	        let a = $("<a />", {
+	        href: url,
+	        download: "filename.xls"}).appendTo("body").get(0).click();
+	        e.preventDefault();
+      });
+	</script>
+</body>
+</html>

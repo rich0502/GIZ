@@ -35,5 +35,9 @@ public class Main_oeuvreServiceImpl implements Main_oeuvreService {
 		main.setActivite_vanille(activite_vanille);
 		main_oeuvreRepository.save(main);
 	}
+	public List<Main_oeuvre> ListMain_oeuvreAll() {
+		// TODO Auto-generated method stub
+		return main_oeuvreRepository.findAll();
+	}
 
 }

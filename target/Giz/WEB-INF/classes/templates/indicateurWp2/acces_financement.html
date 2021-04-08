@@ -1,0 +1,72 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<tr class="">
+	<td class="col-title" rowspan="4"><div>Objectfis spécifiques</div></td> 
+	<td class="row-field" rowspan="4"><div class="editable-field" contenteditable="false" >2.Accès au financement et à la bonne gestion financière</div></td>
+	<td class="row-field"><div class="editable-field" >20% des producteurs utilisent les services financiers formels auprès des institutions</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
+	<td class="row-field"><div class="editable-field"></div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Pourcentage des producteurs qui utilisent des services financiers formels auprès des institutions</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Liste complète des prods utilisant les services des institution</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Symrise</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Les producteurs associent gestion financière avec l'utilisation des services financiers formels pour améliorer leurs conditions de vie.</div></td>
+	<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+	<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+	<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+	<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+</tr>
+
+<tr class="">
+	<td class="row-field"><div class="editable-field" >30% des producteurs sensibilisés utilisent le mobile money</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='stopped')" th:remove="tag"></td>
+	<td class="row-field"><div class="editable-field"></div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Pourcentage de bénéficiaires sensibilisés en mobile banking</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Enquête sur un échantillon des personnes sensibilisées, comparaison baseline-endline</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">GIZ</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Les points mobile money sont disponibles à des lieux stratégiques et à proximité des villages concernés.</div></td>
+	<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+	<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+	<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+	<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+</tr>
+
+<tr class="">
+	<td class="row-field"><div class="editable-field" >Taux de sinistralité  de Mahavelona stabilisé entre 60 à 70%</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
+	<td class="row-field"><div class="editable-field"></div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Taux de sinistralité = rapport entre le montant de prestation payé et les cotisations reçues pour une période déterminée</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Rapport d'activité Mahavelona</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Giz/Mahavelona</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Mahavelona offre des prestations de qualité, reconnue par ses membres et par la communauté</div></td>
+	<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+	<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+	<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+	<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+</tr>
+
+<tr class="">
+	<td class="row-field"><div class="editable-field" >421 "LAKILE TELO"  sont établis et opérationnels</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Canevas N° 29</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false"></div></td>
+	<td th:include="indiSelectorState :: state_selector(selectedOption='running')" th:remove="tag"></td>
+	<td class="row-field"><div class="editable-field">
+	<div class="type-number-percent"><input id="prog01" min="0" max="100" th:value="${#numbers.formatDecimal(l3_operationnel,1,2)}" disabled></div>
+		<div class="progress custom-progress">
+			<div id="progbar01" class="progress-bar progress-bar-striped bg-success" role="progressbar" th:style="'width:'+ ${l3_operationnel} +'%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
+	</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Nombre de groupe "trois clés" GTC établis et opérationnels: qui entame  sa  2è, 3é cycle ou plus</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Liste complète des GTC établis et opérationnels, suivi en m+3 des "lakile telo" selon critère préétablis</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Symrise, SCI</div></td>
+	<td class="row-field"><div class="editable-field" contenteditable="false">Les membres des GTC utilisent les services fournis dans ces groupes pour améliorer leurs conditions de vie</div></td>
+	<td class="row-field"><div class="editable-field disable-edition" contenteditable="false" th:utext="${l3H_operationnel} + ${l3F_operationnel}"></div></td>
+	<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false" th:utext="${l3H_operationnel}"></div></td>
+	<td class="row-field sexe-col"><div class="editable-field disable-edition" contenteditable="false" th:utext="${l3F_operationnel}"></div></td>
+	<td class="row-field"><div class="editable-field disable-edition" contenteditable="false"></div></td>
+</tr>
+

@@ -30,7 +30,10 @@ public class Question_conseilServiceImpl implements Question_conseilService{
 		qc.setEtat_vanille(etat_vanille);
 		qc.setAssistance(assistance);
 		question_conseilRepository.save(qc);
-		
+	}
+	public List<Question_conseil> ListQuestion_conseilAll() {
+		// TODO Auto-generated method stub
+		return question_conseilRepository.findAll();
 	}
 
 }

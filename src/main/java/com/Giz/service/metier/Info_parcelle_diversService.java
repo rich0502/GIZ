@@ -12,4 +12,6 @@ public interface Info_parcelle_diversService {
 			String autre_occupation_sol,float volume_annee_precedent,float volume_annee_venir,float surface_parcelle,float rendement,int nbr_pieds,String etape_visite,String systeme_protection_sol,
 			String systeme_utilise,String associe_parcel,String autre_associe_parcel, String inclinaison, String mise_anti_errosif, String technic_use, String photo_technique, String photo_culture);
 
+	List<Info_parcelle_divers> ListInfo_parcelle_diversAll();
+
 }

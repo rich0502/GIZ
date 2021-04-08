@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>GIZ</title>
+        <link rel="icon" type="image/png" href="css/images/icons/favicon.png">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--JQUERY-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- Los iconos tipo Solid de Fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <!-- Nuestro css-->
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/index.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/fonts.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/giz.css}">
+        <style type="text/css">
+.select2-container .select2-selection--single {
+	height: 34px !important;
+}
+
+.select2-container--default .select2-selection--single {
+	border: 1px solid #ccc !important;
+}
+        </style>
+        <script type="text/javascript">
+		$(document).ready(function () {
+			$('#datepicker').datepicker({
+				format: 'dd-mm-yyyy',
+				"autoclose": true,
+				language: 'en'
+			})//.datepicker("setDate", 'now')
+				;
+			var valeur = $('#error_value').text();
+			if(valeur != '') {
+				$('#messageModal').modal('show');
+				$('#msg').text(valeur);
+			}
+		});
+        </script>
+    </head>
+    <body class="add-success">
+		<div th:include="/pds_header.html"></div>
+		<section class="main">
+            <div class="base-content">
+				<form method="POST" th:action="@{/createWp3EppFram}"  class="form-edition-cust">
+					Code village
+					<br>
+					<input type="text" name="code_village" id="code_village">
+					<br>
+					Noms de l'école EPP:
+					<br>
+					<input type="text" name="nom_ecole" id="nom_ecole">
+					<br>
+					Genre :
+					<br>
+					<select class="form-control select2" name="sexe" id="sexe"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="H">Homme</option>
+							<option th:value="F">Femme</option>
+					</select>
+					<br>
+					Existence de projet de FRAM (Oui/Non) :
+					<br>
+					<select class="form-control select2" name="projet_fram" id="projet_fram"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="True">Oui</option>
+							<option th:value="False">Non</option>
+					</select>
+					<br>
+					Projet de FRAM validé/subventionné (Oui/Non) :
+					<br>
+					<select class="form-control select2" name="projet_valide" id="projet_valide"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="True">Oui</option>
+							<option th:value="False">Non</option>
+					</select>
+					<br>
+					 Type de projet :
+					<input type="text" name="type_projet" id="type_projet">
+					<br>
+					 Date de validation du projet:
+					<br>
+					<input type="date" min="2015-01-01" class="form-control select2" name="date_validation" id="date_validation">
+					<br>
+					<br>
+					<input type="submit" th:value="#{save}" class="gbtn">
+				</form>
+			</div>
+		</section>
+    </body>
+    <html>

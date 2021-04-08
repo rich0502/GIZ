@@ -40,7 +40,10 @@ public class Parasite_maladieServiceImpl implements Parasite_maladieService{
 		parasite.setFrequence(frequence);
 		parasite.setEffets(effets);
 		parasite_maladieRepository.save(parasite);
-		
+	}	
+	public List<Parasite_maladie> ListParasite_maladieAll() {
+		// TODO Auto-generated method stub
+		return parasite_maladieRepository.findAll();
 	}
 
 }

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>GIZ</title>
+        <link rel="icon" type="image/png" href="css/images/icons/favicon.png">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--JQUERY-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- Los iconos tipo Solid de Fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <!-- Nuestro css-->
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/index.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/fonts.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/giz.css}">
+        <style type="text/css">
+.select2-container .select2-selection--single {
+	height: 34px !important;
+}
+
+.select2-container--default .select2-selection--single {
+	border: 1px solid #ccc !important;
+}
+        </style>
+    </head>
+    <body class="add-success">
+		<div th:include="/pds_header.html"></div>
+		<section class="main">
+            <div class="base-content">
+              <h2 class="page-title">CANEVAS EXISTENCE YOUTH COMMITTEE ACTIF</h2>
+				<form method="POST" th:action="@{/createWp3CommitteeActif}"  class="form-edition-cust">
+					Code village :
+					<br>
+					<input type="text" id="code_village" name="code_village">
+					<br>
+					Noms de comité de jeunes :
+					<br>
+					<input type="text" id="nom_comite" name="nom_comite">
+					<br>
+					 Mois+Année de création :
+					<br>
+					<input type="text" id="mois_annee_creation" name="mois_annee_creation">				
+					<br>
+					Youth committee actif :
+					<br>
+					<select class="form-control select2" name="committee_actif" id="committee_actif"
+						style="height: 40px !important;width: 100%;" required>
+						<option value="" selected>[[#{selectionner}]]</option>
+						<option value="true">Oui</option>
+						<option value="false">Non</option>
+					</select>
+					<br>
+					Date de suivi:
+					<br>
+					<input type="date" min="2015-01-01" class="form-control select2" id="date_suivi" name="date_suivi">
+					<br>
+					Effectif des membres:
+					<br>
+					<input type="text" id="effectif_membre" name="effectif_membre">
+					<br>
+					Nombre homme:
+					<br>
+					<input type="text" id="sexe_h" name="sexe_h">
+					<br>
+					Nombre femme:
+					<br>
+					<input type="text" id="sexe_f" name="sexe_f">
+					<br>
+					<br>
+					<input type="submit" th:value="#{save}" class="gbtn">
+				</form>
+			</div>
+		</section>
+    </body>
+    <html>

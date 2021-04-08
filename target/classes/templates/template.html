@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Template</title>
+    <head th:include="/headLinksFragment.html"></head>
+
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    
+</head>
+
+<body>
+    <div th:include="/pds_header.html"></div>
+    <section class="main">
+        <div class="base-content">
+
+            <div class="-container">
+                <div class="text-center">
+                    <span class="label-form">Work package :</span>
+                    <select id="filterText" class="ginput form-control" onchange='filterText()'>
+                        <option disabled selected>[[#{selectionner}]]</option>
+                        <option value="WP1">WP1</option>
+                        <option value="WP2">WP2</option>
+                        <option value="WP3">WP3</option>
+                        <option value="WP4">WP4</option>
+                    </select>
+                </div>
+                <br>
+                <div class="table-responsive">
+                    <table id="docList" class="pds-table table table-hover table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="hidden">WP</th>
+                                <th scope="col">Numéro du canevas</th>
+                                <th scope="col">Nom du canevas</th>
+                                <th scope="col" class="">Download</th>
+                            </tr>
+                        </thead>
+                        <tbody th:include="/partial_template_list.html"></tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <script>
+        function filterText() {
+            var val = $('#filterText').val();
+            if (val === "")
+                return;
+            if (val === "all")
+                clearFilter();
+            else
+
+                $('.wp').each(function () {
+                    $(this).parent().toggle($(this).text() === val);
+                });
+
+        }
+        function clearFilter() {
+            $('.filterText').val('');
+            $('.afficher').show();
+        }
+    </script>
+</body>
+
+</html>

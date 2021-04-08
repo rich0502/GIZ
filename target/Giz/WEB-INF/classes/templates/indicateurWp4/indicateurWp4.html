@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<head th:include="/headLinks.html" th:remove="tag"></head>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/tracker_table.css}" />
+</head>
+
+<body>
+	<div th:include="/pds_header.html"></div>
+	<section class="main">
+		<span class="span-user" th:object="${nomUser}"></span>
+		<span class="span-user" th:text="${nomUser}" id="lastUser">
+			<span th:text="${nomUser.username}"></span>
+		</span>
+		<br>
+		
+		<div style="text-align: center;">
+			<br>
+			<div th:include="indiMenu.html" th:remove="tag"></div>
+			<br>
+			<br>
+			<form method="POST" name="theForm" th:action="@{/indicateur}">
+			<div class="table-tracker-container indicator" id="html-content-holder" crossorigin="anonymous">
+				<table class="d-table-tracker indicator-table" id="dynamicTableTracker">
+					<tr class="">
+						<th class="col-title" rowspan="2"></th> 
+						<th class="row-field" rowspan="2"><div class="editable-field">Logique d'intervention</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Indicateurs objectivement vérifiables</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Canevas collecte validé & N°</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Observations</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Niveau de réalisation des activités</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Niveau d'atteinte des objectifs</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Clarification de l'indicateur</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Sources et moyens de vérification</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Responsables</div></th>
+						<th class="row-field" rowspan="2"><div class="editable-field">Hypothèses / Risques</div></th>
+						<th class="row-field" colspan="4"><div class="editable-field">Situation actuelle à la date du ...</div></th>
+					</tr>
+					<tr class="">
+						<th class="row-field" ><div class="editable-field">Situation / chiffres clés</div></th>
+						<th class="row-field sexe-col" ><div class="editable-field">H</div></th>
+						<th class="row-field sexe-col" ><div class="editable-field">F</div></th>
+						<th class="row-field"><div class="editable-field">Commentaires</div></th>
+					</tr>
+					<div th:include="indicateurWp4/docCap.html" th:remove="tag"></div>	
+					<div th:include="indicateurWp4/atelier.html" th:remove="tag"></div>		
+					<div th:include="indicateurWp4/PlateForme.html" th:remove="tag"></div>				
+				</table>
+			</div>
+			<br>
+		</form>
+		</div>
+		
+
+		
+	</section>
+	
+	
+
+	<script th:src="@{/js/tracker-table/jquery-1.12.4.js}"></script>
+	<script th:src="@{/js/tracker-table/jquery-ui.js}"></script>
+	<script th:src="@{/js/tracker-table/html2canvas.min.js}"></script>
+
+	<script th:src="@{/js/tracker-table/trackerTable.js}"></script>
+
+	<SCRIPT>
+		function submitFunction(i) {
+			if (i == 1) document.theForm.action =
+				"/Giz/carte";
+			if (i == 2) document.theForm.action =
+				"/Giz/graphe";
+			if (i == 3) document.theForm.action =
+				"http://www.company.com/cgi-bin/cgi3.cgi";
+			document.theForm.submit()
+		}
+
+	</SCRIPT>
+
+	<script>
+		$('.type-number-percent input').each(function(elem) {
+			$(this).change(function(){
+				var valeur = $(this).val();
+				$(this).closest('.type-number-percent').parent().find('.progress-bar').css('width', valeur+'%').attr('aria-valuenow', valeur); 
+			})
+		})		
+	</script>
+</body>
+
+</html>

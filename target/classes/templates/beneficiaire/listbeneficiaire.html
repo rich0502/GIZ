@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Beneficiaire</title>
+	<head th:include="/headLinks.html" th:remove="tag"></head>
+</head>
+<body class="stories">
+<div th:include="/pds_header.html"></div>
+<br>
+<br>
+<br>
+<section class="main">
+<div class="container-fluid content-wrapper">	
+	<header class="top-page">
+	    <h2 class="content-title" >BENEFICIAIRE</h2>
+	</header>
+	<br>
+	<table class="composantes-table" id="myTable">
+		<thead>
+			<tr>
+				<th scope="col"><span>Work package</span></th>
+				<th scope="col"><span>Garçon</span></th>
+				<th scope="col"><span>Fille</span></th>
+				<th scope="col"><span>Homme</span></th>
+				<th scope="col"><span>Femme</span></th>
+				<th scope="col"><span>Visualiser</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>WP1</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="text-center"><img th:src="@{/images/eye.png}" style="width: 28px;"></td>
+			</tr>
+			<tr>
+				<td>WP2</td>
+				<td class="text-center" th:text="${beneficiaireWP2Garcon}"></td>
+				<td class="text-center" th:text="${beneficiaireWP2Fille}"></td>
+				<td class="text-center" th:text="${beneficiaireWP2Homme}"></td>
+				<td class="text-center" th:text="${beneficiaireWP2Femme}"></td>
+				<td class="text-center" ><a th:href="@{/listbeneficiaireWP2}"><img th:src="@{/images/eye.png}" style="width: 28px;"></a></td>
+			</tr>
+			<tr>
+				<td>WP3</td>
+				<td class="text-center" th:text="${beneficiaireWP3Garcon}"></td>
+				<td class="text-center" th:text="${beneficiaireWP3Fille}"></td>
+				<td class="text-center" th:text="${beneficiaireWP3Homme}"></td>
+				<td class="text-center" th:text="${beneficiaireWP3Femme}"></td>
+				<td class="text-center"><a th:href="@{/listbeneficiaireWP3}"><img th:src="@{/images/eye.png}" style="width: 28px;"></a></td>
+			</tr>
+			<tr>
+				<td>WP4</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="text-center"><img th:src="@{/images/eye.png}" style="width: 28px;"></td>
+			</tr>
+			<tr>
+				<td>Total</td>
+				<td class="text-center" th:text="${totalGarcon}"></td>
+				<td class="text-center" th:text="${totalFille}"></td>
+				<td class="text-center" th:text="${totalHomme}"></td>
+				<td class="text-center" th:text="${totalFemme}"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td >Total beneficiaire</td>
+				<td class="text-center" colspan="4" th:text="${total}"></td>
+			</tr>
+			<tr>
+				<td>Total Menage</td>
+				<td class="text-center" colspan="4" th:text="${total} / 5"></td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+</section>
+
+</body>
+
+</html>

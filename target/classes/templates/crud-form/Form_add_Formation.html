@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<head th:include="/headLinks.html" th:remove="tag"></head>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script th:inline="javascript">
+    var real_data = /*[[${districts}]]*/'noValue';
+    $(document).ready(function() {
+        $("#district_form").autocomplete({
+            minLength : 1,
+            source : real_data,
+            select : function(e, ui) {
+               // $("#nameOutput").text('You have selected : ' + ui.item.value);
+                return ui.item.value;
+            }
+        })
+    });
+    
+    var real_data_com = /*[[${communes}]]*/'noValue';
+    $(document).ready(function() {
+        $("#commune_form").autocomplete({
+            minLength : 1,
+            source : real_data_com,
+            select : function(e, ui) {
+               // $("#nameOutput").text('You have selected : ' + ui.item.value);
+                return ui.item.value;
+            }
+        })
+    });
+    
+    var real_data_fkt = /*[[${fkt}]]*/'noValue';
+    $(document).ready(function() {
+        $("#fkt_form").autocomplete({
+            minLength : 1,
+            source : real_data_fkt,
+            select : function(e, ui) {
+               // $("#nameOutput").text('You have selected : ' + ui.item.value);
+                return ui.item.value;
+            }
+        })
+    });
+</script>
+    
+	  <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	 <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/fonts.css}">   
+	<link rel="stylesheet" type="text/css" th:href="@{/css/giz.css}" />	
+<style type="text/css">
+.select2-container .select2-selection--single {
+	height: 34px !important;
+}
+
+.select2-container--default .select2-selection--single {
+	border: 1px solid #ccc !important;
+}
+</style>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#datepicker').datepicker({
+				format: 'dd-mm-yyyy',
+				"autoclose": true,
+				language: 'en'
+			})//.datepicker("setDate", 'now')
+				;
+			var valeur = $('#error_value').text();
+			if(valeur != '') {
+				$('#messageModal').modal('show');
+				$('#msg').text(valeur);
+			}
+		});
+
+	</script>
+</head>
+
+<body class="add-success">
+<div th:include="/pds_header.html"></div>
+<div th:include="crud-form/crudMenu.html" th:remove="tag"></div><br>
+
+<form method="POST" th:action="@{/saveFormation}">
+   Nom formateur<br>
+  <input type="text" id="nom_bf" th:name="nom_form" ><br>
+  Type de formation:<br>
+  <input type="text"  th:name="type_form"><br>
+  District:<br>
+  <input type="text" id="district_form"  th:name="district_form"><br>
+  Commune:<br>
+  <input type="text" id="commune_form"  th:name="commune_form"><br>
+  Fokontany:<br>
+  <input type="text" id="fkt_form"  th:name="fkt_form"><br><br>
+  <input type="submit" value="Submit">
+</form>	
+</body>
+</html>

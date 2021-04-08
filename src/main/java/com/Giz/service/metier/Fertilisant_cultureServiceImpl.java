@@ -34,4 +34,10 @@ public class Fertilisant_cultureServiceImpl implements Fertilisant_cultureServic
 		
 	}
 
+	@Override
+	public List<Fertilisant_culture> ListFertilisant_cultureAll() {
+		// TODO Auto-generated method stub
+		return fertilisant_cultureRepository.findAll();
+	}
+
 }

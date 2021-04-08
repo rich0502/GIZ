@@ -51,8 +51,12 @@ public class Info_parcelle_diversServiceImpl implements Info_parcelle_diversServ
 		info.setPhoto_technique(photo_technique);
 		info.setPhoto_culture(photo_culture);
 		info_parcelle_diversRepository.save(info);
+		}
 		
-		
+
+	public List<Info_parcelle_divers> ListInfo_parcelle_diversAll() {
+		// TODO Auto-generated method stub
+		return info_parcelle_diversRepository.findAll();
 	}
 
 }

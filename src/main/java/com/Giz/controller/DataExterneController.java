@@ -1,5 +1,6 @@
 package com.Giz.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +82,31 @@ public class DataExterneController {
 		return "data-externe/dataExterne";
 	}
 	
+	@GetMapping("/getData")
+	public @ResponseBody String getData(@RequestParam String suivi)
+	{
+		
+		String json = null;
+		if (suivi.equalsIgnoreCase("2")) {
+			List<Object> list = Arrays.asList("Fértilisant culture","Information parcelle divers", "Parasite et maladie divers");
+			try {
+				json = new ObjectMapper().writeValueAsString(list);
+			} catch (JsonProcessingException e) {
+				e.printStackTrace();
+			}
+			return json;
+		} else if (suivi.equalsIgnoreCase("1")) {
+			List<Object> list = Arrays.asList("Fértilisant vanille", "Information generale", "Information parcelle", "Main d'ouevre", "Parasite et maladie", "Question et conseil", "Technique vanille");
+			try {
+				json = new ObjectMapper().writeValueAsString(list);
+			} catch (JsonProcessingException e) {
+				e.printStackTrace();
+			}
+			return json;
+		}
+		return json;
+	}
+	
 	@GetMapping("/getFokontany")
 	public @ResponseBody String getFokontany(@RequestParam String zone)
 	{
@@ -125,54 +151,125 @@ public class DataExterneController {
 	}
 	
 	@RequestMapping("/FindData")
-	public String FindData(@RequestParam("suivi") String suivi,
+	public String FindData(@RequestParam("suivi") String suivi,@RequestParam("data") String data,
 			@RequestParam("code_prod") String code_prod, Model model) {
-		if (suivi.equalsIgnoreCase("listActivite")) {
+		
+		if (suivi.equalsIgnoreCase("Activité")) {
 			List<Activite> activite = activiteService.ListActivite();
 			model.addAttribute("activite", activite);			
 			return "data-externe/listActivite";
-		} else if (suivi.equalsIgnoreCase("listFertilisant_culture")) {
-			List<Fertilisant_culture> fertilisant_culture = fertilisant_cultureService.ListFertilisant_culture(code_prod);
-			model.addAttribute("fertilisant_culture", fertilisant_culture);
-			return "data-externe/listFertilisant_culture";
-		} else if (suivi.equalsIgnoreCase("listInfo_parcelle_divers")) {
-			List<Info_parcelle_divers> info_parcelle_divers = info_parcelle_diversService.ListInfo_parcelle_divers(code_prod);
-			model.addAttribute("info_parcelle_divers", info_parcelle_divers);
-			return "data-externe/listInfo_parcelle_divers";
-		} else if (suivi.equalsIgnoreCase("listParasite_maladie_divers")) {
-			List<Parasite_maladie_divers> parasite_maladie_divers = parasite_maladie_diversService.ListParasite_maladie_divers(code_prod);
-			model.addAttribute("parasite_maladie_divers", parasite_maladie_divers);
-			return "data-externe/listParasite_maladie_divers";
-		} else if (suivi.equalsIgnoreCase("listFertilisant_vanille")) {
-			List<Fertilisant_vanille> fertilisant_vanille = fertilisant_vanilleService.ListFertilisant_vanille(code_prod);
-			model.addAttribute("fertilisant_vanille", fertilisant_vanille);
-			return "data-externe/listFertilisant_vanille";
-		} else if (suivi.equalsIgnoreCase("listInfo_generale")) {
-			List<Info_generale> info_generale = info_generaleService.ListInfo_generale(code_prod);
-			model.addAttribute("info_generale", info_generale);
-			return "data-externe/listInfo_generale";
-		} else if (suivi.equalsIgnoreCase("listInfo_parcelle")) {
-			List<Info_parcelle> info_parcelle = info_parcelleService.ListInfo_parcelle(code_prod);
-			model.addAttribute("info_parcelle", info_parcelle);
-			return "data-externe/listInfo_parcelle";
-		} else if (suivi.equalsIgnoreCase("listMain_oeuvre")) {
-			List<Main_oeuvre> main_oeuvre = main_oeuvreService.ListMain_oeuvre(code_prod);
-			model.addAttribute("main_oeuvre", main_oeuvre);
-			return "data-externe/listMain_oeuvre";
-		} else if (suivi.equalsIgnoreCase("listParasite_maladie")) {
-			List<Parasite_maladie> parasite_maladie = parasite_maladieService.ListParasite_maladie(code_prod);
-			model.addAttribute("parasite_maladie", parasite_maladie);
-			return "data-externe/listParasite_maladie";
-		} else if (suivi.equalsIgnoreCase("listQuestion_conseil")) {
-			List<Question_conseil> question_conseil = question_conseilService.ListQuestion_conseil(code_prod);
-			model.addAttribute("question_conseil", question_conseil);
-			return "data-externe/listQuestion_conseil";
-		} else if (suivi.equalsIgnoreCase("listTechnique_vanille")) {
-			List<Technique_vanille> technique_vanille = technique_vanilleService.ListTechnique_vanille(code_prod);
-			model.addAttribute("technique_vanille", technique_vanille);
-			return "data-externe/listTechnique_vanille";
+		} else if (data.equalsIgnoreCase("Fértilisant culture")) {
+			if (code_prod.isEmpty()) {
+				List<Fertilisant_culture> fertilisant_culture = fertilisant_cultureService.ListFertilisant_cultureAll();
+				model.addAttribute("fertilisant_culture", fertilisant_culture);
+				return "data-externe/listFertilisant_culture";
+			} else {
+				List<Fertilisant_culture> fertilisant_culture = fertilisant_cultureService.ListFertilisant_culture(code_prod);
+				model.addAttribute("fertilisant_culture", fertilisant_culture);
+				return "data-externe/listFertilisant_culture";
+			}
+			
+		} else if (data.equalsIgnoreCase("Information parcelle divers")) {
+			if (code_prod.isEmpty()) {
+				List<Info_parcelle_divers> info_parcelle_divers = info_parcelle_diversService.ListInfo_parcelle_diversAll();
+				model.addAttribute("info_parcelle_divers", info_parcelle_divers);
+				return "data-externe/listInfo_parcelle_divers";
+			} else {
+				List<Info_parcelle_divers> info_parcelle_divers = info_parcelle_diversService.ListInfo_parcelle_divers(code_prod);
+				model.addAttribute("info_parcelle_divers", info_parcelle_divers);
+				return "data-externe/listInfo_parcelle_divers";
+			}
+			
+		} else if (data.equalsIgnoreCase("Parasite et maladie divers")) {
+			if (code_prod.isEmpty()) {
+				List<Parasite_maladie_divers> parasite_maladie_divers = parasite_maladie_diversService.ListParasite_maladie_diversAll();
+				model.addAttribute("parasite_maladie_divers", parasite_maladie_divers);
+				return "data-externe/listParasite_maladie_divers";
+			} else {
+				List<Parasite_maladie_divers> parasite_maladie_divers = parasite_maladie_diversService.ListParasite_maladie_divers(code_prod);
+				model.addAttribute("parasite_maladie_divers", parasite_maladie_divers);
+				return "data-externe/listParasite_maladie_divers";
+			}
+			
+		} else if (data.equalsIgnoreCase("Fértilisant vanille")) {
+			if (code_prod.isEmpty()) {
+				List<Fertilisant_vanille> fertilisant_vanille = fertilisant_vanilleService.ListFertilisant_vanilleAll();
+				model.addAttribute("fertilisant_vanille", fertilisant_vanille);
+				return "data-externe/listFertilisant_vanille";
+			} else {
+				List<Fertilisant_vanille> fertilisant_vanille = fertilisant_vanilleService.ListFertilisant_vanille(code_prod);
+				model.addAttribute("fertilisant_vanille", fertilisant_vanille);
+				return "data-externe/listFertilisant_vanille";
+			}
+			
+		} else if (data.equalsIgnoreCase("Information generale")) {
+			if (code_prod.isEmpty()) {
+				List<Info_generale> info_generale = info_generaleService.ListInfo_generaleAll();
+				model.addAttribute("info_generale", info_generale);
+				return "data-externe/listInfo_generale";
+			} else {
+				List<Info_generale> info_generale = info_generaleService.ListInfo_generale(code_prod);
+				model.addAttribute("info_generale", info_generale);
+				return "data-externe/listInfo_generale";
+			}
+			
+		} else if (data.equalsIgnoreCase("Information parcelle")) {
+			if (code_prod.isEmpty()) {
+				List<Info_parcelle> info_parcelle = info_parcelleService.ListInfo_parcelleAll();
+				model.addAttribute("info_parcelle", info_parcelle);
+				return "data-externe/listInfo_parcelle";
+			} else {
+				List<Info_parcelle> info_parcelle = info_parcelleService.ListInfo_parcelle(code_prod);
+				model.addAttribute("info_parcelle", info_parcelle);
+				return "data-externe/listInfo_parcelle";
+			}
+			
+		} else if (data.equalsIgnoreCase("Main d'ouevre")) {
+			if (code_prod.isEmpty()) {
+				List<Main_oeuvre> main_oeuvre = main_oeuvreService.ListMain_oeuvreAll();
+				model.addAttribute("main_oeuvre", main_oeuvre);
+				return "data-externe/listMain_oeuvre";
+			} else {
+				List<Main_oeuvre> main_oeuvre = main_oeuvreService.ListMain_oeuvre(code_prod);
+				model.addAttribute("main_oeuvre", main_oeuvre);
+				return "data-externe/listMain_oeuvre";
+			}
+			
+		} else if (data.equalsIgnoreCase("Parasite et maladie")) {
+			if (code_prod.isEmpty()) {
+				List<Parasite_maladie> parasite_maladie = parasite_maladieService.ListParasite_maladieAll();
+				model.addAttribute("parasite_maladie", parasite_maladie);
+				return "data-externe/listParasite_maladie";
+			} else {
+				List<Parasite_maladie> parasite_maladie = parasite_maladieService.ListParasite_maladie(code_prod);
+				model.addAttribute("parasite_maladie", parasite_maladie);
+				return "data-externe/listParasite_maladie";
+			}
+			
+		} else if (data.equalsIgnoreCase("Question et conseil")) {
+			if (code_prod.isEmpty()) {
+				List<Question_conseil> question_conseil = question_conseilService.ListQuestion_conseilAll();
+				model.addAttribute("question_conseil", question_conseil);
+				return "data-externe/listQuestion_conseil";
+			} else {
+				List<Question_conseil> question_conseil = question_conseilService.ListQuestion_conseil(code_prod);
+				model.addAttribute("question_conseil", question_conseil);
+				return "data-externe/listQuestion_conseil";
+			}
+			
+		} else if (data.equalsIgnoreCase("Technique vanille")) {
+			if (code_prod.isEmpty()) {
+				List<Technique_vanille> technique_vanille = technique_vanilleService.ListTechnique_vanilleAll();
+				model.addAttribute("technique_vanille", technique_vanille);
+				return "data-externe/listTechnique_vanille";
+			} else {
+				List<Technique_vanille> technique_vanille = technique_vanilleService.ListTechnique_vanille(code_prod);
+				model.addAttribute("technique_vanille", technique_vanille);
+				return "data-externe/listTechnique_vanille";
+			}
+			
 		}
 				
-		return "data-externe/dataExterne";
+		return "redirect:/dataExterne";
 	}
 }

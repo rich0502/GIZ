@@ -50,6 +50,10 @@ public class Info_parcelleServiceImpl implements Info_parcelleService {
 		info.setPhoto_parcelle(photo_parcelle);
 		info_parcelleRepository.save(info);
 		
+			}
+	public List<Info_parcelle> ListInfo_parcelleAll() {
+		// TODO Auto-generated method stub
+		return info_parcelleRepository.findAll();
 	}
 
 }

@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>GIZ</title>
+        <link rel="icon" type="image/png" href="css/images/icons/favicon.png">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--JQUERY-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- Los iconos tipo Solid de Fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <!-- Nuestro css-->
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/index.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/fonts.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{http://localhost:8080/Giz/css/giz.css}">
+        <style type="text/css">
+.select2-container .select2-selection--single {
+	height: 34px !important;
+}
+
+.select2-container--default .select2-selection--single {
+	border: 1px solid #ccc !important;
+}
+        </style>
+        <script type="text/javascript">
+		$(document).ready(function () {
+			$('#datepicker').datepicker({
+				format: 'dd-mm-yyyy',
+				"autoclose": true,
+				language: 'en'
+			})//.datepicker("setDate", 'now')
+				;
+			var valeur = $('#error_value').text();
+			if(valeur != '') {
+				$('#messageModal').modal('show');
+				$('#msg').text(valeur);
+			}
+		});
+        </script>
+    </head>
+    <body class="add-success">
+		<div th:include="/pds_header.html"></div>
+		<section class="main">
+            <div class="base-content">
+				<form method="POST" th:action="@{/createWp3FedeMfr}"  class="form-edition-cust">
+					Code village
+					<br>
+					<input type="text" name="code_region" id="code_region">
+					<br>
+					Noms de la fédération MFR:
+					<br>
+					<input type="text" name="nom_mfr" id="nom_mfr">
+					<br>
+					Genre :
+					<br>
+					<select class="form-control select2" name="sexe" id="sexe"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="H">Homme</option>
+							<option th:value="F">Femme</option>
+					</select>
+					<br>
+					 Année de mise en place :
+					<br>
+					<input type="text" name="annee_miseplace" id="annee_miseplace">
+					<br>
+					Existence de statut (Oui/Non) :
+					<br>
+					<select class="form-control select2" name="statut" id="statut"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="True">Oui</option>
+							<option th:value="False">Non</option>
+					</select>
+					<br>
+					Existence de règlement intérieur (Oui/Non) :
+					<br>
+					<select class="form-control select2" name="reglement_interieur" id="reglement_interieur"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="True">Oui</option>
+							<option th:value="False">Non</option>
+					</select>
+					<br>
+					Existence de recépissé de constitution de la fédération MFR (Oui/Non) :
+					<br>
+					<select class="form-control select2" name="recepisse_mfr" id="recepisse_mfr"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="True">Oui</option>
+							<option th:value="False">Non</option>
+					</select>
+					<br>
+					 Date d'obtention de recépissé de l' autorisation de constitution :
+					<br>
+					<input type="date" min="2015-01-01" class="form-control select2" name="date_recepisse" id="date_recepisse">
+					<br>
+					 Existence de plan stratégique ou document cadre (Oui/Non) :
+					<br>
+					<select class="form-control select2" name="plan_strategique" id="plan_strategique"
+							style="height: 40px !important;width: 27%;" required>
+							<option th:value="True">Oui</option>
+							<option th:value="False">Non</option>
+					</select>
+					<br>
+					Type de formation :
+					<br>
+					<input type="date" min="2015-01-01" class="form-control select2" name="date_validation" id="date_validation">
+					<br>
+					<br>
+					<input type="submit" th:value="#{save}" class="gbtn">
+				</form>
+			</div>
+		</section>
+    </body>
+    <html>
