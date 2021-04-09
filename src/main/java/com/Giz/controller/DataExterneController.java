@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.Giz.data.domain.Activite;
 import com.Giz.data.domain.Fertilisant_culture;
 import com.Giz.data.domain.Fertilisant_vanille;
+import com.Giz.data.domain.Formation_culture;
 import com.Giz.data.domain.Info_generale;
 import com.Giz.data.domain.Info_parcelle;
 import com.Giz.data.domain.Info_parcelle_divers;
@@ -21,10 +22,12 @@ import com.Giz.data.domain.Main_oeuvre;
 import com.Giz.data.domain.Parasite_maladie;
 import com.Giz.data.domain.Parasite_maladie_divers;
 import com.Giz.data.domain.Question_conseil;
+import com.Giz.data.domain.Question_conseil_divers;
 import com.Giz.data.domain.Technique_vanille;
 import com.Giz.service.metier.ActiviteService;
 import com.Giz.service.metier.Fertilisant_cultureService;
 import com.Giz.service.metier.Fertilisant_vanilleService;
+import com.Giz.service.metier.Formation_cultureService;
 import com.Giz.service.metier.Info_generaleService;
 import com.Giz.service.metier.Info_parcelleService;
 import com.Giz.service.metier.Info_parcelle_diversService;
@@ -33,6 +36,7 @@ import com.Giz.service.metier.Parasite_maladieService;
 import com.Giz.service.metier.Parasite_maladie_diversService;
 import com.Giz.service.metier.ProducteurService;
 import com.Giz.service.metier.Question_conseilService;
+import com.Giz.service.metier.Question_conseil_diversService;
 import com.Giz.service.metier.Technique_vanilleService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -74,6 +78,12 @@ public class DataExterneController {
 	Technique_vanilleService technique_vanilleService;
 	
 	@Autowired
+	Question_conseil_diversService question_conseil_diversService;
+
+	@Autowired
+	Formation_cultureService formation_cultureService;
+	
+	@Autowired
 	ProducteurService producteurService;
 	
 	@RequestMapping("/dataExterne")
@@ -88,7 +98,7 @@ public class DataExterneController {
 		
 		String json = null;
 		if (suivi.equalsIgnoreCase("2")) {
-			List<Object> list = Arrays.asList("Fértilisant culture","Information parcelle divers", "Parasite et maladie divers");
+			List<Object> list = Arrays.asList("Fértilisant culture","Formation sur la culture","Information parcelle divers", "Parasite et maladie divers","Questions & conseils");
 			try {
 				json = new ObjectMapper().writeValueAsString(list);
 			} catch (JsonProcessingException e) {
@@ -266,6 +276,28 @@ public class DataExterneController {
 				List<Technique_vanille> technique_vanille = technique_vanilleService.ListTechnique_vanille(code_prod);
 				model.addAttribute("technique_vanille", technique_vanille);
 				return "data-externe/listTechnique_vanille";
+			}
+			
+		} else if (data.equalsIgnoreCase("Formation sur la culture")) {
+			if (code_prod.isEmpty()) {
+				List<Formation_culture> formation_culture = formation_cultureService.ListFormation_cultureAll();
+				model.addAttribute("formation_culture", formation_culture);
+				return "data-externe/listFormation_culture";
+			} else {
+				List<Formation_culture> formation_culture = formation_cultureService.ListFormation_culture(code_prod);
+				model.addAttribute("formation_culture", formation_culture);
+				return "data-externe/listFormation_culture";
+			}
+			
+		} else if (data.equalsIgnoreCase("Questions & conseils")) {
+			if (code_prod.isEmpty()) {
+				List<Question_conseil_divers> question_conseil_divers = question_conseil_diversService.ListQuestion_conseil_diversAll();
+				model.addAttribute("question_conseil_divers", question_conseil_divers);
+				return "data-externe/listQuestion_conseil_divers";
+			} else {
+				List<Question_conseil_divers> question_conseil_divers = question_conseil_diversService.ListQuestion_conseil_divers(code_prod);
+				model.addAttribute("question_conseil_divers", question_conseil_divers);
+				return "data-externe/listQuestion_conseil_divers";
 			}
 			
 		}

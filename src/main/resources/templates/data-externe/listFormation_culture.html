@@ -9,27 +9,29 @@
 	<section class="main">
 		<div class="card">
 			<header class="composantesTable-header justify-between">
-				<h2 class="page-title">Questions & conseils</h2>
-				<button type="button" name="btnExport" id="btnExport" style="margin-left: 870px;" class="gbtn">[[#{exporter}]]</button>
+				<h2 class="page-title">Formation sur la culture</h2>
+				<button type="button" name="btnExport" id="btnExport" style="margin-left: 850px;" class="gbtn">[[#{exporter}]]</button>
 			</header>
 			<div id="html-content-holder">
 			<table class="composantes-table text-center" id="myTable">
 				<thead>
 					<tr>
 						<th scope="col"><span>Code producteur</span></th>
-						<th scope="col"><span>Question Symrise</span></th>
-						<th scope="col"><span>Conseil rural</span></th>
-						<th scope="col"><span>Etat vanille</span></th>
-						<th scope="col"><span>Assistance</span></th>
+						<th scope="col"><span>Formation reçus</span></th>
+						<th scope="col"><span>Quelle formation</span></th>
+						<th scope="col"><span>Autre formation</span></th>
+						<th scope="col"><span>Dernier formation reçus</span></th>
+						<th scope="col"><span>Changement observer</span></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="b : ${question_conseil_divers}">
-						<td th:text="${b.code_pro}"></td>
-						<td th:text="${b.question_symrise}"></td>
-						<td th:text="${b.conseil_rural}"></td>
-						<td th:text="${b.etat_vanille}"></td>
-						<td th:text="${b.assistance}"></td>
+					<tr th:each="b : ${formation_culture}">
+						<td th:text="${b.code_prod}"></td>
+						<td th:text="${b.recu_formation}"></td>
+						<td th:text="${b.quelle_formation}"></td>
+						<td th:text="${b.autre_formation}"></td>
+						<td th:text="${b.recu_dernier_form}"></td>
+						<td th:text="${b.change_observer}"></td>
 					</tr>
 				</tbody>
 			</table>
