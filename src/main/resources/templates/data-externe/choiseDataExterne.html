@@ -14,6 +14,7 @@
 &emsp;
 <select id="zone" class="ginput form-control" th:name="zone" style="width: 15%;">
 	<option value="">[[#{selectionner}]] zone</option>
+	<option value="Tout">Tout</option>
 	<option th:each="ob:${zoneList}" th:value="${ob[0]}" th:text="${'Zone ' + ob[0]}"></option>
 </select>
 
