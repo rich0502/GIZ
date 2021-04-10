@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Giz.data.domain.Activite;
 import com.Giz.data.domain.Fertilisant_culture;
@@ -161,7 +162,7 @@ public class DataExterneController {
 	
 	@RequestMapping("/FindData")
 	public String FindData(@RequestParam("suivi") String suivi,@RequestParam("data") String data,
-			@RequestParam("zone") String zone,@RequestParam("code_prod") String code_prod, Model model) {
+			@RequestParam("zone") String zone,@RequestParam("code_prod") String code_prod, Model model, RedirectAttributes redirAttrs) {
 		
 		if (suivi.equalsIgnoreCase("Activité")) {
 			List<Activite> activite = activiteService.ListActivite();
@@ -299,8 +300,10 @@ public class DataExterneController {
 				return "data-externe/listQuestion_conseil_divers";
 			}
 			
+		} else {
+			redirAttrs.addFlashAttribute("success", "Selectionner pour afficher les données");
+			return "redirect:/dataExterne";
 		}
-				
-		return "redirect:/dataExterne";
+	
 	}
 }
