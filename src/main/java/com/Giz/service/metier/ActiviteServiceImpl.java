@@ -21,11 +21,12 @@ public class ActiviteServiceImpl implements ActiviteService {
 	}
 
 	@Override
-	public void addActivite(String type_intervention, String theme_principal, String sous_theme, String date_enreg,
+	public void addActivite(long id, String type_intervention, String theme_principal, String sous_theme, String date_enreg,
 			String nom_utilisateur, String gps_lat, String gps_long, String formateur, String code_formateur,
 			String lieu_formation, String prod_present, String prod_externe, String participant_externe, String image1,
 			String image2, String image3, String remarques) {
 		Activite activite = new Activite();
+		activite.setId_activite(id);
 		activite.setType_intervention(type_intervention);
 		activite.setTheme_principal(theme_principal);
 		activite.setSous_theme(sous_theme);

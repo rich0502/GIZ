@@ -21,9 +21,10 @@ public class Fertilisant_cultureServiceImpl implements Fertilisant_cultureServic
 	}
 	
 	@Override
-	public void addFertilisantCulture(String code_prod, String use_fertilisant, String type_use, String autre,
+	public void addFertilisantCulture(long id,String code_prod, String use_fertilisant, String type_use, String autre,
 			String qte, int nbr_ans) {
 		Fertilisant_culture fertil = new Fertilisant_culture();
+		fertil.setId(id);
 		fertil.setCode_pro(code_prod);
 		fertil.setUse_fertilisant(use_fertilisant);
 		fertil.setType_use(type_use);

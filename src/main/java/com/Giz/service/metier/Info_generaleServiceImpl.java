@@ -21,9 +21,10 @@ public class Info_generaleServiceImpl implements Info_generaleService{
 	}
 
 	@Override
-	public void addInfoGeneral(String code_pro, int nbr_parcel_prod, String appris_culture, String autre, String moyen,
+	public void addInfoGeneral(long id,String code_pro, int nbr_parcel_prod, String appris_culture, String autre, String moyen,
 			String technic_conseil, String change_tech, String prepare, int dernier_compagne, String place_dedie) {
 		Info_generale info = new Info_generale();
+		info.setId(id);
 		info.setCode_pro(code_pro);
 		info.setNbr_parcel_prod(nbr_parcel_prod);
 		info.setAppris_culture(appris_culture);

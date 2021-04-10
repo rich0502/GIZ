@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @Table(name = "question_conseil_divers")
 public class Question_conseil_divers {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(length = 40)
 	private  String code_prod;
@@ -21,7 +20,7 @@ public class Question_conseil_divers {
 	private String conseil_rural;
 	@Column(length = 20)
 	private String etat_vanille;
-	@Column(length = 3)
+	@Column(length = 250)
 	private String assistance;
 	public Question_conseil_divers() {
 		super();

@@ -22,9 +22,10 @@ public class Fertilisant_vanilleServiceImpl implements Fertilisant_vanilleServic
 	}
 
 	@Override
-	public void addFertilisantVanille(String code_prod, String use_fertilisant, String type_use, String autre,
+	public void addFertilisantVanille(long id,String code_prod, String use_fertilisant, String type_use, String autre,
 			String qte, int nbr_ans) {
 		Fertilisant_vanille fertil = new Fertilisant_vanille();
+		fertil.setId(id);
 		fertil.setCode_pro(code_prod);
 		fertil.setUse_fertilisant(use_fertilisant);
 		fertil.setType_use(type_use);

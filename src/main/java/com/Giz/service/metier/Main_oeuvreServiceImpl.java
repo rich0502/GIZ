@@ -21,9 +21,10 @@ public class Main_oeuvreServiceImpl implements Main_oeuvreService {
 	}
 
 	@Override
-	public void addMainOeuvre(String code_prod, int nbr_empl_perm, String empl_jour_saison, int nbr_empl_jour,
+	public void addMainOeuvre(long id, String code_prod, int nbr_empl_perm, String empl_jour_saison, int nbr_empl_jour,
 			int pay_empl_jour, String mois_tw_empl, String tw, String autre, String activite_vanille) {
 		Main_oeuvre main = new Main_oeuvre();
+		main.setId(id);
 		main.setCode_prod(code_prod);
 		main.setNbr_empl_perm(nbr_empl_perm);
 		main.setEmpl_jour_saison(empl_jour_saison);

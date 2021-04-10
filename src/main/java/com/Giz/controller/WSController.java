@@ -45,12 +45,15 @@ import com.Giz.service.UserService;
 import com.Giz.service.metier.ActiviteService;
 import com.Giz.service.metier.Fertilisant_cultureService;
 import com.Giz.service.metier.Fertilisant_vanilleService;
+import com.Giz.service.metier.Formation_cultureService;
 import com.Giz.service.metier.Info_generaleService;
 import com.Giz.service.metier.Info_parcelleService;
 import com.Giz.service.metier.Info_parcelle_diversService;
 import com.Giz.service.metier.Main_oeuvreService;
 import com.Giz.service.metier.Parasite_maladieService;
+import com.Giz.service.metier.Parasite_maladie_diversService;
 import com.Giz.service.metier.Question_conseilService;
+import com.Giz.service.metier.Question_conseil_diversService;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -96,6 +99,15 @@ public class WSController {
 	
 	@Autowired
 	Question_conseilService question_conseilService;
+	
+	@Autowired
+	Formation_cultureService formation_cultureService;
+	
+	@Autowired
+	Parasite_maladie_diversService parasite_maladie_diversService;
+	
+	@Autowired
+	Question_conseil_diversService question_conseil_diversService;
     
     @GetMapping("/loginUser")
 	public List<User> loginUser(@RequestParam("username") String username,@RequestParam("password") String password,
@@ -111,25 +123,26 @@ public class WSController {
     
    
     
-    @PostMapping("/editUsers/changePasswords")
-	public String changePasswords(@RequestParam("newPassword") String newPassword,@RequestParam("confirmPassword") String confirmPassword, Errors errors) {
+    /* modification */
+    @RequestMapping(value="/changePasswords",method = RequestMethod.POST)
+   	public void changePasswords(
+   			@RequestParam("username") String username,
+   			@RequestParam(value = "newPassword") String newPassword,
+      			@RequestParam(value = "confirmPassword") String confirmPassword) throws Exception {
     	ChangePasswordForm form = new ChangePasswordForm();
+    	Long id = userService.getUserByName(username).getId();
+    	form.setId(id);
     	form.setCurrentPassword("Blank");
     	form.setNewPassword(newPassword);
     	form.setConfirmPassword(confirmPassword);
 		try {
-			if (errors.hasErrors()) {
-				String result = errors.getAllErrors().stream().map(x -> x.getDefaultMessage())
-						.collect(Collectors.joining(""));
-
-				throw new Exception(result);
-			}
 			userService.ChangePasswordDto(form);
 		} catch (Exception e) {
-			return "error";
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return "Success";
-	}
+   		
+   	}
     
   /*  @PostMapping("/deleteBenef")
 	public void deleteBenef(@RequestParam(value = "id_bf") Long id_bf)  throws URISyntaxException {
@@ -157,53 +170,94 @@ public class WSController {
     
     /* Activité  */
     @PostMapping("/saveActivite")
-    public void saveActivite(@RequestParam(value = "type_intervention", defaultValue = "null") String type_intervention,
+    public void saveActivite(@RequestParam(value = "id") long id,@RequestParam(value = "type_intervention", defaultValue = "null") String type_intervention,
 			@RequestParam(value = "theme_principal", defaultValue = "null") String theme_principal, @RequestParam(value = "sous_theme", defaultValue = "null") String sous_theme,
 			@RequestParam(value = "date_enreg", defaultValue = "null") String date_enreg,
 			@RequestParam(value = "nom_utilisateur", defaultValue = "null") String nom_utilisateur,@RequestParam(value = "gps_lat", defaultValue = "null") String gps_lat, @RequestParam(value = "gps_long", defaultValue = "null") String gps_long,
 			@RequestParam(value = "formateur", defaultValue = "null") String formateur,@RequestParam(value = "code_formateur", defaultValue = "null") String code_formateur, @RequestParam(value = "lieu_formation", defaultValue = "null") String lieu_formation,
 			@RequestParam(value = "prod_present", defaultValue = "null") String prod_present, @RequestParam(value = "prod_externe", defaultValue = "null") String prod_externe, @RequestParam(value = "participant_externe", defaultValue = "null") String participant_externe,
 			@RequestParam(value = "image1", defaultValue = "null") String image1, @RequestParam(value = "image2", defaultValue = "null") String image2, @RequestParam(value = "image3", defaultValue = "null") String image3, @RequestParam(value = "remarques", defaultValue = "null") String remarques) throws URISyntaxException {
-		activiteService.addActivite(type_intervention, theme_principal, sous_theme, date_enreg, nom_utilisateur, gps_lat, gps_long, formateur, code_formateur, lieu_formation, prod_present, prod_externe, participant_externe, image1, image2, image3, remarques);
+		activiteService.addActivite(id,type_intervention, theme_principal, sous_theme, date_enreg, nom_utilisateur, gps_lat, gps_long, formateur, code_formateur, lieu_formation, prod_present, prod_externe, participant_externe, image1, image2, image3, remarques);
     }
     
     /* Fertilisant culture */
     @PostMapping("/saveFertil")
-    public void saveFertil(@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
+    public void saveFertil(@RequestParam(value = "id") long id,@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
 			@RequestParam(value = "use_fertilisant", defaultValue = "null") String use_fertilisant, @RequestParam(value = "type_use", defaultValue = "null") String type_use,
 			@RequestParam(value = "autre", defaultValue = "null") String autre,
 			@RequestParam(value = "qte", defaultValue = "null") String nom_utilisateur,@RequestParam(value = "qte", defaultValue = "null") String qte, @RequestParam(value = "nbr_ans") int nbr_ans) throws URISyntaxException {
-    	fertilisant_cultureService.addFertilisantCulture(code_prod, use_fertilisant, type_use, autre, qte, nbr_ans);
+    	fertilisant_cultureService.addFertilisantCulture(id,code_prod, use_fertilisant, type_use, autre, qte, nbr_ans);
     }
+    
+    /* Formation sur la culture*/
+    @RequestMapping(value="/saveFormationCulture",method = RequestMethod.POST)
+   	public void saveFormationCulture(@RequestParam(value = "id") long id,
+   			@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
+      			@RequestParam(value = "recu_formation", defaultValue = "null") String recu_formation, 
+      			@RequestParam(value = "quelle_formation", defaultValue = "null") String quelle_formation,
+      			@RequestParam(value = "autre_formation", defaultValue = "null") String autre_formation,
+      			@RequestParam(value = "recu_dernier_form", defaultValue = "null") String recu_dernier_form,
+      			@RequestParam(value = "change_observer", defaultValue = "null") String change_observer) {
+    	formation_cultureService.addFormationCulture(id,code_prod, recu_formation, quelle_formation, autre_formation, recu_dernier_form, change_observer);
+   		
+   	}
+    
+    /* parasite culture*/
+    @RequestMapping(value="/saveParasiteCulture",method = RequestMethod.POST)
+   	public void saveParasiteCulture(@RequestParam(value = "id") long id,
+   			@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
+      			@RequestParam(value = "constate", defaultValue = "null") String constate, 
+      			@RequestParam(value = "nom_mp", defaultValue = "null") String nom_mp,
+      			@RequestParam(value = "periode", defaultValue = "null") String periode,
+      			@RequestParam(value = "pourcentage", defaultValue = "null") String pourcentage,
+      			@RequestParam(value = "traitement", defaultValue = "null") String traitement,
+      			@RequestParam(value = "type_traitement", defaultValue = "null") String type_traitement, @RequestParam(value = "mecanique", defaultValue = "null") String mecanique,
+      			@RequestParam(value = "chimique", defaultValue = "null") String chimique,
+      			@RequestParam(value = "chimique_qte", defaultValue = "null") String chimique_qte, @RequestParam(value = "biologique", defaultValue = "null") String biologique, @RequestParam(value = "autre", defaultValue = "null") String autre, @RequestParam(value = "frequence", defaultValue = "null") String frequence, @RequestParam(value = "effets", defaultValue = "null") String effets) {
+    	parasite_maladie_diversService.addParasiteMaladieDivers(id,code_prod, constate, nom_mp, periode, pourcentage, type_traitement, mecanique, chimique, chimique_qte, biologique, autre, frequence, effets);
+    }
+   		
+    /* Question conseil culture*/
+    @RequestMapping(value="/saveQuestionConseilCulture",method = RequestMethod.POST)
+   	public void saveQuestionConseilCulture(
+   			@RequestParam(value = "id") long id,
+   			@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
+      			@RequestParam(value = "question_symrise", defaultValue = "null") String question_symrise, 
+      			@RequestParam(value = "conseil_rural", defaultValue = "null") String conseil_rural,
+      			@RequestParam(value = "etat_vanille", defaultValue = "null") String etat_vanille,
+      			@RequestParam(value = "assistance", defaultValue = "null") String assistance) {
+    	question_conseil_diversService.addQCDivers(id,code_prod, question_symrise, conseil_rural, etat_vanille, assistance);
+   		
+   	}
     
     /* Information parcelle diversification */
     @PostMapping("/saveInfoParcelDiver")
-    public void saveInfoParcelDiver(@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
+    public void saveInfoParcelDiver(@RequestParam(value = "id") long id,@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
 			@RequestParam(value = "type_culture", defaultValue = "null") String type_culture, @RequestParam(value = "nom_parcel" , defaultValue = "null") String nom_parcel,
 			@RequestParam(value = "periode_mise_culture", defaultValue = "null") String periode_mise_culture,@RequestParam(value = "periode_culture", defaultValue = "null") String periode_culture,@RequestParam(value = "occupation_sol", defaultValue = "null") String occupation_sol, @RequestParam(value = "autre_occupation_sol", defaultValue = "null") String autre_occupation_sol
 			,@RequestParam(value = "volume_annee_precedent") float volume_annee_precedent, @RequestParam(value = "volume_annee_venir") float volume_annee_venir, 
 			@RequestParam(value = "surface_parcelle") float surface_parcelle,@RequestParam(value = "rendement") float rendement,
-			@RequestParam(value = "nbr_pieds") int nbr_pieds, @RequestParam(value = "etape_visite", defaultValue = "null") String etape_visite,
+			@RequestParam(value = "nbr_pieds", defaultValue = "0") int nbr_pieds, @RequestParam(value = "etape_visite", defaultValue = "null") String etape_visite,
 			@RequestParam(value = "systeme_protection_sol", defaultValue = "null") String systeme_protection_sol,@RequestParam(value = "systeme_utilise", defaultValue = "null") String systeme_utilise,
 			@RequestParam(value = "associe_parcel", defaultValue = "null") String associe_parcel, @RequestParam(value = "autre_associe_parcel", defaultValue = "null") String autre_associe_parcel,@RequestParam(value = "inclinaison", defaultValue = "null") String inclinaison,
 			@RequestParam(value = "mise_anti_errosif", defaultValue = "null") String mise_anti_errosif,@RequestParam(value = "technic_use", defaultValue = "null") String technic_use,
 			@RequestParam(value = "photo_technique", defaultValue = "null") String photo_technique,@RequestParam(value = "photo_culture", defaultValue = "null") String photo_culture) throws URISyntaxException {
-    	info_parcelle_diversService.addInfoParcelleDivers(code_prod, type_culture, nom_parcel, periode_mise_culture, periode_culture, occupation_sol, autre_occupation_sol, 
+    	info_parcelle_diversService.addInfoParcelleDivers(id,code_prod, type_culture, nom_parcel, periode_mise_culture, periode_culture, occupation_sol, autre_occupation_sol, 
     			volume_annee_precedent, volume_annee_venir, surface_parcelle, rendement, nbr_pieds, etape_visite, systeme_protection_sol, systeme_utilise, associe_parcel, autre_associe_parcel, inclinaison, mise_anti_errosif, technic_use, photo_technique, photo_culture);
     }
     
     /* Fertilisant vanille */
     @PostMapping("/saveFertilisantVanille")
-    public void saveFertilisantVanille(@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
+    public void saveFertilisantVanille(@RequestParam(value = "id") long id,@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
 			@RequestParam(value = "use_fertilisant", defaultValue = "null") String use_fertilisant, @RequestParam(value = "type_use", defaultValue = "null") String type_use,
 			@RequestParam(value = "autre", defaultValue = "null") String autre,
 			@RequestParam(value = "qte", defaultValue = "null") String nom_utilisateur,@RequestParam(value = "qte", defaultValue = "null") String qte, @RequestParam(value = "nbr_ans") int nbr_ans) throws URISyntaxException {
-    	fertilisant_vanilleService.addFertilisantVanille(code_prod, use_fertilisant, type_use, autre, qte, nbr_ans);
+    	fertilisant_vanilleService.addFertilisantVanille(id, code_prod, use_fertilisant, type_use, autre, qte, nbr_ans);
     }
     
     /* information général vanille */
     @RequestMapping(value="/saveInfo_generale",method = RequestMethod.POST)
-	public void saveInfo_generale(
+	public void saveInfo_generale(@RequestParam(value = "id") long id,
 			@RequestParam(value = "code_pro", defaultValue = "null") String code_pro,
    			@RequestParam(value = "nbr_parcel_prod") int nbr_parcel_prod, 
    			@RequestParam(value = "appris_culture", defaultValue = "null") String appris_culture,
@@ -213,13 +267,14 @@ public class WSController {
    			@RequestParam(value = "change_tech", defaultValue = "null") String change_tech, @RequestParam(value = "prepare") String prepare,
    			@RequestParam(value = "dernier_compagne") int dernier_compagne,
    			@RequestParam(value = "place_dedie", defaultValue = "null") String place_dedie) {
-    	info_generaleService.addInfoGeneral(code_pro, nbr_parcel_prod, appris_culture, autre, moyen, technic_conseil, change_tech, prepare, dernier_compagne, place_dedie);
+    	System.out.println("aaaaaaaaa");
+    	info_generaleService.addInfoGeneral(id,code_pro, nbr_parcel_prod, appris_culture, autre, moyen, technic_conseil, change_tech, prepare, dernier_compagne, place_dedie);
 		
 	}
     
     /* information parcelle vanille */
     @RequestMapping(value="/saveInfoParcelle",method = RequestMethod.POST)
-   	public void saveInfoParcelle(
+   	public void saveInfoParcelle(@RequestParam(value = "id") long id,
    			@RequestParam(value ="code_prod", defaultValue = "null") String code_prod,
       			@RequestParam(value ="nom_parcel", defaultValue = "null") String nom_parcel, 
       			@RequestParam(value ="annee_plan_liane", defaultValue = "null") String annee_plan_liane,
@@ -233,12 +288,12 @@ public class WSController {
       			@RequestParam(value = "couverture_vegetal", defaultValue = "null")  String couverture_vegetal, @RequestParam(value = "avant", defaultValue = "null")  String avant, @RequestParam(value = "provien_liane", defaultValue = "null")  String provien_liane, 
       			 @RequestParam(value = "spec_autre", defaultValue = "null")  String spec_autre,  @RequestParam(value = "photo_parcelle", defaultValue = "null")  String photo_parcelle) {
        	
-    	info_parcelleService.addInfoParcelle(code_prod, nom_parcel, annee_plan_liane, nbr_liane, recolt_estime, surf_parcel, nbr_liane_total, rende_parcel, vol_anne_prec, culture_asocie, asocie_autre, inclinaison, mise_anti_errosif, technic_use, photo_technique, qualite_ombrage, couverture_vegetal, avant, provien_liane, spec_autre, photo_parcelle);
+    	info_parcelleService.addInfoParcelle(id,code_prod, nom_parcel, annee_plan_liane, nbr_liane, recolt_estime, surf_parcel, nbr_liane_total, rende_parcel, vol_anne_prec, culture_asocie, asocie_autre, inclinaison, mise_anti_errosif, technic_use, photo_technique, qualite_ombrage, couverture_vegetal, avant, provien_liane, spec_autre, photo_parcelle);
    	}
     
     /* main oeuvre */
     @RequestMapping(value="/saveMainOeuvre",method = RequestMethod.POST)
-   	public void saveMainOeuvre(
+   	public void saveMainOeuvre(@RequestParam(value = "id") long id,
    			@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
       			@RequestParam(value = "nbr_empl_perm") int nbr_empl_perm, 
       			@RequestParam(value = "empl_jour_saison", defaultValue = "null") String empl_jour_saison,
@@ -248,12 +303,12 @@ public class WSController {
       			@RequestParam(value = "tw", defaultValue = "null") String tw, @RequestParam(value = "autre", defaultValue = "null") String autre,
       			@RequestParam(value = "activite_vanille", defaultValue = "null") String activite_vanille) {
        	
-    	main_oeuvreService.addMainOeuvre(code_prod, nbr_empl_perm, empl_jour_saison, nbr_empl_jour, pay_empl_jour, mois_tw_empl, tw, autre, activite_vanille);
+    	main_oeuvreService.addMainOeuvre(id,code_prod, nbr_empl_perm, empl_jour_saison, nbr_empl_jour, pay_empl_jour, mois_tw_empl, tw, autre, activite_vanille);
    	}
     
     /* parasite vanille*/
     @RequestMapping(value="/saveParasiteVanille",method = RequestMethod.POST)
-   	public void saveParasiteVanille(
+   	public void saveParasiteVanille(@RequestParam(value = "id") long id,
    			@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
       			@RequestParam(value = "constate", defaultValue = "null") String constate, 
       			@RequestParam(value = "nom_mp", defaultValue = "null") String nom_mp,
@@ -263,19 +318,19 @@ public class WSController {
       			@RequestParam(value = "type_traitement", defaultValue = "null") String type_traitement, @RequestParam(value = "mecanique", defaultValue = "null") String mecanique,
       			@RequestParam(value = "chimique", defaultValue = "null") String chimique,
       			@RequestParam(value = "chimique_qte", defaultValue = "null") String chimique_qte, @RequestParam(value = "biologique", defaultValue = "null") String biologique, @RequestParam(value = "autre", defaultValue = "null") String autre, @RequestParam(value = "frequence", defaultValue = "null") String frequence, @RequestParam(value = "effets", defaultValue = "null") String effets) {
-    	parasite_maladieService.addParasiteMaladieDivers(code_prod, constate, nom_mp, periode, pourcentage, type_traitement, mecanique, chimique, chimique_qte, biologique, autre, frequence, effets);
+    	parasite_maladieService.addParasiteMaladieDivers(id,code_prod, constate, nom_mp, periode, pourcentage, type_traitement, mecanique, chimique, chimique_qte, biologique, autre, frequence, effets);
    		
    	}
     
     /* Question conseil vanille*/
     @RequestMapping(value="/saveQuestionConseil",method = RequestMethod.POST)
-   	public void saveQuestionConseil(
+   	public void saveQuestionConseil(@RequestParam(value = "id") long id,
    			@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
       			@RequestParam(value = "question_symrise", defaultValue = "null") String question_symrise, 
       			@RequestParam(value = "conseil_rural", defaultValue = "null") String conseil_rural,
       			@RequestParam(value = "etat_vanille", defaultValue = "null") String etat_vanille,
       			@RequestParam(value = "assistance", defaultValue = "null") String assistance) {
-    	question_conseilService.addQC(code_prod, question_symrise, conseil_rural, etat_vanille, assistance);
+    	question_conseilService.addQC(id, code_prod, question_symrise, conseil_rural, etat_vanille, assistance);
    		
    	}
    /* @RequestMapping(value="/createInfo_generale",method = RequestMethod.POST)

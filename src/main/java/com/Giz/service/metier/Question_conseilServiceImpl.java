@@ -21,9 +21,10 @@ public class Question_conseilServiceImpl implements Question_conseilService{
 	}
 
 	@Override
-	public void addQC(String code_pro, String question_symrise, String conseil_rural, String etat_vanille,
+	public void addQC(long id, String code_pro, String question_symrise, String conseil_rural, String etat_vanille,
 			String assistance) {
 		Question_conseil qc = new Question_conseil();
+		qc.setId(id);
 		qc.setCode_pro(code_pro);
 		qc.setQuestion_symrise(question_symrise);
 		qc.setConseil_rural(conseil_rural);

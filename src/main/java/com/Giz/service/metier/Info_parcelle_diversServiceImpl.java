@@ -21,13 +21,14 @@ public class Info_parcelle_diversServiceImpl implements Info_parcelle_diversServ
 	}
 
 	@Override
-	public void addInfoParcelleDivers(String code_prod, String type_culture, String nom_parcel,
+	public void addInfoParcelleDivers(long id, String code_prod, String type_culture, String nom_parcel,
 			String periode_mise_culture, String periode_culture, String occupation_sol, String autre_occupation_sol,
 			float volume_annee_precedent, float volume_annee_venir, float surface_parcelle, float rendement,
 			int nbr_pieds, String etape_visite, String systeme_protection_sol, String systeme_utilise,
 			String associe_parcel, String autre_associe_parcel, String inclinaison, String mise_anti_errosif,
 			String technic_use, String photo_technique, String photo_culture) {
 		Info_parcelle_divers info = new Info_parcelle_divers();
+		info.setId(id);
 		info.setCode_prod(code_prod);
 		info.setType_culture(type_culture);
 		info.setNom_parcel(nom_parcel);

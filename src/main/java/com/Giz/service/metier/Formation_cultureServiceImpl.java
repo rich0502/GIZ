@@ -26,4 +26,19 @@ public class Formation_cultureServiceImpl implements Formation_cultureService{
 		return formation_cultureRepository.findByCodeProd(code_prod);
 	}
 
+	@Override
+	public void addFormationCulture(long id,String code_prod, String recu_formation, String quelle_formation,
+			String autre_formation, String recu_dernier_form, String change_observer) {
+		Formation_culture formation = new Formation_culture();
+		formation.setId(id);
+		formation.setCode_prod(code_prod);
+		formation.setRecu_formation(recu_formation);
+		formation.setQuelle_formation(quelle_formation);
+		formation.setAutre_formation(autre_formation);
+		formation.setRecu_dernier_form(recu_dernier_form);
+		formation.setChange_observer(change_observer);
+		formation_cultureRepository.save(formation);
+		
+	}
+
 }

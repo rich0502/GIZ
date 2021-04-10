@@ -21,10 +21,11 @@ public class Parasite_maladie_diversServiceImpl implements Parasite_maladie_dive
 	}
 
 	@Override
-	public void addParasiteMaladieDivers(String code_prod, String constate, String nom_mp, String periode,
+	public void addParasiteMaladieDivers(long id,String code_prod, String constate, String nom_mp, String periode,
 			String pourcentage, String traitement, String mecanique, String chimique, String chimique_qte,
 			String biologique, String autre, String frequence, String effets) {
 			Parasite_maladie_divers parasite = new Parasite_maladie_divers();
+			parasite.setId(id);
 			parasite.setCode_prod(code_prod);
 			parasite.setConstate(constate);
 			parasite.setNom_mp(nom_mp);
