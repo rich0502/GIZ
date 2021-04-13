@@ -22,6 +22,7 @@ import com.Giz.data.domain.Info_parcelle_divers;
 import com.Giz.data.domain.Main_oeuvre;
 import com.Giz.data.domain.Parasite_maladie;
 import com.Giz.data.domain.Parasite_maladie_divers;
+import com.Giz.data.domain.Producteur;
 import com.Giz.data.domain.Question_conseil;
 import com.Giz.data.domain.Question_conseil_divers;
 import com.Giz.data.domain.Technique_vanille;
@@ -91,6 +92,13 @@ public class DataExterneController {
 	public String dataExterne(Model model) {
 		model.addAttribute("zoneList", producteurService.ListZone());
 		return "data-externe/dataExterne";
+	}
+	
+	@RequestMapping("/listProducteurs")
+	public String listProducteurs(Model model) {
+		List<Producteur> listProd = producteurService.ListProducteur();
+		model.addAttribute("listProd", listProd);
+		return "data-externe/listProducteur";
 	}
 	
 	@GetMapping("/getData")

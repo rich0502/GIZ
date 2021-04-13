@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Données externes</title>
+
+    <head th:include="/headLinksFragment.html" th:remove="tag"></head>
+</head>
+
+<body class="stories">
+    <div th:include="/pds_header.html"></div>
+    <section class="main">
+        <div class="card">
+            <header class="composantesTable-header justify-between">
+                <h2 class="page-title">PRODUCTEURS</h2>
+				<button type="button" name="btnExport" id="btnExport" style="margin-left: 910px;" class="gbtn">[[#{exporter}]]</button>
+            </header>
+            <div id="html-content-holder">
+            <table class="composantes-table text-center" id="myTable">
+                <thead>
+                    <tr>
+                        <th scope="col"><span>Zone</span></th>
+                        <th scope="col"><span>Code fokontany</span></th>
+                        <th scope="col"><span>Code producteur</span></th>
+                        <th scope="col"><span>Nom producteur</span></th>
+                        <th scope="col"><span>Genre</span></th>
+                        <th scope="col"><span>Date d'inspection</span></th>
+                        <th scope="col"><span>Date de naissance</span></th>
+                        <th scope="col"><span>Compte</span></th>
+                        <th scope="col"><span>CIN</span></th>
+                        <th scope="col"><span>Télephone</span></th>
+                        <th scope="col"><span>Erreur</span></th>
+                        <th scope="col"><span>Photo</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="b : ${listProd}">
+                        <td th:text="${b.zone}"></td>
+                        <td th:text="${b.code_fkt}"></td>
+                        <td th:text="${b.code_prod}"></td>
+                        <td th:text="${b.nom_prod}"></td>
+                        <td th:text="${b.genre}"></td>
+                        <td th:text="${#dates.format(b.date_inspection,'dd-MM-yyyy')}"></td>
+                        <td th:text="${#dates.format(b.date_naissance,'dd-MM-yyyy')}"></td>
+                        <td th:text="${b.compte}"></td>
+                        <td th:text="${b.cin}"></td>
+                        <td th:text="${b.tel}"></td>
+                        <td th:text="${b.error_remonte}"></td>
+                        <td th:text="${b.photo_prod}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+		$("#btnExport").click(function(e) {
+	        let file = new Blob([$('#html-content-holder').html()], {type:"application/vnd.ms-excel"});
+	        let url = URL.createObjectURL(file);
+	        let a = $("<a />", {
+	        href: url,
+	        download: "filename.xls"}).appendTo("body").get(0).click();
+	        e.preventDefault();
+      });
+	</script>
+</body>
+
+</html>

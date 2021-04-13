@@ -7,7 +7,7 @@
 </select>
 
 &emsp;
-<select id="data" class="ginput form-control" th:name="data" style="margin-left: 13px;width: 30%; margin-right: 32px;">
+<select id="data" class="ginput form-control" th:name="data" style="width: 30%;">
   <option value="">[[#{selectionner}]] données externe</option>
 </select>
 
@@ -29,7 +29,9 @@
 </select>
 
 &emsp;&emsp;
-<input class="gbtn" type="submit" value="RECHERCHER">
+<input class="gbtn" type="submit" value="Rechercher">
+&emsp;&emsp;
+<input class="gbtn" type="button" value="Producteurs" th:onclick="@{'javascript:afficherProducteur();'}">
 </form>
 <<script type="text/javascript">
 	$(document).ready(function() {
@@ -98,5 +100,9 @@
 	     $('#code_prod').html(s);
 	  });
 });
+
+	function afficherProducteur() {
+	   window.location = "listProducteurs";
+	}
 </script>
  

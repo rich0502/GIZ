@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Giz.data.domain.Parasite_maladie;
-import com.Giz.data.domain.Parasite_maladie_divers;
 import com.Giz.repository.Parasite_maladieRepository;
 
 @Service

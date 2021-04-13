@@ -16,4 +16,7 @@ public interface ProducteurRepository extends JpaRepository<Producteur, Long>{
 	
 	@Query(value = "SELECT producteur.code_prod, producteur.nom_prod from producteur WHERE producteur.code_fkt=?1 ORDER BY producteur.code_prod", nativeQuery = true)
 	List<Object[]> ListProd(String code_fkt);
+	
+	@Query(value = "SELECT * FROM producteur WHERE producteur.date_inspection IS NOT NULL ORDER BY producteur.zone", nativeQuery = true)
+	List<Producteur> ListProducteur();
 }
