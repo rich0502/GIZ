@@ -1,27 +1,29 @@
-
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<title>Détails producteur</title>
-<head th:include="/headLinksFragment.html" th:remove="tag"></head>
+	<title>Détails producteur</title>
+
+	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
+
 <body class="stories">
 	<div th:include="/pds_header.html"></div>
 	<section class="main">
 		<div class="card">
 			<header class="composantesTable-header justify-between">
 				<h2 class="page-title" th:text="*{etat_prod}"></h2>
-				<a class="btn pds-secondary-btn pds-add-user-btn pds-icon-btn pds-cancel-btn text-white" th:href="@{/listActivite}" style="margin-right: 60px;">[[#{retour}]]</a>
+				<a class="btn pds-secondary-btn pds-add-user-btn pds-icon-btn pds-cancel-btn text-white"
+					th:href="@{/listActivite}" style="margin-right: 60px;">[[#{retour}]]</a>
 			</header>
 			<table class="composantes-table text-center" id="myTable">
 				<thead>
-					<tr>						
+					<tr>
 						<th scope="col"><span th:text="*{etat_prod}"></span></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="p : ${list_prod}">
-						
 						<td th:text="${p}"></td>
 					</tr>
 				</tbody>
@@ -36,4 +38,5 @@
 	</script>
 	--->
 </body>
+
 </html>

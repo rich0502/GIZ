@@ -13,50 +13,52 @@
         <div class="card">
             <header class="composantesTable-header justify-between">
                 <h2 class="page-title">MAIN d'ŒUVRE (Vanille et autres spéculations)</h2>
-				<button type="button" name="btnExport" id="btnExport" style="margin-left: 670px;" class="gbtn">[[#{exporter}]]</button>
+                <button type="button" name="btnExport" id="btnExport" style="margin-left: 670px;"
+                    class="gbtn">[[#{exporter}]]</button>
             </header>
             <div id="html-content-holder">
-            <table class="composantes-table text-center" id="myTable">
-                <thead>
-                    <tr>
-                        <th scope="col"><span>Code producteur</span></th>
-                        <th scope="col"><span>Nombre employée permanent</span></th>
-                        <th scope="col"><span>employée journaliers/saisoniers</span></th>
-                        <th scope="col"><span>Nombre employée journaliers</span></th>
-                        <th scope="col"><span>payement employée journaliers</span></th>
-                        <th scope="col"><span>Mois de travail employée</span></th>
-                        <th scope="col"><span>sur quoi travaillent-ils?</span></th>
-                        <th scope="col"><span>Autre</span></th>
-                        <th scope="col"><span>Activité de travail vanille</span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="b : ${main_oeuvre}">
-                        <td th:text="${b.code_prod}"></td>
-                        <td th:text="${b.nbr_empl_perm}"></td>
-                        <td th:text="${b.empl_jour_saison}"></td>
-                        <td th:text="${b.nbr_empl_jour}"></td>
-                        <td th:text="${b.pay_empl_jour}"></td>
-                        <td th:text="${b.mois_tw_empl}"></td>
-                        <td th:text="${b.tw}"></td>
-                        <td th:text="${b.autre}"></td>
-                        <td th:text="${b.activite_vanille}"></td>
-                    </tr>
-                </tbody>
-            </table>
+                <table class="composantes-table text-center" id="myTable">
+                    <thead>
+                        <tr>
+                            <th scope="col"><span>Code producteur</span></th>
+                            <th scope="col"><span>Nombre employée permanent</span></th>
+                            <th scope="col"><span>employée journaliers/saisoniers</span></th>
+                            <th scope="col"><span>Nombre employée journaliers</span></th>
+                            <th scope="col"><span>payement employée journaliers</span></th>
+                            <th scope="col"><span>Mois de travail employée</span></th>
+                            <th scope="col"><span>sur quoi travaillent-ils?</span></th>
+                            <th scope="col"><span>Autre</span></th>
+                            <th scope="col"><span>Activité de travail vanille</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="b : ${main_oeuvre}">
+                            <td th:text="${b.code_prod}"></td>
+                            <td th:text="${b.nbr_empl_perm}"></td>
+                            <td th:text="${b.empl_jour_saison}"></td>
+                            <td th:text="${b.nbr_empl_jour}"></td>
+                            <td th:text="${b.pay_empl_jour}"></td>
+                            <td th:text="${b.mois_tw_empl}"></td>
+                            <td th:text="${b.tw}"></td>
+                            <td th:text="${b.autre}"></td>
+                            <td th:text="${b.activite_vanille}"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
     <script type="text/javascript">
-		$("#btnExport").click(function(e) {
-	        let file = new Blob([$('#html-content-holder').html()], {type:"application/vnd.ms-excel"});
-	        let url = URL.createObjectURL(file);
-	        let a = $("<a />", {
-	        href: url,
-	        download: "filename.xls"}).appendTo("body").get(0).click();
-	        e.preventDefault();
-      });
-	</script>
+        $("#btnExport").click(function (e) {
+            let file = new Blob([$('#html-content-holder').html()], { type: "application/vnd.ms-excel" });
+            let url = URL.createObjectURL(file);
+            let a = $("<a />", {
+                href: url,
+                download: "filename.xls"
+            }).appendTo("body").get(0).click();
+            e.preventDefault();
+        });
+    </script>
 </body>
 
 </html>

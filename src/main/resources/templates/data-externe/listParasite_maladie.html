@@ -1,68 +1,74 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<title>Données externes</title>
-<head th:include="/headLinksFragment.html" th:remove="tag"></head>
+	<title>Données externes</title>
+
+	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
+
 <body class="stories">
 	<div th:include="/pds_header.html"></div>
 	<section class="main">
 		<div class="card">
 			<header class="composantesTable-header justify-between">
 				<h2 class="page-title">MALADIES & PARASITES</h2>
-				<button type="button" name="btnExport" id="btnExport" style="margin-left: 850px;" class="gbtn">[[#{exporter}]]</button>
+				<button type="button" name="btnExport" id="btnExport" style="margin-left: 850px;"
+					class="gbtn">[[#{exporter}]]</button>
 			</header>
 			<div id="html-content-holder">
-			<table class="composantes-table text-center" id="myTable">
-				<thead>
-					<tr>
-						<th scope="col"><span>Code producteur</span></th>
-						<th scope="col"><span>Constaté des parasites ou maladies</span></th>
-						<th scope="col"><span>Maladie observé</span></th>
-						<th scope="col"><span>Periode</span></th>
-						<th scope="col"><span>Pourcentage de lianes touchées</span></th>
-						<th scope="col"><span>Traitement</span></th>
-						<th scope="col"><span>Type traitement</span></th>
-						<th scope="col"><span>Mecanique</span></th>
-						<th scope="col"><span>Chimique</span></th>
-						<th scope="col"><span>Quantité Chimique</span></th>
-						<th scope="col"><span>Biologique</span></th>
-						<th scope="col"><span>Autre</span></th>
-						<th scope="col"><span>Frequence</span></th>
-						<th scope="col"><span>Effets</span></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="b : ${parasite_maladie}">
-						<td th:text="${b.code_prod}"></td>
-						<td th:text="${b.constate}"></td>
-						<td th:text="${b.nom_mp}"></td>
-						<td th:text="${b.periode}"></td>
-						<td th:text="${b.pourcentage}"></td>
-						<td th:text="${b.traitement}"></td>
-						<td th:text="${b.type_traitement}"></td>
-						<td th:text="${b.mecanique}"></td>
-						<td th:text="${b.chimique}"></td>
-						<td th:text="${b.chimique_qte}"></td>
-						<td th:text="${b.biologique}"></td>
-						<td th:text="${b.autre}"></td>
-						<td th:text="${b.frequence}"></td>
-						<td th:text="${b.effets}"></td>
-					</tr>
-				</tbody>
-			</table>
+				<table class="composantes-table text-center" id="myTable">
+					<thead>
+						<tr>
+							<th scope="col"><span>Code producteur</span></th>
+							<th scope="col"><span>Constaté des parasites ou maladies</span></th>
+							<th scope="col"><span>Maladie observé</span></th>
+							<th scope="col"><span>Periode</span></th>
+							<th scope="col"><span>Pourcentage de lianes touchées</span></th>
+							<th scope="col"><span>Traitement</span></th>
+							<th scope="col"><span>Type traitement</span></th>
+							<th scope="col"><span>Mecanique</span></th>
+							<th scope="col"><span>Chimique</span></th>
+							<th scope="col"><span>Quantité Chimique</span></th>
+							<th scope="col"><span>Biologique</span></th>
+							<th scope="col"><span>Autre</span></th>
+							<th scope="col"><span>Frequence</span></th>
+							<th scope="col"><span>Effets</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="b : ${parasite_maladie}">
+							<td th:text="${b.code_prod}"></td>
+							<td th:text="${b.constate}"></td>
+							<td th:text="${b.nom_mp}"></td>
+							<td th:text="${b.periode}"></td>
+							<td th:text="${b.pourcentage}"></td>
+							<td th:text="${b.traitement}"></td>
+							<td th:text="${b.type_traitement}"></td>
+							<td th:text="${b.mecanique}"></td>
+							<td th:text="${b.chimique}"></td>
+							<td th:text="${b.chimique_qte}"></td>
+							<td th:text="${b.biologique}"></td>
+							<td th:text="${b.autre}"></td>
+							<td th:text="${b.frequence}"></td>
+							<td th:text="${b.effets}"></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</section>
 	<script type="text/javascript">
-		$("#btnExport").click(function(e) {
-	        let file = new Blob([$('#html-content-holder').html()], {type:"application/vnd.ms-excel"});
-	        let url = URL.createObjectURL(file);
-	        let a = $("<a />", {
-	        href: url,
-	        download: "filename.xls"}).appendTo("body").get(0).click();
-	        e.preventDefault();
-      });
+		$("#btnExport").click(function (e) {
+			let file = new Blob([$('#html-content-holder').html()], { type: "application/vnd.ms-excel" });
+			let url = URL.createObjectURL(file);
+			let a = $("<a />", {
+				href: url,
+				download: "filename.xls"
+			}).appendTo("body").get(0).click();
+			e.preventDefault();
+		});
 	</script>
 </body>
+
 </html>

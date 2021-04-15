@@ -33,7 +33,7 @@
 &emsp;&emsp;
 <input class="gbtn" type="button" value="Producteurs" th:onclick="@{'javascript:afficherProducteur();'}">
 </form>
-<<script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function() {
 	
 		$("#suivi").change(function() {
@@ -99,7 +99,7 @@
 	     //reset data
 	     $('#code_prod').html(s);
 	  });
-});
+	});
 
 	function afficherProducteur() {
 	   window.location = "listProducteurs";

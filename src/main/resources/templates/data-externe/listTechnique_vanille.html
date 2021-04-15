@@ -1,72 +1,273 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<title>Données externes</title>
-<head th:include="/headLinksFragment.html" th:remove="tag"></head>
+	<title>Données externes</title>
+
+	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
+
 <body class="stories">
 	<div th:include="/pds_header.html"></div>
 	<section class="main">
 		<div class="card">
 			<header class="composantesTable-header justify-between">
 				<h2 class="page-title">TECHNIQUE VANILLE</h2>
-				<button type="button" name="btnExport" id="btnExport" style="margin-left: 880px;" class="gbtn">[[#{exporter}]]</button>
+				<button type="button" name="btnExport" id="btnExport" style="margin-left: 880px;"
+					class="gbtn">[[#{exporter}]]</button>
 			</header>
 			<div id="html-content-holder">
-			<table class="composantes-table text-center" id="myTable">
-				<thead>
-					<tr>
-						<th scope="col"><span>Code producteur</span></th>
-						<th scope="col"><span>Plantation Tuteurs vaovao</span></th>
-						<th scope="col"><span>Taille tuteur</span></th>
-						<th scope="col"><span>Sélection des lianes</span></th>
-						<th scope="col"><span>Plantation lianes vaovao</span></th>
-						<th scope="col"><span>Entretien canaux drainage</span></th>
-						<th scope="col"><span>Désherbage et Fauchage parcelle</span></th>
-						<th scope="col"><span>Descente et bouclage lianes</span></th>
-						<th scope="col"><span>Préparation de bouton</span></th>
-						<th scope="col"><span>Pollinisation</span></th>
-						<th scope="col"><span>Limitation de gousse</span></th>
-						<th scope="col"><span>Nettoyage lianes mortes et abimées</span></th>
-						<th scope="col"><span>Arrêt du cœur</span></th>
-						<th scope="col"><span>Nettoyage manuel des parasites</span></th>
-						<th scope="col"><span>Utilisation Bio pesticides (Ady Gasy)</span></th>
-						<th scope="col"><span>Application Compost/Bio engrais</span></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="b : ${technique_vanille}">
-						<td th:text="${b.code_pro}"></td>
-						<td th:text="${b.ptv}"></td>
-						<td th:text="${b.taille}"></td>
-						<td th:text="${b.selectLiane}"></td>
-						<td th:text="${b.plantVao}"></td>
-						<td th:text="${b.entretienCan}"></td>
-						<td th:text="${b.desherbFaush}"></td>
-						<td th:text="${b.descentBoucl}"></td>
-						<td th:text="${b.prepaBouton}"></td>
-						<td th:text="${b.pollinisation}"></td>
-						<td th:text="${b.limitGousse}"></td>
-						<td th:text="${b.nettoyMort}"></td>
-						<td th:text="${b.arretCoeur}"></td>
-						<td th:text="${b.nettoyaParasit}"></td>
-						<td th:text="${b.adyGasy}"></td>
-						<td th:text="${b.appliCompo}"></td>
-					</tr>
-				</tbody>
-			</table>
+				<table class="composantes-table text-center" id="myTable">
+					<thead>
+						<tr>
+							<th scope="col"><span>Code producteur</span></th>
+							<th scope="col"><span>Plantation Tuteurs vaovao</span></th>
+							<th scope="col"><span>Taille tuteur</span></th>
+							<th scope="col"><span>Sélection des lianes</span></th>
+							<th scope="col"><span>Plantation lianes vaovao</span></th>
+							<th scope="col"><span>Entretien canaux drainage</span></th>
+							<th scope="col"><span>Désherbage et Fauchage parcelle</span></th>
+							<th scope="col"><span>Descente et bouclage lianes</span></th>
+							<th scope="col"><span>Préparation de bouton</span></th>
+							<th scope="col"><span>Pollinisation</span></th>
+							<th scope="col"><span>Limitation de gousse</span></th>
+							<th scope="col"><span>Nettoyage lianes mortes et abimées</span></th>
+							<th scope="col"><span>Arrêt du cœur</span></th>
+							<th scope="col"><span>Nettoyage manuel des parasites</span></th>
+							<th scope="col"><span>Utilisation Bio pesticides (Ady Gasy)</span></th>
+							<th scope="col"><span>Application Compost/ Bio engrais</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="b : ${technique_vanille}">
+							<td th:text="${b.code_pro}"></td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.ptv,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.ptv,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.ptv,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.ptv,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.ptv,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.ptv,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.ptv,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.ptv,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.ptv,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.ptv,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.ptv,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.ptv,',')[11]=='true'}">Decembre,</span>  
+							</td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.taille,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.taille,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.taille,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.taille,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.taille,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.taille,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.taille,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.taille,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.taille,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.taille,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.taille,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.taille,',')[11]=='true'}">Decembre,</span>
+							</td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.selectLiane,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.selectLiane,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.selectLiane,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.selectLiane,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.selectLiane,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.selectLiane,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.selectLiane,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.selectLiane,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.selectLiane,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.selectLiane,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.selectLiane,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.selectLiane,',')[11]=='true'}">Decembre,</span>
+							</td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.plantVao,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.plantVao,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.plantVao,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.plantVao,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.plantVao,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.plantVao,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.plantVao,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.plantVao,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.plantVao,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.plantVao,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.plantVao,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.plantVao,',')[11]=='true'}">Decembre,</span>
+							</td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.entretienCan,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.entretienCan,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.entretienCan,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.entretienCan,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.entretienCan,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.entretienCan,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.entretienCan,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.entretienCan,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.entretienCan,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.entretienCan,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.entretienCan,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.entretienCan,',')[11]=='true'}">Decembre,</span>
+							</td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.desherbFaush,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.desherbFaush,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.desherbFaush,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.desherbFaush,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.desherbFaush,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.desherbFaush,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.desherbFaush,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.desherbFaush,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.desherbFaush,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.desherbFaush,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.desherbFaush,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.desherbFaush,',')[11]=='true'}">Decembre,</span>
+							</td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.descentBoucl,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.descentBoucl,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.descentBoucl,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.descentBoucl,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.descentBoucl,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.descentBoucl,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.descentBoucl,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.descentBoucl,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.descentBoucl,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.descentBoucl,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.descentBoucl,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.descentBoucl,',')[11]=='true'}">Decembre,</span>
+							</td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.prepaBouton,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.prepaBouton,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.prepaBouton,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.prepaBouton,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.prepaBouton,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.prepaBouton,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.prepaBouton,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.prepaBouton,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.prepaBouton,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.prepaBouton,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.prepaBouton,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.prepaBouton,',')[11]=='true'}">Decembre,</span>
+							</td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.pollinisation,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.pollinisation,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.pollinisation,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.pollinisation,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.pollinisation,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.pollinisation,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.pollinisation,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.pollinisation,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.pollinisation,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.pollinisation,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.pollinisation,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.pollinisation,',')[11]=='true'}">Decembre,</span>
+							</td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.limitGousse,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.limitGousse,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.limitGousse,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.limitGousse,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.limitGousse,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.limitGousse,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.limitGousse,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.limitGousse,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.limitGousse,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.limitGousse,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.limitGousse,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.limitGousse,',')[11]=='true'}">Decembre,</span>
+							</td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.nettoyMort,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.nettoyMort,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.nettoyMort,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.nettoyMort,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.nettoyMort,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.nettoyMort,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.nettoyMort,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.nettoyMort,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.nettoyMort,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.nettoyMort,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.nettoyMort,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.nettoyMort,',')[11]=='true'}">Decembre,</span>
+							</td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.arretCoeur,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.arretCoeur,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.arretCoeur,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.arretCoeur,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.arretCoeur,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.arretCoeur,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.arretCoeur,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.arretCoeur,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.arretCoeur,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.arretCoeur,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.arretCoeur,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.arretCoeur,',')[11]=='true'}">Decembre,</span>
+							</td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.nettoyaParasit,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.nettoyaParasit,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.nettoyaParasit,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.nettoyaParasit,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.nettoyaParasit,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.nettoyaParasit,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.nettoyaParasit,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.nettoyaParasit,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.nettoyaParasit,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.nettoyaParasit,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.nettoyaParasit,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.nettoyaParasit,',')[11]=='true'}">Decembre,</span>
+							</td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.adyGasy,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.adyGasy,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.adyGasy,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.adyGasy,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.adyGasy,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.adyGasy,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.adyGasy,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.adyGasy,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.adyGasy,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.adyGasy,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.adyGasy,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.adyGasy,',')[11]=='true'}">Decembre,</span>
+							</td>
+							<td>
+								<span th:if="${#strings.arraySplit(b.appliCompo,',')[0]=='true'}">Janvier,</span>
+								<span th:if="${#strings.arraySplit(b.appliCompo,',')[1]=='true'}">Fevrier,</span> 
+								<span th:if="${#strings.arraySplit(b.appliCompo,',')[2]=='true'}">Mars,</span> 
+								<span th:if="${#strings.arraySplit(b.appliCompo,',')[3]=='true'}">Avril,</span>
+								<span th:if="${#strings.arraySplit(b.appliCompo,',')[4]=='true'}">Mai,</span>
+								<span th:if="${#strings.arraySplit(b.appliCompo,',')[5]=='true'}">Juin,</span> 
+								<span th:if="${#strings.arraySplit(b.appliCompo,',')[6]=='true'}">Juillet,</span> 
+								<span th:if="${#strings.arraySplit(b.appliCompo,',')[7]=='true'}">Aout,</span>
+								<span th:if="${#strings.arraySplit(b.appliCompo,',')[8]=='true'}">Septembre,</span>
+								<span th:if="${#strings.arraySplit(b.appliCompo,',')[9]=='true'}">Octobre,</span> 
+								<span th:if="${#strings.arraySplit(b.appliCompo,',')[10]=='true'}">Novembre,</span> 
+								<span th:if="${#strings.arraySplit(b.appliCompo,',')[11]=='true'}">Decembre,</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</section>
 	<script type="text/javascript">
-		$("#btnExport").click(function(e) {
-	        let file = new Blob([$('#html-content-holder').html()], {type:"application/vnd.ms-excel"});
-	        let url = URL.createObjectURL(file);
-	        let a = $("<a />", {
-	        href: url,
-	        download: "filename.xls"}).appendTo("body").get(0).click();
-	        e.preventDefault();
-      });
+		$("#btnExport").click(function (e) {
+			let file = new Blob([$('#html-content-holder').html()], { type: "application/vnd.ms-excel" });
+			let url = URL.createObjectURL(file);
+			let a = $("<a />", {
+				href: url,
+				download: "filename.xls"
+			}).appendTo("body").get(0).click();
+			e.preventDefault();
+		});
 	</script>
 </body>
+
 </html>

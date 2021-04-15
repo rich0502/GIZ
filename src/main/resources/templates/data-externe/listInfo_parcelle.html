@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<title>Données externes</title>
 
@@ -12,73 +13,75 @@
 		<div class="card">
 			<header class="composantesTable-header justify-between">
 				<h2 class="page-title">INFO PARCELLE VANILLE</h2>
-				<button type="button" name="btnExport" id="btnExport" style="margin-left: 845px;" class="gbtn">[[#{exporter}]]</button>
+				<button type="button" name="btnExport" id="btnExport" style="margin-left: 845px;"
+					class="gbtn">[[#{exporter}]]</button>
 			</header>
 			<div id="html-content-holder">
-			<table class="composantes-table text-center" id="myTable">
-				<thead>
-					<tr>
-						<th scope="col"><span>Code producteur</span></th>
-						<th scope="col"><span>Nom parcelle</span></th>
-						<th scope="col"><span>Année plantation liane</span></th>
-						<th scope="col"><span>Nombre liane</span></th>
-						<th scope="col"><span>Récolte estimé(kg)</span></th>
-						<th scope="col"><span>Surface parcelle</span></th>
-						<th scope="col"><span>Nombre liane total</span></th>
-						<th scope="col"><span>Rendement parcelle</span></th>
-						<th scope="col"><span>Volume recolté année précédent(kg)</span></th>
-						<th scope="col"><span>Culture asociées</span></th>
-						<th scope="col"><span>Asociées autre</span></th>
-						<th scope="col"><span>Inclinaison</span></th>
-						<th scope="col"><span>Mise anti-errosif</span></th>
-						<th scope="col"><span>Technique utilisé</span></th>
-						<th scope="col"><span>Photo technique</span></th>
-						<th scope="col"><span>Qualité ombrage</span></th>
-						<th scope="col"><span>Couverture vegetal</span></th>
-						<th scope="col"><span>Avant</span></th>
-						<th scope="col"><span>Origine liane</span></th>
-						<th scope="col"><span>Autre</span></th>
-						<th scope="col"><span>Photo parcelle</span></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="b : ${info_parcelle}">
-						<td th:text="${b.code_prod}"></td>
-						<td th:text="${b.nom_parcel}"></td>
-						<td th:text="${b.annee_plan_liane}"></td>
-						<td th:text="${b.nbr_liane}"></td>
-						<td th:text="${b.recolt_estime}"></td>
-						<td th:text="${b.surf_parcel}"></td>
-						<td th:text="${b.nbr_liane_total}"></td>
-						<td th:text="${b.rende_parcel}"></td>
-						<td th:text="${b.vol_anne_prec}"></td>
-						<td th:text="${b.culture_asocie}"></td>
-						<td th:text="${b.asocie_autre}"></td>
-						<td th:text="${b.inclinaison}"></td>
-						<td th:text="${b.mise_anti_errosif}"></td>
-						<td th:text="${b.technic_use}"></td>
-						<td th:text="${b.photo_technique}"></td>
-						<td th:text="${b.qualite_ombrage}"></td>
-						<td th:text="${b.couverture_vegetal}"></td>
-						<td th:text="${b.avant}"></td>
-						<td th:text="${b.provien_liane}"></td>
-						<td th:text="${b.spec_autre}"></td>
-						<td th:text="${b.photo_parcelle}"></td>
-					</tr>
-				</tbody>
-			</table>
+				<table class="composantes-table text-center" id="myTable">
+					<thead>
+						<tr>
+							<th scope="col"><span>Code producteur</span></th>
+							<th scope="col"><span>Nom parcelle</span></th>
+							<th scope="col"><span>Année plantation liane</span></th>
+							<th scope="col"><span>Nombre liane</span></th>
+							<th scope="col"><span>Récolte estimé(kg)</span></th>
+							<th scope="col"><span>Surface parcelle</span></th>
+							<th scope="col"><span>Nombre liane total</span></th>
+							<th scope="col"><span>Rendement parcelle</span></th>
+							<th scope="col"><span>Volume recolté année précédent(kg)</span></th>
+							<th scope="col"><span>Culture asociées</span></th>
+							<th scope="col"><span>Asociées autre</span></th>
+							<th scope="col"><span>Inclinaison</span></th>
+							<th scope="col"><span>Mise anti-errosif</span></th>
+							<th scope="col"><span>Technique utilisé</span></th>
+							<th scope="col"><span>Photo technique</span></th>
+							<th scope="col"><span>Qualité ombrage</span></th>
+							<th scope="col"><span>Couverture vegetal</span></th>
+							<th scope="col"><span>Avant</span></th>
+							<th scope="col"><span>Origine liane</span></th>
+							<th scope="col"><span>Autre</span></th>
+							<th scope="col"><span>Photo parcelle</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="b : ${info_parcelle}">
+							<td th:text="${b.code_prod}"></td>
+							<td th:text="${b.nom_parcel}"></td>
+							<td th:text="${b.annee_plan_liane}"></td>
+							<td th:text="${b.nbr_liane}"></td>
+							<td th:text="${b.recolt_estime}"></td>
+							<td th:text="${b.surf_parcel}"></td>
+							<td th:text="${b.nbr_liane_total}"></td>
+							<td th:text="${b.rende_parcel}"></td>
+							<td th:text="${b.vol_anne_prec}"></td>
+							<td th:text="${b.culture_asocie}"></td>
+							<td th:text="${b.asocie_autre}"></td>
+							<td th:text="${b.inclinaison}"></td>
+							<td th:text="${b.mise_anti_errosif}"></td>
+							<td th:text="${b.technic_use}"></td>
+							<td th:text="${b.photo_technique}"></td>
+							<td th:text="${b.qualite_ombrage}"></td>
+							<td th:text="${b.couverture_vegetal}"></td>
+							<td th:text="${b.avant}"></td>
+							<td th:text="${b.provien_liane}"></td>
+							<td th:text="${b.spec_autre}"></td>
+							<td th:text="${b.photo_parcelle}"></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</section>
 	<script type="text/javascript">
-		$("#btnExport").click(function(e) {
-	        let file = new Blob([$('#html-content-holder').html()], {type:"application/vnd.ms-excel"});
-	        let url = URL.createObjectURL(file);
-	        let a = $("<a />", {
-	        href: url,
-	        download: "filename.xls"}).appendTo("body").get(0).click();
-	        e.preventDefault();
-      });
+		$("#btnExport").click(function (e) {
+			let file = new Blob([$('#html-content-holder').html()], { type: "application/vnd.ms-excel" });
+			let url = URL.createObjectURL(file);
+			let a = $("<a />", {
+				href: url,
+				download: "filename.xls"
+			}).appendTo("body").get(0).click();
+			e.preventDefault();
+		});
 	</script>
 </body>
 

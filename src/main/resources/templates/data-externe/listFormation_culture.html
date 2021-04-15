@@ -1,52 +1,58 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<title>Données externes</title>
-<head th:include="/headLinksFragment.html" th:remove="tag"></head>
+	<title>Données externes</title>
+
+	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
+
 <body class="stories">
 	<div th:include="/pds_header.html"></div>
 	<section class="main">
 		<div class="card">
 			<header class="composantesTable-header justify-between">
 				<h2 class="page-title">FORMATION SUR LA CULTURE</h2>
-				<button type="button" name="btnExport" id="btnExport" style="margin-left: 810px;" class="gbtn">[[#{exporter}]]</button>
+				<button type="button" name="btnExport" id="btnExport" style="margin-left: 810px;"
+					class="gbtn">[[#{exporter}]]</button>
 			</header>
 			<div id="html-content-holder">
-			<table class="composantes-table text-center" id="myTable">
-				<thead>
-					<tr>
-						<th scope="col"><span>Code producteur</span></th>
-						<th scope="col"><span>Formation reçus</span></th>
-						<th scope="col"><span>Quelle formation</span></th>
-						<th scope="col"><span>Autre formation</span></th>
-						<th scope="col"><span>Dernier formation reçus</span></th>
-						<th scope="col"><span>Changement observer</span></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="b : ${formation_culture}">
-						<td th:text="${b.code_prod}"></td>
-						<td th:text="${b.recu_formation}"></td>
-						<td th:text="${b.quelle_formation}"></td>
-						<td th:text="${b.autre_formation}"></td>
-						<td th:text="${b.recu_dernier_form}"></td>
-						<td th:text="${b.change_observer}"></td>
-					</tr>
-				</tbody>
-			</table>
+				<table class="composantes-table text-center" id="myTable">
+					<thead>
+						<tr>
+							<th scope="col"><span>Code producteur</span></th>
+							<th scope="col"><span>Formation reçus</span></th>
+							<th scope="col"><span>Quelle formation</span></th>
+							<th scope="col"><span>Autre formation</span></th>
+							<th scope="col"><span>Dernier formation reçus</span></th>
+							<th scope="col"><span>Changement observer</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="b : ${formation_culture}">
+							<td th:text="${b.code_prod}"></td>
+							<td th:text="${b.recu_formation}"></td>
+							<td th:text="${b.quelle_formation}"></td>
+							<td th:text="${b.autre_formation}"></td>
+							<td th:text="${b.recu_dernier_form}"></td>
+							<td th:text="${b.change_observer}"></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</section>
 	<script type="text/javascript">
-		$("#btnExport").click(function(e) {
-	        let file = new Blob([$('#html-content-holder').html()], {type:"application/vnd.ms-excel"});
-	        let url = URL.createObjectURL(file);
-	        let a = $("<a />", {
-	        href: url,
-	        download: "filename.xls"}).appendTo("body").get(0).click();
-	        e.preventDefault();
-      });
+		$("#btnExport").click(function (e) {
+			let file = new Blob([$('#html-content-holder').html()], { type: "application/vnd.ms-excel" });
+			let url = URL.createObjectURL(file);
+			let a = $("<a />", {
+				href: url,
+				download: "filename.xls"
+			}).appendTo("body").get(0).click();
+			e.preventDefault();
+		});
 	</script>
 </body>
+
 </html>

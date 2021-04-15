@@ -1,60 +1,66 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<title>Données externes</title>
-<head th:include="/headLinksFragment.html" th:remove="tag"></head>
+	<title>Données externes</title>
+
+	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
+
 <body class="stories">
 	<div th:include="/pds_header.html"></div>
 	<section class="main">
 		<div class="card">
 			<header class="composantesTable-header justify-between">
 				<h2 class="page-title">INFORMATION GENERALE SUR LA CULTURE</h2>
-				<button type="button" name="btnExport" id="btnExport" style="margin-left: 700px;" class="gbtn">[[#{exporter}]]</button>
+				<button type="button" name="btnExport" id="btnExport" style="margin-left: 700px;"
+					class="gbtn">[[#{exporter}]]</button>
 			</header>
 			<div id="html-content-holder">
-			<table class="composantes-table text-center" id="myTable">
-				<thead>
-					<tr>
-						<th scope="col"><span>Code producteur</span></th>
-						<th scope="col"><span>Nombre de parcelle de producteur</span></th>
-						<th scope="col"><span>Appris culture</span></th>
-						<th scope="col"><span>Autre</span></th>
-						<th scope="col"><span>Moyen</span></th>
-						<th scope="col"><span>Technique conseillées appliquer</span></th>
-						<th scope="col"><span>changement observées</span></th>
-						<th scope="col"><span>est-ce qu'il prépare sa propre vanille?</span></th>
-						<th scope="col"><span>Vanille preparer(kg)</span></th>
-						<th scope="col"><span>pour la préparation</span></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="b : ${info_generale}">
-						<td th:text="${b.code_pro}"></td>
-						<td th:text="${b.nbr_parcel_prod}"></td>
-						<td th:text="${b.appris_culture}"></td>
-						<td th:text="${b.autre}"></td>
-						<td th:text="${b.moyen}"></td>
-						<td th:text="${b.technic_conseil}"></td>
-						<td th:text="${b.change_tech}"></td>
-						<td th:text="${b.prepare}"></td>
-						<td th:text="${b.dernier_compagne}"></td>
-						<td th:text="${b.place_dedie}"></td>
-					</tr>
-				</tbody>
-			</table>
+				<table class="composantes-table text-center" id="myTable">
+					<thead>
+						<tr>
+							<th scope="col"><span>Code producteur</span></th>
+							<th scope="col"><span>Nombre de parcelle de producteur</span></th>
+							<th scope="col"><span>Appris culture</span></th>
+							<th scope="col"><span>Autre</span></th>
+							<th scope="col"><span>Moyen</span></th>
+							<th scope="col"><span>Technique conseillées appliquer</span></th>
+							<th scope="col"><span>changement observées</span></th>
+							<th scope="col"><span>est-ce qu'il prépare sa propre vanille?</span></th>
+							<th scope="col"><span>Vanille preparer(kg)</span></th>
+							<th scope="col"><span>pour la préparation</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="b : ${info_generale}">
+							<td th:text="${b.code_pro}"></td>
+							<td th:text="${b.nbr_parcel_prod}"></td>
+							<td th:text="${b.appris_culture}"></td>
+							<td th:text="${b.autre}"></td>
+							<td th:text="${b.moyen}"></td>
+							<td th:text="${b.technic_conseil}"></td>
+							<td th:text="${b.change_tech}"></td>
+							<td th:text="${b.prepare}"></td>
+							<td th:text="${b.dernier_compagne}"></td>
+							<td th:text="${b.place_dedie}"></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</section>
 	<script type="text/javascript">
-		$("#btnExport").click(function(e) {
-	        let file = new Blob([$('#html-content-holder').html()], {type:"application/vnd.ms-excel"});
-	        let url = URL.createObjectURL(file);
-	        let a = $("<a />", {
-	        href: url,
-	        download: "filename.xls"}).appendTo("body").get(0).click();
-	        e.preventDefault();
-      });
+		$("#btnExport").click(function (e) {
+			let file = new Blob([$('#html-content-holder').html()], { type: "application/vnd.ms-excel" });
+			let url = URL.createObjectURL(file);
+			let a = $("<a />", {
+				href: url,
+				download: "filename.xls"
+			}).appendTo("body").get(0).click();
+			e.preventDefault();
+		});
 	</script>
 </body>
+
 </html>
