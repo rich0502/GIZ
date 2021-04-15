@@ -29,9 +29,9 @@
 </select>
 
 &emsp;&emsp;
-<input class="gbtn" type="submit" value="Rechercher">
+<input class="gbtn" type="submit" th:value="#{rechercher}">
 &emsp;&emsp;
-<input class="gbtn" type="button" value="Producteurs" th:onclick="@{'javascript:afficherProducteur();'}">
+<input class="gbtn" type="button" th:value="#{producteurs}" th:onclick="@{'javascript:afficherProducteur();'}">
 </form>
 <script type="text/javascript">
 	$(document).ready(function() {
