@@ -64,5 +64,7 @@ public interface Wp3ActivEcoJeuneService {
 	public List<Object[]> TableauCountDetailGenreDist(String district, String sexe);
 	public List<Object[]> TableauCountDetailGenreAllDist(String district);
 
+	public List<Object[]> historiqueList();
+
 	
 }

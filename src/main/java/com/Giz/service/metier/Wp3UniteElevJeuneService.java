@@ -66,4 +66,6 @@ public interface Wp3UniteElevJeuneService {
 	public List<Object[]> TableauCountDetailGenreDist(String district, String sexe);
 
 	public List<Object[]> TableauCountDetailGenreAllDist(String district);
+
+	public List<Object[]> historiqueList();
 }

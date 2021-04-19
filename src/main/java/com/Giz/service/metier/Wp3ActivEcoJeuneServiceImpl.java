@@ -205,4 +205,10 @@ public class Wp3ActivEcoJeuneServiceImpl implements Wp3ActivEcoJeuneService {
 				
 			}
 
+			@Override
+			public List<Object[]> historiqueList() {
+				// TODO Auto-generated method stub
+				return wp3ActivEcoJeuneRepository.historiqueList();
+			}
+
 }

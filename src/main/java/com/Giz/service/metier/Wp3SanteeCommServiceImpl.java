@@ -198,4 +198,10 @@ public class Wp3SanteeCommServiceImpl implements Wp3SanteeCommService {
 		wp3SanteeCommRepository.deleteAll();
 		
 	}
+
+	@Override
+	public List<Object[]> historiqueList() {
+		// TODO Auto-generated method stub
+		return wp3SanteeCommRepository.historiqueList();
+	}
 }

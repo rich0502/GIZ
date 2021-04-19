@@ -198,4 +198,10 @@ public class Wp3EppFramServiceImpl implements Wp3EppFramService {
 		wp3EppFramRepository.deleteAll();
 		
 	}
+
+	@Override
+	public List<Object[]> historiqueList() {
+		// TODO Auto-generated method stub
+		return wp3EppFramRepository.historiqueList();
+	}
 }

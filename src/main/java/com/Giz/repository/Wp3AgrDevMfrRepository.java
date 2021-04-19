@@ -122,4 +122,7 @@ public interface Wp3AgrDevMfrRepository extends JpaRepository<Wp3AgrDevMfr, Long
 			+ " village.code_village=wp3_agr_deev_mfr.code_village AND village.district = ?1   \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenreAllDist(String district);
 
+	@Query(value="SELECT wp3_agr_deev_mfr.created_by, wp3_agr_deev_mfr.creation_date, wp3_agr_deev_mfr.last_modified_by, wp3_agr_deev_mfr.last_modified_date FROM wp3_agr_deev_mfr", nativeQuery = true)
+	List<Object[]> historiqueList();
+
 }

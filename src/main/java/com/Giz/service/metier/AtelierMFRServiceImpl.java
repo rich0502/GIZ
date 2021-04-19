@@ -149,4 +149,10 @@ public class AtelierMFRServiceImpl implements AtelierMFRService {
 		atelierMFRRepository.deleteAllAtelier(type_atelier);
 		
 	}
+
+	@Override
+	public List<Object[]> historiqueList(String type_atelier) {
+		// TODO Auto-generated method stub
+		return atelierMFRRepository.historiqueList(type_atelier);
+	}
 }

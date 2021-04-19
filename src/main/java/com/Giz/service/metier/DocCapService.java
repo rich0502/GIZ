@@ -35,5 +35,7 @@ public interface DocCapService {
 	//indicateur
 	
 	public long countDocCap(String dateChronologique);
+
+	public List<Object[]> historiqueList();
 	
 }

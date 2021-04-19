@@ -122,4 +122,7 @@ public interface Wp3EquipeTechMfrRepository extends JpaRepository<Wp3EquipeTechM
 	@Query(value = "SELECT village.code_village,wp3_eequipe_tech_mfr.nom_prenom FROM village,wp3_eequipe_tech_mfr WHERE"
 			+ " village.code_village=wp3_eequipe_tech_mfr.code_village AND village.district = ?1   \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenreAllDist(String district);
+
+	@Query(value="SELECT wp3_eequipe_tech_mfr.created_by, wp3_eequipe_tech_mfr.creation_date, wp3_eequipe_tech_mfr.last_modified_by, wp3_eequipe_tech_mfr.last_modified_date FROM wp3_eequipe_tech_mfr", nativeQuery = true)
+	List<Object[]> historiqueList();
 }

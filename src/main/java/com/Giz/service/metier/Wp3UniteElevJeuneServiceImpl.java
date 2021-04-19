@@ -212,4 +212,10 @@ public class Wp3UniteElevJeuneServiceImpl implements Wp3UniteElevJeuneService {
 		
 	}
 
+	@Override
+	public List<Object[]> historiqueList() {
+		// TODO Auto-generated method stub
+		return wp3UniteElevJeuneRepository.historiqueList();
+	}
+
 }

@@ -67,4 +67,6 @@ public interface Wp3FedeMfrService {
 
 	public List<Object[]> TableauCountDetailGenreAllDist(String district);
 
+	public List<Object[]> historiqueList();
+
 }

@@ -126,4 +126,7 @@ public interface Wp3JeunePathwayRepository extends JpaRepository<Wp3JeunePathway
 			+ " village.code_village=wp3_jeune_pathway.code_village AND village.district = ?1   \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenreAllDist(String district);
 
+	@Query(value="SELECT wp3_jeune_pathway.created_by, wp3_jeune_pathway.creation_date, wp3_jeune_pathway.last_modified_by, wp3_jeune_pathway.last_modified_date FROM wp3_jeune_pathway", nativeQuery = true)
+	List<Object[]> historiqueList();
+
 }

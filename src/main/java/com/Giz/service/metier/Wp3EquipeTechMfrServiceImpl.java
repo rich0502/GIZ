@@ -204,4 +204,10 @@ public class Wp3EquipeTechMfrServiceImpl implements Wp3EquipeTechMfrService {
 		wp3EquipeTechMfrRepository.deleteAll();
 		
 	}
+
+	@Override
+	public List<Object[]> historiqueList() {
+		// TODO Auto-generated method stub
+		return wp3EquipeTechMfrRepository.historiqueList();
+	}
 }

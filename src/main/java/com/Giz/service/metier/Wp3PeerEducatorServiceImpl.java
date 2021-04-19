@@ -199,4 +199,10 @@ public class Wp3PeerEducatorServiceImpl implements Wp3PeerEducatorService {
 		wp3PeerEducatorRepository.deleteAll();
 		
 	}
+
+	@Override
+	public List<Object[]> historiqueList() {
+		// TODO Auto-generated method stub
+		return wp3PeerEducatorRepository.historiqueList();
+	}
 }

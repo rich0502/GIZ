@@ -72,5 +72,8 @@ public interface PlateformRepository extends JpaRepository<Plateforme, Long> {
 			" village.code_village=plateforme.code_village AND plateforme.date_suivi BETWEEN ?2 AND ?3 \r\n" + 
 			"GROUP BY village.district", nativeQuery = true)
 	List<Object[]> TableDataDist(String type_plateform,Date debut_date, Date fin_date);
+
+	@Query(value="SELECT plateforme.created_by, plateforme.creation_date, plateforme.last_modified_by, plateforme.last_modified_date FROM plateforme WHERE type_plateform=?1", nativeQuery = true)
+	List<Object[]> historiqueList(String type_plateform);
 }
 

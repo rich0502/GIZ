@@ -206,4 +206,10 @@ public class Wp3FedeMfrServiceImpl implements Wp3FedeMfrService {
 		wp3FedeMfrRepository.deleteAll();
 		
 	}
+
+	@Override
+	public List<Object[]> historiqueList() {
+		// TODO Auto-generated method stub
+		return wp3FedeMfrRepository.historiqueList();
+	}
 }

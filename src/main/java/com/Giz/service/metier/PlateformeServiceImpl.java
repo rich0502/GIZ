@@ -134,6 +134,12 @@ public class PlateformeServiceImpl implements PlateformeService {
 		
 	}
 
+	@Override
+	public List<Object[]> historiqueList(String type_plateform) {
+		// TODO Auto-generated method stub
+		return plateformRepository.historiqueList(type_plateform);
+	}
+
 	
 
 }

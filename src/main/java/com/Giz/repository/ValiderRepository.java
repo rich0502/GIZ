@@ -16,6 +16,9 @@ import com.Giz.data.domain.Valider;
 @Repository
 public interface ValiderRepository extends JpaRepository<Valider, Long> {
 
+	@Query(value="SELECT valider.created_by, valider.creation_date, valider.last_modified_by, valider.last_modified_date FROM valider WHERE canevas = ?1", nativeQuery = true)
+	List<Object[]> historiqueList(String canevas);
+	
 	// lakile telo
 	
 	@Modifying

@@ -198,4 +198,10 @@ public class Wp3FormTechMetierJeuneServiceImpl implements Wp3FormTechMetierJeune
 		wp3FormTechMetierJeuneRepository.deleteAll();
 		
 	}
+
+	@Override
+	public List<Object[]> historiqueList() {
+		// TODO Auto-generated method stub
+		return wp3FormTechMetierJeuneRepository.historiqueList();
+	}
 }

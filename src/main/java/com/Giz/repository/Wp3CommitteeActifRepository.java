@@ -74,5 +74,8 @@ public interface Wp3CommitteeActifRepository extends JpaRepository<Wp3CommitteeA
 			+ " AND wp3_committee_actif.date_suivi BETWEEN ?1 AND ?2 \r\n" + 
 			"GROUP BY village.district", nativeQuery = true)
 	List<Object[]> TableDataDist(Date debut_date,Date fin_date);
+	
+	@Query(value="SELECT wp3_committee_actif.created_by, wp3_committee_actif.creation_date, wp3_committee_actif.last_modified_by, wp3_committee_actif.last_modified_date FROM wp3_committee_actif", nativeQuery = true)
+	List<Object[]> historiqueList();
 
 }

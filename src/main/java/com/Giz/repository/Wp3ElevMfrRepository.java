@@ -123,4 +123,7 @@ public interface Wp3ElevMfrRepository extends JpaRepository<Wp3ElevMfr, Long> {
 	@Query(value = "SELECT village.code_village,wp3_elev_mfr.nom_prenom FROM village,wp3_elev_mfr WHERE"
 			+ " village.code_village=wp3_elev_mfr.code_village AND village.district = ?1   \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenreAllDist(String district);
+
+	@Query(value="SELECT wp3_elev_mfr.created_by, wp3_elev_mfr.creation_date, wp3_elev_mfr.last_modified_by, wp3_elev_mfr.last_modified_date FROM wp3_elev_mfr", nativeQuery = true)
+	List<Object[]> historiqueList();
 }

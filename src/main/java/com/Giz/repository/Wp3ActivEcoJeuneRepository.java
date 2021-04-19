@@ -123,4 +123,7 @@ public interface Wp3ActivEcoJeuneRepository extends JpaRepository<Wp3ActivEcoJeu
 			+ " village.code_village=wp3_activ_eco_jeune.code_village AND village.district = ?1   \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenreAllDist(String district);
 
+	@Query(value="SELECT wp3_activ_eco_jeune.created_by, wp3_activ_eco_jeune.creation_date, wp3_activ_eco_jeune.last_modified_by, wp3_activ_eco_jeune.last_modified_date FROM wp3_activ_eco_jeune", nativeQuery = true)
+	List<Object[]> historiqueList();
+
 }

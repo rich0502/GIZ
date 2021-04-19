@@ -123,4 +123,7 @@ public interface Wp3PeerEducatorRepository extends JpaRepository<Wp3PeerEducator
 			+ " village.code_village=wp3_peer_educator.code_village AND village.district = ?1   \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenreAllDist(String district);
 
+	@Query(value="SELECT wp3_peer_educator.created_by, wp3_peer_educator.creation_date, wp3_peer_educator.last_modified_by, wp3_peer_educator.last_modified_date FROM wp3_peer_educator", nativeQuery = true)
+	List<Object[]> historiqueList();
+
 }

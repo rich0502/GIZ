@@ -97,6 +97,12 @@ public class DocCapServiceImpl implements DocCapService {
 		
 	}
 
+	@Override
+	public List<Object[]> historiqueList() {
+		// TODO Auto-generated method stub
+		return docCapRepository.historiqueList();
+	}
+
 	
 	
 }

@@ -68,4 +68,6 @@ public interface Wp3FormTechMetierJeuneService {
 
 	public List<Object[]> TableauCountDetailGenreAllDist(String district);
 
+	public List<Object[]> historiqueList();
+
 }

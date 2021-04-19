@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="#{historique} + ' ' + *{titre}"></title>
+
+    <head th:include="/headLinksFragment.html" th:remove="tag"></head>
+</head>
+
+<body class="stories">
+    <div th:include="/pds_header.html"></div>
+    <section class="main">
+        <div class="card">
+            <header class="composantesTable-header justify-between">
+                <h2 class="page-title" th:text="#{historique} + ' ' + *{titre}"></h2>
+            </header>
+            <div id="html-content-holder">
+                <table class="composantes-table text-center" id="myTable">
+                    <thead>
+                        <tr>
+                            <th scope="col"><span>Nom du créateur</span></th>
+                            <th scope="col"><span>Date de création</span></th>
+                            <th scope="col"><span>Nom du dernier modificateur</span></th>
+                            <th scope="col"><span>Date du dernier modification</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="b : ${historiqueList}">
+                            <td th:text="${b[0]}"></td>
+                            <td th:text="${#dates.format(b[1],'dd-MM-yyyy')}"></td>
+                            <td th:text="${b[2]}"></td>
+                            <td th:text="${#dates.format(b[3],'dd-MM-yyyy')}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    </body>
+
+</html>

@@ -160,4 +160,10 @@ public class Wp3CommitteeActifServiceImpl implements Wp3CommitteeActifService {
 		wp3CommitteeActifRepository.deleteAll();
 		
 	}
+
+	@Override
+	public List<Object[]> historiqueList() {
+		// TODO Auto-generated method stub
+		return wp3CommitteeActifRepository.historiqueList();
+	}
 }

@@ -43,5 +43,8 @@ public interface DocCapRepository extends JpaRepository<DocCap, Long> {
 	
 	@Query(value="Select count(*) from doc_cap where date_partage BETWEEN cast(TO_DATE('01/01/2020', 'DD/MM/YYYY') as date) and cast(TO_DATE(:dateChronologique, 'DD/MM/YYYY') as date)", nativeQuery = true)
 	long getCountChronologique(String dateChronologique);
+
+	@Query(value="SELECT doc_cap.created_by, doc_cap.creation_date, doc_cap.last_modified_by, doc_cap.last_modified_date FROM doc_cap", nativeQuery = true)
+	List<Object[]> historiqueList();
 }
 

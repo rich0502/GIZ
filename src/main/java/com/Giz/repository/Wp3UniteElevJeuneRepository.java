@@ -125,4 +125,7 @@ public interface Wp3UniteElevJeuneRepository extends JpaRepository<Wp3UniteElevJ
 			+ " village.code_village=wp3_unite_elev_jeune.code_village AND village.district = ?1   \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenreAllDist(String district);
 
+	@Query(value="SELECT wp3_unite_elev_jeune.created_by, wp3_unite_elev_jeune.creation_date, wp3_unite_elev_jeune.last_modified_by, wp3_unite_elev_jeune.last_modified_date FROM wp3_unite_elev_jeune", nativeQuery = true)
+	List<Object[]> historiqueList();
+
 }

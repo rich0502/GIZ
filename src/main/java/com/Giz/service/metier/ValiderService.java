@@ -7,6 +7,8 @@ import java.util.Optional;
 import com.Giz.data.domain.Valider;
 
 public interface ValiderService {
+	
+	public List<Object[]> historiqueList(String canevas);
 
 	public void deleteValider(Long id);
 	

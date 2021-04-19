@@ -126,4 +126,7 @@ public interface Wp3JeuneFormeMfrRepository extends JpaRepository<Wp3JeuneFormeM
 			+ " village.code_village=wp3_jeune_forme_mfr.code_village AND village.district = ?1   \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenreAllDist(String district);
 
+	@Query(value="SELECT wp3_jeune_forme_mfr.created_by, wp3_jeune_forme_mfr.creation_date, wp3_jeune_forme_mfr.last_modified_by, wp3_jeune_forme_mfr.last_modified_date FROM wp3_jeune_forme_mfr", nativeQuery = true)
+	List<Object[]> historiqueList();
+
 }

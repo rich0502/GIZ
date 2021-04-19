@@ -198,4 +198,10 @@ public class Wp3JeunePathwayServiceImpl implements Wp3JeunePathwayService {
 		wp3JeunePathwayRepository.deleteAll();
 		
 	}
+
+	@Override
+	public List<Object[]> historiqueList() {
+		// TODO Auto-generated method stub
+		return wp3JeunePathwayRepository.historiqueList();
+	}
 }

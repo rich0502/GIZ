@@ -47,4 +47,6 @@ public interface Wp3CommitteeActifService {
 	public List<Object[]> ListTableauCommune(Date debut_date, Date fin_date);
 	
 	public List<Object[]> ListTableauDist(Date debut_date, Date fin_date);
+
+	public List<Object[]> historiqueList();
 }

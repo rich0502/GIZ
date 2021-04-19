@@ -211,4 +211,10 @@ Wp3AgrDevMfr wp3AgrDevMfr = new Wp3AgrDevMfr();
 		
 	}
 
+	@Override
+	public List<Object[]> historiqueList() {
+		// TODO Auto-generated method stub
+		return wp3AgrDevMfrRepository.historiqueList();
+	}
+
 }

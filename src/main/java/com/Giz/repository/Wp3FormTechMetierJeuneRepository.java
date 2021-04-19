@@ -125,4 +125,7 @@ public interface Wp3FormTechMetierJeuneRepository extends JpaRepository<Wp3FormT
 			+ " village.code_village=wp3form_tech_metier_jeune.code_village AND village.district = ?1   \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenreAllDist(String district);
 
+	@Query(value="SELECT wp3form_tech_metier_jeune.created_by, wp3form_tech_metier_jeune.creation_date, wp3form_tech_metier_jeune.last_modified_by, wp3form_tech_metier_jeune.last_modified_date FROM wp3form_tech_metier_jeune", nativeQuery = true)
+	List<Object[]> historiqueList();
+
 }

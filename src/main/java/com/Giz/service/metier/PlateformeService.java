@@ -46,5 +46,7 @@ public interface PlateformeService {
 	public List<Object[]> ListTableauCommune(String type_atelier,Date debut_date, Date fin_date);
 	
 	public List<Object[]> ListTableauDist(String type_atelier,Date debut_date, Date fin_date);
+
+	public List<Object[]> historiqueList(String type_plateform);
 	
 }

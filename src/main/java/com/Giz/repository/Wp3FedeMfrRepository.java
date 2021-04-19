@@ -126,4 +126,7 @@ public interface Wp3FedeMfrRepository extends JpaRepository<Wp3FedeMfr, Long> {
 			+ " village.code_village=wp3_fede_mfr.code_region AND village.district = ?1   \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenreAllDist(String district);
 
+	@Query(value="SELECT wp3_fede_mfr.created_by, wp3_fede_mfr.creation_date, wp3_fede_mfr.last_modified_by, wp3_fede_mfr.last_modified_date FROM wp3_fede_mfr", nativeQuery = true)
+	List<Object[]> historiqueList();
+
 }

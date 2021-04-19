@@ -123,4 +123,7 @@ public interface Wp3SanteeCommRepository extends JpaRepository<Wp3SanteeComm, Lo
 			+ " village.code_village=wp3_santee_comm.code_village AND village.district = ?1   \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenreAllDist(String district);
 
+	@Query(value="SELECT wp3_santee_comm.created_by, wp3_santee_comm.creation_date, wp3_santee_comm.last_modified_by, wp3_santee_comm.last_modified_date FROM wp3_santee_comm", nativeQuery = true)
+	List<Object[]> historiqueList();
+
 }

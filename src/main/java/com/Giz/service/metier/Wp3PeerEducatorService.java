@@ -65,4 +65,6 @@ public interface Wp3PeerEducatorService {
 
 	public List<Object[]> TableauCountDetailGenreAllDist(String district);
 
+	public List<Object[]> historiqueList();
+
 }

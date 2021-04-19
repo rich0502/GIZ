@@ -202,4 +202,10 @@ public class Wp3JeuneFormeMfrServiceImpl implements Wp3JeuneFormeMfrService {
 		wp3JeuneFormeMfrRepository.deleteAll();
 		
 	}
+
+	@Override
+	public List<Object[]> historiqueList() {
+		// TODO Auto-generated method stub
+		return wp3JeuneFormeMfrRepository.historiqueList();
+	}
 }

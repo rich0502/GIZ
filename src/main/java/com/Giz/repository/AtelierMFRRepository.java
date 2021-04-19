@@ -78,6 +78,9 @@ public interface AtelierMFRRepository extends JpaRepository<AtelierMFR, Long> {
 			"AND atelierMFR.date_realise BETWEEN ?2 AND ?3 GROUP BY village.district", nativeQuery = true)
 	List<Object[]> TableDataDist(String type_atelier, java.util.Date debut_date, java.util.Date fin_date);
 	
+	@Query(value="SELECT atelierMFR.created_by, atelierMFR.creation_date, atelierMFR.last_modified_by, atelierMFR.last_modified_date FROM atelierMFR WHERE type_atelier=?1", nativeQuery = true)
+	List<Object[]> historiqueList(String type_atelier);
+	
 	
 	
 }

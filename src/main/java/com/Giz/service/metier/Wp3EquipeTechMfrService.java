@@ -65,4 +65,6 @@ public interface Wp3EquipeTechMfrService {
 
 	public List<Object[]> TableauCountDetailGenreAllDist(String district);
 
+	public List<Object[]> historiqueList();
+
 }

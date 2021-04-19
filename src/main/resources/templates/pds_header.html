@@ -1,14 +1,10 @@
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" type="text/css"
 	th:href="@{/flag-icon-css/flag-icon.min.css}" />
 <!-- <head><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script></head> -->
 
 <header class="header-container">
 	<nav class="pds-header">
-		<!-- <div class="logo-section">
-                <img th:src="@{/img/giz_logo_notext.png}" class="img-logo" alt="logo">				
-            </div> -->
-
 		<div class=" menu-list">
 			<div class="text-logo">[[#{app.logo}]]</div>
 			<a class="pds-btn" th:href="@{/accueil}"><span
@@ -56,10 +52,12 @@
 						class="dropdown-item pds-profil pds-manage-content"
 						th:href="@{/acc}">[[#{btn.accueil}]]</a> <a
 						class="dropdown-item pds-profil pds-manage-content"
+						th:href="@{/historique}">[[#{historique}]]</a><a
+						class="dropdown-item pds-profil pds-manage-content"
 						th:href="@{/dataExterne}">[[#{donnees.externe}]]</a><a
 						class="dropdown-item pds-profil pds-manage-content"
-						href="http://­168.119.185.165:8080/­documents/FDK2.apk">[[#{telecharger}]] APK</a> <a
-						class="dropdown-item pds-logout" th:href="@{/logout}">[[#{logout}]]</a>
+						href="http://­168.119.185.165:8080/­documents/FDK2.apk">[[#{telecharger}]]
+						APK</a> <a class="dropdown-item pds-logout" th:href="@{/logout}">[[#{logout}]]</a>
 				</div>
 			</div>
 			<div class="dropdown">
@@ -139,6 +137,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 	</nav>
 
 </header>

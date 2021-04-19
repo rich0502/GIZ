@@ -228,4 +228,10 @@ public class Wp3ElevMfrServiceImpl implements Wp3ElevMfrService {
 		wp3ElevMfrRepository.deleteAll();
 		
 	}
+
+	@Override
+	public List<Object[]> historiqueList() {
+		// TODO Auto-generated method stub
+		return wp3ElevMfrRepository.historiqueList();
+	}
 }

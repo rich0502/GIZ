@@ -28,8 +28,6 @@ public class ValiderServiceImpl implements ValiderService{
 		validerrepository.deleteById(id);
 	}
 	
-	
-	
 	@Override
 	public void addValiderL3(String code_village, String district, String nom_group_l_telo, String categorie,
 			Date date_creation, double effectif_membre, int nbr_h, int nbr_f, boolean operationnel, Date date_suivi) {
@@ -782,4 +780,10 @@ public class ValiderServiceImpl implements ValiderService{
 			// TODO Auto-generated method stub
 			validerrepository.deleteAllCanevasWp2(canevas);
 		}
+
+		@Override
+		public List<Object[]> historiqueList(String canevas) {
+			return validerrepository.historiqueList(canevas);
+		}
+		
 }

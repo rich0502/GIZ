@@ -121,4 +121,7 @@ public interface Wp3EppFramRepository extends JpaRepository<Wp3EppFram, Long> {
 	@Query(value = "SELECT village.code_village,wp3_epp_fram.nom_ecole FROM village,wp3_epp_fram WHERE"
 			+ " village.code_village=wp3_epp_fram.code_village AND village.district = ?1   \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenreAllDist(String district);
+
+	@Query(value="SELECT wp3_epp_fram.created_by, wp3_epp_fram.creation_date, wp3_epp_fram.last_modified_by, wp3_epp_fram.last_modified_date FROM wp3_epp_fram", nativeQuery = true)
+	List<Object[]> historiqueList();
 }
