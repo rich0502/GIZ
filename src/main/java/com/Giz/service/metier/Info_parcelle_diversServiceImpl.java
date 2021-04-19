@@ -1,6 +1,7 @@
 package com.Giz.service.metier;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,8 @@ public class Info_parcelle_diversServiceImpl implements Info_parcelle_diversServ
 			String associe_parcel, String autre_associe_parcel, String inclinaison, String mise_anti_errosif,
 			String technic_use, String photo_technique, String photo_culture) {
 		Info_parcelle_divers info = new Info_parcelle_divers();
-		info.setId(id);
+		Optional<Info_parcelle_divers> getId = info_parcelle_diversRepository.existCodeProd(code_prod);
+
 		info.setCode_prod(code_prod);
 		info.setType_culture(type_culture);
 		info.setNom_parcel(nom_parcel);
@@ -51,13 +53,26 @@ public class Info_parcelle_diversServiceImpl implements Info_parcelle_diversServ
 		info.setTechnic_use(technic_use);
 		info.setPhoto_technique(photo_technique);
 		info.setPhoto_culture(photo_culture);
-		info_parcelle_diversRepository.save(info);
+		
+		if(existCodeProd(code_prod).isPresent()) {
+			info.setId(getId.get().getId());
+			info_parcelle_diversRepository.save(info);
+		}else {
+			info.setId(id);
+			info_parcelle_diversRepository.save(info);
+		}
 		}
 		
 
 	public List<Info_parcelle_divers> ListInfo_parcelle_diversAll() {
 		// TODO Auto-generated method stub
 		return info_parcelle_diversRepository.findAll();
+	}
+
+	@Override
+	public Optional<Info_parcelle_divers> existCodeProd(String code_prod) {
+		// TODO Auto-generated method stub
+		return info_parcelle_diversRepository.existCodeProd(code_prod);
 	}
 
 }

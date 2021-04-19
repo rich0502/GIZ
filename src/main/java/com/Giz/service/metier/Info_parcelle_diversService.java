@@ -1,6 +1,7 @@
 package com.Giz.service.metier;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.Giz.data.domain.Info_parcelle_divers;
 
@@ -13,5 +14,7 @@ public interface Info_parcelle_diversService {
 			String systeme_utilise,String associe_parcel,String autre_associe_parcel, String inclinaison, String mise_anti_errosif, String technic_use, String photo_technique, String photo_culture);
 
 	List<Info_parcelle_divers> ListInfo_parcelle_diversAll();
+	
+	Optional<Info_parcelle_divers> existCodeProd(String code_prod);
 
 }

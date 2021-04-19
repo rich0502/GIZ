@@ -12,7 +12,6 @@ import javax.persistence.Table;
 public class Parasite_maladie {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(length = 40)
 	private String code_prod;

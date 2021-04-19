@@ -1,6 +1,7 @@
 package com.Giz.service.metier;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,17 +22,24 @@ public class Fertilisant_cultureServiceImpl implements Fertilisant_cultureServic
 	}
 	
 	@Override
-	public void addFertilisantCulture(long id,String code_prod, String use_fertilisant, String type_use, String autre,
+	public void addFertilisantCulture(long id,String code_pro, String use_fertilisant, String type_use, String autre,
 			String qte, int nbr_ans) {
 		Fertilisant_culture fertil = new Fertilisant_culture();
-		fertil.setId(id);
-		fertil.setCode_pro(code_prod);
+		Optional<Fertilisant_culture> getId = fertilisant_cultureRepository.existCodeProd(code_pro);
+		fertil.setCode_pro(code_pro);
 		fertil.setUse_fertilisant(use_fertilisant);
 		fertil.setType_use(type_use);
 		fertil.setAutre(autre);
 		fertil.setQte(qte);
 		fertil.setNbr_ans(nbr_ans);
-		fertilisant_cultureRepository.save(fertil);
+		
+		if(existCodeProd(code_pro).isPresent()) {
+			fertil.setId(getId.get().getId());
+			fertilisant_cultureRepository.save(fertil);
+		}else {
+			fertil.setId(id);
+			fertilisant_cultureRepository.save(fertil);
+		}	
 		
 	}
 
@@ -39,6 +47,12 @@ public class Fertilisant_cultureServiceImpl implements Fertilisant_cultureServic
 	public List<Fertilisant_culture> ListFertilisant_cultureAll() {
 		// TODO Auto-generated method stub
 		return fertilisant_cultureRepository.findAll();
+	}
+
+	@Override
+	public Optional<Fertilisant_culture> existCodeProd(String code_prod) {
+		// TODO Auto-generated method stub
+		return fertilisant_cultureRepository.existCodeProd(code_prod);
 	}
 
 }

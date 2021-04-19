@@ -1,6 +1,7 @@
 package com.Giz.service.metier;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class Info_parcelleServiceImpl implements Info_parcelleService {
 			String technic_use, String photo_technique, String qualite_ombrage, String couverture_vegetal, String avant,
 			String provien_liane, String spec_autre, String photo_parcelle) {
 		Info_parcelle info = new Info_parcelle();
-		info.setId(id);
+		Optional<Info_parcelle> getId = info_parcelleRepository.existCodeProd(code_prod);
 		info.setCode_prod(code_prod);
 		info.setNom_parcel(nom_parcel);
 		info.setAnnee_plan_liane(annee_plan_liane);
@@ -49,12 +50,25 @@ public class Info_parcelleServiceImpl implements Info_parcelleService {
 		info.setProvien_liane(provien_liane);
 		info.setSpec_autre(spec_autre);
 		info.setPhoto_parcelle(photo_parcelle);
-		info_parcelleRepository.save(info);
+		
+		if(existCodeProd(code_prod).isPresent()) {
+			info.setId(getId.get().getId());
+			info_parcelleRepository.save(info);
+		}else {
+			info.setId(id);
+			info_parcelleRepository.save(info);
+		}	
 		
 			}
 	public List<Info_parcelle> ListInfo_parcelleAll() {
 		// TODO Auto-generated method stub
 		return info_parcelleRepository.findAll();
+	}
+
+	@Override
+	public Optional<Info_parcelle> existCodeProd(String code_prod) {
+		// TODO Auto-generated method stub
+		return info_parcelleRepository.existCodeProd(code_prod);
 	}
 
 }

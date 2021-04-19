@@ -1,11 +1,16 @@
 package com.Giz.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -52,8 +57,10 @@ import com.Giz.service.metier.Info_parcelle_diversService;
 import com.Giz.service.metier.Main_oeuvreService;
 import com.Giz.service.metier.Parasite_maladieService;
 import com.Giz.service.metier.Parasite_maladie_diversService;
+import com.Giz.service.metier.ProducteurService;
 import com.Giz.service.metier.Question_conseilService;
 import com.Giz.service.metier.Question_conseil_diversService;
+import com.Giz.service.metier.Technique_vanilleService;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -108,6 +115,18 @@ public class WSController {
 	
 	@Autowired
 	Question_conseil_diversService question_conseil_diversService;
+	
+	@Autowired
+	Technique_vanilleService technique_vanilleService;
+	
+	@Autowired
+	ProducteurService producteurService;
+	
+	//private static String UPLOADED_FOLDER = "/usr/share/apache-tomcat-8.5.6/webapps/producteurs/";
+	private static String UPLOADED_FOLDER = "E:\\test/";
+	
+	@SuppressWarnings("unused")
+	private static String DOWNLOAD_FOLDER = "http://168.119.185.165:8080/producteurs/";
     
     @GetMapping("/loginUser")
 	public List<User> loginUser(@RequestParam("username") String username,@RequestParam("password") String password,
@@ -144,31 +163,8 @@ public class WSController {
    		
    	}
     
-  /*  @PostMapping("/deleteBenef")
-	public void deleteBenef(@RequestParam(value = "id_bf") Long id_bf)  throws URISyntaxException {
-		beneficiaireService.deleteBeneficiaire(id_bf);
-	}
     
-    @PostMapping("/saveEditBenef")
-	public void saveEditBenef(@RequestParam(value = "id_bf") Long id_bf,@RequestParam(value = "nom_bf") String nom_bf,
-			@RequestParam(value = "prenom_bf") String prenom_bf,
-			@RequestParam(value = "adresse_bf") String adresse_bf,
-			@RequestParam(value = "contact_bf") String contact_bf,
-			@RequestParam(value = "date_naiss_bf") String date_naiss_bf,
-			RedirectAttributes redirectAttributes) throws URISyntaxException {
-		Beneficiaire beneficiaire = beneficiaireRepository.findByIdBeneficiaire(id_bf);
-		beneficiaireService.modifyBeneficiaire(beneficiaire, nom_bf, prenom_bf, adresse_bf, null, contact_bf, date_naiss_bf, id_bf);
-	}   
-       
-    @PostMapping("/saveBenef")
-    public void saveBenef(@RequestParam(value = "nom_bf") String nom_bf,
-			@RequestParam(value = "prenom_bf") String prenom_bf, @RequestParam(value = "adresse_bf") String adresse_bf,
-			@RequestParam(value = "contact_bf") String contact_bf,
-			@RequestParam(value = "date_naiss_bf") String date_naiss_bf) throws URISyntaxException {
-		beneficiaireService.addBeneficiaire(nom_bf, prenom_bf, adresse_bf, null, contact_bf, date_naiss_bf);
-    }*/
-    
-    /* Activité  */
+    /* Activitï¿½  */
     @PostMapping("/saveActivite")
     public void saveActivite(@RequestParam(value = "id") long id,@RequestParam(value = "type_intervention", defaultValue = "null") String type_intervention,
 			@RequestParam(value = "theme_principal", defaultValue = "null") String theme_principal, @RequestParam(value = "sous_theme", defaultValue = "null") String sous_theme,
@@ -177,16 +173,49 @@ public class WSController {
 			@RequestParam(value = "formateur", defaultValue = "null") String formateur,@RequestParam(value = "code_formateur", defaultValue = "null") String code_formateur, @RequestParam(value = "lieu_formation", defaultValue = "null") String lieu_formation,
 			@RequestParam(value = "prod_present", defaultValue = "null") String prod_present, @RequestParam(value = "prod_externe", defaultValue = "null") String prod_externe, @RequestParam(value = "participant_externe", defaultValue = "null") String participant_externe,
 			@RequestParam(value = "image1", defaultValue = "null") String image1, @RequestParam(value = "image2", defaultValue = "null") String image2, @RequestParam(value = "image3", defaultValue = "null") String image3, @RequestParam(value = "remarques", defaultValue = "null") String remarques) throws URISyntaxException {
-		activiteService.addActivite(id,type_intervention, theme_principal, sous_theme, date_enreg, nom_utilisateur, gps_lat, gps_long, formateur, code_formateur, lieu_formation, prod_present, prod_externe, participant_externe, image1, image2, image3, remarques);
+
+    	byte[] decode = Base64.getMimeDecoder().decode(image1);
+    	File file = new File(UPLOADED_FOLDER + "activite-"+id+"1.jpeg");
+        try {
+            OutputStream os = new FileOutputStream(file);
+            os.write(decode);
+            os.close();
+         } catch (Exception e) {
+            e.printStackTrace();
+         }
+	
+    /* image 2 */ 
+
+    	byte[] decodeImage2 = Base64.getMimeDecoder().decode(image2);
+    	File fileImage2 = new File(UPLOADED_FOLDER + "activite-"+id+"2.jpeg");
+        try {
+            OutputStream os = new FileOutputStream(fileImage2);
+            os.write(decodeImage2);
+            os.close();
+         } catch (Exception e) {
+            e.printStackTrace();
+         }
+        
+        /* image 3*/
+        byte[] decodeImage3 = Base64.getMimeDecoder().decode(image3);
+    	File fileImage3 = new File(UPLOADED_FOLDER + "activite-"+id+"3.jpeg");
+        try {
+            OutputStream os = new FileOutputStream(fileImage3);
+            os.write(decodeImage3);
+            os.close();
+         } catch (Exception e) {
+            e.printStackTrace();
+         }
+    	activiteService.addActivite(id,type_intervention, theme_principal, sous_theme, date_enreg, nom_utilisateur, gps_lat, gps_long, formateur, code_formateur, lieu_formation, prod_present, prod_externe, participant_externe, DOWNLOAD_FOLDER +"activite-"+id+"1.jpeg", DOWNLOAD_FOLDER +"activite-"+id+"2.jpeg", DOWNLOAD_FOLDER +"activite-"+id+"3.jpeg", remarques);
     }
     
     /* Fertilisant culture */
     @PostMapping("/saveFertil")
-    public void saveFertil(@RequestParam(value = "id") long id,@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
+    public void saveFertil(@RequestParam(value = "id") long id,@RequestParam(value = "code_pro", defaultValue = "null") String code_pro,
 			@RequestParam(value = "use_fertilisant", defaultValue = "null") String use_fertilisant, @RequestParam(value = "type_use", defaultValue = "null") String type_use,
 			@RequestParam(value = "autre", defaultValue = "null") String autre,
 			@RequestParam(value = "qte", defaultValue = "null") String nom_utilisateur,@RequestParam(value = "qte", defaultValue = "null") String qte, @RequestParam(value = "nbr_ans") int nbr_ans) throws URISyntaxException {
-    	fertilisant_cultureService.addFertilisantCulture(id,code_prod, use_fertilisant, type_use, autre, qte, nbr_ans);
+    	fertilisant_cultureService.addFertilisantCulture(id,code_pro, use_fertilisant, type_use, autre, qte, nbr_ans);
     }
     
     /* Formation sur la culture*/
@@ -242,8 +271,32 @@ public class WSController {
 			@RequestParam(value = "associe_parcel", defaultValue = "null") String associe_parcel, @RequestParam(value = "autre_associe_parcel", defaultValue = "null") String autre_associe_parcel,@RequestParam(value = "inclinaison", defaultValue = "null") String inclinaison,
 			@RequestParam(value = "mise_anti_errosif", defaultValue = "null") String mise_anti_errosif,@RequestParam(value = "technic_use", defaultValue = "null") String technic_use,
 			@RequestParam(value = "photo_technique", defaultValue = "null") String photo_technique,@RequestParam(value = "photo_culture", defaultValue = "null") String photo_culture) throws URISyntaxException {
+
+	    	byte[] decode = Base64.getMimeDecoder().decode(photo_technique);
+	    	File file = new File(UPLOADED_FOLDER + "parcelleDiver-"+code_prod+".jpeg");
+	        try {
+	            OutputStream os = new FileOutputStream(file);
+	            os.write(decode);
+	            os.close();
+	         } catch (Exception e) {
+	            e.printStackTrace();
+	         }
+    	
+        /* photo culture */ 
+
+        	byte[] decodeCulture = Base64.getMimeDecoder().decode(photo_culture);
+        	File fileCulture = new File(UPLOADED_FOLDER + "culture-"+code_prod+".jpeg");
+            try {
+                OutputStream os = new FileOutputStream(fileCulture);
+                os.write(decodeCulture);
+                os.close();
+             } catch (Exception e) {
+                e.printStackTrace();
+             }
+
+    	
     	info_parcelle_diversService.addInfoParcelleDivers(id,code_prod, type_culture, nom_parcel, periode_mise_culture, periode_culture, occupation_sol, autre_occupation_sol, 
-    			volume_annee_precedent, volume_annee_venir, surface_parcelle, rendement, nbr_pieds, etape_visite, systeme_protection_sol, systeme_utilise, associe_parcel, autre_associe_parcel, inclinaison, mise_anti_errosif, technic_use, photo_technique, photo_culture);
+    			volume_annee_precedent, volume_annee_venir, surface_parcelle, rendement, nbr_pieds, etape_visite, systeme_protection_sol, systeme_utilise, associe_parcel, autre_associe_parcel, inclinaison, mise_anti_errosif, technic_use, DOWNLOAD_FOLDER + "parcelleDiver-"+code_prod+".jpeg", DOWNLOAD_FOLDER + "culture-"+code_prod+".jpeg");
     }
     
     /* Fertilisant vanille */
@@ -255,7 +308,7 @@ public class WSController {
     	fertilisant_vanilleService.addFertilisantVanille(id, code_prod, use_fertilisant, type_use, autre, qte, nbr_ans);
     }
     
-    /* information général vanille */
+    /* information gï¿½nï¿½ral vanille */
     @RequestMapping(value="/saveInfo_generale",method = RequestMethod.POST)
 	public void saveInfo_generale(@RequestParam(value = "id") long id,
 			@RequestParam(value = "code_pro", defaultValue = "null") String code_pro,
@@ -288,7 +341,31 @@ public class WSController {
       			@RequestParam(value = "couverture_vegetal", defaultValue = "null")  String couverture_vegetal, @RequestParam(value = "avant", defaultValue = "null")  String avant, @RequestParam(value = "provien_liane", defaultValue = "null")  String provien_liane, 
       			 @RequestParam(value = "spec_autre", defaultValue = "null")  String spec_autre,  @RequestParam(value = "photo_parcelle", defaultValue = "null")  String photo_parcelle) {
        	
-    	info_parcelleService.addInfoParcelle(id,code_prod, nom_parcel, annee_plan_liane, nbr_liane, recolt_estime, surf_parcel, nbr_liane_total, rende_parcel, vol_anne_prec, culture_asocie, asocie_autre, inclinaison, mise_anti_errosif, technic_use, photo_technique, qualite_ombrage, couverture_vegetal, avant, provien_liane, spec_autre, photo_parcelle);
+    	System.out.println("id -------------" + id);
+    	System.out.println("photo_technique" + photo_technique);
+    	System.out.println("photo_parcelle" + photo_parcelle);
+    	byte[] decode = Base64.getMimeDecoder().decode(photo_technique);
+    	File file = new File(UPLOADED_FOLDER + "techniqueVanille-"+code_prod+".jpeg");
+        try {
+            OutputStream os = new FileOutputStream(file);
+            os.write(decode);
+            os.close();
+         } catch (Exception e) {
+            e.printStackTrace();
+         }
+	
+    /* photo vanille */ 
+
+    	byte[] decodeParcelle = Base64.getMimeDecoder().decode(photo_parcelle);
+    	File fileParcelle = new File(UPLOADED_FOLDER + "parcelleVanille-"+code_prod+".jpeg");
+        try {
+            OutputStream os = new FileOutputStream(fileParcelle);
+            os.write(decodeParcelle);
+            os.close();
+         } catch (Exception e) {
+            e.printStackTrace();
+         }
+    	info_parcelleService.addInfoParcelle(id,code_prod, nom_parcel, annee_plan_liane, nbr_liane, recolt_estime, surf_parcel, nbr_liane_total, rende_parcel, vol_anne_prec, culture_asocie, asocie_autre, inclinaison, mise_anti_errosif, technic_use,  DOWNLOAD_FOLDER + "techniqueVanille-"+code_prod+".jpeg", qualite_ombrage, couverture_vegetal, avant, provien_liane, spec_autre, DOWNLOAD_FOLDER + "parcelleVanille-"+code_prod+".jpeg");
    	}
     
     /* main oeuvre */
@@ -306,7 +383,7 @@ public class WSController {
     	main_oeuvreService.addMainOeuvre(id,code_prod, nbr_empl_perm, empl_jour_saison, nbr_empl_jour, pay_empl_jour, mois_tw_empl, tw, autre, activite_vanille);
    	}
     
-    /* parasite vanille*/
+    /* parasite vanille */
     @RequestMapping(value="/saveParasiteVanille",method = RequestMethod.POST)
    	public void saveParasiteVanille(@RequestParam(value = "id") long id,
    			@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
@@ -331,6 +408,46 @@ public class WSController {
       			@RequestParam(value = "etat_vanille", defaultValue = "null") String etat_vanille,
       			@RequestParam(value = "assistance", defaultValue = "null") String assistance) {
     	question_conseilService.addQC(id, code_prod, question_symrise, conseil_rural, etat_vanille, assistance);
+   		
+   	}
+    
+    /* Technique vanille */
+    @RequestMapping(value="/saveTechniqueVanille",method = RequestMethod.POST)
+   	public void saveTechniqueVanille(@RequestParam(value = "id") long id,
+   			@RequestParam(value = "code_pro", defaultValue = "null") String code_pro,
+      			@RequestParam(value = "ptv", defaultValue = "null") String ptv, 
+      			@RequestParam(value = "descentBoucl", defaultValue = "null") String descentBoucl,
+      			@RequestParam(value = "taille", defaultValue = "null") String taille,
+      			@RequestParam(value = "selectLiane", defaultValue = "null") String selectLiane,
+      			@RequestParam(value = "plantVao", defaultValue = "null") String plantVao, @RequestParam(value = "entretienCan", defaultValue = "null") String entretienCan,
+      			@RequestParam(value = "desherbFaush", defaultValue = "null") String desherbFaush,@RequestParam(value = "prepaBouton", defaultValue = "null") String prepaBouton,
+      			@RequestParam(value = "pollinisation", defaultValue = "null") String pollinisation, @RequestParam(value = "limitGousse", defaultValue = "null") String limitGousse, @RequestParam(value = "nettoyMort", defaultValue = "null") String nettoyMort,
+      			@RequestParam(value = "arretCoeur", defaultValue = "null") String arretCoeur, @RequestParam(value = "nettoyaParasit", defaultValue = "null") String nettoyaParasit, @RequestParam(value = "adyGasy", defaultValue = "null") String adyGasy, @RequestParam(value = "appliCompo", defaultValue = "null") String appliCompo) throws ParseException {
+    	technique_vanilleService.addTechnique(id, code_pro, ptv, taille, selectLiane, plantVao, descentBoucl, entretienCan, desherbFaush, prepaBouton, pollinisation, limitGousse, nettoyMort, arretCoeur, nettoyaParasit, adyGasy, appliCompo);
+   		
+   	}
+    
+    /* Producteurs */
+    @RequestMapping(value="/updateProducteur",method = RequestMethod.POST)
+   	public void updateProducteur(@RequestParam(value = "id") long id,
+   			@RequestParam(value = "zone", defaultValue = "null") String zone,
+      			@RequestParam(value = "code_fkt", defaultValue = "null") String code_fkt, 
+      			@RequestParam(value = "code_prod", defaultValue = "null") String code_prod,
+      			@RequestParam(value = "nom_prod", defaultValue = "null") String nom_prod,
+      			@RequestParam(value = "genre", defaultValue = "null") String genre, @RequestParam(value = "date_inspection", defaultValue = "00-00-0000") String date_inspection,
+      			@RequestParam(value = "date_naissance", defaultValue = "00-00-0000") String date_naissance,@RequestParam(value = "compte", defaultValue = "null") String compte,
+      			@RequestParam(value = "cin", defaultValue = "null") String cin, @RequestParam(value = "tel", defaultValue = "null") String tel, @RequestParam(value = "error_remonte", defaultValue = "null") String error_remonte,
+      			@RequestParam(value = "photo_prod", defaultValue = "null") String photo_prod) throws ParseException, UnsupportedEncodingException {
+    	byte[] decode = Base64.getMimeDecoder().decode(photo_prod);
+    	File file = new File(UPLOADED_FOLDER + "prod-"+code_prod+".jpeg");
+        try {
+            OutputStream os = new FileOutputStream(file);
+            os.write(decode);
+            os.close();
+         } catch (Exception e) {
+            e.printStackTrace();
+         }
+    	producteurService.addProd(id, zone, code_fkt, code_prod, nom_prod, genre, date_inspection, date_naissance, compte, cin, tel, error_remonte, DOWNLOAD_FOLDER + "prod-"+code_prod+".jpeg");
    		
    	}
    /* @RequestMapping(value="/createInfo_generale",method = RequestMethod.POST)

@@ -77,6 +77,8 @@ public class WebSecurityConfig  extends  WebSecurityConfigurerAdapter{
         web.ignoring().antMatchers("/saveFormationCulture");
         web.ignoring().antMatchers("/saveParasiteCulture");
         web.ignoring().antMatchers("/saveQuestionConseilCulture");
+        web.ignoring().antMatchers("/updateProducteur");
+        web.ignoring().antMatchers("/saveTechniqueVanille");
     }
     
 }

@@ -1,6 +1,7 @@
 package com.Giz.service.metier;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.Giz.data.domain.Fertilisant_vanille;
 
@@ -11,5 +12,7 @@ public interface Fertilisant_vanilleService {
 	public void addFertilisantVanille(long id,String code_prod,String use_fertilisant, String type_use, String autre,String qte,int nbr_ans);
 
 	List<Fertilisant_vanille> ListFertilisant_vanilleAll();
+	
+	Optional<Fertilisant_vanille> existCodeProd(String code_prod);
 
 }

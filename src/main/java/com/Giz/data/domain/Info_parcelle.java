@@ -11,11 +11,10 @@ import javax.persistence.Table;
 @Table(name = "info_parcelle")
 public class Info_parcelle {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(length = 40)
 	private String code_prod;
-	@Column(length = 150)
+	@Column(length = 250)
 	private String nom_parcel;
 	@Column(length = 4)
 	private String annee_plan_liane;
@@ -30,11 +29,11 @@ public class Info_parcelle {
 	private String culture_asocie;
 	@Column(length = 200)
 	private String asocie_autre;
-	@Column(length = 100)
+	@Column(length = 250)
 	private String inclinaison;
 	@Column(length = 3)
 	private String mise_anti_errosif;
-	@Column(length = 100)
+	@Column(length = 250)
 	private String technic_use;
 	@Column(length = 255)
 	private String photo_technique;
@@ -42,11 +41,11 @@ public class Info_parcelle {
 	private String qualite_ombrage;
 	@Column(length = 25)
 	private String couverture_vegetal;
-	@Column(length = 150)
+	@Column(length = 250)
 	private String avant;
 	@Column(length = 255)
 	private String provien_liane;
-	@Column(length = 100)
+	@Column(length = 250)
 	private String spec_autre;
 	@Column(length = 255)
 	private String photo_parcelle;

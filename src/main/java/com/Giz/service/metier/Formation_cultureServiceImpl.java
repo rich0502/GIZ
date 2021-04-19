@@ -1,6 +1,7 @@
 package com.Giz.service.metier;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,15 +31,29 @@ public class Formation_cultureServiceImpl implements Formation_cultureService{
 	public void addFormationCulture(long id,String code_prod, String recu_formation, String quelle_formation,
 			String autre_formation, String recu_dernier_form, String change_observer) {
 		Formation_culture formation = new Formation_culture();
-		formation.setId(id);
+		Optional<Formation_culture> getId = formation_cultureRepository.existCodeProd(code_prod);
+
 		formation.setCode_prod(code_prod);
 		formation.setRecu_formation(recu_formation);
 		formation.setQuelle_formation(quelle_formation);
 		formation.setAutre_formation(autre_formation);
 		formation.setRecu_dernier_form(recu_dernier_form);
 		formation.setChange_observer(change_observer);
-		formation_cultureRepository.save(formation);
 		
+		if(existCodeProd(code_prod).isPresent()) {
+			formation.setId(getId.get().getId());
+			formation_cultureRepository.save(formation);
+		}else {
+			formation.setId(id);
+			formation_cultureRepository.save(formation);
+		}
+		
+	}
+
+	@Override
+	public Optional<Formation_culture> existCodeProd(String code_prod) {
+		// TODO Auto-generated method stub
+		return formation_cultureRepository.existCodeProd(code_prod);
 	}
 
 }

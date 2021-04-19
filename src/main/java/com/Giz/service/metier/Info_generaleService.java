@@ -1,6 +1,7 @@
 package com.Giz.service.metier;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -14,5 +15,7 @@ public interface Info_generaleService {
    	 int dernier_compagne, String place_dedie);
 
 	List<Info_generale> ListInfo_generaleAll();
+	
+	Optional<Info_generale> existCodeProd(String code_prod);
 
 }

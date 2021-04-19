@@ -14,7 +14,6 @@ import javax.persistence.Table;
 public class Producteur {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(length = 50)
@@ -32,9 +31,9 @@ public class Producteur {
 	@Column(length = 1)
 	private String genre;
 	
-	private Date date_inspection;
+	private String date_inspection;
 
-	private Date date_naissance;
+	private String date_naissance;
 	
 	private String compte;
 	
@@ -54,7 +53,7 @@ public class Producteur {
 	}
 
 	public Producteur(Long id, String zone, String code_fkt, String code_prod, String nom_prod, String genre,
-			Date date_inspection, Date date_naissance, String compte, String cin, String tel, String error_remonte,
+			String date_inspection, String date_naissance, String compte, String cin, String tel, String error_remonte,
 			String photo_prod) {
 		super();
 		this.id = id;
@@ -120,19 +119,19 @@ public class Producteur {
 		this.genre = genre;
 	}
 
-	public Date getDate_inspection() {
+	public String getDate_inspection() {
 		return date_inspection;
 	}
 
-	public void setDate_inspection(Date date_inspection) {
+	public void setDate_inspection(String date_inspection) {
 		this.date_inspection = date_inspection;
 	}
 
-	public Date getDate_naissance() {
+	public String getDate_naissance() {
 		return date_naissance;
 	}
 
-	public void setDate_naissance(Date date_naissance) {
+	public void setDate_naissance(String date_naissance) {
 		this.date_naissance = date_naissance;
 	}
 

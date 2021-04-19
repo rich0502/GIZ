@@ -1,6 +1,7 @@
 package com.Giz.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,4 +12,7 @@ public interface Info_generaleRepository extends JpaRepository<Info_generale, Lo
 	@Query(value = "SELECT * FROM Info_generale,producteur WHERE Info_generale.code_pro=producteur.code_prod AND"
 		    + " producteur.code_prod = ?1", nativeQuery = true)
 	List<Info_generale> findByCodeProd(String code_prod);
+	
+	@Query(value = "SELECT * FROM Info_generale where code_pro = ?1", nativeQuery = true)
+	Optional<Info_generale> existCodeProd(String code_prod);
 }

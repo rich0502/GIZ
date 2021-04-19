@@ -1,6 +1,7 @@
 package com.Giz.service.metier;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,14 +31,28 @@ public class Question_conseil_diversServiceImpl implements Question_conseil_dive
 	public void addQCDivers(long id,String code_pro, String question_symrise, String conseil_rural, String etat_vanille,
 			String assistance) {
 		Question_conseil_divers qc = new Question_conseil_divers();
-		qc.setId(id);
-		qc.setCode_prod(code_pro);;
+		Optional<Question_conseil_divers> getId = question_conseil_diversRepository.existCodeProd(code_pro); 
+
+		qc.setCode_prod(code_pro);
 		qc.setQuestion_symrise(question_symrise);
 		qc.setConseil_rural(conseil_rural);
 		qc.setEtat_vanille(etat_vanille);
 		qc.setAssistance(assistance);
-		question_conseil_diversRepository.save(qc);
+
 		
+		if(existCodeProd(code_pro).isPresent()) {
+			qc.setId(getId.get().getId());
+			question_conseil_diversRepository.save(qc);
+		}else {
+			qc.setId(id);
+			question_conseil_diversRepository.save(qc);
+		}
+		
+	}
+	
+	@Override
+	public Optional<Question_conseil_divers> existCodeProd(String code_prod) {
+		return question_conseil_diversRepository.existCodeProd(code_prod);
 	}
 
 }

@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @Table(name = "fertilisant_vanille")
 public class Fertilisant_vanille {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(length = 40)
 	private  String code_pro;

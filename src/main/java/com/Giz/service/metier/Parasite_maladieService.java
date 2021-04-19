@@ -1,6 +1,7 @@
 package com.Giz.service.metier;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.Giz.data.domain.Parasite_maladie;
 
@@ -12,5 +13,7 @@ public interface Parasite_maladieService {
 			String chimique, String chimique_qte, String biologique, String autre, String frequence, String effets);
 
 	List<Parasite_maladie> ListParasite_maladieAll();
+	
+	Optional<Parasite_maladie> existCodeProd(String code_prod);
 
 }

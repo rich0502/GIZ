@@ -10,8 +10,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "info_parcelle_divers")
 public class Info_parcelle_divers {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(length = 40)
 	private String code_prod;

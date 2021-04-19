@@ -55,7 +55,7 @@ $(document).ready(function () {
                 unit: "mm"
             });
 
-            document.body.innerHTML += '<form id="dynForm" action="http://localhost:8080/Giz/TrackerTable" method="post">'
+            document.body.innerHTML += '<form id="dynForm" action="http://168.119.185.165:8080/Giz/TrackerTable" method="post">'
             	+'<input type="hidden" name="imageValue" value="'+newData+'">'
             	+'<input type="hidden" name="desc_file" value="'+desc_file+'">'
             	+'</form>';
