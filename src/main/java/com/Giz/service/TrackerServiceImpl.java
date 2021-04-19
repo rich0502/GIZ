@@ -35,5 +35,11 @@ public class TrackerServiceImpl implements TrackerService {
 		
 	}
 
+	@Override
+	public List<Object[]> historiqueList(String type_tracker) {
+		// TODO Auto-generated method stub
+		return trackerRepository.historiqueList(type_tracker);
+	}
+
 	
 }

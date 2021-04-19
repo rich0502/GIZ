@@ -10,4 +10,6 @@ public interface StorieService {
 	
 	public List<Storie> getStorie() throws Exception;
 
+	public List<Object[]> historiqueList();
+
 }

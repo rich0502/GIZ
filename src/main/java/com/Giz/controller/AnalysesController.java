@@ -1189,7 +1189,7 @@ public class AnalysesController {
 			tps = wp3PeerEducatorService.ListGraphe(debut_date, fin);
 			break;
 		case "48":
-			nameCanevas = "service santeÌ� par communauteÌ�";
+			nameCanevas = "service santé par communauté";
 			tot = (int) wp3SanteeCommService.TotTotal(debut_date, fin);
 			crosshair = wp3SanteeCommService.ListFetch();
 			camembertTot = (int) wp3SanteeCommService.CamembertTot();
@@ -1203,49 +1203,49 @@ public class AnalysesController {
 			tps = wp3EppFramService.ListGraphe(debut_date, fin);
 			break;
 		case "46":
-			nameCanevas = "jeune ayant termineÌ� formation pathway";
+			nameCanevas = "jeune ayant terminé formation pathway";
 			tot = (int) wp3JeunePathwayService.TotTotal(debut_date, fin);
 			crosshair = wp3JeunePathwayService.ListFetch();
 			camembertTot = (int) wp3JeunePathwayService.CamembertTot();
 			tps = wp3JeunePathwayService.ListGraphe(debut_date, fin);
 			break;
 		case "45":
-			nameCanevas = "AGR deÌ�veloppeÌ� MFR";
+			nameCanevas = "AGR développé MFR";
 			tot = (int) wp3AgrDevMfrService.TotTotal(debut_date, fin);
 			crosshair = wp3AgrDevMfrService.ListFetch();
 			camembertTot = (int) wp3AgrDevMfrService.CamembertTot();
 			tps = wp3AgrDevMfrService.ListGraphe(debut_date, fin);
 			break;
 		case "44":
-			nameCanevas = "eÌ�quipe technique MFR";
+			nameCanevas = "équipe technique MFR";
 			tot = (int) wp3EquipeTechMfrService.TotTotal(debut_date, fin);
 			crosshair = wp3EquipeTechMfrService.ListFetch();
 			camembertTot = (int) wp3EquipeTechMfrService.CamembertTot();
 			tps = wp3EquipeTechMfrService.ListGraphe(debut_date, fin);
 			break;
 		case "43":
-			nameCanevas = "feÌ�deÌ�ration reÌ�gionale MFR";
+			nameCanevas = "fédération régionale MFR";
 			tot = (int) wp3FedeMfrService.TotTotal(debut_date, fin);
 			crosshair = wp3FedeMfrService.ListFetch();
 			camembertTot = (int) wp3FedeMfrService.CamembertTot();
 			tps = wp3FedeMfrService.ListGraphe(debut_date, fin);
 			break;
 		case "42":
-			nameCanevas = "jeunes formÃ©s des MFR ";
+			nameCanevas = "jeunes formés des MFR ";
 			tot = (int) wp3JeuneFormeMfrService.TotTotal(debut_date, fin);
 			crosshair = wp3JeuneFormeMfrService.ListFetch();
 			camembertTot = (int) wp3JeuneFormeMfrService.CamembertTot();
 			tps = wp3JeuneFormeMfrService.ListGraphe(debut_date, fin);
 			break;
 		case "41":
-			nameCanevas = "Ã©lÃ¨ves inscrits dans les MFR";
+			nameCanevas = "élèves inscrits dans les MFR";
 			tot = (int) wp3ElevMfrService.TotTotal(debut_date, fin);
 			crosshair = wp3ElevMfrService.ListFetch();
 			camembertTot = (int) wp3ElevMfrService.CamembertTot();
 			tps = wp3ElevMfrService.ListGraphe(debut_date, fin);
 			break;
 		case "40":
-			nameCanevas = "Ã©lÃ©vage en adoptant les bonnes pratiques";
+			nameCanevas = "élèvage en adoptant les bonnes pratiques";
 			tot = (int) wp3UniteElevJeuneService.TotTotal(debut_date, fin);
 			crosshair = wp3UniteElevJeuneService.ListFetch();
 			camembertTot = (int) wp3UniteElevJeuneService.CamembertTot();
@@ -1259,14 +1259,14 @@ public class AnalysesController {
 			tps = wp3FormTechMetierJeuneService.ListGraphe(debut_date, fin);
 			break;
 		case "38":
-			nameCanevas = "youth committÃ©e actif";
+			nameCanevas = "youth committé actif";
 			tot = (int) wp3CommitteeActifService.TotTotal(debut_date, fin);
 			crosshair = wp3CommitteeActifService.ListFetch();
 			camembertTot = (int) wp3CommitteeActifService.CamembertTot();
 			tps = wp3CommitteeActifService.ListGraphe(debut_date, fin);
 			break;
 		case "37":
-			nameCanevas = "activitÃ© economique rÃ©alisÃ©e";
+			nameCanevas = "activité economique réalisée";
 			tot = (int) wp3ActivEcoJeuneService.TotTotal(debut_date, fin);
 			crosshair = wp3ActivEcoJeuneService.ListFetch();
 			camembertTot = (int) wp3ActivEcoJeuneService.CamembertTot();
@@ -1286,7 +1286,7 @@ public class AnalysesController {
 			tps = atelierMFRService.TpsAtelierMFR(type_atelier, debut_date, fin);
 			break;
 		case "53":
-			nameCanevas = "Dialogue rÃ©gion";
+			nameCanevas = "Dialogue région";
 			type_atelier = "CANEVAS DIALOGUE REGIONAL SUR L'ACCES AU FINANCEMENT";
 			crosshair = atelierMFRService.ListAtelierFetch(type_atelier);
 			camembertTot = (int) atelierMFRService.TotAtelierMFR(type_atelier);

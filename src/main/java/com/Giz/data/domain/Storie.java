@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "storie")
-public class Storie {
+public class Storie extends Auditable<String>{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //this is where problem exists
 	@Column(name = "id_str")

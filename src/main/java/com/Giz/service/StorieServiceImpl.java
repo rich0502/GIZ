@@ -27,4 +27,10 @@ public class StorieServiceImpl implements StorieService {
 		return list;
 	}
 
+	@Override
+	public List<Object[]> historiqueList() {
+		// TODO Auto-generated method stub
+		return storieRepository.historiqueList();
+	}
+
 }

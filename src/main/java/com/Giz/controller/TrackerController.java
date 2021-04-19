@@ -11,6 +11,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -41,8 +42,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class TrackerController {
 	
     //private static String UPLOADED_FOLDER = "/usr/local/tomcat/webapps/documents/";	
-	//private static String UPLOADED_FOLDER = "/home/liantsoa/Documents/Uploads/tracker/";
-	private static String UPLOADED_FOLDER = "/usr/share/apache-tomcat-8.5.6/webapps/tracker/";
+	private static String UPLOADED_FOLDER = "/home/liantsoa/Documents/FileUpload/";
+	//private static String UPLOADED_FOLDER = "/usr/share/apache-tomcat-8.5.6/webapps/tracker/";
 	
     //private static String DOWNLOAD_FOLDER = "http://plan-etech.dev.arkeup.com/documents/";
 	@SuppressWarnings("unused")
@@ -50,6 +51,15 @@ public class TrackerController {
 	
 	@Autowired
 	TrackerService trackerService;
+	
+	@RequestMapping("/trackerHistorique/{type_tracker}")
+	public String trackerHistorique(@PathVariable("type_tracker") String type_tracker,Model model) throws Exception {
+		String titre="tracker " + type_tracker;
+		List<Object[]> historiqueList = trackerService.historiqueList(type_tracker);
+		model.addAttribute("historiqueList", historiqueList);
+		model.addAttribute("titre", titre);
+		return "historique/historiqueList";
+	}
 	
 	// DELETE TRACKER WP1 à WP4
 	@RequestMapping("/deleteTrackerWP1/{id}")

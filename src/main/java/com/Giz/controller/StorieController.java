@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -31,7 +32,7 @@ public class StorieController {
 	@Autowired
 	StorieRepository storieRepository;
     //Save the uploaded file to this folder
-    //private static String UPLOADED_FOLDER = "/usr/local/tomcat/webapps/documents/";	
+    //private static String UPLOADED_FOLDER = "/home/liantsoa/Documents/FileUpload/";	
 	private static String UPLOADED_FOLDER = "/usr/share/apache-tomcat-8.5.6/webapps/succes_stories/";
 	
     //private static String DOWNLOAD_FOLDER = "http://plan-etech.dev.arkeup.com/documents/";
@@ -57,6 +58,15 @@ public class StorieController {
 		//model.addAttribute("notif",notif);
 		model.addAttribute("ListFiles",storieService.getStorie());
 		return "storie/storie-list";
+	}
+	
+	@GetMapping("/succesHistorique")
+	public String succesHistorique(Model model) throws Exception {
+		String titre="succes stories";
+		List<Object[]> historiqueList = storieService.historiqueList();
+		model.addAttribute("historiqueList", historiqueList);
+		model.addAttribute("titre", titre);
+		return "historique/historiqueList";
 	}
 	
 	@RequestMapping(value = "/saveStorie", method = RequestMethod.POST)
