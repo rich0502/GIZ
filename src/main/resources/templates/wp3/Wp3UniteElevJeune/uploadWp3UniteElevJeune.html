@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <head th:include="/headLinks.html"></head>
 
 <body class="stories">
@@ -17,7 +17,7 @@
 							
 							<div th:include="canevasMenu.html" th:remove="tag"></div>
 											<div class="card-body">
-							<h2 class="page-title">CANEVAS DEMARRAGE UNITEÌ� ELEÌ�VAGE JEUNEE 18 AÌ€ 24 ANS</h2>
+							<h2 class="page-title">CANEVAS DEMARRAGE UNITE ELEVAGE JEUNEE 18 A 24 ANS</h2>
 							<form th:action="@{/importWp3UniteElevJeune}" method="post" class="uploadForm" enctype="multipart/form-data">
 							<figure>
 								<img th:src=@{/css/images/upload.svg}>

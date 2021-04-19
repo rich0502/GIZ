@@ -4,7 +4,7 @@
 <head th:include="/headLinks.html"></head>
 
 <body class="stories">
-<div th:include="/pds_header.html"></div>
+	<div th:include="/pds_header.html"></div>
 	<section class="main">
 		<div class="base-content">
 			<div class="crud-wrap">
@@ -14,38 +14,37 @@
 				<div class="composantesTable-content">
 					<form method="POST" th:action="@{/add115}">
 						<div class="card">
-							
+
 							<div th:include="canevasMenu.html" th:remove="tag"></div>
-											<div class="card-body">
-							<h2 class="page-title">CANEVAS AGR DEÌ�VELOPPEÌ� MFR SAVA</h2>
-							<form th:action="@{/importWp3AgrDevMfr}" method="post" class="uploadForm" enctype="multipart/form-data">
-							<figure>
-								<img th:src=@{/css/images/upload.svg}>
-							</figure> 
-								<br>
-							<fieldset >
-								<span class="gbtn btn-file">
-								<b>[[#{import.add}]]</b>
-									<input type="file" th:name="file" />
-								</span>
-									<input  th:type="submit" th:value="#{import.msf}" class="gbtn" />
-					
+							<div class="card-body">
+								<h2 class="page-title">CANEVAS AGR DEVELOPPE MFR SAVA</h2>
+								<form th:action="@{/importWp3AgrDevMfr}" method="post"
+									class="uploadForm" enctype="multipart/form-data">
+									<figure>
+										<img th:src=@{/css/images/upload.svg}>
+									</figure>
+									<br>
+									<fieldset>
+										<span class="gbtn btn-file"> <b>[[#{import.add}]]</b> <input
+											type="file" th:name="file" />
+										</span> <input th:type="submit" th:value="#{import.msf}" class="gbtn" />
 								</form>
-							</fieldset>
+								</fieldset>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-		
+
 	</section>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" th:src="@{js/ajaxCrud.js}"></script>
 
 </body>
