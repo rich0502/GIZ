@@ -36,7 +36,7 @@ $(document).ready(function(){
 			<div class="col-6">
 				<div class="">
 					<div class="">
-						<label>Identifiant</label>
+						<label>[[#{identifiant}]]</label>
 						<input class="floating-input" type="text" placeholder=" "
 							th:field="${userForm.username}" th:disabled="${disableFields}">
 						<span class="highlight"></span> 
@@ -64,7 +64,7 @@ $(document).ready(function(){
 			<div class="col-6">
 				<div class="">
 					<div class="">
-						<label>Nom</label>
+						<label>[[#{name}]]</label>
 						<input class="floating-input" type="text" placeholder=" "
 							th:field="${userForm.lastName}" th:disabled="${disableFields}">
 						<span class="highlight"></span>
@@ -76,7 +76,7 @@ $(document).ready(function(){
 			<div class="col-6">
 				<div class="">
 					<div class="">
-						<label>Pr&eacutenom</label>
+						<label>[[#{prenom}]]</label>
 						<input class="floating-input" type="text" placeholder=" "
 							th:field="${userForm.firstName}" th:disabled="${disableFields}">
 						<span class="highlight"></span> 
@@ -101,7 +101,7 @@ $(document).ready(function(){
 			<div class="col-6">
 				<div class="">
 					<div class="">
-						<label>T&eacute;l&eacute;phone</label>
+						<label>[[#{phone}]]</label>
 						<input class="floating-input" type="text" placeholder=" "
 							th:field="${userForm.tel}" th:disabled="${disableFields}">
 						<span class="highlight"></span>
@@ -113,7 +113,7 @@ $(document).ready(function(){
 			<div class="col-6">
 				<div class="">
 					<div class="">
-						<label>Soci&eacute;t&eacute;</label>
+						<label>[[#{societe}]]</label>
 						<input class="floating-input" type="text" placeholder=" "
 							th:field="${userForm.societe}" th:disabled="${disableFields}">
 						<span class="highlight"></span>

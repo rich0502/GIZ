@@ -10,7 +10,7 @@
 			<div class="col-6">
 				<div class="">
 					<div class="">
-						<label>Prénom</label>
+						<label>[[#{prenom}]]</label>
 						<input class="floating-input" placeholder=" " type="text" th:field="${profilForm.firstName}"
 							th:disabled="${disableFields}">
 						<div class="alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
@@ -23,7 +23,7 @@
 			<div class="col-6">
 				<div class="">
 					<div class="">
-						<label>Nom</label>
+						<label>[[#{name}]]</label>
 						<input class="floating-input" placeholder=" " type="text" th:field="${profilForm.lastName}"
 							th:disabled="${disableFields}">
 						<div class="alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name
@@ -50,7 +50,7 @@
 			<div class="col-6">
 				<div class="">
 					<div class="">
-						<label>Téléphone</label>
+						<label>[[#{phone}]]</label>
 						<input class="floating-input" placeholder=" " type="text" th:field="${profilForm.tel}"
 							th:disabled="${disableFields}">
 						<div class="alert-danger" th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}">Tel Error
@@ -77,7 +77,7 @@
 			<div class="col-6">
 				<div class="">
 					<div class="">
-						<label>Société</label>
+						<label>[[#{societe}]]</label>
 						<input class="floating-input" placeholder=" " type="text" th:field="${profilForm.societe}"
 							th:disabled="${disableFields}">
 						<div class="alert-danger" th:if="${#fields.hasErrors('societe')}" th:errors="*{societe}">Name
@@ -92,7 +92,7 @@
 			<div class="col-6">
 				<div class="">
 					<div class="">
-						<label>Identifiant</label>
+						<label>[[#{identifiant}]]</label>
 						<input class="floating-input" placeholder=" " type="text" th:field="${profilForm.username}"
 							th:disabled="${disableFields}">
 						<div class="alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name

@@ -55,4 +55,16 @@ public class Main_oeuvreServiceImpl implements Main_oeuvreService {
 		return main_oeuvreRepository.existCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Main_oeuvre> ListMain_oeuvreAllFkt(String zone) {
+		// TODO Auto-generated method stub
+		return main_oeuvreRepository.ListMain_oeuvreAllFkt(zone);
+	}
+
+	@Override
+	public List<Main_oeuvre> ListMain_oeuvreAllProd(String code_fkt) {
+		// TODO Auto-generated method stub
+		return main_oeuvreRepository.ListMain_oeuvreAllProd(code_fkt);
+	}
+
 }

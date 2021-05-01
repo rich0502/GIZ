@@ -41,12 +41,12 @@
 								</select>
 							</div>
 							<div class="col-4">
-								<p class="label-form">Canevas</p>
+								<p class="label-form">[[#{menu.template}]]</p>
 								<div class="input-group date">
 									<select style="width: 100%;" class="ginput form-control"
 										onchange="this.options[this.selectedIndex].value"
 										th:name="theme" id="theme" required="required">
-										<option value="">[[#{selectionner}]] le canevas</option>
+										<option value="">[[#{selectionner}]] [[#{menu.template}]]</option>
 									</select>
 								</div>
 							</div>
@@ -97,7 +97,7 @@
 							var slctSubcat = $('#theme'), option = "";
 							slctSubcat.empty();
 							option = option
-							+ "<option value='null'>Sélectionner le canevas</option>";
+							+ "<option value='null'>[[#{selectionner}]] [[#{menu.template}]]</option>";
 							for (var i = 0; i < data.length; i++) {
 								option = option
 										+ "<option value='"+data[i][0]+ "'>"

@@ -3,15 +3,15 @@
 <div class="my-profil-form">
 <div class="my-profil-list" th:if="(${#authorization.expression('hasRole(''ROLE_ADMIN'')')} and ${#httpServletRequest.remoteUser==user.username}) or (${#authorization.expression('hasRole(''ROLE_USER'')')} and ${#httpServletRequest.remoteUser==user.username})" th:each="user: ${profilList}">
  <div class="my-profil-item">
-   <label class="my-profil-label">Identifiant</label>
+   <label class="my-profil-label">[[#{identifiant}]]</label>
    <div class="my-profil-value"><span th:text="${user.username}"></span> </div>
  </div>
   <div class="my-profil-item">
-   <label class="my-profil-label">Nom</label>
+   <label class="my-profil-label">[[#{name}]]</label>
    <div class="my-profil-value"><span th:text="${user.firstName}"></span> </div>
  </div>
    <div class="my-profil-item">
-   <label class="my-profil-label">Pr&eacute;nom</label>
+   <label class="my-profil-label">[[#{prenom}]]</label>
    <div class="my-profil-value"><span th:text="${user.lastName}"></span> </div>
     </div>
      <div class="my-profil-item">
@@ -19,7 +19,7 @@
    <div class="my-profil-value"><span th:text="${user.email}"></span> </div>
     </div>
        <div class="my-profil-item">
-   <label class="my-profil-label">T&eacute;l&eacute;phone</label>
+   <label class="my-profil-label">[[#{phone}]]</label>
    <div class="my-profil-value"><span th:text="${user.tel}"></span> </div>
     </div>
          <div class="my-profil-item">
@@ -27,7 +27,7 @@
    <div class="my-profil-value"><span th:text="${user.fonction}"></span> </div>
     </div>
           <div class="my-profil-item">
-   <label class="my-profil-label">Soci&eacute;t&eacute;</label>
+   <label class="my-profil-label">[[#{societe}]]</label>
    <div class="my-profil-value"><span th:text="${user.societe}"></span> </div>
     </div>
     

@@ -52,4 +52,16 @@ public class Fertilisant_vanilleServiceImpl implements Fertilisant_vanilleServic
 		return fertilisant_vanilleRepository.existCodeProd(code_prod);
 	}
 
+		@Override
+		public List<Fertilisant_vanille> ListFertilisant_vanilleAllFkt(String zone) {
+			// TODO Auto-generated method stub
+			return fertilisant_vanilleRepository.ListFertilisant_vanilleAllFkt(zone);
+		}
+
+		@Override
+		public List<Fertilisant_vanille> ListFertilisant_vanilleAllProd(String code_fkt) {
+			// TODO Auto-generated method stub
+			return fertilisant_vanilleRepository.ListFertilisant_vanilleAllProd(code_fkt);
+		}
+
 }

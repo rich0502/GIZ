@@ -18,4 +18,8 @@ public interface Info_generaleService {
 	
 	Optional<Info_generale> existCodeProd(String code_prod);
 
+	List<Info_generale> ListInfo_generaleAllFkt(String zone);
+
+	List<Info_generale> ListInfo_generaleAllProd(String code_fkt);
+
 }

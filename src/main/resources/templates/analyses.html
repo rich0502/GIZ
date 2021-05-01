@@ -78,7 +78,7 @@
 	 function butval() {
 			$(':button').each(function () {
 				flag = $(this).next('.containerElCombo').is(':visible')
-				$(this).val(flag ? 'Masquer' : 'Afficher');
+				$(this).val(flag ? '[[#{masquer}]]' : '[[#{afficher}]]');
 			});
 	}
 		
@@ -177,10 +177,10 @@
 
 					<table style="width: '100%'">
 						<tr>
-							<td class="label-form" style="width: 200px; padding-left: 8px; padding-bottom: 8px;">Donnée arrêtée</td>
+							<td class="label-form" style="width: 200px; padding-left: 8px; padding-bottom: 8px;">[[#{donnee.arret}]]</td>
 							<td class="label-form" style="width: 200px; padding-left: 8px; padding-bottom: 8px;">Subdivision</td>
 							<td class="label-form" style="width: 200px; padding-left: 8px; padding-bottom: 8px;">Villages</td>
-							<td class="label-form" style="width: 150px; padding-left: 8px;">Genre</td>
+							<td class="label-form" style="width: 150px; padding-left: 8px;">[[#{genre}]]</td>
 						</tr>
 						<tr>						
 							<td style="width: 25%; padding-left: 8px; padding-bottom: 8px; vertical-align: top;">
@@ -213,7 +213,7 @@
 								<table>
 								<div class="containerCombo">
 								<input type="text" class="resultat form-control" style=" margin-bottom: 8px;" th:name="villages" id="villas" disabled>
-								<input type="button" value="Afficher" id="size" disabled>
+								<input type="button" th:value="#{afficher}" id="size" disabled>
 								<ul class="containerElCombo">
 								   <li class="elementCombo" th:each="v : ${villages}" >
 									 <input type="checkbox" ><label for="checkbox" th:text="${v.code_village}"></label>
@@ -224,9 +224,9 @@
 							</td>
 							<td style="width: 25%; padding-left: 8px; padding-bottom: 8px; vertical-align: top;">
 								<select th:name="genre" class="form-control select2">
-										<option value="">Autres</option>
-										<option value="H">Homme</option>
-										<option value="F">Femme</option>
+										<option value="">[[#{autre}]]</option>
+										<option value="H">[[#{homme}]]</option>
+										<option value="F">[[#{femme}]]</option>
 									</select>
 							</td>
 						</tr>

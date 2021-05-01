@@ -61,4 +61,16 @@ public class Parasite_maladie_diversServiceImpl implements Parasite_maladie_dive
 		return parasite_maladie_diversRepository.existCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Parasite_maladie_divers> ListParasite_maladie_diversAllFkt(String zone) {
+		// TODO Auto-generated method stub
+		return parasite_maladie_diversRepository.ListParasite_maladie_diversAllFkt(zone);
+	}
+
+	@Override
+	public List<Parasite_maladie_divers> ListParasite_maladie_diversAllProd(String code_fkt) {
+		// TODO Auto-generated method stub
+		return parasite_maladie_diversRepository.ListParasite_maladie_diversAllProd(code_fkt);
+	}
+
 }

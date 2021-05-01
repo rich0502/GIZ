@@ -15,4 +15,8 @@ public interface Main_oeuvreService {
 	
 	Optional<Main_oeuvre> existCodeProd(String code_prod);
 
+	List<Main_oeuvre> ListMain_oeuvreAllFkt(String zone);
+
+	List<Main_oeuvre> ListMain_oeuvreAllProd(String code_fkt);
+
 }

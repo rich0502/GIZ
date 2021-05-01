@@ -15,4 +15,12 @@ public interface Parasite_maladie_diversRepository extends JpaRepository<Parasit
 	
 	@Query(value = "SELECT * FROM Parasite_maladie_divers where code_prod = ?1", nativeQuery = true)
 	Optional<Parasite_maladie_divers> existCodeProd(String code_prod);
+	
+	@Query(value = "SELECT * FROM Parasite_maladie_divers,producteur WHERE Parasite_maladie_divers.code_prod=producteur.code_prod AND"
+		    + " producteur.code_fkt = ?1", nativeQuery = true)
+	List<Parasite_maladie_divers> ListParasite_maladie_diversAllProd(String code_fkt);
+	
+	@Query(value = "SELECT * FROM Parasite_maladie_divers,producteur WHERE Parasite_maladie_divers.code_prod=producteur.code_prod AND"
+		    + " producteur.zone = ?1", nativeQuery = true)
+	List<Parasite_maladie_divers> ListParasite_maladie_diversAllFkt(String zone);
 }

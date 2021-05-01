@@ -17,4 +17,8 @@ public interface Info_parcelleService {
 	
 	Optional<Info_parcelle> existCodeProd(String code_prod);
 
+	List<Info_parcelle> ListInfo_parcelleAllFkt(String zone);
+
+	List<Info_parcelle> ListInfo_parcelleAllProd(String code_fkt);
+
 }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Données externes</title>
+    <title>[[#{donnees.externe}]]</title>
 
     <head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
@@ -23,15 +23,15 @@
                         <tr>
                             <th scope="col"><span>Zone</span></th>
                             <th scope="col"><span>Code fokontany</span></th>
-                            <th scope="col"><span>Code producteur</span></th>
-                            <th scope="col"><span>Nom producteur</span></th>
-                            <th scope="col"><span>Genre</span></th>
-                            <th scope="col"><span>Date d'inspection</span></th>
-                            <th scope="col"><span>Date de naissance</span></th>
-                            <th scope="col"><span>Compte</span></th>
+                            <th scope="col"><span>Code [[#{prod}]]</span></th>
+                            <th scope="col"><span>[[#{nom.prenom}]]</span></th>
+                            <th scope="col"><span>[[#{genre}]]</span></th>
+                            <th scope="col"><span>[[#{date.inspect}]]</span></th>
+                            <th scope="col"><span>[[#{naissance}]]</span></th>
+                            <th scope="col"><span>[[#{compte}]]</span></th>
                             <th scope="col"><span>CIN</span></th>
-                            <th scope="col"><span>Télephone</span></th>
-                            <th scope="col"><span>Erreur</span></th>
+                            <th scope="col"><span>[[#{phone}]]</span></th>
+                            <th scope="col"><span>[[#{erreur}]]</span></th>
                             <th scope="col"><span>Photo</span></th>
                         </tr>
                     </thead>

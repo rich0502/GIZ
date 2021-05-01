@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Données externes</title>
+	<title>[[#{donnees.externe}]]</title>
 
 	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
@@ -21,27 +21,27 @@
 				<table class="composantes-table text-center" id="myTable">
 					<thead>
 						<tr>
-							<th scope="col"><span>Code producteur</span></th>
-							<th scope="col"><span>Type culture</span></th>
-							<th scope="col"><span>Nom parcelle</span></th>
-							<th scope="col"><span>Période de mise en culture</span></th>
-							<th scope="col"><span>Période de culture</span></th>
-							<th scope="col"><span>Occupation du sol</span></th>
-							<th scope="col"><span>Autre occupation du sol</span></th>
-							<th scope="col"><span>Volume annee precedent</span></th>
-							<th scope="col"><span>Volume annee à venir</span></th>
-							<th scope="col"><span>Surface parcelle</span></th>
-							<th scope="col"><span>Rendement</span></th>
-							<th scope="col"><span>Nombre pieds</span></th>
-							<th scope="col"><span>Etape visite</span></th>
-							<th scope="col"><span>Système de protection sol</span></th>
-							<th scope="col"><span>Système utilisé</span></th>
-							<th scope="col"><span>Associe parcelle</span></th>
-							<th scope="col"><span>Autre associe parcel</span></th>
-							<th scope="col"><span>Inclinaison</span></th>
-							<th scope="col"><span>Mise anti-errosif</span></th>
+							<th scope="col"><span>Code [[#{prod}]]</span></th>
+							<th scope="col"><span>[[#{type.culture}]]</span></th>
+							<th scope="col"><span>[[#{nom.parcelle}]]</span></th>
+							<th scope="col"><span>[[#{periode.mise.culture}]]</span></th>
+							<th scope="col"><span>[[#{periode.culture}]]</span></th>
+							<th scope="col"><span>[[#{occup.sol}]]</span></th>
+							<th scope="col"><span>[[#{autre}]] [[#{occup.sol}]]</span></th>
+							<th scope="col"><span>[[#{vol.prec}]]</span></th>
+							<th scope="col"><span>[[#{vol.venir}]]</span></th>
+							<th scope="col"><span>[[#{surface.parcelle}]]</span></th>
+							<th scope="col"><span>[[#{rendem}]]</span></th>
+							<th scope="col"><span>[[#{nbr.pied}]]</span></th>
+							<th scope="col"><span>[[#{etap.suivr}]]</span></th>
+							<th scope="col"><span>[[#{sys.protect}]]</span></th>
+							<th scope="col"><span>[[#{sys.util}]]</span></th>
+							<th scope="col"><span>[[#{assoc.parcelle}]]</span></th>
+							<th scope="col"><span>[[#{autre}]] [[#{assoc.parcelle}]]</span></th>
+							<th scope="col"><span>[[#{inclinaison}]]</span></th>
+							<th scope="col"><span>[[#{anti.errosif}]]</span></th>
 							<th scope="col"><span>technique utilisée</span></th>
-							<th scope="col"><span>Photo technique</span></th>
+							<th scope="col"><span>[[#{photo.technique}]]</span></th>
 							<th scope="col"><span>Photo culture</span></th>
 						</tr>
 					</thead>

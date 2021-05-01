@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Données externes</title>
+	<title>[[#{donnees.externe}]]</title>
 
 	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
@@ -21,27 +21,27 @@
 				<table class="composantes-table text-center" id="myTable">
 					<thead>
 						<tr>
-							<th scope="col"><span>Code producteur</span></th>
-							<th scope="col"><span>Nom parcelle</span></th>
-							<th scope="col"><span>Année plantation liane</span></th>
-							<th scope="col"><span>Nombre liane</span></th>
-							<th scope="col"><span>Récolte estimé(kg)</span></th>
-							<th scope="col"><span>Surface parcelle</span></th>
-							<th scope="col"><span>Nombre liane total</span></th>
-							<th scope="col"><span>Rendement parcelle</span></th>
-							<th scope="col"><span>Volume recolté année précédent(kg)</span></th>
-							<th scope="col"><span>Culture asociées</span></th>
-							<th scope="col"><span>Asociées autre</span></th>
-							<th scope="col"><span>Inclinaison</span></th>
-							<th scope="col"><span>Mise anti-errosif</span></th>
-							<th scope="col"><span>Technique utilisé</span></th>
-							<th scope="col"><span>Photo technique</span></th>
-							<th scope="col"><span>Qualité ombrage</span></th>
-							<th scope="col"><span>Couverture vegetal</span></th>
-							<th scope="col"><span>Avant</span></th>
-							<th scope="col"><span>Origine liane</span></th>
-							<th scope="col"><span>Autre</span></th>
-							<th scope="col"><span>Photo parcelle</span></th>
+							<th scope="col"><span>Code [[#{prod}]]</span></th>
+							<th scope="col"><span>[[#{nom.parcelle}]]</span></th>
+							<th scope="col"><span>[[#{annee.plantation}]]</span></th>
+							<th scope="col"><span>[[#{nombre.liane}]]</span></th>
+							<th scope="col"><span>[[#{recolte.estime}]]</span></th>
+							<th scope="col"><span>[[#{surface.parcelle}]]</span></th>
+							<th scope="col"><span>[[#{nombre.liane}]] total</span></th>
+							<th scope="col"><span>[[#{rendement.parcelle}]]</span></th>
+							<th scope="col"><span>[[#{volume.recolte}]]</span></th>
+							<th scope="col"><span>[[#{culture.associe}]]</span></th>
+							<th scope="col"><span>[[#{associe.autre}]]</span></th>
+							<th scope="col"><span>[[#{inclinaison}]]</span></th>
+							<th scope="col"><span>[[#{anti.errosif}]]</span></th>
+							<th scope="col"><span>[[#{technique.utilise}]]</span></th>
+							<th scope="col"><span>[[#{photo.technique}]]</span></th>
+							<th scope="col"><span>[[#{qualite.ombrage}]]</span></th>
+							<th scope="col"><span>[[#{couverture.vegetal}]]</span></th>
+							<th scope="col"><span>[[#{avant}]]Avant</span></th>
+							<th scope="col"><span>[[#{origine.liane}]]</span></th>
+							<th scope="col"><span>[[#{autre}]]</span></th>
+							<th scope="col"><span>[[#{photo.parcelle}]]</span></th>
 						</tr>
 					</thead>
 					<tbody>

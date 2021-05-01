@@ -16,4 +16,8 @@ public interface Parasite_maladieService {
 	
 	Optional<Parasite_maladie> existCodeProd(String code_prod);
 
+	List<Parasite_maladie> ListParasite_maladieAllFkt(String zone);
+
+	List<Parasite_maladie> ListParasite_maladieAllProd(String code_fkt);
+
 }

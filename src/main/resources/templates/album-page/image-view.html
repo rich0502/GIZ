@@ -35,7 +35,7 @@
 			<header class="flex header-galerie">
 
 				<h2 class="page-title">
-					<br> <span>Titre album</span> : <span th:text="${album_image.nom_album}"></span>
+					<br> <span>[[#{titre}]] album</span> : <span th:text="${album_image.nom_album}"></span>
 				</h2>
 				<div class="btn-row" style="margin-bottom: 10px;">
 					<button class="gbtn add" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
@@ -61,7 +61,7 @@
 										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> </a>
 									<div class="dropdown-menu show-action" aria-labelledby="dropdownMenuLink">
 										<a class="dropdown-item dwn" href="#"
-											th:href="@{'/galerie/' + ${album.id}}">Télécharger</a> <a
+											th:href="@{'/galerie/' + ${album.id}}">[[#{telecharger}]]</a> <a
 											th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"
 											class="dropdown-item spr" href="#"
 											th:onclick="'javascript:confirmDelete(\''+ ${album.id} +'\', \'' + ${album_image.id} +'\');'">[[#{supprimer}]]</a>
@@ -92,7 +92,7 @@
 						<input class="form-control" type="hidden" th:name="nom_album"
 							th:value="${album_image.nom_album}"> <input class="form-control" type="hidden"
 							th:name="id_album" th:value="${album_image.id}"> <span
-							class="gbtn btn-file"><span>Fichier</span>
+							class="gbtn btn-file"><span>[[#{fichier}]]</span>
 							<input type="file" th:name="file" multiple> </span>
 					</div>
 					<div class="modal-footer btn-row">

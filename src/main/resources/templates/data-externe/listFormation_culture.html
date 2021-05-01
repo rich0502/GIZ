@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Données externes</title>
+	<title>[[#{donnees.externe}]]</title>
 
 	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
@@ -21,12 +21,12 @@
 				<table class="composantes-table text-center" id="myTable">
 					<thead>
 						<tr>
-							<th scope="col"><span>Code producteur</span></th>
-							<th scope="col"><span>Formation reçus</span></th>
-							<th scope="col"><span>Quelle formation</span></th>
-							<th scope="col"><span>Autre formation</span></th>
-							<th scope="col"><span>Dernier formation reçus</span></th>
-							<th scope="col"><span>Changement observer</span></th>
+							<th scope="col"><span>Code [[#{prod}]]</span></th>
+							<th scope="col"><span>[[#{form.recus}]]</span></th>
+							<th scope="col"><span>[[#{quelle}]] [[#{formation}]]</span></th>
+							<th scope="col"><span>[[#{autre}]] [[#{formation}]]</span></th>
+							<th scope="col"><span>[[#{dern}]] [[#{form.recus}]]</span></th>
+							<th scope="col"><span>[[#{chang.obs}]]</span></th>
 						</tr>
 					</thead>
 					<tbody>

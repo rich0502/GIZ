@@ -58,4 +58,16 @@ public class Info_generaleServiceImpl implements Info_generaleService{
 		return info_generaleRepository.existCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Info_generale> ListInfo_generaleAllFkt(String zone) {
+		// TODO Auto-generated method stub
+		return info_generaleRepository.ListInfo_generaleAllFkt(zone);
+	}
+
+	@Override
+	public List<Info_generale> ListInfo_generaleAllProd(String code_fkt) {
+		// TODO Auto-generated method stub
+		return info_generaleRepository.ListInfo_generaleAllProd(code_fkt);
+	}
+
 }

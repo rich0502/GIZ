@@ -56,4 +56,16 @@ public class Formation_cultureServiceImpl implements Formation_cultureService{
 		return formation_cultureRepository.existCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Formation_culture> ListFormation_cultureAllFkt(String zone) {
+		// TODO Auto-generated method stub
+		return formation_cultureRepository.ListFormation_cultureAllFkt(zone);
+	}
+
+	@Override
+	public List<Formation_culture> ListFormation_cultureAllProd(String code_fkt) {
+		// TODO Auto-generated method stub
+		return formation_cultureRepository.ListFormation_cultureAllProd(code_fkt);
+	}
+
 }

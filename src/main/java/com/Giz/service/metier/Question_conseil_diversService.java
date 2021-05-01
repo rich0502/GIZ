@@ -16,4 +16,8 @@ public interface Question_conseil_diversService {
 	
 	Optional<Question_conseil_divers> existCodeProd(String code_prod);
 
+	List<Question_conseil_divers> ListQuestion_conseil_diversAllFkt(String zone);
+
+	List<Question_conseil_divers> ListQuestion_conseil_diversAllProd(String code_fkt);
+
 }

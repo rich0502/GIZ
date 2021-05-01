@@ -71,4 +71,16 @@ public class Info_parcelleServiceImpl implements Info_parcelleService {
 		return info_parcelleRepository.existCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Info_parcelle> ListInfo_parcelleAllFkt(String zone) {
+		// TODO Auto-generated method stub
+		return info_parcelleRepository.ListInfo_parcelleAllFkt(zone);
+	}
+
+	@Override
+	public List<Info_parcelle> ListInfo_parcelleAllProd(String code_fkt) {
+		// TODO Auto-generated method stub
+		return info_parcelleRepository.ListInfo_parcelleAllProd(code_fkt);
+	}
+
 }

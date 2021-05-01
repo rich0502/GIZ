@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Données externes</title>
+	<title>[[#{donnees.externe}]]</title>
 
 	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
@@ -21,16 +21,16 @@
 				<table class="composantes-table text-center" id="myTable">
 					<thead>
 						<tr>
-							<th scope="col"><span>Code producteur</span></th>
-							<th scope="col"><span>Nombre de parcelle de producteur</span></th>
-							<th scope="col"><span>Appris culture</span></th>
-							<th scope="col"><span>Autre</span></th>
-							<th scope="col"><span>Moyen</span></th>
-							<th scope="col"><span>Technique conseillées appliquer</span></th>
-							<th scope="col"><span>changement observées</span></th>
-							<th scope="col"><span>est-ce qu'il prépare sa propre vanille?</span></th>
-							<th scope="col"><span>Vanille preparer(kg)</span></th>
-							<th scope="col"><span>pour la préparation</span></th>
+							<th scope="col"><span>Code [[#{prod}]]</span></th>
+							<th scope="col"><span>[[#{nbr.parcelle}]]</span></th>
+							<th scope="col"><span>[[#{appr.culture}]]</span></th>
+							<th scope="col"><span>[[#{autre}]]Autre</span></th>
+							<th scope="col"><span>[[#{moyen}]]Moyen</span></th>
+							<th scope="col"><span>[[#{tech.cons}]]</span></th>
+							<th scope="col"><span>[[#{chang.obs}]]</span></th>
+							<th scope="col"><span>[[#{propre.vann}]]</span></th>
+							<th scope="col"><span>[[#{vann.prep}]]</span></th>
+							<th scope="col"><span>[[#{prep}]]</span></th>
 						</tr>
 					</thead>
 					<tbody>

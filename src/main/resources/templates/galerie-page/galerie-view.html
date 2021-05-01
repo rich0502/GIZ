@@ -45,15 +45,15 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content card-body">
           <div class="modal-header">
-            <h2 class="page-title modal-title" id="exampleModalLongTitle">Nouveau titre</h2>
+            <h2 class="page-title modal-title" id="exampleModalLongTitle">[[#{nouveau}]] [[#{titre}]]</h2>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body p-modal">
-              <span class="glabel">Nom galeries</span>
+              <span class="glabel">[[#{nom}]] galeries</span>
             
-            <input class="form-control" type="text" placeholder="Nom album" th:name="nom_album">
+            <input class="form-control" type="text" th:placeholder="#{nom} + ' album'" th:name="nom_album">
           </div>
           <div class="modal-footer btn-row">
             <button type="button" class="gbtn cancel" data-dismiss="modal">[[#{annuler}]]</button>

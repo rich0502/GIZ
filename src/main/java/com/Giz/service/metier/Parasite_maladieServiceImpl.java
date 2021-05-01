@@ -60,4 +60,16 @@ public class Parasite_maladieServiceImpl implements Parasite_maladieService{
 		// TODO Auto-generated method stub
 		return parasite_maladieRepository.existCodeProd(code_prod);
 	}
+
+	@Override
+	public List<Parasite_maladie> ListParasite_maladieAllFkt(String zone) {
+		// TODO Auto-generated method stub
+		return parasite_maladieRepository.ListParasite_maladieAllFkt(zone);
+	}
+
+	@Override
+	public List<Parasite_maladie> ListParasite_maladieAllProd(String code_fkt) {
+		// TODO Auto-generated method stub
+		return parasite_maladieRepository.ListParasite_maladieAllProd(code_fkt);
+	}
 }

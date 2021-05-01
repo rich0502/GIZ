@@ -16,4 +16,8 @@ public interface Fertilisant_cultureService {
 	
 	Optional<Fertilisant_culture> existCodeProd(String code_prod);
 
+	List<Fertilisant_culture> ListFertilisant_cultureAllFkt(String zone);
+
+	List<Fertilisant_culture> ListFertilisant_cultureAllProd(String code_fkt);
+
 }

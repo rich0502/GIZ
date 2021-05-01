@@ -24,25 +24,25 @@
 			<div class="table-tracker-container indicator" id="html-content-holder" crossorigin="anonymous">
 				<table class="d-table-tracker indicator-table" id="dynamicTableTracker">
 					<tr class="">
-						<th class="col-title" rowspan="2"></th> 
-						<th class="row-field" rowspan="2"><div class="editable-field">Logique d'intervention</div></th>
-						<th class="row-field" rowspan="2"><div class="editable-field">Indicateurs objectivement vérifiables</div></th>
-						<th class="row-field" rowspan="2"><div class="editable-field">Canevas collecte validé & N°</div></th>
-						<th class="row-field" rowspan="2"><div class="editable-field">Observations</div></th>
-						<th class="row-field" rowspan="2"><div class="editable-field">Niveau de réalisation des activités</div></th>
-						<th class="row-field" rowspan="2"><div class="editable-field">Niveau d'atteinte des objectifs</div></th>
-						<th class="row-field" rowspan="2"><div class="editable-field">Clarification de l'indicateur</div></th>
-						<th class="row-field" rowspan="2"><div class="editable-field">Sources et moyens de vérification</div></th>
-						<th class="row-field" rowspan="2"><div class="editable-field">Responsables</div></th>
-						<th class="row-field" rowspan="2"><div class="editable-field">Hypothèses / Risques</div></th>
-						<th class="row-field" colspan="4"><div class="editable-field">Situation actuelle à la date du ..."</div></th>
-					</tr>
-					<tr class="">
-						<th class="row-field" ><div class="editable-field">Situation / chiffres clés</div></th>
-						<th class="row-field sexe-col" ><div class="editable-field">H</div></th>
-						<th class="row-field sexe-col" ><div class="editable-field">F</div></th>
-						<th class="row-field"><div class="editable-field">Commentaires</div></th>
-					</tr>
+							<th class="col-title" rowspan="2"></th>
+							<th class="row-field" rowspan="2"><div class="editable-field">[[#{ind.col1}]]</div></th>
+							<th class="row-field" rowspan="2"><div class="editable-field">[[#{ind.col2}]]</div></th>
+							<th class="row-field" rowspan="2"><div class="editable-field">[[#{ind.col3}]]</div></th>
+							<th class="row-field" rowspan="2"><div class="editable-field">Observations</div></th>
+							<th class="row-field" rowspan="2"><div class="editable-field">[[#{ind.col5}]]</div></th>
+							<th class="row-field" rowspan="2"><div class="editable-field">[[#{ind.col6}]]</div></th>
+							<th class="row-field" rowspan="2"><div class="editable-field">[[#{ind.col7}]]</div></th>
+							<th class="row-field" rowspan="2"><div class="editable-field">[[#{ind.col8}]]</div></th>
+							<th class="row-field" rowspan="2"><div class="editable-field">[[#{ind.col9}]]</div></th>
+							<th class="row-field" rowspan="2"><div class="editable-field">[[#{ind.col10}]]</div></th>
+							<th class="row-field" colspan="4"><div class="editable-field">[[#{ind.col11}]]</div></th>
+						</tr>
+						<tr class="">
+							<th class="row-field" ><div class="editable-field">[[#{ind.col12}]]</div></th>
+							<th class="row-field sexe-col" ><div class="editable-field">H</div></th>
+							<th class="row-field sexe-col" ><div class="editable-field">F</div></th>
+							<th class="row-field"><div class="editable-field">[[#{ind.col15}]]</div></th>
+						</tr>
 					<div th:include="indicateurWp3/protection.html" th:remove="tag"></div>					
 					<div th:include="indicateurWp3/ecole.html" th:remove="tag"></div>
 					<div th:include="indicateurWp3/developpement.html" th:remove="tag"></div>

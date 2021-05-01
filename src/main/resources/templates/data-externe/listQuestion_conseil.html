@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Données externes</title>
+	<title>[[#{donnees.externe}]]</title>
 
 	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
@@ -21,11 +21,11 @@
 				<table class="composantes-table text-center" id="myTable">
 					<thead>
 						<tr>
-							<th scope="col"><span>Code producteur</span></th>
-							<th scope="col"><span>Question pour Symrise</span></th>
-							<th scope="col"><span>Conseils donné par le conseiller rural</span></th>
-							<th scope="col"><span>Etat général de la vanille?</span></th>
-							<th scope="col"><span>Besoin d'une assistance technique?</span></th>
+							<th scope="col"><span>Code [[#{prod}]]</span></th>
+							<th scope="col"><span>[[#{quest}]]</span></th>
+							<th scope="col"><span>[[#{cons}]]</span></th>
+							<th scope="col"><span>[[#{etat}]]</span></th>
+							<th scope="col"><span>[[#{assist}]]</span></th>
 						</tr>
 					</thead>
 					<tbody>

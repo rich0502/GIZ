@@ -51,4 +51,16 @@ public class Question_conseilServiceImpl implements Question_conseilService{
 		return question_conseilRepository.existCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Question_conseil> ListQuestion_conseilAllFkt(String zone) {
+		// TODO Auto-generated method stub
+		return question_conseilRepository.ListQuestion_conseilAllFkt(zone);
+	}
+
+	@Override
+	public List<Question_conseil> ListQuestion_conseilAllProd(String code_fkt) {
+		// TODO Auto-generated method stub
+		return question_conseilRepository.ListQuestion_conseilAllProd(code_fkt);
+	}
+
 }

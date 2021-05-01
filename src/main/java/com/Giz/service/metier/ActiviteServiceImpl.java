@@ -47,4 +47,16 @@ public class ActiviteServiceImpl implements ActiviteService {
 		activiteRepository.save(activite);
 		
 	}
+
+	@Override
+	public List<Object[]> ListActiviteProd(List<String> params) {
+		// TODO Auto-generated method stub
+		return activiteRepository.ListActiviteProd(params);
+	}
+
+	@Override
+	public List<Activite> ListActiviteFind(String type_intervention, String theme_principal, String sous_theme) {
+		// TODO Auto-generated method stub
+		return activiteRepository.ListActiviteFind(type_intervention,theme_principal,sous_theme);
+	}
 }

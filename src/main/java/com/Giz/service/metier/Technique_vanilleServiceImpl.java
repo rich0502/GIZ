@@ -66,4 +66,16 @@ public class Technique_vanilleServiceImpl implements Technique_vanilleService{
 		
 	}
 
+	@Override
+	public List<Technique_vanille> ListTechnique_vanilleAllFkt(String zone) {
+		// TODO Auto-generated method stub
+		return technique_vanilleRepository.ListTechnique_vanilleAllFkt(zone);
+	}
+
+	@Override
+	public List<Technique_vanille> ListTechnique_vanilleAllProd(String code_fkt) {
+		// TODO Auto-generated method stub
+		return technique_vanilleRepository.ListTechnique_vanilleAllProd(code_fkt);
+	}
+
 }

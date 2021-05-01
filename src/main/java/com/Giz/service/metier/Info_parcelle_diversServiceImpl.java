@@ -75,4 +75,16 @@ public class Info_parcelle_diversServiceImpl implements Info_parcelle_diversServ
 		return info_parcelle_diversRepository.existCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Info_parcelle_divers> ListInfo_parcelle_diversAllFkt(String zone) {
+		// TODO Auto-generated method stub
+		return info_parcelle_diversRepository.ListInfo_parcelle_diversAllFkt(zone);
+	}
+
+	@Override
+	public List<Info_parcelle_divers> ListInfo_parcelle_diversAllProd(String code_fkt) {
+		// TODO Auto-generated method stub
+		return info_parcelle_diversRepository.ListInfo_parcelle_diversAllProd(code_fkt);
+	}
+
 }

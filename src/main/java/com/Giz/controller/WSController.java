@@ -125,7 +125,6 @@ public class WSController {
 	//private static String UPLOADED_FOLDER = "/usr/share/apache-tomcat-8.5.6/webapps/producteurs/";
 	private static String UPLOADED_FOLDER = "E:\\test/";
 	
-	@SuppressWarnings("unused")
 	private static String DOWNLOAD_FOLDER = "http://168.119.185.165:8080/producteurs/";
     
     @GetMapping("/loginUser")

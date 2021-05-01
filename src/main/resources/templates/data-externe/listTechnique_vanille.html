@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Données externes</title>
+	<title>[[#{donnees.externe}]]</title>
 
 	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
@@ -21,22 +21,22 @@
 				<table class="composantes-table text-center" id="myTable">
 					<thead>
 						<tr>
-							<th scope="col"><span>Code producteur</span></th>
-							<th scope="col"><span>Plantation Tuteurs vaovao</span></th>
-							<th scope="col"><span>Taille tuteur</span></th>
-							<th scope="col"><span>Sélection des lianes</span></th>
-							<th scope="col"><span>Plantation lianes vaovao</span></th>
-							<th scope="col"><span>Entretien canaux drainage</span></th>
-							<th scope="col"><span>Désherbage et Fauchage parcelle</span></th>
-							<th scope="col"><span>Descente et bouclage lianes</span></th>
-							<th scope="col"><span>Préparation de bouton</span></th>
-							<th scope="col"><span>Pollinisation</span></th>
-							<th scope="col"><span>Limitation de gousse</span></th>
-							<th scope="col"><span>Nettoyage lianes mortes et abimées</span></th>
-							<th scope="col"><span>Arrêt du cœur</span></th>
-							<th scope="col"><span>Nettoyage manuel des parasites</span></th>
-							<th scope="col"><span>Utilisation Bio pesticides (Ady Gasy)</span></th>
-							<th scope="col"><span>Application Compost/ Bio engrais</span></th>
+							<th scope="col"><span>Code [[#{prod}]]</span></th>
+							<th scope="col"><span>[[#{plant.tut.vao}]]</span></th>
+							<th scope="col"><span>[[#{taill}]]</span></th>
+							<th scope="col"><span>[[#{selec}]]</span></th>
+							<th scope="col"><span>[[#{plant.lian.vao}]]</span></th>
+							<th scope="col"><span>[[#{entret}]]</span></th>
+							<th scope="col"><span>[[#{desh.fauch}]]</span></th>
+							<th scope="col"><span>[[#{desc.boucl}]]</span></th>
+							<th scope="col"><span>[[#{prepa}]]</span></th>
+							<th scope="col"><span>[[#{pollin}]]</span></th>
+							<th scope="col"><span>[[#{limit}]]</span></th>
+							<th scope="col"><span>[[#{nettoy.lian}]]</span></th>
+							<th scope="col"><span>[[#{arret.coeur}]]</span></th>
+							<th scope="col"><span>[[#{nettoy.paras}]]</span></th>
+							<th scope="col"><span>[[#{util.pesti}]]</span></th>
+							<th scope="col"><span>[[#{applic.compost}]]</span></th>
 						</tr>
 					</thead>
 					<tbody>

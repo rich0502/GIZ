@@ -55,4 +55,16 @@ public class Question_conseil_diversServiceImpl implements Question_conseil_dive
 		return question_conseil_diversRepository.existCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Question_conseil_divers> ListQuestion_conseil_diversAllFkt(String zone) {
+		// TODO Auto-generated method stub
+		return question_conseil_diversRepository.ListQuestion_conseil_diversAllFkt(zone);
+	}
+
+	@Override
+	public List<Question_conseil_divers> ListQuestion_conseil_diversAllProd(String code_fkt) {
+		// TODO Auto-generated method stub
+		return question_conseil_diversRepository.ListQuestion_conseil_diversAllProd(code_fkt);
+	}
+
 }

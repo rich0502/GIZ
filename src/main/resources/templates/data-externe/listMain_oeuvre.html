@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Données externes</title>
+    <title>[[#{donnees.externe}]]</title>
 
     <head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
@@ -20,15 +20,15 @@
                 <table class="composantes-table text-center" id="myTable">
                     <thead>
                         <tr>
-                            <th scope="col"><span>Code producteur</span></th>
-                            <th scope="col"><span>Nombre employée permanent</span></th>
-                            <th scope="col"><span>employée journaliers/saisoniers</span></th>
-                            <th scope="col"><span>Nombre employée journaliers</span></th>
-                            <th scope="col"><span>payement employée journaliers</span></th>
-                            <th scope="col"><span>Mois de travail employée</span></th>
-                            <th scope="col"><span>sur quoi travaillent-ils?</span></th>
-                            <th scope="col"><span>Autre</span></th>
-                            <th scope="col"><span>Activité de travail vanille</span></th>
+                            <th scope="col"><span>Code [[#{prod}]]</span></th>
+                            <th scope="col"><span>[[#{nbr.empl.perm}]]</span></th>
+                            <th scope="col"><span>[[#{empl.journ}]]</span></th>
+                            <th scope="col"><span>[[#{nbr.empl.journ}]]</span></th>
+                            <th scope="col"><span>[[#{payem.empl.journ}]]</span></th>
+                            <th scope="col"><span>[[#{mois.trav.empl}]]</span></th>
+                            <th scope="col"><span>[[#{trav}]]</span></th>
+                            <th scope="col"><span>[[#{autre}]]Autre</span></th>
+                            <th scope="col"><span>[[#{act.trav}]]</span></th>
                         </tr>
                     </thead>
                     <tbody>

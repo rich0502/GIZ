@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Données externes</title>
+	<title>[[#{activ}]]</title>
 
 	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
@@ -21,23 +21,23 @@
 				<table class="composantes-table text-center" id="myTable">
 					<thead>
 						<tr>
-							<th scope="col"><span>Producteur present</span></th>
-							<th scope="col"><span>Producteur externe</span></th>
-							<th scope="col"><span>Participant externe</span></th>
-							<th scope="col"><span>Type intervention</span></th>
-							<th scope="col"><span>Theme principal</span></th>
-							<th scope="col"><span>Sous theme</span></th>
-							<th scope="col"><span>Date enregistrement</span></th>
-							<th scope="col"><span>Nom utilisateur</span></th>
+							<th scope="col"><span>[[#{prod.present}]]</span></th>
+							<th scope="col"><span>[[#{prod.externe}]] </span></th>
+							<th scope="col"><span>[[#{particip.externe}]]</span></th>
+							<th scope="col"><span>[[#{type.intervention}]]</span></th>
+							<th scope="col"><span>[[#{theme.principal}]]</span></th>
+							<th scope="col"><span>[[#{sous.theme}]]</span></th>
+							<th scope="col"><span>[[#{date.enreg}]]</span></th>
+							<th scope="col"><span>[[#{user.name}]]</span></th>
 							<th scope="col"><span>GPS latitude</span></th>
 							<th scope="col"><span>GPS longitude</span></th>
-							<th scope="col"><span>Formateur</span></th>
-							<th scope="col"><span>Code formateur</span></th>
-							<th scope="col"><span>Lieu formation</span></th>
+							<th scope="col"><span>[[#{formateur}]]</span></th>
+							<th scope="col"><span>Code [[#{formateur}]]</span></th>
+							<th scope="col"><span>[[#{lieu.form}]]</span></th>
 							<th scope="col"><span>Image 1</span></th>
 							<th scope="col"><span>Image 2</span></th>
 							<th scope="col"><span>Image 3</span></th>
-							<th scope="col"><span>Remarques</span></th>
+							<th scope="col"><span>[[#{remarques}]]</span></th>
 						</tr>
 					</thead>
 					<tbody>

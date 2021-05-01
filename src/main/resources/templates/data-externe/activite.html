@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>[[#{activ}]]</title>
+<head th:include="/headLinksFragment.html" th:remove="tag"></head>
+</head>
+
+<body class="stories">
+	<div th:include="/pds_header.html"></div>
+	<section class="main">
+		<div class="card">
+			<header class="composantesTable-header justify-between">
+				<h2 class="page-title">[[#{activ}]]</h2>
+				<form id="myForm" method="POST" th:action="@{/findActivite}">
+					<select id="type_intervention" class="ginput form-control" th:name="type_intervention"
+						style="width: 23%;" required>
+						<option value="">[[#{selectionner}]] [[#{type.intervention}]]</option>
+						<option value="GEC">GEC</option>
+						<option value="ECHANGE">ECHANGE</option>
+						<option value="FOCUS GROUP">FOCUS GROUP</option>
+						<option value="INDIVIDUEL">INDIVIDUEL</option>
+						<option value="AG">AG</option>
+						<option value="JOUR FIXE">JOUR FIXE</option>
+						<option value="VIDEO">VIDEO</option>
+						<option value="CEP">CEP</option>
+					</select> &emsp; <select id="theme_principal" class="ginput form-control"
+						th:name="theme_principal" style="width: 23%;">
+						<option value="">[[#{selectionner}]]
+							[[#{theme.principal}]]</option>
+						<option value="FBS">FBS</option>
+						<option value="GEC">GEC</option>
+						<option value="Post FBS">Post FBS</option>
+						<option value="CUMA">CUMA</option>
+						<option value="AGC">AGC</option>
+						<option value="Riz">Riz</option>
+						<option value="Elevage">Elevage</option>
+						<option value="Vanille">Vanille</option>
+					</select> &emsp; <select id="sous_theme" class="ginput form-control"
+						th:name="sous_theme" style="width: 23%;">
+						<option value="">[[#{selectionner}]] [[#{sous.theme}]]</option>
+					</select> &emsp;&emsp; <input class="gbtn" type="submit"
+						th:value="#{rechercher}">
+				</form>
+			</header>
+			<div class="welcome-img">
+				<div class="col-12 slideshow">
+					<div class="zoom slider">
+						<div class="item">
+							<img alt="" th:src="@{/img/back-images/fndrk-image-6.JPG}">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript">
+	$(document).ready(function() {
+	
+		$("#theme_principal").change(function() {
+		      var theme_principal = $(this).val();
+		      //alert(theme_principal);
+		      var s = '<option value="">[[#{selectionner}]] [[#{sous.theme}]]</option>';
+		   
+		      	$.ajax({
+		        url : '/Giz/getActivite',
+		        data : { "theme_principal" : theme_principal },
+		        success : function(result) {
+		        	var result = JSON.parse(result);
+		        	for (var i = 0; i < result.length; i++) {
+		        	  s += '<option value="' + result[i] + '">'+ result[i]+ '</option>';
+		        	}
+		        	$('#sous_theme').html(s);
+		        }
+		      });
+				//reset sous_theme
+	     	$('#sous_theme').html(s);
+		   });
+		   });
+</script>
+	
+</body>
+
+</html>

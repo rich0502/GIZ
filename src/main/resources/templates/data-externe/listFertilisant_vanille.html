@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Données externes</title>
+	<title>[[#{donnees.externe}]]</title>
 
 	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
@@ -21,12 +21,12 @@
 				<table class="composantes-table text-center" id="myTable">
 					<thead>
 						<tr>
-							<th scope="col"><span>Code producteur</span></th>
-							<th scope="col"><span>Utilisation fertilisant</span></th>
-							<th scope="col"><span>Type de fertilisant utilisé</span></th>
-							<th scope="col"><span>Autre</span></th>
-							<th scope="col"><span>Quantité de produit apporté à chaque utilisation</span></th>
-							<th scope="col"><span>Nombre d'application par an</span></th>
+							<th scope="col"><span>Code [[#{prod}]]</span></th>
+							<th scope="col"><span>[[#{utilisation.fertilisant}]]</span></th>
+							<th scope="col"><span>[[#{type.fertilisant}]]</span></th>
+							<th scope="col"><span>[[#{autre}]]</span></th>
+							<th scope="col"><span>[[#{quantite.prod}]]</span></th>
+							<th scope="col"><span>[[#{nbr.app.an}]]</span></th>
 						</tr>
 					</thead>
 					<tbody>

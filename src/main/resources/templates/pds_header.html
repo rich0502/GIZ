@@ -1,4 +1,3 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" type="text/css"
 	th:href="@{/flag-icon-css/flag-icon.min.css}" />
 <!-- <head><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script></head> -->
@@ -25,7 +24,7 @@
 				class="pds-btn" th:href="@{/storieList}"><span
 				class="menu-item-label">[[#{menu.stories}]]</span></a> <a
 				class="pds-btn" th:href="@{/listbeneficiaire}"><span
-				class="menu-item-label">BENEFICIAIRES</span></a>
+				class="menu-item-label">[[#{menu.beneficiaires}]]</span></a>
 			<!-- <a class="pds-btn" th:href="@{/template}"><span class="menu-item-label">[[#{menu.template}]]</span></a> -->
 		</div>
 		<div class="user-menu">
@@ -46,7 +45,7 @@
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 					<a class="dropdown-item pds-profil" th:href="@{/profilForm}">[[#{profil}]]</a>
 					<a class="dropdown-item pds-profil pds-profil-users"
-						th:href="@{/userForm}">Utilisateurs</a> <a
+						th:href="@{/userForm}">[[#{users}]]</a> <a
 						class="dropdown-item pds-profil pds-canevas "
 						th:href="@{/template}">[[#{menu.template}]]</a> <a
 						class="dropdown-item pds-profil pds-manage-content"
@@ -54,7 +53,9 @@
 						class="dropdown-item pds-profil pds-manage-content"
 						th:href="@{/historique}">[[#{historique}]]</a><a
 						class="dropdown-item pds-profil pds-manage-content"
-						th:href="@{/dataExterne}">[[#{donnees.externe}]]</a><a
+						th:href="@{/dataExterne}">[[#{donnees.externe}]]</a>
+						<a class="dropdown-item pds-profil pds-manage-content"
+						th:href="@{/activite}">[[#{activ}]]</a><a
 						class="dropdown-item pds-profil pds-manage-content"
 						href="http://­168.119.185.165:8080/­documents/FDK2.apk">[[#{telecharger}]]
 						APK</a> <a class="dropdown-item pds-logout" th:href="@{/logout}">[[#{logout}]]</a>

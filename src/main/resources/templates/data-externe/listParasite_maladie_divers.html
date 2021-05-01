@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Données externes</title>
+	<title>[[#{donnees.externe}]]</title>
 
 	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
@@ -21,19 +21,19 @@
 				<table class="composantes-table text-center" id="myTable">
 					<thead>
 						<tr>
-							<th scope="col"><span>Code producteur</span></th>
-							<th scope="col"><span>Constate</span></th>
-							<th scope="col"><span>Nom</span></th>
-							<th scope="col"><span>Periode</span></th>
-							<th scope="col"><span>Pourcentage</span></th>
-							<th scope="col"><span>Traitement</span></th>
-							<th scope="col"><span>Mecanique</span></th>
-							<th scope="col"><span>Chimique</span></th>
-							<th scope="col"><span>Quantité Chimique</span></th>
-							<th scope="col"><span>Biologique</span></th>
-							<th scope="col"><span>Autre</span></th>
-							<th scope="col"><span>Frequence</span></th>
-							<th scope="col"><span>Effets</span></th>
+							<th scope="col"><span>Code [[#{prod}]]</span></th>
+							<th scope="col"><span>[[#{constat}]]</span></th>
+							<th scope="col"><span>[[#{nom}]]</span></th>
+							<th scope="col"><span>[[#{period}]]</span></th>
+							<th scope="col"><span>[[#{pourc}]]</span></th>
+							<th scope="col"><span>[[#{trait}]]</span></th>
+							<th scope="col"><span>[[#{mec}]]</span></th>
+							<th scope="col"><span>[[#{chim}]]</span></th>
+							<th scope="col"><span>[[#{quant}]]</span></th>
+							<th scope="col"><span>[[#{bio}]]</span></th>
+							<th scope="col"><span>[[#{autre}]]</span></th>
+							<th scope="col"><span>[[#{freq}]]</span></th>
+							<th scope="col"><span>[[#{effet}]]</span></th>
 						</tr>
 					</thead>
 					<tbody>

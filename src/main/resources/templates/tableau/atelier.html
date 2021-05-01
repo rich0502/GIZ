@@ -4,9 +4,9 @@
 		<tr>
 			<th scope="col"><span>Code village</span></th>
 			<th scope="col"><span>Village</span></th>
-			<th scope="col"><span>Hommes</span></th>
-			<th scope="col"><span>Femmes</span></th>
-			<th scope="col"><span>Sous-total</span></th>
+			<th scope="col"><span>[[#{homme}]]</span></th>
+			<th scope="col"><span>[[#{femme}]]</span></th>
+			<th scope="col"><span>[[#{sous.total}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -32,8 +32,11 @@
 		<tr>
 			<th scope="col"><span>Code village</span></th>
 			<th scope="col"><span>Village</span></th>
-			<th scope="col"><span th:text="${tpsGenre.![[3]][0] == 'H'? 'Homme' : 'Femme'}"></span></th>
-			<th scope="col"><span>Visualiser</span></th>
+			<th scope="col">
+				<span th:if="${tpsGenre.![[3]][0] == 'H'}">[[#{homme}]]</span>
+	    		<span th:unless="${tpsGenre.![[3]][0] == 'H'}">[[#{femme}]]</span>
+			</th>
+			<th scope="col"><span>[[#{visualiser}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -65,8 +68,11 @@
 		<tr>
 			<th scope="col"><span>Code village</span></th>
 			<th scope="col"><span>Village</span></th>
-			<th scope="col"><span th:text="${tpsGenreWP3.![[3]][0] == 'H'? 'Homme' : 'Femme'}"></span></th>
-			<th scope="col"><span>Visualiser</span></th>
+			<th scope="col">
+				<span th:if="${tpsGenreWP3.![[3]][0] == 'H'}">[[#{homme}]]</span>
+	    		<span th:unless="${tpsGenreWP3.![[3]][0] == 'H'}">[[#{femme}]]</span>
+			</th>
+			<th scope="col"><span>[[#{visualiser}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -97,7 +103,7 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>Village</span></th>
-			<th scope="col"><span>Homme</span></th>
+			<th scope="col"><span>[[#{homme}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -118,7 +124,7 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>Village</span></th>
-			<th scope="col"><span>Femme</span></th>
+			<th scope="col"><span>[[#{femme}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -140,10 +146,10 @@
 		<tr>
 			<th scope="col"><span>Code village</span></th>
 			<th scope="col"><span>Village</span></th>
-			<th scope="col"><span>Homme</span></th>
-			<th scope="col"><span>Femme</span></th>
-			<th scope="col"><span>Sous Total</span></th>
-			<th scope="col"><span>Visualiser</span></th>
+			<th scope="col"><span>[[#{homme}]]</span></th>
+			<th scope="col"><span>[[#{femme}]]</span></th>
+			<th scope="col"><span>[[#{sous.total}]]</span></th>
+			<th scope="col"><span>[[#{visualiser}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -177,9 +183,9 @@
 		<tr>
 			<th scope="col"><span>Code village</span></th>
 			<th scope="col"><span>Village</span></th>
-			<th scope="col"><span>Homme</span></th>
-			<th scope="col"><span>Femme</span></th>
-			<th scope="col"><span>Sous Total</span></th>
+			<th scope="col"><span>[[#{homme}]]</span></th>
+			<th scope="col"><span>[[#{femme}]]</span></th>
+			<th scope="col"><span>[[#{sous.total}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -207,10 +213,10 @@
 		<tr>
 			<th scope="col"><span>Code village</span></th>
 			<th scope="col"><span>Village</span></th>
-			<th scope="col"><span>Homme</span></th>
-			<th scope="col"><span>Femme</span></th>
-			<th scope="col"><span>Sous Total</span></th>
-			<th scope="col"><span>Visualiser</span></th>
+			<th scope="col"><span>[[#{homme}]]</span></th>
+			<th scope="col"><span>[[#{femme}]]</span></th>
+			<th scope="col"><span>[[#{sous.total}]]</span></th>
+			<th scope="col"><span>[[#{visualiser}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -244,8 +250,11 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>Communes</span></th>
-			<th scope="col"><span th:text="${tpsCom.![[2]][0] == 'H'? 'Homme' : 'Femme'}"></span></th>
-			<th scope="col"><span>Visualiser</span></th>
+			<th scope="col">
+				<span th:if="${tpsCom.![[2]][0] == 'H'}">[[#{homme}]]</span>
+	    		<span th:unless="${tpsCom.![[2]][0] == 'H'}">[[#{femme}]]</span>
+			</th>
+			<th scope="col"><span>[[#{visualiser}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -274,8 +283,11 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>Communes</span></th>
-			<th scope="col"><span th:text="${tpsComWP3.![[2]][0] == 'H'? 'Homme' : 'Femme'}"></span></th>
-			<th scope="col"><span>Visualiser</span></th>
+			<th scope="col">
+				<span th:if="${tpsComWP3.![[2]][0] == 'H'}">[[#{homme}]]</span>
+	    		<span th:unless="${tpsComWP3.![[2]][0] == 'H'}">[[#{femme}]]</span>
+			</th>
+			<th scope="col"><span>[[#{visualiser}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -304,7 +316,7 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>Commune</span></th>
-			<th scope="col"><span>Homme</span></th>
+			<th scope="col"><span>[[#{homme}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -325,7 +337,7 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>Commune</span></th>
-			<th scope="col"><span>Femme</span></th>
+			<th scope="col"><span>[[#{femme}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -346,10 +358,10 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>Communes</span></th>
-			<th scope="col"><span>Homme</span></th>
-			<th scope="col"><span>Femme</span></th>
-			<th scope="col"><span>Sous Total</span></th>
-			<th scope="col"><span>Visualiser</span></th>
+			<th scope="col"><span>[[#{homme}]]</span></th>
+			<th scope="col"><span>[[#{femme}]]</span></th>
+			<th scope="col"><span>[[#{sous.total}]]</span></th>
+			<th scope="col"><span>[[#{visualiser}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -380,9 +392,9 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>Communes</span></th>
-			<th scope="col"><span>Homme</span></th>
-			<th scope="col"><span>Femme</span></th>
-			<th scope="col"><span>Sous Total</span></th>
+			<th scope="col"><span>[[#{homme}]]</span></th>
+			<th scope="col"><span>[[#{femme}]]</span></th>
+			<th scope="col"><span>[[#{sous.total}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -407,10 +419,10 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>Communes</span></th>
-			<th scope="col"><span>Homme</span></th>
-			<th scope="col"><span>Femme</span></th>
-			<th scope="col"><span>Sous Total</span></th>
-			<th scope="col"><span>Visualiser</span></th>
+			<th scope="col"><span>[[#{homme}]]</span></th>
+			<th scope="col"><span>[[#{femme}]]</span></th>
+			<th scope="col"><span>[[#{sous.total}]]</span></th>
+			<th scope="col"><span>[[#{visualiser}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -442,8 +454,11 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>District</span></th>
-			<th scope="col"><span th:text="${tpsDist.![[2]][0] == 'H'? 'Homme' : 'Femme'}"></span></th>
-			<th scope="col"><span>Visualiser</span></th>
+			<th scope="col">
+				<span th:if="${tpsDist.![[2]][0] == 'H'}">[[#{homme}]]</span>
+	    		<span th:unless="${tpsDist.![[2]][0] == 'H'}">[[#{femme}]]</span>
+			</th>
+			<th scope="col"><span>[[#{visualiser}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -472,8 +487,11 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>District</span></th>
-			<th scope="col"><span th:text="${tpsDistWP3.![[2]][0] == 'H'? 'Homme' : 'Femme'}"></span></th>
-			<th scope="col"><span>Visualiser</span></th>
+			<th scope="col">
+				<span th:if="${tpsDistWP3.![[2]][0] == 'H'}">[[#{homme}]]</span>
+	    		<span th:unless="${tpsDistWP3.![[2]][0] == 'H'}">[[#{femme}]]</span>
+			</th>
+			<th scope="col"><span>[[#{visualiser}]]</span></th>
 			
 		</tr>
 	</thead>
@@ -504,7 +522,7 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>District</span></th>
-			<th scope="col"><span>Homme</span></th>
+			<th scope="col"><span>[[#{homme}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -525,7 +543,7 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>District</span></th>
-			<th scope="col"><span>Femme</span></th>
+			<th scope="col"><span>[[#{femme}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -546,10 +564,10 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>District</span></th>
-			<th scope="col"><span>Homme</span></th>
-			<th scope="col"><span>Femme</span></th>
-			<th scope="col"><span>Sous Total</span></th>
-			<th scope="col"><span>Visualiser</span></th>
+			<th scope="col"><span>[[#{homme}]]</span></th>
+			<th scope="col"><span>[[#{femme}]]</span></th>
+			<th scope="col"><span>[[#{sous.total}]]</span></th>
+			<th scope="col"><span>[[#{visualiser}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -580,9 +598,9 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>District</span></th>
-			<th scope="col"><span>Homme</span></th>
-			<th scope="col"><span>Femme</span></th>
-			<th scope="col"><span>Sous Total</span></th>
+			<th scope="col"><span>[[#{homme}]]</span></th>
+			<th scope="col"><span>[[#{femme}]]</span></th>
+			<th scope="col"><span>[[#{sous.total}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -607,10 +625,10 @@
 	<thead>
 		<tr>
 			<th scope="col"><span>District</span></th>
-			<th scope="col"><span>Homme</span></th>
-			<th scope="col"><span>Femme</span></th>
-			<th scope="col"><span>Sous Total</span></th>
-			<th scope="col"><span>Visualiser</span></th>
+			<th scope="col"><span>[[#{homme}]]</span></th>
+			<th scope="col"><span>[[#{femme}]]</span></th>
+			<th scope="col"><span>[[#{sous.total}]]</span></th>
+			<th scope="col"><span>[[#{visualiser}]]</span></th>
 		</tr>
 	</thead>
 	<tbody>

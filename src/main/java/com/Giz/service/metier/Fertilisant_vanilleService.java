@@ -15,4 +15,8 @@ public interface Fertilisant_vanilleService {
 	
 	Optional<Fertilisant_vanille> existCodeProd(String code_prod);
 
+	List<Fertilisant_vanille> ListFertilisant_vanilleAllFkt(String zone);
+
+	List<Fertilisant_vanille> ListFertilisant_vanilleAllProd(String code_fkt);
+
 }

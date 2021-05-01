@@ -8,13 +8,13 @@
 
 &emsp;
 <select id="data" class="ginput form-control" th:name="data" style="width: 30%;">
-  <option value="">[[#{selectionner}]] données externe</option>
+  <option value="">[[#{selectionner}]] [[#{donnees.externe}]]</option>
 </select>
 
 &emsp;
 <select id="zone" class="ginput form-control" th:name="zone" style="width: 15%;">
 	<option value="">[[#{selectionner}]] zone</option>
-	<option value="Tout">Tout</option>
+	<option value="Tout">[[#{tout}]]</option>
 	<option th:each="ob:${zoneList}" th:value="${ob[0]}" th:text="${'Zone ' + ob[0]}"></option>
 </select>
 
@@ -25,7 +25,7 @@
 
 &emsp;
 <select id="code_prod" class="ginput form-control" th:name="code_prod" style="width: 30%;">
-  <option value="">[[#{selectionner}]] producteur</option>
+  <option value="">[[#{selectionner}]] [[#{prod}]]</option>
 </select>
 
 &emsp;&emsp;
@@ -39,7 +39,7 @@
 		$("#suivi").change(function() {
 		      var suivi = $(this).val();
 		      //alert(suivi);
-		      var s = '<option value="">[[#{selectionner}]] données externe</option>';
+		      var s = '<option value="">[[#{selectionner}]] [[#{donnees.externe}]]</option>';
 		   
 		      	$.ajax({
 		        url : '/Giz/getData',
@@ -58,8 +58,8 @@
 	
 	   $("#zone").change(function() {
 	      var zone = $(this).val();
-	      var s = '<option value="">[[#{selectionner}]] fokotany</option>';
-	       var t = '<option value="">[[#{selectionner}]] producteur</option>';
+	      var s = '<option value="">[[#{selectionner}]] fokotany</option><option value="Tout">[[#{tout}]]</option>';
+	       var t = '<option value="">[[#{selectionner}]] producteur</option><option value="Tout">[[#{tout}]]</option>';
 	   
 	      	$.ajax({
 	        url : '/Giz/getFokontany',
@@ -82,7 +82,7 @@
 	$("#code_fkt").change(function() {
 	      var code_fkt = $(this).val();
 	      //alert(code_fkt);
-	      var s = '<option value="">[[#{selectionner}]] producteur</option>';
+	      var s = '<option value="">[[#{selectionner}]] producteur</option><option value="Tout">[[#{tout}]]</option>';
 	     
 	      	$.ajax({
 	        url : '/Giz/getProd',

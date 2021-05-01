@@ -55,4 +55,16 @@ public class Fertilisant_cultureServiceImpl implements Fertilisant_cultureServic
 		return fertilisant_cultureRepository.existCodeProd(code_prod);
 	}
 
+	@Override
+	public List<Fertilisant_culture> ListFertilisant_cultureAllFkt(String zone) {
+		// TODO Auto-generated method stub
+		return fertilisant_cultureRepository.ListFertilisant_cultureAllFkt(zone);
+	}
+
+	@Override
+	public List<Fertilisant_culture> ListFertilisant_cultureAllProd(String code_fkt) {
+		// TODO Auto-generated method stub
+		return fertilisant_cultureRepository.ListFertilisant_cultureAllProd(code_fkt);
+	}
+
 }

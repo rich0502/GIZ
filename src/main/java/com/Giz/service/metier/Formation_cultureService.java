@@ -16,4 +16,8 @@ public interface Formation_cultureService {
 	
 	Optional<Formation_culture> existCodeProd(String code_prod);
 
+	List<Formation_culture> ListFormation_cultureAllFkt(String zone);
+
+	List<Formation_culture> ListFormation_cultureAllProd(String code_fkt);
+
 }

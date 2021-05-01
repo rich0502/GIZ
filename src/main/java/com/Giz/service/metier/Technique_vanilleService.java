@@ -18,4 +18,8 @@ public interface Technique_vanilleService {
 			String desherbFaush, String prepaBouton, String pollinisation, String limitGousse, String nettoyMort, String arretCoeur, String nettoyaParasit,
 			String adyGasy, String appliCompo);
 
+	List<Technique_vanille> ListTechnique_vanilleAllFkt(String zone);
+
+	List<Technique_vanille> ListTechnique_vanilleAllProd(String code_fkt);
+
 }

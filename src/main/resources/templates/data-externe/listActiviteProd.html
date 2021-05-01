@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Détails producteur</title>
+	<title>[[#{prod}]]</title>
 
 	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
@@ -20,11 +20,15 @@
 				<thead>
 					<tr>
 						<th scope="col"><span th:text="*{etat_prod}"></span></th>
+						<th scope="col"><span>[[#{genre}]]</span></th>
+						<th scope="col"><span>[[#{naissance}]]</span></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="p : ${list_prod}">
-						<td th:text="${p}"></td>
+						<td th:text="${p[0]}"></td>
+						<td th:text="${p[1]}"></td>
+						<td th:text="${p[2]}"></td>
 					</tr>
 				</tbody>
 			</table>
