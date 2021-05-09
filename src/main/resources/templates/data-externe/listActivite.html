@@ -2,107 +2,108 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>[[#{activ}]]</title>
+  <title>[[#{activ}]]</title>
 
-	<head th:include="/headLinksFragment.html" th:remove="tag"></head>
+  <head th:include="/headLinksFragment.html" th:remove="tag"></head>
 </head>
 
 <body class="stories">
-	<div th:include="/pds_header.html"></div>
-	<section class="main">
-		<div class="card">
-			<header class="composantesTable-header justify-between">
-				<h2 class="page-title">ACTIVITES</h2>
-				<button type="button" name="btnExport" id="btnExport" style="margin-left: 960px;"
-					class="gbtn">[[#{exporter}]]</button>
-			</header>
-			<div id="html-content-holder">
-			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-				<table class="composantes-table text-center" id="myTable">
-					<thead>
-						<tr>
-							<th scope="col"><span>[[#{prod.present}]]</span></th>
-							<th scope="col"><span>[[#{prod.externe}]] </span></th>
-							<th scope="col"><span>[[#{particip.externe}]]</span></th>
-							<th scope="col"><span>[[#{type.intervention}]]</span></th>
-							<th scope="col"><span>[[#{theme.principal}]]</span></th>
-							<th scope="col"><span>[[#{sous.theme}]]</span></th>
-							<th scope="col"><span>[[#{date.enreg}]]</span></th>
-							<th scope="col"><span>[[#{user.name}]]</span></th>
-							<th scope="col"><span>GPS latitude</span></th>
-							<th scope="col"><span>GPS longitude</span></th>
-							<th scope="col"><span>[[#{formateur}]]</span></th>
-							<th scope="col"><span>Code [[#{formateur}]]</span></th>
-							<th scope="col"><span>[[#{lieu.form}]]</span></th>
-							<th scope="col"><span>Image 1</span></th>
-							<th scope="col"><span>Image 2</span></th>
-							<th scope="col"><span>Image 3</span></th>
-							<th scope="col"><span>[[#{remarques}]]</span></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="b : ${activite}">
-							<td>
-								<form method="GET" th:action="@{/listActiviteProd}">
-									<input type="hidden" th:name="ls_prod" th:id="ls_prod"
-										th:value="${b.prod_present}" />
-									<input type="hidden" th:name="etat_prod" th:id="etat_prod"
-										value="Producteur present" />
-									<button th:text="${(#strings.arraySplit(b.prod_present,',')).length}"
-										type="submit"></button>
-								</form>
-							</td>
-							<td>
-								<form method="GET" th:action="@{/listActiviteProd}">
-									<input type="hidden" th:name="ls_prod" th:id="ls_prod"
-										th:value="${b.prod_externe}" />
-									<input type="hidden" th:name="etat_prod" th:id="etat_prod"
-										value="Producteur externe" />
-									<button th:text="${(#strings.arraySplit(b.prod_externe,',')).length}"
-										type="submit"></button>
-								</form>
-							</td>
-							<td>
-								<form method="GET" th:action="@{/listActiviteProd}">
-									<input type="hidden" th:name="ls_prod" th:id="ls_prod"
-										th:value="${b.participant_externe}" />
-									<input type="hidden" th:name="etat_prod" th:id="etat_prod"
-										value="Participant externe" />
-									<button th:text="${(#strings.arraySplit(b.participant_externe,',')).length}"
-										type="submit"></button>
-								</form>
-							</td>
-							<td th:text="${b.type_intervention}"></td>
-							<td th:text="${b.theme_principal}"></td>
-							<td th:text="${b.sous_theme}"></td>
-							<td th:text="${b.date_enreg}"></td>
-							<td th:text="${b.nom_utilisateur}"></td>
-							<td th:text="${b.gps_lat}"></td>
-							<td th:text="${b.gps_long}"></td>
-							<td th:text="${b.formateur}"></td>
-							<td th:text="${b.code_formateur}"></td>
-							<td th:text="${b.lieu_formation}"></td>
-							<td th:text="${b.image1}"></td>
-							<td th:text="${b.image2}"></td>
-							<td th:text="${b.image3}"></td>
-							<td th:text="${b.remarques}"></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</section>
-	<script type="text/javascript">
-		$("#btnExport").click(function (e) {
-			let file = new Blob([$('#html-content-holder').html()], { type: "application/vnd.ms-excel" });
-			let url = URL.createObjectURL(file);
-			let a = $("<a />", {
-				href: url,
-				download: "filename.xls"
-			}).appendTo("body").get(0).click();
-			e.preventDefault();
-		});
-	</script>
+  <div th:include="/pds_header.html"></div>
+  <section class="main">
+    <div class="card">
+      <header class="composantesTable-header justify-between">
+        <h2 class="page-title">ACTIVITES</h2>
+        <button type="button" name="btnExport" id="btnExport" style="margin-left: 960px;"
+          class="gbtn">[[#{exporter}]]</button>
+      </header>
+      <div id="html-content-holder">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <table class="composantes-table text-center" id="myTable">
+          <thead>
+            <tr>
+              <th scope="col"><span>action</span></th>
+              <th scope="col"><span>[[#{prod.present}]]</span></th>
+              <th scope="col"><span>[[#{prod.externe}]] </span></th>
+              <th scope="col"><span>[[#{particip.externe}]]</span></th>
+              <th scope="col"><span>[[#{type.intervention}]]</span></th>
+              <th scope="col"><span>[[#{theme.principal}]]</span></th>
+              <th scope="col"><span>[[#{sous.theme}]]</span></th>
+              <th scope="col"><span>[[#{date.enreg}]]</span></th>
+              <th scope="col"><span>[[#{user.name}]]</span></th>
+              <th scope="col"><span>GPS latitude</span></th>
+              <th scope="col"><span>GPS longitude</span></th>
+              <th scope="col"><span>[[#{formateur}]]</span></th>
+              <th scope="col"><span>Code [[#{formateur}]]</span></th>
+              <th scope="col"><span>[[#{lieu.form}]]</span></th>
+              <th scope="col"><span>Image 1</span></th>
+              <th scope="col"><span>Image 2</span></th>
+              <th scope="col"><span>Image 3</span></th>
+              <th scope="col"><span>[[#{remarques}]]</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="b : ${activite}">
+              <td>
+                <form method="GET" th:action="@{/exportActivite}">
+                  <input type="hidden" th:name="prod_present" th:id="prod_present" th:value="${b.prod_present}" />
+                  <input type="hidden" th:name="prod_externe" th:id="prod_externe" th:value="${b.prod_externe}" />
+                  <input type="hidden" th:name="participant_externe" th:id="participant_externe" th:value="${b.participant_externe}" />
+                  <button type="submit">[[#{afficher}]]</button>
+                </form>
+              </td>
+              <td>
+                <form method="GET" th:action="@{/listActiviteProd}">
+                  <input type="hidden" th:name="ls_prod" th:id="ls_prod" th:value="${b.prod_present}" />
+                  <input type="hidden" th:name="etat_prod" th:id="etat_prod" value="Producteur present" />
+                  <button th:text="${(#strings.arraySplit(b.prod_present,',')).length}" type="submit"></button>
+                </form>
+              </td>
+              <td>
+                <form method="GET" th:action="@{/listActiviteProd}">
+                  <input type="hidden" th:name="ls_prod" th:id="ls_prod" th:value="${b.prod_externe}" />
+                  <input type="hidden" th:name="etat_prod" th:id="etat_prod" value="Producteur externe" />
+                  <button th:text="${(#strings.arraySplit(b.prod_externe,',')).length}" type="submit"></button>
+                </form>
+              </td>
+              <td>
+                <form method="GET" th:action="@{/listActiviteProd}">
+                  <input type="hidden" th:name="ls_prod" th:id="ls_prod" th:value="${b.participant_externe}" />
+                  <input type="hidden" th:name="etat_prod" th:id="etat_prod" value="Participant externe" />
+                  <button th:text="${(#strings.arraySplit(b.participant_externe,',')).length}" type="submit"></button>
+                </form>
+              </td>
+              <td th:text="${b.type_intervention}"></td>
+              <td th:text="${b.theme_principal}"></td>
+              <td th:text="${b.sous_theme}"></td>
+              <td th:text="${b.date_enreg}"></td>
+              <td th:text="${b.nom_utilisateur}"></td>
+              <td th:text="${b.gps_lat}"></td>
+              <td th:text="${b.gps_long}"></td>
+              <td th:text="${b.formateur}"></td>
+              <td th:text="${b.code_formateur}"></td>
+              <td th:text="${b.lieu_formation}"></td>
+              <td th:text="${b.image1}"></td>
+              <td th:text="${b.image2}"></td>
+              <td th:text="${b.image3}"></td>
+              <td th:text="${b.remarques}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  
+  <script type="text/javascript">
+    $("#btnExport").click(function (e) {
+      let file = new Blob([$('#html-content-holder').html()], { type: "application/vnd.ms-excel" });
+      let url = URL.createObjectURL(file);
+      let a = $("<a />", {
+        href: url,
+        download: "filename.xls"
+      }).appendTo("body").get(0).click();
+      e.preventDefault();
+    });
+  </script>
 </body>
 
 </html>

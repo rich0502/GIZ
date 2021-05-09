@@ -165,7 +165,25 @@ public class DataExterneController {
 		model.addAttribute("activite", activite);
 		return "data-externe/listActivite";
 	}
-	
+
+	@RequestMapping("/exportActivite")
+	public String exportActivite(@RequestParam("prod_present") String prod_present,@RequestParam("prod_externe") String prod_externe,
+			@RequestParam("participant_externe") String participant_externe
+			,Model model) {
+		//String[] params = ls_prod.split(",");
+		//String replaceString = ls_prod.replaceAll("\\s+", "");
+		List<String> params1 = new ArrayList<String>(Arrays.asList(prod_present.split(",")));
+		List<String> params2 = new ArrayList<String>(Arrays.asList(prod_externe.split(",")));
+		List<String> params3 = new ArrayList<String>(Arrays.asList(participant_externe.split(",")));
+		List<Object[]> list1 = activiteService.ListActiviteProd(params1);
+		List<Object[]> list2 = activiteService.ListActiviteProd(params2);
+		List<Object[]> list3 = activiteService.ListActiviteProd(params3);
+		model.addAttribute("list1", list1);
+		model.addAttribute("list2", list2);
+		model.addAttribute("list3", list3);
+		return "data-externe/listActiviteProdExport";
+	}
+
 	@GetMapping("/getActivite")
 	public @ResponseBody String getActivite(@RequestParam String theme_principal)
 	{
