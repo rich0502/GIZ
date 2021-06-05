@@ -82,9 +82,9 @@
               <td th:text="${b.formateur}"></td>
               <td th:text="${b.code_formateur}"></td>
               <td th:text="${b.lieu_formation}"></td>
-              <td th:text="${b.image1}"></td>
-              <td th:text="${b.image2}"></td>
-              <td th:text="${b.image3}"></td>
+              <td><img alt="" th:src="@{${b.image1}}" width=100 height=70/></td>
+              <td><img alt="" th:src="@{${b.image2}}" width=100 height=70/></td>
+              <td><img alt="" th:src="@{${b.image3}}" width=100 height=70/></td>
               <td th:text="${b.remarques}"></td>
             </tr>
           </tbody>

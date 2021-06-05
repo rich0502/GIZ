@@ -590,6 +590,7 @@ public class AnalysesController {
 					tpsGenre = validerService.ListTableauCount(debut_date, fin, params, genre, canevas);
 				}
 			}
+			break;
 		case "34":
 			nameCanevas = "Producteur";
 			canevas = "Producteur";
@@ -618,19 +619,19 @@ public class AnalysesController {
 			// ayant un champ nom_prenom count
 			if (genre.isEmpty()) {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDistAll = validerService.ListTableauDistAllCount(debut_date, fin, canevas);
+					tpsDistAll = validerService.ListTableauDistAllCountNoDate(canevas);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsComAll = validerService.ListTableauCommuneAllCount(debut_date, fin, canevas);
+					tpsComAll = validerService.ListTableauCommuneAllCountNoDate(canevas);
 				} else {
-					tpsGenreAll = validerService.ListTableauAllCount(debut_date, fin, params, canevas);
+					tpsGenreAll = validerService.ListTableauAllCountNoDate(params, canevas);
 				}
 			} else {
 				if (subdivision.equalsIgnoreCase("district")) {
-					tpsDist = validerService.ListTableauDistCount(debut_date, fin, genre, canevas);
+					tpsDist = validerService.ListTableauDistCountNoDate(genre, canevas);
 				} else if (subdivision.equalsIgnoreCase("commune")) {
-					tpsCom = validerService.ListTableauCommuneCount(debut_date, fin, genre, canevas);
+					tpsCom = validerService.ListTableauCommuneCountNoDate(genre, canevas);
 				} else {
-					tpsGenre = validerService.ListTableauCount(debut_date, fin, params, genre, canevas);
+					tpsGenre = validerService.ListTableauCountNoDate(params, genre, canevas);
 				}
 			}
 			break;

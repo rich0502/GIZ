@@ -42,61 +42,61 @@ public interface Wp3ActivEcoJeuneRepository extends JpaRepository<Wp3ActivEcoJeu
 	@Query(value = "SELECT e.date_fin_frm as x,count(e.nom_prenom) as y FROM Wp3_activ_eco_jeune e WHERE e.date_fin_frm BETWEEN ?1 AND ?2 GROUP BY e.date_fin_frm ORDER BY e.date_fin_frm ASC", nativeQuery = true)
 	List<Object[]> TpsData(Date debut_date, Date fin_date);
 
-	@Query(value = "SELECT village.code_village,village.village,count(wp3_activ_eco_jeune.sexe) as nbr, wp3_activ_eco_jeune.sexe FROM"
-			+ " village,wp3_activ_eco_jeune WHERE wp3_activ_eco_jeune.sexe=?4 AND village.code_village=wp3_activ_eco_jeune.code_village AND wp3_activ_eco_jeune.code_village "
+	@Query(value = "SELECT village.code_village,village.village,count(upper(wp3_activ_eco_jeune.sexe)) as nbr, upper(wp3_activ_eco_jeune.sexe) FROM"
+			+ " village,wp3_activ_eco_jeune WHERE upper(wp3_activ_eco_jeune.sexe)=?4 AND village.code_village=wp3_activ_eco_jeune.code_village AND wp3_activ_eco_jeune.code_village "
 			+ " IN (null, ?3) AND wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n"
-			+ "GROUP BY village.code_village,village.village, wp3_activ_eco_jeune.sexe", nativeQuery = true)
+			+ "GROUP BY village.code_village,village.village, upper(wp3_activ_eco_jeune.sexe)", nativeQuery = true)
 	List<Object[]> TableData(Date debut_date, Date fin_date, List<String> params, String sexe);
 
 	@Query(value = "select hommes.code_village,hommes.village,hommes.homme,femmes.femme\r\n"
-			+ "	from (SELECT village.code_village,village.village,count(wp3_activ_eco_jeune.sexe) as homme FROM"
-			+ "	 village,wp3_activ_eco_jeune WHERE wp3_activ_eco_jeune.sexe= 'H' AND village.code_village=wp3_activ_eco_jeune.code_village AND wp3_activ_eco_jeune.code_village \r\n"
+			+ "	from (SELECT village.code_village,village.village,count(upper(wp3_activ_eco_jeune.sexe)) as homme FROM"
+			+ "	 village,wp3_activ_eco_jeune WHERE upper(wp3_activ_eco_jeune.sexe)= 'H' AND village.code_village=wp3_activ_eco_jeune.code_village AND wp3_activ_eco_jeune.code_village \r\n"
 			+ " IN (null, ?3) AND wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n"
 			+ "GROUP BY village.code_village,village.village) as hommes,\r\n"
-			+ "	(SELECT village.code_village,village.village,count(wp3_activ_eco_jeune.sexe) as femme FROM\r\n"
-			+ "	 village,wp3_activ_eco_jeune WHERE wp3_activ_eco_jeune.sexe= 'F' AND village.code_village=wp3_activ_eco_jeune.code_village AND wp3_activ_eco_jeune.code_village \r\n"
+			+ "	(SELECT village.code_village,village.village,count(upper(wp3_activ_eco_jeune.sexe)) as femme FROM\r\n"
+			+ "	 village,wp3_activ_eco_jeune WHERE upper(wp3_activ_eco_jeune.sexe)= 'F' AND village.code_village=wp3_activ_eco_jeune.code_village AND wp3_activ_eco_jeune.code_village \r\n"
 			+ " IN (null, ?3) AND wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n"
 			+ "GROUP BY village.code_village,village.village) as femmes where hommes.village=femmes.village", nativeQuery = true)
 	List<Object[]> TableDataAll(Date debut_date, Date fin_date, List<String> params);
 
-	@Query(value = "SELECT village.commune,count(wp3_activ_eco_jeune.sexe) as nbr, wp3_activ_eco_jeune.sexe FROM"
-			+ " village,wp3_activ_eco_jeune WHERE wp3_activ_eco_jeune.sexe=?3 AND village.code_village=wp3_activ_eco_jeune.code_village AND "
+	@Query(value = "SELECT village.commune,count(upper(wp3_activ_eco_jeune.sexe)) as nbr, upper(wp3_activ_eco_jeune.sexe) FROM"
+			+ " village,wp3_activ_eco_jeune WHERE upper(wp3_activ_eco_jeune.sexe)=?3 AND village.code_village=wp3_activ_eco_jeune.code_village AND "
 			+ " wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n"
-			+ "GROUP BY village.commune, wp3_activ_eco_jeune.sexe", nativeQuery = true)
+			+ "GROUP BY village.commune, upper(wp3_activ_eco_jeune.sexe)", nativeQuery = true)
 	List<Object[]> TableDataCommune(Date debut_date, Date fin_date, String sexe);
 
 	@Query(value = "select hommes.commune,hommes.homme,femmes.femme\r\n"
-			+ "	from (SELECT village.commune,count(wp3_activ_eco_jeune.sexe) as homme FROM\r\n"
+			+ "	from (SELECT village.commune,count(upper(wp3_activ_eco_jeune.sexe)) as homme FROM\r\n"
 			+ "	 village,wp3_activ_eco_jeune WHERE village.code_village=wp3_activ_eco_jeune.code_village AND\r\n"
-			+ "	wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n" + "	and wp3_activ_eco_jeune.sexe = 'H'\r\n"
+			+ "	wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n" + "	and upper(wp3_activ_eco_jeune.sexe) = 'H'\r\n"
 			+ "	GROUP BY village.commune) as hommes,\r\n"
-			+ "	(SELECT village.commune,count(wp3_activ_eco_jeune.sexe) as femme FROM\r\n"
+			+ "	(SELECT village.commune,count(upper(wp3_activ_eco_jeune.sexe)) as femme FROM\r\n"
 			+ "	 village,wp3_activ_eco_jeune WHERE village.code_village=wp3_activ_eco_jeune.code_village AND\r\n"
-			+ "	wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n" + " and wp3_activ_eco_jeune.sexe = 'F'\r\n"
+			+ "	wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n" + " and upper(wp3_activ_eco_jeune.sexe) = 'F'\r\n"
 			+ "	GROUP BY village.commune) as femmes where hommes.commune=femmes.commune", nativeQuery = true)
 	List<Object[]> TableDataCommuneAll(Date debut_date, Date fin_date);
 
-	@Query(value = "SELECT village.district,count(wp3_activ_eco_jeune.sexe) as nbr, wp3_activ_eco_jeune.sexe FROM"
-			+ " village,wp3_activ_eco_jeune WHERE wp3_activ_eco_jeune.sexe=?3 AND village.code_village=wp3_activ_eco_jeune.code_village "
+	@Query(value = "SELECT village.district,count(upper(wp3_activ_eco_jeune.sexe)) as nbr, upper(wp3_activ_eco_jeune.sexe) FROM"
+			+ " village,wp3_activ_eco_jeune WHERE upper(wp3_activ_eco_jeune.sexe)=?3 AND village.code_village=wp3_activ_eco_jeune.code_village "
 			+ " AND wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n"
-			+ "GROUP BY village.district, wp3_activ_eco_jeune.sexe", nativeQuery = true)
+			+ "GROUP BY village.district, upper(wp3_activ_eco_jeune.sexe)", nativeQuery = true)
 	List<Object[]> TableDataDist(Date debut_date, Date fin_date, String sexe);
 
 	@Query(value = "select hommes.district,hommes.homme,femmes.femme\r\n"
-			+ "	from (SELECT village.district,count(wp3_activ_eco_jeune.sexe) as homme FROM\r\n"
+			+ "	from (SELECT village.district,count(upper(wp3_activ_eco_jeune.sexe)) as homme FROM\r\n"
 			+ "	 village,wp3_activ_eco_jeune WHERE village.code_village=wp3_activ_eco_jeune.code_village AND\r\n"
-			+ "	wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n" + "	and wp3_activ_eco_jeune.sexe = 'H'\r\n"
+			+ "	wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n" + "	and upper(wp3_activ_eco_jeune.sexe) = 'H'\r\n"
 			+ "	GROUP BY village.district) as hommes,\r\n"
-			+ "	(SELECT village.district,count(wp3_activ_eco_jeune.sexe) as femme FROM\r\n"
+			+ "	(SELECT village.district,count(upper(wp3_activ_eco_jeune.sexe)) as femme FROM\r\n"
 			+ "	 village,wp3_activ_eco_jeune WHERE village.code_village=wp3_activ_eco_jeune.code_village AND\r\n"
-			+ "	wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n" + " and wp3_activ_eco_jeune.sexe = 'F'\r\n"
+			+ "	wp3_activ_eco_jeune.date_fin_frm BETWEEN ?1 AND ?2 \r\n" + " and upper(wp3_activ_eco_jeune.sexe) = 'F'\r\n"
 			+ "	GROUP BY village.district) as femmes where hommes.district=femmes.district", nativeQuery = true)
 	List<Object[]> TableDataDistAll(Date debut_date, Date fin_date);
 	
 	// VILLAGE DETAIL TABLEAU COUNT
 
 	@Query(value = "SELECT village.code_village,wp3_activ_eco_jeune.nom_prenom FROM village,wp3_activ_eco_jeune WHERE"
-			+ " village.code_village=wp3_activ_eco_jeune.code_village AND village.village = ?1   AND wp3_activ_eco_jeune.sexe= ?2 \r\n", nativeQuery = true)
+			+ " village.code_village=wp3_activ_eco_jeune.code_village AND village.village = ?1   AND upper(wp3_activ_eco_jeune.sexe)= ?2 \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenre(String village, String sexe);
 	
 	@Query(value = "SELECT village.code_village,wp3_activ_eco_jeune.nom_prenom FROM village,wp3_activ_eco_jeune WHERE"
@@ -106,7 +106,7 @@ public interface Wp3ActivEcoJeuneRepository extends JpaRepository<Wp3ActivEcoJeu
 		// COMMUNE DETAIL TABLEAU COUNT
 	
 	@Query(value = "SELECT village.code_village,wp3_activ_eco_jeune.nom_prenom FROM village,wp3_activ_eco_jeune WHERE"
-			+ " village.code_village=wp3_activ_eco_jeune.code_village AND village.commune = ?1   AND wp3_activ_eco_jeune.sexe= ?2 \r\n", nativeQuery = true)
+			+ " village.code_village=wp3_activ_eco_jeune.code_village AND village.commune = ?1   AND upper(wp3_activ_eco_jeune.sexe)= ?2 \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenreComm(String commune, String sexe);
 	
 	@Query(value = "SELECT village.code_village,wp3_activ_eco_jeune.nom_prenom FROM village,wp3_activ_eco_jeune WHERE"
@@ -116,7 +116,7 @@ public interface Wp3ActivEcoJeuneRepository extends JpaRepository<Wp3ActivEcoJeu
 		// DISTRICT DETAIL TABLEAU COUNT
 	
 	@Query(value = "SELECT village.code_village,wp3_activ_eco_jeune.nom_prenom FROM village,wp3_activ_eco_jeune WHERE"
-			+ " village.code_village=wp3_activ_eco_jeune.code_village AND village.district = ?1   AND wp3_activ_eco_jeune.sexe= ?2 \r\n", nativeQuery = true)
+			+ " village.code_village=wp3_activ_eco_jeune.code_village AND village.district = ?1   AND upper(wp3_activ_eco_jeune.sexe)= ?2 \r\n", nativeQuery = true)
 	List<Object[]> TableCountDetailGenreDist(String district, String sexe);
 	
 	@Query(value = "SELECT village.code_village,wp3_activ_eco_jeune.nom_prenom FROM village,wp3_activ_eco_jeune WHERE"
