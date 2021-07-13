@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @Table(name = "activite")
 public class Activite {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_activite;
 	@Column(length = 70)
 	private String type_intervention;

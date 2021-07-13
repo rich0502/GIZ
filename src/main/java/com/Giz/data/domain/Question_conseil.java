@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @Table(name = "question_conseil")
 public class Question_conseil {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(length = 40)
 	private  String code_pro;
